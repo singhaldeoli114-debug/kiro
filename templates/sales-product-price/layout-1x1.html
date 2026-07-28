@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Product Price</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .card {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      right: 60px;
+      bottom: 60px;
+      background-color: var(--surfaceAlt, #f8f9fa);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .product-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    .product-area img {
+      max-width: 80%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .sale-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background-color: var(--accent, #e63946);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-section {
+      padding: 40px 48px;
+      background-color: var(--surface, #ffffff);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-top: 1px solid var(--surfaceAlt, #eee);
+    }
+
+    .product-name {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--textPrimary, #1a1a2e);
+      line-height: 1.2;
+    }
+
+    .product-description {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--textSecondary, #666666);
+      line-height: 1.4;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .current-price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--accent, #e63946);
+    }
+
+    .original-price {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--textSecondary, #999999);
+      text-decoration: line-through;
+    }
+
+    .cta-button {
+      margin-top: 16px;
+      background-color: var(--accent, #e63946);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 700;
+      padding: 20px 40px;
+      border-radius: 12px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 80px;
+      right: 80px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="card">
+      <div class="product-area">
+        <div class="sale-badge" data-role="badge" data-importance="secondary">SALE</div>
+        <img src="assets/placeholder.png" alt="Product" data-slot="product-image" />
+      </div>
+      <div class="info-section">
+        <h1 class="product-name" data-role="headline" data-importance="primary">Premium Wireless Headphones</h1>
+        <p class="product-description" data-role="description" data-importance="secondary">High-fidelity sound with active noise cancellation</p>
+        <div class="price-row">
+          <span class="current-price" data-role="price" data-importance="primary">$49.99</span>
+          <span class="original-price" data-role="price-original" data-importance="tertiary">$99.99</span>
+        </div>
+        <div class="cta-button" data-role="cta" data-importance="primary">ADD TO CART</div>
+      </div>
+    </div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+  </div>
+</body>
+</html>

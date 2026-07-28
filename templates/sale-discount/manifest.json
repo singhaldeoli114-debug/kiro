@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "sale-discount",
+  "templateVersion": "1.0.0",
+  "category": "sale",
+  "formats": ["1x1"],
+  "when_to_use": "When advertising a general sale with percentage discount and multiple product thumbnails in a grid",
+  "mood": ["bold", "clear", "commercial", "urgent"],
+  "best_for": ["store-wide sales", "multi-product discounts", "clearance events", "seasonal promotions"],
+  "not_for": ["single product focus", "luxury brands", "brand awareness campaigns"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "percent-value", "label": "Discount Number", "defaultValue": "50", "dataRole": "discount", "dataImportance": "primary"},
+    {"id": "percent-label", "label": "Percent Label", "defaultValue": "% OFF", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "headline", "label": "Headline Banner", "defaultValue": "MEGA SALE - EVERYTHING MUST GO", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP ALL DEALS", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-1", "label": "Product Thumbnail 1", "required": true},
+    {"id": "product-2", "label": "Product Thumbnail 2", "required": true},
+    {"id": "product-3", "label": "Product Thumbnail 3", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "30px", "bottom": "30px", "left": "0px", "right": "0px"},
+    "constraints": ["Large percentage circle in top half", "Product grid in bottom half", "Headline banner divides sections"]
+  },
+  "layoutSafeZone": {"top": 30, "bottom": 30, "left": 0, "right": 0},
+  "anchors": {
+    "logo": "top-center",
+    "discount": "center-top",
+    "headline": "center",
+    "products": "bottom",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "percent-value": "50",
+    "percent-label": "% OFF",
+    "headline": "MEGA SALE - EVERYTHING MUST GO",
+    "cta": "SHOP ALL DEALS"
+  },
+  "editable": ["percent-value", "percent-label", "headline", "cta", "product-1", "product-2", "product-3", "logo"],
+  "fixtures": {
+    "product-1": "assets/placeholder.png",
+    "product-2": "assets/placeholder.png",
+    "product-3": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "General discount advertisement with large percentage circle in top section and 3-column product thumbnail grid below. Clean, bold design for store-wide sales and multi-product promotions."
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoes Sale Social</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #1a1a2e);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .bg-shape {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      background-color: var(--surfaceAlt, #2d2d44);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .product-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%) rotate(-15deg);
+      width: 700px;
+      height: 500px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    }
+
+    .price-tag {
+      position: absolute;
+      top: 60px;
+      right: 60px;
+      width: 180px;
+      height: 180px;
+      background-color: var(--accent, #e63946);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      box-shadow: 0 8px 24px rgba(230, 57, 70, 0.4);
+    }
+
+    .price-tag-value {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--onAccent, #ffffff);
+      line-height: 1;
+    }
+
+    .price-tag-label {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--onAccent, #ffffff);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .content-bottom {
+      position: absolute;
+      bottom: 60px;
+      left: 60px;
+      right: 60px;
+      z-index: 8;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 1.0;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--textSecondary, #a0a0b8);
+      letter-spacing: 1px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .sale-price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--accent, #e63946);
+    }
+
+    .original-price {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 24px;
+      color: var(--textSecondary, #777777);
+      text-decoration: line-through;
+    }
+
+    .cta-button {
+      align-self: flex-start;
+      background-color: var(--accent, #e63946);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-shape"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="price-tag">
+      <span class="price-tag-value" data-role="discount" data-importance="primary">40%</span>
+      <span class="price-tag-label" data-role="badge" data-importance="secondary">OFF</span>
+    </div>
+
+    <div class="product-container">
+      <img src="assets/placeholder.png" alt="Shoes Product" data-slot="product-image" />
+    </div>
+
+    <div class="content-bottom">
+      <h1 class="headline" data-role="headline" data-importance="primary">STEP INTO STYLE</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Limited Edition Collection - While Stocks Last</p>
+      <div class="price-row">
+        <span class="sale-price" data-role="price" data-importance="primary">$89.99</span>
+        <span class="original-price" data-role="price-original" data-importance="tertiary">$149.99</span>
+      </div>
+      <div class="cta-button" data-role="cta" data-importance="primary">SHOP NOW</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "new-arrival",
+  "templateVersion": "1.0.0",
+  "category": "promotion",
+  "formats": ["1x1"],
+  "when_to_use": "When launching new products or collections with a spotlight/beam effect that highlights the product and a prominent 'NEW' badge",
+  "mood": ["fresh", "exciting", "modern", "premium"],
+  "best_for": ["product launches", "new collections", "pre-orders", "just-dropped campaigns"],
+  "not_for": ["clearance sales", "discount-focused ads", "multi-product layouts"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "new-badge", "label": "Badge Text", "defaultValue": "NEW", "dataRole": "badge", "dataImportance": "primary"},
+    {"id": "eyebrow", "label": "Eyebrow Text", "defaultValue": "JUST DROPPED", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "THE ALL-NEW COLLECTION", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Be the first to experience our latest innovation in design and performance", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$129.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "price-note", "label": "Price Note", "defaultValue": "Starting at", "dataRole": "supporting", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "PRE-ORDER NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-image", "label": "Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-right",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Spotlight beam from top illuminates product", "NEW badge in top-left corner", "Product centered with green glow", "Content at bottom"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-right",
+    "badge": "top-left",
+    "product": "center",
+    "headline": "bottom-left",
+    "cta": "bottom-left"
+  },
+  "defaults": {
+    "new-badge": "NEW",
+    "eyebrow": "JUST DROPPED",
+    "headline": "THE ALL-NEW COLLECTION",
+    "subheadline": "Be the first to experience our latest innovation in design and performance",
+    "price": "$129.99",
+    "price-note": "Starting at",
+    "cta": "PRE-ORDER NOW"
+  },
+  "editable": ["new-badge", "eyebrow", "headline", "subheadline", "price", "price-note", "cta", "product-image", "logo"],
+  "fixtures": {
+    "product-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "New-arrival campaign template with spotlight beam effect illuminating the product from above, prominent NEW badge in the corner, and modern dark aesthetic. Perfect for product launches and drops."
+}

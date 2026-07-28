@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "sales-product-price",
+  "templateVersion": "1.0.0",
+  "category": "sale",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing a single product with clear price comparison and add-to-cart CTA in a structured card",
+  "mood": ["clean", "structured", "commercial", "trustworthy"],
+  "best_for": ["e-commerce products", "single product highlight", "price comparison ads", "product launch sales"],
+  "not_for": ["brand awareness", "lifestyle content", "multi-product layouts"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "sale-badge", "label": "Sale Badge", "defaultValue": "SALE", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "product-name", "label": "Product Name", "defaultValue": "Premium Wireless Headphones", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "product-description", "label": "Product Description", "defaultValue": "High-fidelity sound with active noise cancellation", "dataRole": "description", "dataImportance": "secondary"},
+    {"id": "current-price", "label": "Sale Price", "defaultValue": "$49.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "original-price", "label": "Original Price", "defaultValue": "$99.99", "dataRole": "price-original", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ADD TO CART", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-image", "label": "Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-right",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Product image in top half of card", "Price and CTA in bottom section", "Card has rounded corners with subtle shadow"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-right",
+    "product": "center-top",
+    "price": "bottom-left",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "sale-badge": "SALE",
+    "product-name": "Premium Wireless Headphones",
+    "product-description": "High-fidelity sound with active noise cancellation",
+    "current-price": "$49.99",
+    "original-price": "$99.99",
+    "cta": "ADD TO CART"
+  },
+  "editable": ["sale-badge", "product-name", "product-description", "current-price", "original-price", "cta", "product-image", "logo"],
+  "fixtures": {
+    "product-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Clean structured product card layout with product image at top, price comparison in middle, and CTA button at bottom. Perfect for single-product sale ads."
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "fashion-sale-social",
+  "templateVersion": "1.0.0",
+  "category": "sale",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting fashion sales with a model image and large discount overlay creating depth through gradient layers",
+  "mood": ["fashionable", "editorial", "sophisticated", "urgent"],
+  "best_for": ["fashion sales", "seasonal clearance", "model-centric campaigns", "lifestyle brands"],
+  "not_for": ["tech products", "B2B marketing", "minimalist layouts"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "badge", "label": "Badge Text", "defaultValue": "LIMITED TIME", "dataRole": "badge", "dataImportance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "SEASON SALE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "New arrivals and bestsellers at unbeatable prices this season", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "discount-value", "label": "Discount Value", "defaultValue": "60%", "dataRole": "discount", "dataImportance": "primary"},
+    {"id": "discount-label", "label": "Discount Label", "defaultValue": "OFF", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP COLLECTION", "dataRole": "cta", "dataImportance": "primary"},
+    {"id": "terms", "label": "Terms Text", "defaultValue": "*Terms and conditions apply", "dataRole": "supporting", "dataImportance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "model-image", "label": "Fashion Model Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "bottom-right",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "80px", "bottom": "80px", "left": "60px", "right": "60px"},
+    "constraints": ["Full model image as background", "Gradient scrim at 135deg for depth", "Discount in top-right", "Content anchored left"]
+  },
+  "layoutSafeZone": {"top": 80, "bottom": 80, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "bottom-right",
+    "headline": "center-left",
+    "discount": "top-right",
+    "cta": "bottom-left"
+  },
+  "defaults": {
+    "badge": "LIMITED TIME",
+    "headline": "SEASON SALE",
+    "subheadline": "New arrivals and bestsellers at unbeatable prices this season",
+    "discount-value": "60%",
+    "discount-label": "OFF",
+    "cta": "SHOP COLLECTION",
+    "terms": "*Terms and conditions apply"
+  },
+  "editable": ["badge", "headline", "subheadline", "discount-value", "discount-label", "cta", "terms", "model-image", "logo"],
+  "fixtures": {
+    "model-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Fashion sale template with full model photo, multi-directional gradient scrim overlay, and large discount percentage creating depth through layered composition."
+}

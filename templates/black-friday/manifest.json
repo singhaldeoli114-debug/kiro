@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "black-friday",
+  "templateVersion": "1.0.0",
+  "category": "sale",
+  "formats": ["1x1"],
+  "when_to_use": "When creating Black Friday campaign visuals with dark luxury aesthetic and gold accent highlights",
+  "mood": ["luxury", "dark", "exclusive", "premium"],
+  "best_for": ["Black Friday sales", "premium brand discounts", "luxury retail events", "exclusive offers"],
+  "not_for": ["cheerful promotions", "kids products", "casual everyday posts"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "BLACK FRIDAY", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "EXCLUSIVE DEALS", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "discount-value", "label": "Discount Value", "defaultValue": "UP TO 70% OFF", "dataRole": "discount", "dataImportance": "primary"},
+    {"id": "date-text", "label": "Date/Timer", "defaultValue": "NOVEMBER 24 - 27", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP NOW", "dataRole": "cta", "dataImportance": "primary"},
+    {"id": "terms", "label": "Terms", "defaultValue": "Online & In-Store | While supplies last", "dataRole": "supporting", "dataImportance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-image", "label": "Featured Product", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Pure black background", "Gold accent lines and borders", "Minimal luxurious feel", "Centered vertical layout"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "center",
+    "discount": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "BLACK FRIDAY",
+    "subheadline": "EXCLUSIVE DEALS",
+    "discount-value": "UP TO 70% OFF",
+    "date-text": "NOVEMBER 24 - 27",
+    "cta": "SHOP NOW",
+    "terms": "Online & In-Store | While supplies last"
+  },
+  "editable": ["headline", "subheadline", "discount-value", "date-text", "cta", "terms", "product-image", "logo"],
+  "fixtures": {
+    "product-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Black Friday campaign template with dark luxury aesthetic, gold accent highlights, and minimal premium feel. Centered vertical composition with elegant borders."
+}

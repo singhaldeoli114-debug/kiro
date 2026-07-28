@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "shoes-sale-social",
+  "templateVersion": "1.0.0",
+  "category": "sale",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting footwear with a dynamic angled product presentation and price tag overlay",
+  "mood": ["dynamic", "energetic", "urban", "bold"],
+  "best_for": ["sneaker drops", "shoe sales", "athletic footwear", "seasonal shoe promotions"],
+  "not_for": ["formal events", "text-heavy ads", "multi-product grids"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "price-tag-value", "label": "Discount Value", "defaultValue": "40%", "dataRole": "discount", "dataImportance": "primary"},
+    {"id": "price-tag-label", "label": "Discount Label", "defaultValue": "OFF", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "STEP INTO STYLE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Limited Edition Collection - While Stocks Last", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "sale-price", "label": "Sale Price", "defaultValue": "$89.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "original-price", "label": "Original Price", "defaultValue": "$149.99", "dataRole": "price-original", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-image", "label": "Shoe Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Product tilted at -15 degrees", "Circular price tag in top-right", "Content anchored to bottom"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-left",
+    "price-tag": "top-right",
+    "product": "center",
+    "headline": "bottom-left",
+    "cta": "bottom-left"
+  },
+  "defaults": {
+    "price-tag-value": "40%",
+    "price-tag-label": "OFF",
+    "headline": "STEP INTO STYLE",
+    "subheadline": "Limited Edition Collection - While Stocks Last",
+    "sale-price": "$89.99",
+    "original-price": "$149.99",
+    "cta": "SHOP NOW"
+  },
+  "editable": ["price-tag-value", "price-tag-label", "headline", "subheadline", "sale-price", "original-price", "cta", "product-image", "logo"],
+  "fixtures": {
+    "product-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Dynamic footwear sale template with tilted product presentation (-15 degrees), circular price tag overlay, and bold bottom-anchored content. Perfect for sneaker drops and shoe promotions."
+}

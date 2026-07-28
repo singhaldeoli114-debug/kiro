@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Friday</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #000000);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .border-frame {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      border: 2px solid var(--accent, #d4af37);
+    }
+
+    .inner-frame {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      right: 40px;
+      bottom: 40px;
+      border: 1px solid var(--accentAlt, rgba(212, 175, 55, 0.3));
+    }
+
+    .content-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      z-index: 5;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--accent, #d4af37);
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 96px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -2px;
+    }
+
+    .gold-line {
+      width: 200px;
+      height: 2px;
+      background-color: var(--accent, #d4af37);
+    }
+
+    .discount-value {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--accent, #d4af37);
+      letter-spacing: 4px;
+    }
+
+    .date-text {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--textSecondary, #888888);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .product-area {
+      width: 300px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-area img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .cta-button {
+      border: 2px solid var(--accent, #d4af37);
+      color: var(--accent, #d4af37);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 48px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      background: transparent;
+    }
+
+    .terms {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 12px;
+      color: var(--textSecondary, #555555);
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="border-frame"></div>
+    <div class="inner-frame"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="content-center">
+      <span class="subheadline" data-role="subheadline" data-importance="secondary">EXCLUSIVE DEALS</span>
+      <h1 class="headline" data-role="headline" data-importance="primary">BLACK FRIDAY</h1>
+      <div class="gold-line"></div>
+      <span class="discount-value" data-role="discount" data-importance="primary">UP TO 70% OFF</span>
+      <div class="gold-line"></div>
+      <span class="date-text" data-role="supporting" data-importance="secondary">NOVEMBER 24 - 27</span>
+      <div class="product-area" data-visibility="product">
+        <img src="assets/placeholder.png" alt="Featured Product" data-slot="product-image" />
+      </div>
+      <div class="cta-button" data-role="cta" data-importance="primary">SHOP NOW</div>
+      <span class="terms" data-role="supporting" data-importance="tertiary">Online & In-Store | While supplies last</span>
+    </div>
+  </div>
+</body>
+</html>

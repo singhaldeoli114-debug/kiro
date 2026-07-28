@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Sale</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #ff1744);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .starburst {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 900px;
+    }
+
+    .starburst-ray {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 450px;
+      height: 6px;
+      background-color: var(--surfaceAlt, rgba(255,255,255,0.15));
+      transform-origin: 0 50%;
+    }
+
+    .starburst-ray:nth-child(1) { transform: rotate(0deg); }
+    .starburst-ray:nth-child(2) { transform: rotate(15deg); }
+    .starburst-ray:nth-child(3) { transform: rotate(30deg); }
+    .starburst-ray:nth-child(4) { transform: rotate(45deg); }
+    .starburst-ray:nth-child(5) { transform: rotate(60deg); }
+    .starburst-ray:nth-child(6) { transform: rotate(75deg); }
+    .starburst-ray:nth-child(7) { transform: rotate(90deg); }
+    .starburst-ray:nth-child(8) { transform: rotate(105deg); }
+    .starburst-ray:nth-child(9) { transform: rotate(120deg); }
+    .starburst-ray:nth-child(10) { transform: rotate(135deg); }
+    .starburst-ray:nth-child(11) { transform: rotate(150deg); }
+    .starburst-ray:nth-child(12) { transform: rotate(165deg); }
+    .starburst-ray:nth-child(13) { transform: rotate(180deg); }
+    .starburst-ray:nth-child(14) { transform: rotate(195deg); }
+    .starburst-ray:nth-child(15) { transform: rotate(210deg); }
+    .starburst-ray:nth-child(16) { transform: rotate(225deg); }
+    .starburst-ray:nth-child(17) { transform: rotate(240deg); }
+    .starburst-ray:nth-child(18) { transform: rotate(255deg); }
+    .starburst-ray:nth-child(19) { transform: rotate(270deg); }
+    .starburst-ray:nth-child(20) { transform: rotate(285deg); }
+    .starburst-ray:nth-child(21) { transform: rotate(300deg); }
+    .starburst-ray:nth-child(22) { transform: rotate(315deg); }
+    .starburst-ray:nth-child(23) { transform: rotate(330deg); }
+    .starburst-ray:nth-child(24) { transform: rotate(345deg); }
+
+    .center-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .super-text {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 80px;
+      font-weight: 900;
+      color: var(--textOverImage, #ffffff);
+      text-transform: uppercase;
+      letter-spacing: 20px;
+    }
+
+    .sale-text {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 200px;
+      font-weight: 900;
+      color: var(--onAccent, #ffffff);
+      text-transform: uppercase;
+      line-height: 0.85;
+      letter-spacing: -5px;
+      text-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .discount-amount {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 160px;
+      font-weight: 900;
+      color: var(--accentAlt, #ffeb3b);
+      line-height: 1;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--textOverImage, #ffffff);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    .cta-button {
+      background-color: var(--accentAlt, #ffeb3b);
+      color: var(--surface, #ff1744);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 24px;
+      font-weight: 800;
+      padding: 20px 60px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-top: 20px;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .corner-burst {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: var(--accentAlt, #ffeb3b);
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+
+    .corner-burst-tl { top: -60px; left: -60px; }
+    .corner-burst-br { bottom: -60px; right: -60px; }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="starburst">
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+      <div class="starburst-ray"></div>
+    </div>
+
+    <div class="corner-burst corner-burst-tl"></div>
+    <div class="corner-burst corner-burst-br"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="center-content">
+      <span class="super-text" data-role="headline" data-importance="secondary">SUPER</span>
+      <span class="sale-text" data-role="headline" data-importance="primary">SALE</span>
+      <span class="discount-amount" data-role="discount" data-importance="primary">70%</span>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Everything Must Go - Today Only</p>
+      <div class="cta-button" data-role="cta" data-importance="primary">SHOP NOW</div>
+    </div>
+  </div>
+</body>
+</html>

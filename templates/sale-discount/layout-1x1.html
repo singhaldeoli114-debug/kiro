@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sale Discount</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .top-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      background-color: var(--surfaceAlt, #fff5f5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .percent-circle {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background-color: var(--accent, #e63946);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px rgba(230, 57, 70, 0.3);
+    }
+
+    .percent-value {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 140px;
+      font-weight: 900;
+      color: var(--onAccent, #ffffff);
+      line-height: 0.9;
+    }
+
+    .percent-label {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--onAccent, #ffffff);
+      text-transform: uppercase;
+      letter-spacing: 8px;
+    }
+
+    .headline-bar {
+      position: absolute;
+      top: 55%;
+      left: 0;
+      right: 0;
+      background-color: var(--accent, #e63946);
+      padding: 16px 40px;
+      text-align: center;
+      z-index: 5;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--onAccent, #ffffff);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+    }
+
+    .product-grid {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 38%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      padding: 3px;
+      background-color: var(--surface, #ffffff);
+    }
+
+    .grid-item {
+      background-color: var(--surfaceAlt, #f9f9f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .grid-item img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .cta-row {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .cta-button {
+      background-color: var(--accent, #e63946);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 16px 48px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      box-shadow: 0 8px 24px rgba(230, 57, 70, 0.3);
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="top-section">
+      <div class="percent-circle">
+        <span class="percent-value" data-role="discount" data-importance="primary">50</span>
+        <span class="percent-label" data-role="badge" data-importance="secondary">% OFF</span>
+      </div>
+    </div>
+
+    <div class="headline-bar">
+      <h1 class="headline" data-role="headline" data-importance="primary">MEGA SALE - EVERYTHING MUST GO</h1>
+    </div>
+
+    <div class="product-grid">
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Product 1" data-slot="product-1" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Product 2" data-slot="product-2" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Product 3" data-slot="product-3" />
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <div class="cta-button" data-role="cta" data-importance="primary">SHOP ALL DEALS</div>
+    </div>
+  </div>
+</body>
+</html>

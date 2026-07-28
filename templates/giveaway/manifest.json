@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "giveaway",
+  "templateVersion": "1.0.0",
+  "category": "engagement",
+  "formats": ["1x1"],
+  "when_to_use": "When running social media giveaways or contests with numbered entry steps and a prize showcase",
+  "mood": ["exciting", "celebratory", "engaging", "fun"],
+  "best_for": ["Instagram contests", "social giveaways", "follower engagement", "product giveaways"],
+  "not_for": ["serious B2B", "luxury brands", "informational posts"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "giveaway-label", "label": "Giveaway Label", "defaultValue": "GIVEAWAY", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "WIN THIS PRIZE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "step1-text", "label": "Step 1 Text", "defaultValue": "Follow our page", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "step2-text", "label": "Step 2 Text", "defaultValue": "Like this post", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "step3-text", "label": "Step 3 Text", "defaultValue": "Tag 2 friends", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ENTER NOW", "dataRole": "cta", "dataImportance": "primary"},
+    {"id": "terms", "label": "Terms/End Date", "defaultValue": "Ends Dec 31 | Winner announced Jan 5", "dataRole": "supporting", "dataImportance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "prize-image", "label": "Prize Item Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-right",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "40px", "right": "40px"},
+    "constraints": ["Prize in centered golden circle", "Numbered steps in horizontal row", "Confetti decorations in background"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 40, "right": 40},
+  "anchors": {
+    "logo": "top-right",
+    "headline": "top-center",
+    "prize": "center",
+    "steps": "bottom-center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "giveaway-label": "GIVEAWAY",
+    "headline": "WIN THIS PRIZE",
+    "step1-text": "Follow our page",
+    "step2-text": "Like this post",
+    "step3-text": "Tag 2 friends",
+    "cta": "ENTER NOW",
+    "terms": "Ends Dec 31 | Winner announced Jan 5"
+  },
+  "editable": ["giveaway-label", "headline", "step1-text", "step2-text", "step3-text", "cta", "terms", "prize-image", "logo"],
+  "fixtures": {
+    "prize-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Social media giveaway/engagement template with centered prize showcase in golden circle, numbered entry steps (1-2-3), and celebratory confetti dot decorations. Perfect for Instagram contests."
+}

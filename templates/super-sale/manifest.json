@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "super-sale",
+  "templateVersion": "1.0.0",
+  "category": "sale",
+  "formats": ["1x1"],
+  "when_to_use": "When running a massive sale event that needs maximum visual impact with bold typography",
+  "mood": ["urgent", "explosive", "bold", "energetic"],
+  "best_for": ["flash sales", "clearance events", "store-wide promotions", "holiday sales"],
+  "not_for": ["luxury brands", "subtle messaging", "B2B products"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "super-text", "label": "Top Text", "defaultValue": "SUPER", "dataRole": "headline", "dataImportance": "secondary"},
+    {"id": "sale-text", "label": "Main Sale Text", "defaultValue": "SALE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "discount-amount", "label": "Discount Percentage", "defaultValue": "70%", "dataRole": "discount", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Everything Must Go - Today Only", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "40px", "left": "40px", "right": "40px"},
+    "constraints": ["Typography dominates center", "Starburst rays radiate from center", "Discount percentage in contrasting color"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 40, "left": 40, "right": 40},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "center",
+    "discount": "center",
+    "cta": "center-bottom"
+  },
+  "defaults": {
+    "super-text": "SUPER",
+    "sale-text": "SALE",
+    "discount-amount": "70%",
+    "subheadline": "Everything Must Go - Today Only",
+    "cta": "SHOP NOW"
+  },
+  "editable": ["super-text", "sale-text", "discount-amount", "subheadline", "cta", "logo"],
+  "fixtures": {
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Bold universal sale template with massive centered typography and starburst CSS shapes radiating from the center. Maximum visual impact for flash sales and clearance events."
+}

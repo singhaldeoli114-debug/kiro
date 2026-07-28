@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Arrival</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #0d1117);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .spotlight-beam {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 350px solid transparent;
+      border-right: 350px solid transparent;
+      border-top: 800px solid var(--surfaceAlt, rgba(255,255,255,0.05));
+    }
+
+    .spotlight-glow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--surfaceAlt, rgba(255,255,255,0.08)) 0%, transparent 70%);
+    }
+
+    .new-badge {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      background-color: var(--accent, #00e676);
+      color: var(--surface, #0d1117);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 900;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      z-index: 10;
+    }
+
+    .product-area {
+      position: absolute;
+      top: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .product-area img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0, 230, 118, 0.2));
+    }
+
+    .content-bottom {
+      position: absolute;
+      bottom: 60px;
+      left: 60px;
+      right: 60px;
+      z-index: 8;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent, #00e676);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 1.0;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      color: var(--textSecondary, #8b949e);
+      line-height: 1.4;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--textPrimary, #ffffff);
+    }
+
+    .price-note {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      color: var(--textSecondary, #8b949e);
+    }
+
+    .cta-button {
+      align-self: flex-start;
+      background-color: var(--accent, #00e676);
+      color: var(--surface, #0d1117);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 800;
+      padding: 16px 44px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 12px;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 60px;
+      right: 60px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="spotlight-beam"></div>
+    <div class="spotlight-glow"></div>
+
+    <div class="new-badge" data-role="badge" data-importance="primary">NEW</div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="product-area">
+      <img src="assets/placeholder.png" alt="New Product" data-slot="product-image" />
+    </div>
+
+    <div class="content-bottom">
+      <span class="eyebrow" data-role="badge" data-importance="secondary">JUST DROPPED</span>
+      <h1 class="headline" data-role="headline" data-importance="primary">THE ALL-NEW COLLECTION</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Be the first to experience our latest innovation in design and performance</p>
+      <div class="price-row">
+        <span class="price" data-role="price" data-importance="primary">$129.99</span>
+        <span class="price-note" data-role="supporting" data-importance="tertiary">Starting at</span>
+      </div>
+      <div class="cta-button" data-role="cta" data-importance="primary">PRE-ORDER NOW</div>
+    </div>
+  </div>
+</body>
+</html>

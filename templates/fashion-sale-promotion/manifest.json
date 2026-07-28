@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "fashion-sale-promotion",
+  "templateVersion": "1.0.0",
+  "category": "sale",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting a fashion sale with a bold diagonal price banner across a model image",
+  "mood": ["urgent", "bold", "fashionable", "promotional"],
+  "best_for": ["fashion brands", "clothing sales", "seasonal promotions", "end-of-season clearance"],
+  "not_for": ["tech products", "minimalist brands", "luxury positioning without discount"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "banner-text", "label": "Diagonal Banner Text", "defaultValue": "50% OFF", "dataRole": "badge", "dataImportance": "primary"},
+    {"id": "discount", "label": "Discount Percentage", "defaultValue": "50%", "dataRole": "discount", "dataImportance": "primary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "FASHION SALE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "End of Season Collection - Limited Time Only", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "model-image", "label": "Fashion Model Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "40px", "left": "40px", "right": "40px"},
+    "constraints": ["Diagonal banner cuts across top-right corner", "Model fills entire background", "Text content anchored to bottom with scrim"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 40, "left": 40, "right": 40},
+  "anchors": {
+    "logo": "top-left",
+    "banner": "top-right-diagonal",
+    "headline": "bottom-left",
+    "cta": "bottom-left"
+  },
+  "defaults": {
+    "banner-text": "50% OFF",
+    "discount": "50%",
+    "headline": "FASHION SALE",
+    "subheadline": "End of Season Collection - Limited Time Only",
+    "cta": "SHOP NOW"
+  },
+  "editable": ["banner-text", "discount", "headline", "subheadline", "cta", "model-image", "logo"],
+  "fixtures": {
+    "model-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Fashion discount campaign template with a distinctive diagonal price banner cutting across the top-right corner over a full-bleed model image. Features gradient scrim overlay for text readability."
+}

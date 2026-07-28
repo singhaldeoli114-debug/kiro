@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "free-shipping",
+  "templateVersion": "1.0.0",
+  "category": "promotion",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting free shipping offers with a delivery-themed visual and ribbon banner messaging",
+  "mood": ["friendly", "promotional", "trustworthy", "clear"],
+  "best_for": ["free shipping campaigns", "delivery promotions", "e-commerce incentives", "minimum order offers"],
+  "not_for": ["luxury positioning", "brand awareness", "non-retail businesses"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "ribbon-text", "label": "Ribbon Banner Text", "defaultValue": "FREE SHIPPING", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "FREE DELIVERY ON ALL ORDERS", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "No minimum purchase required", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "code", "label": "Promo Code", "defaultValue": "CODE: FREESHIP", "dataRole": "badge", "dataImportance": "primary"},
+    {"id": "validity", "label": "Validity Period", "defaultValue": "Valid through December 31", "dataRole": "supporting", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "icon-image", "label": "Delivery Icon Image", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "40px", "left": "40px", "right": "40px"},
+    "constraints": ["Ribbon banner across center", "Delivery icon area above ribbon", "CTA button below content", "Clean friendly layout"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 40, "left": 40, "right": 40},
+  "anchors": {
+    "logo": "top-left",
+    "icon": "center-top",
+    "ribbon": "center",
+    "headline": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "ribbon-text": "FREE SHIPPING",
+    "headline": "FREE DELIVERY ON ALL ORDERS",
+    "subheadline": "No minimum purchase required",
+    "code": "CODE: FREESHIP",
+    "validity": "Valid through December 31",
+    "cta": "ORDER NOW"
+  },
+  "editable": ["ribbon-text", "headline", "subheadline", "code", "validity", "cta", "icon-image", "logo"],
+  "fixtures": {
+    "icon-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Free shipping promotional template with centered delivery icon area, bold ribbon banner with message, and clear promo code display. Friendly and trust-building design."
+}
