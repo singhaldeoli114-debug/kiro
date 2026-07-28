@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cake Bakery</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #fef7ed);
+      font-family: var(--font-body, 'Georgia', serif);
+    }
+
+    .ornate-border {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      right: 40px;
+      bottom: 40px;
+      border: 3px solid var(--accent, #d4a574);
+      border-radius: 20px;
+    }
+
+    .ornate-border::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid var(--accentAlt, rgba(212, 165, 116, 0.4));
+      border-radius: 14px;
+    }
+
+    .corner-flourish-tl,
+    .corner-flourish-tr,
+    .corner-flourish-bl,
+    .corner-flourish-br {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-color: var(--accent, #d4a574);
+      z-index: 5;
+    }
+
+    .corner-flourish-tl {
+      top: 60px;
+      left: 60px;
+      border-top: 3px solid;
+      border-left: 3px solid;
+      border-top-left-radius: 20px;
+    }
+
+    .corner-flourish-tr {
+      top: 60px;
+      right: 60px;
+      border-top: 3px solid;
+      border-right: 3px solid;
+      border-top-right-radius: 20px;
+    }
+
+    .corner-flourish-bl {
+      bottom: 60px;
+      left: 60px;
+      border-bottom: 3px solid;
+      border-left: 3px solid;
+      border-bottom-left-radius: 20px;
+    }
+
+    .corner-flourish-br {
+      bottom: 60px;
+      right: 60px;
+      border-bottom: 3px solid;
+      border-right: 3px solid;
+      border-bottom-right-radius: 20px;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 45px;
+      width: auto;
+    }
+
+    .headline-area {
+      position: absolute;
+      top: 150px;
+      left: 100px;
+      right: 100px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .pre-headline {
+      font-family: var(--font-body, 'Georgia', serif);
+      font-size: 16px;
+      color: var(--accent, #d4a574);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-weight: 400;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Georgia', serif);
+      font-size: 68px;
+      font-weight: 400;
+      color: var(--textPrimary, #3d2416);
+      line-height: 1.1;
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Georgia', serif);
+      font-size: 18px;
+      color: var(--textSecondary, #8b6b4e);
+      margin-top: 12px;
+      letter-spacing: 2px;
+    }
+
+    .cake-showcase {
+      position: absolute;
+      top: 340px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 6;
+    }
+
+    .cake-showcase img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(61, 36, 22, 0.15));
+    }
+
+    .badge-area {
+      position: absolute;
+      top: 360px;
+      right: 100px;
+      width: 120px;
+      height: 120px;
+      background: var(--accent, #d4a574);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+    }
+
+    .badge-area .badge-from {
+      font-size: 11px;
+      color: var(--onAccent, #ffffff);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .badge-area .badge-price {
+      font-family: var(--font-display, 'Georgia', serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--onAccent, #ffffff);
+    }
+
+    .bottom-section {
+      position: absolute;
+      bottom: 100px;
+      left: 100px;
+      right: 100px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .tagline {
+      font-family: var(--font-body, 'Georgia', serif);
+      font-size: 16px;
+      color: var(--textSecondary, #8b6b4e);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      background: var(--accent, #d4a574);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Georgia', serif);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px 48px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="ornate-border"></div>
+    <div class="corner-flourish-tl"></div>
+    <div class="corner-flourish-tr"></div>
+    <div class="corner-flourish-bl"></div>
+    <div class="corner-flourish-br"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="headline-area">
+      <p class="pre-headline" data-role="supporting" data-importance="tertiary">Artisan Baked</p>
+      <h1 class="headline" data-role="headline" data-importance="primary">Signature Cakes</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Handcrafted With Love Since 1987</p>
+    </div>
+
+    <div class="cake-showcase">
+      <img src="assets/placeholder.png" alt="Cake" data-slot="cake-image" />
+    </div>
+
+    <div class="badge-area">
+      <span class="badge-from" data-role="supporting" data-importance="tertiary">From</span>
+      <span class="badge-price" data-role="price" data-importance="primary">$45</span>
+    </div>
+
+    <div class="bottom-section">
+      <p class="tagline" data-role="supporting" data-importance="tertiary">Custom Orders Welcome | Same-Day Pickup</p>
+      <div class="cta-button" data-role="cta" data-importance="primary">ORDER YOURS</div>
+    </div>
+  </div>
+</body>
+</html>

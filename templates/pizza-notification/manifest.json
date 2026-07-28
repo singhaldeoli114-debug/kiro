@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "pizza-notification",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating pizza offer or delivery promotion with bold notification style and circular pizza showcase",
+  "mood": ["appetizing", "bold", "urgent", "warm"],
+  "best_for": ["pizza restaurants", "delivery services", "Italian food", "hot deal notifications"],
+  "not_for": ["fine dining", "health food", "desserts", "beverages"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "PIZZA NIGHT", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Fresh From The Oven", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "badge-text", "label": "Badge", "defaultValue": "HOT DEAL", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$9.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "size-info", "label": "Size Info", "defaultValue": "Large 16\" Pizza", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "delivery-note", "label": "Delivery Note", "defaultValue": "Free Delivery Over $25 | 30 Min or Less", "dataRole": "supporting", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "pizza-image", "label": "Pizza Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Large centered circle for pizza", "Red checkered pattern CSS background", "Notification badge ribbon style", "Dashed circular border framing pizza"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-center",
+    "pizza-image": "center",
+    "price": "bottom-center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "PIZZA NIGHT",
+    "subheadline": "Fresh From The Oven",
+    "badge-text": "HOT DEAL",
+    "price": "$9.99",
+    "size-info": "Large 16\" Pizza",
+    "delivery-note": "Free Delivery Over $25 | 30 Min or Less",
+    "cta": "ORDER NOW"
+  },
+  "editable": ["headline", "subheadline", "badge-text", "price", "size-info", "delivery-note", "cta", "pizza-image", "logo"],
+  "fixtures": {
+    "pizza-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Pizza offer template with large centered circular pizza image area, HOT DEAL badge ribbon, red checkered pattern background, notification-style layout, and prominent order CTA."
+}

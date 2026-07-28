@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "steak-delivery",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating steak or grill delivery conversion ads with strong urgency and bold call-to-action",
+  "mood": ["bold", "smoky", "premium", "urgent"],
+  "best_for": ["steak restaurants", "meat delivery services", "grill houses", "premium food delivery"],
+  "not_for": ["vegetarian brands", "light healthy food", "bakeries", "kids menus"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "PRIME RIBEYE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "28-Day Dry Aged, Flame Grilled", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "badge", "label": "Delivery Badge", "defaultValue": "Express Delivery", "dataRole": "badge", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$34.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "price-note", "label": "Price Note", "defaultValue": "Free delivery over $50", "dataRole": "supporting", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "steak-image", "label": "Steak/Grill Image", "required": true},
+    {"id": "delivery-icon", "label": "Delivery Icon", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Grill-line CSS pattern background", "Large steak image slot top half", "Delivery badge with icon", "Bold full-width ORDER NOW CTA"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "steak-image": "top-center",
+    "headline": "bottom-left",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "PRIME RIBEYE",
+    "subheadline": "28-Day Dry Aged, Flame Grilled",
+    "badge": "Express Delivery",
+    "price": "$34.99",
+    "price-note": "Free delivery over $50",
+    "cta": "ORDER NOW"
+  },
+  "editable": ["headline", "subheadline", "badge", "price", "price-note", "cta", "steak-image", "delivery-icon", "logo"],
+  "fixtures": {
+    "steak-image": "assets/placeholder.png",
+    "delivery-icon": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Delivery conversion template with grill-line CSS pattern background, large steak image slot, delivery badge, strong full-width ORDER NOW CTA, and dark smoky aesthetic with red/orange fire accents."
+}

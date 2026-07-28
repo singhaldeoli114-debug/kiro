@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pancake Pastries</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(170deg, var(--surface, #78350f) 0%, var(--surfaceAlt, #451a03) 100%);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .warm-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 50% 40%, rgba(245, 158, 11, 0.1) 0%, transparent 60%);
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 45px;
+      width: auto;
+    }
+
+    .headline-area {
+      position: absolute;
+      top: 100px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 60px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      color: var(--accent, #f59e0b);
+      margin-top: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .pancake-stack {
+      position: absolute;
+      top: 240px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 6;
+    }
+
+    .pancake-layer {
+      width: 380px;
+      height: 60px;
+      background: var(--accentAlt, #d97706);
+      border-radius: 180px / 40px;
+      box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+      margin-top: -10px;
+    }
+
+    .pancake-layer:nth-child(1) { opacity: 1; width: 350px; }
+    .pancake-layer:nth-child(2) { opacity: 0.95; width: 370px; }
+    .pancake-layer:nth-child(3) { opacity: 0.9; width: 380px; }
+    .pancake-layer:nth-child(4) { opacity: 0.85; width: 390px; }
+    .pancake-layer:nth-child(5) { opacity: 0.8; width: 400px; }
+
+    .syrup-drip {
+      position: absolute;
+      top: 260px;
+      width: 8px;
+      background: var(--accent, #f59e0b);
+      border-radius: 0 0 4px 4px;
+      opacity: 0.6;
+    }
+
+    .syrup-drip-1 { left: 320px; height: 80px; }
+    .syrup-drip-2 { left: 420px; height: 50px; }
+    .syrup-drip-3 { right: 320px; height: 65px; }
+    .syrup-drip-4 { right: 400px; height: 40px; }
+
+    .product-image-area {
+      position: absolute;
+      top: 240px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 7;
+    }
+
+    .product-image-area img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+    }
+
+    .toppings-row {
+      position: absolute;
+      bottom: 260px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      z-index: 10;
+    }
+
+    .topping-chip {
+      background: var(--surfaceAlt, rgba(255,255,255,0.1));
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 10px 24px;
+      font-size: 14px;
+      color: var(--textPrimary, #ffffff);
+      font-weight: 500;
+    }
+
+    .price-section {
+      position: absolute;
+      bottom: 160px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--accent, #f59e0b);
+    }
+
+    .price-info {
+      font-size: 16px;
+      color: var(--textSecondary, rgba(255,255,255,0.7));
+      margin-top: 4px;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .cta-button {
+      background: var(--accent, #f59e0b);
+      color: var(--onAccent, #000000);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 800;
+      padding: 18px 56px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="warm-overlay"></div>
+    <div class="syrup-drip syrup-drip-1"></div>
+    <div class="syrup-drip syrup-drip-2"></div>
+    <div class="syrup-drip syrup-drip-3"></div>
+    <div class="syrup-drip syrup-drip-4"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="headline-area">
+      <h1 class="headline" data-role="headline" data-importance="primary">STACK IT UP</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Fluffy Pancakes</p>
+    </div>
+
+    <div class="pancake-stack">
+      <div class="pancake-layer"></div>
+      <div class="pancake-layer"></div>
+      <div class="pancake-layer"></div>
+      <div class="pancake-layer"></div>
+      <div class="pancake-layer"></div>
+    </div>
+
+    <div class="product-image-area">
+      <img src="assets/placeholder.png" alt="Pancake Stack" data-slot="pancake-image" />
+    </div>
+
+    <div class="toppings-row">
+      <span class="topping-chip" data-role="topping" data-importance="secondary">Maple Syrup</span>
+      <span class="topping-chip" data-role="topping" data-importance="secondary">Blueberries</span>
+      <span class="topping-chip" data-role="topping" data-importance="secondary">Whipped Cream</span>
+      <span class="topping-chip" data-role="topping" data-importance="secondary">Butter</span>
+    </div>
+
+    <div class="price-section">
+      <div class="price" data-role="price" data-importance="primary">$11.99</div>
+      <div class="price-info" data-role="supporting" data-importance="tertiary">Full Stack with Toppings</div>
+    </div>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">ORDER STACK</div>
+    </div>
+  </div>
+</body>
+</html>

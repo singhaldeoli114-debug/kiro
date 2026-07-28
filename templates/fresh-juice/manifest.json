@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "fresh-juice",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating juice or beverage ads with radial fruit arrangement and vibrant splash effects",
+  "mood": ["vibrant", "tropical", "juicy", "energetic"],
+  "best_for": ["juice brands", "smoothie bars", "fruit products", "tropical beverage campaigns"],
+  "not_for": ["alcoholic beverages", "hot drinks", "savory food", "dark moody aesthetics"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "TROPICAL FRESH", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Cold-Pressed Juice", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "flavor", "label": "Flavor Name", "defaultValue": "Mango Passion Blend", "dataRole": "product-name", "dataImportance": "primary"},
+    {"id": "price", "label": "Price", "defaultValue": "$6.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "GRAB YOURS", "dataRole": "cta", "dataImportance": "primary"},
+    {"id": "tagline", "label": "Tagline", "defaultValue": "No Sugar Added | 100% Natural", "dataRole": "supporting", "dataImportance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "glass-bottle", "label": "Glass/Bottle Image", "required": true},
+    {"id": "fruit-1", "label": "Fruit Element 1", "required": false},
+    {"id": "fruit-2", "label": "Fruit Element 2", "required": false},
+    {"id": "fruit-3", "label": "Fruit Element 3", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Radial fruit arrangement around central glass", "Vibrant gradient background", "Circular fruit CSS shapes", "Central glass/bottle as focal point"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-center",
+    "glass-bottle": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "TROPICAL FRESH",
+    "subheadline": "Cold-Pressed Juice",
+    "flavor": "Mango Passion Blend",
+    "price": "$6.99",
+    "cta": "GRAB YOURS",
+    "tagline": "No Sugar Added | 100% Natural"
+  },
+  "editable": ["headline", "subheadline", "flavor", "price", "cta", "tagline", "glass-bottle", "fruit-1", "fruit-2", "fruit-3", "logo"],
+  "fixtures": {
+    "glass-bottle": "assets/placeholder.png",
+    "fruit-1": "assets/placeholder.png",
+    "fruit-2": "assets/placeholder.png",
+    "fruit-3": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Juice splash template with radial fruit arrangement around a central glass/bottle, vibrant gradient background, circular fruit CSS shapes, and tropical energy."
+}

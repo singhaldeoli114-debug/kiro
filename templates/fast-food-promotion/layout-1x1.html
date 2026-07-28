@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fast Food Promotion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #dc2626);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        var(--surfaceAlt, rgba(0,0,0,0.05)) 40px,
+        var(--surfaceAlt, rgba(0,0,0,0.05)) 80px
+      );
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .badge {
+      position: absolute;
+      top: 40px;
+      right: 50px;
+      background: var(--accent, #facc15);
+      color: var(--onAccent, #000000);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 800;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      z-index: 10;
+      transform: rotate(3deg);
+    }
+
+    .headline-area {
+      position: absolute;
+      top: 120px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      z-index: 5;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 1;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    }
+
+    .hero-food-area {
+      position: absolute;
+      top: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 650px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 6;
+    }
+
+    .hero-food-area img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+    }
+
+    .price-starburst {
+      position: absolute;
+      top: 300px;
+      right: 60px;
+      width: 160px;
+      height: 160px;
+      background: var(--accent, #facc15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+      border-radius: 50%;
+      box-shadow: 0 0 0 8px var(--surfaceAlt, rgba(250,204,21,0.3));
+    }
+
+    .price-starburst .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--onAccent, #000000);
+      line-height: 1;
+    }
+
+    .price-starburst .price-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--onAccent, #000000);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .combo-section {
+      position: absolute;
+      bottom: 160px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      z-index: 5;
+    }
+
+    .combo-item {
+      width: 140px;
+      height: 140px;
+      background: var(--surfaceAlt, rgba(255,255,255,0.15));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .combo-item img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .product-name {
+      position: absolute;
+      bottom: 320px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--textPrimary, #ffffff);
+      z-index: 7;
+    }
+
+    .description {
+      position: absolute;
+      bottom: 290px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      color: var(--textSecondary, rgba(255,255,255,0.85));
+      z-index: 7;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .cta-button {
+      background: var(--accent, #facc15);
+      color: var(--onAccent, #000000);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 800;
+      padding: 20px 60px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      border-radius: 50px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-pattern"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="badge" data-role="badge" data-importance="secondary">LIMITED TIME</div>
+
+    <div class="headline-area">
+      <h1 class="headline" data-role="headline" data-importance="primary">MEGA COMBO DEAL</h1>
+    </div>
+
+    <div class="hero-food-area">
+      <img src="assets/placeholder.png" alt="Hero Food Image" data-slot="hero-food" />
+    </div>
+
+    <div class="price-starburst">
+      <span class="price-label">ONLY</span>
+      <span class="price" data-role="price" data-importance="primary">$12.99</span>
+    </div>
+
+    <div class="product-name" data-role="product-name" data-importance="primary">Classic Beef Burger</div>
+    <div class="description" data-role="supporting" data-importance="secondary">Burger + Fries + Drink</div>
+
+    <div class="combo-section">
+      <div class="combo-item">
+        <img src="assets/placeholder.png" alt="Side Item 1" data-slot="side-item-1" />
+      </div>
+      <div class="combo-item">
+        <img src="assets/placeholder.png" alt="Side Item 2" data-slot="side-item-2" />
+      </div>
+    </div>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">ORDER NOW</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "cake-bakery",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating elegant bakery or cake shop promotions with premium script typography and ornate framing",
+  "mood": ["elegant", "artisan", "premium", "warm"],
+  "best_for": ["bakeries", "cake shops", "patisseries", "custom cake orders"],
+  "not_for": ["fast food", "sports brands", "tech products", "bold aggressive styles"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "pre-headline", "label": "Pre-Headline", "defaultValue": "Artisan Baked", "dataRole": "supporting", "dataImportance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "Signature Cakes", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Handcrafted With Love Since 1987", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$45", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "tagline", "label": "Tagline", "defaultValue": "Custom Orders Welcome | Same-Day Pickup", "dataRole": "supporting", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER YOURS", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "cake-image", "label": "Cake Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Ornate frame/border CSS with corner flourishes", "Centered elegant cake showcase", "Script typography via --font-display", "Warm cream/gold palette"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-center",
+    "cake-image": "center",
+    "price": "center-right",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "pre-headline": "Artisan Baked",
+    "headline": "Signature Cakes",
+    "subheadline": "Handcrafted With Love Since 1987",
+    "price": "$45",
+    "tagline": "Custom Orders Welcome | Same-Day Pickup",
+    "cta": "ORDER YOURS"
+  },
+  "editable": ["pre-headline", "headline", "subheadline", "price", "tagline", "cta", "cake-image", "logo"],
+  "fixtures": {
+    "cake-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Elegant bakery product hero template with ornate decorative border/frame, centered cake showcase, script-style italic typography via --font-display, warm cream background, and artisan premium feel."
+}

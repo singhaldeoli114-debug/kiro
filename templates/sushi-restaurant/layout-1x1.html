@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sushi Restaurant</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #0f0f0f);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .vertical-accent {
+      position: absolute;
+      top: 80px;
+      bottom: 80px;
+      left: 380px;
+      width: 1px;
+      background: var(--accent, #d4a574);
+      opacity: 0.3;
+    }
+
+    .horizontal-rule {
+      position: absolute;
+      top: 100px;
+      left: 80px;
+      width: 200px;
+      height: 1px;
+      background: var(--accent, #d4a574);
+      opacity: 0.4;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .headline-area {
+      position: absolute;
+      top: 140px;
+      left: 80px;
+      z-index: 10;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 80px;
+      font-weight: 200;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      letter-spacing: 20px;
+      line-height: 1;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      color: var(--accent, #d4a574);
+      margin-top: 16px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+    }
+
+    .plate-1 {
+      position: absolute;
+      top: 280px;
+      left: 100px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--surfaceAlt, rgba(255,255,255,0.08));
+      z-index: 7;
+    }
+
+    .plate-2 {
+      position: absolute;
+      top: 340px;
+      right: 100px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--surfaceAlt, rgba(255,255,255,0.08));
+      z-index: 7;
+    }
+
+    .plate-3 {
+      position: absolute;
+      bottom: 220px;
+      left: 180px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--surfaceAlt, rgba(255,255,255,0.08));
+      z-index: 7;
+    }
+
+    .plate-1 img,
+    .plate-2 img,
+    .plate-3 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .plate-label {
+      position: absolute;
+      font-size: 12px;
+      color: var(--textSecondary, #888888);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .plate-label-1 { top: 560px; left: 140px; }
+    .plate-label-2 { top: 680px; right: 160px; }
+    .plate-label-3 { bottom: 190px; left: 230px; }
+
+    .price-area {
+      position: absolute;
+      bottom: 120px;
+      right: 80px;
+      text-align: right;
+      z-index: 10;
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: var(--textSecondary, #666666);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--textPrimary, #ffffff);
+      line-height: 1;
+      margin-top: 4px;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 60px;
+      left: 80px;
+      z-index: 10;
+    }
+
+    .cta-button {
+      border: 1px solid var(--accent, #d4a574);
+      color: var(--accent, #d4a574);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 14px 40px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      background: transparent;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="vertical-accent"></div>
+    <div class="horizontal-rule"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="headline-area">
+      <h1 class="headline" data-role="headline" data-importance="primary">OMAKASE</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Chef's Selection</p>
+    </div>
+
+    <div class="plate-1">
+      <img src="assets/placeholder.png" alt="Plate 1" data-slot="plate-1" />
+    </div>
+    <span class="plate-label plate-label-1" data-role="supporting" data-importance="secondary">Salmon Nigiri</span>
+
+    <div class="plate-2">
+      <img src="assets/placeholder.png" alt="Plate 2" data-slot="plate-2" />
+    </div>
+    <span class="plate-label plate-label-2" data-role="supporting" data-importance="secondary">Dragon Roll</span>
+
+    <div class="plate-3">
+      <img src="assets/placeholder.png" alt="Plate 3" data-slot="plate-3" />
+    </div>
+    <span class="plate-label plate-label-3" data-role="supporting" data-importance="secondary">Tuna Sashimi</span>
+
+    <div class="price-area">
+      <div class="price-label" data-role="supporting" data-importance="tertiary">Starting From</div>
+      <div class="price" data-role="price" data-importance="primary">$48</div>
+    </div>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">RESERVE TABLE</div>
+    </div>
+  </div>
+</body>
+</html>

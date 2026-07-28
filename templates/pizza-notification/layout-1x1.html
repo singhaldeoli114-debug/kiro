@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Notification</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #1a1a1a);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .checkered-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        repeating-conic-gradient(
+          var(--surfaceAlt, #222222) 0% 25%,
+          transparent 0% 50%
+        );
+      background-size: 60px 60px;
+      opacity: 0.3;
+    }
+
+    .glow-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent, #dc2626) 0%, transparent 70%);
+      opacity: 0.15;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .hot-deal-badge {
+      position: absolute;
+      top: 50px;
+      right: 60px;
+      background: var(--accent, #dc2626);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 900;
+      padding: 12px 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      z-index: 10;
+      transform: rotate(-3deg);
+      box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+    }
+
+    .hot-deal-badge::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid var(--accent, #dc2626);
+    }
+
+    .headline-area {
+      position: absolute;
+      top: 120px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 64px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      color: var(--accent, #dc2626);
+      margin-top: 8px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .pizza-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 4px dashed var(--accent, #dc2626);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .pizza-circle img {
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .price-box {
+      position: absolute;
+      bottom: 210px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .price-from {
+      font-size: 16px;
+      color: var(--textSecondary, #999999);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--accent, #dc2626);
+      line-height: 1;
+    }
+
+    .size-info {
+      font-size: 18px;
+      color: var(--textSecondary, #999999);
+      margin-top: 4px;
+    }
+
+    .delivery-note {
+      position: absolute;
+      bottom: 140px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      font-size: 16px;
+      color: var(--textSecondary, #bbbbbb);
+      z-index: 10;
+      letter-spacing: 1px;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .cta-button {
+      background: var(--accent, #dc2626);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 800;
+      padding: 20px 60px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="checkered-bg"></div>
+    <div class="glow-circle"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="hot-deal-badge" data-role="badge" data-importance="secondary">HOT DEAL</div>
+
+    <div class="headline-area">
+      <h1 class="headline" data-role="headline" data-importance="primary">PIZZA NIGHT</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Fresh From The Oven</p>
+    </div>
+
+    <div class="pizza-circle">
+      <img src="assets/placeholder.png" alt="Pizza" data-slot="pizza-image" />
+    </div>
+
+    <div class="price-box">
+      <div class="price-from" data-role="supporting" data-importance="tertiary">Starting From</div>
+      <div class="price" data-role="price" data-importance="primary">$9.99</div>
+      <div class="size-info" data-role="supporting" data-importance="secondary">Large 16" Pizza</div>
+    </div>
+
+    <div class="delivery-note" data-role="supporting" data-importance="tertiary">Free Delivery Over $25 | 30 Min or Less</div>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">ORDER NOW</div>
+    </div>
+  </div>
+</body>
+</html>

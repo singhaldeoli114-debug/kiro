@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "pancake-pastries",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating dessert or pancake promotions with warm indulgent stacked visual and topping options",
+  "mood": ["warm", "indulgent", "cozy", "sweet"],
+  "best_for": ["pancake houses", "brunch menus", "dessert promotions", "pastry shops"],
+  "not_for": ["health food", "savory meals", "seafood", "minimalist brands"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "STACK IT UP", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Fluffy Pancakes", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "topping-1", "label": "Topping 1", "defaultValue": "Maple Syrup", "dataRole": "topping", "dataImportance": "secondary"},
+    {"id": "topping-2", "label": "Topping 2", "defaultValue": "Blueberries", "dataRole": "topping", "dataImportance": "secondary"},
+    {"id": "topping-3", "label": "Topping 3", "defaultValue": "Whipped Cream", "dataRole": "topping", "dataImportance": "secondary"},
+    {"id": "topping-4", "label": "Topping 4", "defaultValue": "Butter", "dataRole": "topping", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$11.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "price-info", "label": "Price Info", "defaultValue": "Full Stack with Toppings", "dataRole": "supporting", "dataImportance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER STACK", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "pancake-image", "label": "Pancake Stack Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Stacked pancake visual using rounded rectangles", "Syrup drip effect via CSS", "Topping chips in row", "Warm brown/amber palette"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-center",
+    "pancake-image": "center",
+    "toppings": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "STACK IT UP",
+    "subheadline": "Fluffy Pancakes",
+    "topping-1": "Maple Syrup",
+    "topping-2": "Blueberries",
+    "topping-3": "Whipped Cream",
+    "topping-4": "Butter",
+    "price": "$11.99",
+    "price-info": "Full Stack with Toppings",
+    "cta": "ORDER STACK"
+  },
+  "editable": ["headline", "subheadline", "topping-1", "topping-2", "topping-3", "topping-4", "price", "price-info", "cta", "pancake-image", "logo"],
+  "fixtures": {
+    "pancake-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Dessert promotion template with pancake stack visual using stacked rounded rectangles, syrup drip CSS effect, topping chips row, warm brown/amber palette, and indulgent feel."
+}

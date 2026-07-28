@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "lemon-soda-promotion",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating beverage promotions with dynamic splash effects and citrus energy",
+  "mood": ["refreshing", "dynamic", "energetic", "citrus"],
+  "best_for": ["soda brands", "lemonade products", "citrus beverages", "summer drink campaigns"],
+  "not_for": ["hot beverages", "alcohol", "health supplements", "formal campaigns"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "FRESH SQUEEZE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Natural Lemon Soda", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "tagline", "label": "Tagline", "defaultValue": "100% Real Citrus Flavor", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$2.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "TRY NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "bottle", "label": "Bottle/Can Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Dynamic diagonal composition", "CSS splash shapes using warped border-radius", "Centered bottle/can hero", "Citrus circle decorations"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-left",
+    "bottle": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "FRESH SQUEEZE",
+    "subheadline": "Natural Lemon Soda",
+    "tagline": "100% Real Citrus Flavor",
+    "price": "$2.99",
+    "cta": "TRY NOW"
+  },
+  "editable": ["headline", "subheadline", "tagline", "price", "cta", "bottle", "logo"],
+  "fixtures": {
+    "bottle": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Beverage splash template with dynamic liquid splash effects using CSS border-radius shapes, centered bottle/can hero, citrus circle decorations, and vibrant yellow-green palette."
+}

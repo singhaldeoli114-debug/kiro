@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "sushi-restaurant",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating Japanese restaurant or sushi bar promotions with minimal zen aesthetic and elegant plating",
+  "mood": ["zen", "minimal", "elegant", "refined"],
+  "best_for": ["sushi restaurants", "Japanese cuisine", "fine dining Asian", "omakase menus"],
+  "not_for": ["fast food", "bold loud brands", "Western casual dining", "kids menus"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "OMAKASE", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Chef's Selection", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "plate-1-name", "label": "Plate 1 Name", "defaultValue": "Salmon Nigiri", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "plate-2-name", "label": "Plate 2 Name", "defaultValue": "Dragon Roll", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "plate-3-name", "label": "Plate 3 Name", "defaultValue": "Tuna Sashimi", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$48", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "RESERVE TABLE", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "plate-1", "label": "Plate 1 Image", "required": true},
+    {"id": "plate-2", "label": "Plate 2 Image", "required": true},
+    {"id": "plate-3", "label": "Plate 3 Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Japanese-inspired asymmetric grid", "Three plate areas in triangle formation", "Minimal zen aesthetic", "Dark surface with gold and red accents"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-left",
+    "plates": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "OMAKASE",
+    "subheadline": "Chef's Selection",
+    "plate-1-name": "Salmon Nigiri",
+    "plate-2-name": "Dragon Roll",
+    "plate-3-name": "Tuna Sashimi",
+    "price": "$48",
+    "cta": "RESERVE TABLE"
+  },
+  "editable": ["headline", "subheadline", "plate-1-name", "plate-2-name", "plate-3-name", "price", "cta", "plate-1", "plate-2", "plate-3", "logo"],
+  "fixtures": {
+    "plate-1": "assets/placeholder.png",
+    "plate-2": "assets/placeholder.png",
+    "plate-3": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Restaurant menu hero template with Japanese-inspired asymmetric grid, three circular plate areas in triangular arrangement, minimal zen aesthetic, dark surface, and refined elegant composition."
+}

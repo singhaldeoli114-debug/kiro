@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemon Soda Promotion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--surface, #065f46) 0%, var(--surfaceAlt, #047857) 100%);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .splash-shape-1 {
+      position: absolute;
+      top: -80px;
+      right: -60px;
+      width: 400px;
+      height: 400px;
+      background: var(--accent, #fde047);
+      border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+      opacity: 0.3;
+    }
+
+    .splash-shape-2 {
+      position: absolute;
+      bottom: -100px;
+      left: -80px;
+      width: 500px;
+      height: 500px;
+      background: var(--accentAlt, #a3e635);
+      border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%;
+      opacity: 0.2;
+    }
+
+    .splash-shape-3 {
+      position: absolute;
+      top: 300px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      background: var(--accent, #fde047);
+      border-radius: 50% 70% 40% 60% / 70% 50% 60% 40%;
+      opacity: 0.25;
+    }
+
+    .citrus-circle-1 {
+      position: absolute;
+      top: 80px;
+      right: 120px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--accent, #fde047);
+      opacity: 0.6;
+    }
+
+    .citrus-circle-2 {
+      position: absolute;
+      bottom: 200px;
+      right: 80px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--accentAlt, #a3e635);
+      opacity: 0.5;
+    }
+
+    .citrus-circle-3 {
+      position: absolute;
+      top: 400px;
+      left: 80px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--accent, #fde047);
+      opacity: 0.4;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .text-block {
+      position: absolute;
+      top: 120px;
+      left: 60px;
+      z-index: 10;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 80px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 0.9;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--accent, #fde047);
+      margin-top: 12px;
+    }
+
+    .tagline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      color: var(--textSecondary, rgba(255,255,255,0.75));
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+
+    .bottle-area {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+    }
+
+    .bottle-area img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3));
+    }
+
+    .price-tag {
+      position: absolute;
+      bottom: 200px;
+      right: 80px;
+      background: var(--accent, #fde047);
+      color: var(--onAccent, #000000);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 36px;
+      font-weight: 900;
+      padding: 16px 30px;
+      border-radius: 12px;
+      z-index: 10;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .cta-button {
+      background: var(--accent, #fde047);
+      color: var(--onAccent, #000000);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 800;
+      padding: 18px 56px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="splash-shape-1"></div>
+    <div class="splash-shape-2"></div>
+    <div class="splash-shape-3"></div>
+    <div class="citrus-circle-1"></div>
+    <div class="citrus-circle-2"></div>
+    <div class="citrus-circle-3"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="text-block">
+      <h1 class="headline" data-role="headline" data-importance="primary">FRESH SQUEEZE</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Natural Lemon Soda</p>
+      <p class="tagline" data-role="supporting" data-importance="secondary">100% Real Citrus Flavor</p>
+    </div>
+
+    <div class="bottle-area">
+      <img src="assets/placeholder.png" alt="Bottle" data-slot="bottle" />
+    </div>
+
+    <span class="price-tag" data-role="price" data-importance="primary">$2.99</span>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">TRY NOW</div>
+    </div>
+  </div>
+</body>
+</html>

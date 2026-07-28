@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "fast-food-promotion",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating fast-food product promotions with bold energy and combo meal offers",
+  "mood": ["energetic", "bold", "appetizing", "fast-paced"],
+  "best_for": ["fast food restaurants", "combo meal deals", "limited-time offers", "burger promotions"],
+  "not_for": ["fine dining", "health food", "luxury brands", "minimalist aesthetics"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "MEGA COMBO DEAL", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "product-name", "label": "Product Name", "defaultValue": "Classic Beef Burger", "dataRole": "product-name", "dataImportance": "primary"},
+    {"id": "price", "label": "Price", "defaultValue": "$12.99", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "description", "label": "Description", "defaultValue": "Burger + Fries + Drink", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER NOW", "dataRole": "cta", "dataImportance": "primary"},
+    {"id": "badge-text", "label": "Badge Text", "defaultValue": "LIMITED TIME", "dataRole": "badge", "dataImportance": "secondary"}
+  ],
+  "mediaSlots": [
+    {"id": "hero-food", "label": "Hero Food Image", "required": true},
+    {"id": "side-item-1", "label": "Side Item 1 (Fries)", "required": false},
+    {"id": "side-item-2", "label": "Side Item 2 (Drink)", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Bold red/yellow fast-food energy", "Large hero food image 60% of canvas", "Price in starburst badge", "Combo meal grid at bottom"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-left",
+    "headline": "top-center",
+    "hero-food": "center",
+    "price": "center-right",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "MEGA COMBO DEAL",
+    "product-name": "Classic Beef Burger",
+    "price": "$12.99",
+    "description": "Burger + Fries + Drink",
+    "cta": "ORDER NOW",
+    "badge-text": "LIMITED TIME"
+  },
+  "editable": ["headline", "product-name", "price", "description", "cta", "badge-text", "hero-food", "side-item-1", "side-item-2", "logo"],
+  "fixtures": {
+    "hero-food": "assets/placeholder.png",
+    "side-item-1": "assets/placeholder.png",
+    "side-item-2": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Fast-food product offer template with bold red/yellow energy palette, large hero food image dominating the canvas, combo meal layout, price starburst badge, and strong CTA."
+}

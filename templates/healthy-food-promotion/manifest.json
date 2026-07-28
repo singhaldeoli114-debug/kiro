@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "healthy-food-promotion",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating healthy meal campaigns with clean aesthetics and nutritional information",
+  "mood": ["fresh", "clean", "healthy", "natural"],
+  "best_for": ["health food brands", "salad bars", "meal prep services", "organic products"],
+  "not_for": ["fast food", "junk food", "alcohol", "indulgent desserts"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "EAT CLEAN, LIVE WELL", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Fresh Ingredients, Real Nutrition", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "ingredient-1-name", "label": "Ingredient 1", "defaultValue": "Avocado", "dataRole": "ingredient", "dataImportance": "secondary"},
+    {"id": "ingredient-2-name", "label": "Ingredient 2", "defaultValue": "Quinoa", "dataRole": "ingredient", "dataImportance": "secondary"},
+    {"id": "ingredient-3-name", "label": "Ingredient 3", "defaultValue": "Kale", "dataRole": "ingredient", "dataImportance": "secondary"},
+    {"id": "ingredient-4-name", "label": "Ingredient 4", "defaultValue": "Salmon", "dataRole": "ingredient", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER FRESH", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "hero-bowl", "label": "Salad Bowl Image", "required": true},
+    {"id": "ingredient-1", "label": "Ingredient 1 Image", "required": false},
+    {"id": "ingredient-2", "label": "Ingredient 2 Image", "required": false},
+    {"id": "ingredient-3", "label": "Ingredient 3 Image", "required": false},
+    {"id": "ingredient-4", "label": "Ingredient 4 Image", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Clean white/green palette", "Ingredient grid 2x2 with calorie badges", "Salad bowl hero circular area", "Nutritional benefit badges"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-center",
+    "hero-bowl": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "EAT CLEAN, LIVE WELL",
+    "subheadline": "Fresh Ingredients, Real Nutrition",
+    "ingredient-1-name": "Avocado",
+    "ingredient-2-name": "Quinoa",
+    "ingredient-3-name": "Kale",
+    "ingredient-4-name": "Salmon",
+    "cta": "ORDER FRESH"
+  },
+  "editable": ["headline", "subheadline", "ingredient-1-name", "ingredient-2-name", "ingredient-3-name", "ingredient-4-name", "cta", "hero-bowl", "ingredient-1", "ingredient-2", "ingredient-3", "ingredient-4", "logo"],
+  "fixtures": {
+    "hero-bowl": "assets/placeholder.png",
+    "ingredient-1": "assets/placeholder.png",
+    "ingredient-2": "assets/placeholder.png",
+    "ingredient-3": "assets/placeholder.png",
+    "ingredient-4": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Healthy meal campaign template with fresh green palette, 2x2 ingredient grid with calorie badges, circular salad bowl hero, nutritional information, and clean typography."
+}

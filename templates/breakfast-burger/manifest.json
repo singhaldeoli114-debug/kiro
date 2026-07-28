@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "breakfast-burger",
+  "templateVersion": "1.0.0",
+  "category": "food",
+  "formats": ["1x1"],
+  "when_to_use": "When creating breakfast combo or burger meal deal promotions with exploded ingredient view",
+  "mood": ["appetizing", "hearty", "indulgent", "warm"],
+  "best_for": ["breakfast menus", "burger restaurants", "meal deal promotions", "fast casual dining"],
+  "not_for": ["fine dining", "health food", "vegan products", "light meals"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "BREAKFAST BURGER", "dataRole": "headline", "dataImportance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Morning Meal Deal", "dataRole": "subheadline", "dataImportance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$8.49", "dataRole": "price", "dataImportance": "primary"},
+    {"id": "meal-deal", "label": "Deal Label", "defaultValue": "Meal Deal", "dataRole": "supporting", "dataImportance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "GET IT NOW", "dataRole": "cta", "dataImportance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "bun-top", "label": "Bun Top", "required": true},
+    {"id": "patty", "label": "Patty Layer", "required": true},
+    {"id": "cheese", "label": "Cheese Layer", "required": false},
+    {"id": "egg", "label": "Egg Layer", "required": false},
+    {"id": "bun-bottom", "label": "Bun Bottom", "required": true},
+    {"id": "side-1", "label": "Side Item 1", "required": false},
+    {"id": "side-2", "label": "Side Item 2", "required": false},
+    {"id": "side-3", "label": "Side Item 3", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "60px", "right": "60px"},
+    "constraints": ["Vertical stacked layers showing ingredients exploded view", "Side items in smaller slots below", "Dark warm background", "Meal deal price grid at bottom"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 60, "right": 60},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-center",
+    "burger-stack": "center",
+    "price": "bottom-center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "BREAKFAST BURGER",
+    "subheadline": "Morning Meal Deal",
+    "price": "$8.49",
+    "meal-deal": "Meal Deal",
+    "cta": "GET IT NOW"
+  },
+  "editable": ["headline", "subheadline", "price", "meal-deal", "cta", "bun-top", "patty", "cheese", "egg", "bun-bottom", "side-1", "side-2", "side-3", "logo"],
+  "fixtures": {
+    "bun-top": "assets/placeholder.png",
+    "patty": "assets/placeholder.png",
+    "cheese": "assets/placeholder.png",
+    "egg": "assets/placeholder.png",
+    "bun-bottom": "assets/placeholder.png",
+    "side-1": "assets/placeholder.png",
+    "side-2": "assets/placeholder.png",
+    "side-3": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "Breakfast combo template with layered burger ingredients in an exploded vertical stack view, side items in compact slots, meal deal price grid, and warm dark appetizing aesthetic."
+}

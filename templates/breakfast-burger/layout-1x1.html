@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breakfast Burger</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--surface, #2d1b0e) 0%, var(--surfaceAlt, #1a0f06) 100%);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .warm-glow {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent, #f59e0b) 0%, transparent 60%);
+      opacity: 0.08;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 45px;
+      width: auto;
+    }
+
+    .headline-area {
+      position: absolute;
+      top: 100px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      color: var(--accent, #f59e0b);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-weight: 600;
+    }
+
+    .burger-stack {
+      position: absolute;
+      top: 210px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 7;
+    }
+
+    .layer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .layer img {
+      max-width: 100%;
+      max-height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    }
+
+    .layer-bun-top img {
+      max-height: 120px;
+    }
+
+    .layer-bun-bottom img {
+      max-height: 80px;
+    }
+
+    .side-items {
+      position: absolute;
+      bottom: 240px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 8;
+    }
+
+    .side-item {
+      width: 160px;
+      height: 120px;
+      background: var(--surfaceAlt, rgba(255,255,255,0.05));
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .side-item img {
+      width: 70px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    .side-label {
+      font-size: 12px;
+      color: var(--textSecondary, #999999);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .price-grid {
+      position: absolute;
+      bottom: 130px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      z-index: 10;
+    }
+
+    .meal-deal {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      color: var(--textSecondary, #999999);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 54px;
+      font-weight: 900;
+      color: var(--accent, #f59e0b);
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .cta-button {
+      background: var(--accent, #f59e0b);
+      color: var(--onAccent, #000000);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 800;
+      padding: 18px 56px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="warm-glow"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="headline-area">
+      <h1 class="headline" data-role="headline" data-importance="primary">BREAKFAST BURGER</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Morning Meal Deal</p>
+    </div>
+
+    <div class="burger-stack">
+      <div class="layer layer-bun-top">
+        <img src="assets/placeholder.png" alt="Bun Top" data-slot="bun-top" />
+      </div>
+      <div class="layer">
+        <img src="assets/placeholder.png" alt="Patty Layer" data-slot="patty" />
+      </div>
+      <div class="layer">
+        <img src="assets/placeholder.png" alt="Cheese Layer" data-slot="cheese" />
+      </div>
+      <div class="layer">
+        <img src="assets/placeholder.png" alt="Egg Layer" data-slot="egg" />
+      </div>
+      <div class="layer layer-bun-bottom">
+        <img src="assets/placeholder.png" alt="Bun Bottom" data-slot="bun-bottom" />
+      </div>
+    </div>
+
+    <div class="side-items">
+      <div class="side-item">
+        <img src="assets/placeholder.png" alt="Hash Browns" data-slot="side-1" />
+        <span class="side-label" data-role="supporting" data-importance="tertiary">Hash Browns</span>
+      </div>
+      <div class="side-item">
+        <img src="assets/placeholder.png" alt="Coffee" data-slot="side-2" />
+        <span class="side-label" data-role="supporting" data-importance="tertiary">Coffee</span>
+      </div>
+      <div class="side-item">
+        <img src="assets/placeholder.png" alt="Orange Juice" data-slot="side-3" />
+        <span class="side-label" data-role="supporting" data-importance="tertiary">OJ</span>
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <span class="meal-deal" data-role="supporting" data-importance="secondary">Meal Deal</span>
+      <span class="price" data-role="price" data-importance="primary">$8.49</span>
+    </div>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">GET IT NOW</div>
+    </div>
+  </div>
+</body>
+</html>
