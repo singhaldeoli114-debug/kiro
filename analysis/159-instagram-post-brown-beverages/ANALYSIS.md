@@ -1,0 +1,171 @@
+# Template 159 — Instagram post brown beverages
+
+> Scope: **analysis and asset collection only**. No HTML, CSS or renderer manifest is produced here.
+
+## 1. Source
+
+| Field | Value |
+|---|---|
+| Template number | 159 |
+| Pixy name | Instagram post brown beverages |
+| Design ID | `cmmcejxyq01kvp7pbcklpgplh` |
+| Source kind | template |
+| Thumbnail URL | https://cdn.pixy.art/1b21b4ff-d485-42ea-88d8-7a7ed528c346/ |
+| Category | Social media |
+| Orientation | Square |
+| Pages | 1 |
+| Canvas | 1080 x 1080 px |
+| Aspect ratio | 1:1 |
+| Reference file | `reference.png` |
+
+## 2. Fonts declared by Pixy
+
+| Family | Resolved | Licence | Local files |
+|---|---|---|---|
+| Roboto | yes | SIL Open Font License 1.1 | `Roboto-Italic[wdth,wght].ttf`, `Roboto[wdth,wght].ttf` |
+
+### How to read the confidence figures
+
+Two separate things are reported, and only the second is uncertain:
+
+- **Font family — authoritative — supplied by the Pixy API, not inferred.** Declared: Roboto. These are read from Pixy's API, not inferred from pixels.
+- **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
+  - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
+
+A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+
+## 3. Text elements
+
+### `text-1` — headline
+
+**Text:** "NEW ITEM"  (OCR confidence 0.9377)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=424, y=72, w=223, h=35 |
+| Normalised | x=39.26%, y=6.67%, w=20.65%, h=3.24% |
+| Alignment | center |
+| z-order | 100 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [500, 100.0] |
+| Font size | 48 px |
+| Letter-spacing | -0.62 px (-0.0129 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | uppercase |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.63:1 |
+| Stroke (median/mean) | 5.0 / 6.21 px |
+| Font family (authoritative) | Roboto |
+| Match IoU | 0.8262 |
+| **Geometry fit confidence** | **high** |
+| OCR text reliable | True  |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | None px |
+| Gap to next | None px |
+
+Alternate font fits considered:
+- `Roboto[wdth,wght].ttf` 48px track -0.65px — IoU 0.8075
+- `Roboto[wdth,wght].ttf` 55px track -0.66px — IoU 0.7922
+- `Roboto[wdth,wght].ttf` 51px track -0.32px — IoU 0.7845
+
+## 4. Colours (semantic)
+
+| Semantic name | Hex | Sampled at | Method |
+|---|---|---|---|
+| background | `#eaeaea` | dominant low-saturation cluster | k-means dominant cluster |
+| surface | `#c3b1a5` | second distinct cluster | k-means secondary cluster |
+| textPrimary | `#ffffff` | glyph ink of 'NEW ITEM' | glyph ink median |
+| textSecondary | — | not identified | — |
+| accent | `#7b4e30` | highest saturation-weighted cluster | k-means + saturation ranking |
+| accentSecondary | `#3b2218` | second saturation-weighted cluster | k-means + saturation ranking |
+| overlay | — | not identified | — |
+| onAccent | `#000000` | derived | max WCAG contrast against accent |
+
+Full palette (k-means):
+
+| Hex | Share | Luminance | Saturation |
+|---|---|---|---|
+| `#c3b1a5` | 0.435 | 0.7068 | 0.1498 |
+| `#7b4e30` | 0.2107 | 0.3385 | 0.6098 |
+| `#3b2218` | 0.1495 | 0.1546 | 0.599 |
+| `#d9c7ba` | 0.0947 | 0.7935 | 0.139 |
+| `#9d7e6d` | 0.0871 | 0.5181 | 0.302 |
+| `#eaeaea` | 0.023 | 0.9213 | 0.0037 |
+
+## 5. Media
+
+| Property | Value |
+|---|---|
+| Bounding box | x=0, y=0, w=1080, h=1080 |
+| Crop mode | contain-or-framed |
+| Focal point | x=49.8%, y=53.8% (medium confidence) |
+| Subject position | middle-centre |
+| Background treatment | photographic or gradient background with to right darkening |
+| Full bleed | False |
+| Text coverage | 0.0067 |
+| Min resolution | 1080x1080 |
+| Masks / cutouts | cannot be determined from a flattened render |
+| Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
+
+## 6. Effects
+
+- **Overlay detected:** True
+- **Direction:** to right
+- **Brightness range across axis:** 125.0
+- **Estimated stops (black alpha):**
+  - 0% -> alpha ~0.025
+  - 25% -> alpha ~0.38
+  - 50% -> alpha ~0.372
+  - 75% -> alpha ~0.248
+  - 100% -> alpha ~0.025
+- **Grain:** stdDev 8.05, likely textured: True
+- **Blur:** not separable from a flattened render
+- **Blend mode:** not recoverable from a flattened render
+- **Text shadow:** a large positive delta on light text suggests either a shadow/scrim or naturally darker artwork behind the text; not separable here
+
+## 7. Editable-variable recommendations
+
+_Recommendations only — no manifest is generated._
+
+| Suggested name | Kind | Current value |
+|---|---|---|
+| `headline` | text | NEW ITEM |
+| `heroImage` | image | framed/panelled artwork |
+| `brandLogo` | image | no logo element was isolated; a flattened render does not... |
+| `background` | colour | #eaeaea |
+| `surface` | colour | #c3b1a5 |
+| `textPrimary` | colour | #ffffff |
+| `accent` | colour | #7b4e30 |
+| `accentSecondary` | colour | #3b2218 |
+| `onAccent` | colour | #000000 |
+| `brandFont` | font | Roboto |
+| `show_headline` | boolean | — |
+| `imageFocalX` | number | 49.8 |
+| `imageFocalY` | number | 53.8 |
+
+## 8. Assets collected
+
+**Exact (3):**
+
+- `reference.png` — flattened render served by Pixy CDN
+- `assets/fonts/Roboto-Italic[wdth,wght].ttf` — SIL Open Font License 1.1
+- `assets/fonts/Roboto[wdth,wght].ttf` — SIL Open Font License 1.1
+
+**Approximate (1):**
+
+- `assets/background-approx.png` — APPROXIMATE — reconstructed by inpainting, NOT the original asset
+
+**Missing (1):**
+
+- `original background photograph (unflattened layer)` — Pixy API exposes only a flattened render; no layer/asset endpoint exists
+
+## 9. Limitations
+
+- Pixy exposes no per-element/layer endpoint, so all geometry is derived from pixel analysis of the flattened render rather than read from design data.
+- Font families are authoritative (declared by Pixy); size, weight and tracking are fitted and carry an IoU-based confidence score.
+- Layer opacity, blend modes and true overlay alpha cannot be recovered from a flattened render.
+- background-approx.png is reconstructed and must never be treated as exact.
