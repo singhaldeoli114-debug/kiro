@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<title>Instagram Template — 1:1 Product Hero</title>
+<style>
+/* ============================================================
+   EDITABLE VARIABLES
+   Change these CSS custom properties to customise the template.
+   They map 1-to-1 with manifest.json "variables".
+   ============================================================ */
+:root {
+  /* Text content (set via data-attributes on elements below) */
+  --brand-font:       'Oswald', 'Anton', 'Bebas Neue', sans-serif;
+  --brand-bg:         #b1aea5;
+  --brand-ink:        #fefefe;
+  --brand-accent:     #5f1f00;
+  --overlay-strength: 0.35;
+  --image-focal-x:    49.2%;
+  --image-focal-y:    61.0%;
+}
+
+/* ============================================================
+   RESET & CANVAS
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 1080px;
+  height: 1080px;
+  overflow: hidden;
+  background: var(--brand-bg);
+}
+
+/* ============================================================
+   FONT FACES
+   ============================================================ */
+@font-face {
+  font-family: 'Oswald';
+  src: url('assets/fonts/Oswald-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('assets/fonts/Lora-Italic-Variable.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.canvas {
+  position: relative;
+  width: 1080px;
+  height: 1080px;
+  overflow: hidden;
+  background: var(--brand-bg);
+}
+
+/* --- Hero image layer --- */
+.canvas__hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--image-focal-x) var(--image-focal-y);
+}
+
+/* --- Gradient scrim overlay (replaces natural shadow for lighter images) --- */
+.canvas__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, calc(var(--overlay-strength) * 1.57)) 0%,
+    rgba(0, 0, 0, calc(var(--overlay-strength) * 0.86)) 35%,
+    rgba(0, 0, 0, 0) 60%
+  );
+}
+
+/* --- Text block container --- */
+.canvas__text {
+  position: absolute;
+  top: 116px;   /* matches measured y of first headline line */
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 60px;
+}
+
+/* --- Headline --- */
+.headline {
+  font-family: var(--brand-font);
+  font-weight: 700;
+  font-variation-settings: 'wght' 700;
+  font-size: 72px;
+  line-height: 76px;
+  letter-spacing: 8.2px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--brand-ink);
+  white-space: pre-line;
+  /* Prevent layout shift from variable width */
+  max-width: 900px;
+}
+
+/* --- Subheadline --- */
+.subheadline {
+  font-family: 'Lora', 'Georgia', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-variation-settings: 'wght' 400;
+  font-size: 34px;
+  line-height: 42px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--brand-ink);
+  margin-top: 38px;  /* measured gap from headline bottom to subheadline top */
+  max-width: 800px;
+}
+
+/* ============================================================
+   UTILITY: pixel-compare helper (toggle via ?debug query param)
+   ============================================================ */
+.canvas--debug .canvas__reference {
+  display: block;
+}
+.canvas__reference {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+</style>
+</head>
+<body>
+
+<div class="canvas" id="canvas">
+  <!-- Layer 1: Hero background image -->
+  <img
+    class="canvas__hero"
+    src="assets/images/hero.png"
+    alt="Product hero"
+    id="heroImage"
+  >
+
+  <!-- Layer 2: Gradient overlay scrim -->
+  <div class="canvas__overlay" id="overlay"></div>
+
+  <!-- Layer 3: Text content -->
+  <div class="canvas__text">
+    <h1 class="headline" id="headline">GOODBYE PROBLEMS.
+HELLO CONFIDENCE.</h1>
+    <p class="subheadline" id="subheadline">With Tea Tree Oil, You'll finally enjoy</p>
+  </div>
+
+  <!-- Layer 4: Reference overlay for pixel comparison (hidden by default) -->
+  <img
+    class="canvas__reference"
+    src="assets/images/reference.png"
+    alt="Reference overlay"
+  >
+</div>
+
+<script>
+/**
+ * Template Controller
+ * --------------------------------------------------
+ * Reads variables from URL search params or a global
+ * TEMPLATE_VARS object and applies them to the layout.
+ *
+ * Supported params (match manifest.json variable keys):
+ *   ?HEADLINE=...
+ *   ?SUBHEADLINE=...
+ *   ?heroImage=<url>
+ *   ?brandFont=<family>
+ *   ?brandBg=<hex>
+ *   ?brandInk=<hex>
+ *   ?brandAccent=<hex>
+ *   ?overlayStrength=<0-1>
+ *   ?imageFocalX=<0-100>
+ *   ?imageFocalY=<0-100>
+ *   ?debug=1          (shows reference overlay in difference mode)
+ */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const root = document.documentElement;
+  const canvas = document.getElementById('canvas');
+
+  // --- Text ---
+  const headline = params.get('HEADLINE');
+  if (headline) {
+    document.getElementById('headline').textContent = headline.replace(/\\n/g, '\n');
+  }
+
+  const sub = params.get('SUBHEADLINE');
+  if (sub) {
+    document.getElementById('subheadline').textContent = sub;
+  }
+
+  // --- Image ---
+  const heroImg = params.get('heroImage');
+  if (heroImg) {
+    document.getElementById('heroImage').src = heroImg;
+  }
+
+  // --- CSS Variables ---
+  const cssMap = {
+    brandFont:        '--brand-font',
+    brandBg:          '--brand-bg',
+    brandInk:         '--brand-ink',
+    brandAccent:      '--brand-accent',
+    overlayStrength:  '--overlay-strength',
+  };
+
+  Object.entries(cssMap).forEach(([key, prop]) => {
+    const val = params.get(key);
+    if (val !== null) {
+      if (key === 'brandFont') {
+        root.style.setProperty(prop, `'${val}', sans-serif`);
+      } else {
+        root.style.setProperty(prop, val);
+      }
+    }
+  });
+
+  // --- Focal point ---
+  const fx = params.get('imageFocalX');
+  const fy = params.get('imageFocalY');
+  if (fx !== null) root.style.setProperty('--image-focal-x', fx + '%');
+  if (fy !== null) root.style.setProperty('--image-focal-y', fy + '%');
+
+  // --- Debug mode ---
+  if (params.get('debug') === '1') {
+    canvas.classList.add('canvas--debug');
+  }
+
+  // --- Global override (for programmatic use) ---
+  if (window.TEMPLATE_VARS) {
+    const v = window.TEMPLATE_VARS;
+    if (v.HEADLINE) document.getElementById('headline').textContent = v.HEADLINE.replace(/\\n/g, '\n');
+    if (v.SUBHEADLINE) document.getElementById('subheadline').textContent = v.SUBHEADLINE;
+    if (v.heroImage) document.getElementById('heroImage').src = v.heroImage;
+    if (v.brandFont) root.style.setProperty('--brand-font', `'${v.brandFont}', sans-serif`);
+    if (v.brandBg) root.style.setProperty('--brand-bg', v.brandBg);
+    if (v.brandInk) root.style.setProperty('--brand-ink', v.brandInk);
+    if (v.brandAccent) root.style.setProperty('--brand-accent', v.brandAccent);
+    if (v.overlayStrength != null) root.style.setProperty('--overlay-strength', v.overlayStrength);
+    if (v.imageFocalX != null) root.style.setProperty('--image-focal-x', v.imageFocalX + '%');
+    if (v.imageFocalY != null) root.style.setProperty('--image-focal-y', v.imageFocalY + '%');
+  }
+})();
+</script>
+</body>
+</html>

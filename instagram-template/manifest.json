@@ -1,0 +1,171 @@
+{
+  "name": "Instagram Product Hero — Tea Tree Oil",
+  "description": "1080×1080 Instagram post template featuring a bold condensed headline over a product hero image with natural window-blind shadows providing text contrast.",
+  "version": "1.0.0",
+  "source": {
+    "platform": "pixy.art",
+    "designId": "cms3i8gz9000b04jq0sf7z1lj",
+    "originalName": "Copy of Design 17",
+    "fetchedAt": "2026-07-28T12:00:00Z"
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1",
+    "format": "png"
+  },
+  "layout": "layout-1x1.html",
+  "thumbnail": "thumb.png",
+  "reference": "assets/images/reference.png",
+  "variables": {
+    "HEADLINE": {
+      "type": "string",
+      "default": "GOODBYE PROBLEMS.\nHELLO CONFIDENCE.",
+      "description": "Two-line bold headline (newline separates lines). Rendered uppercase.",
+      "maxLength": 60
+    },
+    "SUBHEADLINE": {
+      "type": "string",
+      "default": "With Tea Tree Oil, You'll finally enjoy",
+      "description": "Single italic subheadline below the headline.",
+      "maxLength": 80
+    },
+    "heroImage": {
+      "type": "url",
+      "default": "assets/images/hero.png",
+      "description": "Background product/lifestyle photo (1080×1080 recommended). Natural shadows in the upper region provide text contrast.",
+      "accept": "image/png,image/jpeg,image/webp"
+    },
+    "brandFont": {
+      "type": "string",
+      "default": "Oswald",
+      "description": "Primary headline font family. Must be a bold condensed sans-serif for best results.",
+      "options": ["Oswald", "Anton", "Bebas Neue", "Impact", "Barlow Condensed"]
+    },
+    "brandBg": {
+      "type": "color",
+      "default": "#b1aea5",
+      "description": "Fallback background color (visible if image fails to load). Matches the wall tone."
+    },
+    "brandInk": {
+      "type": "color",
+      "default": "#fefefe",
+      "description": "Text color for headline and subheadline."
+    },
+    "brandAccent": {
+      "type": "color",
+      "default": "#5f1f00",
+      "description": "Accent color (derived from bottle amber). Available for optional decorative elements."
+    },
+    "overlayStrength": {
+      "type": "number",
+      "default": 0.35,
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Black gradient overlay opacity over the top portion of the image. Original uses natural photo shadows (~0.35 equivalent darkness). Increase for lighter hero images."
+    },
+    "imageFocalX": {
+      "type": "number",
+      "default": 49.2,
+      "min": 0,
+      "max": 100,
+      "step": 0.1,
+      "unit": "%",
+      "description": "Horizontal focal point of the hero image (object-position X). 49.2% centers on the product bottle."
+    },
+    "imageFocalY": {
+      "type": "number",
+      "default": 61.0,
+      "min": 0,
+      "max": 100,
+      "step": 0.1,
+      "unit": "%",
+      "description": "Vertical focal point of the hero image (object-position Y). 61% places the product in the lower-center."
+    }
+  },
+  "typography": {
+    "headline": {
+      "fontFamily": "Oswald",
+      "fontFile": "assets/fonts/Oswald-Variable.ttf",
+      "fontWeight": 700,
+      "fontSize": 72,
+      "lineHeight": 76,
+      "letterSpacing": 8.2,
+      "letterSpacingEm": 0.114,
+      "textTransform": "uppercase",
+      "textAlign": "center",
+      "color": "#fefefe"
+    },
+    "subheadline": {
+      "fontFamily": "Lora",
+      "fontFile": "assets/fonts/Lora-Italic-Variable.ttf",
+      "fontWeight": 400,
+      "fontStyle": "italic",
+      "fontSize": 34,
+      "lineHeight": 42,
+      "letterSpacing": 0,
+      "textAlign": "center",
+      "color": "#fefefe"
+    }
+  },
+  "textBoundingBoxes": {
+    "headlineLine1": {
+      "x": 153,
+      "y": 116,
+      "width": 771,
+      "height": 50,
+      "note": "Measured at >90% white threshold; actual rendered cap-height ~60px"
+    },
+    "headlineLine2": {
+      "x": 183,
+      "y": 192,
+      "width": 714,
+      "height": 49,
+      "note": "Second line of headline"
+    },
+    "subheadline": {
+      "x": 250,
+      "y": 278,
+      "width": 579,
+      "height": 24,
+      "note": "Italic text, measured at strict threshold; actual height ~35px"
+    }
+  },
+  "spacing": {
+    "topToHeadline": 116,
+    "headlineLineGap": 27,
+    "headlineToSubheadline": 38,
+    "textBlockTopPercent": 10.7,
+    "unit": "px"
+  },
+  "image": {
+    "focalPoint": { "x": 49.2, "y": 61.0 },
+    "cropMode": "cover",
+    "naturalShadow": true,
+    "overlayType": "linear-gradient",
+    "overlayDirection": "to bottom",
+    "overlayStops": [
+      { "color": "rgba(0,0,0,0.55)", "position": "0%" },
+      { "color": "rgba(0,0,0,0.30)", "position": "35%" },
+      { "color": "rgba(0,0,0,0)", "position": "60%" }
+    ]
+  },
+  "colorPalette": {
+    "textWhite": "#fefefe",
+    "wallBeige": "#b1aea5",
+    "shadowDark": "#23211b",
+    "bottleAmber": "#5f1f00",
+    "woodWarm": "#6a5a43"
+  },
+  "assets": {
+    "fonts": [
+      "assets/fonts/Oswald-Variable.ttf",
+      "assets/fonts/Lora-Italic-Variable.ttf"
+    ],
+    "images": [
+      "assets/images/hero.png",
+      "assets/images/reference.png"
+    ]
+  }
+}
