@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Testimonials</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quote-marks {
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 200px;
+      font-family: Georgia, serif;
+      color: var(--accent, #2563eb);
+      opacity: 0.15;
+      line-height: 1;
+      z-index: 1;
+    }
+
+    .avatar-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--accent, #2563eb);
+      position: absolute;
+      top: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+
+    .avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stars-row {
+      position: absolute;
+      top: 360px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 5;
+    }
+
+    .star {
+      width: 32px;
+      height: 32px;
+      background: var(--accent, #2563eb);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .testimonial-text {
+      position: absolute;
+      top: 430px;
+      left: 120px;
+      right: 120px;
+      text-align: center;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--textPrimary, #1a1a1a);
+      line-height: 1.6;
+      z-index: 5;
+    }
+
+    .reviewer-name {
+      position: absolute;
+      top: 740px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--textPrimary, #1a1a1a);
+      z-index: 5;
+    }
+
+    .company-name {
+      position: absolute;
+      top: 790px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--textSecondary, #6b7280);
+      z-index: 5;
+    }
+
+    .brand-accent-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: var(--accent, #2563eb);
+    }
+
+    .logo-area {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="quote-marks">&ldquo;&rdquo;</div>
+
+    <div class="avatar-circle">
+      <img src="assets/placeholder.png" alt="Client Avatar" data-slot="avatar" />
+    </div>
+
+    <div class="stars-row">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+
+    <p class="testimonial-text" data-role="testimonial" data-importance="primary">"This product completely transformed our workflow. We saw a 40% increase in productivity within the first month. I cannot recommend it highly enough to any growing team."</p>
+
+    <p class="reviewer-name" data-role="reviewer-name" data-importance="secondary">Sarah Johnson, CEO</p>
+    <p class="company-name" data-role="company" data-importance="tertiary">TechVenture Solutions</p>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="brand-accent-bar"></div>
+  </div>
+</body>
+</html>

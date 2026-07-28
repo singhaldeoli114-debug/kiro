@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "tropical-beach-tourism",
+  "templateVersion": "1.0.0",
+  "category": "travel",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing a tropical destination with a full-bleed image, dark scrim, and minimal elegant text overlay",
+  "mood": ["aspirational", "elegant", "minimal", "luxurious"],
+  "best_for": ["travel destinations", "beach resorts", "luxury vacations", "tourism ads"],
+  "not_for": ["technology", "food", "recruitment", "education"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "tagline", "label": "Tagline", "defaultValue": "Escape to Paradise", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "destination", "label": "Destination Name", "defaultValue": "Bali, Indonesia", "data-role": "destination", "data-importance": "primary"},
+    {"id": "price", "label": "Price", "defaultValue": "From $1,299 per person", "data-role": "price", "data-importance": "secondary"},
+    {"id": "dates", "label": "Dates", "defaultValue": "7 nights | All-inclusive", "data-role": "dates", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "background", "label": "Full-bleed Background Photo", "required": true}
+  ],
+  "logoPolicy": {
+    "position": "bottom-right",
+    "maxHeight": "32px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "0", "bottom": "60px", "left": "80px", "right": "80px"},
+    "constraints": ["Photo fills entire canvas", "Scrim gradient from transparent to dark at bottom", "Text only in bottom third", "Ultra-minimal elegant typography"]
+  },
+  "layoutSafeZone": {"top": 0, "bottom": 60, "left": 80, "right": 80},
+  "anchors": {
+    "background": "full-bleed",
+    "tagline": "bottom-left",
+    "destination": "bottom-left",
+    "price": "bottom-left",
+    "dates": "bottom-left"
+  },
+  "defaults": {
+    "tagline": "Escape to Paradise",
+    "destination": "Bali, Indonesia",
+    "price": "From $1,299 per person",
+    "dates": "7 nights | All-inclusive"
+  },
+  "editable": ["tagline", "destination", "price", "dates", "background"],
+  "fixtures": {
+    "background": "assets/placeholder.png"
+  },
+  "description": "A full-bleed tropical destination template with dark scrim overlay and minimal elegant white text in the bottom third showing destination name and price."
+}

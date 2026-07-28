@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "client-testimonials",
+  "templateVersion": "1.0.0",
+  "category": "testimonial",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing client testimonials or social proof with star ratings and avatar",
+  "mood": ["trustworthy", "professional", "clean", "minimal"],
+  "best_for": ["social proof", "client reviews", "testimonials", "trust building"],
+  "not_for": ["product launches", "sales events", "food", "travel"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "testimonial", "label": "Testimonial Text", "defaultValue": "\"This product completely transformed our workflow. We saw a 40% increase in productivity within the first month. I cannot recommend it highly enough to any growing team.\"", "data-role": "testimonial", "data-importance": "primary"},
+    {"id": "reviewer-name", "label": "Reviewer Name & Title", "defaultValue": "Sarah Johnson, CEO", "data-role": "reviewer-name", "data-importance": "secondary"},
+    {"id": "company", "label": "Company Name", "defaultValue": "TechVenture Solutions", "data-role": "company", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "avatar", "label": "Client Avatar Photo", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "bottom-center",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "60px", "left": "120px", "right": "120px"},
+    "constraints": ["Avatar centered at top", "Large CSS quotation marks behind", "5 star rating row", "Quote text centered", "Name and company below"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 60, "left": 120, "right": 120},
+  "anchors": {
+    "avatar": "top-center",
+    "stars": "center-top",
+    "testimonial": "center",
+    "reviewer": "center-bottom",
+    "logo": "bottom-center"
+  },
+  "defaults": {
+    "testimonial": "\"This product completely transformed our workflow. We saw a 40% increase in productivity within the first month. I cannot recommend it highly enough to any growing team.\"",
+    "reviewer-name": "Sarah Johnson, CEO",
+    "company": "TechVenture Solutions"
+  },
+  "editable": ["testimonial", "reviewer-name", "company", "avatar", "logo"],
+  "fixtures": {
+    "avatar": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A centered testimonial template with large CSS quotation marks, avatar circle, 5-star rating row, testimonial text block, and company attribution."
+}

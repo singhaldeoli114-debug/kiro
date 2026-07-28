@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "customer-feedback",
+  "templateVersion": "1.0.0",
+  "category": "testimonial",
+  "formats": ["1x1"],
+  "when_to_use": "When displaying a single customer review in a polished card layout with rating dots and styled blockquote",
+  "mood": ["professional", "trustworthy", "clean", "approachable"],
+  "best_for": ["customer reviews", "feedback cards", "social proof", "review highlights"],
+  "not_for": ["product showcases", "sales events", "travel", "food"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "quote", "label": "Review Quote", "defaultValue": "Working with this team has been an absolute game-changer for our business. Their attention to detail and commitment to quality exceeded all expectations.", "data-role": "quote", "data-importance": "primary"},
+    {"id": "reviewer-name", "label": "Reviewer Name", "defaultValue": "Michael Chen", "data-role": "reviewer-name", "data-importance": "secondary"},
+    {"id": "reviewer-title", "label": "Reviewer Title", "defaultValue": "Marketing Director, GrowthLab", "data-role": "reviewer-title", "data-importance": "tertiary"},
+    {"id": "rating-label", "label": "Rating Label", "defaultValue": "5 out of 5", "data-role": "rating-label", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "customer-photo", "label": "Customer Photo", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "bottom-center",
+    "maxHeight": "36px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "80px", "bottom": "60px", "left": "80px", "right": "80px"},
+    "constraints": ["Customer photo left-aligned in circle", "Rating dots horizontal", "Quote in italic blockquote with left border", "Name and title below"]
+  },
+  "layoutSafeZone": {"top": 80, "bottom": 60, "left": 80, "right": 80},
+  "anchors": {
+    "photo": "top-left",
+    "rating": "top-center",
+    "quote": "center",
+    "reviewer": "bottom-center",
+    "logo": "bottom-center"
+  },
+  "defaults": {
+    "quote": "Working with this team has been an absolute game-changer for our business. Their attention to detail and commitment to quality exceeded all expectations.",
+    "reviewer-name": "Michael Chen",
+    "reviewer-title": "Marketing Director, GrowthLab",
+    "rating-label": "5 out of 5"
+  },
+  "editable": ["quote", "reviewer-name", "reviewer-title", "rating-label", "customer-photo", "logo"],
+  "fixtures": {
+    "customer-photo": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A card-based customer review template with left-aligned photo circle, horizontal rating dots, italic blockquote, and reviewer attribution."
+}

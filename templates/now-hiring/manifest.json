@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "now-hiring",
+  "templateVersion": "1.0.0",
+  "category": "recruitment",
+  "formats": ["1x1"],
+  "when_to_use": "When advertising a job opening with requirements checklist, salary range, and application CTA",
+  "mood": ["bold", "professional", "energetic", "corporate"],
+  "best_for": ["job postings", "recruitment ads", "hiring announcements", "career opportunities"],
+  "not_for": ["product sales", "food", "travel", "beauty"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "hiring-label", "label": "Hiring Label", "defaultValue": "WE'RE HIRING", "data-role": "hiring-label", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Job Title", "defaultValue": "Senior Product Designer", "data-role": "headline", "data-importance": "primary"},
+    {"id": "company-name", "label": "Company Name", "defaultValue": "NovaTech Industries", "data-role": "company-name", "data-importance": "secondary"},
+    {"id": "requirement-1", "label": "Requirement 1", "defaultValue": "5+ years product design experience", "data-role": "requirement", "data-importance": "tertiary"},
+    {"id": "requirement-2", "label": "Requirement 2", "defaultValue": "Proficient in Figma and prototyping tools", "data-role": "requirement", "data-importance": "tertiary"},
+    {"id": "requirement-3", "label": "Requirement 3", "defaultValue": "Experience with design systems", "data-role": "requirement", "data-importance": "tertiary"},
+    {"id": "requirement-4", "label": "Requirement 4", "defaultValue": "Strong portfolio of shipped products", "data-role": "requirement", "data-importance": "tertiary"},
+    {"id": "salary", "label": "Salary Range", "defaultValue": "$120,000 - $160,000", "data-role": "salary", "data-importance": "secondary"},
+    {"id": "cta", "label": "CTA Text", "defaultValue": "APPLY NOW", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "company-logo", "label": "Company Logo", "required": true}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "80px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "60px", "left": "80px", "right": "80px"},
+    "constraints": ["Job title bold at top", "Company logo in top-left", "Requirements as checklist", "Salary range displayed", "APPLY NOW button prominent at bottom"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 60, "left": 80, "right": 80},
+  "anchors": {
+    "logo": "top-left",
+    "hiring-label": "top-right",
+    "job-title": "top-center",
+    "requirements": "center",
+    "salary": "bottom-left",
+    "cta": "bottom"
+  },
+  "defaults": {
+    "hiring-label": "WE'RE HIRING",
+    "headline": "Senior Product Designer",
+    "company-name": "NovaTech Industries",
+    "requirement-1": "5+ years product design experience",
+    "requirement-2": "Proficient in Figma and prototyping tools",
+    "requirement-3": "Experience with design systems",
+    "requirement-4": "Strong portfolio of shipped products",
+    "salary": "$120,000 - $160,000",
+    "cta": "APPLY NOW"
+  },
+  "editable": ["hiring-label", "headline", "company-name", "requirement-1", "requirement-2", "requirement-3", "requirement-4", "salary", "cta", "company-logo"],
+  "fixtures": {
+    "company-logo": "assets/placeholder.png"
+  },
+  "description": "A recruitment ad template with bold job title, company logo, requirements checklist, salary range, and prominent APPLY NOW CTA button."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "pricing-table-packages",
+  "templateVersion": "1.0.0",
+  "category": "business",
+  "formats": ["1x1"],
+  "when_to_use": "When presenting service pricing tiers in a 3-column comparison layout with a highlighted featured tier",
+  "mood": ["professional", "modern", "clean", "structured"],
+  "best_for": ["pricing pages", "SaaS plans", "service tiers", "subscription packages"],
+  "not_for": ["product launches", "testimonials", "food", "travel"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Section Title", "defaultValue": "Choose Your Plan", "data-role": "headline", "data-importance": "primary"},
+    {"id": "tier1-name", "label": "Tier 1 Name", "defaultValue": "Starter", "data-role": "tier-name", "data-importance": "secondary"},
+    {"id": "tier1-price", "label": "Tier 1 Price", "defaultValue": "$19", "data-role": "price", "data-importance": "primary"},
+    {"id": "tier2-name", "label": "Tier 2 Name", "defaultValue": "Professional", "data-role": "tier-name", "data-importance": "secondary"},
+    {"id": "tier2-price", "label": "Tier 2 Price", "defaultValue": "$49", "data-role": "price", "data-importance": "primary"},
+    {"id": "tier3-name", "label": "Tier 3 Name", "defaultValue": "Enterprise", "data-role": "tier-name", "data-importance": "secondary"},
+    {"id": "tier3-price", "label": "Tier 3 Price", "defaultValue": "$99", "data-role": "price", "data-importance": "primary"},
+    {"id": "badge", "label": "Featured Badge", "defaultValue": "Most Popular", "data-role": "badge", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [],
+  "logoPolicy": {
+    "position": "none",
+    "maxHeight": "0",
+    "safeZone": false
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "40px", "right": "40px"},
+    "constraints": ["3 equal columns side by side", "Middle column scaled up and highlighted", "Each tier has name, price, features list, CTA button"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 40, "right": 40},
+  "anchors": {
+    "headline": "top-center",
+    "columns": "center"
+  },
+  "defaults": {
+    "headline": "Choose Your Plan",
+    "tier1-name": "Starter",
+    "tier1-price": "$19",
+    "tier2-name": "Professional",
+    "tier2-price": "$49",
+    "tier3-name": "Enterprise",
+    "tier3-price": "$99",
+    "badge": "Most Popular"
+  },
+  "editable": ["headline", "tier1-name", "tier1-price", "tier2-name", "tier2-price", "tier3-name", "tier3-price", "badge"],
+  "fixtures": {},
+  "description": "A 3-column service pricing comparison table with a highlighted/featured middle tier, tier names, prices, feature lists, and CTA buttons."
+}

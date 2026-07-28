@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Sale</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 60px;
+      left: -20px;
+      background: var(--accent, #dc2626);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 800;
+      padding: 14px 40px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      transform: rotate(-5deg);
+      z-index: 20;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+
+    .property-photo {
+      position: absolute;
+      top: 80px;
+      left: 60px;
+      right: 60px;
+      height: 480px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .property-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .price-area {
+      position: absolute;
+      top: 590px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--textPrimary, #1f2937);
+    }
+
+    .address {
+      font-size: 22px;
+      color: var(--textSecondary, #6b7280);
+      margin-top: 10px;
+    }
+
+    .feature-pills {
+      position: absolute;
+      top: 740px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: var(--surfaceAlt, #f1f5f9);
+      border: 2px solid var(--accent, #dc2626);
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--textPrimary, #1f2937);
+    }
+
+    .contact-section {
+      position: absolute;
+      bottom: 60px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .contact-item {
+      font-size: 18px;
+      color: var(--textSecondary, #6b7280);
+    }
+
+    .contact-item strong {
+      color: var(--textPrimary, #1f2937);
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="status-badge" data-role="status-badge" data-importance="primary" data-visibility="status">FOR SALE</div>
+
+    <div class="property-photo">
+      <img src="assets/placeholder.png" alt="Property Photo" data-slot="property-photo" />
+    </div>
+
+    <div class="price-area">
+      <p class="price" data-role="price" data-importance="primary">$549,900</p>
+      <p class="address" data-role="address" data-importance="secondary">1256 Oakwood Lane, Portland, OR</p>
+    </div>
+
+    <div class="feature-pills">
+      <span class="pill" data-role="feature" data-importance="tertiary">4 Bedrooms</span>
+      <span class="pill" data-role="feature" data-importance="tertiary">3 Bathrooms</span>
+      <span class="pill" data-role="feature" data-importance="tertiary">2,400 sqft</span>
+      <span class="pill" data-role="feature" data-importance="tertiary">2-Car Garage</span>
+    </div>
+
+    <div class="contact-section">
+      <span class="contact-item" data-role="contact" data-importance="tertiary"><strong>Agent:</strong> David Miller</span>
+      <span class="contact-item" data-role="contact" data-importance="tertiary"><strong>Call:</strong> (503) 555-0198</span>
+    </div>
+  </div>
+</body>
+</html>

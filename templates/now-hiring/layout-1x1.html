@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now Hiring</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #111827);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: var(--accent, #10b981);
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 60px;
+      left: 80px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .logo-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .hiring-label {
+      position: absolute;
+      top: 80px;
+      right: 80px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent, #10b981);
+    }
+
+    .job-title {
+      position: absolute;
+      top: 200px;
+      left: 80px;
+      right: 80px;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 58px;
+      font-weight: 900;
+      color: var(--textPrimary, #ffffff);
+      line-height: 1.15;
+    }
+
+    .company-name {
+      position: absolute;
+      top: 370px;
+      left: 80px;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--textSecondary, #9ca3af);
+    }
+
+    .requirements-section {
+      position: absolute;
+      top: 440px;
+      left: 80px;
+      right: 80px;
+    }
+
+    .requirements-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent, #10b981);
+      margin-bottom: 20px;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      font-size: 20px;
+      color: var(--textSecondary, #d1d5db);
+      padding: 12px 0;
+      padding-left: 36px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .checklist li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--accent, #10b981);
+      border-radius: 4px;
+    }
+
+    .checklist li::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 6px;
+      height: 12px;
+      border: solid var(--accent, #10b981);
+      border-width: 0 2px 2px 0;
+    }
+
+    .salary-range {
+      position: absolute;
+      bottom: 200px;
+      left: 80px;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--textPrimary, #ffffff);
+    }
+
+    .salary-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--textSecondary, #9ca3af);
+      margin-bottom: 8px;
+    }
+
+    .cta-button {
+      position: absolute;
+      bottom: 80px;
+      left: 80px;
+      right: 80px;
+      text-align: center;
+      background: var(--accent, #10b981);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 24px;
+      font-weight: 800;
+      padding: 24px 60px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="top-bar"></div>
+
+    <div class="logo-area">
+      <img src="assets/placeholder.png" alt="Company Logo" data-slot="company-logo" />
+    </div>
+
+    <p class="hiring-label" data-role="hiring-label" data-importance="tertiary">WE'RE HIRING</p>
+
+    <h1 class="job-title" data-role="headline" data-importance="primary">Senior Product Designer</h1>
+    <p class="company-name" data-role="company-name" data-importance="secondary">NovaTech Industries</p>
+
+    <div class="requirements-section">
+      <p class="requirements-title" data-role="section-label" data-importance="tertiary">Requirements</p>
+      <ul class="checklist">
+        <li data-role="requirement" data-importance="tertiary">5+ years product design experience</li>
+        <li data-role="requirement" data-importance="tertiary">Proficient in Figma and prototyping tools</li>
+        <li data-role="requirement" data-importance="tertiary">Experience with design systems</li>
+        <li data-role="requirement" data-importance="tertiary">Strong portfolio of shipped products</li>
+      </ul>
+    </div>
+
+    <div style="position: absolute; bottom: 200px; left: 80px;">
+      <p class="salary-label" data-role="salary-label" data-importance="tertiary">Salary Range</p>
+      <p class="salary-range" data-role="salary" data-importance="secondary">$120,000 - $160,000</p>
+    </div>
+
+    <span class="cta-button" data-role="cta" data-importance="primary">APPLY NOW</span>
+  </div>
+</body>
+</html>

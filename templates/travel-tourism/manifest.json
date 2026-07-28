@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "travel-tourism",
+  "templateVersion": "1.0.0",
+  "category": "travel",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting a travel package with multiple destination photos, pricing, dates, and included features",
+  "mood": ["adventurous", "exciting", "warm", "inviting"],
+  "best_for": ["travel packages", "vacation deals", "tour promotions", "adventure trips"],
+  "not_for": ["technology", "recruitment", "beauty", "food"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "package-name", "label": "Package Name", "defaultValue": "Bali Paradise Package", "data-role": "package-name", "data-importance": "primary"},
+    {"id": "price", "label": "Price", "defaultValue": "$1,299/person", "data-role": "price", "data-importance": "primary"},
+    {"id": "dates", "label": "Travel Dates", "defaultValue": "June 15 - June 22, 2024", "data-role": "dates", "data-importance": "secondary"},
+    {"id": "feature-1", "label": "Feature 1", "defaultValue": "Round-trip flights", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "feature-2", "label": "Feature 2", "defaultValue": "5-star resort", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "feature-3", "label": "Feature 3", "defaultValue": "Daily breakfast", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "feature-4", "label": "Feature 4", "defaultValue": "Airport transfers", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "cta", "label": "CTA Text", "defaultValue": "Book Now", "data-role": "cta", "data-importance": "secondary"}
+  ],
+  "mediaSlots": [
+    {"id": "photo-1", "label": "Destination Photo 1", "required": true},
+    {"id": "photo-2", "label": "Destination Photo 2", "required": true},
+    {"id": "photo-3", "label": "Destination Photo 3", "required": true},
+    {"id": "photo-4", "label": "Destination Photo 4", "required": true}
+  ],
+  "logoPolicy": {
+    "position": "none",
+    "maxHeight": "0",
+    "safeZone": false
+  },
+  "layoutRules": {
+    "safeZones": {"top": "20px", "bottom": "40px", "left": "40px", "right": "40px"},
+    "constraints": ["2x2 photo grid in top half", "Package name and price centered below", "Travel dates displayed", "Features in horizontal row", "Book Now CTA full-width bottom"]
+  },
+  "layoutSafeZone": {"top": 20, "bottom": 40, "left": 40, "right": 40},
+  "anchors": {
+    "photos": "top",
+    "package-name": "center",
+    "price": "center",
+    "dates": "center",
+    "features": "center-bottom",
+    "cta": "bottom"
+  },
+  "defaults": {
+    "package-name": "Bali Paradise Package",
+    "price": "$1,299/person",
+    "dates": "June 15 - June 22, 2024",
+    "feature-1": "Round-trip flights",
+    "feature-2": "5-star resort",
+    "feature-3": "Daily breakfast",
+    "feature-4": "Airport transfers",
+    "cta": "Book Now"
+  },
+  "editable": ["package-name", "price", "dates", "feature-1", "feature-2", "feature-3", "feature-4", "cta", "photo-1", "photo-2", "photo-3", "photo-4"],
+  "fixtures": {
+    "photo-1": "assets/placeholder.png",
+    "photo-2": "assets/placeholder.png",
+    "photo-3": "assets/placeholder.png",
+    "photo-4": "assets/placeholder.png"
+  },
+  "description": "A travel package template with a 2x2 destination photo grid, package headline, price per person, travel dates, included features list, and Book Now CTA."
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Tourism</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .photo-grid {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      right: 40px;
+      height: 500px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .photo-grid .grid-item {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .photo-grid .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .info-section {
+      position: absolute;
+      top: 540px;
+      left: 40px;
+      right: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .package-name {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--textPrimary, #1f2937);
+      text-align: center;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent, #0d9488);
+    }
+
+    .dates {
+      font-size: 20px;
+      color: var(--textSecondary, #6b7280);
+    }
+
+    .features-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .feature-pill {
+      background: var(--surfaceAlt, #f0fdfa);
+      border: 1px solid var(--accent, #0d9488);
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--textPrimary, #1f2937);
+    }
+
+    .cta-button {
+      position: absolute;
+      bottom: 50px;
+      left: 40px;
+      right: 40px;
+      text-align: center;
+      background: var(--accent, #0d9488);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 700;
+      padding: 22px 60px;
+      border-radius: 12px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="photo-grid">
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Destination 1" data-slot="photo-1" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Destination 2" data-slot="photo-2" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Destination 3" data-slot="photo-3" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Destination 4" data-slot="photo-4" />
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h1 class="package-name" data-role="package-name" data-importance="primary">Bali Paradise Package</h1>
+      <p class="price" data-role="price" data-importance="primary">$1,299/person</p>
+      <p class="dates" data-role="dates" data-importance="secondary">June 15 - June 22, 2024</p>
+
+      <div class="features-row">
+        <span class="feature-pill" data-role="feature" data-importance="tertiary">Round-trip flights</span>
+        <span class="feature-pill" data-role="feature" data-importance="tertiary">5-star resort</span>
+        <span class="feature-pill" data-role="feature" data-importance="tertiary">Daily breakfast</span>
+        <span class="feature-pill" data-role="feature" data-importance="tertiary">Airport transfers</span>
+      </div>
+    </div>
+
+    <span class="cta-button" data-role="cta" data-importance="secondary">Book Now</span>
+  </div>
+</body>
+</html>

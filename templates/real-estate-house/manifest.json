@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "real-estate-house",
+  "templateVersion": "1.0.0",
+  "category": "real-estate",
+  "formats": ["1x1"],
+  "when_to_use": "When presenting a property listing with a large photo, specs grid, price badge, and agent information",
+  "mood": ["professional", "modern", "clean", "residential"],
+  "best_for": ["property listings", "real estate ads", "house showcases", "realtor promotions"],
+  "not_for": ["food", "fashion", "technology", "events"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "price", "label": "Property Price", "defaultValue": "$499,000", "data-role": "price", "data-importance": "primary"},
+    {"id": "address", "label": "Property Address", "defaultValue": "2847 Maple Drive, Austin, TX", "data-role": "address", "data-importance": "secondary"},
+    {"id": "beds", "label": "Bedrooms", "defaultValue": "3 Bed", "data-role": "spec", "data-importance": "tertiary"},
+    {"id": "baths", "label": "Bathrooms", "defaultValue": "2 Bath", "data-role": "spec", "data-importance": "tertiary"},
+    {"id": "sqft", "label": "Square Footage", "defaultValue": "1,850 sqft", "data-role": "spec", "data-importance": "tertiary"},
+    {"id": "agent-name", "label": "Agent Name", "defaultValue": "Jennifer Williams", "data-role": "agent-name", "data-importance": "secondary"},
+    {"id": "agent-phone", "label": "Agent Phone", "defaultValue": "(512) 555-0147", "data-role": "agent-phone", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "property-photo", "label": "Property Photo", "required": true},
+    {"id": "agent-photo", "label": "Agent Headshot", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "bottom-right",
+    "maxHeight": "32px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "0", "bottom": "0", "left": "0", "right": "0"},
+    "constraints": ["Property photo fills top 55%", "Price badge overlay top-right on photo", "Specs icon grid below photo", "Agent info strip at bottom"]
+  },
+  "layoutSafeZone": {"top": 0, "bottom": 0, "left": 0, "right": 0},
+  "anchors": {
+    "photo": "top",
+    "price-badge": "top-right",
+    "specs": "center-bottom",
+    "agent": "bottom"
+  },
+  "defaults": {
+    "price": "$499,000",
+    "address": "2847 Maple Drive, Austin, TX",
+    "beds": "3 Bed",
+    "baths": "2 Bath",
+    "sqft": "1,850 sqft",
+    "agent-name": "Jennifer Williams",
+    "agent-phone": "(512) 555-0147"
+  },
+  "editable": ["price", "address", "beds", "baths", "sqft", "agent-name", "agent-phone", "property-photo", "agent-photo"],
+  "fixtures": {
+    "property-photo": "assets/placeholder.png",
+    "agent-photo": "assets/placeholder.png"
+  },
+  "description": "A property listing template with a large photo at top (55% height), price badge overlay, specs grid below with beds/baths/sqft, and agent info strip at the bottom."
+}

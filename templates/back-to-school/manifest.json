@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "back-to-school",
+  "templateVersion": "1.0.0",
+  "category": "education",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting back-to-school sales, education campaigns, or school supply deals with a playful energetic aesthetic",
+  "mood": ["playful", "energetic", "colorful", "youthful"],
+  "best_for": ["back-to-school sales", "education campaigns", "school supplies", "student discounts"],
+  "not_for": ["luxury brands", "real estate", "professional services", "technology"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "label", "label": "Category Label", "defaultValue": "Back to School", "data-role": "label", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "Get Ready to Learn!", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Everything your student needs for a great year ahead", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "offer", "label": "Offer/Discount", "defaultValue": "25% OFF All Supplies", "data-role": "offer", "data-importance": "primary"},
+    {"id": "cta", "label": "CTA Text", "defaultValue": "Shop Now", "data-role": "cta", "data-importance": "secondary"}
+  ],
+  "mediaSlots": [
+    {"id": "supply-1", "label": "School Supply Image 1", "required": true},
+    {"id": "supply-2", "label": "School Supply Image 2", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "none",
+    "maxHeight": "0",
+    "safeZone": false
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "80px", "right": "80px"},
+    "constraints": ["Geometric shapes scattered (circles, triangles, squares via CSS)", "Supply images on the right", "Headline and offer on the left", "Playful rotations on elements"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 80, "right": 80},
+  "anchors": {
+    "shapes": "scattered",
+    "supplies": "right",
+    "headline": "center-left",
+    "offer": "center-left",
+    "cta": "bottom-left"
+  },
+  "defaults": {
+    "label": "Back to School",
+    "headline": "Get Ready to Learn!",
+    "subheadline": "Everything your student needs for a great year ahead",
+    "offer": "25% OFF All Supplies",
+    "cta": "Shop Now"
+  },
+  "editable": ["label", "headline", "subheadline", "offer", "cta", "supply-1", "supply-2"],
+  "fixtures": {
+    "supply-1": "assets/placeholder.png",
+    "supply-2": "assets/placeholder.png"
+  },
+  "description": "A playful education campaign template with CSS geometric shapes (circles, triangles, squares), school supply image areas, energetic headline, and discount/offer badge."
+}

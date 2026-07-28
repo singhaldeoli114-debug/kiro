@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "business-webinar",
+  "templateVersion": "1.0.0",
+  "category": "business",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting a webinar or online event with speaker info, topic, date/time, and registration CTA",
+  "mood": ["professional", "informative", "modern", "authoritative"],
+  "best_for": ["webinars", "online events", "seminars", "masterclasses", "workshops"],
+  "not_for": ["product sales", "food", "travel", "fashion"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "event-type", "label": "Event Type", "defaultValue": "Free Webinar", "data-role": "event-type", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Topic Headline", "defaultValue": "Scaling Your Business with AI-Driven Automation", "data-role": "headline", "data-importance": "primary"},
+    {"id": "date", "label": "Date & Time", "defaultValue": "March 15, 2024 | 2:00 PM EST", "data-role": "date", "data-importance": "secondary"},
+    {"id": "speaker-name", "label": "Speaker Name", "defaultValue": "Dr. Rebecca Torres", "data-role": "speaker-name", "data-importance": "secondary"},
+    {"id": "bullet-1", "label": "Learning Point 1", "defaultValue": "Automate repetitive workflows", "data-role": "bullet", "data-importance": "tertiary"},
+    {"id": "bullet-2", "label": "Learning Point 2", "defaultValue": "Reduce operational costs by 40%", "data-role": "bullet", "data-importance": "tertiary"},
+    {"id": "bullet-3", "label": "Learning Point 3", "defaultValue": "Scale without adding headcount", "data-role": "bullet", "data-importance": "tertiary"},
+    {"id": "bullet-4", "label": "Learning Point 4", "defaultValue": "Live Q&A with industry experts", "data-role": "bullet", "data-importance": "tertiary"},
+    {"id": "cta", "label": "CTA Text", "defaultValue": "Register Now", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "speaker-photo", "label": "Speaker Photo", "required": true}
+  ],
+  "logoPolicy": {
+    "position": "none",
+    "maxHeight": "0",
+    "safeZone": false
+  },
+  "layoutRules": {
+    "safeZones": {"top": "80px", "bottom": "80px", "left": "80px", "right": "80px"},
+    "constraints": ["Speaker photo in circle center-left", "Topic headline large right-aligned", "Date/time in styled badge", "Bullet points of what you'll learn", "Register Now CTA bottom"]
+  },
+  "layoutSafeZone": {"top": 80, "bottom": 80, "left": 80, "right": 80},
+  "anchors": {
+    "speaker": "center-left",
+    "headline": "top-right",
+    "date": "center-right",
+    "bullets": "center-right",
+    "cta": "bottom-left"
+  },
+  "defaults": {
+    "event-type": "Free Webinar",
+    "headline": "Scaling Your Business with AI-Driven Automation",
+    "date": "March 15, 2024 | 2:00 PM EST",
+    "speaker-name": "Dr. Rebecca Torres",
+    "bullet-1": "Automate repetitive workflows",
+    "bullet-2": "Reduce operational costs by 40%",
+    "bullet-3": "Scale without adding headcount",
+    "bullet-4": "Live Q&A with industry experts",
+    "cta": "Register Now"
+  },
+  "editable": ["event-type", "headline", "date", "speaker-name", "bullet-1", "bullet-2", "bullet-3", "bullet-4", "cta", "speaker-photo"],
+  "fixtures": {
+    "speaker-photo": "assets/placeholder.png"
+  },
+  "description": "A webinar registration template with speaker photo circle, topic headline, date/time badge, learning bullet points, and a Register Now CTA."
+}

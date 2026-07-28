@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate House</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .photo-area {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 594px;
+      overflow: hidden;
+    }
+
+    .photo-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .price-badge {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: var(--accent, #1d4ed8);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+
+    .info-section {
+      position: absolute;
+      top: 594px;
+      left: 0;
+      right: 0;
+      bottom: 130px;
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .address {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--textPrimary, #1f2937);
+    }
+
+    .specs-grid {
+      display: flex;
+      gap: 50px;
+      justify-content: flex-start;
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .spec-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--surfaceAlt, #f1f5f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent, #1d4ed8);
+    }
+
+    .spec-label {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--textPrimary, #1f2937);
+    }
+
+    .agent-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 130px;
+      background: var(--surfaceAlt, #f1f5f9);
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+      gap: 20px;
+    }
+
+    .agent-photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent, #1d4ed8);
+    }
+
+    .agent-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .agent-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .agent-name {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--textPrimary, #1f2937);
+    }
+
+    .agent-phone {
+      font-size: 18px;
+      color: var(--textSecondary, #6b7280);
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="photo-area">
+      <img src="assets/placeholder.png" alt="Property Photo" data-slot="property-photo" />
+    </div>
+
+    <div class="price-badge" data-role="price" data-importance="primary">$499,000</div>
+
+    <div class="info-section">
+      <p class="address" data-role="address" data-importance="secondary">2847 Maple Drive, Austin, TX</p>
+
+      <div class="specs-grid">
+        <div class="spec-item">
+          <div class="spec-icon">BED</div>
+          <span class="spec-label" data-role="spec" data-importance="tertiary">3 Bed</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon">BATH</div>
+          <span class="spec-label" data-role="spec" data-importance="tertiary">2 Bath</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon">SQFT</div>
+          <span class="spec-label" data-role="spec" data-importance="tertiary">1,850 sqft</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="agent-strip">
+      <div class="agent-photo">
+        <img src="assets/placeholder.png" alt="Agent Photo" data-slot="agent-photo" />
+      </div>
+      <div class="agent-info">
+        <p class="agent-name" data-role="agent-name" data-importance="secondary">Jennifer Williams</p>
+        <p class="agent-phone" data-role="agent-phone" data-importance="tertiary">(512) 555-0147</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Feedback</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #f0f4f8);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 860px;
+      background: var(--surfaceAlt, #ffffff);
+      border-radius: 24px;
+      padding: 80px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .photo-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent, #6366f1);
+      margin-bottom: 40px;
+    }
+
+    .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rating-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    .dot-filled {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent, #6366f1);
+    }
+
+    .dot-empty {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid var(--accent, #6366f1);
+    }
+
+    .rating-label {
+      font-size: 16px;
+      color: var(--textSecondary, #6b7280);
+      margin-left: 12px;
+    }
+
+    .quote-block {
+      border-left: 4px solid var(--accent, #6366f1);
+      padding-left: 32px;
+      margin-bottom: 48px;
+    }
+
+    .quote-text {
+      font-size: 30px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--textPrimary, #1f2937);
+      line-height: 1.6;
+    }
+
+    .reviewer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .reviewer-name {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--textPrimary, #1f2937);
+    }
+
+    .reviewer-title {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--textSecondary, #6b7280);
+    }
+
+    .logo-area {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 36px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="card">
+      <div class="photo-circle">
+        <img src="assets/placeholder.png" alt="Customer Photo" data-slot="customer-photo" />
+      </div>
+
+      <div class="rating-row">
+        <div class="dot-filled"></div>
+        <div class="dot-filled"></div>
+        <div class="dot-filled"></div>
+        <div class="dot-filled"></div>
+        <div class="dot-filled"></div>
+        <span class="rating-label" data-role="rating-label" data-importance="tertiary">5 out of 5</span>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text" data-role="quote" data-importance="primary">Working with this team has been an absolute game-changer for our business. Their attention to detail and commitment to quality exceeded all expectations.</p>
+      </div>
+
+      <div class="reviewer-info">
+        <p class="reviewer-name" data-role="reviewer-name" data-importance="secondary">Michael Chen</p>
+        <p class="reviewer-title" data-role="reviewer-title" data-importance="tertiary">Marketing Director, GrowthLab</p>
+      </div>
+    </div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+  </div>
+</body>
+</html>

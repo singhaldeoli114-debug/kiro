@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "house-sale",
+  "templateVersion": "1.0.0",
+  "category": "real-estate",
+  "formats": ["1x1"],
+  "when_to_use": "When advertising a house for sale with status badge, prominent price, feature pills, and contact information",
+  "mood": ["urgent", "professional", "bold", "clean"],
+  "best_for": ["property sales", "house listings", "real estate agents", "open house announcements"],
+  "not_for": ["food", "fashion", "travel", "beauty"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "status-badge", "label": "Status Badge", "defaultValue": "FOR SALE", "data-role": "status-badge", "data-importance": "primary"},
+    {"id": "price", "label": "Property Price", "defaultValue": "$549,900", "data-role": "price", "data-importance": "primary"},
+    {"id": "address", "label": "Property Address", "defaultValue": "1256 Oakwood Lane, Portland, OR", "data-role": "address", "data-importance": "secondary"},
+    {"id": "feature-1", "label": "Feature 1", "defaultValue": "4 Bedrooms", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "feature-2", "label": "Feature 2", "defaultValue": "3 Bathrooms", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "feature-3", "label": "Feature 3", "defaultValue": "2,400 sqft", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "feature-4", "label": "Feature 4", "defaultValue": "2-Car Garage", "data-role": "feature", "data-importance": "tertiary"},
+    {"id": "agent-name", "label": "Agent Name", "defaultValue": "David Miller", "data-role": "contact", "data-importance": "tertiary"},
+    {"id": "agent-phone", "label": "Agent Phone", "defaultValue": "(503) 555-0198", "data-role": "contact", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "property-photo", "label": "Property Photo", "required": true}
+  ],
+  "logoPolicy": {
+    "position": "none",
+    "maxHeight": "0",
+    "safeZone": false
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "40px", "left": "60px", "right": "60px"},
+    "constraints": ["FOR SALE/SOLD badge in corner at -5deg rotation", "Photo centered", "Price prominent below", "4 feature pills row", "Contact info at bottom"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 40, "left": 60, "right": 60},
+  "anchors": {
+    "badge": "top-left",
+    "photo": "center",
+    "price": "center",
+    "features": "center-bottom",
+    "contact": "bottom"
+  },
+  "defaults": {
+    "status-badge": "FOR SALE",
+    "price": "$549,900",
+    "address": "1256 Oakwood Lane, Portland, OR",
+    "feature-1": "4 Bedrooms",
+    "feature-2": "3 Bathrooms",
+    "feature-3": "2,400 sqft",
+    "feature-4": "2-Car Garage",
+    "agent-name": "David Miller",
+    "agent-phone": "(503) 555-0198"
+  },
+  "editable": ["status-badge", "price", "address", "feature-1", "feature-2", "feature-3", "feature-4", "agent-name", "agent-phone", "property-photo"],
+  "fixtures": {
+    "property-photo": "assets/placeholder.png"
+  },
+  "description": "A property sale template with FOR SALE/SOLD status badge (rotated -5deg in corner, togglable via data-visibility), property photo, prominent price, 4 feature pills, and contact information."
+}

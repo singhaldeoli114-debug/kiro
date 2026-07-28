@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Table Packages</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #0f172a);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 40px;
+    }
+
+    .section-title {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--textPrimary, #ffffff);
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .columns {
+      display: flex;
+      gap: 24px;
+      flex: 1;
+      align-items: stretch;
+    }
+
+    .tier {
+      width: 310px;
+      background: var(--surfaceAlt, #1e293b);
+      border-radius: 16px;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .tier.featured {
+      background: var(--accent, #6366f1);
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accentAlt, #f59e0b);
+      color: var(--surface, #0f172a);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 20px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tier-name {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--textPrimary, #ffffff);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .featured .tier-name {
+      color: var(--onAccent, #ffffff);
+    }
+
+    .tier-price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--textPrimary, #ffffff);
+      margin-bottom: 6px;
+    }
+
+    .featured .tier-price {
+      color: var(--onAccent, #ffffff);
+    }
+
+    .tier-period {
+      font-size: 14px;
+      color: var(--textSecondary, #94a3b8);
+      margin-bottom: 30px;
+    }
+
+    .featured .tier-period {
+      color: var(--onAccent, rgba(255,255,255,0.8));
+    }
+
+    .features-list {
+      list-style: none;
+      width: 100%;
+      margin-bottom: 30px;
+      flex: 1;
+    }
+
+    .features-list li {
+      font-size: 16px;
+      color: var(--textSecondary, #94a3b8);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .featured .features-list li {
+      color: var(--onAccent, rgba(255,255,255,0.9));
+      border-bottom-color: rgba(255,255,255,0.15);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      background: var(--accent, #6366f1);
+      color: var(--onAccent, #ffffff);
+      letter-spacing: 0.5px;
+    }
+
+    .featured .cta-btn {
+      background: var(--onAccent, #ffffff);
+      color: var(--accent, #6366f1);
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <h1 class="section-title" data-role="headline" data-importance="primary">Choose Your Plan</h1>
+
+    <div class="columns">
+      <div class="tier">
+        <p class="tier-name" data-role="tier-name" data-importance="secondary">Starter</p>
+        <p class="tier-price" data-role="price" data-importance="primary">$19</p>
+        <p class="tier-period" data-role="period" data-importance="tertiary">/month</p>
+        <ul class="features-list">
+          <li data-role="feature" data-importance="tertiary">5 Projects</li>
+          <li data-role="feature" data-importance="tertiary">10 GB Storage</li>
+          <li data-role="feature" data-importance="tertiary">Email Support</li>
+          <li data-role="feature" data-importance="tertiary">Basic Analytics</li>
+        </ul>
+        <span class="cta-btn" data-role="cta" data-importance="secondary">Get Started</span>
+      </div>
+
+      <div class="tier featured">
+        <div class="tier-badge" data-role="badge" data-importance="tertiary">Most Popular</div>
+        <p class="tier-name" data-role="tier-name" data-importance="secondary">Professional</p>
+        <p class="tier-price" data-role="price" data-importance="primary">$49</p>
+        <p class="tier-period" data-role="period" data-importance="tertiary">/month</p>
+        <ul class="features-list">
+          <li data-role="feature" data-importance="tertiary">Unlimited Projects</li>
+          <li data-role="feature" data-importance="tertiary">100 GB Storage</li>
+          <li data-role="feature" data-importance="tertiary">Priority Support</li>
+          <li data-role="feature" data-importance="tertiary">Advanced Analytics</li>
+          <li data-role="feature" data-importance="tertiary">Custom Domain</li>
+        </ul>
+        <span class="cta-btn" data-role="cta" data-importance="secondary">Get Started</span>
+      </div>
+
+      <div class="tier">
+        <p class="tier-name" data-role="tier-name" data-importance="secondary">Enterprise</p>
+        <p class="tier-price" data-role="price" data-importance="primary">$99</p>
+        <p class="tier-period" data-role="period" data-importance="tertiary">/month</p>
+        <ul class="features-list">
+          <li data-role="feature" data-importance="tertiary">Unlimited Everything</li>
+          <li data-role="feature" data-importance="tertiary">1 TB Storage</li>
+          <li data-role="feature" data-importance="tertiary">24/7 Phone Support</li>
+          <li data-role="feature" data-importance="tertiary">White Label</li>
+          <li data-role="feature" data-importance="tertiary">Dedicated Manager</li>
+        </ul>
+        <span class="cta-btn" data-role="cta" data-importance="secondary">Contact Us</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

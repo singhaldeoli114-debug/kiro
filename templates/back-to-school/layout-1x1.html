@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Back to School</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface, #fef3c7);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .circle-1 {
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: var(--accent, #f97316);
+      opacity: 0.7;
+    }
+
+    .circle-2 {
+      position: absolute;
+      bottom: -60px;
+      left: -40px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: var(--accentAlt, #3b82f6);
+      opacity: 0.6;
+    }
+
+    .circle-3 {
+      position: absolute;
+      top: 400px;
+      right: 80px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--accent, #f97316);
+      opacity: 0.3;
+    }
+
+    .triangle-1 {
+      position: absolute;
+      top: 150px;
+      left: 80px;
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 86px solid var(--accentAlt, #3b82f6);
+      opacity: 0.5;
+    }
+
+    .triangle-2 {
+      position: absolute;
+      bottom: 250px;
+      right: 120px;
+      width: 0;
+      height: 0;
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      border-bottom: 70px solid var(--accent, #f97316);
+      opacity: 0.4;
+    }
+
+    .square-1 {
+      position: absolute;
+      bottom: 180px;
+      left: 200px;
+      width: 60px;
+      height: 60px;
+      background: var(--accentAlt, #3b82f6);
+      transform: rotate(15deg);
+      opacity: 0.4;
+    }
+
+    .square-2 {
+      position: absolute;
+      top: 350px;
+      left: 50px;
+      width: 40px;
+      height: 40px;
+      background: var(--accent, #f97316);
+      transform: rotate(-10deg);
+      opacity: 0.3;
+    }
+
+    .supply-areas {
+      position: absolute;
+      top: 80px;
+      right: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .supply-slot {
+      width: 180px;
+      height: 180px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--surfaceAlt, #ffffff);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .supply-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content-block {
+      position: absolute;
+      top: 280px;
+      left: 80px;
+      max-width: 600px;
+    }
+
+    .label {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent, #f97316);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--textPrimary, #1e293b);
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .subheadline {
+      font-size: 22px;
+      color: var(--textSecondary, #64748b);
+      line-height: 1.4;
+      margin-bottom: 40px;
+    }
+
+    .offer-badge {
+      display: inline-block;
+      background: var(--accent, #f97316);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 800;
+      padding: 18px 40px;
+      border-radius: 12px;
+      transform: rotate(-2deg);
+    }
+
+    .shop-cta {
+      position: absolute;
+      bottom: 80px;
+      left: 80px;
+      background: var(--accentAlt, #3b82f6);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 50px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="circle-3"></div>
+    <div class="triangle-1"></div>
+    <div class="triangle-2"></div>
+    <div class="square-1"></div>
+    <div class="square-2"></div>
+
+    <div class="supply-areas">
+      <div class="supply-slot">
+        <img src="assets/placeholder.png" alt="School Supply 1" data-slot="supply-1" />
+      </div>
+      <div class="supply-slot">
+        <img src="assets/placeholder.png" alt="School Supply 2" data-slot="supply-2" />
+      </div>
+    </div>
+
+    <div class="content-block">
+      <p class="label" data-role="label" data-importance="tertiary">Back to School</p>
+      <h1 class="headline" data-role="headline" data-importance="primary">Get Ready to Learn!</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Everything your student needs for a great year ahead</p>
+      <div class="offer-badge" data-role="offer" data-importance="primary">25% OFF All Supplies</div>
+    </div>
+
+    <span class="shop-cta" data-role="cta" data-importance="secondary">Shop Now</span>
+  </div>
+</body>
+</html>
