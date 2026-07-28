@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.79:1 |
 | Stroke (median/mean) | 29.0 / 28.77 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poller One, Poppins |
 | Match IoU | 0.9468 |
 | **Geometry fit confidence** | **high** |
@@ -79,25 +80,27 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=79, y=118, w=355, h=88 |
-| Normalised | x=7.31%, y=10.93%, w=32.87%, h=8.15% |
+| Bounding box (px) | x=78, y=118, w=356, h=88 |
+| Normalised | x=7.22%, y=10.93%, w=32.96%, h=8.15% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PollerOne.ttf` |
 | Variation axes | None |
-| Font size | 107 px |
-| Letter-spacing | -0.79 px (-0.0074 em) |
-| Line-height | 145.0 px (ratio 1.355) |
+| Font size | 108 px |
+| Letter-spacing | -1.57 px (-0.0145 em) |
+| Line-height | 145.0 px (ratio 1.343) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#2b044d` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.79:1 |
 | Stroke (median/mean) | 29.0 / 29.06 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Poller One, Poppins |
-| Match IoU | 0.9373 |
+| Match IoU | 0.9417 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -105,9 +108,9 @@ Alternate font fits considered:
 | Gap to next | 57 px |
 
 Alternate font fits considered:
-- `PollerOne.ttf` 106px track 0.32px — IoU 0.9344
-- `PollerOne.ttf` 105px track 1.44px — IoU 0.9344
-- `Poppins-Regular.ttf` 141px track 0.65px — IoU 0.3356
+- `PollerOne.ttf` 107px track -0.45px — IoU 0.9344
+- `PollerOne.ttf` 106px track 0.66px — IoU 0.9163
+- `Poppins-Regular.ttf` 143px track -0.69px — IoU 0.3336
 
 ### `text-3` — headline
 
@@ -115,25 +118,26 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=84, y=263, w=354, h=88 |
-| Normalised | x=7.78%, y=24.35%, w=32.78%, h=8.15% |
+| Bounding box (px) | x=83, y=263, w=355, h=88 |
+| Normalised | x=7.69%, y=24.35%, w=32.87%, h=8.15% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PollerOne.ttf` |
 | Variation axes | None |
-| Font size | 107 px |
-| Letter-spacing | -0.79 px (-0.0074 em) |
-| Line-height | 145.0 px (ratio 1.355) |
+| Font size | 108 px |
+| Letter-spacing | -1.57 px (-0.0145 em) |
+| Line-height | 145.0 px (ratio 1.343) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#2b044d` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.79:1 |
 | Stroke (median/mean) | 29.0 / 29.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poller One, Poppins |
-| Match IoU | 0.9474 |
+| Match IoU | 0.9399 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -141,81 +145,83 @@ Alternate font fits considered:
 | Gap to next | 39 px |
 
 Alternate font fits considered:
-- `PollerOne.ttf` 106px track 0.32px — IoU 0.9344
-- `PollerOne.ttf` 105px track 1.44px — IoU 0.9344
-- `Poppins-Regular.ttf` 141px track 0.65px — IoU 0.3356
+- `PollerOne.ttf` 107px track -0.45px — IoU 0.9344
+- `PollerOne.ttf` 106px track 0.66px — IoU 0.9163
+- `Poppins-Regular.ttf` 143px track -0.69px — IoU 0.3336
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "What to do when"  (OCR confidence 0.9637)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=94, y=390, w=349, h=31 |
-| Normalised | x=8.7%, y=36.11%, w=32.31%, h=2.87% |
+| Bounding box (px) | x=94, y=390, w=349, h=32 |
+| Normalised | x=8.7%, y=36.11%, w=32.31%, h=2.96% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 41 px |
-| Letter-spacing | 0.04 px (0.001 em) |
-| Line-height | 57.0 px (ratio 1.39) |
-| Line | 1 of 2 |
+| Font size | 42 px |
+| Letter-spacing | -0.56 px (-0.0133 em) |
+| Line-height | 56.0 px (ratio 1.333) |
+| Line | 1 of 5 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.14:1 |
 | Stroke (median/mean) | 4.0 / 4.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poller One, Poppins |
-| Match IoU | 0.8177 |
+| Match IoU | 0.7415 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 39 px |
-| Gap to next | 26 px |
+| Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 42px track -0.56px — IoU 0.7242
-- `Poppins-Regular.ttf` 40px track 0.65px — IoU 0.647
-- `PollerOne.ttf` 35px track -0.65px — IoU 0.3723
+- `Poppins-Regular.ttf` 41px track 0.04px — IoU 0.7107
+- `Poppins-Regular.ttf` 40px track 0.65px — IoU 0.6391
+- `PollerOne.ttf` 35px track -0.65px — IoU 0.3431
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "your home"  (OCR confidence 0.9995)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=94, y=447, w=222, h=41 |
-| Normalised | x=8.7%, y=41.39%, w=20.56%, h=3.8% |
+| Bounding box (px) | x=93, y=446, w=223, h=42 |
+| Normalised | x=8.61%, y=41.3%, w=20.65%, h=3.89% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 41 px |
-| Letter-spacing | 0.04 px (0.001 em) |
-| Line-height | 57.0 px (ratio 1.39) |
-| Line | 2 of 2 |
+| Font size | 42 px |
+| Letter-spacing | -0.56 px (-0.0133 em) |
+| Line-height | 56.0 px (ratio 1.333) |
+| Line | 2 of 5 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.14:1 |
 | Stroke (median/mean) | 4.0 / 4.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poller One, Poppins |
-| Match IoU | 0.7298 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6617 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 26 px |
-| Gap to next | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 24 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 42px track -0.56px — IoU 0.7242
-- `Poppins-Regular.ttf` 40px track 0.65px — IoU 0.647
-- `PollerOne.ttf` 35px track -0.65px — IoU 0.3723
+- `Poppins-Regular.ttf` 41px track 0.04px — IoU 0.7107
+- `Poppins-Regular.ttf` 40px track 0.65px — IoU 0.6391
+- `PollerOne.ttf` 35px track -0.65px — IoU 0.3431
 
 ### `text-6` — supporting
 
@@ -223,37 +229,38 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=95, y=487, w=187, h=57 |
-| Normalised | x=8.8%, y=45.09%, w=17.31%, h=5.28% |
+| Bounding box (px) | x=95, y=503, w=188, h=42 |
+| Normalised | x=8.8%, y=46.57%, w=17.41%, h=3.89% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `PollerOne.ttf` |
+| Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 35 px |
-| Letter-spacing | -0.97 px (-0.0277 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 42 px |
+| Letter-spacing | -0.56 px (-0.0133 em) |
+| Line-height | 56.0 px (ratio 1.333) |
+| Line | 3 of 5 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.14:1 |
 | Stroke (median/mean) | 4.0 / 5.03 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poller One, Poppins |
-| Match IoU | 0.3377 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.793 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | 15 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 15 px |
+| Gap to next | 14 px |
 
 Alternate font fits considered:
-- `PollerOne.ttf` 34px track -0.18px — IoU 0.3313
-- `PollerOne.ttf` 33px track 0.61px — IoU 0.3184
-- `Poppins-Regular.ttf` 41px track -0.13px — IoU 0.2593
+- `Poppins-Regular.ttf` 41px track 0.04px — IoU 0.7107
+- `Poppins-Regular.ttf` 40px track 0.65px — IoU 0.6391
+- `PollerOne.ttf` 35px track -0.65px — IoU 0.3431
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "becomes your"  (OCR confidence 0.9986)
 
@@ -267,63 +274,65 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 41 px |
-| Letter-spacing | -0.01 px (-0.0002 em) |
-| Line-height | 56.0 px (ratio 1.366) |
-| Line | 1 of 2 |
+| Font size | 42 px |
+| Letter-spacing | -0.56 px (-0.0133 em) |
+| Line-height | 56.0 px (ratio 1.333) |
+| Line | 4 of 5 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.14:1 |
 | Stroke (median/mean) | 4.0 / 5.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poller One, Poppins |
-| Match IoU | 0.7703 |
+| Match IoU | 0.753 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 15 px |
-| Gap to next | 14 px |
+| Gap to previous | 14 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 42px track -0.67px — IoU 0.7057
-- `Poppins-Regular.ttf` 40px track 0.64px — IoU 0.6623
-- `PollerOne.ttf` 36px track -1.08px — IoU 0.2855
+- `Poppins-Regular.ttf` 41px track 0.04px — IoU 0.7107
+- `Poppins-Regular.ttf` 40px track 0.65px — IoU 0.6391
+- `PollerOne.ttf` 35px track -0.65px — IoU 0.3431
 
-### `text-8` — subheadline
+### `text-8` — supporting
 
 **Text:** "office?"  (OCR confidence 0.9928)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=95, y=615, w=133, h=32 |
-| Normalised | x=8.8%, y=56.94%, w=12.31%, h=2.96% |
+| Bounding box (px) | x=94, y=614, w=134, h=33 |
+| Normalised | x=8.7%, y=56.85%, w=12.41%, h=3.06% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 41 px |
-| Letter-spacing | -0.01 px (-0.0002 em) |
-| Line-height | 56.0 px (ratio 1.366) |
-| Line | 2 of 2 |
+| Font size | 42 px |
+| Letter-spacing | -0.56 px (-0.0133 em) |
+| Line-height | 56.0 px (ratio 1.333) |
+| Line | 5 of 5 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.14:1 |
 | Stroke (median/mean) | 4.0 / 5.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poller One, Poppins |
-| Match IoU | 0.7544 |
+| Match IoU | 0.7338 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 14 px |
+| Gap to previous | 13 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 42px track -0.67px — IoU 0.7057
-- `Poppins-Regular.ttf` 40px track 0.64px — IoU 0.6623
-- `PollerOne.ttf` 36px track -1.08px — IoU 0.2855
+- `Poppins-Regular.ttf` 41px track 0.04px — IoU 0.7107
+- `Poppins-Regular.ttf` 40px track 0.65px — IoU 0.6391
+- `PollerOne.ttf` 35px track -0.65px — IoU 0.3431
 
 ## 4. Colours (semantic)
 
@@ -332,10 +341,10 @@ Alternate font fits considered:
 | background | `#b2b1d6` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f0b78d` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#2b044d` | glyph ink of 'from' | glyph ink median |
-| textSecondary | `#000000` | glyph ink of 'suddenly' | glyph ink median |
+| textSecondary | `#000000` | glyph ink of 'your home' | glyph ink median |
 | accent | `#eddc07` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f0b78d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -359,7 +368,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1185 |
+| Text coverage | 0.1169 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -389,11 +398,11 @@ _Recommendations only — no manifest is generated._
 | `headline` | text | from |
 | `headline_line1` | text | Work |
 | `headline_line2` | text | home |
-| `subheadline_line1` | text | What to do when |
-| `subheadline_line2` | text | your home |
-| `supporting` | text | suddenly |
-| `subheadline_line1` | text | becomes your |
-| `subheadline_line2` | text | office? |
+| `supporting_line1` | text | What to do when |
+| `supporting_line2` | text | your home |
+| `supporting_line3` | text | suddenly |
+| `supporting_line4` | text | becomes your |
+| `supporting_line5` | text | office? |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #b2b1d6 |
@@ -407,11 +416,11 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

@@ -32,114 +32,117 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "FREE"  (OCR confidence 0.9429)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=903, y=51, w=110, h=220 |
-| Normalised | x=83.61%, y=4.72%, w=10.19%, h=20.37% |
+| Bounding box (px) | x=321, y=74, w=661, h=171 |
+| Normalised | x=29.72%, y=6.85%, w=61.2%, h=15.83% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 38 px |
-| Letter-spacing | 0.46 px (0.0121 em) |
+| Font size | 232 px |
+| Letter-spacing | -0.69 px (-0.003 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.81:1 |
-| Stroke (median/mean) | 31.0 / 22.59 px |
+| Contrast vs local bg | 1.0:1 |
+| Stroke (median/mean) | 50.0 / 37.19 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One |
-| Match IoU | 0.3743 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6572 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | -165 px |
+| Gap to next | -139 px |
 
 Alternate font fits considered:
-- `AlfaSlabOne-Regular.ttf` 39px track -0.49px — IoU 0.3653
-- `AlfaSlabOne-Regular.ttf` 37px track 1.42px — IoU 0.3614
+- `AlfaSlabOne-Regular.ttf` 231px track 0.27px — IoU 0.6552
+- `AlfaSlabOne-Regular.ttf` 230px track 1.22px — IoU 0.6516
 
-### `text-2` — headline
+### `text-2` — body
 
 **Text:** "BUY"  (OCR confidence 0.9871)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=87, y=106, w=169, h=54 |
-| Normalised | x=8.06%, y=9.81%, w=15.65%, h=5.0% |
+| Bounding box (px) | x=87, y=106, w=170, h=54 |
+| Normalised | x=8.06%, y=9.81%, w=15.74%, h=5.0% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 82 px |
-| Letter-spacing | -0.77 px (-0.0094 em) |
-| Line-height | 61.0 px (ratio 0.744) |
+| Font size | 76 px |
+| Letter-spacing | 1.05 px (0.0138 em) |
+| Line-height | 69.0 px (ratio 0.908) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#8c0a16` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.12:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 4.65:1 |
 | Stroke (median/mean) | 20.0 / 24.19 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One |
-| Match IoU | 0.062 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8999 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -165 px |
-| Gap to next | 7 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -139 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `AlfaSlabOne-Regular.ttf` 81px track 0.36px — IoU 0.165
-- `AlfaSlabOne-Regular.ttf` 80px track 1.49px — IoU 0.1601
+- `AlfaSlabOne-Regular.ttf` 77px track -0.09px — IoU 0.8617
+- `AlfaSlabOne-Regular.ttf` 78px track -1.23px — IoU 0.8413
 
-### `text-3` — headline
+### `text-3` — body
 
 **Text:** "GET"  (OCR confidence 0.9529)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=83, y=167, w=185, h=70 |
-| Normalised | x=7.69%, y=15.46%, w=17.13%, h=6.48% |
+| Bounding box (px) | x=83, y=175, w=175, h=57 |
+| Normalised | x=7.69%, y=16.2%, w=16.2%, h=5.28% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 82 px |
-| Letter-spacing | -0.77 px (-0.0094 em) |
-| Line-height | 61.0 px (ratio 0.744) |
+| Font size | 76 px |
+| Letter-spacing | 1.05 px (0.0138 em) |
+| Line-height | 69.0 px (ratio 0.908) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#8c0a16` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.09:1 |
-| Stroke (median/mean) | 7.0 / 10.08 px |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 4.73:1 |
+| Stroke (median/mean) | 21.0 / 27.93 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One |
-| Match IoU | 0.2813 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8469 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 7 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 15 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AlfaSlabOne-Regular.ttf` 81px track 0.36px — IoU 0.165
-- `AlfaSlabOne-Regular.ttf` 80px track 1.49px — IoU 0.1601
+- `AlfaSlabOne-Regular.ttf` 77px track -0.09px — IoU 0.8617
+- `AlfaSlabOne-Regular.ttf` 78px track -1.23px — IoU 0.8413
 
 ## 4. Colours (semantic)
 
@@ -148,10 +151,10 @@ Alternate font fits considered:
 | background | `#fdfdfd` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#801015` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'FREE' | glyph ink median |
-| textSecondary | `#8c0a16` | glyph ink of 'GET' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'GET' | glyph ink median |
 | accent | `#801015` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#913724` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -175,7 +178,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0397 |
+| Text coverage | 0.1133 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -202,22 +205,22 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | FREE |
-| `headline_line1` | text | BUY |
-| `headline_line2` | text | GET |
+| `headline` | text | FREE |
+| `body_line1` | text | BUY |
+| `body_line2` | text | GET |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fdfdfd |
 | `surface` | colour | #801015 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #8c0a16 |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #801015 |
 | `accentSecondary` | colour | #913724 |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Alfa Slab One |
-| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 52.7 |
 | `imageFocalY` | number | 55.4 |
 

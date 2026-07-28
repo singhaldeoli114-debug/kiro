@@ -34,11 +34,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — body
 
 **Text:** "LOGO"  (OCR confidence 0.9978)
 
@@ -61,6 +61,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.19:1 |
 | Stroke (median/mean) | 6.0 / 8.03 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Allura, Actor |
 | Match IoU | 0.6152 |
 | **Geometry fit confidence** | **medium** |
@@ -74,14 +75,14 @@ Alternate font fits considered:
 - `Actor-Regular.ttf` 42px track 0.71px — IoU 0.5587
 - `AlfaSlabOne-Regular.ttf` 39px track -0.58px — IoU 0.4587
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "New Arrival"  (OCR confidence 0.9252)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=324, y=165, w=434, h=64 |
-| Normalised | x=30.0%, y=15.28%, w=40.19%, h=5.93% |
+| Bounding box (px) | x=324, y=165, w=434, h=62 |
+| Normalised | x=30.0%, y=15.28%, w=40.19%, h=5.74% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -95,20 +96,22 @@ Alternate font fits considered:
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.02:1 |
-| Stroke (median/mean) | 4.0 / 4.39 px |
+| Contrast vs local bg | 2.03:1 |
+| Stroke (median/mean) | 4.0 / 4.38 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alfa Slab One, Allura, Actor |
-| Match IoU | 0.7837 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6095 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.9252) |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 77 px |
-| Gap to next | -10 px |
+| Gap to next | -3 px |
 
 Alternate font fits considered:
-- `Allura-Regular.ttf` 96px track -0.5px — IoU 0.7604
-- `Allura-Regular.ttf` 94px track 0.41px — IoU 0.7471
-- `AlfaSlabOne-Regular.ttf` 67px track -0.91px — IoU 0.1563
+- `Allura-Regular.ttf` 96px track -0.5px — IoU 0.6084
+- `Allura-Regular.ttf` 94px track 0.41px — IoU 0.5076
+- `AlfaSlabOne-Regular.ttf` 67px track -0.91px — IoU 0.1618
 
 ### `text-3` — headline
 
@@ -116,35 +119,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=52, y=219, w=966, h=184 |
-| Normalised | x=4.81%, y=20.28%, w=89.44%, h=17.04% |
+| Bounding box (px) | x=72, y=224, w=931, h=153 |
+| Normalised | x=6.67%, y=20.74%, w=86.2%, h=14.17% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 183 px |
-| Letter-spacing | -0.01 px (-0.0001 em) |
+| Font size | 176 px |
+| Letter-spacing | 0.32 px (0.0018 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fd5a04` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.11:1 |
-| Stroke (median/mean) | None / None px |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.0:1 |
+| Stroke (median/mean) | 50.0 / 47.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Allura, Actor |
-| Match IoU | 0.2949 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8266 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -10 px |
-| Gap to next | 183 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -3 px |
+| Gap to next | 209 px |
 
 Alternate font fits considered:
-- `AlfaSlabOne-Regular.ttf` 184px track -0.89px — IoU 0.2943
-- `AlfaSlabOne-Regular.ttf` 182px track 0.87px — IoU 0.2921
-- `Actor-Regular.ttf` 243px track -0.15px — IoU 0.2055
+- `AlfaSlabOne-Regular.ttf` 177px track -0.56px — IoU 0.8242
+- `AlfaSlabOne-Regular.ttf` 175px track 1.19px — IoU 0.8207
+- `Actor-Regular.ttf` 235px track -0.68px — IoU 0.3696
 
 ### `text-4` — fine-print
 
@@ -152,37 +156,39 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=561, y=586, w=69, h=48 |
-| Normalised | x=51.94%, y=54.26%, w=6.39%, h=4.44% |
+| Bounding box (px) | x=561, y=586, w=72, h=58 |
+| Normalised | x=51.94%, y=54.26%, w=6.67%, h=5.37% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 34 px |
-| Letter-spacing | -1.09 px (-0.0321 em) |
+| Font size | 35 px |
+| Letter-spacing | -0.65 px (-0.0186 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fde8e9` |
+| Colour | `#fde9e9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.87:1 |
+| Contrast vs local bg | 2.71:1 |
 | Stroke (median/mean) | 6.0 / 7.01 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alfa Slab One, Allura, Actor |
-| Match IoU | 0.4447 |
-| **Geometry fit confidence** | **low-textUnreliable** |
+| Match IoU | 0.3214 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8236) |
-| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
-| Gap to previous | 183 px |
-| Gap to next | 361 px |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | 209 px |
+| Gap to next | 351 px |
 
 Alternate font fits considered:
-- `AlfaSlabOne-Regular.ttf` 33px track -0.05px — IoU 0.4349
-- `AlfaSlabOne-Regular.ttf` 32px track 1.0px — IoU 0.4097
-- `Actor-Regular.ttf` 50px track -0.48px — IoU 0.2513
+- `AlfaSlabOne-Regular.ttf` 34px track 0.41px — IoU 0.3124
+- `AlfaSlabOne-Regular.ttf` 33px track 1.45px — IoU 0.2963
+- `Actor-Regular.ttf` 52px track -0.38px — IoU 0.2219
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "SHOP NOW"  (OCR confidence 0.9561)
 
@@ -205,12 +211,13 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.5:1 |
 | Stroke (median/mean) | 4.0 / 5.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Allura, Actor |
 | Match IoU | 0.6355 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 361 px |
+| Gap to previous | 351 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -224,11 +231,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefcfb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#211e23` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#fd5a04` | glyph ink of 'SPEAKER' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'New Arrival' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of 'SPEAKER' | glyph ink median |
+| textSecondary | `#fde9e9` | glyph ink of 'JBL' | glyph ink median |
 | accent | `#fd6201` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#fa3f19` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -252,7 +259,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1867 |
+| Text coverage | 0.1564 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -279,26 +286,26 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | LOGO |
-| `subheadline` | text | New Arrival |
+| `body` | text | LOGO |
+| `supporting` | text | New Arrival |
 | `headline` | text | SPEAKER |
 | `fine-print` | text | JBL |
-| `detail` | text | SHOP NOW |
+| `fine-print` | text | SHOP NOW |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefcfb |
 | `surface` | colour | #211e23 |
-| `textPrimary` | colour | #fd5a04 |
-| `textSecondary` | colour | #ffffff |
+| `textPrimary` | colour | #ffffff |
+| `textSecondary` | colour | #fde9e9 |
 | `accent` | colour | #fd6201 |
 | `accentSecondary` | colour | #fa3f19 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Alfa Slab One |
+| `show_body` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 51.9 |
 | `imageFocalY` | number | 58.7 |
 

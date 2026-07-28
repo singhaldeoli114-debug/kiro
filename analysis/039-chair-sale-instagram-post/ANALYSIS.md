@@ -33,11 +33,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — fine-print
 
 **Text:** "EXTRA"  (OCR confidence 0.9863)
 
@@ -60,13 +60,14 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.1:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Allura |
 | Match IoU | 0.9675 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -1 px |
+| Gap to next | -2 px |
 
 Alternate font fits considered:
 - `Roboto[wdth,wght].ttf` 60px track -0.44px — IoU 0.9567
@@ -79,16 +80,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=288, y=153, w=535, h=211 |
-| Normalised | x=26.67%, y=14.17%, w=49.54%, h=19.54% |
+| Bounding box (px) | x=287, y=152, w=536, h=212 |
+| Normalised | x=26.57%, y=14.07%, w=49.63%, h=19.63% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Allura-Regular.ttf` |
 | Variation axes | None |
-| Font size | 336 px |
-| Letter-spacing | -0.53 px (-0.0016 em) |
+| Font size | 337 px |
+| Letter-spacing | -0.73 px (-0.0022 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -96,18 +97,20 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.75:1 |
 | Stroke (median/mean) | 26.0 / 28.75 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Roboto, Allura |
-| Match IoU | 0.5858 |
+| Match IoU | 0.5871 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -1 px |
+| Gap to previous | -2 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Allura-Regular.ttf` 335px track 0.01px — IoU 0.584
-- `Allura-Regular.ttf` 334px track 0.54px — IoU 0.582
-- `Roboto[wdth,wght].ttf` 272px track -0.92px — IoU 0.2758
+- `Allura-Regular.ttf` 336px track -0.2px — IoU 0.5813
+- `Allura-Regular.ttf` 335px track 0.34px — IoU 0.5812
+- `Roboto[wdth,wght].ttf` 272px track -0.59px — IoU 0.2759
 
 ## 4. Colours (semantic)
 
@@ -119,7 +122,7 @@ Alternate font fits considered:
 | textSecondary | `#3c3c3c` | glyph ink of 'EXTRA' | glyph ink median |
 | accent | `#15a9be` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#946e4e` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -143,7 +146,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1037 |
+| Text coverage | 0.1043 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -170,7 +173,7 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | EXTRA |
+| `fine-print` | text | EXTRA |
 | `headline` | text | Sale |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -182,7 +185,7 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #946e4e |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Roboto |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 49.5 |
 | `imageFocalY` | number | 62.0 |

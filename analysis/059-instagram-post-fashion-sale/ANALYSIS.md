@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,107 +44,111 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=872, y=5, w=90, h=107 |
-| Normalised | x=80.74%, y=0.46%, w=8.33%, h=9.91% |
+| Bounding box (px) | x=872, y=10, w=87, h=86 |
+| Normalised | x=80.74%, y=0.93%, w=8.06%, h=7.96% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 102 px |
-| Letter-spacing | -0.16 px (-0.0016 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 104 px |
+| Letter-spacing | -1.0 px (-0.0096 em) |
+| Line-height | 101.0 px (ratio 0.971) |
+| Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#e79309` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.07:1 |
-| Stroke (median/mean) | None / None px |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.3:1 |
+| Stroke (median/mean) | 19.0 / 22.19 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.2081 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.8551 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.7115) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 95 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 103px track -1.03px — IoU 0.2062
-- `Anton-Regular.ttf` 101px track 0.73px — IoU 0.2035
-- `Roboto[wdth,wght].ttf` 84px track -0.77px — IoU 0.1885
+- `Anton-Regular.ttf` 103px track -0.03px — IoU 0.8875
+- `Anton-Regular.ttf` 102px track 0.94px — IoU 0.8802
+- `Roboto[wdth,wght].ttf` 85px track -1.56px — IoU 0.7805
 
-### `text-2` — detail
+### `text-2` — supporting
 
 **Text:** "GO"  (OCR confidence 0.9926)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=864, y=207, w=105, h=4 |
-| Normalised | x=80.0%, y=19.17%, w=9.72%, h=0.37% |
+| Bounding box (px) | x=864, y=111, w=100, h=95 |
+| Normalised | x=80.0%, y=10.28%, w=9.26%, h=8.8% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 81 px |
-| Letter-spacing | 1.58 px (0.0195 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Anton-Regular.ttf` |
+| Variation axes | None |
+| Font size | 104 px |
+| Letter-spacing | -1.0 px (-0.0096 em) |
+| Line-height | 101.0 px (ratio 0.971) |
+| Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#9ea1a1` |
+| Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.7:1 |
-| Stroke (median/mean) | 26.5 / 29.7 px |
+| Contrast vs local bg | 1.16:1 |
+| Stroke (median/mean) | 20.0 / 23.71 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.0829 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.93 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 95 px |
-| Gap to next | 114 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 15 px |
+| Gap to next | 125 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 82px track 0.3px — IoU 0.0811
-- `Roboto[wdth,wght].ttf` 83px track -0.98px — IoU 0.0796
-- `Roboto[wdth,wght].ttf` 76px track 0.78px — IoU 0.0796
+- `Anton-Regular.ttf` 103px track -0.03px — IoU 0.8875
+- `Anton-Regular.ttf` 102px track 0.94px — IoU 0.8802
+- `Roboto[wdth,wght].ttf` 85px track -1.56px — IoU 0.7805
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Fashion"  (OCR confidence 0.9899)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=643, y=325, w=398, h=139 |
-| Normalised | x=59.54%, y=30.09%, w=36.85%, h=12.87% |
+| Bounding box (px) | x=655, y=331, w=373, h=128 |
+| Normalised | x=60.65%, y=30.65%, w=34.54%, h=11.85% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 126 px |
-| Letter-spacing | 0.35 px (0.0028 em) |
+| Font file matched | `Anton-Regular.ttf` |
+| Variation axes | None |
+| Font size | 121 px |
+| Letter-spacing | -0.36 px (-0.003 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#313736` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.15:1 |
-| Stroke (median/mean) | 3.0 / 4.44 px |
+| Colour | `#f5a623` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.12:1 |
+| Stroke (median/mean) | 27.5 / 28.37 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.2244 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7695 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 114 px |
-| Gap to next | -25 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 125 px |
+| Gap to next | -22 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 128px track -0.7px — IoU 0.2241
-- `Roboto[wdth,wght].ttf` 127px track -0.17px — IoU 0.2236
-- `Anton-Regular.ttf` 128px track 0.19px — IoU 0.2225
+- `Anton-Regular.ttf` 120px track 0.15px — IoU 0.7665
+- `Anton-Regular.ttf` 119px track 0.67px — IoU 0.7549
+- `Roboto[wdth,wght].ttf` 120px track -0.67px — IoU 0.5869
 
 ### `text-4` — headline
 
@@ -152,8 +156,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=608, y=439, w=424, h=188 |
-| Normalised | x=56.3%, y=40.65%, w=39.26%, h=17.41% |
+| Bounding box (px) | x=608, y=437, w=424, h=188 |
+| Normalised | x=56.3%, y=40.46%, w=39.26%, h=17.41% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -168,199 +172,206 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.56:1 |
-| Stroke (median/mean) | 16.0 / 15.98 px |
+| Stroke (median/mean) | 16.0 / 16.0 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.2731 |
+| Match IoU | 0.2777 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -25 px |
-| Gap to next | -32 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -22 px |
+| Gap to next | -25 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 251px track 0.68px — IoU 0.272
-- `Anton-Regular.ttf` 252px track 0.11px — IoU 0.2709
-- `Roboto[wdth,wght].ttf` 242px track -0.78px — IoU 0.2684
+- `Allura-Regular.ttf` 264px track 0.79px — IoU 0.2769
+- `Anton-Regular.ttf` 251px track 0.68px — IoU 0.2767
+- `Anton-Regular.ttf` 252px track 0.11px — IoU 0.2754
 
-### `text-5` — detail
+### `text-5` — fine-print
 
-**Text:** "Loremi psumdolorsitamet,"  (OCR confidence 0.9828)
+**Text:** "Loremi psumdolorsit amet,"  (OCR confidence 0.9828)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=653, y=595, w=344, h=32 |
-| Normalised | x=60.46%, y=55.09%, w=31.85%, h=2.96% |
+| Bounding box (px) | x=653, y=600, w=336, h=28 |
+| Normalised | x=60.46%, y=55.56%, w=31.11%, h=2.59% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 34 px |
-| Letter-spacing | -0.68 px (-0.02 em) |
-| Line-height | 39.0 px (ratio 1.147) |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [600, 100.0] |
+| Font size | 29 px |
+| Letter-spacing | -0.59 px (-0.0203 em) |
+| Line-height | 36.5 px (ratio 1.259) |
 | Line | 1 of 3 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.6:1 |
-| Stroke (median/mean) | 2.0 / 5.42 px |
+| Stroke (median/mean) | 2.0 / 3.9 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.2372 |
+| Match IoU | 0.2228 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -32 px |
-| Gap to next | 11 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -25 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 33px track -0.22px — IoU 0.236
-- `Anton-Regular.ttf` 32px track 0.24px — IoU 0.2276
-- `Roboto[wdth,wght].ttf` 32px track -0.68px — IoU 0.1891
+- `Roboto[wdth,wght].ttf` 29px track -0.68px — IoU 0.5818
+- `Roboto[wdth,wght].ttf` 29px track -0.63px — IoU 0.5811
+- `Roboto[wdth,wght].ttf` 31px track -0.69px — IoU 0.5764
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "consectetur adipiscing elit,"  (OCR confidence 0.991)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=672, y=638, w=306, h=25 |
-| Normalised | x=62.22%, y=59.07%, w=28.33%, h=2.31% |
+| Bounding box (px) | x=672, y=638, w=307, h=25 |
+| Normalised | x=62.22%, y=59.07%, w=28.43%, h=2.31% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
-| Font size | 26 px |
-| Letter-spacing | -0.24 px (-0.0092 em) |
-| Line-height | 39.0 px (ratio 1.5) |
+| Variation axes | [600, 100.0] |
+| Font size | 29 px |
+| Letter-spacing | -0.59 px (-0.0203 em) |
+| Line-height | 36.5 px (ratio 1.259) |
 | Line | 2 of 3 |
 | Transform | lowercase |
 | Colour | `#ebecec` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.58:1 |
 | Stroke (median/mean) | 2.0 / 2.69 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.7231 |
+| Match IoU | 0.797 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 11 px |
+| Gap to previous | 10 px |
 | Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 26px track -0.3px — IoU 0.7054
-- `Roboto[wdth,wght].ttf` 28px track -0.45px — IoU 0.6752
-- `Roboto[wdth,wght].ttf` 25px track 0.33px — IoU 0.6155
+- `Roboto[wdth,wght].ttf` 29px track -0.68px — IoU 0.5818
+- `Roboto[wdth,wght].ttf` 29px track -0.63px — IoU 0.5811
+- `Roboto[wdth,wght].ttf` 31px track -0.69px — IoU 0.5764
 
-### `text-7` — detail
+### `text-7` — fine-print
 
 **Text:** "sed do eiusmod"  (OCR confidence 0.9671)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=734, y=673, w=181, h=20 |
-| Normalised | x=67.96%, y=62.31%, w=16.76%, h=1.85% |
+| Bounding box (px) | x=734, y=673, w=182, h=20 |
+| Normalised | x=67.96%, y=62.31%, w=16.85%, h=1.85% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [600, 100.0] |
-| Font size | 26 px |
-| Letter-spacing | -0.3 px (-0.0115 em) |
-| Line-height | 39.0 px (ratio 1.5) |
+| Font size | 29 px |
+| Letter-spacing | -0.59 px (-0.0203 em) |
+| Line-height | 36.5 px (ratio 1.259) |
 | Line | 3 of 3 |
 | Transform | lowercase |
-| Colour | `#f5f6f6` |
+| Colour | `#f4f4f4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.78:1 |
+| Contrast vs local bg | 3.75:1 |
 | Stroke (median/mean) | 2.0 / 2.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.7704 |
+| Match IoU | 0.7498 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 10 px |
-| Gap to next | 90 px |
+| Gap to next | 104 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 26px track -0.31px — IoU 0.7573
-- `Roboto[wdth,wght].ttf` 27px track 0.05px — IoU 0.7413
-- `Roboto[wdth,wght].ttf` 26px track -0.29px — IoU 0.7314
+- `Roboto[wdth,wght].ttf` 29px track -0.68px — IoU 0.5818
+- `Roboto[wdth,wght].ttf` 29px track -0.63px — IoU 0.5811
+- `Roboto[wdth,wght].ttf` 31px track -0.69px — IoU 0.5764
 
-### `text-8` — fine-print
+### `text-8` — body
 
 **Text:** "Shop Now"  (OCR confidence 0.9855)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=697, y=783, w=252, h=73 |
-| Normalised | x=64.54%, y=72.5%, w=23.33%, h=6.76% |
+| Bounding box (px) | x=710, y=797, w=226, h=59 |
+| Normalised | x=65.74%, y=73.8%, w=20.93%, h=5.46% |
 | Alignment | right |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 66 px |
-| Letter-spacing | -0.68 px (-0.0103 em) |
+| Font size | 58 px |
+| Letter-spacing | 0.05 px (0.0009 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 14.6:1 |
-| Stroke (median/mean) | 11.0 / 11.69 px |
+| Stroke (median/mean) | 11.0 / 12.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.3973 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8919 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 90 px |
-| Gap to next | 92 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 104 px |
+| Gap to next | 91 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 65px track -0.12px — IoU 0.3864
-- `Roboto[wdth,wght].ttf` 64px track -0.5px — IoU 0.3845
-- `Roboto[wdth,wght].ttf` 63px track 0.07px — IoU 0.3803
+- `Anton-Regular.ttf` 59px track -0.5px — IoU 0.8729
+- `Anton-Regular.ttf` 57px track 0.61px — IoU 0.8619
+- `Roboto[wdth,wght].ttf` 56px track 0.34px — IoU 0.5297
 
-### `text-9` — detail
+### `text-9` — fine-print
 
 **Text:** "WWW.SHOP.COM"  (OCR confidence 0.9856)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=702, y=948, w=199, h=18 |
-| Normalised | x=65.0%, y=87.78%, w=18.43%, h=1.67% |
+| Bounding box (px) | x=701, y=947, w=201, h=20 |
+| Normalised | x=64.91%, y=87.69%, w=18.61%, h=1.85% |
 | Alignment | right |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [400, 87.5] |
-| Font size | 28 px |
-| Letter-spacing | -1.03 px (-0.0368 em) |
+| Font file matched | `Anton-Regular.ttf` |
+| Variation axes | None |
+| Font size | 32 px |
+| Letter-spacing | 0.18 px (0.0056 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fbfbfb` |
+| Colour | `#f9f9f9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.36:1 |
+| Contrast vs local bg | 4.4:1 |
 | Stroke (median/mean) | 2.0 / 2.58 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.5792 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.4875 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 92 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 91 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 26px track -0.88px — IoU 0.5772
-- `Roboto[wdth,wght].ttf` 25px track -0.22px — IoU 0.5099
-- `Roboto[wdth,wght].ttf` 26px track -0.98px — IoU 0.5088
+- `Anton-Regular.ttf` 33px track -0.38px — IoU 0.4838
+- `Roboto[wdth,wght].ttf` 26px track -0.7px — IoU 0.4466
+- `Anton-Regular.ttf` 31px track 0.75px — IoU 0.4427
 
 ## 4. Colours (semantic)
 
@@ -369,10 +380,10 @@ Alternate font fits considered:
 | background | `#fcfcfb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#262c2c` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'Sale' | glyph ink median |
-| textSecondary | `#313736` | glyph ink of 'Fashion' | glyph ink median |
+| textSecondary | `#f5a623` | glyph ink of 'Fashion' | glyph ink median |
 | accent | `#e69209` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#eea327` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -396,7 +407,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1623 |
+| Text coverage | 0.1565 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -423,34 +434,34 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | LO |
-| `detail` | text | GO |
-| `subheadline` | text | Fashion |
+| `supporting_line1` | text | LO |
+| `supporting_line2` | text | GO |
+| `supporting` | text | Fashion |
 | `headline` | text | Sale |
-| `detail_line1` | text | Loremi psumdolorsitamet, |
-| `detail_line2` | text | consectetur adipiscing elit, |
-| `detail_line3` | text | sed do eiusmod |
-| `fine-print` | text | Shop Now |
-| `detail` | text | WWW.SHOP.COM |
+| `fine-print_line1` | text | Loremi psumdolorsit amet, |
+| `fine-print_line2` | text | consectetur adipiscing elit, |
+| `fine-print_line3` | text | sed do eiusmod |
+| `body` | text | Shop Now |
+| `fine-print` | text | WWW.SHOP.COM |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fcfcfb |
 | `surface` | colour | #262c2c |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #313736 |
+| `textSecondary` | colour | #f5a623 |
 | `accent` | colour | #e69209 |
 | `accentSecondary` | colour | #eea327 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Anton |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 55.4 |
 | `imageFocalY` | number | 53.2 |
 

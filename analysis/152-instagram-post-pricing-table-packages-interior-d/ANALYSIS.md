@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,8 +42,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=749, y=747, w=55, h=29 |
-| Normalised | x=69.35%, y=69.17%, w=5.09%, h=2.69% |
+| Bounding box (px) | x=749, y=747, w=56, h=30 |
+| Normalised | x=69.35%, y=69.17%, w=5.19%, h=2.78% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -51,26 +51,27 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
 | Font size | 35 px |
-| Letter-spacing | 0.12 px (0.0034 em) |
+| Letter-spacing | 0.62 px (0.0177 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 20.46:1 |
+| Contrast vs local bg | 20.48:1 |
 | Stroke (median/mean) | 3.0 / 4.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sulphur Point |
-| Match IoU | 0.7368 |
+| Match IoU | 0.7415 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -27 px |
+| Gap to next | -28 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 34px track 0.89px — IoU 0.7089
-- `SulphurPoint-Bold.ttf` 36px track -0.67px — IoU 0.6959
-- `SulphurPoint-Regular.ttf` 37px track -0.95px — IoU 0.5599
+- `SulphurPoint-Bold.ttf` 37px track -0.95px — IoU 0.6999
+- `SulphurPoint-Bold.ttf` 36px track -0.17px — IoU 0.6764
+- `SulphurPoint-Regular.ttf` 37px track -0.45px — IoU 0.5647
 
 ### `text-2` — headline
 
@@ -78,8 +79,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=139, y=749, w=317, h=33 |
-| Normalised | x=12.87%, y=69.35%, w=29.35%, h=3.06% |
+| Bounding box (px) | x=139, y=749, w=318, h=34 |
+| Normalised | x=12.87%, y=69.35%, w=29.44%, h=3.15% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -87,26 +88,27 @@ Alternate font fits considered:
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
 | Font size | 37 px |
-| Letter-spacing | -0.4 px (-0.0108 em) |
+| Letter-spacing | -0.34 px (-0.0092 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#050505` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 14.64:1 |
+| Contrast vs local bg | 14.65:1 |
 | Stroke (median/mean) | 3.0 / 3.52 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sulphur Point |
-| Match IoU | 0.5918 |
+| Match IoU | 0.616 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -27 px |
-| Gap to next | 27 px |
+| Gap to previous | -28 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 36px track 0.14px — IoU 0.5526
-- `SulphurPoint-Bold.ttf` 35px track 0.69px — IoU 0.5174
-- `SulphurPoint-Regular.ttf` 37px track -0.3px — IoU 0.5113
+- `SulphurPoint-Bold.ttf` 36px track 0.21px — IoU 0.5786
+- `SulphurPoint-Regular.ttf` 38px track -0.78px — IoU 0.5567
+- `SulphurPoint-Bold.ttf` 35px track 0.75px — IoU 0.5401
 
 ### `text-3` — headline
 
@@ -114,35 +116,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=752, y=809, w=52, h=29 |
-| Normalised | x=69.63%, y=74.91%, w=4.81%, h=2.69% |
+| Bounding box (px) | x=751, y=808, w=54, h=30 |
+| Normalised | x=69.54%, y=74.81%, w=5.0%, h=2.78% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 35 px |
-| Letter-spacing | -0.28 px (-0.008 em) |
+| Font size | 37 px |
+| Letter-spacing | -0.78 px (-0.0211 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 20.31:1 |
+| Contrast vs local bg | 20.38:1 |
 | Stroke (median/mean) | 3.0 / 4.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sulphur Point |
-| Match IoU | 0.7447 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6887 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 27 px |
-| Gap to next | -27 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 25 px |
+| Gap to next | -28 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 34px track 0.46px — IoU 0.7372
-- `SulphurPoint-Bold.ttf` 36px track -1.04px — IoU 0.6601
-- `SulphurPoint-Regular.ttf` 35px track 0.09px — IoU 0.525
+- `SulphurPoint-Bold.ttf` 35px track 0.72px — IoU 0.6799
+- `SulphurPoint-Bold.ttf` 36px track -0.04px — IoU 0.6412
+- `SulphurPoint-Regular.ttf` 37px track -0.39px — IoU 0.5303
 
 ### `text-4` — headline
 
@@ -150,8 +153,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=139, y=811, w=334, h=33 |
-| Normalised | x=12.87%, y=75.09%, w=30.93%, h=3.06% |
+| Bounding box (px) | x=139, y=810, w=334, h=34 |
+| Normalised | x=12.87%, y=75.0%, w=30.93%, h=3.15% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -167,18 +170,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 12.76:1 |
 | Stroke (median/mean) | 3.0 / 3.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sulphur Point |
-| Match IoU | 0.6088 |
+| Match IoU | 0.569 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -27 px |
+| Gap to previous | -28 px |
 | Gap to next | 23 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 35px track 0.52px — IoU 0.6085
-- `SulphurPoint-Bold.ttf` 36px track 0.01px — IoU 0.565
-- `SulphurPoint-Regular.ttf` 36px track 0.12px — IoU 0.5416
+- `SulphurPoint-Bold.ttf` 35px track 0.52px — IoU 0.5596
+- `SulphurPoint-Bold.ttf` 36px track 0.01px — IoU 0.526
+- `SulphurPoint-Regular.ttf` 36px track 0.12px — IoU 0.5046
 
 ### `text-6` — subheadline
 
@@ -186,16 +190,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=754, y=867, w=50, h=29 |
-| Normalised | x=69.81%, y=80.28%, w=4.63%, h=2.69% |
+| Bounding box (px) | x=753, y=867, w=52, h=30 |
+| Normalised | x=69.72%, y=80.28%, w=4.81%, h=2.78% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 25 px |
-| Letter-spacing | 0.68 px (0.0272 em) |
+| Font size | 28 px |
+| Letter-spacing | -0.56 px (-0.02 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -203,18 +207,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.31:1 |
 | Stroke (median/mean) | 3.0 / 4.59 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sulphur Point |
-| Match IoU | 0.6799 |
+| Match IoU | 0.6699 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.9018) |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 23 px |
-| Gap to next | -27 px |
+| Gap to next | -28 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 26px track 0.04px — IoU 0.6745
-- `SulphurPoint-Bold.ttf` 27px track -0.6px — IoU 0.6527
-- `SulphurPoint-Regular.ttf` 26px track 0.22px — IoU 0.497
+- `SulphurPoint-Bold.ttf` 27px track 0.07px — IoU 0.6209
+- `SulphurPoint-Bold.ttf` 26px track 0.71px — IoU 0.5804
+- `SulphurPoint-Regular.ttf` 28px track -0.37px — IoU 0.5066
 
 ### `text-5` — headline
 
@@ -222,8 +227,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=139, y=869, w=437, h=33 |
-| Normalised | x=12.87%, y=80.46%, w=40.46%, h=3.06% |
+| Bounding box (px) | x=139, y=869, w=437, h=34 |
+| Normalised | x=12.87%, y=80.46%, w=40.46%, h=3.15% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -239,18 +244,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 14.91:1 |
 | Stroke (median/mean) | 3.0 / 3.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sulphur Point |
-| Match IoU | 0.5584 |
+| Match IoU | 0.6094 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -27 px |
+| Gap to previous | -28 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 36px track 0.18px — IoU 0.5342
-- `SulphurPoint-Regular.ttf` 37px track -0.27px — IoU 0.49
-- `SulphurPoint-Bold.ttf` 35px track 0.71px — IoU 0.4676
+- `SulphurPoint-Bold.ttf` 36px track 0.18px — IoU 0.5514
+- `SulphurPoint-Regular.ttf` 37px track -0.27px — IoU 0.5073
+- `SulphurPoint-Bold.ttf` 35px track 0.71px — IoU 0.4921
 
 ## 4. Colours (semantic)
 
@@ -262,7 +268,7 @@ Alternate font fits considered:
 | textSecondary | `#080808` | glyph ink of 'Advertising Package' | glyph ink median |
 | accent | `#2c2719` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7b705d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -286,7 +292,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0347 |
+| Text coverage | 0.0359 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

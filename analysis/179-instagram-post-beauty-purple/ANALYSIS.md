@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,25 +43,26 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=556, y=239, w=456, h=134 |
-| Normalised | x=51.48%, y=22.13%, w=42.22%, h=12.41% |
+| Bounding box (px) | x=555, y=239, w=457, h=134 |
+| Normalised | x=51.39%, y=22.13%, w=42.31%, h=12.41% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `LibreBaskerville[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 125 px |
-| Letter-spacing | 0.4 px (0.0032 em) |
-| Line-height | 174.0 px (ratio 1.392) |
+| Font size | 126 px |
+| Letter-spacing | -0.12 px (-0.001 em) |
+| Line-height | 174.0 px (ratio 1.381) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.8:1 |
 | Stroke (median/mean) | 15.0 / 16.85 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville |
-| Match IoU | 0.9053 |
+| Match IoU | 0.8766 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 40 px |
 
 Alternate font fits considered:
-- `LibreBaskerville[wght].ttf` 127px track -1.05px — IoU 0.8814
-- `LibreBaskerville[wght].ttf` 126px track -0.33px — IoU 0.8812
-- `LibreBaskerville[wght].ttf` 125px track -0.25px — IoU 0.8777
+- `LibreBaskerville[wght].ttf` 127px track -0.85px — IoU 0.8786
+- `LibreBaskerville[wght].ttf` 126px track -0.78px — IoU 0.8752
+- `LibreBaskerville[wght].ttf` 125px track -0.05px — IoU 0.8662
 
 ### `text-2` — headline
 
@@ -87,17 +88,18 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `LibreBaskerville[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 125 px |
-| Letter-spacing | 0.4 px (0.0032 em) |
-| Line-height | 174.0 px (ratio 1.392) |
+| Font size | 126 px |
+| Letter-spacing | -0.12 px (-0.001 em) |
+| Line-height | 174.0 px (ratio 1.381) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.8:1 |
 | Stroke (median/mean) | 16.0 / 17.17 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville |
-| Match IoU | 0.8708 |
+| Match IoU | 0.8907 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -105,11 +107,11 @@ Alternate font fits considered:
 | Gap to next | 51 px |
 
 Alternate font fits considered:
-- `LibreBaskerville[wght].ttf` 127px track -1.05px — IoU 0.8814
-- `LibreBaskerville[wght].ttf` 126px track -0.33px — IoU 0.8812
-- `LibreBaskerville[wght].ttf` 125px track -0.25px — IoU 0.8777
+- `LibreBaskerville[wght].ttf` 127px track -0.85px — IoU 0.8786
+- `LibreBaskerville[wght].ttf` 126px track -0.78px — IoU 0.8752
+- `LibreBaskerville[wght].ttf` 125px track -0.05px — IoU 0.8662
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "" take time out of your"  (OCR confidence 0.9897)
 
@@ -132,6 +134,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.78:1 |
 | Stroke (median/mean) | 3.0 / 4.22 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville |
 | Match IoU | 0.6066 |
 | **Geometry fit confidence** | **medium** |
@@ -145,7 +148,7 @@ Alternate font fits considered:
 - `Raleway[wght].ttf` 40px track -0.37px — IoU 0.5692
 - `Raleway[wght].ttf` 38px track 0.26px — IoU 0.5686
 
-### `text-4` — subheadline
+### `text-4` — body
 
 **Text:** "day to love yourself ""  (OCR confidence 0.9907)
 
@@ -168,6 +171,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.77:1 |
 | Stroke (median/mean) | 3.0 / 4.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville |
 | Match IoU | 0.6006 |
 | **Geometry fit confidence** | **medium** |
@@ -181,7 +185,7 @@ Alternate font fits considered:
 - `Raleway[wght].ttf` 40px track -0.37px — IoU 0.5692
 - `Raleway[wght].ttf` 38px track 0.26px — IoU 0.5686
 
-### `text-5` — supporting
+### `text-5` — body
 
 **Text:** "July 7, 2021"  (OCR confidence 0.9976)
 
@@ -204,6 +208,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.75:1 |
 | Stroke (median/mean) | 3.0 / 3.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville |
 | Match IoU | 0.5976 |
 | **Geometry fit confidence** | **medium** |
@@ -217,7 +222,7 @@ Alternate font fits considered:
 - `Raleway[wght].ttf` 33px track -0.09px — IoU 0.6124
 - `Raleway[wght].ttf` 32px track 0.14px — IoU 0.5841
 
-### `text-6` — supporting
+### `text-6` — body
 
 **Text:** "09.00 pm"  (OCR confidence 0.9901)
 
@@ -240,6 +245,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.71:1 |
 | Stroke (median/mean) | 3.0 / 3.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville |
 | Match IoU | 0.6944 |
 | **Geometry fit confidence** | **medium** |
@@ -263,7 +269,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'Care' | glyph ink median |
 | accent | `#9977fe` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#26241b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | middle-left |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.1129 |
+| Text coverage | 0.113 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -316,10 +322,10 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | Beauty |
 | `headline_line2` | text | Care |
-| `subheadline_line1` | text | " take time out of your |
-| `subheadline_line2` | text | day to love yourself " |
-| `supporting_line1` | text | July 7, 2021 |
-| `supporting_line2` | text | 09.00 pm |
+| `body_line1` | text | " take time out of your |
+| `body_line2` | text | day to love yourself " |
+| `body_line1` | text | July 7, 2021 |
+| `body_line2` | text | 09.00 pm |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #9da1a0 |
@@ -332,10 +338,10 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Raleway |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 35.5 |
 | `imageFocalY` | number | 59.5 |
 

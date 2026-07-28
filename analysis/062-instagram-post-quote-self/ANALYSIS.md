@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=199, y=351, w=675, h=81 |
-| Normalised | x=18.43%, y=32.5%, w=62.5%, h=7.5% |
+| Bounding box (px) | x=199, y=346, w=675, h=86 |
+| Normalised | x=18.43%, y=32.04%, w=62.5%, h=7.96% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -58,29 +58,30 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Transform | uppercase |
 | Colour | `#fcf9f9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.74:1 |
+| Contrast vs local bg | 2.71:1 |
 | Stroke (median/mean) | 12.0 / 14.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alike, Dancing Script |
-| Match IoU | 0.8191 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6457 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
 | Gap to next | 31 px |
 
 Alternate font fits considered:
-- `Alike-Regular.ttf` 109px track 0.02px — IoU 0.8059
-- `Alike-Regular.ttf` 108px track 0.64px — IoU 0.7975
-- `DancingScript[wght].ttf` 120px track 0.25px — IoU 0.2623
+- `Alike-Regular.ttf` 109px track 0.02px — IoU 0.6401
+- `Alike-Regular.ttf` 108px track 0.64px — IoU 0.6363
+- `DancingScript[wght].ttf` 120px track 0.25px — IoU 0.2164
 
-### `text-2` — headline
+### `text-2` — subheadline
 
 **Text:** "VERSION"  (OCR confidence 0.9827)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=192, y=463, w=674, h=118 |
-| Normalised | x=17.78%, y=42.87%, w=62.41%, h=10.93% |
+| Bounding box (px) | x=192, y=463, w=675, h=118 |
+| Normalised | x=17.78%, y=42.87%, w=62.5%, h=10.93% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,26 +89,27 @@ Alternate font fits considered:
 | Font file matched | `Alike-Regular.ttf` |
 | Variation axes | None |
 | Font size | 156 px |
-| Letter-spacing | -0.61 px (-0.0039 em) |
-| Line-height | 143.0 px (ratio 0.917) |
-| Line | 1 of 2 |
+| Letter-spacing | -0.45 px (-0.0029 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#fcfafa` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.18:1 |
 | Stroke (median/mean) | 17.0 / 17.93 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alike, Dancing Script |
-| Match IoU | 0.814 |
+| Match IoU | 0.8137 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 31 px |
-| Gap to next | 25 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Alike-Regular.ttf` 154px track 0.84px — IoU 0.7326
-- `Alike-Regular.ttf` 155px track 0.11px — IoU 0.7264
-- `DancingScript[wght].ttf` 160px track -0.12px — IoU 0.2264
+- `Alike-Regular.ttf` 155px track 0.28px — IoU 0.804
+- `Alike-Regular.ttf` 154px track 1.0px — IoU 0.8016
+- `DancingScript[wght].ttf` 161px track -0.65px — IoU 0.2283
 
 ### `text-3` — headline
 
@@ -115,35 +117,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=434, y=606, w=425, h=153 |
-| Normalised | x=40.19%, y=56.11%, w=39.35%, h=14.17% |
+| Bounding box (px) | x=434, y=598, w=425, h=161 |
+| Normalised | x=40.19%, y=55.37%, w=39.35%, h=14.91% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alike-Regular.ttf` |
 | Variation axes | None |
-| Font size | 156 px |
-| Letter-spacing | -0.61 px (-0.0039 em) |
-| Line-height | 143.0 px (ratio 0.917) |
-| Line | 2 of 2 |
+| Font size | 198 px |
+| Letter-spacing | -0.65 px (-0.0033 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#f8f4f4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.54:1 |
+| Contrast vs local bg | 3.55:1 |
 | Stroke (median/mean) | 27.0 / 26.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alike, Dancing Script |
-| Match IoU | 0.6785 |
+| Match IoU | 0.5788 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 25 px |
+| Gap to previous | 17 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alike-Regular.ttf` 154px track 0.84px — IoU 0.7326
-- `Alike-Regular.ttf` 155px track 0.11px — IoU 0.7264
-- `DancingScript[wght].ttf` 160px track -0.12px — IoU 0.2264
+- `Alike-Regular.ttf` 197px track 0.43px — IoU 0.5656
+- `Alike-Regular.ttf` 196px track 1.51px — IoU 0.5611
+- `DancingScript[wght].ttf` 202px track -0.71px — IoU 0.2364
 
 ## 4. Colours (semantic)
 
@@ -155,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#fcfafa` | glyph ink of 'VERSION' | glyph ink median |
 | accent | `#802411` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#e34516` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | upper-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1708 |
+| Text coverage | 0.1767 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,8 +210,8 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `subheadline` | text | BE THE BEST |
-| `headline_line1` | text | VERSION |
-| `headline_line2` | text | YOU |
+| `subheadline` | text | VERSION |
+| `headline` | text | YOU |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f8f4f4 |
@@ -220,7 +223,7 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Alike |
 | `show_subheadline` | boolean | — |
-| `show_headline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 44.4 |
 | `imageFocalY` | number | 39.3 |

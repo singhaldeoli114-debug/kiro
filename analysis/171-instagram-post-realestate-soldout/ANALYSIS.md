@@ -34,26 +34,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "SOLD OUT"  (OCR confidence 0.9744)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=67, y=660, w=606, h=90 |
-| Normalised | x=6.2%, y=61.11%, w=56.11%, h=8.33% |
+| Bounding box (px) | x=66, y=660, w=607, h=90 |
+| Normalised | x=6.11%, y=61.11%, w=56.2%, h=8.33% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AbrilFatface-Regular.ttf` |
 | Variation axes | None |
-| Font size | 122 px |
-| Letter-spacing | -0.45 px (-0.0037 em) |
+| Font size | 123 px |
+| Letter-spacing | -1.02 px (-0.0083 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -61,18 +61,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.02:1 |
 | Stroke (median/mean) | 24.0 / 20.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Abhaya Libre, Abel |
-| Match IoU | 0.8926 |
+| Match IoU | 0.9017 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -40 px |
+| Gap to next | -41 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 121px track 0.26px — IoU 0.8878
-- `AbrilFatface-Regular.ttf` 120px track 0.98px — IoU 0.8773
-- `AbhayaLibre-ExtraBold.ttf` 137px track -0.35px — IoU 0.6875
+- `AbrilFatface-Regular.ttf` 122px track -0.31px — IoU 0.8907
+- `AbrilFatface-Regular.ttf` 121px track 0.41px — IoU 0.8808
+- `AbhayaLibre-ExtraBold.ttf` 137px track -0.21px — IoU 0.7016
 
 ### `text-2` — headline
 
@@ -80,8 +81,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=890, y=710, w=24, h=242 |
-| Normalised | x=82.41%, y=65.74%, w=2.22%, h=22.41% |
+| Bounding box (px) | x=889, y=709, w=26, h=243 |
+| Normalised | x=82.31%, y=65.65%, w=2.41%, h=22.5% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -93,26 +94,27 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#eeeae7` |
+| Colour | `#ece7e4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.34:1 |
+| Contrast vs local bg | 3.3:1 |
 | Stroke (median/mean) | 3.0 / 4.17 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Abhaya Libre, Abel |
 | Match IoU | — |
 | **Geometry fit confidence** | **unresolved** |
 | OCR text reliable | True  |
 | Fit interpretation | no viable candidate could be rendered |
-| Gap to previous | -40 px |
+| Gap to previous | -41 px |
 | Gap to next | -66 px |
 
-### `text-3` — supporting
+### `text-3` — body
 
 **Text:** "$150,000"  (OCR confidence 0.9992)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=236, y=886, w=290, h=64 |
-| Normalised | x=21.85%, y=82.04%, w=26.85%, h=5.93% |
+| Bounding box (px) | x=235, y=886, w=291, h=64 |
+| Normalised | x=21.76%, y=82.04%, w=26.94%, h=5.93% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -120,7 +122,7 @@ Alternate font fits considered:
 | Font file matched | `AbhayaLibre-SemiBold.ttf` |
 | Variation axes | None |
 | Font size | 79 px |
-| Letter-spacing | -0.75 px (-0.0095 em) |
+| Letter-spacing | -0.6 px (-0.0076 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -128,8 +130,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.61:1 |
 | Stroke (median/mean) | 7.0 / 7.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Abhaya Libre, Abel |
-| Match IoU | 0.8304 |
+| Match IoU | 0.823 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -137,9 +140,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 78px track -0.21px — IoU 0.8219
-- `AbhayaLibre-SemiBold.ttf` 77px track 0.31px — IoU 0.8187
-- `AbhayaLibre-Medium.ttf` 79px track -0.14px — IoU 0.807
+- `AbhayaLibre-Medium.ttf` 79px track 0.01px — IoU 0.7982
+- `AbhayaLibre-Medium.ttf` 80px track -0.52px — IoU 0.787
+- `AbhayaLibre-SemiBold.ttf` 78px track -0.07px — IoU 0.7725
 
 ## 4. Colours (semantic)
 
@@ -147,11 +150,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f6efed` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#152e1e` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#eeeae7` | glyph ink of 'www.website.com' | glyph ink median |
+| textPrimary | `#ece7e4` | glyph ink of 'www.website.com' | glyph ink median |
 | textSecondary | `#ffffff` | glyph ink of 'SOLD OUT' | glyph ink median |
 | accent | `#59381b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#152e1e` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -175,7 +178,7 @@ Full palette (k-means):
 | Subject position | upper-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0677 |
+| Text coverage | 0.0682 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -202,22 +205,22 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | SOLD OUT |
+| `supporting` | text | SOLD OUT |
 | `headline` | text | www.website.com |
-| `supporting` | text | $150,000 |
+| `body` | text | $150,000 |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f6efed |
 | `surface` | colour | #152e1e |
-| `textPrimary` | colour | #eeeae7 |
+| `textPrimary` | colour | #ece7e4 |
 | `textSecondary` | colour | #ffffff |
 | `accent` | colour | #59381b |
 | `accentSecondary` | colour | #152e1e |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abril Fatface |
-| `show_subheadline` | boolean | — |
-| `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 40.6 |
 | `imageFocalY` | number | 27.8 |
 

@@ -33,26 +33,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — body
 
 **Text:** "your website"  (OCR confidence 0.9949)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=401, y=85, w=278, h=47 |
-| Normalised | x=37.13%, y=7.87%, w=25.74%, h=4.35% |
+| Bounding box (px) | x=400, y=84, w=280, h=49 |
+| Normalised | x=37.04%, y=7.78%, w=25.93%, h=4.54% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
-| Font size | 48 px |
-| Letter-spacing | 0.42 px (0.0087 em) |
+| Variation axes | [500, 87.5] |
+| Font size | 53 px |
+| Letter-spacing | -0.37 px (-0.007 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.6:1 |
 | Stroke (median/mean) | 4.0 / 4.88 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Roboto |
-| Match IoU | 0.7529 |
+| Match IoU | 0.7797 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 242 px |
+| Gap to next | 241 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 53px track -0.3px — IoU 0.7477
-- `Roboto[wdth,wght].ttf` 52px track -0.06px — IoU 0.746
-- `Roboto[wdth,wght].ttf` 56px track -0.18px — IoU 0.7391
+- `Roboto[wdth,wght].ttf` 48px track 0.61px — IoU 0.7776
+- `Roboto[wdth,wght].ttf` 52px track 0.12px — IoU 0.7704
+- `Roboto[wdth,wght].ttf` 49px track 0.09px — IoU 0.769
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=332, y=374, w=421, h=197 |
-| Normalised | x=30.74%, y=34.63%, w=38.98%, h=18.24% |
+| Bounding box (px) | x=332, y=374, w=421, h=192 |
+| Normalised | x=30.74%, y=34.63%, w=38.98%, h=17.78% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -95,19 +96,20 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.09:1 |
-| Stroke (median/mean) | 40.0 / 33.24 px |
+| Stroke (median/mean) | 40.0 / 33.19 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Roboto |
-| Match IoU | 0.4912 |
+| Match IoU | 0.5191 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 242 px |
-| Gap to next | -10 px |
+| Gap to previous | 241 px |
+| Gap to next | 0 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 202px track -0.26px — IoU 0.4828
-- `AbrilFatface-Regular.ttf` 201px track 0.43px — IoU 0.4787
-- `Roboto[wdth,wght].ttf` 235px track -0.34px — IoU 0.409
+- `AbrilFatface-Regular.ttf` 202px track -0.26px — IoU 0.5099
+- `AbrilFatface-Regular.ttf` 201px track 0.43px — IoU 0.5079
+- `Roboto[wdth,wght].ttf` 235px track -0.34px — IoU 0.429
 
 ### `text-3` — headline
 
@@ -115,8 +117,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=286, y=561, w=512, h=149 |
-| Normalised | x=26.48%, y=51.94%, w=47.41%, h=13.8% |
+| Bounding box (px) | x=286, y=566, w=513, h=139 |
+| Normalised | x=26.48%, y=52.41%, w=47.5%, h=12.87% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,26 +126,28 @@ Alternate font fits considered:
 | Font file matched | `Roboto-Italic[wdth,wght].ttf` |
 | Variation axes | [900.0, 100.0] |
 | Font size | 214 px |
-| Letter-spacing | 0.73 px (0.0034 em) |
+| Letter-spacing | 1.07 px (0.005 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.09:1 |
-| Stroke (median/mean) | 39.0 / 29.04 px |
+| Stroke (median/mean) | 39.0 / 29.11 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abril Fatface, Roboto |
-| Match IoU | 0.4854 |
+| Match IoU | 0.4627 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -10 px |
+| Gap to previous | 0 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto-Italic[wdth,wght].ttf` 229px track 0.33px — IoU 0.4825
-- `Roboto-Italic[wdth,wght].ttf` 244px track 0.49px — IoU 0.482
-- `Roboto-Italic[wdth,wght].ttf` 244px track 0.89px — IoU 0.4815
+- `Roboto-Italic[wdth,wght].ttf` 246px track -0.57px — IoU 0.4616
+- `Roboto-Italic[wdth,wght].ttf` 244px track 0.82px — IoU 0.4605
+- `Roboto-Italic[wdth,wght].ttf` 245px track 0.13px — IoU 0.4601
 
 ## 4. Colours (semantic)
 
@@ -155,7 +159,7 @@ Alternate font fits considered:
 | textSecondary | `#1b2e05` | glyph ink of 'your website' | glyph ink median |
 | accent | `#195e09` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f2e29d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +183,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | False |
-| Text coverage | 0.1477 |
+| Text coverage | 0.1422 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -206,7 +210,7 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | your website |
+| `body` | text | your website |
 | `headline` | text | Give |
 | `headline` | text | Away |
 | `heroImage` | image | framed/panelled artwork |
@@ -219,7 +223,7 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #f2e29d |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abril Fatface |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 50.0 |

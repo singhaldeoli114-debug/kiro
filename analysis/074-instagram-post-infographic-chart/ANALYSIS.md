@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -59,13 +59,14 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.88:1 |
 | Stroke (median/mean) | 4.0 / 5.72 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Architects Daughter |
 | Match IoU | 0.7182 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -27 px |
+| Gap to next | -28 px |
 
 Alternate font fits considered:
 - `ArchitectsDaughter-Regular.ttf` 51px track -0.16px — IoU 0.717
@@ -77,16 +78,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=700, y=147, w=292, h=33 |
-| Normalised | x=64.81%, y=13.61%, w=27.04%, h=3.06% |
+| Bounding box (px) | x=700, y=146, w=293, h=35 |
+| Normalised | x=64.81%, y=13.52%, w=27.13%, h=3.24% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchitectsDaughter-Regular.ttf` |
 | Variation axes | None |
-| Font size | 51 px |
-| Letter-spacing | -0.17 px (-0.0033 em) |
+| Font size | 52 px |
+| Letter-spacing | -0.77 px (-0.0148 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -94,17 +95,18 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.88:1 |
 | Stroke (median/mean) | 4.0 / 6.21 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Architects Daughter |
-| Match IoU | 0.7261 |
+| Match IoU | 0.7053 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -27 px |
-| Gap to next | 683 px |
+| Gap to previous | -28 px |
+| Gap to next | 682 px |
 
 Alternate font fits considered:
-- `ArchitectsDaughter-Regular.ttf` 50px track 0.55px — IoU 0.7065
-- `ArchitectsDaughter-Regular.ttf` 52px track -0.9px — IoU 0.7
+- `ArchitectsDaughter-Regular.ttf` 51px track -0.05px — IoU 0.6542
+- `ArchitectsDaughter-Regular.ttf` 50px track 0.67px — IoU 0.6382
 
 ### `text-3` — headline
 
@@ -112,16 +114,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=423, y=863, w=248, h=35 |
-| Normalised | x=39.17%, y=79.91%, w=22.96%, h=3.24% |
+| Bounding box (px) | x=423, y=863, w=249, h=36 |
+| Normalised | x=39.17%, y=79.91%, w=23.06%, h=3.33% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchitectsDaughter-Regular.ttf` |
 | Variation axes | None |
-| Font size | 51 px |
-| Letter-spacing | -0.16 px (-0.0031 em) |
+| Font size | 52 px |
+| Letter-spacing | -0.72 px (-0.0138 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -129,17 +131,18 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.88:1 |
 | Stroke (median/mean) | 4.0 / 5.56 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Architects Daughter |
-| Match IoU | 0.7405 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6739 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 683 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 682 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `ArchitectsDaughter-Regular.ttf` 50px track 0.54px — IoU 0.6962
-- `ArchitectsDaughter-Regular.ttf` 52px track -0.86px — IoU 0.6715
+- `ArchitectsDaughter-Regular.ttf` 51px track -0.02px — IoU 0.669
+- `ArchitectsDaughter-Regular.ttf` 50px track 0.68px — IoU 0.6466
 
 ## 4. Colours (semantic)
 
@@ -151,7 +154,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'AMBIVERT' | glyph ink median |
 | accent | `#041233` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#e1d10c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -175,7 +178,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0243 |
+| Text coverage | 0.0251 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

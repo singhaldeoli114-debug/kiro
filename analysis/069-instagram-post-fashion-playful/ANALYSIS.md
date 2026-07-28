@@ -33,26 +33,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — body
 
 **Text:** "SHOP NOW"  (OCR confidence 0.948)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=775, y=137, w=178, h=25 |
-| Normalised | x=71.76%, y=12.69%, w=16.48%, h=2.31% |
+| Bounding box (px) | x=774, y=137, w=179, h=26 |
+| Normalised | x=71.67%, y=12.69%, w=16.57%, h=2.41% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
+| Variation axes | [700, 100.0] |
 | Font size | 35 px |
-| Letter-spacing | -0.42 px (-0.012 em) |
+| Letter-spacing | -0.3 px (-0.0086 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.43:1 |
 | Stroke (median/mean) | 3.0 / 3.94 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.8123 |
+| Match IoU | 0.7669 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 49 px |
+| Gap to next | 47 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 35px track -0.44px — IoU 0.8069
-- `Roboto[wdth,wght].ttf` 38px track -0.79px — IoU 0.7974
-- `Roboto[wdth,wght].ttf` 35px track -0.44px — IoU 0.7811
+- `Roboto[wdth,wght].ttf` 35px track -0.29px — IoU 0.7635
+- `Roboto[wdth,wght].ttf` 41px track -0.87px — IoU 0.7606
+- `Roboto[wdth,wght].ttf` 38px track -0.65px — IoU 0.7597
 
 ### `text-2` — fine-print
 
@@ -79,16 +80,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=778, y=211, w=176, h=24 |
-| Normalised | x=72.04%, y=19.54%, w=16.3%, h=2.22% |
+| Bounding box (px) | x=777, y=210, w=177, h=26 |
+| Normalised | x=71.94%, y=19.44%, w=16.39%, h=2.41% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
+| Variation axes | [500, 87.5] |
 | Font size | 28 px |
-| Letter-spacing | -0.58 px (-0.0207 em) |
+| Letter-spacing | -0.5 px (-0.0179 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 12.18:1 |
 | Stroke (median/mean) | 2.0 / 2.41 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.6904 |
+| Match IoU | 0.6659 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 49 px |
-| Gap to next | 221 px |
+| Gap to previous | 47 px |
+| Gap to next | 225 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 26px track -0.41px — IoU 0.6752
-- `Roboto[wdth,wght].ttf` 28px track -0.6px — IoU 0.6743
-- `Roboto[wdth,wght].ttf` 26px track -0.41px — IoU 0.6693
+- `Roboto[wdth,wght].ttf` 26px track -0.32px — IoU 0.6567
+- `Roboto[wdth,wght].ttf` 26px track -0.32px — IoU 0.6519
+- `Roboto[wdth,wght].ttf` 27px track -0.93px — IoU 0.6399
 
 ### `text-3` — headline
 
@@ -115,107 +117,73 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=173, y=456, w=219, h=142 |
-| Normalised | x=16.02%, y=42.22%, w=20.28%, h=13.15% |
+| Bounding box (px) | x=162, y=461, w=230, h=137 |
+| Normalised | x=15.0%, y=42.69%, w=21.3%, h=12.69% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
-| Font size | 134 px |
-| Letter-spacing | 0.74 px (0.0055 em) |
+| Font size | 143 px |
+| Letter-spacing | -0.44 px (-0.0031 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 10.97:1 |
-| Stroke (median/mean) | 11.0 / 15.49 px |
+| Contrast vs local bg | 11.71:1 |
+| Stroke (median/mean) | 11.0 / 15.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.4432 |
+| Match IoU | 0.4206 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 221 px |
-| Gap to next | -118 px |
+| Gap to previous | 225 px |
+| Gap to next | -113 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 135px track 0.2px — IoU 0.4419
-- `Roboto[wdth,wght].ttf` 136px track -0.34px — IoU 0.4369
-- `Roboto[wdth,wght].ttf` 127px track 0.43px — IoU 0.4261
+- `Roboto[wdth,wght].ttf` 142px track 0.09px — IoU 0.417
+- `Roboto[wdth,wght].ttf` 134px track 0.09px — IoU 0.4161
+- `Roboto[wdth,wght].ttf` 141px track 0.64px — IoU 0.416
 
-### `text-4` — subheadline
+### `text-4` — headline
 
 **Text:** "youur"  (OCR confidence 0.7742)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=327, y=480, w=256, h=118 |
-| Normalised | x=30.28%, y=44.44%, w=23.7%, h=10.93% |
+| Bounding box (px) | x=327, y=485, w=256, h=109 |
+| Normalised | x=30.28%, y=44.91%, w=23.7%, h=10.09% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Lobster-Regular.ttf` |
 | Variation axes | None |
-| Font size | 115 px |
-| Letter-spacing | -0.43 px (-0.0037 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 137 px |
+| Letter-spacing | -0.49 px (-0.0036 em) |
+| Line-height | 146.0 px (ratio 1.066) |
+| Line | 1 of 2 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 17.77:1 |
-| Stroke (median/mean) | 10.0 / 16.08 px |
+| Contrast vs local bg | 17.68:1 |
+| Stroke (median/mean) | 10.0 / 16.17 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.3556 |
+| Match IoU | 0.3697 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7742) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -118 px |
-| Gap to next | 30 px |
+| Gap to previous | -113 px |
+| Gap to next | 37 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 113px track -0.77px — IoU 0.3555
-- `Roboto[wdth,wght].ttf` 100px track -0.7px — IoU 0.3554
-- `Roboto[wdth,wght].ttf` 105px track 0.08px — IoU 0.3549
-
-### `text-6` — supporting
-
-**Text:** "Baby"  (OCR confidence 0.9857)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=770, y=628, w=92, h=36 |
-| Normalised | x=71.3%, y=58.15%, w=8.52%, h=3.33% |
-| Alignment | right |
-| z-order | 105 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 41 px |
-| Letter-spacing | -0.19 px (-0.0046 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#251813` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 4.14:1 |
-| Stroke (median/mean) | 5.0 / 5.13 px |
-| Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.2409 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 30 px |
-| Gap to next | -33 px |
-
-Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 41px track -0.07px — IoU 0.2378
-- `Roboto[wdth,wght].ttf` 45px track -0.98px — IoU 0.2368
-- `Roboto[wdth,wght].ttf` 46px track 0.15px — IoU 0.2335
+- `Lobster-Regular.ttf` 136px track -0.04px — IoU 0.4299
+- `Lobster-Regular.ttf` 135px track 0.42px — IoU 0.4298
+- `Roboto[wdth,wght].ttf` 123px track -0.55px — IoU 0.4187
 
 ### `text-5` — headline
 
@@ -223,8 +191,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=255, y=631, w=246, h=133 |
-| Normalised | x=23.61%, y=58.43%, w=22.78%, h=12.31% |
+| Bounding box (px) | x=255, y=631, w=246, h=134 |
+| Normalised | x=23.61%, y=58.43%, w=22.78%, h=12.41% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -233,25 +201,63 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 137 px |
 | Letter-spacing | -0.49 px (-0.0036 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 146.0 px (ratio 1.066) |
+| Line | 2 of 2 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 18.05:1 |
 | Stroke (median/mean) | 10.0 / 15.53 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.5046 |
+| Match IoU | 0.5075 |
 | **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8877) |
 | Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
-| Gap to previous | -33 px |
+| Gap to previous | 37 px |
+| Gap to next | -132 px |
+
+Alternate font fits considered:
+- `Lobster-Regular.ttf` 136px track -0.04px — IoU 0.4299
+- `Lobster-Regular.ttf` 135px track 0.42px — IoU 0.4298
+- `Roboto[wdth,wght].ttf` 123px track -0.55px — IoU 0.4187
+
+### `text-6` — body
+
+**Text:** "Baby"  (OCR confidence 0.9857)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=770, y=633, w=92, h=31 |
+| Normalised | x=71.3%, y=58.61%, w=8.52%, h=2.87% |
+| Alignment | right |
+| z-order | 105 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 87.5] |
+| Font size | 44 px |
+| Letter-spacing | -0.41 px (-0.0093 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | none |
+| Colour | `#251813` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.08:1 |
+| Stroke (median/mean) | 5.0 / 5.08 px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Lobster, Roboto |
+| Match IoU | 0.2495 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -132 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Lobster-Regular.ttf` 135px track 0.42px — IoU 0.4919
-- `Lobster-Regular.ttf` 136px track -0.04px — IoU 0.4914
-- `Roboto[wdth,wght].ttf` 123px track -0.55px — IoU 0.4633
+- `Roboto[wdth,wght].ttf` 42px track -0.94px — IoU 0.2475
+- `Roboto[wdth,wght].ttf` 45px track -0.98px — IoU 0.247
+- `Roboto[wdth,wght].ttf` 47px track -0.53px — IoU 0.2459
 
 ## 4. Colours (semantic)
 
@@ -263,7 +269,7 @@ Alternate font fits considered:
 | textSecondary | `#251813` | glyph ink of 'Baby' | glyph ink median |
 | accent | `#e05941` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#fed0bd` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | False |
-| Text coverage | 0.0909 |
+| Text coverage | 0.0896 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -314,12 +320,12 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | SHOP NOW |
+| `body` | text | SHOP NOW |
 | `fine-print` | text | www.shop.com |
 | `headline` | text | Get  |
-| `subheadline` | text | youur |
-| `supporting` | text | Baby |
-| `headline` | text | Slyle |
+| `headline_line1` | text | youur |
+| `headline_line2` | text | Slyle |
+| `body` | text | Baby |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #e5eceb |
@@ -330,12 +336,12 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #fed0bd |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Lobster |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 49.4 |
 | `imageFocalY` | number | 46.2 |
 

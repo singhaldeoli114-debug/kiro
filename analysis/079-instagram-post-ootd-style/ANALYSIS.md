@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=46, y=96, w=314, h=70 |
-| Normalised | x=4.26%, y=8.89%, w=29.07%, h=6.48% |
+| Bounding box (px) | x=45, y=96, w=315, h=70 |
+| Normalised | x=4.17%, y=8.89%, w=29.17%, h=6.48% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
 | Font size | 85 px |
-| Letter-spacing | -0.79 px (-0.0093 em) |
+| Letter-spacing | -0.54 px (-0.0064 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.94:1 |
 | Stroke (median/mean) | 13.0 / 17.94 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Lily Script One |
-| Match IoU | 0.7559 |
+| Match IoU | 0.7523 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 614 px |
+| Gap to next | 619 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 84px track 0.15px — IoU 0.7474
-- `Alata-Regular.ttf` 83px track 1.08px — IoU 0.7212
-- `LilyScriptOne-Regular.ttf` 97px track -1.16px — IoU 0.5403
+- `Alata-Regular.ttf` 84px track 0.4px — IoU 0.7344
+- `Alata-Regular.ttf` 83px track 1.33px — IoU 0.7086
+- `LilyScriptOne-Regular.ttf` 95px track 0.73px — IoU 0.5326
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=715, y=780, w=255, h=89 |
-| Normalised | x=66.2%, y=72.22%, w=23.61%, h=8.24% |
+| Bounding box (px) | x=715, y=785, w=255, h=84 |
+| Normalised | x=66.2%, y=72.69%, w=23.61%, h=7.78% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -92,31 +93,32 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#000000` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 12.86:1 |
+| Colour | `#af9f9e` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.09:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Lily Script One |
-| Match IoU | 0.1384 |
+| Match IoU | 0.2851 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 614 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 619 px |
 | Gap to next | 70 px |
 
 Alternate font fits considered:
-- `LilyScriptOne-Regular.ttf` 82px track 0.22px — IoU 0.1362
-- `LilyScriptOne-Regular.ttf` 81px track 0.85px — IoU 0.1341
-- `Alata-Regular.ttf` 76px track -0.4px — IoU 0.1191
+- `LilyScriptOne-Regular.ttf` 82px track 0.22px — IoU 0.2848
+- `LilyScriptOne-Regular.ttf` 81px track 0.85px — IoU 0.28
+- `Alata-Regular.ttf` 76px track -0.4px — IoU 0.2242
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Lorem ipsum dolor sit amet,"  (OCR confidence 0.9893)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=50, y=939, w=402, h=32 |
-| Normalised | x=4.63%, y=86.94%, w=37.22%, h=2.96% |
+| Bounding box (px) | x=50, y=939, w=402, h=33 |
+| Normalised | x=4.63%, y=86.94%, w=37.22%, h=3.06% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -132,27 +134,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 4.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Lily Script One |
-| Match IoU | 0.633 |
+| Match IoU | 0.6763 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 70 px |
-| Gap to next | 13 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 32px track 0.04px — IoU 0.6111
-- `Alata-Regular.ttf` 31px track 0.49px — IoU 0.5841
-- `LilyScriptOne-Regular.ttf` 34px track 0.0px — IoU 0.4061
+- `Alata-Regular.ttf` 32px track 0.04px — IoU 0.655
+- `Alata-Regular.ttf` 31px track 0.49px — IoU 0.627
+- `LilyScriptOne-Regular.ttf` 34px track 0.0px — IoU 0.4331
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "consectetur adipiscing elit"  (OCR confidence 0.9992)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=49, y=984, w=380, h=32 |
-| Normalised | x=4.54%, y=91.11%, w=35.19%, h=2.96% |
+| Bounding box (px) | x=49, y=984, w=380, h=33 |
+| Normalised | x=4.54%, y=91.11%, w=35.19%, h=3.06% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -168,18 +171,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 4.0 / 4.48 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Lily Script One |
-| Match IoU | 0.6967 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7205 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 13 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 12 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 32px track 0.04px — IoU 0.6111
-- `Alata-Regular.ttf` 31px track 0.49px — IoU 0.5841
-- `LilyScriptOne-Regular.ttf` 34px track 0.0px — IoU 0.4061
+- `Alata-Regular.ttf` 32px track 0.04px — IoU 0.655
+- `Alata-Regular.ttf` 31px track 0.49px — IoU 0.627
+- `LilyScriptOne-Regular.ttf` 34px track 0.0px — IoU 0.4331
 
 ## 4. Colours (semantic)
 
@@ -187,11 +191,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#d8d2d0` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#000000` | glyph ink of 'Sunday' | glyph ink median |
+| textPrimary | `#af9f9e` | glyph ink of 'Sunday' | glyph ink median |
 | textSecondary | `#000000` | glyph ink of '#OOTD' | glyph ink median |
 | accent | `#d0021b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f6b276` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.0598 |
+| Text coverage | 0.0594 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -244,13 +248,13 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline` | text | #OOTD |
 | `headline` | text | Sunday |
-| `subheadline_line1` | text | Lorem ipsum dolor sit amet, |
-| `subheadline_line2` | text | consectetur adipiscing elit |
+| `supporting_line1` | text | Lorem ipsum dolor sit amet, |
+| `supporting_line2` | text | consectetur adipiscing elit |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #d8d2d0 |
-| `textPrimary` | colour | #000000 |
+| `textPrimary` | colour | #af9f9e |
 | `textSecondary` | colour | #000000 |
 | `accent` | colour | #d0021b |
 | `accentSecondary` | colour | #f6b276 |
@@ -258,8 +262,8 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Alata |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 45.2 |
 | `imageFocalY` | number | 54.7 |
 

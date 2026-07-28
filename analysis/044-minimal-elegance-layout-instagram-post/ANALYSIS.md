@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,179 +43,184 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=139, y=444, w=306, h=44 |
-| Normalised | x=12.87%, y=41.11%, w=28.33%, h=4.07% |
+| Bounding box (px) | x=138, y=444, w=307, h=44 |
+| Normalised | x=12.78%, y=41.11%, w=28.43%, h=4.07% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 73 px |
-| Letter-spacing | 0.33 px (0.0045 em) |
+| Font size | 59 px |
+| Letter-spacing | -0.72 px (-0.0122 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 15.0 / 22.03 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Actor |
-| Match IoU | 0.0231 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8881 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
 | Gap to next | 348 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 74px track -0.37px — IoU 0.0173
-- `Actor-Regular.ttf` 72px track 1.02px — IoU 0.0091
-- `ArchivoBlack-Regular.ttf` 57px track 0.87px — IoU 0.0089
+- `ArchivoBlack-Regular.ttf` 58px track 0.16px — IoU 0.8666
+- `ArchivoBlack-Regular.ttf` 57px track 1.03px — IoU 0.8558
+- `Actor-Regular.ttf` 75px track -0.9px — IoU 0.4334
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "Minimal design, elegant"  (OCR confidence 0.9996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=630, y=836, w=287, h=28 |
-| Normalised | x=58.33%, y=77.41%, w=26.57%, h=2.59% |
+| Bounding box (px) | x=630, y=836, w=288, h=29 |
+| Normalised | x=58.33%, y=77.41%, w=26.67%, h=2.69% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 28 px |
-| Letter-spacing | 0.28 px (0.01 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 29 px |
+| Letter-spacing | -0.09 px (-0.0031 em) |
+| Line-height | 38.0 px (ratio 1.31) |
+| Line | 1 of 4 |
 | Transform | none |
-| Colour | `#313131` |
+| Colour | `#333333` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.34:1 |
+| Contrast vs local bg | 4.2:1 |
 | Stroke (median/mean) | 1.0 / 1.77 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Actor |
-| Match IoU | 0.6735 |
+| Match IoU | 0.671 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 348 px |
-| Gap to next | -2 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 29px track -0.18px — IoU 0.6125
-- `Actor-Regular.ttf` 30px track -0.63px — IoU 0.5507
-- `ArchivoBlack-Regular.ttf` 23px track -0.55px — IoU 0.325
+- `Actor-Regular.ttf` 30px track -0.54px — IoU 0.5773
+- `Actor-Regular.ttf` 28px track 0.36px — IoU 0.4959
+- `ArchivoBlack-Regular.ttf` 22px track -0.12px — IoU 0.3618
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "furniture, creating"  (OCR confidence 0.9986)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=629, y=862, w=216, h=40 |
-| Normalised | x=58.24%, y=79.81%, w=20.0%, h=3.7% |
+| Bounding box (px) | x=628, y=874, w=217, h=29 |
+| Normalised | x=58.15%, y=80.93%, w=20.09%, h=2.69% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 30 px |
-| Letter-spacing | -0.58 px (-0.0193 em) |
-| Line-height | 39.0 px (ratio 1.3) |
-| Line | 1 of 2 |
+| Font size | 29 px |
+| Letter-spacing | -0.09 px (-0.0031 em) |
+| Line-height | 38.0 px (ratio 1.31) |
+| Line | 2 of 4 |
 | Transform | lowercase |
-| Colour | `#343434` |
+| Colour | `#333333` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.14:1 |
-| Stroke (median/mean) | 2.0 / 1.83 px |
+| Contrast vs local bg | 4.2:1 |
+| Stroke (median/mean) | 2.0 / 1.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Actor |
-| Match IoU | 0.2513 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6182 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -2 px |
-| Gap to next | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 9 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 28px track 0.32px — IoU 0.2197
-- `Actor-Regular.ttf` 29px track -0.13px — IoU 0.2033
-- `ArchivoBlack-Regular.ttf` 21px track 0.43px — IoU 0.1869
+- `Actor-Regular.ttf` 30px track -0.54px — IoU 0.5773
+- `Actor-Regular.ttf` 28px track 0.36px — IoU 0.4959
+- `ArchivoBlack-Regular.ttf` 22px track -0.12px — IoU 0.3618
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "sophisticated and timeless"  (OCR confidence 0.9994)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=629, y=901, w=321, h=39 |
-| Normalised | x=58.24%, y=83.43%, w=29.72%, h=3.61% |
+| Bounding box (px) | x=629, y=912, w=322, h=28 |
+| Normalised | x=58.24%, y=84.44%, w=29.81%, h=2.59% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 30 px |
-| Letter-spacing | -0.58 px (-0.0193 em) |
-| Line-height | 39.0 px (ratio 1.3) |
-| Line | 2 of 2 |
+| Font size | 29 px |
+| Letter-spacing | -0.09 px (-0.0031 em) |
+| Line-height | 38.0 px (ratio 1.31) |
+| Line | 3 of 4 |
 | Transform | lowercase |
 | Colour | `#303030` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.41:1 |
-| Stroke (median/mean) | 2.0 / 1.96 px |
+| Stroke (median/mean) | 2.0 / 1.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Actor |
-| Match IoU | 0.2154 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6517 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | -3 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 9 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 28px track 0.32px — IoU 0.2197
-- `Actor-Regular.ttf` 29px track -0.13px — IoU 0.2033
-- `ArchivoBlack-Regular.ttf` 21px track 0.43px — IoU 0.1869
+- `Actor-Regular.ttf` 30px track -0.54px — IoU 0.5773
+- `Actor-Regular.ttf` 28px track 0.36px — IoU 0.4959
+- `ArchivoBlack-Regular.ttf` 22px track -0.12px — IoU 0.3618
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "spaces for modern living."  (OCR confidence 0.9996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=629, y=937, w=302, h=41 |
-| Normalised | x=58.24%, y=86.76%, w=27.96%, h=3.8% |
+| Bounding box (px) | x=629, y=950, w=303, h=29 |
+| Normalised | x=58.24%, y=87.96%, w=28.06%, h=2.69% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 30 px |
-| Letter-spacing | -0.61 px (-0.0203 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 29 px |
+| Letter-spacing | -0.09 px (-0.0031 em) |
+| Line-height | 38.0 px (ratio 1.31) |
+| Line | 4 of 4 |
 | Transform | lowercase |
 | Colour | `#333333` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.2:1 |
 | Stroke (median/mean) | 2.0 / 1.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Actor |
-| Match IoU | 0.1966 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6311 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -3 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 10 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 28px track 0.27px — IoU 0.1961
-- `ArchivoBlack-Regular.ttf` 23px track -0.62px — IoU 0.1686
-- `ArchivoBlack-Regular.ttf` 21px track 0.53px — IoU 0.1654
+- `Actor-Regular.ttf` 30px track -0.54px — IoU 0.5773
+- `Actor-Regular.ttf` 28px track 0.36px — IoU 0.4959
+- `ArchivoBlack-Regular.ttf` 22px track -0.12px — IoU 0.3618
 
 ## 4. Colours (semantic)
 
@@ -223,11 +228,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#323231` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'ELEGANT' | glyph ink median |
-| textSecondary | `#333333` | glyph ink of 'spaces for modern living.' | glyph ink median |
+| textPrimary | `#000000` | glyph ink of 'ELEGANT' | glyph ink median |
+| textSecondary | `#333333` | glyph ink of 'Minimal design, elegant' | glyph ink median |
 | accent | — | not identified | — |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | — | not identified | — |
 
 Full palette (k-means):
@@ -251,7 +256,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0472 |
+| Text coverage | 0.0394 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -279,22 +284,22 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | ELEGANT |
-| `subheadline` | text | Minimal design, elegant |
-| `subheadline_line1` | text | furniture, creating |
-| `subheadline_line2` | text | sophisticated and timeless |
-| `subheadline` | text | spaces for modern living. |
+| `supporting_line1` | text | Minimal design, elegant |
+| `supporting_line2` | text | furniture, creating |
+| `supporting_line3` | text | sophisticated and timeless |
+| `supporting_line4` | text | spaces for modern living. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #323231 |
-| `textPrimary` | colour | #ffffff |
+| `textPrimary` | colour | #000000 |
 | `textSecondary` | colour | #333333 |
 | `brandFont` | font | Archivo Black |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.7 |
 | `imageFocalY` | number | 59.9 |
 

@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,8 +42,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=72, y=96, w=430, h=87 |
-| Normalised | x=6.67%, y=8.89%, w=39.81%, h=8.06% |
+| Bounding box (px) | x=71, y=96, w=431, h=87 |
+| Normalised | x=6.57%, y=8.89%, w=39.91%, h=8.06% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -51,16 +51,17 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 119 px |
-| Letter-spacing | -0.9 px (-0.0076 em) |
-| Line-height | 139.5 px (ratio 1.172) |
+| Letter-spacing | -0.7 px (-0.0059 em) |
+| Line-height | 139.0 px (ratio 1.168) |
 | Line | 1 of 3 |
 | Transform | uppercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.93:1 |
 | Stroke (median/mean) | 19.0 / 20.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora |
-| Match IoU | 0.9151 |
+| Match IoU | 0.9565 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -68,9 +69,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 52 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 118px track -0.17px — IoU 0.8904
-- `Sora[wght].ttf` 117px track 0.57px — IoU 0.8886
-- `Sora[wght].ttf` 116px track 0.17px — IoU 0.8627
+- `Sora[wght].ttf` 117px track 0.77px — IoU 0.9013
+- `Sora[wght].ttf` 118px track 0.03px — IoU 0.8983
+- `Sora[wght].ttf` 117px track -0.38px — IoU 0.8594
 
 ### `text-2` — headline
 
@@ -87,26 +88,27 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 119 px |
-| Letter-spacing | -0.9 px (-0.0076 em) |
-| Line-height | 139.5 px (ratio 1.172) |
+| Letter-spacing | -0.7 px (-0.0059 em) |
+| Line-height | 139.0 px (ratio 1.168) |
 | Line | 2 of 3 |
 | Transform | uppercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.65:1 |
 | Stroke (median/mean) | 19.0 / 22.62 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora |
-| Match IoU | 0.9641 |
+| Match IoU | 0.9424 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 52 px |
-| Gap to next | 52 px |
+| Gap to next | 51 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 118px track -0.17px — IoU 0.8904
-- `Sora[wght].ttf` 117px track 0.57px — IoU 0.8886
-- `Sora[wght].ttf` 116px track 0.17px — IoU 0.8627
+- `Sora[wght].ttf` 117px track 0.77px — IoU 0.9013
+- `Sora[wght].ttf` 118px track 0.03px — IoU 0.8983
+- `Sora[wght].ttf` 117px track -0.38px — IoU 0.8594
 
 ### `text-3` — headline
 
@@ -114,8 +116,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=79, y=375, w=386, h=90 |
-| Normalised | x=7.31%, y=34.72%, w=35.74%, h=8.33% |
+| Bounding box (px) | x=79, y=374, w=386, h=91 |
+| Normalised | x=7.31%, y=34.63%, w=35.74%, h=8.43% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -123,35 +125,36 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 119 px |
-| Letter-spacing | -0.9 px (-0.0076 em) |
-| Line-height | 139.5 px (ratio 1.172) |
+| Letter-spacing | -0.7 px (-0.0059 em) |
+| Line-height | 139.0 px (ratio 1.168) |
 | Line | 3 of 3 |
 | Transform | uppercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.81:1 |
 | Stroke (median/mean) | 19.0 / 23.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora |
-| Match IoU | 0.8166 |
+| Match IoU | 0.8316 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 52 px |
+| Gap to previous | 51 px |
 | Gap to next | 81 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 118px track -0.17px — IoU 0.8904
-- `Sora[wght].ttf` 117px track 0.57px — IoU 0.8886
-- `Sora[wght].ttf` 116px track 0.17px — IoU 0.8627
+- `Sora[wght].ttf` 117px track 0.77px — IoU 0.9013
+- `Sora[wght].ttf` 118px track 0.03px — IoU 0.8983
+- `Sora[wght].ttf` 117px track -0.38px — IoU 0.8594
 
-### `text-4` — subheadline
+### `text-4` — body
 
 **Text:** "The best ideas become"  (OCR confidence 0.9852)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=70, y=546, w=347, h=23 |
-| Normalised | x=6.48%, y=50.56%, w=32.13%, h=2.13% |
+| Bounding box (px) | x=69, y=546, w=349, h=23 |
+| Normalised | x=6.39%, y=50.56%, w=32.31%, h=2.13% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -159,7 +162,7 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 30 px |
-| Letter-spacing | -0.27 px (-0.009 em) |
+| Letter-spacing | -0.17 px (-0.0057 em) |
 | Line-height | 39.3 px (ratio 1.31) |
 | Line | 1 of 4 |
 | Transform | none |
@@ -167,27 +170,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.74:1 |
 | Stroke (median/mean) | 3.0 / 3.5 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora |
-| Match IoU | 0.6876 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7223 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 81 px |
-| Gap to next | 17 px |
+| Gap to next | 16 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 30px track -0.37px — IoU 0.7117
-- `Sora[wght].ttf` 30px track -0.16px — IoU 0.7111
-- `Sora[wght].ttf` 29px track 0.32px — IoU 0.6926
+- `Sora[wght].ttf` 31px track -0.75px — IoU 0.7007
+- `Sora[wght].ttf` 30px track -0.27px — IoU 0.674
+- `Sora[wght].ttf` 31px track -0.65px — IoU 0.6707
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "reality through clarity,"  (OCR confidence 0.9844)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=72, y=586, w=327, h=28 |
-| Normalised | x=6.67%, y=54.26%, w=30.28%, h=2.59% |
+| Bounding box (px) | x=71, y=585, w=328, h=29 |
+| Normalised | x=6.57%, y=54.17%, w=30.37%, h=2.69% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -195,7 +199,7 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 30 px |
-| Letter-spacing | -0.27 px (-0.009 em) |
+| Letter-spacing | -0.17 px (-0.0057 em) |
 | Line-height | 39.3 px (ratio 1.31) |
 | Line | 2 of 4 |
 | Transform | lowercase |
@@ -203,27 +207,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.74:1 |
 | Stroke (median/mean) | 2.0 / 2.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora |
-| Match IoU | 0.6951 |
+| Match IoU | 0.685 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 17 px |
+| Gap to previous | 16 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 30px track -0.37px — IoU 0.7117
-- `Sora[wght].ttf` 30px track -0.16px — IoU 0.7111
-- `Sora[wght].ttf` 29px track 0.32px — IoU 0.6926
+- `Sora[wght].ttf` 31px track -0.75px — IoU 0.7007
+- `Sora[wght].ttf` 30px track -0.27px — IoU 0.674
+- `Sora[wght].ttf` 31px track -0.65px — IoU 0.6707
 
-### `text-6` — subheadline
+### `text-6` — body
 
 **Text:** "collaboration, and"  (OCR confidence 0.9983)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=71, y=625, w=271, h=26 |
-| Normalised | x=6.57%, y=57.87%, w=25.09%, h=2.41% |
+| Bounding box (px) | x=70, y=625, w=273, h=26 |
+| Normalised | x=6.48%, y=57.87%, w=25.28%, h=2.41% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -231,7 +236,7 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 30 px |
-| Letter-spacing | -0.27 px (-0.009 em) |
+| Letter-spacing | -0.17 px (-0.0057 em) |
 | Line-height | 39.3 px (ratio 1.31) |
 | Line | 3 of 4 |
 | Transform | lowercase |
@@ -239,8 +244,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.66:1 |
 | Stroke (median/mean) | 2.0 / 3.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora |
-| Match IoU | 0.8305 |
+| Match IoU | 0.7139 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -248,18 +254,18 @@ Alternate font fits considered:
 | Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 30px track -0.37px — IoU 0.7117
-- `Sora[wght].ttf` 30px track -0.16px — IoU 0.7111
-- `Sora[wght].ttf` 29px track 0.32px — IoU 0.6926
+- `Sora[wght].ttf` 31px track -0.75px — IoU 0.7007
+- `Sora[wght].ttf` 30px track -0.27px — IoU 0.674
+- `Sora[wght].ttf` 31px track -0.65px — IoU 0.6707
 
-### `text-7` — subheadline
+### `text-7` — body
 
 **Text:** "consistent execution."  (OCR confidence 0.9792)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=71, y=664, w=324, h=22 |
-| Normalised | x=6.57%, y=61.48%, w=30.0%, h=2.04% |
+| Bounding box (px) | x=70, y=664, w=325, h=23 |
+| Normalised | x=6.48%, y=61.48%, w=30.09%, h=2.13% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -267,7 +273,7 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 30 px |
-| Letter-spacing | -0.27 px (-0.009 em) |
+| Letter-spacing | -0.17 px (-0.0057 em) |
 | Line-height | 39.3 px (ratio 1.31) |
 | Line | 4 of 4 |
 | Transform | lowercase |
@@ -275,8 +281,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.52:1 |
 | Stroke (median/mean) | 3.0 / 3.39 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora |
-| Match IoU | 0.8008 |
+| Match IoU | 0.703 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -284,9 +291,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 30px track -0.37px — IoU 0.7117
-- `Sora[wght].ttf` 30px track -0.16px — IoU 0.7111
-- `Sora[wght].ttf` 29px track 0.32px — IoU 0.6926
+- `Sora[wght].ttf` 31px track -0.75px — IoU 0.7007
+- `Sora[wght].ttf` 30px track -0.27px — IoU 0.674
+- `Sora[wght].ttf` 31px track -0.65px — IoU 0.6707
 
 ## 4. Colours (semantic)
 
@@ -298,7 +305,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'PLAN.' | glyph ink median |
 | accent | `#886c61` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -322,7 +329,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1161 |
+| Text coverage | 0.1172 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -352,10 +359,10 @@ _Recommendations only — no manifest is generated._
 | `headline_line1` | text | THINK. |
 | `headline_line2` | text | PLAN. |
 | `headline_line3` | text | BUILD. |
-| `subheadline_line1` | text | The best ideas become |
-| `subheadline_line2` | text | reality through clarity, |
-| `subheadline_line3` | text | collaboration, and |
-| `subheadline_line4` | text | consistent execution. |
+| `body_line1` | text | The best ideas become |
+| `body_line2` | text | reality through clarity, |
+| `body_line3` | text | collaboration, and |
+| `body_line4` | text | consistent execution. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f2f3f5 |
@@ -368,10 +375,10 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 62.4 |
 | `imageFocalY` | number | 45.6 |
 

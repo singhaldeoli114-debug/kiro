@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,8 +44,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=83, y=42, w=606, h=159 |
-| Normalised | x=7.69%, y=3.89%, w=56.11%, h=14.72% |
+| Bounding box (px) | x=83, y=42, w=606, h=154 |
+| Normalised | x=7.69%, y=3.89%, w=56.11%, h=14.26% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,19 +60,21 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.8:1 |
-| Stroke (median/mean) | 11.0 / 11.66 px |
+| Stroke (median/mean) | 11.0 / 11.87 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Archivo Black, Niconne, Roboto |
-| Match IoU | 0.1821 |
+| Match IoU | 0.1837 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7636) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | None px |
-| Gap to next | 607 px |
+| Gap to next | 617 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 153px track 0.02px — IoU 0.1816
-- `Roboto[wdth,wght].ttf` 152px track 0.51px — IoU 0.1815
-- `Roboto[wdth,wght].ttf` 144px track 0.11px — IoU 0.1805
+- `Roboto[wdth,wght].ttf` 152px track 0.51px — IoU 0.1833
+- `Roboto[wdth,wght].ttf` 153px track 0.02px — IoU 0.1832
+- `ArchivoBlack-Regular.ttf` 115px track -0.13px — IoU 0.183
 
 ### `text-2` — headline
 
@@ -80,52 +82,54 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=544, y=808, w=427, h=169 |
-| Normalised | x=50.37%, y=74.81%, w=39.54%, h=15.65% |
+| Bounding box (px) | x=544, y=813, w=422, h=151 |
+| Normalised | x=50.37%, y=75.28%, w=39.07%, h=13.98% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Niconne-Regular.ttf` |
-| Variation axes | None |
-| Font size | 248 px |
-| Letter-spacing | -0.36 px (-0.0015 em) |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 75.0] |
+| Font size | 267 px |
+| Letter-spacing | 0.05 px (0.0002 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#162333` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 2.85:1 |
-| Stroke (median/mean) | 11.0 / 13.64 px |
+| Colour | `#f66206` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.02:1 |
+| Stroke (median/mean) | 5.0 / 10.7 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Niconne, Roboto |
-| Match IoU | 0.1622 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6473 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 607 px |
-| Gap to next | 6 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 617 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Niconne-Regular.ttf` 247px track 0.51px — IoU 0.1609
-- `ArchivoBlack-Regular.ttf` 198px track -1.03px — IoU 0.1591
-- `ArchivoBlack-Regular.ttf` 197px track 0.05px — IoU 0.159
+- `Roboto[wdth,wght].ttf` 266px track 0.85px — IoU 0.6437
+- `Roboto[wdth,wght].ttf` 268px track -0.73px — IoU 0.6429
+- `Roboto[wdth,wght].ttf` 251px track -0.48px — IoU 0.6324
 
-### `text-3` — supporting
+### `text-3` — fine-print
 
 **Text:** "SUBSCRIBE"  (OCR confidence 0.9945)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=692, y=983, w=256, h=37 |
-| Normalised | x=64.07%, y=91.02%, w=23.7%, h=3.43% |
+| Bounding box (px) | x=692, y=983, w=257, h=37 |
+| Normalised | x=64.07%, y=91.02%, w=23.8%, h=3.43% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 87.5] |
-| Font size | 53 px |
-| Letter-spacing | -0.57 px (-0.0108 em) |
+| Variation axes | [500, 100.0] |
+| Font size | 50 px |
+| Letter-spacing | -0.74 px (-0.0148 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -133,18 +137,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.8:1 |
 | Stroke (median/mean) | 5.0 / 6.67 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Niconne, Roboto |
-| Match IoU | 0.8661 |
+| Match IoU | 0.8884 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 6 px |
+| Gap to previous | 19 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 53px track -0.77px — IoU 0.8459
-- `Roboto[wdth,wght].ttf` 49px track -0.39px — IoU 0.8455
-- `Roboto[wdth,wght].ttf` 50px track -0.87px — IoU 0.8415
+- `Roboto[wdth,wght].ttf` 50px track -0.92px — IoU 0.8582
+- `Roboto[wdth,wght].ttf` 53px track -0.45px — IoU 0.8498
+- `Roboto[wdth,wght].ttf` 52px track 0.16px — IoU 0.8283
 
 ## 4. Colours (semantic)
 
@@ -152,11 +157,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#cfdde0` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#162433` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#162333` | glyph ink of '20K' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'nof yuoyp' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of 'nof yuoyp' | glyph ink median |
+| textSecondary | `#f66206` | glyph ink of '20K' | glyph ink median |
 | accent | `#162433` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ed6b0e` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -180,7 +185,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1526 |
+| Text coverage | 0.1428 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -209,20 +214,20 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `subheadline` | text | nof yuoyp |
 | `headline` | text | 20K |
-| `supporting` | text | SUBSCRIBE |
+| `fine-print` | text | SUBSCRIBE |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #cfdde0 |
 | `surface` | colour | #162433 |
-| `textPrimary` | colour | #162333 |
-| `textSecondary` | colour | #ffffff |
+| `textPrimary` | colour | #ffffff |
+| `textSecondary` | colour | #f66206 |
 | `accent` | colour | #162433 |
 | `accentSecondary` | colour | #ed6b0e |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Archivo Black |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 44.3 |
 | `imageFocalY` | number | 53.5 |
 

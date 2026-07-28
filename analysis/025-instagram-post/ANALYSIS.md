@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -51,27 +51,28 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 140 px |
-| Letter-spacing | -0.29 px (-0.0021 em) |
-| Line-height | 162.0 px (ratio 1.157) |
+| Font size | 138 px |
+| Letter-spacing | 0.5 px (0.0036 em) |
+| Line-height | 162.0 px (ratio 1.174) |
 | Line | 1 of 2 |
 | Transform | none |
-| Colour | `#459a7a` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.06:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.72:1 |
 | Stroke (median/mean) | 25.0 / 28.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Poppins |
-| Match IoU | 0.0522 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8436 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
 | Gap to next | 51 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 139px track 0.11px — IoU 0.2654
-- `Anton-Regular.ttf` 138px track 0.5px — IoU 0.2606
-- `Poppins-Regular.ttf` 117px track -0.09px — IoU 0.1993
+- `Anton-Regular.ttf` 139px track 0.11px — IoU 0.6604
+- `Anton-Regular.ttf` 140px track -0.29px — IoU 0.6558
+- `Poppins-Regular.ttf` 117px track -0.09px — IoU 0.2862
 
 ### `text-2` — headline
 
@@ -79,35 +80,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=78, y=233, w=433, h=142 |
-| Normalised | x=7.22%, y=21.57%, w=40.09%, h=13.15% |
+| Bounding box (px) | x=78, y=233, w=433, h=137 |
+| Normalised | x=7.22%, y=21.57%, w=40.09%, h=12.69% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 140 px |
-| Letter-spacing | -0.29 px (-0.0021 em) |
-| Line-height | 162.0 px (ratio 1.157) |
+| Font size | 138 px |
+| Letter-spacing | 0.5 px (0.0036 em) |
+| Line-height | 162.0 px (ratio 1.174) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.74:1 |
-| Stroke (median/mean) | 25.0 / 27.2 px |
+| Stroke (median/mean) | 25.0 / 27.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Poppins |
-| Match IoU | 0.4838 |
+| Match IoU | 0.5111 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 51 px |
-| Gap to next | 70 px |
+| Gap to next | 75 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 139px track 0.11px — IoU 0.2654
-- `Anton-Regular.ttf` 138px track 0.5px — IoU 0.2606
-- `Poppins-Regular.ttf` 117px track -0.09px — IoU 0.1993
+- `Anton-Regular.ttf` 139px track 0.11px — IoU 0.6604
+- `Anton-Regular.ttf` 140px track -0.29px — IoU 0.6558
+- `Poppins-Regular.ttf` 117px track -0.09px — IoU 0.2862
 
 ### `text-3` — supporting
 
@@ -132,18 +134,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.75:1 |
 | Stroke (median/mean) | 5.0 / 6.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Poppins |
 | Match IoU | 0.8619 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 70 px |
+| Gap to previous | 75 px |
 | Gap to next | 16 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 53px track 0.98px — IoU 0.7561
-- `Poppins-Regular.ttf` 54px track 0.31px — IoU 0.7476
-- `Anton-Regular.ttf` 71px track -0.64px — IoU 0.3863
+- `Poppins-Regular.ttf` 54px track 0.31px — IoU 0.7636
+- `Poppins-Regular.ttf` 53px track 0.98px — IoU 0.756
+- `Anton-Regular.ttf` 71px track -0.64px — IoU 0.3899
 
 ### `text-4` — supporting
 
@@ -151,8 +154,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=694, y=517, w=326, h=43 |
-| Normalised | x=64.26%, y=47.87%, w=30.19%, h=3.98% |
+| Bounding box (px) | x=693, y=517, w=327, h=43 |
+| Normalised | x=64.17%, y=47.87%, w=30.28%, h=3.98% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -168,8 +171,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.75:1 |
 | Stroke (median/mean) | 5.0 / 6.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Poppins |
-| Match IoU | 0.831 |
+| Match IoU | 0.8054 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -177,9 +181,9 @@ Alternate font fits considered:
 | Gap to next | 30 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 53px track 0.98px — IoU 0.7561
-- `Poppins-Regular.ttf` 54px track 0.31px — IoU 0.7476
-- `Anton-Regular.ttf` 71px track -0.64px — IoU 0.3863
+- `Poppins-Regular.ttf` 54px track 0.31px — IoU 0.7636
+- `Poppins-Regular.ttf` 53px track 0.98px — IoU 0.756
+- `Anton-Regular.ttf` 71px track -0.64px — IoU 0.3899
 
 ### `text-5` — supporting
 
@@ -204,6 +208,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.73:1 |
 | Stroke (median/mean) | 5.0 / 7.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Poppins |
 | Match IoU | 0.8239 |
 | **Geometry fit confidence** | **high** |
@@ -213,11 +218,11 @@ Alternate font fits considered:
 | Gap to next | 265 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 53px track 0.98px — IoU 0.7561
-- `Poppins-Regular.ttf` 54px track 0.31px — IoU 0.7476
-- `Anton-Regular.ttf` 71px track -0.64px — IoU 0.3863
+- `Poppins-Regular.ttf` 54px track 0.31px — IoU 0.7636
+- `Poppins-Regular.ttf` 53px track 0.98px — IoU 0.756
+- `Anton-Regular.ttf` 71px track -0.64px — IoU 0.3899
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "Become a"  (OCR confidence 0.9899)
 
@@ -231,63 +236,65 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 74 px |
-| Letter-spacing | -0.57 px (-0.0077 em) |
-| Line-height | 59.0 px (ratio 0.797) |
+| Font size | 72 px |
+| Letter-spacing | 0.55 px (0.0076 em) |
+| Line-height | 58.0 px (ratio 0.806) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.69:1 |
 | Stroke (median/mean) | 10.0 / 14.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Poppins |
-| Match IoU | 0.698 |
+| Match IoU | 0.696 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 265 px |
-| Gap to next | 18 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 73px track -0.01px — IoU 0.4364
-- `Anton-Regular.ttf` 72px track 0.55px — IoU 0.4362
-- `Poppins-Regular.ttf` 56px track 0.27px — IoU 0.2641
+- `Anton-Regular.ttf` 74px track -0.57px — IoU 0.656
+- `Anton-Regular.ttf` 73px track -0.01px — IoU 0.6554
+- `Poppins-Regular.ttf` 57px track -0.45px — IoU 0.5184
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "Member"  (OCR confidence 0.998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=79, y=970, w=245, h=42 |
-| Normalised | x=7.31%, y=89.81%, w=22.69%, h=3.89% |
+| Bounding box (px) | x=79, y=969, w=245, h=43 |
+| Normalised | x=7.31%, y=89.72%, w=22.69%, h=3.98% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 74 px |
-| Letter-spacing | -0.57 px (-0.0077 em) |
-| Line-height | 59.0 px (ratio 0.797) |
+| Font size | 72 px |
+| Letter-spacing | 0.55 px (0.0076 em) |
+| Line-height | 58.0 px (ratio 0.806) |
 | Line | 2 of 2 |
 | Transform | none |
-| Colour | `#256652` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.69:1 |
 | Stroke (median/mean) | 10.0 / 13.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Poppins |
-| Match IoU | 0.19 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.629 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 18 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 17 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 73px track -0.01px — IoU 0.4364
-- `Anton-Regular.ttf` 72px track 0.55px — IoU 0.4362
-- `Poppins-Regular.ttf` 56px track 0.27px — IoU 0.2641
+- `Anton-Regular.ttf` 74px track -0.57px — IoU 0.656
+- `Anton-Regular.ttf` 73px track -0.01px — IoU 0.6554
+- `Poppins-Regular.ttf` 57px track -0.45px — IoU 0.5184
 
 ## 4. Colours (semantic)
 
@@ -296,10 +303,10 @@ Alternate font fits considered:
 | background | `#f1fcfb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#469b7c` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'Play All.' | glyph ink median |
-| textSecondary | `#459a7a` | glyph ink of 'Love All.' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'Love All.' | glyph ink median |
 | accent | `#469b7c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#55a48b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -323,7 +330,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1563 |
+| Text coverage | 0.1547 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -355,14 +362,14 @@ _Recommendations only — no manifest is generated._
 | `supporting_line1` | text | A community |
 | `supporting_line2` | text | built around |
 | `supporting_line3` | text | the game. |
-| `subheadline_line1` | text | Become a |
-| `subheadline_line2` | text | Member |
+| `supporting_line1` | text | Become a |
+| `supporting_line2` | text | Member |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f1fcfb |
 | `surface` | colour | #469b7c |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #459a7a |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #469b7c |
 | `accentSecondary` | colour | #55a48b |
 | `onAccent` | colour | #000000 |
@@ -372,8 +379,8 @@ _Recommendations only — no manifest is generated._
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 42.1 |
 | `imageFocalY` | number | 55.0 |
 

@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,35 +44,37 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=222, y=358, w=507, h=16 |
-| Normalised | x=20.56%, y=33.15%, w=46.94%, h=1.48% |
+| Bounding box (px) | x=80, y=110, w=711, h=259 |
+| Normalised | x=7.41%, y=10.19%, w=65.83%, h=23.98% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 82 px |
-| Letter-spacing | -0.97 px (-0.0118 em) |
+| Font size | 112 px |
+| Letter-spacing | 0.98 px (0.0087 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#668287` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.02:1 |
-| Stroke (median/mean) | 1.0 / 1.42 px |
+| Colour | `#8b572a` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.84:1 |
+| Stroke (median/mean) | 1.0 / 1.46 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Monoton, Yellowtail |
-| Match IoU | 0.3633 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.288 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.7074) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | None px |
-| Gap to next | 404 px |
+| Gap to next | 409 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 81px track -0.19px — IoU 0.3596
-- `ArchivoBlack-Regular.ttf` 80px track 0.59px — IoU 0.354
-- `Yellowtail-Regular.ttf` 94px track -0.64px — IoU 0.2307
+- `ArchivoBlack-Regular.ttf` 113px track 0.2px — IoU 0.2859
+- `ArchivoBlack-Regular.ttf` 114px track -0.59px — IoU 0.2859
+- `Yellowtail-Regular.ttf` 131px track -0.34px — IoU 0.2432
 
 ### `text-2` — headline
 
@@ -80,8 +82,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=532, y=778, w=496, h=125 |
-| Normalised | x=49.26%, y=72.04%, w=45.93%, h=11.57% |
+| Bounding box (px) | x=532, y=778, w=497, h=125 |
+| Normalised | x=49.26%, y=72.04%, w=46.02%, h=11.57% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,7 +91,7 @@ Alternate font fits considered:
 | Font file matched | `Yellowtail-Regular.ttf` |
 | Variation axes | None |
 | Font size | 159 px |
-| Letter-spacing | -0.48 px (-0.003 em) |
+| Letter-spacing | -0.34 px (-0.0021 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -97,18 +99,20 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.48:1 |
 | Stroke (median/mean) | 17.0 / 20.21 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Archivo Black, Monoton, Yellowtail |
-| Match IoU | 0.8076 |
+| Match IoU | 0.8093 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 404 px |
+| Gap to previous | 409 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Yellowtail-Regular.ttf` 158px track -0.03px — IoU 0.8054
-- `Yellowtail-Regular.ttf` 157px track 0.42px — IoU 0.8051
-- `ArchivoBlack-Regular.ttf` 109px track -0.07px — IoU 0.3367
+- `Yellowtail-Regular.ttf` 157px track 0.56px — IoU 0.7957
+- `Yellowtail-Regular.ttf` 158px track 0.12px — IoU 0.7904
+- `ArchivoBlack-Regular.ttf` 110px track -0.58px — IoU 0.3404
 
 ## 4. Colours (semantic)
 
@@ -116,11 +120,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#cfcfcd` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#a8c08c` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#331c07` | glyph ink of 'Tor Sale' | glyph ink median |
-| textSecondary | `#668287` | glyph ink of 'CLASSIEGL' | glyph ink median |
+| textPrimary | `#8b572a` | glyph ink of 'CLASSIEGL' | glyph ink median |
+| textSecondary | `#331c07` | glyph ink of 'Tor Sale' | glyph ink median |
 | accent | `#a8c08c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#d8aa71` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -144,7 +148,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0601 |
+| Text coverage | 0.2111 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -177,8 +181,8 @@ _Recommendations only — no manifest is generated._
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #cfcfcd |
 | `surface` | colour | #a8c08c |
-| `textPrimary` | colour | #331c07 |
-| `textSecondary` | colour | #668287 |
+| `textPrimary` | colour | #8b572a |
+| `textSecondary` | colour | #331c07 |
 | `accent` | colour | #a8c08c |
 | `accentSecondary` | colour | #d8aa71 |
 | `onAccent` | colour | #000000 |

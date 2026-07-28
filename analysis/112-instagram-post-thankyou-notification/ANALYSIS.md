@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — fine-print
 
 **Text:** "WWW.WEBSITE.COM"  (OCR confidence 0.9855)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=438, y=21, w=215, h=17 |
-| Normalised | x=40.56%, y=1.94%, w=19.91%, h=1.57% |
+| Bounding box (px) | x=438, y=20, w=215, h=18 |
+| Normalised | x=40.56%, y=1.85%, w=19.91%, h=1.67% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -56,12 +56,14 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fafafa` |
+| Colour | `#f6f6f6` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 20.61:1 |
+| Contrast vs local bg | 20.29:1 |
 | Stroke (median/mean) | 2.0 / 2.81 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Archivo Black, Alata |
-| Match IoU | 0.553 |
+| Match IoU | 0.5552 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -69,45 +71,46 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 245 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 22px track 0.27px — IoU 0.4679
-- `Alata-Regular.ttf` 21px track 0.95px — IoU 0.3648
-- `ArchivoBlack-Regular.ttf` 20px track -0.75px — IoU 0.3342
+- `Alata-Regular.ttf` 22px track 0.27px — IoU 0.4706
+- `Alata-Regular.ttf` 21px track 0.95px — IoU 0.3662
+- `ArchivoBlack-Regular.ttf` 20px track -0.75px — IoU 0.335
 
-### `text-2` — subheadline
+### `text-2` — headline
 
-**Text:** "T H A N K"  (OCR confidence 0.995)
+**Text:** "THANK"  (OCR confidence 0.995)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=196, y=283, w=565, h=99 |
-| Normalised | x=18.15%, y=26.2%, w=52.31%, h=9.17% |
+| Bounding box (px) | x=195, y=283, w=566, h=99 |
+| Normalised | x=18.06%, y=26.2%, w=52.41%, h=9.17% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 105 px |
-| Letter-spacing | 0.65 px (0.0062 em) |
+| Font size | 143 px |
+| Letter-spacing | -1.47 px (-0.0103 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f8bd1c` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 15.9:1 |
 | Stroke (median/mean) | 32.0 / 34.64 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Alata |
-| Match IoU | 0.0965 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9622 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 245 px |
 | Gap to next | 227 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 106px track -0.01px — IoU 0.0901
-- `ArchivoBlack-Regular.ttf` 107px track -0.67px — IoU 0.0848
-- `Alata-Regular.ttf` 136px track -0.02px — IoU 0.0673
+- `ArchivoBlack-Regular.ttf` 142px track -0.46px — IoU 0.9496
+- `ArchivoBlack-Regular.ttf` 141px track 0.54px — IoU 0.938
+- `Alata-Regular.ttf` 179px track -0.62px — IoU 0.5453
 
 ### `text-3` — headline
 
@@ -121,38 +124,39 @@ Alternate font fits considered:
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Alata-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 160 px |
-| Letter-spacing | -0.39 px (-0.0024 em) |
+| Font size | 136 px |
+| Letter-spacing | 0.56 px (0.0041 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#a521c0` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 6.69:1 |
 | Stroke (median/mean) | 33.0 / 32.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Alata |
-| Match IoU | 0.0992 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7944 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 227 px |
 | Gap to next | 316 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 159px track 0.2px — IoU 0.0782
-- `ArchivoBlack-Regular.ttf` 138px track -0.82px — IoU 0.0763
-- `Alata-Regular.ttf` 158px track 0.79px — IoU 0.0707
+- `ArchivoBlack-Regular.ttf` 137px track -0.14px — IoU 0.7638
+- `ArchivoBlack-Regular.ttf` 138px track -0.82px — IoU 0.7206
+- `Alata-Regular.ttf` 158px track 0.79px — IoU 0.4521
 
-### `text-4` — supporting
+### `text-4` — fine-print
 
 **Text:** "WWW.WEBSITE.COM"  (OCR confidence 0.98)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=404, y=1028, w=224, h=18 |
-| Normalised | x=37.41%, y=95.19%, w=20.74%, h=1.67% |
+| Bounding box (px) | x=404, y=1028, w=225, h=18 |
+| Normalised | x=37.41%, y=95.19%, w=20.83%, h=1.67% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,7 +164,7 @@ Alternate font fits considered:
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
 | Font size | 24 px |
-| Letter-spacing | -0.47 px (-0.0196 em) |
+| Letter-spacing | -0.39 px (-0.0163 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -168,18 +172,20 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 20.76:1 |
 | Stroke (median/mean) | 2.0 / 2.89 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Archivo Black, Alata |
-| Match IoU | 0.5324 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.5601 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 316 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 23px track 0.22px — IoU 0.473
-- `Alata-Regular.ttf` 22px track 0.91px — IoU 0.3533
-- `ArchivoBlack-Regular.ttf` 21px track -0.92px — IoU 0.3203
+- `Alata-Regular.ttf` 23px track 0.29px — IoU 0.448
+- `Alata-Regular.ttf` 22px track 0.98px — IoU 0.3345
+- `ArchivoBlack-Regular.ttf` 21px track -0.84px — IoU 0.3191
 
 ## 4. Colours (semantic)
 
@@ -187,11 +193,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fbfbfb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f46eb8` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#a521c0` | glyph ink of 'YOU!!!' | glyph ink median |
-| textSecondary | `#f8bd1c` | glyph ink of 'T H A N K' | glyph ink median |
+| textPrimary | `#000000` | glyph ink of 'YOU!!!' | glyph ink median |
+| textSecondary | `#f6f6f6` | glyph ink of 'WWW.WEBSITE.COM' | glyph ink median |
 | accent | `#f46eb8` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f7bc1b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +221,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.0961 |
+| Text coverage | 0.0964 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -242,24 +248,24 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | WWW.WEBSITE.COM |
-| `subheadline` | text | T H A N K |
+| `fine-print` | text | WWW.WEBSITE.COM |
+| `headline` | text | THANK |
 | `headline` | text | YOU!!! |
-| `supporting` | text | WWW.WEBSITE.COM |
+| `fine-print` | text | WWW.WEBSITE.COM |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fbfbfb |
 | `surface` | colour | #f46eb8 |
-| `textPrimary` | colour | #a521c0 |
-| `textSecondary` | colour | #f8bd1c |
+| `textPrimary` | colour | #000000 |
+| `textSecondary` | colour | #f6f6f6 |
 | `accent` | colour | #f46eb8 |
 | `accentSecondary` | colour | #f7bc1b |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Archivo Black |
-| `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

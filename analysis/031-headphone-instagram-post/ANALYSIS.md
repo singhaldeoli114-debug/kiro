@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,37 +43,38 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=123, y=35, w=151, h=919 |
-| Normalised | x=11.39%, y=3.24%, w=13.98%, h=85.09% |
+| Bounding box (px) | x=138, y=49, w=118, h=980 |
+| Normalised | x=12.78%, y=4.54%, w=10.93%, h=90.74% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Modak-Regular.ttf` |
 | Variation axes | None |
-| Font size | 29 px |
-| Letter-spacing | -0.62 px (-0.0214 em) |
+| Font size | 23 px |
+| Letter-spacing | -0.71 px (-0.0309 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#ffda4f` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 3.75:1 |
-| Stroke (median/mean) | 19.0 / 19.07 px |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.0:1 |
+| Stroke (median/mean) | 34.0 / 31.96 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Modak, Bahiana |
-| Match IoU | 0.3122 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.5687 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.7337) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | -891 px |
+| Gap to next | -966 px |
 
 Alternate font fits considered:
-- `Modak-Regular.ttf` 28px track 0.06px — IoU 0.3116
-- `Modak-Regular.ttf` 27px track 0.73px — IoU 0.3059
-- `Bahiana-Regular.ttf` 51px track 0.45px — IoU 0.2412
+- `Modak-Regular.ttf` 22px track -0.03px — IoU 0.5255
+- `Modak-Regular.ttf` 21px track 0.64px — IoU 0.5058
+- `Bahiana-Regular.ttf` 42px track -0.43px — IoU 0.3446
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "TODAY MEGA DFFER"  (OCR confidence 0.859)
 
@@ -96,12 +97,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.86:1 |
 | Stroke (median/mean) | 3.0 / 8.77 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Modak, Bahiana |
 | Match IoU | 0.089 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.859) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -891 px |
+| Gap to previous | -966 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -114,11 +116,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#2f2618` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#fde06b` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffda4f` | glyph ink of 'HeADPhOne' | glyph ink median |
+| textPrimary | `#2e2e2e` | glyph ink of 'HeADPhOne' | glyph ink median |
 | textSecondary | `#36301c` | glyph ink of 'TODAY MEGA DFFER' | glyph ink median |
 | accent | `#fdcf34` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#feda53` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -142,7 +144,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.1285 |
+| Text coverage | 0.1087 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -170,19 +172,19 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | HeADPhOne |
-| `subheadline` | text | TODAY MEGA DFFER |
+| `supporting` | text | TODAY MEGA DFFER |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #2f2618 |
 | `surface` | colour | #fde06b |
-| `textPrimary` | colour | #ffda4f |
+| `textPrimary` | colour | #2e2e2e |
 | `textSecondary` | colour | #36301c |
 | `accent` | colour | #fdcf34 |
 | `accentSecondary` | colour | #feda53 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Modak |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 60.8 |
 | `imageFocalY` | number | 46.3 |
 

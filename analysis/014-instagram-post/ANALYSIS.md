@@ -33,45 +33,46 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — headline
+### `text-1` — supporting
 
 **Text:** "Shine with Elegance"  (OCR confidence 0.9954)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=313, y=78, w=412, h=65 |
-| Normalised | x=28.98%, y=7.22%, w=38.15%, h=6.02% |
+| Bounding box (px) | x=313, y=83, w=412, h=55 |
+| Normalised | x=28.98%, y=7.69%, w=38.15%, h=5.09% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Sora[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 76 px |
-| Letter-spacing | 0.2 px (0.0026 em) |
-| Line-height | 112.5 px (ratio 1.48) |
-| Line | 1 of 3 |
+| Variation axes | [800.0] |
+| Font size | 40 px |
+| Letter-spacing | -0.36 px (-0.009 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.15:1 |
-| Stroke (median/mean) | 6.0 / 7.62 px |
+| Stroke (median/mean) | 6.0 / 7.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora, Poppins |
-| Match IoU | 0.2086 |
+| Match IoU | 0.271 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 59 px |
+| Gap to next | 64 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 77px track -0.35px — IoU 0.6553
-- `Sora[wght].ttf` 75px track 0.75px — IoU 0.6515
-- `Sora[wght].ttf` 75px track 0.45px — IoU 0.635
+- `Sora[wght].ttf` 39px track 0.23px — IoU 0.2594
+- `Sora[wght].ttf` 41px track -0.78px — IoU 0.2461
+- `Sora[wght].ttf` 40px track -0.2px — IoU 0.2446
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=160, y=202, w=761, h=74 |
-| Normalised | x=14.81%, y=18.7%, w=70.46%, h=6.85% |
+| Bounding box (px) | x=159, y=202, w=763, h=74 |
+| Normalised | x=14.72%, y=18.7%, w=70.65%, h=6.85% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,26 +89,27 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 76 px |
-| Letter-spacing | 0.2 px (0.0026 em) |
-| Line-height | 112.5 px (ratio 1.48) |
-| Line | 2 of 3 |
+| Letter-spacing | 0.31 px (0.0041 em) |
+| Line-height | 101.0 px (ratio 1.329) |
+| Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 12.0 / 16.15 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora, Poppins |
-| Match IoU | 0.8552 |
+| Match IoU | 0.8637 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 59 px |
+| Gap to previous | 64 px |
 | Gap to next | 27 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 77px track -0.35px — IoU 0.6553
-- `Sora[wght].ttf` 75px track 0.75px — IoU 0.6515
-- `Sora[wght].ttf` 75px track 0.45px — IoU 0.635
+- `Sora[wght].ttf` 77px track -0.24px — IoU 0.8774
+- `Sora[wght].ttf` 75px track 0.57px — IoU 0.8374
+- `Sora[wght].ttf` 78px track -0.8px — IoU 0.8324
 
 ### `text-3` — headline
 
@@ -115,8 +117,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=234, y=303, w=611, h=75 |
-| Normalised | x=21.67%, y=28.06%, w=56.57%, h=6.94% |
+| Bounding box (px) | x=234, y=303, w=612, h=75 |
+| Normalised | x=21.67%, y=28.06%, w=56.67%, h=6.94% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,16 +126,17 @@ Alternate font fits considered:
 | Font file matched | `Sora[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 76 px |
-| Letter-spacing | 0.2 px (0.0026 em) |
-| Line-height | 112.5 px (ratio 1.48) |
-| Line | 3 of 3 |
+| Letter-spacing | 0.31 px (0.0041 em) |
+| Line-height | 101.0 px (ratio 1.329) |
+| Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 12.0 / 15.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora, Poppins |
-| Match IoU | 0.9122 |
+| Match IoU | 0.9249 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -141,18 +144,18 @@ Alternate font fits considered:
 | Gap to next | 581 px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 77px track -0.35px — IoU 0.6553
-- `Sora[wght].ttf` 75px track 0.75px — IoU 0.6515
-- `Sora[wght].ttf` 75px track 0.45px — IoU 0.635
+- `Sora[wght].ttf` 77px track -0.24px — IoU 0.8774
+- `Sora[wght].ttf` 75px track 0.57px — IoU 0.8374
+- `Sora[wght].ttf` 78px track -0.8px — IoU 0.8324
 
-### `text-4` — subheadline
+### `text-4` — body
 
 **Text:** "Discover handcrafted jewelry designed to"  (OCR confidence 0.9977)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=282, y=959, w=517, h=35 |
-| Normalised | x=26.11%, y=88.8%, w=47.87%, h=3.24% |
+| Bounding box (px) | x=282, y=959, w=517, h=26 |
+| Normalised | x=26.11%, y=88.8%, w=47.87%, h=2.41% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,61 +164,63 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 25 px |
 | Letter-spacing | -0.07 px (-0.0028 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 32.0 px (ratio 1.28) |
+| Line | 1 of 2 |
 | Transform | none |
-| Colour | `#fafafa` |
+| Colour | `#fbfbfb` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 20.61:1 |
-| Stroke (median/mean) | 2.0 / 2.35 px |
+| Contrast vs local bg | 20.69:1 |
+| Stroke (median/mean) | 2.0 / 2.36 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora, Poppins |
-| Match IoU | 0.2706 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7346 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 581 px |
-| Gap to next | -12 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 26px track -0.61px — IoU 0.2449
-- `Poppins-Regular.ttf` 24px track 0.46px — IoU 0.2425
-- `Sora[wght].ttf` 23px track 0.5px — IoU 0.205
+- `Poppins-Regular.ttf` 24px track 0.46px — IoU 0.639
+- `Poppins-Regular.ttf` 26px track -0.61px — IoU 0.535
+- `Sora[wght].ttf` 24px track 0.05px — IoU 0.4063
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "celebrate life's meaningful moments."  (OCR confidence 0.9876)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=310, y=982, w=460, h=36 |
-| Normalised | x=28.7%, y=90.93%, w=42.59%, h=3.33% |
+| Bounding box (px) | x=309, y=991, w=461, h=27 |
+| Normalised | x=28.61%, y=91.76%, w=42.69%, h=2.5% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Sora[wght].ttf` |
-| Variation axes | [600] |
+| Font file matched | `Poppins-Regular.ttf` |
+| Variation axes | None |
 | Font size | 25 px |
-| Letter-spacing | -0.41 px (-0.0164 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.07 px (-0.0028 em) |
+| Line-height | 32.0 px (ratio 1.28) |
+| Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#fdfdfd` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 20.84:1 |
-| Stroke (median/mean) | 2.0 / 2.57 px |
+| Stroke (median/mean) | 2.0 / 2.56 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Sora, Poppins |
-| Match IoU | 0.2552 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7179 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -12 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 6 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Sora[wght].ttf` 25px track -0.51px — IoU 0.2536
-- `Sora[wght].ttf` 26px track -0.62px — IoU 0.2488
-- `Poppins-Regular.ttf` 25px track -0.09px — IoU 0.2423
+- `Poppins-Regular.ttf` 24px track 0.46px — IoU 0.639
+- `Poppins-Regular.ttf` 26px track -0.61px — IoU 0.535
+- `Sora[wght].ttf` 24px track 0.05px — IoU 0.4063
 
 ## 4. Colours (semantic)
 
@@ -227,7 +232,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'Shine with Elegance' | glyph ink median |
 | accent | `#000000` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#e5a754` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +256,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.1402 |
+| Text coverage | 0.1294 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -278,11 +283,11 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `headline_line1` | text | Shine with Elegance |
-| `headline_line2` | text | Timeless pieces for |
-| `headline_line3` | text | every occasion. |
-| `subheadline` | text | Discover handcrafted jewelry designed to |
-| `subheadline` | text | celebrate life's meaningful moments. |
+| `supporting` | text | Shine with Elegance |
+| `headline_line1` | text | Timeless pieces for |
+| `headline_line2` | text | every occasion. |
+| `body_line1` | text | Discover handcrafted jewelry designed to |
+| `body_line2` | text | celebrate life's meaningful moments. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #eddfcc |
@@ -293,11 +298,11 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #e5a754 |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Sora |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 49.3 |
 | `imageFocalY` | number | 57.1 |
 

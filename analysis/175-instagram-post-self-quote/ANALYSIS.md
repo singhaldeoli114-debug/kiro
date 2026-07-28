@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=393, y=331, w=314, h=108 |
-| Normalised | x=36.39%, y=30.65%, w=29.07%, h=10.0% |
+| Bounding box (px) | x=393, y=331, w=315, h=108 |
+| Normalised | x=36.39%, y=30.65%, w=29.17%, h=10.0% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.54:1 |
 | Stroke (median/mean) | 28.0 / 23.56 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Roboto |
-| Match IoU | 0.8366 |
+| Match IoU | 0.8342 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 65 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 147px track -0.16px — IoU 0.8583
-- `AbrilFatface-Regular.ttf` 146px track 0.56px — IoU 0.8442
-- `Roboto[wdth,wght].ttf` 176px track -0.23px — IoU 0.4902
+- `AbrilFatface-Regular.ttf` 147px track -0.16px — IoU 0.8611
+- `AbrilFatface-Regular.ttf` 146px track 0.56px — IoU 0.845
+- `Roboto[wdth,wght].ttf` 176px track -0.23px — IoU 0.4929
 
 ### `text-2` — headline
 
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.57:1 |
 | Stroke (median/mean) | 29.0 / 25.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Roboto |
 | Match IoU | 0.8888 |
 | **Geometry fit confidence** | **high** |
@@ -105,9 +107,9 @@ Alternate font fits considered:
 | Gap to next | -108 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 147px track -0.16px — IoU 0.8583
-- `AbrilFatface-Regular.ttf` 146px track 0.56px — IoU 0.8442
-- `Roboto[wdth,wght].ttf` 176px track -0.23px — IoU 0.4902
+- `AbrilFatface-Regular.ttf` 147px track -0.16px — IoU 0.8611
+- `AbrilFatface-Regular.ttf` 146px track 0.56px — IoU 0.845
+- `Roboto[wdth,wght].ttf` 176px track -0.23px — IoU 0.4929
 
 ### `text-3` — headline
 
@@ -132,90 +134,93 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.54:1 |
 | Stroke (median/mean) | 28.0 / 25.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Roboto |
 | Match IoU | 0.6518 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | -108 px |
-| Gap to next | 90 px |
+| Gap to next | 89 px |
 
 Alternate font fits considered:
 - `AbrilFatface-Regular.ttf` 143px track 0.46px — IoU 0.648
 - `AbrilFatface-Regular.ttf` 144px track -0.3px — IoU 0.6454
 - `Roboto[wdth,wght].ttf` 174px track -0.12px — IoU 0.4029
 
-### `text-4` — subheadline
+### `text-4` — body
 
 **Text:** "Lorem ipsum dolor sit amet, consectetur"  (OCR confidence 0.9982)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=264, y=709, w=554, h=29 |
-| Normalised | x=24.44%, y=65.65%, w=51.3%, h=2.69% |
+| Bounding box (px) | x=264, y=708, w=555, h=30 |
+| Normalised | x=24.44%, y=65.56%, w=51.39%, h=2.78% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
-| Font size | 31 px |
-| Letter-spacing | -0.24 px (-0.0077 em) |
-| Line-height | 42.0 px (ratio 1.355) |
+| Variation axes | [500, 100.0] |
+| Font size | 32 px |
+| Letter-spacing | -0.65 px (-0.0203 em) |
+| Line-height | 42.0 px (ratio 1.312) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#050504` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 12.91:1 |
 | Stroke (median/mean) | 3.0 / 3.31 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Roboto |
-| Match IoU | 0.7538 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6658 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 90 px |
-| Gap to next | 13 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 89 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 31px track -0.2px — IoU 0.7367
-- `Roboto[wdth,wght].ttf` 31px track -0.28px — IoU 0.6848
-- `Roboto[wdth,wght].ttf` 32px track -0.67px — IoU 0.6659
+- `Roboto[wdth,wght].ttf` 31px track -0.21px — IoU 0.7272
+- `Roboto[wdth,wght].ttf` 34px track -0.66px — IoU 0.6928
+- `Roboto[wdth,wght].ttf` 30px track 0.26px — IoU 0.6786
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "adipiscing elit,"  (OCR confidence 0.9993)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=444, y=751, w=193, h=29 |
-| Normalised | x=41.11%, y=69.54%, w=17.87%, h=2.69% |
+| Bounding box (px) | x=443, y=750, w=194, h=31 |
+| Normalised | x=41.02%, y=69.44%, w=17.96%, h=2.87% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
-| Font size | 31 px |
-| Letter-spacing | -0.24 px (-0.0077 em) |
-| Line-height | 42.0 px (ratio 1.355) |
+| Variation axes | [500, 100.0] |
+| Font size | 32 px |
+| Letter-spacing | -0.65 px (-0.0203 em) |
+| Line-height | 42.0 px (ratio 1.312) |
 | Line | 2 of 2 |
 | Transform | lowercase |
-| Colour | `#040403` |
+| Colour | `#040503` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 13.68:1 |
+| Contrast vs local bg | 13.12:1 |
 | Stroke (median/mean) | 3.0 / 3.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Roboto |
-| Match IoU | 0.7557 |
+| Match IoU | 0.8062 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 13 px |
+| Gap to previous | 12 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 31px track -0.2px — IoU 0.7367
-- `Roboto[wdth,wght].ttf` 31px track -0.28px — IoU 0.6848
-- `Roboto[wdth,wght].ttf` 32px track -0.67px — IoU 0.6659
+- `Roboto[wdth,wght].ttf` 31px track -0.21px — IoU 0.7272
+- `Roboto[wdth,wght].ttf` 34px track -0.66px — IoU 0.6928
+- `Roboto[wdth,wght].ttf` 30px track 0.26px — IoU 0.6786
 
 ## 4. Colours (semantic)
 
@@ -224,10 +229,10 @@ Alternate font fits considered:
 | background | `#ffffff` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#b7e885` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#1d1c1c` | glyph ink of 'Skin' | glyph ink median |
-| textSecondary | `#050504` | glyph ink of 'Lorem ipsum dolor sit amet, ' | glyph ink median |
+| textSecondary | `#040503` | glyph ink of 'adipiscing elit,' | glyph ink median |
 | accent | `#b7e885` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +256,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.1092 |
+| Text coverage | 0.1101 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -281,22 +286,22 @@ _Recommendations only — no manifest is generated._
 | `headline_line1` | text | Love |
 | `headline_line2` | text | Skin |
 | `headline` | text | Your |
-| `subheadline_line1` | text | Lorem ipsum dolor sit amet, consectetur |
-| `subheadline_line2` | text | adipiscing elit, |
+| `body_line1` | text | Lorem ipsum dolor sit amet, consectetur |
+| `body_line2` | text | adipiscing elit, |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #ffffff |
 | `surface` | colour | #b7e885 |
 | `textPrimary` | colour | #1d1c1c |
-| `textSecondary` | colour | #050504 |
+| `textSecondary` | colour | #040503 |
 | `accent` | colour | #b7e885 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abril Fatface |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

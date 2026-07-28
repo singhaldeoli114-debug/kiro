@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -61,6 +61,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.04:1 |
 | Stroke (median/mean) | 5.0 / 6.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Dangrek, Fredericka the Great |
 | Match IoU | 0.3471 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
@@ -97,13 +98,15 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.05:1 |
 | Stroke (median/mean) | 6.0 / 7.91 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alfa Slab One, Dangrek, Fredericka the Great |
 | Match IoU | 0.2531 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.788) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | -92 px |
-| Gap to next | 109 px |
+| Gap to next | 108 px |
 
 Alternate font fits considered:
 - `Dangrek-Regular.ttf` 161px track 0.38px — IoU 0.2516
@@ -116,71 +119,73 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=250, y=394, w=581, h=211 |
-| Normalised | x=23.15%, y=36.48%, w=53.8%, h=19.54% |
+| Bounding box (px) | x=250, y=393, w=581, h=212 |
+| Normalised | x=23.15%, y=36.39%, w=53.8%, h=19.63% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `FrederickatheGreat-Regular.ttf` |
+| Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 308 px |
-| Letter-spacing | 0.4 px (0.0013 em) |
+| Font size | 258 px |
+| Letter-spacing | -1.05 px (-0.0041 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#5271ff` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 2.07:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.0:1 |
 | Stroke (median/mean) | 33.5 / 32.54 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Dangrek, Fredericka the Great |
-| Match IoU | 0.1179 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9712 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 109 px |
-| Gap to next | 111 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 108 px |
+| Gap to next | 110 px |
 
 Alternate font fits considered:
-- `FrederickatheGreat-Regular.ttf` 309px track -0.55px — IoU 0.1161
-- `FrederickatheGreat-Regular.ttf` 307px track 1.34px — IoU 0.1124
-- `Dangrek-Regular.ttf` 365px track 0.71px — IoU 0.0448
+- `AlfaSlabOne-Regular.ttf` 257px track 0.09px — IoU 0.9646
+- `AlfaSlabOne-Regular.ttf` 256px track 1.22px — IoU 0.9623
+- `Dangrek-Regular.ttf` 367px track -0.88px — IoU 0.7
 
-### `text-4` — detail
+### `text-4` — body
 
 **Text:** "FOLLOWERS"  (OCR confidence 0.9919)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=371, y=716, w=342, h=52 |
-| Normalised | x=34.35%, y=66.3%, w=31.67%, h=4.81% |
+| Bounding box (px) | x=371, y=715, w=346, h=54 |
+| Normalised | x=34.35%, y=66.2%, w=32.04%, h=5.0% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AlfaSlabOne-Regular.ttf` |
+| Font file matched | `Dangrek-Regular.ttf` |
 | Variation axes | None |
-| Font size | 50 px |
-| Letter-spacing | -0.47 px (-0.0094 em) |
+| Font size | 71 px |
+| Letter-spacing | 0.18 px (0.0025 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#5271ff` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.07:1 |
 | Stroke (median/mean) | 12.0 / 14.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Dangrek, Fredericka the Great |
-| Match IoU | 0.1676 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6746 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 111 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 110 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AlfaSlabOne-Regular.ttf` 49px track 0.39px — IoU 0.1568
-- `AlfaSlabOne-Regular.ttf` 48px track 1.25px — IoU 0.1523
-- `FrederickatheGreat-Regular.ttf` 50px track 0.31px — IoU 0.0991
+- `AlfaSlabOne-Regular.ttf` 51px track -0.84px — IoU 0.661
+- `Dangrek-Regular.ttf` 72px track -0.43px — IoU 0.6556
+- `AlfaSlabOne-Regular.ttf` 50px track 0.03px — IoU 0.6494
 
 ## 4. Colours (semantic)
 
@@ -188,11 +193,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#5271fe` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#5271ff` | glyph ink of '60K' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of '60K' | glyph ink median |
 | textSecondary | `#fafbff` | glyph ink of 'Thank' | glyph ink median |
 | accent | `#5271fe` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#dbb315` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -216,7 +221,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1701 |
+| Text coverage | 0.1713 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -246,12 +251,12 @@ _Recommendations only — no manifest is generated._
 | `supporting` | text | Thank |
 | `subheadline` | text | YOU |
 | `headline` | text | 60K |
-| `detail` | text | FOLLOWERS |
+| `body` | text | FOLLOWERS |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #5271fe |
-| `textPrimary` | colour | #5271ff |
+| `textPrimary` | colour | #ffffff |
 | `textSecondary` | colour | #fafbff |
 | `accent` | colour | #5271fe |
 | `accentSecondary` | colour | #dbb315 |
@@ -260,7 +265,7 @@ _Recommendations only — no manifest is generated._
 | `show_supporting` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -52,25 +52,27 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Variation axes | [500] |
 | Font size | 130 px |
 | Letter-spacing | -0.47 px (-0.0036 em) |
-| Line-height | 167.0 px (ratio 1.285) |
-| Line | 1 of 2 |
+| Line-height | 167.5 px (ratio 1.288) |
+| Line | 1 of 3 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.71:1 |
 | Stroke (median/mean) | 13.0 / 14.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Playfair Display |
 | Match IoU | 0.8505 |
-| **Geometry fit confidence** | **high** |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | None px |
 | Gap to next | 59 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 129px track 0.21px — IoU 0.8229
-- `PlayfairDisplay[wght].ttf` 128px track 0.88px — IoU 0.79
-- `PlayfairDisplay[wght].ttf` 131px track -0.36px — IoU 0.7895
+- `PlayfairDisplay[wght].ttf` 129px track 0.21px — IoU 0.6113
+- `PlayfairDisplay[wght].ttf` 129px track -0.52px — IoU 0.5905
+- `PlayfairDisplay[wght].ttf` 128px track 0.88px — IoU 0.587
 
 ### `text-2` — headline
 
@@ -88,25 +90,27 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 130 px |
 | Letter-spacing | -0.47 px (-0.0036 em) |
-| Line-height | 167.0 px (ratio 1.285) |
-| Line | 2 of 2 |
+| Line-height | 167.5 px (ratio 1.288) |
+| Line | 2 of 3 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.73:1 |
 | Stroke (median/mean) | 14.0 / 13.88 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Playfair Display |
 | Match IoU | 0.83 |
-| **Geometry fit confidence** | **high** |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | 59 px |
 | Gap to next | 59 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 129px track 0.21px — IoU 0.8229
-- `PlayfairDisplay[wght].ttf` 128px track 0.88px — IoU 0.79
-- `PlayfairDisplay[wght].ttf` 131px track -0.36px — IoU 0.7895
+- `PlayfairDisplay[wght].ttf` 129px track 0.21px — IoU 0.6113
+- `PlayfairDisplay[wght].ttf` 129px track -0.52px — IoU 0.5905
+- `PlayfairDisplay[wght].ttf` 128px track 0.88px — IoU 0.587
 
 ### `text-3` — headline
 
@@ -114,35 +118,37 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=216, y=401, w=329, h=152 |
-| Normalised | x=20.0%, y=37.13%, w=30.46%, h=14.07% |
+| Bounding box (px) | x=216, y=401, w=329, h=147 |
+| Normalised | x=20.0%, y=37.13%, w=30.46%, h=13.61% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `PlayfairDisplay-Italic[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 143 px |
-| Letter-spacing | -0.4 px (-0.0028 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `PlayfairDisplay[wght].ttf` |
+| Variation axes | [500] |
+| Font size | 130 px |
+| Letter-spacing | -0.47 px (-0.0036 em) |
+| Line-height | 167.5 px (ratio 1.288) |
+| Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.97:1 |
-| Stroke (median/mean) | 13.0 / 14.69 px |
+| Contrast vs local bg | 1.98:1 |
+| Stroke (median/mean) | 13.0 / 14.42 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Playfair Display |
-| Match IoU | 0.2046 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.1869 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.8929) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | 59 px |
-| Gap to next | -15 px |
+| Gap to next | -5 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay-Italic[wght].ttf` 142px track 0.38px — IoU 0.2029
-- `PlayfairDisplay-Italic[wght].ttf` 141px track 1.15px — IoU 0.201
-- `PlayfairDisplay-Italic[wght].ttf` 146px track -0.8px — IoU 0.1949
+- `PlayfairDisplay[wght].ttf` 129px track 0.21px — IoU 0.6113
+- `PlayfairDisplay[wght].ttf` 129px track -0.52px — IoU 0.5905
+- `PlayfairDisplay[wght].ttf` 128px track 0.88px — IoU 0.587
 
 ### `text-4` — headline
 
@@ -150,8 +156,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=180, y=538, w=404, h=139 |
-| Normalised | x=16.67%, y=49.81%, w=37.41%, h=12.87% |
+| Bounding box (px) | x=179, y=543, w=405, h=135 |
+| Normalised | x=16.57%, y=50.28%, w=37.5%, h=12.5% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -159,26 +165,27 @@ Alternate font fits considered:
 | Font file matched | `PlayfairDisplay[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 141 px |
-| Letter-spacing | -0.84 px (-0.006 em) |
-| Line-height | 199.0 px (ratio 1.411) |
+| Letter-spacing | -0.64 px (-0.0045 em) |
+| Line-height | 194.0 px (ratio 1.376) |
 | Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#fffefe` |
+| Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.13:1 |
+| Contrast vs local bg | 2.15:1 |
 | Stroke (median/mean) | 13.0 / 13.59 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display |
-| Match IoU | 0.1654 |
+| Match IoU | 0.1801 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -15 px |
-| Gap to next | 60 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -5 px |
+| Gap to next | 59 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 140px track -0.26px — IoU 0.5368
-- `PlayfairDisplay[wght].ttf` 139px track 0.32px — IoU 0.5286
-- `PlayfairDisplay[wght].ttf` 138px track 0.02px — IoU 0.5147
+- `PlayfairDisplay[wght].ttf` 140px track -0.06px — IoU 0.5429
+- `PlayfairDisplay[wght].ttf` 139px track 0.52px — IoU 0.536
+- `PlayfairDisplay[wght].ttf` 138px track 0.22px — IoU 0.5189
 
 ### `text-5` — headline
 
@@ -195,26 +202,27 @@ Alternate font fits considered:
 | Font file matched | `PlayfairDisplay[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 141 px |
-| Letter-spacing | -0.84 px (-0.006 em) |
-| Line-height | 199.0 px (ratio 1.411) |
+| Letter-spacing | -0.64 px (-0.0045 em) |
+| Line-height | 194.0 px (ratio 1.376) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.54:1 |
 | Stroke (median/mean) | 14.0 / 14.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display |
 | Match IoU | 0.9147 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 60 px |
+| Gap to previous | 59 px |
 | Gap to next | -75 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 140px track -0.26px — IoU 0.5368
-- `PlayfairDisplay[wght].ttf` 139px track 0.32px — IoU 0.5286
-- `PlayfairDisplay[wght].ttf` 138px track 0.02px — IoU 0.5147
+- `PlayfairDisplay[wght].ttf` 140px track -0.06px — IoU 0.5429
+- `PlayfairDisplay[wght].ttf` 139px track 0.52px — IoU 0.536
+- `PlayfairDisplay[wght].ttf` 138px track 0.22px — IoU 0.5189
 
 ### `text-6` — headline
 
@@ -239,54 +247,57 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.24:1 |
 | Stroke (median/mean) | 13.0 / 12.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display |
 | Match IoU | 0.8566 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.7687) |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | -75 px |
-| Gap to next | 26 px |
+| Gap to next | 21 px |
 
 Alternate font fits considered:
 - `PlayfairDisplay[wght].ttf` 131px track 0.8px — IoU 0.8313
 - `PlayfairDisplay[wght].ttf` 133px track -0.87px — IoU 0.8279
 - `PlayfairDisplay[wght].ttf` 130px track 0.45px — IoU 0.7942
 
-### `text-7` — subheadline
+### `text-7` — body
 
 **Text:** "John C. Maxwell"  (OCR confidence 0.9834)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=231, y=895, w=309, h=42 |
-| Normalised | x=21.39%, y=82.87%, w=28.61%, h=3.89% |
+| Bounding box (px) | x=230, y=890, w=321, h=51 |
+| Normalised | x=21.3%, y=82.41%, w=29.72%, h=4.72% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlayfairDisplay[wght].ttf` |
-| Variation axes | [700] |
+| Variation axes | [900.0] |
 | Font size | 41 px |
-| Letter-spacing | 0.15 px (0.0037 em) |
+| Letter-spacing | 0.5 px (0.0122 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#fed9ce` |
+| Colour | `#feb49a` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.96:1 |
+| Contrast vs local bg | 1.71:1 |
 | Stroke (median/mean) | 4.0 / 4.02 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Playfair Display |
-| Match IoU | 0.5258 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.2748 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 26 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 21 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 41px track -0.1px — IoU 0.5048
-- `PlayfairDisplay[wght].ttf` 40px track 0.44px — IoU 0.4961
-- `PlayfairDisplay[wght].ttf` 40px track 0.19px — IoU 0.4959
+- `PlayfairDisplay[wght].ttf` 41px track 0.76px — IoU 0.255
+- `PlayfairDisplay[wght].ttf` 42px track -0.04px — IoU 0.2413
+- `PlayfairDisplay[wght].ttf` 44px track -0.6px — IoU 0.2367
 
 ## 4. Colours (semantic)
 
@@ -295,10 +306,10 @@ Alternate font fits considered:
 | background | `#fdfaf1` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#c56d39` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'work' | glyph ink median |
-| textSecondary | `#fed9ce` | glyph ink of 'John C. Maxwell' | glyph ink median |
+| textSecondary | `#feb49a` | glyph ink of 'John C. Maxwell' | glyph ink median |
 | accent | `#c56d39` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#9f4f2f` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -322,7 +333,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.2022 |
+| Text coverage | 0.2025 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -351,17 +362,17 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | dreams |
 | `headline_line2` | text | don't |
-| `headline` | text | work |
+| `headline_line3` | text | work |
 | `headline_line1` | text | unless |
 | `headline_line2` | text | do |
 | `headline` | text | you |
-| `subheadline` | text | John C. Maxwell |
+| `body` | text | John C. Maxwell |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fdfaf1 |
 | `surface` | colour | #c56d39 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #fed9ce |
+| `textSecondary` | colour | #feb49a |
 | `accent` | colour | #c56d39 |
 | `accentSecondary` | colour | #9f4f2f |
 | `onAccent` | colour | #000000 |
@@ -372,7 +383,7 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 40.1 |
 | `imageFocalY` | number | 64.4 |
 

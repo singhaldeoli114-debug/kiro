@@ -35,26 +35,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — fine-print
 
 **Text:** "Give your loved ones a delicious box"  (OCR confidence 0.996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=510, y=74, w=497, h=28 |
-| Normalised | x=47.22%, y=6.85%, w=46.02%, h=2.59% |
+| Bounding box (px) | x=510, y=74, w=497, h=27 |
+| Normalised | x=47.22%, y=6.85%, w=46.02%, h=2.5% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `FaunaOne-Regular.ttf` |
-| Variation axes | None |
-| Font size | 26 px |
-| Letter-spacing | 0.52 px (0.02 em) |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [600, 87.5] |
+| Font size | 31 px |
+| Letter-spacing | 0.6 px (0.0194 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -62,35 +62,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.2:1 |
 | Stroke (median/mean) | 2.0 / 2.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Allura, Fauna One, Adamina |
-| Match IoU | 0.5597 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.5083 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
 | Gap to next | -21 px |
 
 Alternate font fits considered:
-- `FaunaOne-Regular.ttf` 27px track -0.0px — IoU 0.5531
-- `FaunaOne-Regular.ttf` 28px track -0.53px — IoU 0.5434
-- `Roboto[wdth,wght].ttf` 31px track 0.55px — IoU 0.509
+- `Roboto[wdth,wght].ttf` 31px track 0.55px — IoU 0.5023
+- `FaunaOne-Regular.ttf` 27px track -0.0px — IoU 0.4875
+- `FaunaOne-Regular.ttf` 26px track 0.52px — IoU 0.486
 
-### `text-2` — subheadline
+### `text-2` — fine-print
 
 **Text:** "Valentine's Day"  (OCR confidence 0.9873)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=179, y=81, w=236, h=34 |
-| Normalised | x=16.57%, y=7.5%, w=21.85%, h=3.15% |
+| Bounding box (px) | x=179, y=80, w=237, h=35 |
+| Normalised | x=16.57%, y=7.41%, w=21.94%, h=3.24% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 75.0] |
-| Font size | 39 px |
-| Letter-spacing | -0.09 px (-0.0023 em) |
+| Variation axes | [500, 87.5] |
+| Font size | 38 px |
+| Letter-spacing | -0.55 px (-0.0145 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -98,90 +99,93 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.38:1 |
 | Stroke (median/mean) | 3.0 / 4.3 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Allura, Fauna One, Adamina |
-| Match IoU | 0.757 |
+| Match IoU | 0.7947 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | -21 px |
-| Gap to next | -14 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 37px track -0.16px — IoU 0.7486
-- `Roboto[wdth,wght].ttf` 35px track -0.21px — IoU 0.7478
-- `Roboto[wdth,wght].ttf` 34px track 0.28px — IoU 0.7272
+- `Roboto[wdth,wght].ttf` 35px track -0.19px — IoU 0.7641
+- `Roboto[wdth,wght].ttf` 34px track 0.24px — IoU 0.7438
+- `Roboto[wdth,wght].ttf` 36px track -0.74px — IoU 0.7406
 
-### `text-3` — supporting
+### `text-3` — fine-print
 
 **Text:** "of our homemade cupcakes and"  (OCR confidence 0.9976)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=510, y=101, w=443, h=37 |
-| Normalised | x=47.22%, y=9.35%, w=41.02%, h=3.43% |
+| Bounding box (px) | x=510, y=111, w=443, h=28 |
+| Normalised | x=47.22%, y=10.28%, w=41.02%, h=2.59% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 33 px |
-| Letter-spacing | -0.15 px (-0.0045 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `FaunaOne-Regular.ttf` |
+| Variation axes | None |
+| Font size | 28 px |
+| Letter-spacing | -0.32 px (-0.0114 em) |
+| Line-height | 37.0 px (ratio 1.321) |
+| Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#f6eeed` |
+| Colour | `#f6eeee` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.22:1 |
 | Stroke (median/mean) | 2.0 / 2.92 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Allura, Fauna One, Adamina |
-| Match IoU | 0.2228 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5864 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -14 px |
-| Gap to next | 10 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -4 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 36px track -0.57px — IoU 0.222
-- `Roboto[wdth,wght].ttf` 36px track -0.54px — IoU 0.2217
-- `Roboto[wdth,wght].ttf` 34px track -0.63px — IoU 0.2207
+- `FaunaOne-Regular.ttf` 27px track 0.21px — IoU 0.4216
+- `Roboto[wdth,wght].ttf` 32px track -0.52px — IoU 0.3718
+- `Roboto[wdth,wght].ttf` 31px track 0.06px — IoU 0.3681
 
-### `text-4` — supporting
+### `text-4` — fine-print
 
 **Text:** "make theri Valentine's Day special"  (OCR confidence 0.9854)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=510, y=148, w=478, h=27 |
-| Normalised | x=47.22%, y=13.7%, w=44.26%, h=2.5% |
+| Bounding box (px) | x=510, y=148, w=478, h=28 |
+| Normalised | x=47.22%, y=13.7%, w=44.26%, h=2.59% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [400, 100.0] |
-| Font size | 31 px |
-| Letter-spacing | 0.28 px (0.009 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `FaunaOne-Regular.ttf` |
+| Variation axes | None |
+| Font size | 28 px |
+| Letter-spacing | -0.32 px (-0.0114 em) |
+| Line-height | 37.0 px (ratio 1.321) |
+| Line | 2 of 2 |
 | Transform | none |
-| Colour | `#f4eae9` |
+| Colour | `#f4eae8` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.19:1 |
 | Stroke (median/mean) | 2.0 / 2.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Allura, Fauna One, Adamina |
-| Match IoU | 0.3433 |
+| Match IoU | 0.2594 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 10 px |
-| Gap to next | -20 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 9 px |
+| Gap to next | -21 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 31px track 0.06px — IoU 0.3433
-- `Roboto[wdth,wght].ttf` 36px track -0.48px — IoU 0.3411
-- `Roboto[wdth,wght].ttf` 31px track 0.1px — IoU 0.3355
+- `FaunaOne-Regular.ttf` 27px track 0.21px — IoU 0.4216
+- `Roboto[wdth,wght].ttf` 32px track -0.52px — IoU 0.3718
+- `Roboto[wdth,wght].ttf` 31px track 0.06px — IoU 0.3681
 
 ### `text-5` — headline
 
@@ -189,16 +193,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=64, y=155, w=384, h=129 |
-| Normalised | x=5.93%, y=14.35%, w=35.56%, h=11.94% |
+| Bounding box (px) | x=64, y=155, w=385, h=129 |
+| Normalised | x=5.93%, y=14.35%, w=35.65%, h=11.94% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Allura-Regular.ttf` |
 | Variation axes | None |
-| Font size | 218 px |
-| Letter-spacing | 0.08 px (0.0004 em) |
+| Font size | 220 px |
+| Letter-spacing | -0.55 px (-0.0025 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -206,35 +210,37 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.42:1 |
 | Stroke (median/mean) | 15.0 / 18.01 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Roboto, Allura, Fauna One, Adamina |
-| Match IoU | 0.5697 |
+| Match IoU | 0.5654 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -20 px |
-| Gap to next | -91 px |
+| Gap to previous | -21 px |
+| Gap to next | -92 px |
 
 Alternate font fits considered:
-- `Allura-Regular.ttf` 219px track -0.36px — IoU 0.5692
-- `Allura-Regular.ttf` 217px track 0.52px — IoU 0.5646
-- `Roboto[wdth,wght].ttf` 190px track -0.25px — IoU 0.2613
+- `Allura-Regular.ttf` 218px track 0.33px — IoU 0.5636
+- `Allura-Regular.ttf` 219px track -0.11px — IoU 0.559
+- `Roboto[wdth,wght].ttf` 189px track 0.51px — IoU 0.258
 
-### `text-6` — subheadline
+### `text-6` — body
 
 **Text:** "ORDER NOW"  (OCR confidence 0.9946)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=513, y=193, w=263, h=32 |
-| Normalised | x=47.5%, y=17.87%, w=24.35%, h=2.96% |
+| Bounding box (px) | x=513, y=192, w=264, h=33 |
+| Normalised | x=47.5%, y=17.78%, w=24.44%, h=3.06% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Adamina-Regular.ttf` |
-| Variation axes | None |
-| Font size | 39 px |
-| Letter-spacing | -1.2 px (-0.0308 em) |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 87.5] |
+| Font size | 51 px |
+| Letter-spacing | -0.96 px (-0.0188 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -242,18 +248,21 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.43:1 |
 | Stroke (median/mean) | 5.0 / 5.7 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
+| OCR repairs (audited) | split run-together: 'ORDERNOW' -> 'ORDER NOW' |
 | Font family (authoritative) | Roboto, Allura, Fauna One, Adamina |
-| Match IoU | 0.4248 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.3708 |
+| **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -91 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -92 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Adamina-Regular.ttf` 38px track -0.33px — IoU 0.408
-- `Adamina-Regular.ttf` 37px track 0.54px — IoU 0.3922
-- `Roboto[wdth,wght].ttf` 47px track -0.68px — IoU 0.3827
+- `Adamina-Regular.ttf` 39px track -1.08px — IoU 0.3689
+- `Roboto[wdth,wght].ttf` 51px track -0.93px — IoU 0.3646
+- `Adamina-Regular.ttf` 38px track -0.21px — IoU 0.3585
 
 ## 4. Colours (semantic)
 
@@ -262,10 +271,10 @@ Alternate font fits considered:
 | background | `#ebe5e1` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#a15246` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'Sale!' | glyph ink median |
-| textSecondary | `#f6eeed` | glyph ink of 'of our homemade cupcakes and' | glyph ink median |
+| textSecondary | `#f6eeee` | glyph ink of 'of our homemade cupcakes and' | glyph ink median |
 | accent | `#a15246` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#be723c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -289,7 +298,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0936 |
+| Text coverage | 0.0908 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -316,28 +325,28 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | Give your loved ones a delicious box |
-| `subheadline` | text | Valentine's Day |
-| `supporting` | text | of our homemade cupcakes and |
-| `supporting` | text | make theri Valentine's Day special |
+| `fine-print` | text | Give your loved ones a delicious box |
+| `fine-print` | text | Valentine's Day |
+| `fine-print_line1` | text | of our homemade cupcakes and |
+| `fine-print_line2` | text | make theri Valentine's Day special |
 | `headline` | text | Sale! |
-| `subheadline` | text | ORDER NOW |
+| `body` | text | ORDER NOW |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #ebe5e1 |
 | `surface` | colour | #a15246 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #f6eeed |
+| `textSecondary` | colour | #f6eeee |
 | `accent` | colour | #a15246 |
 | `accentSecondary` | colour | #be723c |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Roboto |
-| `show_detail` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 52.3 |
 | `imageFocalY` | number | 59.5 |
 

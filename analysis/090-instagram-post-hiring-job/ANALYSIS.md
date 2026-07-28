@@ -34,11 +34,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "WE ARE HIRING A"  (OCR confidence 0.9429)
 
@@ -61,13 +61,14 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.61:1 |
 | Stroke (median/mean) | 5.0 / 6.47 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
 | Match IoU | 0.8202 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 24 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
 - `NunitoSans[YTLC,opsz,wdth,wght].ttf` 49px track -0.86px — IoU 0.8043
@@ -80,8 +81,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=552, y=334, w=461, h=84 |
-| Normalised | x=51.11%, y=30.93%, w=42.69%, h=7.78% |
+| Bounding box (px) | x=552, y=335, w=460, h=83 |
+| Normalised | x=51.11%, y=31.02%, w=42.59%, h=7.69% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,26 +90,27 @@ Alternate font fits considered:
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
 | Font size | 104 px |
-| Letter-spacing | -0.58 px (-0.0056 em) |
-| Line-height | 134.0 px (ratio 1.288) |
+| Letter-spacing | -0.74 px (-0.0071 em) |
+| Line-height | 133.0 px (ratio 1.279) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.62:1 |
-| Stroke (median/mean) | 15.0 / 19.78 px |
+| Contrast vs local bg | 1.61:1 |
+| Stroke (median/mean) | 15.0 / 19.79 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.7774 |
+| Match IoU | 0.8026 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 24 px |
+| Gap to previous | 25 px |
 | Gap to next | 50 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 103px track 0.17px — IoU 0.7357
-- `Alata-Regular.ttf` 102px track 0.91px — IoU 0.7052
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 87px track -1.27px — IoU 0.5377
+- `Alata-Regular.ttf` 103px track 0.0px — IoU 0.7505
+- `Alata-Regular.ttf` 102px track 0.74px — IoU 0.7195
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 96px track -0.99px — IoU 0.5227
 
 ### `text-3` — headline
 
@@ -125,107 +127,110 @@ Alternate font fits considered:
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
 | Font size | 104 px |
-| Letter-spacing | -0.58 px (-0.0056 em) |
-| Line-height | 134.0 px (ratio 1.288) |
+| Letter-spacing | -0.74 px (-0.0071 em) |
+| Line-height | 133.0 px (ratio 1.279) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.62:1 |
 | Stroke (median/mean) | 15.0 / 19.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.7549 |
+| Match IoU | 0.7476 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 50 px |
-| Gap to next | 250 px |
+| Gap to next | 249 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 103px track 0.17px — IoU 0.7357
-- `Alata-Regular.ttf` 102px track 0.91px — IoU 0.7052
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 87px track -1.27px — IoU 0.5377
+- `Alata-Regular.ttf` 103px track 0.0px — IoU 0.7505
+- `Alata-Regular.ttf` 102px track 0.74px — IoU 0.7195
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 96px track -0.99px — IoU 0.5227
 
-### `text-4` — detail
+### `text-4` — body
 
 **Text:** "Who can write articles related to gaming topics. You'll be writing game ranking articles on"  (OCR confidence 0.9935)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=47, y=799, w=986, h=23 |
-| Normalised | x=4.35%, y=73.98%, w=91.3%, h=2.13% |
+| Bounding box (px) | x=47, y=798, w=986, h=25 |
+| Normalised | x=4.35%, y=73.89%, w=91.3%, h=2.31% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [400, 87.5] |
-| Font size | 27 px |
-| Letter-spacing | -0.25 px (-0.0093 em) |
-| Line-height | 33.0 px (ratio 1.222) |
+| Variation axes | [500, 100.0] |
+| Font size | 25 px |
+| Letter-spacing | -0.12 px (-0.0048 em) |
+| Line-height | 34.0 px (ratio 1.36) |
 | Line | 1 of 2 |
 | Transform | none |
-| Colour | `#f8f5f9` |
+| Colour | `#f7f5f9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.47:1 |
 | Stroke (median/mean) | 2.0 / 2.89 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.5513 |
+| Match IoU | 0.6227 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 250 px |
-| Gap to next | 10 px |
+| Gap to previous | 249 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.51px — IoU 0.5842
-- `Roboto[wdth,wght].ttf` 27px track -0.35px — IoU 0.5738
-- `Roboto[wdth,wght].ttf` 26px track -0.64px — IoU 0.5696
+- `Roboto[wdth,wght].ttf` 26px track -0.59px — IoU 0.6499
+- `Roboto[wdth,wght].ttf` 26px track -0.63px — IoU 0.6388
+- `Roboto[wdth,wght].ttf` 25px track -0.16px — IoU 0.6262
 
-### `text-5` — detail
+### `text-5` — body
 
 **Text:** "game reviews, gaming platforms and other articles related to PC, Console or mobile games."  (OCR confidence 0.9869)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=35, y=832, w=1010, h=24 |
-| Normalised | x=3.24%, y=77.04%, w=93.52%, h=2.22% |
+| Bounding box (px) | x=34, y=832, w=1011, h=24 |
+| Normalised | x=3.15%, y=77.04%, w=93.61%, h=2.22% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [400, 87.5] |
-| Font size | 27 px |
-| Letter-spacing | -0.25 px (-0.0093 em) |
-| Line-height | 33.0 px (ratio 1.222) |
+| Variation axes | [500, 100.0] |
+| Font size | 25 px |
+| Letter-spacing | -0.12 px (-0.0048 em) |
+| Line-height | 34.0 px (ratio 1.36) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#f9f6fa` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.48:1 |
 | Stroke (median/mean) | 2.0 / 3.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.6373 |
+| Match IoU | 0.6971 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 10 px |
+| Gap to previous | 9 px |
 | Gap to next | 88 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.51px — IoU 0.5842
-- `Roboto[wdth,wght].ttf` 27px track -0.35px — IoU 0.5738
-- `Roboto[wdth,wght].ttf` 26px track -0.64px — IoU 0.5696
+- `Roboto[wdth,wght].ttf` 26px track -0.59px — IoU 0.6499
+- `Roboto[wdth,wght].ttf` 26px track -0.63px — IoU 0.6388
+- `Roboto[wdth,wght].ttf` 25px track -0.16px — IoU 0.6262
 
-### `text-6` — detail
+### `text-6` — body
 
 **Text:** "EMAIL YOUR RESUME"  (OCR confidence 0.992)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=944, w=239, h=16 |
-| Normalised | x=5.28%, y=87.41%, w=22.13%, h=1.48% |
+| Bounding box (px) | x=56, y=944, w=241, h=17 |
+| Normalised | x=5.19%, y=87.41%, w=22.31%, h=1.57% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -233,98 +238,102 @@ Alternate font fits considered:
 | Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
 | Variation axes | [900, 100.0, 12.0, 500.0] |
 | Font size | 23 px |
-| Letter-spacing | -0.66 px (-0.0287 em) |
-| Line-height | 32.0 px (ratio 1.391) |
+| Letter-spacing | -0.54 px (-0.0235 em) |
+| Line-height | 31.0 px (ratio 1.348) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#4d1e75` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.11:1 |
 | Stroke (median/mean) | 2.0 / 2.58 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.7905 |
+| Match IoU | 0.7521 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 88 px |
-| Gap to next | 16 px |
+| Gap to next | 14 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 21px track -0.86px — IoU 0.7875
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 20px track 0.12px — IoU 0.7805
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 26px track -0.71px — IoU 0.7742
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 21px track -0.49px — IoU 0.7573
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 25px track -0.45px — IoU 0.7507
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 26px track -0.81px — IoU 0.7496
 
-### `text-7` — detail
+### `text-7` — body
 
 **Text:** "AT"  (OCR confidence 0.9986)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=56, y=976, w=28, h=15 |
-| Normalised | x=5.19%, y=90.37%, w=2.59%, h=1.39% |
+| Bounding box (px) | x=54, y=975, w=30, h=17 |
+| Normalised | x=5.0%, y=90.28%, w=2.78%, h=1.57% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [800, 75.0] |
-| Font size | 25 px |
-| Letter-spacing | -0.77 px (-0.0308 em) |
-| Line-height | 32.0 px (ratio 1.28) |
+| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
+| Variation axes | [900, 100.0, 12.0, 500.0] |
+| Font size | 23 px |
+| Letter-spacing | -0.54 px (-0.0235 em) |
+| Line-height | 31.0 px (ratio 1.348) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#4d1e75` |
+| Colour | `#55287a` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.11:1 |
+| Contrast vs local bg | 3.55:1 |
 | Stroke (median/mean) | 2.0 / 2.26 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.8889 |
+| Match IoU | 0.824 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 16 px |
-| Gap to next | 14 px |
+| Gap to previous | 14 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 22px track -0.41px — IoU 0.8802
-- `Roboto[wdth,wght].ttf` 25px track -0.48px — IoU 0.8731
-- `Roboto[wdth,wght].ttf` 26px track -1.64px — IoU 0.8429
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 21px track -0.49px — IoU 0.7573
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 25px track -0.45px — IoU 0.7507
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 26px track -0.81px — IoU 0.7496
 
-### `text-8` — supporting
+### `text-8` — body
 
 **Text:** "GAME090@GMAEING.COM"  (OCR confidence 0.9824)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=1005, w=403, h=27 |
-| Normalised | x=5.28%, y=93.06%, w=37.31%, h=2.5% |
+| Bounding box (px) | x=56, y=1004, w=405, h=28 |
+| Normalised | x=5.19%, y=92.96%, w=37.5%, h=2.59% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [600, 112.5, 12.0, 500.0] |
+| Variation axes | [500, 112.5, 12.0, 500.0] |
 | Font size | 29 px |
-| Letter-spacing | -0.63 px (-0.0217 em) |
+| Letter-spacing | -0.43 px (-0.0148 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#532679` |
+| Colour | `#54287a` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.66:1 |
+| Contrast vs local bg | 3.56:1 |
 | Stroke (median/mean) | 1.0 / 1.78 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.6677 |
+| Match IoU | 0.6402 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — single long token with no spaces |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 14 px |
+| Gap to previous | 12 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 29px track -0.54px — IoU 0.6389
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 29px track -0.84px — IoU 0.6182
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 28px track 0.17px — IoU 0.6152
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.59px — IoU 0.6399
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 29px track -0.73px — IoU 0.6369
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.38px — IoU 0.6364
 
 ## 4. Colours (semantic)
 
@@ -333,10 +342,10 @@ Alternate font fits considered:
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#e1e2df` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'CONTENT' | glyph ink median |
-| textSecondary | `#532679` | glyph ink of 'GAME090@GMAEING.COM' | glyph ink median |
+| textSecondary | `#54287a` | glyph ink of 'GAME090@GMAEING.COM' | glyph ink median |
 | accent | `#7a4a7e` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#be7a63` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -360,7 +369,7 @@ Full palette (k-means):
 | Subject position | middle-left |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1288 |
+| Text coverage | 0.1307 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -387,32 +396,32 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | WE ARE HIRING A |
+| `supporting` | text | WE ARE HIRING A |
 | `headline_line1` | text | CONTENT |
 | `headline_line2` | text | WRITTER |
-| `detail_line1` | text | Who can write articles related to gaming topics. You'll b... |
-| `detail_line2` | text | game reviews, gaming platforms and other articles related... |
-| `detail_line1` | text | EMAIL YOUR RESUME |
-| `detail_line2` | text | AT |
-| `supporting` | text | GAME090@GMAEING.COM |
+| `body_line1` | text | Who can write articles related to gaming topics. You'll b... |
+| `body_line2` | text | game reviews, gaming platforms and other articles related... |
+| `body_line1` | text | EMAIL YOUR RESUME |
+| `body_line2` | text | AT |
+| `body` | text | GAME090@GMAEING.COM |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #e1e2df |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #532679 |
+| `textSecondary` | colour | #54287a |
 | `accent` | colour | #7a4a7e |
 | `accentSecondary` | colour | #be7a63 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Alata |
-| `show_subheadline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_supporting` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 39.5 |
 | `imageFocalY` | number | 44.5 |
 

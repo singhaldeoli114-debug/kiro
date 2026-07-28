@@ -23,7 +23,7 @@ import re
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 # --------------------------------------------------------------------------
 # OCR
@@ -90,13 +90,19 @@ def ink_bbox(gray: np.ndarray, region: tuple[int, int, int, int], light_text: bo
     sub = gray[y0:y1, x0:x1]
     if sub.size == 0:
         return None
-    mask = sub > thresh if light_text else sub < (255 - thresh)
+    # Use the same Otsu-with-polarity rule as glyph_mask so the reported box and
+    # the mask used for fitting always describe the same pixels.
+    mask, _, _ = glyph_mask(sub, light=light_text)
     if mask.sum() < 8:
-        # adaptive fallback: Otsu-ish split around region mean
         m = sub.mean()
         mask = sub > m + 25 if light_text else sub < m - 25
         if mask.sum() < 8:
             return None
+    # Row-profile trimming of stray ink from neighbouring lines was trialled here
+    # and made results materially worse (high-confidence fits fell from 380 to
+    # 305). Ascenders and descenders occupy few rows, so a density threshold
+    # strips them and leaves the box tighter than the text it should contain.
+    # The full Otsu box is kept instead.
     ys, xs = np.where(mask)
     return {
         "x": int(x0 + xs.min()),
@@ -270,19 +276,55 @@ def otsu_threshold(sub: np.ndarray) -> int:
     return int(np.argmax(sigma_b))
 
 
-def glyph_mask(sub_gray: np.ndarray) -> tuple[np.ndarray, bool, dict]:
+def decide_polarity(padded_gray: np.ndarray, border: int = 3) -> tuple[bool, dict]:
+    """Decide whether glyphs are lighter or darker than their background.
+
+    The decision is made from the border ring of a padded text box, which is
+    reliably background, rather than from which pixel class is in the minority.
+
+    The minority rule fails badly on large bold display type: for a headline
+    filling its box, the Otsu split can come out near 48/52, so the background
+    is mistaken for the ink and the mask is inverted. That produced correct-
+    looking fits scoring IoU ~0.10 because the comparison was against a negative
+    of the glyphs.
+    """
+    if padded_gray.size == 0:
+        return True, {"method": "empty"}
+
+    t = otsu_threshold(padded_gray)
+    ring = np.concatenate([
+        padded_gray[:border, :].ravel(),
+        padded_gray[-border:, :].ravel(),
+        padded_gray[:, :border].ravel(),
+        padded_gray[:, -border:].ravel(),
+    ])
+    if ring.size == 0:
+        return True, {"method": "no-border", "threshold": int(t)}
+
+    bg_is_light = float(np.median(ring)) > t
+    # ink is the opposite class to the background
+    light_text = not bg_is_light
+    return bool(light_text), {
+        "method": "border-ring polarity",
+        "threshold": int(t),
+        "borderMedian": round(float(np.median(ring)), 1),
+        "backgroundIsLight": bool(bg_is_light),
+    }
+
+
+def glyph_mask(sub_gray: np.ndarray,
+               light: bool | None = None) -> tuple[np.ndarray, bool, dict]:
     """Isolate glyph ink within a text patch.
 
     Returns (mask, is_light_text, diagnostics).
 
-    Text ink is the minority pixel population inside a tight text box, so the
-    patch is split with Otsu and whichever side covers less area is taken as the
-    ink. Comparing a patch to its surrounding ring instead fails on light
-    backgrounds: it can report light-on-dark for dark-on-light artwork, which
-    inverts the mask and silently corrupts colour sampling and font matching.
+    When `light` is supplied (from decide_polarity on the padded box) it is
+    trusted, and the patch is simply thresholded on that polarity. Only when no
+    polarity is given does this fall back to the minority-class guess.
     """
     if sub_gray.size == 0:
-        return np.zeros((1, 1), bool), True, {"method": "empty"}
+        return np.zeros((1, 1), bool), bool(light) if light is not None else True, \
+            {"method": "empty"}
 
     t = otsu_threshold(sub_gray)
     hi = sub_gray > t
@@ -291,25 +333,17 @@ def glyph_mask(sub_gray: np.ndarray) -> tuple[np.ndarray, bool, dict]:
 
     if hi_n == 0 or lo_n == 0:
         med = float(np.median(sub_gray))
-        mask = sub_gray > med
-        return mask, True, {"method": "degenerate-split", "threshold": t}
+        chosen = sub_gray > med if (light is None or light) else sub_gray < med
+        return chosen, bool(light) if light is not None else True, \
+            {"method": "degenerate-split", "threshold": int(t)}
 
-    light = hi_n <= lo_n
-    mask = hi if light else lo
-    coverage = float(mask.sum()) / mask.size
-
-    # A text box should be mostly background. If the chosen class dominates the
-    # patch, the split is untrustworthy, so fall back to a percentile cut on the
-    # same polarity.
-    if coverage > 0.62:
-        if light:
-            mask = sub_gray >= np.percentile(sub_gray, 88)
-        else:
-            mask = sub_gray <= np.percentile(sub_gray, 12)
-        method = "percentile-fallback"
+    if light is None:
+        light = hi_n <= lo_n
+        method = "otsu-minority (no polarity supplied)"
     else:
-        method = "otsu-minority"
+        method = "otsu with supplied polarity"
 
+    mask = hi if light else lo
     return mask, bool(light), {
         "method": method,
         "threshold": int(t),
@@ -320,13 +354,15 @@ def glyph_mask(sub_gray: np.ndarray) -> tuple[np.ndarray, bool, dict]:
 
 
 def is_light_text(gray: np.ndarray, box: dict) -> bool:
-    """Convenience wrapper: polarity of the text inside a box."""
-    x0, y0 = max(0, int(box["x"])), max(0, int(box["y"]))
-    x1 = min(gray.shape[1], int(box["x"] + box["width"]))
-    y1 = min(gray.shape[0], int(box["y"] + box["height"]))
+    """Convenience wrapper: polarity of the text inside a padded box."""
+    pad = 6
+    x0 = max(0, int(box["x"]) - pad)
+    y0 = max(0, int(box["y"]) - pad)
+    x1 = min(gray.shape[1], int(box["x"] + box["width"]) + pad)
+    y1 = min(gray.shape[0], int(box["y"] + box["height"]) + pad)
     if x1 <= x0 or y1 <= y0:
         return True
-    _, light, _ = glyph_mask(gray[y0:y1, x0:x1])
+    light, _ = decide_polarity(gray[y0:y1, x0:x1])
     return light
 
 
@@ -820,12 +856,43 @@ def semantic_colours(rgb: np.ndarray, text_elements: list[dict],
         out["accentSecondary"] = None
         out["onAccent"] = None
 
+    # Filled after detect_overlay() runs. Keeping the key present even when no
+    # overlay is detected makes the semantic schema stable for every template.
+    out["overlay"] = None
+
     return out
 
 
 # --------------------------------------------------------------------------
 # Overlay / gradient detection
 # --------------------------------------------------------------------------
+
+
+def semantic_overlay(overlay: dict) -> dict | None:
+    """Convert brightness-gradient evidence into a semantic overlay colour.
+
+    A flattened reference cannot prove that a separate overlay layer existed,
+    so this is explicitly an estimate rather than an exact sampled layer value.
+    """
+    if not overlay.get("detected"):
+        return None
+    stops = overlay.get("estimatedStops") or []
+    alpha = max(
+        (float(stop.get("estimatedBlackAlpha", 0.0)) for stop in stops),
+        default=0.0,
+    )
+    alpha = round(max(0.0, min(1.0, alpha)), 3)
+    return {
+        "hex": "#000000",
+        "rgb": [0, 0, 0],
+        "rgba": f"rgba(0, 0, 0, {alpha:g})",
+        "opacity": alpha,
+        "direction": overlay.get("direction"),
+        "stops": stops,
+        "sampledAt": "derived from the reference brightness gradient",
+        "method": "brightness-gradient estimate from flattened pixels",
+        "note": "Estimated black scrim; photo shading and a separate overlay layer cannot be distinguished.",
+    }
 
 
 def detect_overlay(rgb: np.ndarray, margin: int = 6) -> dict:
@@ -920,4 +987,182 @@ def edge_bleed(rgb: np.ndarray) -> dict:
         "flatEdgeCount": flat_edges,
         "likelyFullBleed": flat_edges <= 1,
         "likelyFramed": flat_edges >= 3,
+    }
+
+
+
+# --------------------------------------------------------------------------
+# Render-model classification
+# --------------------------------------------------------------------------
+#
+# A single "font fit" score is misleading for text that was never a plain solid
+# vector text layer. Inspecting the lowest-scoring elements showed four distinct
+# situations, none of which is a wrong font family:
+#
+#   * text photographed as part of an object (a brand printed on a USB stick):
+#     blurry, often rotated, and not editable text at all
+#   * outlined / hollow type, where only the stroke is painted
+#   * type with an offset duplicate behind it (hard drop shadow)
+#   * two overlapping copies of a word, which interleaves the OCR reading
+#
+# These are detected and labelled so the analysis says what is actually there,
+# instead of reporting a low font-fit score that implies the wrong typeface.
+
+
+def _fill_from_border(bg: np.ndarray) -> np.ndarray:
+    """Flood-fill background inwards from the border. Returns reachable mask."""
+    h, w = bg.shape
+    reachable = np.zeros_like(bg)
+    stack = []
+    for x in range(w):
+        if bg[0, x]:
+            stack.append((0, x))
+        if bg[h - 1, x]:
+            stack.append((h - 1, x))
+    for y in range(h):
+        if bg[y, 0]:
+            stack.append((y, 0))
+        if bg[y, w - 1]:
+            stack.append((y, w - 1))
+    while stack:
+        y, x = stack.pop()
+        if reachable[y, x] or not bg[y, x]:
+            continue
+        reachable[y, x] = True
+        if y > 0:
+            stack.append((y - 1, x))
+        if y < h - 1:
+            stack.append((y + 1, x))
+        if x > 0:
+            stack.append((y, x - 1))
+        if x < w - 1:
+            stack.append((y, x + 1))
+    return reachable
+
+
+def enclosed_ratio(mask: np.ndarray) -> float:
+    """Area of background enclosed by ink, relative to the ink area.
+
+    Outlined type paints only a thin stroke around large enclosed areas, so this
+    ratio is high. Solid type gives a low ratio, since only counters such as the
+    bowl of an 'o' are enclosed.
+    """
+    if mask.sum() == 0:
+        return 0.0
+    bg = ~mask
+    holes = bg & ~_fill_from_border(bg)
+    return float(holes.sum()) / float(mask.sum())
+
+
+def offset_duplicate(mask: np.ndarray, max_shift: int = 14) -> dict:
+    """Detect a shifted copy of the glyphs, as produced by a hard drop shadow."""
+    if mask.sum() < 60:
+        return {"detected": False}
+    h, w = mask.shape
+    best = (0.0, 0, 0)
+    for dy in range(-max_shift, max_shift + 1, 2):
+        for dx in range(-max_shift, max_shift + 1, 2):
+            if abs(dx) < 3 and abs(dy) < 3:
+                continue
+            a = mask[max(0, dy):h + min(0, dy), max(0, dx):w + min(0, dx)]
+            b = mask[max(0, -dy):h + min(0, -dy), max(0, -dx):w + min(0, -dx)]
+            if a.size == 0 or a.shape != b.shape:
+                continue
+            inter = (a & b).sum()
+            denom = min(a.sum(), b.sum())
+            if denom > 0:
+                score = inter / denom
+                if score > best[0]:
+                    best = (float(score), dx, dy)
+    return {
+        "detected": bool(best[0] > 0.86),
+        "selfOverlapAtOffset": round(best[0], 3),
+        "offsetX": best[1],
+        "offsetY": best[2],
+    }
+
+
+def raster_text_signals(sub_gray: np.ndarray, mask: np.ndarray) -> dict:
+    """Signals that the text is part of a photograph rather than a text layer."""
+    if sub_gray.size < 64 or mask.sum() < 40:
+        return {"edgeSharpness": None, "backgroundTexture": None}
+
+    g = sub_gray.astype(np.float32)
+    gy, gx = np.gradient(g)
+    grad = np.hypot(gx, gy)
+
+    # boundary = ink pixels adjacent to background
+    inner = mask.copy()
+    inner[1:, :] &= mask[:-1, :]
+    inner[:-1, :] &= mask[1:, :]
+    inner[:, 1:] &= mask[:, :-1]
+    inner[:, :-1] &= mask[:, 1:]
+    boundary = mask & ~inner
+
+    span = float(g.max() - g.min()) or 1.0
+    sharp = float(grad[boundary].mean()) / span if boundary.sum() else 0.0
+
+    blur = np.array(
+        Image.fromarray(sub_gray).filter(ImageFilter.GaussianBlur(2)), dtype=np.float32
+    )
+    hp = g - blur
+    bg_pixels = hp[~mask]
+    texture = float(bg_pixels.std()) if bg_pixels.size else 0.0
+
+    return {
+        "edgeSharpness": round(sharp, 4),
+        "backgroundTexture": round(texture, 2),
+    }
+
+
+def classify_render_model(sub_gray: np.ndarray, mask: np.ndarray,
+                          slant_deg: float = 0.0) -> dict:
+    """Label how the text appears to have been produced.
+
+    Thresholds were calibrated against hand-inspected examples across the batch
+    rather than chosen arbitrarily.
+    """
+    encl = enclosed_ratio(mask)
+    dup = offset_duplicate(mask)
+    sig = raster_text_signals(sub_gray, mask)
+    sharp = sig.get("edgeSharpness")
+    texture = sig.get("backgroundTexture")
+
+    model = "solid-vector-text"
+    notes: list[str] = []
+    fittable = True
+
+    # Only the raster/photograph signal survived validation. Measured on 369
+    # hand-checked elements, a sharpness threshold of 0.28 flags 7.1% of poor
+    # fits while touching just 1.6% of known-good fits.
+    if sharp is not None and texture is not None and sharp < 0.28 and texture > 8.0:
+        model = "text-in-photograph"
+        fittable = False
+        notes.append(
+            "soft glyph edges over textured surroundings: the text appears to be "
+            "printed on a photographed object rather than set as a text layer, so it "
+            "is not editable type and should not be treated as a font match"
+        )
+    elif abs(slant_deg) > 12:
+        notes.append("strongly slanted or rotated; may sit on a curved path")
+
+    return {
+        "model": model,
+        "fittableBySolidRender": fittable,
+        "notes": notes,
+        # Signals below are reported for filtering but deliberately do NOT drive
+        # classification, because neither survived validation:
+        #   * enclosedAreaRatio does not separate outlined type from solid type
+        #     (outlined "WAR ROOM." scored 0.44 against solid "50%" at 0.33)
+        #   * offsetDuplicate false-positives on repeated letters; "LESS NOISE."
+        #     scored 0.92 self-overlap despite being solid text fitting at
+        #     IoU 0.97
+        # Shipping them as labels would mislabel correct elements, which is worse
+        # than leaving them unclassified.
+        "unvalidatedSignals": {
+            "enclosedAreaRatio": round(encl, 3),
+            "offsetDuplicate": dup,
+            "rasterSignals": sig,
+            "note": "diagnostic only; not used for classification",
+        },
     }

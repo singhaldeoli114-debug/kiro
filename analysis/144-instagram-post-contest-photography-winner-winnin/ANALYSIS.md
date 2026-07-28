@@ -34,11 +34,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — subheadline
 
 **Text:** "NATURE"  (OCR confidence 0.9973)
 
@@ -61,6 +61,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | 5.0 / 5.96 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
 | Match IoU | 0.6122 |
 | **Geometry fit confidence** | **medium** |
@@ -74,7 +75,7 @@ Alternate font fits considered:
 - `Adamina-Regular.ttf` 39px track 1.19px — IoU 0.5144
 - `Raleway[wght].ttf` 47px track -0.89px — IoU 0.5056
 
-### `text-2` — supporting
+### `text-2` — subheadline
 
 **Text:** "PHOTOGRAPHY"  (OCR confidence 0.9986)
 
@@ -97,6 +98,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | 5.0 / 6.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
 | Match IoU | 0.7163 |
 | **Geometry fit confidence** | **high** |
@@ -116,253 +118,261 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=43, y=220, w=221, h=42 |
-| Normalised | x=3.98%, y=20.37%, w=20.46%, h=3.89% |
+| Bounding box (px) | x=43, y=220, w=220, h=37 |
+| Normalised | x=3.98%, y=20.37%, w=20.37%, h=3.43% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 47 px |
-| Letter-spacing | 0.23 px (0.0049 em) |
+| Variation axes | [700] |
+| Font size | 46 px |
+| Letter-spacing | 0.96 px (0.0209 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fdfbfa` |
+| Colour | `#fefcfb` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.88:1 |
-| Stroke (median/mean) | 4.0 / 4.57 px |
+| Contrast vs local bg | 1.89:1 |
+| Stroke (median/mean) | 5.0 / 5.63 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.392 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5048 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 75 px |
-| Gap to next | -22 px |
+| Gap to next | -12 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 46px track 1.09px — IoU 0.3859
-- `Raleway[wght].ttf` 46px track 1.13px — IoU 0.3817
-- `Raleway[wght].ttf` 47px track 0.3px — IoU 0.3807
+- `Raleway[wght].ttf` 48px track -0.59px — IoU 0.4868
+- `Raleway[wght].ttf` 47px track 0.19px — IoU 0.4823
+- `Raleway[wght].ttf` 47px track 0.25px — IoU 0.4793
 
-### `text-4` — detail
+### `text-4` — body
 
-**Text:** "pharetraconvallisposueremorbi.Et"  (OCR confidence 0.9463)
+**Text:** "pharetraconvallisposuere morbi. Et"  (OCR confidence 0.9463)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=43, y=240, w=301, h=38 |
-| Normalised | x=3.98%, y=22.22%, w=27.87%, h=3.52% |
+| Bounding box (px) | x=43, y=245, w=301, h=23 |
+| Normalised | x=3.98%, y=22.69%, w=27.87%, h=2.13% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 17 px |
-| Letter-spacing | 0.38 px (0.0224 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [700] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 1 of 8 |
 | Transform | none |
-| Colour | `#fbf6f3` |
+| Colour | `#f9f0ed` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.85:1 |
-| Stroke (median/mean) | 2.0 / 2.98 px |
+| Contrast vs local bg | 1.82:1 |
+| Stroke (median/mean) | 2.0 / 2.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.1957 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -22 px |
-| Gap to next | -2 px |
+| Match IoU | 0.2058 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -12 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 19px track -0.72px — IoU 0.1877
-- `Raleway[wght].ttf` 18px track -0.17px — IoU 0.1872
-- `Raleway[wght].ttf` 19px track -0.51px — IoU 0.1707
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-5` — detail
+### `text-5` — body
 
-**Text:** "netus et malesuada fames ac turpis"  (OCR confidence 0.986)
+**Text:** "netus et malesuada flames ac turpis"  (OCR confidence 0.986)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=43, y=276, w=298, h=17 |
-| Normalised | x=3.98%, y=25.56%, w=27.59%, h=1.57% |
+| Bounding box (px) | x=43, y=275, w=298, h=18 |
+| Normalised | x=3.98%, y=25.46%, w=27.59%, h=1.67% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 18 px |
-| Letter-spacing | -0.18 px (-0.01 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [700] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 2 of 8 |
 | Transform | lowercase |
-| Colour | `#edd5ca` |
+| Colour | `#edd5c9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.64:1 |
 | Stroke (median/mean) | 2.0 / 1.91 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | ligature insertion: 'fames' -> 'flames' |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.5852 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.3502 |
+| **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -2 px |
-| Gap to next | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 7 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 17px track 0.34px — IoU 0.567
-- `Raleway[wght].ttf` 18px track -0.29px — IoU 0.5537
-- `Raleway[wght].ttf` 19px track -0.69px — IoU 0.5335
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-6` — detail
+### `text-6` — body
 
 **Text:** "egestas sed. Nunc scelerisque viverra"  (OCR confidence 0.9934)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=43, y=292, w=316, h=35 |
-| Normalised | x=3.98%, y=27.04%, w=29.26%, h=3.24% |
+| Bounding box (px) | x=42, y=300, w=317, h=18 |
+| Normalised | x=3.89%, y=27.78%, w=29.35%, h=1.67% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [700] |
 | Font size | 19 px |
-| Letter-spacing | -0.57 px (-0.03 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 3 of 8 |
 | Transform | none |
-| Colour | `#ecd2c6` |
+| Colour | `#ecd3c6` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.62:1 |
-| Stroke (median/mean) | 2.0 / 1.82 px |
+| Contrast vs local bg | 1.63:1 |
+| Stroke (median/mean) | 2.0 / 1.84 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.2117 |
+| Match IoU | 0.3475 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | -10 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 7 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 17px track 0.41px — IoU 0.2062
-- `Raleway[wght].ttf` 18px track -0.53px — IoU 0.1999
-- `Raleway[wght].ttf` 19px track -0.67px — IoU 0.1998
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-7` — detail
+### `text-7` — body
 
 **Text:** "mauris in aliquam sem fringilla."  (OCR confidence 0.9874)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=43, y=317, w=257, h=26 |
-| Normalised | x=3.98%, y=29.35%, w=23.8%, h=2.41% |
+| Bounding box (px) | x=43, y=325, w=258, h=18 |
+| Normalised | x=3.98%, y=30.09%, w=23.89%, h=1.67% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 18 px |
-| Letter-spacing | -0.25 px (-0.0139 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [700] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 4 of 8 |
 | Transform | lowercase |
-| Colour | `#efd9cf` |
+| Colour | `#efdbd1` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.67:1 |
+| Contrast vs local bg | 1.68:1 |
 | Stroke (median/mean) | 1.0 / 1.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.2265 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5514 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -10 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 7 px |
 | Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 18px track -0.11px — IoU 0.2016
-- `Raleway[wght].ttf` 18px track -0.54px — IoU 0.196
-- `Raleway[wght].ttf` 17px track 0.23px — IoU 0.1941
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-8` — detail
+### `text-8` — body
 
 **Text:** "Eget arcu dictum varius duis at. Metus"  (OCR confidence 0.9823)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=44, y=356, w=316, h=17 |
-| Normalised | x=4.07%, y=32.96%, w=29.26%, h=1.57% |
+| Bounding box (px) | x=43, y=356, w=317, h=18 |
+| Normalised | x=3.98%, y=32.96%, w=29.35%, h=1.67% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 18 px |
-| Letter-spacing | -0.22 px (-0.0122 em) |
-| Line-height | 24.7 px (ratio 1.372) |
-| Line | 1 of 4 |
+| Variation axes | [700] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 5 of 8 |
 | Transform | none |
-| Colour | `#f1ded6` |
+| Colour | `#f1ded5` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.7:1 |
 | Stroke (median/mean) | 1.0 / 1.86 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.4639 |
+| Match IoU | 0.5356 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 13 px |
-| Gap to next | 8 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 19px track -0.72px — IoU 0.4914
-- `Raleway[wght].ttf` 18px track -0.32px — IoU 0.49
-- `Raleway[wght].ttf` 18px track -0.11px — IoU 0.4582
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-9` — detail
+### `text-9` — body
 
 **Text:** "dictum at tempor commodo"  (OCR confidence 0.981)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=43, y=381, w=236, h=17 |
-| Normalised | x=3.98%, y=35.28%, w=21.85%, h=1.57% |
+| Bounding box (px) | x=43, y=380, w=236, h=18 |
+| Normalised | x=3.98%, y=35.19%, w=21.85%, h=1.67% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 18 px |
-| Letter-spacing | -0.22 px (-0.0122 em) |
-| Line-height | 24.7 px (ratio 1.372) |
-| Line | 2 of 4 |
+| Variation axes | [700] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 6 of 8 |
 | Transform | lowercase |
-| Colour | `#edd6cb` |
+| Colour | `#edd6ca` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.65:1 |
 | Stroke (median/mean) | 2.0 / 1.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.5773 |
+| Match IoU | 0.5724 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 8 px |
+| Gap to previous | 6 px |
 | Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 19px track -0.72px — IoU 0.4914
-- `Raleway[wght].ttf` 18px track -0.32px — IoU 0.49
-- `Raleway[wght].ttf` 18px track -0.11px — IoU 0.4582
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-10` — detail
+### `text-10` — body
 
 **Text:** "ullamcorper a lacus vestibulum sed."  (OCR confidence 0.9722)
 
@@ -375,18 +385,19 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 18 px |
-| Letter-spacing | -0.22 px (-0.0122 em) |
-| Line-height | 24.7 px (ratio 1.372) |
-| Line | 3 of 4 |
+| Variation axes | [700] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 7 of 8 |
 | Transform | lowercase |
 | Colour | `#f0dbd2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.68:1 |
 | Stroke (median/mean) | 1.0 / 1.69 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.5676 |
+| Match IoU | 0.5869 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -394,35 +405,36 @@ Alternate font fits considered:
 | Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 19px track -0.72px — IoU 0.4914
-- `Raleway[wght].ttf` 18px track -0.32px — IoU 0.49
-- `Raleway[wght].ttf` 18px track -0.11px — IoU 0.4582
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-11` — detail
+### `text-11` — body
 
 **Text:** "Enim eu turpis egestas pretium aenean."  (OCR confidence 0.9964)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=44, y=430, w=329, h=18 |
-| Normalised | x=4.07%, y=39.81%, w=30.46%, h=1.67% |
+| Bounding box (px) | x=43, y=430, w=331, h=18 |
+| Normalised | x=3.98%, y=39.81%, w=30.65%, h=1.67% |
 | Alignment | left |
 | z-order | 110 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 18 px |
-| Letter-spacing | -0.22 px (-0.0122 em) |
-| Line-height | 24.7 px (ratio 1.372) |
-| Line | 4 of 4 |
+| Variation axes | [700] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.4 px (ratio 1.389) |
+| Line | 8 of 8 |
 | Transform | none |
-| Colour | `#f1ded5` |
+| Colour | `#f0ddd4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.7:1 |
+| Contrast vs local bg | 1.69:1 |
 | Stroke (median/mean) | 1.0 / 1.86 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.5304 |
+| Match IoU | 0.4616 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -430,11 +442,11 @@ Alternate font fits considered:
 | Gap to next | 343 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 19px track -0.72px — IoU 0.4914
-- `Raleway[wght].ttf` 18px track -0.32px — IoU 0.49
-- `Raleway[wght].ttf` 18px track -0.11px — IoU 0.4582
+- `Raleway[wght].ttf` 19px track -0.75px — IoU 0.427
+- `Raleway[wght].ttf` 18px track 0.06px — IoU 0.4084
+- `Raleway[wght].ttf` 18px track -0.23px — IoU 0.3979
 
-### `text-12` — fine-print
+### `text-12` — body
 
 **Text:** "DEADLI N E"  (OCR confidence 0.9943)
 
@@ -457,11 +469,12 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.81:1 |
 | Stroke (median/mean) | 2.0 / 3.16 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
 | Match IoU | 0.2988 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 343 px |
 | Gap to next | 26 px |
 
@@ -476,8 +489,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=44, y=834, w=337, h=64 |
-| Normalised | x=4.07%, y=77.22%, w=31.2%, h=5.93% |
+| Bounding box (px) | x=44, y=834, w=337, h=61 |
+| Normalised | x=4.07%, y=77.22%, w=31.2%, h=5.65% |
 | Alignment | left |
 | z-order | 112 |
 | Rotation | 0° |
@@ -492,21 +505,22 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.91:1 |
-| Stroke (median/mean) | 8.0 / 9.84 px |
+| Stroke (median/mean) | 8.0 / 9.85 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
-| Match IoU | 0.4193 |
+| Match IoU | 0.4149 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 26 px |
-| Gap to next | 55 px |
+| Gap to next | 58 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 66px track 0.75px — IoU 0.4056
-- `Raleway[wght].ttf` 68px track -0.69px — IoU 0.4015
-- `Raleway[wght].ttf` 67px track 0.6px — IoU 0.3996
+- `Raleway[wght].ttf` 66px track 0.75px — IoU 0.4038
+- `Raleway[wght].ttf` 68px track -0.69px — IoU 0.3983
+- `Raleway[wght].ttf` 69px track -0.82px — IoU 0.397
 
-### `text-14` — fine-print
+### `text-14` — body
 
 **Text:** "SEN D I N YO U R SUB MI SSI O N"  (OCR confidence 0.9929)
 
@@ -529,12 +543,13 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.81:1 |
 | Stroke (median/mean) | 2.0 / 2.84 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
 | Match IoU | 0.2949 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 55 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 58 px |
 | Gap to next | 22 px |
 
 Alternate font fits considered:
@@ -542,7 +557,7 @@ Alternate font fits considered:
 - `Raleway[wght].ttf` 20px track 0.1px — IoU 0.2734
 - `Raleway[wght].ttf` 21px track -0.44px — IoU 0.2673
 
-### `text-15` — detail
+### `text-15` — supporting
 
 **Text:** "photocontest@buisiness.com"  (OCR confidence 0.9995)
 
@@ -565,6 +580,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.88:1 |
 | Stroke (median/mean) | 4.0 / 4.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Adamina, Raleway, Quattrocento Sans |
 | Match IoU | 0.5009 |
 | **Geometry fit confidence** | **low-textUnreliable** |
@@ -585,10 +601,10 @@ Alternate font fits considered:
 | background | `#bfe3ee` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#c2714c` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of '25THJULY' | glyph ink median |
-| textSecondary | `#ecd2c6` | glyph ink of 'egestas sed. Nunc scelerisqu' | glyph ink median |
+| textSecondary | `#f9f0ed` | glyph ink of 'pharetraconvallisposuere mor' | glyph ink median |
 | accent | `#c2714c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#5bfebf` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -612,7 +628,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1043 |
+| Text coverage | 0.093 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -639,46 +655,46 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting_line1` | text | NATURE |
-| `supporting_line2` | text | PHOTOGRAPHY |
+| `subheadline_line1` | text | NATURE |
+| `subheadline_line2` | text | PHOTOGRAPHY |
 | `subheadline` | text | CONTEST |
-| `detail` | text | pharetraconvallisposueremorbi.Et |
-| `detail` | text | netus et malesuada fames ac turpis |
-| `detail` | text | egestas sed. Nunc scelerisque viverra |
-| `detail` | text | mauris in aliquam sem fringilla. |
-| `detail_line1` | text | Eget arcu dictum varius duis at. Metus |
-| `detail_line2` | text | dictum at tempor commodo |
-| `detail_line3` | text | ullamcorper a lacus vestibulum sed. |
-| `detail_line4` | text | Enim eu turpis egestas pretium aenean. |
-| `fine-print` | text | DEADLI N E |
+| `body_line1` | text | pharetraconvallisposuere morbi. Et |
+| `body_line2` | text | netus et malesuada flames ac turpis |
+| `body_line3` | text | egestas sed. Nunc scelerisque viverra |
+| `body_line4` | text | mauris in aliquam sem fringilla. |
+| `body_line5` | text | Eget arcu dictum varius duis at. Metus |
+| `body_line6` | text | dictum at tempor commodo |
+| `body_line7` | text | ullamcorper a lacus vestibulum sed. |
+| `body_line8` | text | Enim eu turpis egestas pretium aenean. |
+| `body` | text | DEADLI N E |
 | `headline` | text | 25THJULY |
-| `fine-print` | text | SEN D I N YO U R SUB MI SSI O N |
-| `detail` | text | photocontest@buisiness.com |
+| `body` | text | SEN D I N YO U R SUB MI SSI O N |
+| `supporting` | text | photocontest@buisiness.com |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #bfe3ee |
 | `surface` | colour | #c2714c |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #ecd2c6 |
+| `textSecondary` | colour | #f9f0ed |
 | `accent` | colour | #c2714c |
 | `accentSecondary` | colour | #5bfebf |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Adamina |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_fine-print` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

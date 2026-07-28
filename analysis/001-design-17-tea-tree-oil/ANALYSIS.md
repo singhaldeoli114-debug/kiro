@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -53,25 +53,26 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Variation axes | [700, 87.5] |
 | Font size | 77 px |
 | Letter-spacing | -0.82 px (-0.0106 em) |
-| Line-height | 76.0 px (ratio 0.987) |
+| Line-height | 75.0 px (ratio 0.974) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.86:1 |
 | Stroke (median/mean) | 11.0 / 15.89 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo, Poppins |
 | Match IoU | 0.8418 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 26 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 67px track 0.16px — IoU 0.8363
-- `Archivo[wdth,wght].ttf` 76px track -0.19px — IoU 0.8286
-- `Archivo[wdth,wght].ttf` 68px track -0.56px — IoU 0.8239
+- `Archivo[wdth,wght].ttf` 76px track -0.19px — IoU 0.8353
+- `Archivo[wdth,wght].ttf` 68px track -0.56px — IoU 0.8302
+- `Archivo[wdth,wght].ttf` 67px track 0.16px — IoU 0.8196
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=183, y=192, w=714, h=50 |
-| Normalised | x=16.94%, y=17.78%, w=66.11%, h=4.63% |
+| Bounding box (px) | x=183, y=191, w=714, h=51 |
+| Normalised | x=16.94%, y=17.69%, w=66.11%, h=4.72% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,27 +90,28 @@ Alternate font fits considered:
 | Variation axes | [700, 87.5] |
 | Font size | 77 px |
 | Letter-spacing | -0.82 px (-0.0106 em) |
-| Line-height | 76.0 px (ratio 0.987) |
+| Line-height | 75.0 px (ratio 0.974) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.32:1 |
+| Contrast vs local bg | 2.33:1 |
 | Stroke (median/mean) | 11.0 / 15.62 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo, Poppins |
-| Match IoU | 0.8442 |
+| Match IoU | 0.8584 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 26 px |
+| Gap to previous | 25 px |
 | Gap to next | 33 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 67px track 0.16px — IoU 0.8363
-- `Archivo[wdth,wght].ttf` 76px track -0.19px — IoU 0.8286
-- `Archivo[wdth,wght].ttf` 68px track -0.56px — IoU 0.8239
+- `Archivo[wdth,wght].ttf` 76px track -0.19px — IoU 0.8353
+- `Archivo[wdth,wght].ttf` 68px track -0.56px — IoU 0.8302
+- `Archivo[wdth,wght].ttf` 67px track 0.16px — IoU 0.8196
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "With Tea Tree Oil, You'll finally enjoy"  (OCR confidence 0.9942)
 
@@ -132,6 +134,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.35:1 |
 | Stroke (median/mean) | 3.0 / 3.78 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo, Poppins |
 | Match IoU | 0.7341 |
 | **Geometry fit confidence** | **high** |
@@ -151,11 +154,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#b6b4ac` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#7a7365` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'GOODBYE PROBLEMS.' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'HELLO CONFIDENCE.' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of 'HELLO CONFIDENCE.' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'GOODBYE PROBLEMS.' | glyph ink median |
 | accent | `#853d06` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#2d261e` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0816 |
+| Text coverage | 0.0822 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -208,7 +211,7 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | GOODBYE PROBLEMS. |
 | `headline_line2` | text | HELLO CONFIDENCE. |
-| `subheadline` | text | With Tea Tree Oil, You'll finally enjoy |
+| `supporting` | text | With Tea Tree Oil, You'll finally enjoy |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #b6b4ac |
@@ -221,7 +224,7 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Archivo |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 48.2 |
 | `imageFocalY` | number | 56.6 |
 

@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=436, y=144, w=460, h=67 |
-| Normalised | x=40.37%, y=13.33%, w=42.59%, h=6.2% |
+| Bounding box (px) | x=435, y=144, w=461, h=67 |
+| Normalised | x=40.28%, y=13.33%, w=42.69%, h=6.2% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -58,10 +58,11 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.96:1 |
+| Contrast vs local bg | 2.98:1 |
 | Stroke (median/mean) | 7.0 / 9.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Fauna One, Playfair Display |
-| Match IoU | 0.7857 |
+| Match IoU | 0.7689 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 46 px |
 
 Alternate font fits considered:
-- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7877
-- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7695
-- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3662
+- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7799
+- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7686
+- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3693
 
 ### `text-2` — headline
 
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.92:1 |
 | Stroke (median/mean) | 7.0 / 9.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Fauna One, Playfair Display |
 | Match IoU | 0.806 |
 | **Geometry fit confidence** | **high** |
@@ -105,9 +107,9 @@ Alternate font fits considered:
 | Gap to next | 28 px |
 
 Alternate font fits considered:
-- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7877
-- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7695
-- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3662
+- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7799
+- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7686
+- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3693
 
 ### `text-3` — headline
 
@@ -132,6 +134,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.94:1 |
 | Stroke (median/mean) | 7.0 / 8.93 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Fauna One, Playfair Display |
 | Match IoU | 0.8227 |
 | **Geometry fit confidence** | **high** |
@@ -141,9 +144,9 @@ Alternate font fits considered:
 | Gap to next | 28 px |
 
 Alternate font fits considered:
-- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7877
-- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7695
-- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3662
+- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7799
+- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7686
+- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3693
 
 ### `text-4` — headline
 
@@ -168,6 +171,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.08:1 |
 | Stroke (median/mean) | 7.0 / 9.55 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Fauna One, Playfair Display |
 | Match IoU | 0.8011 |
 | **Geometry fit confidence** | **high** |
@@ -177,9 +181,9 @@ Alternate font fits considered:
 | Gap to next | 28 px |
 
 Alternate font fits considered:
-- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7877
-- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7695
-- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3662
+- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7799
+- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7686
+- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3693
 
 ### `text-5` — headline
 
@@ -204,6 +208,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.03:1 |
 | Stroke (median/mean) | 7.0 / 9.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Fauna One, Playfair Display |
 | Match IoU | 0.7498 |
 | **Geometry fit confidence** | **high** |
@@ -213,11 +218,11 @@ Alternate font fits considered:
 | Gap to next | 214 px |
 
 Alternate font fits considered:
-- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7877
-- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7695
-- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3662
+- `FaunaOne-Regular.ttf` 83px track -1.01px — IoU 0.7799
+- `FaunaOne-Regular.ttf` 81px track 0.35px — IoU 0.7686
+- `PlayfairDisplay[wght].ttf` 93px track -0.51px — IoU 0.3693
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "John Lennon."  (OCR confidence 0.9981)
 
@@ -240,6 +245,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.34:1 |
 | Stroke (median/mean) | 6.0 / 6.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Fauna One, Playfair Display |
 | Match IoU | 0.8602 |
 | **Geometry fit confidence** | **high** |
@@ -263,7 +269,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'you're busy' | glyph ink median |
 | accent | `#364b4d` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#2c4143` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1708 |
+| Text coverage | 0.1709 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -319,7 +325,7 @@ _Recommendations only — no manifest is generated._
 | `headline_line3` | text | you're busy |
 | `headline_line4` | text | making other |
 | `headline_line5` | text | plans |
-| `subheadline` | text | John Lennon. |
+| `supporting` | text | John Lennon. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -335,7 +341,7 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 53.7 |
 | `imageFocalY` | number | 50.7 |
 

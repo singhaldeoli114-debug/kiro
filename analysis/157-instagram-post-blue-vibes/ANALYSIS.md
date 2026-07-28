@@ -35,7 +35,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -45,116 +45,119 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=67, w=438, h=70 |
-| Normalised | x=9.44%, y=6.2%, w=40.56%, h=6.48% |
+| Bounding box (px) | x=101, y=67, w=439, h=72 |
+| Normalised | x=9.35%, y=6.2%, w=40.65%, h=6.67% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `BubblegumSans-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 120 px |
-| Letter-spacing | -0.84 px (-0.007 em) |
+| Font size | 90 px |
+| Letter-spacing | -1.17 px (-0.013 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#0c11bb` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 6.54:1 |
 | Stroke (median/mean) | 8.0 / 12.59 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Bubblegum Sans, Alata, Roboto |
-| Match IoU | 0.3691 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4156 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
-| Gap to next | -70 px |
+| Gap to next | -72 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 89px track -0.39px — IoU 0.3636
-- `ArchivoBlack-Regular.ttf` 88px track 0.6px — IoU 0.3627
-- `ArchivoBlack-Regular.ttf` 90px track -1.37px — IoU 0.3617
+- `Roboto[wdth,wght].ttf` 120px track -1.03px — IoU 0.4146
+- `Roboto[wdth,wght].ttf` 119px track -0.29px — IoU 0.4121
+- `Roboto[wdth,wght].ttf` 111px track -0.28px — IoU 0.4094
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "SPECIAL"  (OCR confidence 0.9898)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=566, y=67, w=422, h=70 |
-| Normalised | x=52.41%, y=6.2%, w=39.07%, h=6.48% |
+| Bounding box (px) | x=555, y=67, w=433, h=71 |
+| Normalised | x=51.39%, y=6.2%, w=40.09%, h=6.57% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 87 px |
-| Letter-spacing | 1.05 px (0.0121 em) |
+| Font size | 92 px |
+| Letter-spacing | -1.09 px (-0.0118 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#0c11bb` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 6.54:1 |
 | Stroke (median/mean) | 8.0 / 13.39 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Bubblegum Sans, Alata, Roboto |
-| Match IoU | 0.3231 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4007 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -70 px |
-| Gap to next | -2 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | -72 px |
+| Gap to next | 2 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 106px track -0.66px — IoU 0.323
-- `Roboto[wdth,wght].ttf` 105px track 0.01px — IoU 0.3228
-- `Roboto[wdth,wght].ttf` 104px track 0.67px — IoU 0.3189
+- `ArchivoBlack-Regular.ttf` 91px track -0.3px — IoU 0.3989
+- `ArchivoBlack-Regular.ttf` 90px track 0.49px — IoU 0.3943
+- `Roboto[wdth,wght].ttf` 123px track -0.62px — IoU 0.3814
 
-### `text-3` — supporting
+### `text-3` — subheadline
 
-**Text:** "NewArrival"  (OCR confidence 0.9438)
+**Text:** "New Arrival"  (OCR confidence 0.9438)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=352, y=135, w=404, h=2 |
-| Normalised | x=32.59%, y=12.5%, w=37.41%, h=0.19% |
+| Bounding box (px) | x=361, y=140, w=415, h=49 |
+| Normalised | x=33.43%, y=12.96%, w=38.43%, h=4.54% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 68 px |
-| Letter-spacing | -0.85 px (-0.0125 em) |
+| Font size | 65 px |
+| Letter-spacing | -0.01 px (-0.0002 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#efeffa` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.82:1 |
-| Stroke (median/mean) | 26.0 / 25.2 px |
+| Colour | `#fa4207` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 2.36:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Bubblegum Sans, Alata, Roboto |
-| Match IoU | 0.438 |
+| Match IoU | 0.511 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -2 px |
-| Gap to next | 171 px |
+| Gap to previous | 2 px |
+| Gap to next | 119 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 67px track -0.18px — IoU 0.4261
-- `Roboto[wdth,wght].ttf` 81px track -0.2px — IoU 0.4195
-- `Roboto[wdth,wght].ttf` 82px track -0.76px — IoU 0.4194
+- `BubblegumSans-Regular.ttf` 92px track 0.07px — IoU 0.5092
+- `ArchivoBlack-Regular.ttf` 66px track -0.65px — IoU 0.5066
+- `ArchivoBlack-Regular.ttf` 64px track 0.62px — IoU 0.504
 
-### `text-4` — detail
+### `text-4` — supporting
 
 **Text:** "SHOP NOW"  (OCR confidence 0.9488)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=728, y=308, w=262, h=38 |
-| Normalised | x=67.41%, y=28.52%, w=24.26%, h=3.52% |
+| Bounding box (px) | x=728, y=308, w=262, h=39 |
+| Normalised | x=67.41%, y=28.52%, w=24.26%, h=3.61% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -170,54 +173,56 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.54:1 |
 | Stroke (median/mean) | 7.0 / 8.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Bubblegum Sans, Alata, Roboto |
-| Match IoU | 0.7311 |
+| Match IoU | 0.7147 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 171 px |
-| Gap to next | 610 px |
+| Gap to previous | 119 px |
+| Gap to next | 608 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 49px track 0.37px — IoU 0.6927
-- `Alata-Regular.ttf` 48px track 1.12px — IoU 0.652
-- `ArchivoBlack-Regular.ttf` 43px track -0.09px — IoU 0.3344
+- `Alata-Regular.ttf` 49px track 0.37px — IoU 0.7015
+- `Alata-Regular.ttf` 48px track 1.12px — IoU 0.6642
+- `ArchivoBlack-Regular.ttf` 43px track -0.09px — IoU 0.3324
 
-### `text-5` — fine-print
+### `text-5` — subheadline
 
 **Text:** "SHOP NAME"  (OCR confidence 0.9907)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=732, y=956, w=292, h=37 |
-| Normalised | x=67.78%, y=88.52%, w=27.04%, h=3.43% |
+| Bounding box (px) | x=731, y=955, w=294, h=39 |
+| Normalised | x=67.69%, y=88.43%, w=27.22%, h=3.61% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `ArchivoBlack-Regular.ttf` |
-| Variation axes | None |
-| Font size | 42 px |
-| Letter-spacing | 1.22 px (0.029 em) |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 100.0] |
+| Font size | 52 px |
+| Letter-spacing | -0.55 px (-0.0106 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#0620a1` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 5.52:1 |
 | Stroke (median/mean) | 7.0 / 8.84 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Bubblegum Sans, Alata, Roboto |
-| Match IoU | 0.137 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.91 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 610 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 608 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 44px track -0.46px — IoU 0.1363
-- `ArchivoBlack-Regular.ttf` 43px track 0.38px — IoU 0.1332
-- `Alata-Regular.ttf` 53px track -0.11px — IoU 0.0896
+- `Roboto[wdth,wght].ttf` 56px track -0.79px — IoU 0.9084
+- `Roboto[wdth,wght].ttf` 56px track -0.84px — IoU 0.9029
+- `Roboto[wdth,wght].ttf` 52px track -0.49px — IoU 0.8873
 
 ## 4. Colours (semantic)
 
@@ -225,11 +230,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#202565` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'SUMMER' | glyph ink median |
-| textSecondary | `#0c11bb` | glyph ink of 'SHOP NOW' | glyph ink median |
+| textPrimary | `#0c11bb` | glyph ink of 'SUMMER' | glyph ink median |
+| textSecondary | `#fa4207` | glyph ink of 'New Arrival' | glyph ink median |
 | accent | `#202565` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ba5226` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -253,7 +258,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0701 |
+| Text coverage | 0.0895 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -281,25 +286,25 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | SUMMER |
-| `subheadline` | text | SPECIAL |
-| `supporting` | text | NewArrival |
-| `detail` | text | SHOP NOW |
-| `fine-print` | text | SHOP NAME |
+| `headline` | text | SPECIAL |
+| `subheadline` | text | New Arrival |
+| `supporting` | text | SHOP NOW |
+| `subheadline` | text | SHOP NAME |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #202565 |
-| `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #0c11bb |
+| `textPrimary` | colour | #0c11bb |
+| `textSecondary` | colour | #fa4207 |
 | `accent` | colour | #202565 |
 | `accentSecondary` | colour | #ba5226 |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Archivo Black |
 | `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_fine-print` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `imageFocalX` | number | 49.2 |
 | `imageFocalY` | number | 52.9 |
 

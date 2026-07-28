@@ -23,6 +23,7 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 import analyzer as AZ
+import text_repair as TR
 from gfonts import FontCache
 
 UA = {"User-Agent": "pixy-analyser"}
@@ -228,15 +229,26 @@ def analyse(tpl: dict, index: int, out_root: Path, font_cache: FontCache,
     text_elements, ink_boxes = [], []
     for zi, b in enumerate(ocr_blocks):
         ob = b["ocrBox"]
-        pad = 6
-        region = (int(ob["x"]) - pad, int(ob["y"]) - pad,
-                  int(ob["x"] + ob["width"]) + pad, int(ob["y"] + ob["height"]) + pad)
-        # Polarity is decided by Otsu minority-class analysis inside the OCR box.
+        # Padding is horizontal only. A vertical pad reaches into the line above
+        # or below at normal paragraph leading, so their ascenders and descenders
+        # land inside this box, inflate its height and misalign the whole
+        # comparison. OCR box edges are already tight vertically, so there is
+        # nothing to gain from padding that axis.
+        pad_x, pad_y = 6, 1
+        region = (int(ob["x"]) - pad_x, int(ob["y"]) - pad_y,
+                  int(ob["x"] + ob["width"]) + pad_x, int(ob["y"] + ob["height"]) + pad_y)
+
+        # Polarity comes from the border ring of the box, which is reliably
+        # background. Deciding it from whichever pixel class is smaller inverts
+        # the mask on large bold type, where the split is near 50/50.
         py0, py1 = max(0, region[1]), min(H, region[3])
         px0, px1 = max(0, region[0]), min(W, region[2])
         if py1 <= py0 or px1 <= px0:
             continue
-        _, light, pol_diag = AZ.glyph_mask(gray[py0:py1, px0:px1])
+        # A slightly taller strip is used for the polarity read only, so the ring
+        # has genuine background in it, without widening the measured ink box.
+        ry0, ry1 = max(0, region[1] - 5), min(H, region[3] + 5)
+        light, pol_diag = AZ.decide_polarity(gray[ry0:ry1, px0:px1])
 
         ib = AZ.ink_bbox(gray, region, light)
         if ib is None:
@@ -250,7 +262,8 @@ def analyse(tpl: dict, index: int, out_root: Path, font_cache: FontCache,
 
         # The same mask drives colour sampling, slant, word gaps and font fitting
         # so those measurements cannot disagree about which pixels are ink.
-        ref_mask, light, mask_diag = AZ.glyph_mask(sub_g)
+        ref_mask, light, mask_diag = AZ.glyph_mask(sub_g, light=light)
+        mask_diag["polarity"] = pol_diag
         col = (np.median(sub_rgb[ref_mask], axis=0) if ref_mask.sum()
                else np.median(sub_rgb.reshape(-1, 3), axis=0))
 
@@ -261,6 +274,7 @@ def analyse(tpl: dict, index: int, out_root: Path, font_cache: FontCache,
         bgc = np.median(ring, axis=0)
 
         slant = AZ.estimate_slant(ref_mask)
+        render_model = AZ.classify_render_model(sub_g, ref_mask, slant["angleDeg"])
 
         # OCR drops spaces ("GOODBYEPROBLEMS."). Restore them from measured word
         # gaps so the advance-width solve in fit_font is not distorted.
@@ -271,6 +285,12 @@ def analyse(tpl: dict, index: int, out_root: Path, font_cache: FontCache,
                 b["text"], font_files[0]["path"], gaps,
                 AZ.fvar_axes(font_files[0]["path"]) and None,
             )
+
+        # Repair the two OCR error classes that dominate professionally set type:
+        # ligature loss ("confdence") and run-together words
+        # ("delivereffortless"). Both distort the font fit even when the family
+        # and size are correct.
+        text_for_fit, repair_notes = TR.repair(text_for_fit)
 
         fit = (
             AZ.fit_font(ref_mask, text_for_fit, ib["width"], font_files,
@@ -285,7 +305,9 @@ def analyse(tpl: dict, index: int, out_root: Path, font_cache: FontCache,
             "textRawOcr": b["text"],
             "textSpacesRestored": text_for_fit != b["text"],
             "wordGapCount": len(gaps),
+            "textRepairs": repair_notes,
             "slant": slant,
+            "renderModel": render_model,
             "maskDiagnostics": mask_diag,
             "ocrConfidence": b["ocrConfidence"],
             "zOrder": 100 + zi,
@@ -356,6 +378,7 @@ def analyse(tpl: dict, index: int, out_root: Path, font_cache: FontCache,
 
     # ---- media / effects --------------------------------------------------
     overlay = AZ.detect_overlay(rgb)
+    semantic["overlay"] = AZ.semantic_overlay(overlay)
     focal = AZ.focal_point(rgb)
     bleed = AZ.edge_bleed(rgb)
 
@@ -576,19 +599,30 @@ def _attach_line_groups(els: list[dict], W: int) -> None:
 
     ranked = sorted(by_block.items(), key=lambda kv: -block_size(kv[1]))
 
-    # Blocks set at effectively the same size share a role rather than being
-    # forced onto distinct labels.
-    roles = ["headline", "subheadline", "supporting", "detail", "fine-print"]
-    role_idx, prev_size = -1, None
+    # Roles are named by size relative to the largest type on the canvas, not by
+    # rank position. Rank alone mislabels a design with one big headline and six
+    # equally-sized paragraph blocks, which would consume "subheadline",
+    # "supporting" and "detail" for what is plainly all body copy.
+    if not ranked:
+        return
+    max_size = block_size(ranked[0][1]) or 1.0
     for bid, items in ranked:
         size = block_size(items)
-        if prev_size is None or abs(size - prev_size) > max(1.5, 0.08 * prev_size):
-            role_idx += 1
-        prev_size = size
-        role = roles[role_idx] if role_idx < len(roles) else "detail"
+        ratio = size / max_size if max_size else 0.0
+        if ratio >= 0.85:
+            role = "headline"
+        elif ratio >= 0.55:
+            role = "subheadline"
+        elif ratio >= 0.34:
+            role = "supporting"
+        elif ratio >= 0.22:
+            role = "body"
+        else:
+            role = "fine-print"
         for x in items:
             x["textBlock"]["blockRole"] = role
             x["textBlock"]["blockTypeSizePx"] = round(size, 1)
+            x["textBlock"]["blockSizeRatioToLargest"] = round(ratio, 3)
 
 
 def _reconcile_blocks(els: list[dict], font_files: list[dict]) -> None:
@@ -833,9 +867,11 @@ def render_markdown(a: dict) -> str:
                  f"recovered by {cm['fittedMetrics']['how']}.")
         L.append(f"  - {cm['fittedMetrics']['caveat']}")
         L.append("")
-        L.append("A `very-low` fit score does **not** mean the font family is wrong. It "
-                 "most often means the OCR text used for the comparison was corrupted, "
-                 "or the source design positions characters individually.")
+        L.append("A `very-low` fit score does **not** mean the declared font family is "
+                 "wrong. It marks geometry that the solid-font fitter could not verify. "
+                 "Common causes are outlined or curved text, duplicate shadow layers, "
+                 "overlapping word copies, and incomplete OCR capture. Text printed on a "
+                 "photographed object is labelled `not-applicable-rasterText` instead.")
         L.append("")
 
     L.append("## 3. Text elements")
@@ -872,6 +908,12 @@ def render_markdown(a: dict) -> str:
         L.append(f"| Contrast vs local bg | {e['contrastRatioVsLocalBackground']}:1 |")
         L.append(f"| Stroke (median/mean) | {e['strokeMetrics']['medianStroke']} / "
                  f"{e['strokeMetrics']['meanStroke']} px |")
+        rm = e.get("renderModel") or {}
+        L.append(f"| Render model | {rm.get('model', 'unclassified')} |")
+        if rm.get("notes"):
+            L.append(f"| Render-model note | {'; '.join(rm['notes'])} |")
+        if e.get("textRepairs"):
+            L.append(f"| OCR repairs (audited) | {'; '.join(e['textRepairs'])} |")
         L.append(f"| Font family (authoritative) | {', '.join(t.get('fontFamilyCandidates') or []) or '—'} |")
         L.append(f"| Match IoU | {t.get('matchIou', '—')} |")
         L.append(f"| **Geometry fit confidence** | **{t.get('confidence', '—')}** |")

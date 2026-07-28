@@ -33,225 +33,231 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "LOREM IPSUM"  (OCR confidence 0.9763)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=798, y=107, w=242, h=24 |
-| Normalised | x=73.89%, y=9.91%, w=22.41%, h=2.22% |
+| Bounding box (px) | x=798, y=106, w=243, h=26 |
+| Normalised | x=73.89%, y=9.81%, w=22.5%, h=2.41% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `ArchivoBlack-Regular.ttf` |
-| Variation axes | None |
-| Font size | 32 px |
-| Letter-spacing | -1.04 px (-0.0325 em) |
-| Line-height | 46.0 px (ratio 1.438) |
+| Font file matched | `Arimo[wght].ttf` |
+| Variation axes | [600] |
+| Font size | 36 px |
+| Letter-spacing | -1.04 px (-0.0289 em) |
+| Line-height | 46.0 px (ratio 1.278) |
 | Line | 1 of 4 |
 | Transform | uppercase |
-| Colour | `#cf9666` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 13.44:1 |
 | Stroke (median/mean) | 5.0 / 6.55 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.2125 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6762 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 22 px |
+| Gap to next | 20 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 31px track -0.25px — IoU 0.1945
-- `ArchivoBlack-Regular.ttf` 30px track 0.54px — IoU 0.188
-- `Arimo[wght].ttf` 36px track -1.0px — IoU 0.0501
+- `Arimo[wght].ttf` 35px track -0.39px — IoU 0.7339
+- `Arimo[wght].ttf` 35px track -0.33px — IoU 0.7073
+- `Arimo[wght].ttf` 36px track -0.97px — IoU 0.6873
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "olor sit"  (OCR confidence 0.9974)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=947, y=153, w=95, h=24 |
-| Normalised | x=87.69%, y=14.17%, w=8.8%, h=2.22% |
+| Bounding box (px) | x=947, y=152, w=96, h=25 |
+| Normalised | x=87.69%, y=14.07%, w=8.89%, h=2.31% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [700.0] |
-| Font size | 30 px |
-| Letter-spacing | -0.71 px (-0.0237 em) |
-| Line-height | 46.0 px (ratio 1.533) |
+| Variation axes | [600] |
+| Font size | 36 px |
+| Letter-spacing | -1.04 px (-0.0289 em) |
+| Line-height | 46.0 px (ratio 1.278) |
 | Line | 2 of 4 |
 | Transform | lowercase |
 | Colour | `#040404` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.99:1 |
 | Stroke (median/mean) | 3.0 / 3.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.7283 |
+| Match IoU | 0.7976 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 22 px |
+| Gap to previous | 20 px |
 | Gap to next | 23 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 31px track -0.62px — IoU 0.7173
-- `Arimo[wght].ttf` 29px track -0.24px — IoU 0.7053
-- `Arimo[wght].ttf` 32px track 0.11px — IoU 0.6728
+- `Arimo[wght].ttf` 35px track -0.39px — IoU 0.7339
+- `Arimo[wght].ttf` 35px track -0.33px — IoU 0.7073
+- `Arimo[wght].ttf` 36px track -0.97px — IoU 0.6873
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "amet,"  (OCR confidence 0.9999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=962, y=200, w=78, h=25 |
-| Normalised | x=89.07%, y=18.52%, w=7.22%, h=2.31% |
+| Bounding box (px) | x=962, y=200, w=78, h=26 |
+| Normalised | x=89.07%, y=18.52%, w=7.22%, h=2.41% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 31 px |
-| Letter-spacing | -0.17 px (-0.0055 em) |
-| Line-height | 46.0 px (ratio 1.484) |
+| Variation axes | [600] |
+| Font size | 36 px |
+| Letter-spacing | -1.04 px (-0.0289 em) |
+| Line-height | 46.0 px (ratio 1.278) |
 | Line | 3 of 4 |
 | Transform | lowercase |
-| Colour | `#010101` |
+| Colour | `#020202` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 19.47:1 |
+| Contrast vs local bg | 18.15:1 |
 | Stroke (median/mean) | 3.0 / 3.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.7196 |
+| Match IoU | 0.7676 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 23 px |
-| Gap to next | 20 px |
+| Gap to next | 18 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 30px track 0.18px — IoU 0.7147
-- `Arimo[wght].ttf` 32px track -0.8px — IoU 0.7102
-- `Arimo[wght].ttf` 30px track -0.09px — IoU 0.6946
+- `Arimo[wght].ttf` 35px track -0.39px — IoU 0.7339
+- `Arimo[wght].ttf` 35px track -0.33px — IoU 0.7073
+- `Arimo[wght].ttf` 36px track -0.97px — IoU 0.6873
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "consectetur"  (OCR confidence 0.999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=874, y=245, w=168, h=21 |
-| Normalised | x=80.93%, y=22.69%, w=15.56%, h=1.94% |
+| Bounding box (px) | x=873, y=244, w=170, h=23 |
+| Normalised | x=80.83%, y=22.59%, w=15.74%, h=2.13% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 32 px |
-| Letter-spacing | -0.27 px (-0.0084 em) |
-| Line-height | 46.0 px (ratio 1.438) |
+| Variation axes | [600] |
+| Font size | 36 px |
+| Letter-spacing | -1.04 px (-0.0289 em) |
+| Line-height | 46.0 px (ratio 1.278) |
 | Line | 4 of 4 |
 | Transform | lowercase |
-| Colour | `#060606` |
+| Colour | `#080808` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 14.28:1 |
+| Contrast vs local bg | 12.9:1 |
 | Stroke (median/mean) | 3.0 / 3.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.7393 |
+| Match IoU | 0.7097 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 20 px |
-| Gap to next | 21 px |
+| Gap to previous | 18 px |
+| Gap to next | 20 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 30px track 0.29px — IoU 0.7284
-- `Arimo[wght].ttf` 32px track -0.81px — IoU 0.7077
-- `Arimo[wght].ttf` 31px track -0.77px — IoU 0.7037
+- `Arimo[wght].ttf` 35px track -0.39px — IoU 0.7339
+- `Arimo[wght].ttf` 35px track -0.33px — IoU 0.7073
+- `Arimo[wght].ttf` 36px track -0.97px — IoU 0.6873
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "adipiscing"  (OCR confidence 0.9998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=898, y=287, w=143, h=30 |
-| Normalised | x=83.15%, y=26.57%, w=13.24%, h=2.78% |
+| Bounding box (px) | x=890, y=287, w=151, h=37 |
+| Normalised | x=82.41%, y=26.57%, w=13.98%, h=3.43% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 31 px |
-| Letter-spacing | -0.57 px (-0.0184 em) |
-| Line-height | 45.0 px (ratio 1.452) |
-| Line | 1 of 2 |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 26 px |
+| Letter-spacing | 0.56 px (0.0215 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#090909` |
+| Colour | `#0a0a0a` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 12.31:1 |
+| Contrast vs local bg | 11.77:1 |
 | Stroke (median/mean) | 3.0 / 3.11 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.8116 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.278 |
+| **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 21 px |
-| Gap to next | 15 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 20 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 32px track 0.08px — IoU 0.6818
-- `Arimo[wght].ttf` 30px track -0.6px — IoU 0.6686
-- `Arimo[wght].ttf` 31px track 0.57px — IoU 0.6406
+- `ArchivoBlack-Regular.ttf` 27px track -0.06px — IoU 0.2549
+- `ArchivoBlack-Regular.ttf` 28px track -0.68px — IoU 0.2467
+- `Arimo[wght].ttf` 30px track 0.29px — IoU 0.2466
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "elit"  (OCR confidence 0.9976)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=1002, y=332, w=40, h=24 |
-| Normalised | x=92.78%, y=30.74%, w=3.7%, h=2.22% |
+| Bounding box (px) | x=1002, y=331, w=41, h=25 |
+| Normalised | x=92.78%, y=30.65%, w=3.8%, h=2.31% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 31 px |
-| Letter-spacing | -0.57 px (-0.0184 em) |
-| Line-height | 45.0 px (ratio 1.452) |
-| Line | 2 of 2 |
+| Variation axes | [700.0] |
+| Font size | 29 px |
+| Letter-spacing | -0.3 px (-0.0103 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#000000` |
+| Colour | `#030303` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 21.0:1 |
+| Contrast vs local bg | 16.48:1 |
 | Stroke (median/mean) | 3.0 / 3.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.6253 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7687 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 15 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 7 px |
 | Gap to next | 460 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 32px track 0.08px — IoU 0.6818
-- `Arimo[wght].ttf` 30px track -0.6px — IoU 0.6686
-- `Arimo[wght].ttf` 31px track 0.57px — IoU 0.6406
+- `Arimo[wght].ttf` 31px track -0.68px — IoU 0.7211
+- `Arimo[wght].ttf` 33px track -0.4px — IoU 0.6707
+- `Arimo[wght].ttf` 28px track 0.18px — IoU 0.6468
 
 ### `text-7` — headline
 
@@ -259,35 +265,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=32, y=816, w=184, h=59 |
-| Normalised | x=2.96%, y=75.56%, w=17.04%, h=5.46% |
+| Bounding box (px) | x=31, y=816, w=185, h=59 |
+| Normalised | x=2.87%, y=75.56%, w=17.13%, h=5.46% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 93 px |
-| Letter-spacing | -1.06 px (-0.0114 em) |
-| Line-height | 93.0 px (ratio 1.0) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 80 px |
+| Letter-spacing | -1.18 px (-0.0147 em) |
+| Line-height | 93.0 px (ratio 1.163) |
 | Line | 1 of 2 |
 | Transform | none |
-| Colour | `#cf9666` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 13.44:1 |
 | Stroke (median/mean) | 16.0 / 18.03 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.0881 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9138 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 460 px |
 | Gap to next | 34 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 93px track -1.06px — IoU 0.0447
-- `Arimo[wght].ttf` 92px track -0.07px — IoU 0.0421
-- `Arimo[wght].ttf` 92px track -0.07px — IoU 0.0393
+- `ArchivoBlack-Regular.ttf` 79px track -0.09px — IoU 0.9137
+- `ArchivoBlack-Regular.ttf` 78px track 0.98px — IoU 0.9037
+- `Arimo[wght].ttf` 85px track 0.52px — IoU 0.6535
 
 ### `text-8` — headline
 
@@ -301,29 +308,30 @@ Alternate font fits considered:
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 93 px |
-| Letter-spacing | -1.06 px (-0.0114 em) |
-| Line-height | 93.0 px (ratio 1.0) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 80 px |
+| Letter-spacing | -1.18 px (-0.0147 em) |
+| Line-height | 93.0 px (ratio 1.163) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#cf9666` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 13.44:1 |
 | Stroke (median/mean) | 20.0 / 29.04 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arimo, Archivo Black |
-| Match IoU | 0.0066 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9418 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 34 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 93px track -1.06px — IoU 0.0447
-- `Arimo[wght].ttf` 92px track -0.07px — IoU 0.0421
-- `Arimo[wght].ttf` 92px track -0.07px — IoU 0.0393
+- `ArchivoBlack-Regular.ttf` 79px track -0.09px — IoU 0.9137
+- `ArchivoBlack-Regular.ttf` 78px track 0.98px — IoU 0.9037
+- `Arimo[wght].ttf` 85px track 0.52px — IoU 0.6535
 
 ## 4. Colours (semantic)
 
@@ -331,11 +339,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#b4b7ba` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#cf9666` | glyph ink of '50%' | glyph ink median |
-| textSecondary | `#090909` | glyph ink of 'adipiscing' | glyph ink median |
+| textPrimary | `#000000` | glyph ink of '50%' | glyph ink median |
+| textSecondary | `#000000` | glyph ink of 'OFF' | glyph ink median |
 | accent | `#ae8864` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1d1209` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -359,7 +367,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.0341 |
+| Text coverage | 0.0362 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -386,30 +394,30 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline_line1` | text | LOREM IPSUM |
-| `subheadline_line2` | text | olor sit |
-| `subheadline_line3` | text | amet, |
-| `subheadline_line4` | text | consectetur |
-| `subheadline_line1` | text | adipiscing |
-| `subheadline_line2` | text | elit |
+| `supporting_line1` | text | LOREM IPSUM |
+| `supporting_line2` | text | olor sit |
+| `supporting_line3` | text | amet, |
+| `supporting_line4` | text | consectetur |
+| `body` | text | adipiscing |
+| `supporting` | text | elit |
 | `headline_line1` | text | 50% |
 | `headline_line2` | text | OFF |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #b4b7ba |
-| `textPrimary` | colour | #cf9666 |
-| `textSecondary` | colour | #090909 |
+| `textPrimary` | colour | #000000 |
+| `textSecondary` | colour | #000000 |
 | `accent` | colour | #ae8864 |
 | `accentSecondary` | colour | #1d1209 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Arimo |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 52.1 |

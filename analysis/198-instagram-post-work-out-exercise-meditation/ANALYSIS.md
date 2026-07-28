@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -50,29 +50,30 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 182 px |
-| Letter-spacing | -0.78 px (-0.0043 em) |
+| Font file matched | `Alata-Regular.ttf` |
+| Variation axes | None |
+| Font size | 164 px |
+| Letter-spacing | 0.88 px (0.0054 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#eb2ad2` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.48:1 |
 | Stroke (median/mean) | 26.0 / 26.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.113 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8531 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
 | Gap to next | 97 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 180px track 0.73px — IoU 0.1118
-- `Raleway[wght].ttf` 181px track -0.02px — IoU 0.1116
-- `Raleway[wght].ttf` 185px track 0.47px — IoU 0.0631
+- `Alata-Regular.ttf` 165px track 0.05px — IoU 0.8508
+- `Alata-Regular.ttf` 166px track -0.78px — IoU 0.8458
+- `Raleway[wght].ttf` 186px track -0.27px — IoU 0.8019
 
 ### `text-2` — subheadline
 
@@ -88,17 +89,18 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
 | Variation axes | [800] |
-| Font size | 130 px |
-| Letter-spacing | -0.46 px (-0.0035 em) |
-| Line-height | 145.0 px (ratio 1.115) |
+| Font size | 131 px |
+| Letter-spacing | -1.02 px (-0.0078 em) |
+| Line-height | 145.0 px (ratio 1.107) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.91:1 |
 | Stroke (median/mean) | 20.0 / 22.87 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.88 |
+| Match IoU | 0.8851 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -106,9 +108,9 @@ Alternate font fits considered:
 | Gap to next | 46 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 131px track -1.04px — IoU 0.7964
-- `Raleway[wght].ttf` 129px track 0.26px — IoU 0.7951
-- `Raleway[wght].ttf` 130px track -0.32px — IoU 0.7928
+- `Raleway[wght].ttf` 130px track -0.31px — IoU 0.7965
+- `Raleway[wght].ttf` 131px track -0.9px — IoU 0.7821
+- `Raleway[wght].ttf` 129px track 0.4px — IoU 0.7821
 
 ### `text-3` — subheadline
 
@@ -116,116 +118,119 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=66, y=531, w=645, h=97 |
-| Normalised | x=6.11%, y=49.17%, w=59.72%, h=8.98% |
+| Bounding box (px) | x=65, y=531, w=646, h=98 |
+| Normalised | x=6.02%, y=49.17%, w=59.81%, h=9.07% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
 | Variation axes | [800] |
-| Font size | 130 px |
-| Letter-spacing | -0.46 px (-0.0035 em) |
-| Line-height | 145.0 px (ratio 1.115) |
+| Font size | 131 px |
+| Letter-spacing | -1.02 px (-0.0078 em) |
+| Line-height | 145.0 px (ratio 1.107) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.94:1 |
 | Stroke (median/mean) | 20.0 / 22.14 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.7294 |
+| Match IoU | 0.71 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 46 px |
-| Gap to next | 36 px |
+| Gap to next | 34 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 131px track -1.04px — IoU 0.7964
-- `Raleway[wght].ttf` 129px track 0.26px — IoU 0.7951
-- `Raleway[wght].ttf` 130px track -0.32px — IoU 0.7928
+- `Raleway[wght].ttf` 130px track -0.31px — IoU 0.7965
+- `Raleway[wght].ttf` 131px track -0.9px — IoU 0.7821
+- `Raleway[wght].ttf` 129px track 0.4px — IoU 0.7821
 
-### `text-4` — supporting
+### `text-4` — fine-print
 
 **Text:** "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"  (OCR confidence 0.9771)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=664, w=614, h=20 |
-| Normalised | x=5.28%, y=61.48%, w=56.85%, h=1.85% |
+| Bounding box (px) | x=57, y=663, w=614, h=22 |
+| Normalised | x=5.28%, y=61.39%, w=56.85%, h=2.04% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [400.0] |
-| Font size | 23 px |
-| Letter-spacing | -0.35 px (-0.0152 em) |
-| Line-height | 30.0 px (ratio 1.304) |
-| Line | 1 of 2 |
+| Variation axes | [500] |
+| Font size | 22 px |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 1 of 8 |
 | Transform | none |
-| Colour | `#ebe9f6` |
+| Colour | `#eae8f6` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.75:1 |
+| Contrast vs local bg | 2.74:1 |
 | Stroke (median/mean) | 2.0 / 2.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.5635 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.533 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 36 px |
-| Gap to next | 10 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 34 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 22px track -0.19px — IoU 0.5046
-- `Arimo[wght].ttf` 21px track -0.0px — IoU 0.5027
-- `Arimo[wght].ttf` 22px track 0.1px — IoU 0.4949
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-5` — supporting
+### `text-5` — fine-print
 
 **Text:** "eiusmod tempor incididunt ut labore et dolore magna aliqua."  (OCR confidence 0.9895)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=694, w=589, h=21 |
-| Normalised | x=5.28%, y=64.26%, w=54.54%, h=1.94% |
+| Bounding box (px) | x=56, y=694, w=591, h=21 |
+| Normalised | x=5.19%, y=64.26%, w=54.72%, h=1.94% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [400.0] |
-| Font size | 23 px |
-| Letter-spacing | -0.35 px (-0.0152 em) |
-| Line-height | 30.0 px (ratio 1.304) |
-| Line | 2 of 2 |
+| Variation axes | [500] |
+| Font size | 22 px |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 2 of 8 |
 | Transform | lowercase |
-| Colour | `#e7e5f4` |
+| Colour | `#e7e4f4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.73:1 |
+| Contrast vs local bg | 2.72:1 |
 | Stroke (median/mean) | 2.0 / 2.17 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.5243 |
+| Match IoU | 0.4405 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 10 px |
-| Gap to next | -1 px |
+| Gap to previous | 9 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 22px track -0.19px — IoU 0.5046
-- `Arimo[wght].ttf` 21px track -0.0px — IoU 0.5027
-- `Arimo[wght].ttf` 22px track 0.1px — IoU 0.4949
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-6` — supporting
+### `text-6` — fine-print
 
 **Text:** "Condimentum mattis pellentesque id nibh tortor id. Lectus sit amet"  (OCR confidence 0.9866)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=714, w=652, h=31 |
-| Normalised | x=5.28%, y=66.11%, w=60.37%, h=2.87% |
+| Bounding box (px) | x=56, y=724, w=653, h=21 |
+| Normalised | x=5.19%, y=67.04%, w=60.46%, h=1.94% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -233,35 +238,36 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.17 px (-0.0077 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 3 of 8 |
 | Transform | none |
 | Colour | `#e6e3f4` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.71:1 |
-| Stroke (median/mean) | 2.0 / 2.28 px |
+| Stroke (median/mean) | 2.0 / 2.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.2667 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5672 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | 10 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 9 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 22px track 0.12px — IoU 0.2418
-- `Arimo[wght].ttf` 21px track 0.02px — IoU 0.235
-- `Arimo[wght].ttf` 21px track -0.25px — IoU 0.2219
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-7` — supporting
+### `text-7` — fine-print
 
 **Text:** "est placerat. Tincidunt ornare massa eget egestas. Etiam non"  (OCR confidence 0.9763)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=755, w=604, h=20 |
-| Normalised | x=5.28%, y=69.91%, w=55.93%, h=1.85% |
+| Bounding box (px) | x=56, y=754, w=605, h=22 |
+| Normalised | x=5.19%, y=69.81%, w=56.02%, h=2.04% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -269,35 +275,36 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.18 px (-0.0082 em) |
-| Line-height | 30.2 px (ratio 1.373) |
-| Line | 1 of 5 |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 4 of 8 |
 | Transform | none |
-| Colour | `#e6e3f4` |
+| Colour | `#e5e1f4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.73:1 |
+| Contrast vs local bg | 2.71:1 |
 | Stroke (median/mean) | 2.0 / 2.41 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.3834 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4367 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 10 px |
-| Gap to next | 10 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 9 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 23px track -0.66px — IoU 0.5264
-- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.5243
-- `Arimo[wght].ttf` 23px track -0.38px — IoU 0.5231
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-8` — supporting
+### `text-8` — fine-print
 
 **Text:** "quam lacus suspendisse."  (OCR confidence 0.9828)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=785, w=247, h=20 |
-| Normalised | x=5.28%, y=72.69%, w=22.87%, h=1.85% |
+| Bounding box (px) | x=56, y=784, w=248, h=22 |
+| Normalised | x=5.19%, y=72.59%, w=22.96%, h=2.04% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
@@ -305,28 +312,29 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.18 px (-0.0082 em) |
-| Line-height | 30.2 px (ratio 1.373) |
-| Line | 2 of 5 |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 5 of 8 |
 | Transform | lowercase |
-| Colour | `#efedf8` |
+| Colour | `#eeecf8` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.81:1 |
+| Contrast vs local bg | 2.8:1 |
 | Stroke (median/mean) | 2.0 / 2.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.6205 |
+| Match IoU | 0.6056 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 10 px |
-| Gap to next | 10 px |
+| Gap to previous | 8 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 23px track -0.66px — IoU 0.5264
-- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.5243
-- `Arimo[wght].ttf` 23px track -0.38px — IoU 0.5231
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-9` — supporting
+### `text-9` — fine-print
 
 **Text:** "Facilisi nullam vehicula ipsum a arcu cursus vitae congue. Ac felis"  (OCR confidence 0.9744)
 
@@ -341,35 +349,36 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.18 px (-0.0082 em) |
-| Line-height | 30.2 px (ratio 1.373) |
-| Line | 3 of 5 |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 6 of 8 |
 | Transform | none |
 | Colour | `#e7e3f4` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.77:1 |
 | Stroke (median/mean) | 2.0 / 2.3 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.6111 |
+| Match IoU | 0.6315 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 10 px |
-| Gap to next | 10 px |
+| Gap to previous | 9 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 23px track -0.66px — IoU 0.5264
-- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.5243
-- `Arimo[wght].ttf` 23px track -0.38px — IoU 0.5231
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-10` — supporting
+### `text-10` — fine-print
 
 **Text:** "donec et odio pellentesque diam volutpat commodo. Gravida in"  (OCR confidence 0.995)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=846, w=621, h=20 |
-| Normalised | x=5.28%, y=78.33%, w=57.5%, h=1.85% |
+| Bounding box (px) | x=56, y=845, w=622, h=22 |
+| Normalised | x=5.19%, y=78.24%, w=57.59%, h=2.04% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
@@ -377,28 +386,29 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.18 px (-0.0082 em) |
-| Line-height | 30.2 px (ratio 1.373) |
-| Line | 4 of 5 |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 7 of 8 |
 | Transform | none |
-| Colour | `#eae7f6` |
+| Colour | `#e9e6f5` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.81:1 |
+| Contrast vs local bg | 2.8:1 |
 | Stroke (median/mean) | 2.0 / 2.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.5594 |
+| Match IoU | 0.5927 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 10 px |
-| Gap to next | 10 px |
+| Gap to previous | 9 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 23px track -0.66px — IoU 0.5264
-- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.5243
-- `Arimo[wght].ttf` 23px track -0.38px — IoU 0.5231
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-11` — supporting
+### `text-11` — fine-print
 
 **Text:** "fermentum et sollicitudin ac. Aliquet porttitor lacus luctus"  (OCR confidence 0.9828)
 
@@ -413,62 +423,64 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.18 px (-0.0082 em) |
-| Line-height | 30.2 px (ratio 1.373) |
-| Line | 5 of 5 |
+| Letter-spacing | -0.16 px (-0.0073 em) |
+| Line-height | 30.4 px (ratio 1.382) |
+| Line | 8 of 8 |
 | Transform | none |
 | Colour | `#e7e3f4` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.8:1 |
 | Stroke (median/mean) | 2.0 / 2.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.499 |
+| Match IoU | 0.5091 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 10 px |
-| Gap to next | 14 px |
+| Gap to previous | 9 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 23px track -0.66px — IoU 0.5264
-- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.5243
-- `Arimo[wght].ttf` 23px track -0.38px — IoU 0.5231
+- `Arimo[wght].ttf` 22px track -0.45px — IoU 0.5181
+- `Arimo[wght].ttf` 22px track -0.73px — IoU 0.512
+- `Arimo[wght].ttf` 21px track 0.03px — IoU 0.5085
 
-### `text-12` — detail
+### `text-12` — fine-print
 
 **Text:** "accu msan ."  (OCR confidence 0.9973)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=911, w=104, h=11 |
-| Normalised | x=5.28%, y=84.35%, w=9.63%, h=1.02% |
+| Bounding box (px) | x=56, y=910, w=106, h=13 |
+| Normalised | x=5.19%, y=84.26%, w=9.81%, h=1.2% |
 | Alignment | left |
 | z-order | 111 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 19 px |
-| Letter-spacing | -0.54 px (-0.0284 em) |
+| Variation axes | [800] |
+| Font size | 20 px |
+| Letter-spacing | -0.78 px (-0.039 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#f8f7fc` |
+| Colour | `#ebe8f7` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.02:1 |
+| Contrast vs local bg | 2.86:1 |
 | Stroke (median/mean) | 2.0 / 2.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Raleway, Arimo |
-| Match IoU | 0.3778 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4035 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 14 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 13 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 18px track 0.04px — IoU 0.3593
-- `Raleway[wght].ttf` 19px track -0.41px — IoU 0.3494
-- `Raleway[wght].ttf` 19px track -0.1px — IoU 0.3228
+- `Raleway[wght].ttf` 19px track -0.34px — IoU 0.383
+- `Raleway[wght].ttf` 18px track 0.24px — IoU 0.3765
+- `Alata-Regular.ttf` 21px track -0.55px — IoU 0.3715
 
 ## 4. Colours (semantic)
 
@@ -476,11 +488,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#ef8fe6` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#543fbb` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#eb2ad2` | glyph ink of '#' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'WORK' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of '#' | glyph ink median |
+| textSecondary | `#eae8f6` | glyph ink of 'Lorem ipsum dolor sit amet, ' | glyph ink median |
 | accent | `#543fbb` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#341c96` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -504,7 +516,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1941 |
+| Text coverage | 0.193 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -534,21 +546,21 @@ _Recommendations only — no manifest is generated._
 | `headline` | text | # |
 | `subheadline_line1` | text | WORK |
 | `subheadline_line2` | text | MEDITATE |
-| `supporting_line1` | text | Lorem ipsum dolor sit amet, consectetur adipiscing elit, ... |
-| `supporting_line2` | text | eiusmod tempor incididunt ut labore et dolore magna aliqua. |
-| `supporting` | text | Condimentum mattis pellentesque id nibh tortor id. Lectus... |
-| `supporting_line1` | text | est placerat. Tincidunt ornare massa eget egestas. Etiam non |
-| `supporting_line2` | text | quam lacus suspendisse. |
-| `supporting_line3` | text | Facilisi nullam vehicula ipsum a arcu cursus vitae congue... |
-| `supporting_line4` | text | donec et odio pellentesque diam volutpat commodo. Gravida in |
-| `supporting_line5` | text | fermentum et sollicitudin ac. Aliquet porttitor lacus luctus |
-| `detail` | text | accu msan . |
+| `fine-print_line1` | text | Lorem ipsum dolor sit amet, consectetur adipiscing elit, ... |
+| `fine-print_line2` | text | eiusmod tempor incididunt ut labore et dolore magna aliqua. |
+| `fine-print_line3` | text | Condimentum mattis pellentesque id nibh tortor id. Lectus... |
+| `fine-print_line4` | text | est placerat. Tincidunt ornare massa eget egestas. Etiam non |
+| `fine-print_line5` | text | quam lacus suspendisse. |
+| `fine-print_line6` | text | Facilisi nullam vehicula ipsum a arcu cursus vitae congue... |
+| `fine-print_line7` | text | donec et odio pellentesque diam volutpat commodo. Gravida in |
+| `fine-print_line8` | text | fermentum et sollicitudin ac. Aliquet porttitor lacus luctus |
+| `fine-print` | text | accu msan . |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #ef8fe6 |
 | `surface` | colour | #543fbb |
-| `textPrimary` | colour | #eb2ad2 |
-| `textSecondary` | colour | #ffffff |
+| `textPrimary` | colour | #ffffff |
+| `textSecondary` | colour | #eae8f6 |
 | `accent` | colour | #543fbb |
 | `accentSecondary` | colour | #341c96 |
 | `onAccent` | colour | #000000 |
@@ -556,15 +568,15 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 43.5 |
 | `imageFocalY` | number | 60.2 |
 

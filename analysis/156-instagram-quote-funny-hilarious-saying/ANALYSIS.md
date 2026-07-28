@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=272, y=358, w=575, h=79 |
-| Normalised | x=25.19%, y=33.15%, w=53.24%, h=7.31% |
+| Bounding box (px) | x=272, y=358, w=576, h=79 |
+| Normalised | x=25.19%, y=33.15%, w=53.33%, h=7.31% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.0:1 |
 | Stroke (median/mean) | 3.0 / 3.45 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Amatic SC, Playfair Display |
-| Match IoU | 0.1793 |
+| Match IoU | 0.1718 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
 | Gap to next | 49 px |
 
 Alternate font fits considered:
-- `AmaticSC-Bold.ttf` 87px track 0.21px — IoU 0.1753
-- `AmaticSC-Bold.ttf` 88px track -0.07px — IoU 0.1724
-- `PlayfairDisplay[wght].ttf` 42px track 0.8px — IoU 0.1598
+- `AmaticSC-Bold.ttf` 87px track 0.21px — IoU 0.1799
+- `AmaticSC-Bold.ttf` 88px track -0.07px — IoU 0.1768
+- `PlayfairDisplay[wght].ttf` 42px track 0.8px — IoU 0.1625
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=232, y=486, w=625, h=72 |
-| Normalised | x=21.48%, y=45.0%, w=57.87%, h=6.67% |
+| Bounding box (px) | x=232, y=486, w=625, h=73 |
+| Normalised | x=21.48%, y=45.0%, w=57.87%, h=6.76% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 7.39:1 |
 | Stroke (median/mean) | 3.0 / 3.7 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Amatic SC, Playfair Display |
-| Match IoU | 0.2294 |
+| Match IoU | 0.23 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 49 px |
-| Gap to next | 62 px |
+| Gap to next | 61 px |
 
 Alternate font fits considered:
-- `AmaticSC-Bold.ttf` 87px track 0.21px — IoU 0.1753
-- `AmaticSC-Bold.ttf` 88px track -0.07px — IoU 0.1724
-- `PlayfairDisplay[wght].ttf` 42px track 0.8px — IoU 0.1598
+- `AmaticSC-Bold.ttf` 87px track 0.21px — IoU 0.1799
+- `AmaticSC-Bold.ttf` 88px track -0.07px — IoU 0.1768
+- `PlayfairDisplay[wght].ttf` 42px track 0.8px — IoU 0.1625
 
 ### `text-3` — headline
 
@@ -115,9 +117,9 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=397, y=620, w=261, h=68 |
-| Normalised | x=36.76%, y=57.41%, w=24.17%, h=6.3% |
-| Alignment | center |
+| Bounding box (px) | x=396, y=620, w=262, h=69 |
+| Normalised | x=36.67%, y=57.41%, w=24.26%, h=6.39% |
+| Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
@@ -132,35 +134,36 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 7.01:1 |
 | Stroke (median/mean) | 3.0 / 3.23 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Amatic SC, Playfair Display |
-| Match IoU | 0.1331 |
+| Match IoU | 0.1457 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 62 px |
-| Gap to next | 53 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 61 px |
+| Gap to next | 51 px |
 
 Alternate font fits considered:
-- `AmaticSC-Bold.ttf` 87px track 0.21px — IoU 0.1753
-- `AmaticSC-Bold.ttf` 88px track -0.07px — IoU 0.1724
-- `PlayfairDisplay[wght].ttf` 42px track 0.8px — IoU 0.1598
+- `AmaticSC-Bold.ttf` 87px track 0.21px — IoU 0.1799
+- `AmaticSC-Bold.ttf` 88px track -0.07px — IoU 0.1768
+- `PlayfairDisplay[wght].ttf` 42px track 0.8px — IoU 0.1625
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "President Merkin Muffley"  (OCR confidence 0.9887)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=288, y=741, w=505, h=41 |
-| Normalised | x=26.67%, y=68.61%, w=46.76%, h=3.8% |
+| Bounding box (px) | x=288, y=740, w=506, h=42 |
+| Normalised | x=26.67%, y=68.52%, w=46.85%, h=3.89% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlayfairDisplay[wght].ttf` |
 | Variation axes | [800] |
-| Font size | 42 px |
-| Letter-spacing | -0.04 px (-0.001 em) |
+| Font size | 43 px |
+| Letter-spacing | -0.52 px (-0.0121 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -168,18 +171,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 8.23:1 |
 | Stroke (median/mean) | 6.0 / 5.53 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Amatic SC, Playfair Display |
-| Match IoU | 0.6814 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7423 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 53 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 51 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 42px track -0.3px — IoU 0.6722
-- `PlayfairDisplay[wght].ttf` 44px track -0.55px — IoU 0.657
-- `PlayfairDisplay[wght].ttf` 43px track -0.56px — IoU 0.6555
+- `PlayfairDisplay[wght].ttf` 43px track -0.78px — IoU 0.7299
+- `PlayfairDisplay[wght].ttf` 42px track 0.0px — IoU 0.7241
+- `PlayfairDisplay[wght].ttf` 42px track -0.25px — IoU 0.7221
 
 ## 4. Colours (semantic)
 
@@ -191,7 +195,7 @@ Alternate font fits considered:
 | textSecondary | `#280e45` | glyph ink of 'FIGHT IN HERE. THIS IS THE' | glyph ink median |
 | accent | `#8b95cb` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#31174c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1105 |
+| Text coverage | 0.1118 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -245,7 +249,7 @@ _Recommendations only — no manifest is generated._
 | `headline_line1` | text | GENTLEMEN, YOU CAN'T |
 | `headline_line2` | text | FIGHT IN HERE. THIS IS THE |
 | `headline_line3` | text | WAR ROOM. |
-| `subheadline` | text | President Merkin Muffley |
+| `supporting` | text | President Merkin Muffley |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -259,7 +263,7 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

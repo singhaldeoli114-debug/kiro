@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,52 +43,53 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=273, y=125, w=188, h=27 |
-| Normalised | x=25.28%, y=11.57%, w=17.41%, h=2.5% |
+| Bounding box (px) | x=272, y=125, w=189, h=27 |
+| Normalised | x=25.19%, y=11.57%, w=17.5%, h=2.5% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 42 px |
-| Letter-spacing | -0.66 px (-0.0157 em) |
+| Variation axes | [900.0, 100.0] |
+| Font size | 37 px |
+| Letter-spacing | -0.67 px (-0.0181 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#dcdedf` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 18.38:1 |
 | Stroke (median/mean) | 6.0 / 7.4 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Alice |
-| Match IoU | 0.0685 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9105 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
 | Gap to next | -21 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 40px track 0.66px — IoU 0.0662
-- `Alice-Regular.ttf` 38px track -0.59px — IoU 0.0604
-- `Roboto[wdth,wght].ttf` 41px track 0.01px — IoU 0.0588
+- `Roboto[wdth,wght].ttf` 37px track -0.58px — IoU 0.873
+- `Roboto[wdth,wght].ttf` 40px track -0.99px — IoU 0.8723
+- `Roboto[wdth,wght].ttf` 36px track 0.07px — IoU 0.8677
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "now"  (OCR confidence 0.998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=822, y=131, w=62, h=19 |
-| Normalised | x=76.11%, y=12.13%, w=5.74%, h=1.76% |
+| Bounding box (px) | x=822, y=131, w=62, h=20 |
+| Normalised | x=76.11%, y=12.13%, w=5.74%, h=1.85% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
-| Font size | 34 px |
-| Letter-spacing | -0.67 px (-0.0197 em) |
+| Variation axes | [500, 87.5] |
+| Font size | 36 px |
+| Letter-spacing | -0.38 px (-0.0106 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 18.38:1 |
 | Stroke (median/mean) | 3.0 / 3.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Alice |
-| Match IoU | 0.8077 |
+| Match IoU | 0.8081 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | -21 px |
-| Gap to next | 52 px |
+| Gap to next | 51 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 34px track -0.73px — IoU 0.8028
-- `Roboto[wdth,wght].ttf` 36px track -0.38px — IoU 0.7938
-- `Roboto[wdth,wght].ttf` 39px track -0.91px — IoU 0.784
+- `Roboto[wdth,wght].ttf` 34px track -0.67px — IoU 0.7984
+- `Roboto[wdth,wght].ttf` 34px track -0.73px — IoU 0.7873
+- `Roboto[wdth,wght].ttf` 34px track -0.61px — IoU 0.7742
 
 ### `text-3` — headline
 
@@ -123,27 +125,28 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 100.0] |
-| Font size | 30 px |
-| Letter-spacing | -0.03 px (-0.001 em) |
-| Line-height | 49.0 px (ratio 1.633) |
+| Font size | 31 px |
+| Letter-spacing | -0.49 px (-0.0158 em) |
+| Line-height | 49.0 px (ratio 1.581) |
 | Line | 1 of 3 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.76:1 |
 | Stroke (median/mean) | 6.0 / 7.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Alice |
-| Match IoU | 0.74 |
+| Match IoU | 0.7682 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 52 px |
+| Gap to previous | 51 px |
 | Gap to next | 28 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 31px track -0.51px — IoU 0.5793
-- `Roboto[wdth,wght].ttf` 32px track -0.11px — IoU 0.5726
-- `Roboto[wdth,wght].ttf` 30px track 0.02px — IoU 0.5717
+- `Roboto[wdth,wght].ttf` 32px track -0.09px — IoU 0.5683
+- `Roboto[wdth,wght].ttf` 30px track 0.05px — IoU 0.5625
+- `Roboto[wdth,wght].ttf` 30px track -0.01px — IoU 0.5607
 
 ### `text-4` — headline
 
@@ -151,25 +154,26 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=198, y=258, w=611, h=30 |
-| Normalised | x=18.33%, y=23.89%, w=56.57%, h=2.78% |
+| Bounding box (px) | x=197, y=258, w=612, h=30 |
+| Normalised | x=18.24%, y=23.89%, w=56.67%, h=2.78% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 100.0] |
-| Font size | 30 px |
-| Letter-spacing | -0.03 px (-0.001 em) |
-| Line-height | 49.0 px (ratio 1.633) |
+| Font size | 31 px |
+| Letter-spacing | -0.49 px (-0.0158 em) |
+| Line-height | 49.0 px (ratio 1.581) |
 | Line | 2 of 3 |
 | Transform | none |
 | Colour | `#070707` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 10.18:1 |
 | Stroke (median/mean) | 4.0 / 4.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Alice |
-| Match IoU | 0.4989 |
+| Match IoU | 0.4728 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -177,9 +181,9 @@ Alternate font fits considered:
 | Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 31px track -0.51px — IoU 0.5793
-- `Roboto[wdth,wght].ttf` 32px track -0.11px — IoU 0.5726
-- `Roboto[wdth,wght].ttf` 30px track 0.02px — IoU 0.5717
+- `Roboto[wdth,wght].ttf` 32px track -0.09px — IoU 0.5683
+- `Roboto[wdth,wght].ttf` 30px track 0.05px — IoU 0.5625
+- `Roboto[wdth,wght].ttf` 30px track -0.01px — IoU 0.5607
 
 ### `text-5` — headline
 
@@ -187,25 +191,26 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=198, y=300, w=512, h=30 |
-| Normalised | x=18.33%, y=27.78%, w=47.41%, h=2.78% |
+| Bounding box (px) | x=197, y=300, w=513, h=30 |
+| Normalised | x=18.24%, y=27.78%, w=47.5%, h=2.78% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 100.0] |
-| Font size | 30 px |
-| Letter-spacing | -0.03 px (-0.001 em) |
-| Line-height | 49.0 px (ratio 1.633) |
+| Font size | 31 px |
+| Letter-spacing | -0.49 px (-0.0158 em) |
+| Line-height | 49.0 px (ratio 1.581) |
 | Line | 3 of 3 |
 | Transform | none |
 | Colour | `#070707` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 10.18:1 |
 | Stroke (median/mean) | 4.0 / 4.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Alice |
-| Match IoU | 0.5232 |
+| Match IoU | 0.4784 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -213,9 +218,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 31px track -0.51px — IoU 0.5793
-- `Roboto[wdth,wght].ttf` 32px track -0.11px — IoU 0.5726
-- `Roboto[wdth,wght].ttf` 30px track 0.02px — IoU 0.5717
+- `Roboto[wdth,wght].ttf` 32px track -0.09px — IoU 0.5683
+- `Roboto[wdth,wght].ttf` 30px track 0.05px — IoU 0.5625
+- `Roboto[wdth,wght].ttf` 30px track -0.01px — IoU 0.5607
 
 ## 4. Colours (semantic)
 
@@ -224,10 +229,10 @@ Alternate font fits considered:
 | background | `#c4c3c1` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#a99181` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#070707` | glyph ink of 'Craving for some pizza? We g' | glyph ink median |
-| textSecondary | `#dcdedf` | glyph ink of 'MESSAGES' | glyph ink median |
+| textSecondary | `#070707` | glyph ink of 'Call us or visit www.clasico' | glyph ink median |
 | accent | `#437606` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#81261b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +256,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0405 |
+| Text coverage | 0.0406 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -279,7 +284,7 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | MESSAGES |
-| `subheadline` | text | now |
+| `headline` | text | now |
 | `headline_line1` | text | Classico's Pizza |
 | `headline_line2` | text | Craving for some pizza? We got you covered. |
 | `headline_line3` | text | Call us or visit www.clasicopizza.com |
@@ -288,13 +293,13 @@ _Recommendations only — no manifest is generated._
 | `background` | colour | #c4c3c1 |
 | `surface` | colour | #a99181 |
 | `textPrimary` | colour | #070707 |
-| `textSecondary` | colour | #dcdedf |
+| `textSecondary` | colour | #070707 |
 | `accent` | colour | #437606 |
 | `accentSecondary` | colour | #81261b |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Roboto |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |

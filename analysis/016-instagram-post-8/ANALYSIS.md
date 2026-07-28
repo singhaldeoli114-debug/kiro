@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "Grow Your Business"  (OCR confidence 0.9702)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=197, y=112, w=687, h=61 |
-| Normalised | x=18.24%, y=10.37%, w=63.61%, h=5.65% |
+| Bounding box (px) | x=197, y=112, w=688, h=61 |
+| Normalised | x=18.24%, y=10.37%, w=63.7%, h=5.65% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 83 px |
-| Letter-spacing | -0.71 px (-0.0086 em) |
+| Letter-spacing | -0.65 px (-0.0078 em) |
 | Line-height | 81.0 px (ratio 0.976) |
 | Line | 1 of 2 |
 | Transform | none |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.52:1 |
 | Stroke (median/mean) | 9.0 / 11.73 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.6201 |
+| Match IoU | 0.5906 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -69,11 +70,11 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 20 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 82px track -0.21px — IoU 0.6492
-- `Actor-Regular.ttf` 81px track 0.28px — IoU 0.6474
-- `Poppins-Regular.ttf` 72px track -0.7px — IoU 0.2386
+- `Actor-Regular.ttf` 82px track -0.15px — IoU 0.6294
+- `Actor-Regular.ttf` 81px track 0.34px — IoU 0.6273
+- `Poppins-Regular.ttf` 72px track -0.64px — IoU 0.2475
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "With Confidence"  (OCR confidence 0.9992)
 
@@ -88,7 +89,7 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 83 px |
-| Letter-spacing | -0.71 px (-0.0086 em) |
+| Letter-spacing | -0.65 px (-0.0078 em) |
 | Line-height | 81.0 px (ratio 0.976) |
 | Line | 2 of 2 |
 | Transform | none |
@@ -96,63 +97,65 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.52:1 |
 | Stroke (median/mean) | 9.0 / 11.36 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.6871 |
+| Match IoU | 0.6746 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 20 px |
-| Gap to next | 36 px |
+| Gap to next | 35 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 82px track -0.21px — IoU 0.6492
-- `Actor-Regular.ttf` 81px track 0.28px — IoU 0.6474
-- `Poppins-Regular.ttf` 72px track -0.7px — IoU 0.2386
+- `Actor-Regular.ttf` 82px track -0.15px — IoU 0.6294
+- `Actor-Regular.ttf` 81px track 0.34px — IoU 0.6273
+- `Poppins-Regular.ttf` 72px track -0.64px — IoU 0.2475
 
-### `text-3` — detail
+### `text-3` — body
 
 **Text:** "We create smart strategies and impactful designs"  (OCR confidence 0.9944)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=240, y=295, w=600, h=34 |
-| Normalised | x=22.22%, y=27.31%, w=55.56%, h=3.15% |
+| Bounding box (px) | x=239, y=294, w=601, h=27 |
+| Normalised | x=22.13%, y=27.22%, w=55.65%, h=2.5% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 23 px |
-| Letter-spacing | 0.48 px (0.0209 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 24 px |
+| Letter-spacing | -0.03 px (-0.0013 em) |
+| Line-height | 32.0 px (ratio 1.333) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#f9fbfc` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.47:1 |
-| Stroke (median/mean) | 2.0 / 2.61 px |
+| Stroke (median/mean) | 2.0 / 2.63 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2799 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5857 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 36 px |
-| Gap to next | -13 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 35 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 24px track -0.06px — IoU 0.2437
-- `Poppins-Regular.ttf` 25px track -0.59px — IoU 0.2012
-- `Actor-Regular.ttf` 29px track -0.1px — IoU 0.1637
+- `Poppins-Regular.ttf` 25px track -0.57px — IoU 0.5952
+- `Poppins-Regular.ttf` 23px track 0.5px — IoU 0.5898
+- `Actor-Regular.ttf` 29px track -0.08px — IoU 0.2493
 
-### `text-4` — detail
+### `text-4` — body
 
 **Text:** "that help businesses attract customers, increase"  (OCR confidence 0.9907)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=249, y=316, w=582, h=43 |
-| Normalised | x=23.06%, y=29.26%, w=53.89%, h=3.98% |
+| Bounding box (px) | x=249, y=326, w=582, h=26 |
+| Normalised | x=23.06%, y=30.19%, w=53.89%, h=2.41% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,35 +163,36 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 24 px |
-| Letter-spacing | -0.04 px (-0.0017 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.03 px (-0.0013 em) |
+| Line-height | 32.0 px (ratio 1.333) |
+| Line | 2 of 3 |
 | Transform | lowercase |
 | Colour | `#f1f5f9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.38:1 |
 | Stroke (median/mean) | 2.0 / 2.48 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.3 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6893 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -13 px |
-| Gap to next | -12 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 5 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 23px track 0.47px — IoU 0.2856
-- `Poppins-Regular.ttf` 25px track -0.56px — IoU 0.2598
-- `Actor-Regular.ttf` 28px track 0.34px — IoU 0.1431
+- `Poppins-Regular.ttf` 25px track -0.57px — IoU 0.5952
+- `Poppins-Regular.ttf` 23px track 0.5px — IoU 0.5898
+- `Actor-Regular.ttf` 29px track -0.08px — IoU 0.2493
 
-### `text-5` — detail
+### `text-5` — body
 
 **Text:** "engagement, and boost sales."  (OCR confidence 0.9933)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=359, y=347, w=362, h=37 |
-| Normalised | x=33.24%, y=32.13%, w=33.52%, h=3.43% |
+| Bounding box (px) | x=359, y=358, w=362, h=26 |
+| Normalised | x=33.24%, y=33.15%, w=33.52%, h=2.41% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -196,98 +200,102 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 24 px |
-| Letter-spacing | -0.09 px (-0.0037 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.03 px (-0.0013 em) |
+| Line-height | 32.0 px (ratio 1.333) |
+| Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#f9fbfc` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.47:1 |
-| Stroke (median/mean) | 2.0 / 2.67 px |
+| Stroke (median/mean) | 2.0 / 2.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.203 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6981 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -12 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 6 px |
 | Gap to next | 88 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 23px track 0.47px — IoU 0.1865
-- `Actor-Regular.ttf` 30px track -0.62px — IoU 0.1726
-- `Poppins-Regular.ttf` 25px track -0.66px — IoU 0.1613
+- `Poppins-Regular.ttf` 25px track -0.57px — IoU 0.5952
+- `Poppins-Regular.ttf` 23px track 0.5px — IoU 0.5898
+- `Actor-Regular.ttf` 29px track -0.08px — IoU 0.2493
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "Duhastach"  (OCR confidence 0.6833)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=26, y=472, w=66, h=19 |
-| Normalised | x=2.41%, y=43.7%, w=6.11%, h=1.76% |
+| Bounding box (px) | x=33, y=472, w=59, h=14 |
+| Normalised | x=3.06%, y=43.7%, w=5.46%, h=1.3% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
+| Font file matched | `Poppins-ExtraBoldItalic.ttf` |
 | Variation axes | None |
-| Font size | 13 px |
-| Letter-spacing | -0.64 px (-0.0492 em) |
+| Font size | 10 px |
+| Letter-spacing | 0.19 px (0.019 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#edeef5` |
+| Colour | `#e5ecf5` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.46:1 |
-| Stroke (median/mean) | 1.0 / 2.98 px |
+| Contrast vs local bg | 4.31:1 |
+| Stroke (median/mean) | 1.0 / 3.02 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2208 |
+| Match IoU | 0.271 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6833) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | 88 px |
-| Gap to next | 12 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 11px track 0.72px — IoU 0.2145
-- `Poppins-Regular.ttf` 12px track 0.04px — IoU 0.2137
-- `Actor-Regular.ttf` 15px track -0.29px — IoU 0.184
+- `Poppins-BlackItalic.ttf` 9px track 0.83px — IoU 0.2707
+- `Poppins-BlackItalic.ttf` 10px track 0.1px — IoU 0.2628
+- `Poppins-ExtraBoldItalic.ttf` 11px track -0.53px — IoU 0.257
 
-### `text-7` — detail
+### `text-7` — fine-print
 
-**Text:** "Actve"  (OCR confidence 0.7209)
+**Text:** "Actv e"  (OCR confidence 0.7209)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=206, y=503, w=29, h=17 |
-| Normalised | x=19.07%, y=46.57%, w=2.69%, h=1.57% |
+| Bounding box (px) | x=205, y=503, w=30, h=12 |
+| Normalised | x=18.98%, y=46.57%, w=2.78%, h=1.11% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-ExtraBoldItalic.ttf` |
+| Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 11 px |
-| Letter-spacing | -1.13 px (-0.1027 em) |
+| Font size | 10 px |
+| Letter-spacing | -0.18 px (-0.018 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#f2edff` |
+| Colour | `#f3efff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 5.0:1 |
-| Stroke (median/mean) | 1.0 / 1.57 px |
+| Contrast vs local bg | 5.13:1 |
+| Stroke (median/mean) | 1.0 / 1.65 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2524 |
+| Match IoU | 0.1556 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7209) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 12 px |
-| Gap to next | -17 px |
+| Gap to previous | 17 px |
+| Gap to next | -10 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 10px track -0.51px — IoU 0.25
-- `Poppins-BoldItalic.ttf` 11px track -0.98px — IoU 0.2491
-- `Poppins-BlackItalic.ttf` 8px track 1.04px — IoU 0.2396
+- `Actor-Regular.ttf` 12px track -0.33px — IoU 0.1397
+- `Actor-Regular.ttf` 11px track 0.21px — IoU 0.1206
+- `Poppins-Regular.ttf` 11px track -0.8px — IoU 0.1197
 
 ### `text-8` — headline
 
@@ -295,44 +303,45 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=206, y=503, w=57, h=32 |
-| Normalised | x=19.07%, y=46.57%, w=5.28%, h=2.96% |
+| Bounding box (px) | x=205, y=505, w=46, h=17 |
+| Normalised | x=18.98%, y=46.76%, w=4.26%, h=1.57% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 99 px |
-| Letter-spacing | -0.33 px (-0.0033 em) |
+| Font size | 80 px |
+| Letter-spacing | -0.31 px (-0.0039 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#e8e7fe` |
+| Colour | `#e4e1fe` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.94:1 |
-| Stroke (median/mean) | 1.0 / 1.61 px |
+| Contrast vs local bg | 4.82:1 |
+| Stroke (median/mean) | 1.0 / 1.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.124 |
+| Match IoU | 0.2903 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6891) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -17 px |
-| Gap to next | -23 px |
+| Gap to previous | -10 px |
+| Gap to next | -11 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 97px track 0.84px — IoU 0.1235
-- `Poppins-BlackItalic.ttf` 98px track 0.27px — IoU 0.1227
-- `Poppins-ExtraBoldItalic.ttf` 101px track -0.38px — IoU 0.1181
+- `Poppins-BlackItalic.ttf` 79px track 0.27px — IoU 0.2825
+- `Poppins-BlackItalic.ttf` 78px track 0.84px — IoU 0.2823
+- `Poppins-ExtraBoldItalic.ttf` 80px track 0.56px — IoU 0.275
 
-### `text-10` — detail
+### `text-10` — fine-print
 
 **Text:** "$2.91M"  (OCR confidence 0.794)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=419, y=512, w=35, h=13 |
-| Normalised | x=38.8%, y=47.41%, w=3.24%, h=1.2% |
+| Bounding box (px) | x=419, y=511, w=36, h=14 |
+| Normalised | x=38.8%, y=47.31%, w=3.33%, h=1.3% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
@@ -340,71 +349,73 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 12 px |
-| Letter-spacing | -0.72 px (-0.06 em) |
+| Letter-spacing | -0.53 px (-0.0442 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#241b7b` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.09:1 |
+| Colour | `#dbe1f4` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 5.34:1 |
 | Stroke (median/mean) | 5.0 / 5.16 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1176 |
+| Match IoU | 0.2833 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.794) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -23 px |
+| Gap to previous | -11 px |
 | Gap to next | -12 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 10px track 0.57px — IoU 0.1092
-- `Poppins-Regular.ttf` 11px track -0.08px — IoU 0.0759
-- `Actor-Regular.ttf` 11px track 0.52px — IoU 0.0741
+- `Poppins-Regular.ttf` 11px track 0.12px — IoU 0.2394
+- `Actor-Regular.ttf` 12px track 0.13px — IoU 0.236
+- `Poppins-Regular.ttf` 10px track 0.77px — IoU 0.2145
 
-### `text-9` — detail
+### `text-9` — fine-print
 
 **Text:** "MRR"  (OCR confidence 0.9475)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=86, y=513, w=17, h=7 |
-| Normalised | x=7.96%, y=47.5%, w=1.57%, h=0.65% |
+| Bounding box (px) | x=86, y=513, w=17, h=11 |
+| Normalised | x=7.96%, y=47.5%, w=1.57%, h=1.02% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
+| Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 9 px |
-| Letter-spacing | -0.84 px (-0.0933 em) |
+| Font size | 8 px |
+| Letter-spacing | -0.66 px (-0.0825 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#201c5d` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.12:1 |
+| Colour | `#f7f2ff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 4.8:1 |
 | Stroke (median/mean) | 1.0 / 1.39 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2647 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | -12 px |
-| Gap to next | -7 px |
+| Gap to next | -6 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 9px track -0.58px — IoU 0.2034
-- `Poppins-Regular.ttf` 8px track 0.2px — IoU 0.129
-- `Poppins-Regular.ttf` 7px track 1.23px — IoU 0.1111
+- `Poppins-BoldItalic.ttf` 8px track -0.39px — IoU 0.3667
+- `Poppins-ExtraBoldItalic.ttf` 8px track -0.52px — IoU 0.3548
+- `Poppins-ExtraBoldItalic.ttf` 7px track 0.6px — IoU 0.3333
 
-### `text-12` — detail
+### `text-12` — fine-print
 
 **Text:** "$148.04K+160%"  (OCR confidence 0.9765)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=86, y=513, w=102, h=43 |
-| Normalised | x=7.96%, y=47.5%, w=9.44%, h=3.98% |
+| Bounding box (px) | x=87, y=518, w=101, h=33 |
+| Normalised | x=8.06%, y=47.96%, w=9.35%, h=3.06% |
 | Alignment | left |
 | z-order | 111 |
 | Rotation | 0° |
@@ -412,64 +423,30 @@ Alternate font fits considered:
 | Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
 | Font size | 14 px |
-| Letter-spacing | -0.84 px (-0.06 em) |
+| Letter-spacing | -0.93 px (-0.0664 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fdffff` |
+| Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 5.08:1 |
-| Stroke (median/mean) | 2.0 / 2.14 px |
+| Contrast vs local bg | 4.99:1 |
+| Stroke (median/mean) | 2.0 / 2.36 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1597 |
+| Match IoU | 0.1663 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -7 px |
-| Gap to next | -39 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -6 px |
+| Gap to next | -30 px |
 
 Alternate font fits considered:
-- `Poppins-BoldItalic.ttf` 13px track 0.08px — IoU 0.143
-- `Poppins-BlackItalic.ttf` 13px track -0.17px — IoU 0.1404
-- `Poppins-BlackItalic.ttf` 12px track 0.49px — IoU 0.139
+- `Poppins-BlackItalic.ttf` 13px track -0.26px — IoU 0.1604
+- `Poppins-ExtraBoldItalic.ttf` 14px track -0.79px — IoU 0.155
+- `Poppins-BoldItalic.ttf` 14px track -0.66px — IoU 0.1487
 
-### `text-13` — detail
-
-**Text:** "1384+1.69%"  (OCR confidence 0.936)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=208, y=517, w=66, h=27 |
-| Normalised | x=19.26%, y=47.87%, w=6.11%, h=2.5% |
-| Alignment | left |
-| z-order | 112 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Poppins-BlackItalic.ttf` |
-| Variation axes | None |
-| Font size | 12 px |
-| Letter-spacing | -0.36 px (-0.03 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#ecf9fc` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 5.2:1 |
-| Stroke (median/mean) | 2.0 / 2.02 px |
-| Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.192 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -39 px |
-| Gap to next | -23 px |
-
-Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 11px track 0.28px — IoU 0.176
-- `Poppins-BoldItalic.ttf` 13px track -0.84px — IoU 0.1732
-- `Poppins-ExtraBoldItalic.ttf` 11px track 0.35px — IoU 0.1717
-
-### `text-11` — detail
+### `text-11` — fine-print
 
 **Text:** "$2.97M"  (OCR confidence 0.9891)
 
@@ -492,27 +469,66 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.43:1 |
 | Stroke (median/mean) | 2.0 / 2.67 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
 | Match IoU | 0.2532 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -23 px |
-| Gap to next | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -30 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
 - `Poppins-Regular.ttf` 11px track 0.22px — IoU 0.224
 - `Actor-Regular.ttf` 13px track -0.15px — IoU 0.198
 - `Actor-Regular.ttf` 14px track -0.76px — IoU 0.1953
 
-### `text-14` — detail
+### `text-13` — fine-print
 
-**Text:** "CMRRS14731 K"  (OCR confidence 0.9276)
+**Text:** "1384+1.69%"  (OCR confidence 0.936)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=92, y=534, w=73, h=25 |
-| Normalised | x=8.52%, y=49.44%, w=6.76%, h=2.31% |
+| Bounding box (px) | x=212, y=531, w=62, h=14 |
+| Normalised | x=19.63%, y=49.17%, w=5.74%, h=1.3% |
+| Alignment | left |
+| z-order | 112 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Poppins-BlackItalic.ttf` |
+| Variation axes | None |
+| Font size | 12 px |
+| Letter-spacing | -0.8 px (-0.0667 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | none |
+| Colour | `#f3ffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 5.32:1 |
+| Stroke (median/mean) | 2.0 / 2.18 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
+| Font family (authoritative) | Actor, Poppins |
+| Match IoU | 0.2712 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -4 px |
+| Gap to next | -6 px |
+
+Alternate font fits considered:
+- `Poppins-BoldItalic.ttf` 12px track -0.66px — IoU 0.2707
+- `Poppins-BlackItalic.ttf` 11px track -0.17px — IoU 0.27
+- `Poppins-ExtraBoldItalic.ttf` 12px track -0.73px — IoU 0.2601
+
+### `text-14` — fine-print
+
+**Text:** "CMRRS14731K"  (OCR confidence 0.9276)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=92, y=539, w=63, h=20 |
+| Normalised | x=8.52%, y=49.91%, w=5.83%, h=1.85% |
 | Alignment | left |
 | z-order | 113 |
 | Rotation | 0° |
@@ -520,35 +536,37 @@ Alternate font fits considered:
 | Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
 | Font size | 9 px |
-| Letter-spacing | 0.71 px (0.0789 em) |
-| Line-height | 26.0 px (ratio 2.889) |
+| Letter-spacing | -0.07 px (-0.0078 em) |
+| Line-height | 21.0 px (ratio 2.333) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#fefbff` |
+| Colour | `#f1efff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.95:1 |
-| Stroke (median/mean) | 2.0 / 2.16 px |
+| Contrast vs local bg | 4.73:1 |
+| Stroke (median/mean) | 2.0 / 1.84 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2211 |
+| Match IoU | 0.2317 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.9276); vowel-less token 'CMRRS14731' |
+| OCR text reliable | False — low OCR confidence (0.9276); vowel-less token 'CMRRS14731K' |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -1 px |
+| Gap to previous | -6 px |
 | Gap to next | 1 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 11px track -0.61px — IoU 0.1886
-- `Poppins-ExtraBoldItalic.ttf` 11px track -0.53px — IoU 0.1817
-- `Poppins-BlackItalic.ttf` 10px track 0.05px — IoU 0.1811
+- `Poppins-BlackItalic.ttf` 10px track -0.77px — IoU 0.1936
+- `Poppins-ExtraBoldItalic.ttf` 9px track 0.03px — IoU 0.1796
+- `Poppins-BlackItalic.ttf` 8px track 0.64px — IoU 0.1694
 
-### `text-15` — detail
+### `text-15` — fine-print
 
 **Text:** "TOOAY'SREVEUE"  (OCR confidence 0.7229)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=268, y=560, w=65, h=24 |
-| Normalised | x=24.81%, y=51.85%, w=6.02%, h=2.22% |
+| Bounding box (px) | x=268, y=560, w=63, h=19 |
+| Normalised | x=24.81%, y=51.85%, w=5.83%, h=1.76% |
 | Alignment | left |
 | z-order | 114 |
 | Rotation | 0° |
@@ -556,26 +574,27 @@ Alternate font fits considered:
 | Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
 | Font size | 9 px |
-| Letter-spacing | 0.71 px (0.0789 em) |
-| Line-height | 26.0 px (ratio 2.889) |
+| Letter-spacing | -0.07 px (-0.0078 em) |
+| Line-height | 21.0 px (ratio 2.333) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#f5f4ff` |
+| Colour | `#f0eaff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 9.49:1 |
-| Stroke (median/mean) | 1.0 / 1.58 px |
+| Contrast vs local bg | 9.19:1 |
+| Stroke (median/mean) | 1.0 / 1.43 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.18 |
+| Match IoU | 0.1717 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7229) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | 1 px |
-| Gap to next | -24 px |
+| Gap to next | -14 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 11px track -0.61px — IoU 0.1886
-- `Poppins-ExtraBoldItalic.ttf` 11px track -0.53px — IoU 0.1817
-- `Poppins-BlackItalic.ttf` 10px track 0.05px — IoU 0.1811
+- `Poppins-BlackItalic.ttf` 10px track -0.77px — IoU 0.1936
+- `Poppins-ExtraBoldItalic.ttf` 9px track 0.03px — IoU 0.1796
+- `Poppins-BlackItalic.ttf` 8px track 0.64px — IoU 0.1694
 
 ### `text-16` — fine-print
 
@@ -583,293 +602,343 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=268, y=560, w=116, h=43 |
-| Normalised | x=24.81%, y=51.85%, w=10.74%, h=3.98% |
+| Bounding box (px) | x=268, y=565, w=116, h=34 |
+| Normalised | x=24.81%, y=52.31%, w=10.74%, h=3.15% |
 | Alignment | left |
 | z-order | 115 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-BoldItalic.ttf` |
+| Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
 | Font size | 17 px |
-| Letter-spacing | -0.39 px (-0.0229 em) |
+| Letter-spacing | -0.51 px (-0.03 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#e4e2ff` |
+| Colour | `#e4e3ff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.91:1 |
-| Stroke (median/mean) | 2.0 / 1.76 px |
+| Contrast vs local bg | 8.95:1 |
+| Stroke (median/mean) | 2.0 / 1.85 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1593 |
+| Match IoU | 0.1548 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8507) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -24 px |
-| Gap to next | -27 px |
+| Gap to previous | -14 px |
+| Gap to next | -20 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 17px track -0.51px — IoU 0.1575
-- `Poppins-ExtraBoldItalic.ttf` 17px track -0.46px — IoU 0.1556
-- `Poppins-BlackItalic.ttf` 15px track 0.69px — IoU 0.1542
+- `Poppins-BlackItalic.ttf` 15px track 0.69px — IoU 0.1533
+- `Poppins-ExtraBoldItalic.ttf` 17px track -0.46px — IoU 0.1522
+- `Poppins-BlackItalic.ttf` 16px track 0.09px — IoU 0.1485
 
-### `text-17` — detail
+### `text-17` — fine-print
 
 **Text:** "$153.27K$183.63$202.6K"  (OCR confidence 0.8099)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=105, y=576, w=144, h=48 |
-| Normalised | x=9.72%, y=53.33%, w=13.33%, h=4.44% |
+| Bounding box (px) | x=105, y=579, w=144, h=41 |
+| Normalised | x=9.72%, y=53.61%, w=13.33%, h=3.8% |
 | Alignment | left |
 | z-order | 116 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-ExtraBoldItalic.ttf` |
+| Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 13 px |
-| Letter-spacing | -0.82 px (-0.0631 em) |
+| Font size | 12 px |
+| Letter-spacing | -0.32 px (-0.0267 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ece7ff` |
+| Colour | `#eee9ff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.79:1 |
-| Stroke (median/mean) | 2.0 / 1.75 px |
+| Contrast vs local bg | 8.84:1 |
+| Stroke (median/mean) | 2.0 / 1.78 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1665 |
+| Match IoU | 0.1717 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8099); single long token with no spaces |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -27 px |
-| Gap to next | -48 px |
+| Gap to previous | -20 px |
+| Gap to next | -39 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 12px track -0.32px — IoU 0.1627
-- `Poppins-BoldItalic.ttf` 13px track -0.73px — IoU 0.1602
-- `Poppins-BoldItalic.ttf` 12px track -0.15px — IoU 0.1494
+- `Poppins-BoldItalic.ttf` 13px track -0.73px — IoU 0.1681
+- `Poppins-ExtraBoldItalic.ttf` 13px track -0.82px — IoU 0.1585
+- `Poppins-BoldItalic.ttf` 12px track -0.15px — IoU 0.1574
 
-### `text-18` — detail
+### `text-18` — fine-print
 
 **Text:** "Trstrta"  (OCR confidence 0.5551)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=356, y=576, w=28, h=16 |
-| Normalised | x=32.96%, y=53.33%, w=2.59%, h=1.48% |
+| Bounding box (px) | x=357, y=581, w=27, h=11 |
+| Normalised | x=33.06%, y=53.8%, w=2.5%, h=1.02% |
 | Alignment | left |
 | z-order | 117 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-BlackItalic.ttf` |
+| Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 9 px |
-| Letter-spacing | -0.86 px (-0.0956 em) |
+| Letter-spacing | -0.32 px (-0.0356 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#babbee` |
+| Colour | `#a09ee1` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 7.71:1 |
-| Stroke (median/mean) | 2.0 / 2.05 px |
+| Contrast vs local bg | 6.62:1 |
+| Stroke (median/mean) | 1.0 / 1.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.3208 |
+| Match IoU | 0.1988 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5551) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -48 px |
-| Gap to next | -13 px |
+| Gap to previous | -39 px |
+| Gap to next | -8 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 8px track -0.24px — IoU 0.2964
-- `Poppins-ExtraBoldItalic.ttf` 9px track -0.71px — IoU 0.2957
-- `Poppins-ExtraBoldItalic.ttf` 8px track -0.12px — IoU 0.2801
+- `Actor-Regular.ttf` 10px track -0.28px — IoU 0.1458
+- `Poppins-Regular.ttf` 8px track 0.22px — IoU 0.0667
+- `Actor-Regular.ttf` 9px track 0.2px — IoU 0.0662
 
-### `text-19` — detail
+### `text-19` — fine-print
 
 **Text:** "Reentd"  (OCR confidence 0.5509)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=316, y=579, w=29, h=18 |
-| Normalised | x=29.26%, y=53.61%, w=2.69%, h=1.67% |
+| Bounding box (px) | x=316, y=584, w=28, h=14 |
+| Normalised | x=29.26%, y=54.07%, w=2.59%, h=1.3% |
 | Alignment | left |
 | z-order | 118 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
+| Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 10 px |
-| Letter-spacing | -0.28 px (-0.028 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 8 px |
+| Letter-spacing | -0.2 px (-0.025 em) |
+| Line-height | 13.0 px (ratio 1.625) |
+| Line | 1 of 2 |
 | Transform | none |
-| Colour | `#ecedff` |
+| Colour | `#d9d5f4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.93:1 |
-| Stroke (median/mean) | 2.0 / 1.78 px |
+| Contrast vs local bg | 8.13:1 |
+| Stroke (median/mean) | 1.0 / 1.63 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1515 |
+| Match IoU | 0.2863 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5509) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -13 px |
-| Gap to next | -5 px |
+| Gap to previous | -8 px |
+| Gap to next | -1 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 11px track -0.89px — IoU 0.1424
-- `Actor-Regular.ttf` 9px track 0.33px — IoU 0.1061
-- `Poppins-Regular.ttf` 9px track -0.55px — IoU 0.0842
+- `Poppins-BlackItalic.ttf` 9px track -0.97px — IoU 0.2386
+- `Poppins-ExtraBoldItalic.ttf` 8px track -0.13px — IoU 0.2206
+- `Poppins-BlackItalic.ttf` 7px track 0.58px — IoU 0.218
 
-### `text-20` — detail
+### `text-20` — fine-print
 
 **Text:** "Latmoeh"  (OCR confidence 0.5474)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=213, y=592, w=36, h=19 |
-| Normalised | x=19.72%, y=54.81%, w=3.33%, h=1.76% |
+| Bounding box (px) | x=213, y=597, w=36, h=14 |
+| Normalised | x=19.72%, y=55.28%, w=3.33%, h=1.3% |
 | Alignment | left |
 | z-order | 119 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 9 px |
-| Letter-spacing | -0.97 px (-0.1078 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 8 px |
+| Letter-spacing | -0.2 px (-0.025 em) |
+| Line-height | 13.0 px (ratio 1.625) |
+| Line | 2 of 2 |
 | Transform | none |
-| Colour | `#e9e5fd` |
+| Colour | `#dad5fa` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 9.04:1 |
-| Stroke (median/mean) | 1.0 / 1.65 px |
+| Contrast vs local bg | 8.43:1 |
+| Stroke (median/mean) | 1.0 / 1.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2577 |
+| Match IoU | 0.2353 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5474) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -5 px |
-| Gap to next | -10 px |
+| Gap to previous | -1 px |
+| Gap to next | -3 px |
 
 Alternate font fits considered:
-- `Poppins-BlackItalic.ttf` 8px track -0.2px — IoU 0.2164
-- `Poppins-ExtraBoldItalic.ttf` 9px track -0.9px — IoU 0.2122
-- `Poppins-BoldItalic.ttf` 9px track -0.82px — IoU 0.2
+- `Poppins-BlackItalic.ttf` 9px track -0.97px — IoU 0.2386
+- `Poppins-ExtraBoldItalic.ttf` 8px track -0.13px — IoU 0.2206
+- `Poppins-BlackItalic.ttf` 7px track 0.58px — IoU 0.218
 
-### `text-21` — detail
-
-**Text:** "Receved"  (OCR confidence 0.8036)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=163, y=601, w=30, h=16 |
-| Normalised | x=15.09%, y=55.65%, w=2.78%, h=1.48% |
-| Alignment | left |
-| z-order | 120 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
-| Variation axes | None |
-| Font size | 9 px |
-| Letter-spacing | -0.34 px (-0.0378 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#d4d3f6` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 7.9:1 |
-| Stroke (median/mean) | 1.0 / 1.68 px |
-| Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.0897 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.8036) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -10 px |
-| Gap to next | -14 px |
-
-Alternate font fits considered:
-- `Poppins-Regular.ttf` 8px track -0.74px — IoU 0.0429
-- `Poppins-Regular.ttf` 7px track -0.03px — IoU 0.037
-
-### `text-22` — detail
+### `text-22` — fine-print
 
 **Text:** "Espetd"  (OCR confidence 0.6874)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=110, y=603, w=43, h=21 |
-| Normalised | x=10.19%, y=55.83%, w=3.98%, h=1.94% |
+| Bounding box (px) | x=111, y=608, w=33, h=16 |
+| Normalised | x=10.28%, y=56.3%, w=3.06%, h=1.48% |
 | Alignment | left |
 | z-order | 121 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 13 px |
-| Letter-spacing | -0.63 px (-0.0485 em) |
+| Font size | 8 px |
+| Letter-spacing | 0.93 px (0.1163 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#f1ebff` |
+| Colour | `#d0cee9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.22:1 |
-| Stroke (median/mean) | 2.0 / 1.87 px |
+| Contrast vs local bg | 7.18:1 |
+| Stroke (median/mean) | 1.0 / 1.62 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2036 |
+| Match IoU | 0.1897 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6874) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -14 px |
-| Gap to next | 2 px |
+| Gap to previous | -3 px |
+| Gap to next | -16 px |
 
 Alternate font fits considered:
-- `Poppins-ExtraBoldItalic.ttf` 13px track -0.54px — IoU 0.203
-- `Poppins-ExtraBoldItalic.ttf` 12px track 0.17px — IoU 0.1931
-- `Poppins-BlackItalic.ttf` 12px track 0.09px — IoU 0.1861
+- `Poppins-BlackItalic.ttf` 9px track 0.21px — IoU 0.1851
+- `Poppins-BoldItalic.ttf` 9px track 0.34px — IoU 0.1712
+- `Poppins-ExtraBoldItalic.ttf` 9px track 0.28px — IoU 0.1655
 
-### `text-23` — detail
+### `text-21` — fine-print
 
-**Text:** "ednN otos"  (OCR confidence 0.825)
+**Text:** "Receved"  (OCR confidence 0.8036)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=0, y=626, w=33, h=6 |
-| Normalised | x=0.0%, y=57.96%, w=3.06%, h=0.56% |
+| Bounding box (px) | x=165, y=608, w=28, h=10 |
+| Normalised | x=15.28%, y=56.3%, w=2.59%, h=0.93% |
+| Alignment | left |
+| z-order | 120 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Poppins-BlackItalic.ttf` |
+| Variation axes | None |
+| Font size | 7 px |
+| Letter-spacing | -0.56 px (-0.08 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | none |
+| Colour | `#cec9f4` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 7.61:1 |
+| Stroke (median/mean) | 1.0 / 1.44 px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Actor, Poppins |
+| Match IoU | 0.322 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
+| OCR text reliable | False — low OCR confidence (0.8036) |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | -16 px |
+| Gap to next | -1 px |
+
+Alternate font fits considered:
+- `Poppins-ExtraBoldItalic.ttf` 7px track -0.52px — IoU 0.2717
+- `Poppins-BoldItalic.ttf` 7px track -0.48px — IoU 0.2575
+- `Poppins-BlackItalic.ttf` 6px track 0.18px — IoU 0.2393
+
+### `text-23` — fine-print
+
+**Text:** "ednNotos"  (OCR confidence 0.825)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=0, y=617, w=43, h=25 |
+| Normalised | x=0.0%, y=57.13%, w=3.98%, h=2.31% |
 | Alignment | left |
 | z-order | 122 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 8 px |
-| Letter-spacing | -0.95 px (-0.1187 em) |
+| Font size | 10 px |
+| Letter-spacing | -0.73 px (-0.073 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#7c7a8e` |
+| Colour | `#7e92a4` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.89:1 |
+| Contrast vs local bg | 1.65:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1111 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.1144 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.825) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 2 px |
-| Gap to next | 23 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -1 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 7px track -0.32px — IoU 0.075
+- `Poppins-Regular.ttf` 9px track -0.04px — IoU 0.0875
+- `Actor-Regular.ttf` 11px track -0.47px — IoU 0.0688
+- `Poppins-Regular.ttf` 8px track 0.65px — IoU 0.0579
 
-### `text-25` — detail
+### `text-24` — fine-print
+
+**Text:** "1 2oths"  (OCR confidence 0.7945)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=221, y=654, w=39, h=16 |
+| Normalised | x=20.46%, y=60.56%, w=3.61%, h=1.48% |
+| Alignment | left |
+| z-order | 123 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Actor-Regular.ttf` |
+| Variation axes | None |
+| Font size | 13 px |
+| Letter-spacing | 0.11 px (0.0085 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | lowercase |
+| Colour | `#634f98` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 2.47:1 |
+| Stroke (median/mean) | 1.0 / 1.12 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| Font family (authoritative) | Actor, Poppins |
+| Match IoU | 0.1358 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | False — low OCR confidence (0.7945) |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 12 px |
+| Gap to next | -15 px |
+
+Alternate font fits considered:
+- `Actor-Regular.ttf` 12px track 0.61px — IoU 0.1337
+- `Poppins-Regular.ttf` 11px track 0.4px — IoU 0.1283
+- `Poppins-Regular.ttf` 12px track -0.16px — IoU 0.1137
+
+### `text-25` — fine-print
 
 **Text:** "GMonts"  (OCR confidence 0.6759)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=181, y=655, w=44, h=23 |
-| Normalised | x=16.76%, y=60.65%, w=4.07%, h=2.13% |
+| Bounding box (px) | x=181, y=655, w=45, h=22 |
+| Normalised | x=16.76%, y=60.65%, w=4.17%, h=2.04% |
 | Alignment | left |
 | z-order | 124 |
 | Rotation | 0° |
@@ -877,66 +946,74 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 13 px |
-| Letter-spacing | -1.09 px (-0.0838 em) |
+| Letter-spacing | -0.89 px (-0.0685 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#f4f3ff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.03:1 |
-| Stroke (median/mean) | 1.0 / 1.98 px |
+| Colour | `#4425c9` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 3.67:1 |
+| Stroke (median/mean) | 1.0 / 1.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2258 |
+| Match IoU | 0.2422 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6759) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 23 px |
-| Gap to next | -23 px |
+| Gap to previous | -15 px |
+| Gap to next | -3 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 12px track -0.34px — IoU 0.21
-- `Actor-Regular.ttf` 12px track 0.52px — IoU 0.1942
-- `Actor-Regular.ttf` 13px track -0.18px — IoU 0.1811
+- `Poppins-Regular.ttf` 12px track -0.14px — IoU 0.2089
+- `Actor-Regular.ttf` 13px track 0.02px — IoU 0.1916
+- `Actor-Regular.ttf` 14px track -0.67px — IoU 0.1696
 
-### `text-24` — detail
+### `text-26` — fine-print
 
-**Text:** "12oths"  (OCR confidence 0.7945)
+**Text:** "$380.44K"  (OCR confidence 0.8824)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=221, y=655, w=18, h=18 |
-| Normalised | x=20.46%, y=60.65%, w=1.67%, h=1.67% |
+| Bounding box (px) | x=416, y=674, w=53, h=21 |
+| Normalised | x=38.52%, y=62.41%, w=4.91%, h=1.94% |
 | Alignment | left |
-| z-order | 123 |
+| z-order | 125 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
+| Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 7 px |
-| Letter-spacing | -0.69 px (-0.0986 em) |
+| Font size | 13 px |
+| Letter-spacing | -0.07 px (-0.0054 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
-| Transform | lowercase |
-| Colour | `#4327a8` |
+| Transform | uppercase |
+| Colour | `#86879c` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.72:1 |
-| Stroke (median/mean) | 1.0 / 1.2 px |
+| Contrast vs local bg | 1.69:1 |
+| Stroke (median/mean) | 1.0 / 1.25 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1111 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.7945) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -23 px |
-| Gap to next | 8 px |
+| Match IoU | 0.1159 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | False — low OCR confidence (0.8824) |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -3 px |
+| Gap to next | -9 px |
 
-### `text-27` — detail
+Alternate font fits considered:
+- `Actor-Regular.ttf` 14px track -0.65px — IoU 0.1128
+- `Poppins-Regular.ttf` 12px track -0.21px — IoU 0.1096
+- `Poppins-Regular.ttf` 11px track 0.44px — IoU 0.1013
+
+### `text-27` — fine-print
 
 **Text:** "Catalog"  (OCR confidence 0.9693)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=0, y=681, w=30, h=34 |
-| Normalised | x=0.0%, y=63.06%, w=2.78%, h=3.15% |
+| Bounding box (px) | x=0, y=686, w=30, h=24 |
+| Normalised | x=0.0%, y=63.52%, w=2.78%, h=2.22% |
 | Alignment | left |
 | z-order | 126 |
 | Rotation | 0° |
@@ -948,94 +1025,61 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#7c9aaa` |
+| Colour | `#7c95a6` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.59:1 |
+| Contrast vs local bg | 1.64:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1803 |
+| Match IoU | 0.1905 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 8 px |
-| Gap to next | -32 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -9 px |
+| Gap to next | 4 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 7px track 0.27px — IoU 0.1568
-- `Actor-Regular.ttf` 9px track 0.03px — IoU 0.0588
-- `Actor-Regular.ttf` 10px track -0.51px — IoU 0.0535
+- `Poppins-Regular.ttf` 7px track 0.27px — IoU 0.1622
+- `Actor-Regular.ttf` 9px track 0.03px — IoU 0.0643
+- `Actor-Regular.ttf` 10px track -0.51px — IoU 0.0642
 
-### `text-26` — detail
-
-**Text:** "$380. 44K"  (OCR confidence 0.8824)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=417, y=683, w=40, h=12 |
-| Normalised | x=38.61%, y=63.24%, w=3.7%, h=1.11% |
-| Alignment | left |
-| z-order | 125 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
-| Variation axes | None |
-| Font size | 9 px |
-| Letter-spacing | -0.4 px (-0.0444 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | uppercase |
-| Colour | `#7e8094` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.77:1 |
-| Stroke (median/mean) | 1.0 / 1.25 px |
-| Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.2036 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.8824) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -32 px |
-| Gap to next | 21 px |
-
-Alternate font fits considered:
-- `Actor-Regular.ttf` 10px track -0.43px — IoU 0.0662
-- `Poppins-Regular.ttf` 8px track 0.19px — IoU 0.0438
-- `Actor-Regular.ttf` 9px track 0.11px — IoU 0.0357
-
-### `text-28` — detail
+### `text-28` — fine-print
 
 **Text:** "Sales"  (OCR confidence 0.8667)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=133, y=716, w=33, h=19 |
-| Normalised | x=12.31%, y=66.3%, w=3.06%, h=1.76% |
+| Bounding box (px) | x=133, y=714, w=22, h=10 |
+| Normalised | x=12.31%, y=66.11%, w=2.04%, h=0.93% |
 | Alignment | left |
 | z-order | 127 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-MediumItalic.ttf` |
+| Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 13 px |
-| Letter-spacing | -0.5 px (-0.0385 em) |
+| Font size | 11 px |
+| Letter-spacing | -0.48 px (-0.0436 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#605a6c` |
+| Colour | `#767583` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.45:1 |
-| Stroke (median/mean) | 1.0 / 1.24 px |
+| Contrast vs local bg | 1.96:1 |
+| Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.0794 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.1319 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.8667) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 21 px |
-| Gap to next | -19 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 4 px |
+| Gap to next | -9 px |
 
 Alternate font fits considered:
-- `Poppins-ExtraBoldItalic.ttf` 13px track -0.87px — IoU 0.0775
-- `Poppins-BlackItalic.ttf` 13px track -0.98px — IoU 0.0733
-- `Poppins-BlackItalic.ttf` 12px track -0.27px — IoU 0.0716
+- `Poppins-Regular.ttf` 9px track -0.46px — IoU 0.0659
+- `Actor-Regular.ttf` 10px track 0.06px — IoU 0.0649
+- `Actor-Regular.ttf` 9px track 0.61px — IoU 0.0471
 
 ### `text-29` — fine-print
 
@@ -1043,44 +1087,46 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=133, y=716, w=101, h=28 |
-| Normalised | x=12.31%, y=66.3%, w=9.35%, h=2.59% |
+| Bounding box (px) | x=133, y=715, w=104, h=30 |
+| Normalised | x=12.31%, y=66.2%, w=9.63%, h=2.78% |
 | Alignment | left |
 | z-order | 128 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-BlackItalic.ttf` |
+| Font file matched | `Poppins-MediumItalic.ttf` |
 | Variation axes | None |
-| Font size | 16 px |
-| Letter-spacing | -0.94 px (-0.0587 em) |
+| Font size | 17 px |
+| Letter-spacing | -0.35 px (-0.0206 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#4e445c` |
+| Colour | `#4f4960` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.02:1 |
+| Contrast vs local bg | 2.9:1 |
 | Stroke (median/mean) | 1.0 / 1.23 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1203 |
+| Match IoU | 0.1021 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7447) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -19 px |
-| Gap to next | -17 px |
+| Gap to previous | -9 px |
+| Gap to next | -13 px |
 
 Alternate font fits considered:
-- `Poppins-ExtraBoldItalic.ttf` 16px track -0.72px — IoU 0.1132
-- `Poppins-BoldItalic.ttf` 15px track 0.09px — IoU 0.1096
-- `Poppins-BoldItalic.ttf` 16px track -0.51px — IoU 0.1094
+- `Poppins-BlackItalic.ttf` 16px track -0.66px — IoU 0.1017
+- `Poppins-ExtraBoldItalic.ttf` 16px track -0.45px — IoU 0.0986
+- `Poppins-BoldItalic.ttf` 16px track -0.24px — IoU 0.0965
 
-### `text-30` — detail
+### `text-30` — fine-print
 
 **Text:** "'Reports"  (OCR confidence 0.8921)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=0, y=727, w=39, h=33 |
-| Normalised | x=0.0%, y=67.31%, w=3.61%, h=3.06% |
+| Bounding box (px) | x=0, y=732, w=38, h=23 |
+| Normalised | x=0.0%, y=67.78%, w=3.52%, h=2.13% |
 | Alignment | left |
 | z-order | 129 |
 | Rotation | 0° |
@@ -1088,134 +1134,140 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 11 px |
-| Letter-spacing | 0.04 px (0.0036 em) |
+| Letter-spacing | -0.1 px (-0.0091 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#7c93a9` |
+| Colour | `#7d8ca1` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.64:1 |
+| Contrast vs local bg | 1.71:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.1677 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.2008 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.8921) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -17 px |
-| Gap to next | 138 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -13 px |
+| Gap to next | 134 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 12px track -0.46px — IoU 0.1555
-- `Poppins-Regular.ttf` 10px track -0.09px — IoU 0.118
-- `Poppins-Regular.ttf` 11px track -0.65px — IoU 0.1118
+- `Actor-Regular.ttf` 12px track -0.6px — IoU 0.152
+- `Actor-Regular.ttf` 10px track 0.4px — IoU 0.1229
+- `Poppins-Regular.ttf` 10px track -0.23px — IoU 0.1024
 
-### `text-31` — detail
+### `text-31` — fine-print
 
-**Text:** "PSD2/SCA"  (OCR confidence 0.9261)
+**Text:** "P SD2/SCA"  (OCR confidence 0.9261)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=12, y=898, w=40, h=14 |
-| Normalised | x=1.11%, y=83.15%, w=3.7%, h=1.3% |
+| Bounding box (px) | x=0, y=889, w=55, h=31 |
+| Normalised | x=0.0%, y=82.31%, w=5.09%, h=2.87% |
 | Alignment | left |
 | z-order | 130 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 9 px |
-| Letter-spacing | -0.66 px (-0.0733 em) |
+| Font size | 10 px |
+| Letter-spacing | 0.34 px (0.034 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#886879` |
+| Colour | `#817788` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.01:1 |
+| Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | 1.0 / 1.04 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.0976 |
+| Match IoU | 0.1339 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9261) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 138 px |
-| Gap to next | 0 px |
+| Gap to previous | 134 px |
+| Gap to next | 3 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 9px track -0.1px — IoU 0.0829
-- `Actor-Regular.ttf` 10px track -0.74px — IoU 0.0748
-- `Poppins-Regular.ttf` 8px track 0.05px — IoU 0.0519
+- `Actor-Regular.ttf` 13px track -0.84px — IoU 0.1289
+- `Poppins-Regular.ttf` 11px track -0.31px — IoU 0.1253
+- `Actor-Regular.ttf` 11px track 0.35px — IoU 0.1233
 
-### `text-32` — detail
+### `text-32` — fine-print
 
 **Text:** "Noed Help?"  (OCR confidence 0.7768)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=2, y=912, w=62, h=27 |
-| Normalised | x=0.19%, y=84.44%, w=5.74%, h=2.5% |
+| Bounding box (px) | x=2, y=923, w=62, h=16 |
+| Normalised | x=0.19%, y=85.46%, w=5.74%, h=1.48% |
 | Alignment | left |
 | z-order | 131 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 13 px |
-| Letter-spacing | -0.19 px (-0.0146 em) |
+| Font size | 12 px |
+| Letter-spacing | 0.35 px (0.0292 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#898797` |
+| Colour | `#898798` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.74:1 |
+| Contrast vs local bg | 1.76:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.0528 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.119 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.7768) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 0 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 3 px |
 | Gap to next | 26 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 12px track 0.35px — IoU 0.0504
-- `Poppins-Regular.ttf` 10px track 0.59px — IoU 0.0437
-- `Actor-Regular.ttf` 14px track -0.74px — IoU 0.0396
+- `Poppins-Regular.ttf` 10px track 0.59px — IoU 0.1152
+- `Poppins-Regular.ttf` 12px track -0.66px — IoU 0.1067
+- `Actor-Regular.ttf` 13px track -0.19px — IoU 0.1015
 
 ### `text-33` — supporting
 
-**Text:** "STARTGROWINGTODAY"  (OCR confidence 0.9911)
+**Text:** "START GROWING TODAY"  (OCR confidence 0.9911)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=297, y=965, w=484, h=29 |
-| Normalised | x=27.5%, y=89.35%, w=44.81%, h=2.69% |
+| Bounding box (px) | x=297, y=965, w=485, h=29 |
+| Normalised | x=27.5%, y=89.35%, w=44.91%, h=2.69% |
 | Alignment | center |
 | z-order | 132 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
+| Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 47 px |
-| Letter-spacing | -0.89 px (-0.0189 em) |
+| Font size | 42 px |
+| Letter-spacing | -0.24 px (-0.0057 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 7.0 / 8.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Poppins |
-| Match IoU | 0.0944 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Match IoU | 0.4548 |
+| **Geometry fit confidence** | **low** |
+| OCR text reliable | True  |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 26 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 46px track -0.23px — IoU 0.0804
-- `Actor-Regular.ttf` 45px track 0.43px — IoU 0.0803
-- `Poppins-Regular.ttf` 44px track -0.32px — IoU 0.0625
+- `Poppins-Regular.ttf` 43px track -0.89px — IoU 0.4534
+- `Poppins-Regular.ttf` 41px track 0.4px — IoU 0.4297
+- `Actor-Regular.ttf` 45px track -0.71px — IoU 0.4144
 
 ## 4. Colours (semantic)
 
@@ -1224,10 +1276,10 @@ Alternate font fits considered:
 | background | `#f0f1f5` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#004a8f` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'With Confidence' | glyph ink median |
-| textSecondary | `#ece7ff` | glyph ink of '$153.27K$183.63$202.6K' | glyph ink median |
+| textSecondary | `#eee9ff` | glyph ink of '$153.27K$183.63$202.6K' | glyph ink median |
 | accent | `#004a8f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1e126b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -1251,7 +1303,7 @@ Full palette (k-means):
 | Subject position | middle-left |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.1653 |
+| Text coverage | 0.1447 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -1278,81 +1330,81 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline_line1` | text | Grow Your Business |
-| `subheadline_line2` | text | With Confidence |
-| `detail` | text | We create smart strategies and impactful designs |
-| `detail` | text | that help businesses attract customers, increase |
-| `detail` | text | engagement, and boost sales. |
-| `detail` | text | Duhastach |
-| `detail` | text | Actve |
+| `headline_line1` | text | Grow Your Business |
+| `headline_line2` | text | With Confidence |
+| `body_line1` | text | We create smart strategies and impactful designs |
+| `body_line2` | text | that help businesses attract customers, increase |
+| `body_line3` | text | engagement, and boost sales. |
+| `fine-print` | text | Duhastach |
+| `fine-print` | text | Actv e |
 | `headline` | text | s |
-| `detail` | text | $2.91M |
-| `detail` | text | MRR |
-| `detail` | text | $148.04K+160% |
-| `detail` | text | 1384+1.69% |
-| `detail` | text | $2.97M |
-| `detail_line1` | text | CMRRS14731 K |
-| `detail_line2` | text | TOOAY'SREVEUE |
+| `fine-print` | text | $2.91M |
+| `fine-print` | text | MRR |
+| `fine-print` | text | $148.04K+160% |
+| `fine-print` | text | $2.97M |
+| `fine-print` | text | 1384+1.69% |
+| `fine-print_line1` | text | CMRRS14731K |
+| `fine-print_line2` | text | TOOAY'SREVEUE |
 | `fine-print` | text | 302.08$0 2.08 |
-| `detail` | text | $153.27K$183.63$202.6K |
-| `detail` | text | Trstrta |
-| `detail` | text | Reentd |
-| `detail` | text | Latmoeh |
-| `detail` | text | Receved |
-| `detail` | text | Espetd |
-| `detail` | text | ednN otos |
-| `detail` | text | GMonts |
-| `detail` | text | 12oths |
-| `detail` | text | Catalog |
-| `detail` | text | $380. 44K |
-| `detail` | text | Sales |
+| `fine-print` | text | $153.27K$183.63$202.6K |
+| `fine-print` | text | Trstrta |
+| `fine-print_line1` | text | Reentd |
+| `fine-print_line2` | text | Latmoeh |
+| `fine-print` | text | Espetd |
+| `fine-print` | text | Receved |
+| `fine-print` | text | ednNotos |
+| `fine-print` | text | 1 2oths |
+| `fine-print` | text | GMonts |
+| `fine-print` | text | $380.44K |
+| `fine-print` | text | Catalog |
+| `fine-print` | text | Sales |
 | `fine-print` | text | $1.14MA$18.4 |
-| `detail` | text | 'Reports |
-| `detail` | text | PSD2/SCA |
-| `detail` | text | Noed Help? |
-| `supporting` | text | STARTGROWINGTODAY |
+| `fine-print` | text | 'Reports |
+| `fine-print` | text | P SD2/SCA |
+| `fine-print` | text | Noed Help? |
+| `supporting` | text | START GROWING TODAY |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f0f1f5 |
 | `surface` | colour | #004a8f |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #ece7ff |
+| `textSecondary` | colour | #eee9ff |
 | `accent` | colour | #004a8f |
 | `accentSecondary` | colour | #1e126b |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Actor |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 38.8 |
 | `imageFocalY` | number | 53.9 |

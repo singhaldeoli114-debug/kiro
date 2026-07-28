@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,45 +43,46 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=810, y=162, w=62, h=58 |
-| Normalised | x=75.0%, y=15.0%, w=5.74%, h=5.37% |
+| Bounding box (px) | x=810, y=167, w=62, h=48 |
+| Normalised | x=75.0%, y=15.46%, w=5.74%, h=4.44% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `PlayfairDisplay[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 121 px |
-| Letter-spacing | -0.79 px (-0.0065 em) |
-| Line-height | 98.0 px (ratio 0.81) |
-| Line | 1 of 3 |
+| Font file matched | `PlayfairDisplaySC-Black.ttf` |
+| Variation axes | None |
+| Font size | 115 px |
+| Letter-spacing | 0.02 px (0.0002 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.13:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display, Playfair Display SC |
-| Match IoU | 0.1042 |
+| Match IoU | 0.1767 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8661) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | None px |
-| Gap to next | 34 px |
+| Gap to next | 44 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 118px track -0.01px — IoU 0.3963
-- `PlayfairDisplay[wght].ttf` 120px track -0.1px — IoU 0.392
-- `PlayfairDisplay[wght].ttf` 119px track 0.59px — IoU 0.3904
+- `PlayfairDisplaySC-Black.ttf` 116px track -0.53px — IoU 0.1741
+- `PlayfairDisplaySC-Black.ttf` 114px track 0.55px — IoU 0.1724
+- `PlayfairDisplay[wght].ttf` 116px track -0.64px — IoU 0.1656
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "you always pass"  (OCR confidence 0.9822)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=305, y=254, w=495, h=76 |
-| Normalised | x=28.24%, y=23.52%, w=45.83%, h=7.04% |
-| Alignment | center |
+| Bounding box (px) | x=305, y=259, w=496, h=72 |
+| Normalised | x=28.24%, y=23.98%, w=45.93%, h=6.67% |
+| Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
@@ -89,34 +90,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 121 px |
 | Letter-spacing | -0.79 px (-0.0065 em) |
-| Line-height | 98.0 px (ratio 0.81) |
-| Line | 2 of 3 |
+| Line-height | 99.0 px (ratio 0.818) |
+| Line | 1 of 2 |
 | Transform | lowercase |
 | Colour | `#0d471c` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.46:1 |
-| Stroke (median/mean) | 5.0 / 5.62 px |
+| Stroke (median/mean) | 5.0 / 5.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display, Playfair Display SC |
-| Match IoU | 0.3962 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5362 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 34 px |
-| Gap to next | 28 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 44 px |
+| Gap to next | 27 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 118px track -0.01px — IoU 0.3963
-- `PlayfairDisplay[wght].ttf` 120px track -0.1px — IoU 0.392
-- `PlayfairDisplay[wght].ttf` 119px track 0.59px — IoU 0.3904
+- `PlayfairDisplay[wght].ttf` 118px track -0.01px — IoU 0.6071
+- `PlayfairDisplay[wght].ttf` 119px track 0.59px — IoU 0.5992
+- `PlayfairDisplay[wght].ttf` 120px track -0.1px — IoU 0.5945
 
-### `text-3` — subheadline
+### `text-3` — headline
 
 **Text:** "FAILURE"  (OCR confidence 0.9973)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=308, y=358, w=495, h=82 |
-| Normalised | x=28.52%, y=33.15%, w=45.83%, h=7.59% |
+| Bounding box (px) | x=308, y=358, w=495, h=83 |
+| Normalised | x=28.52%, y=33.15%, w=45.83%, h=7.69% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -125,25 +127,26 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 121 px |
 | Letter-spacing | -0.79 px (-0.0065 em) |
-| Line-height | 98.0 px (ratio 0.81) |
-| Line | 3 of 3 |
+| Line-height | 99.0 px (ratio 0.818) |
+| Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#fca008` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.3:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display, Playfair Display SC |
-| Match IoU | 0.6916 |
+| Match IoU | 0.6881 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 28 px |
-| Gap to next | 39 px |
+| Gap to previous | 27 px |
+| Gap to next | 37 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 118px track -0.01px — IoU 0.3963
-- `PlayfairDisplay[wght].ttf` 120px track -0.1px — IoU 0.392
-- `PlayfairDisplay[wght].ttf` 119px track 0.59px — IoU 0.3904
+- `PlayfairDisplay[wght].ttf` 118px track -0.01px — IoU 0.6071
+- `PlayfairDisplay[wght].ttf` 119px track 0.59px — IoU 0.5992
+- `PlayfairDisplay[wght].ttf` 120px track -0.1px — IoU 0.5945
 
 ### `text-4` — supporting
 
@@ -151,16 +154,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=371, y=479, w=372, h=49 |
-| Normalised | x=34.35%, y=44.35%, w=34.44%, h=4.54% |
+| Bounding box (px) | x=370, y=478, w=375, h=51 |
+| Normalised | x=34.26%, y=44.26%, w=34.72%, h=4.72% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlayfairDisplay[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [600] |
 | Font size | 67 px |
-| Letter-spacing | 0.09 px (0.0013 em) |
+| Letter-spacing | 0.11 px (0.0016 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -168,27 +171,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.46:1 |
 | Stroke (median/mean) | 5.0 / 4.69 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display, Playfair Display SC |
-| Match IoU | 0.7702 |
+| Match IoU | 0.7416 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 39 px |
-| Gap to next | 21 px |
+| Gap to previous | 37 px |
+| Gap to next | 20 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 68px track -0.75px — IoU 0.7327
-- `PlayfairDisplay[wght].ttf` 68px track -0.46px — IoU 0.7317
-- `PlayfairDisplay[wght].ttf` 66px track 0.37px — IoU 0.6973
+- `PlayfairDisplay[wght].ttf` 69px track -0.72px — IoU 0.7248
+- `PlayfairDisplay[wght].ttf` 68px track -0.16px — IoU 0.7228
+- `PlayfairDisplay[wght].ttf` 68px track -0.45px — IoU 0.7184
 
-### `text-5` — subheadline
+### `text-5` — headline
 
 **Text:** "SUCCESS"  (OCR confidence 0.9918)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=295, y=549, w=524, h=83 |
-| Normalised | x=27.31%, y=50.83%, w=48.52%, h=7.69% |
+| Bounding box (px) | x=295, y=549, w=524, h=84 |
+| Normalised | x=27.31%, y=50.83%, w=48.52%, h=7.78% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
@@ -204,54 +208,56 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.3:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display, Playfair Display SC |
-| Match IoU | 0.7552 |
+| Match IoU | 0.7227 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 21 px |
-| Gap to next | 78 px |
+| Gap to previous | 20 px |
+| Gap to next | 76 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 119px track -0.29px — IoU 0.7294
-- `PlayfairDisplay[wght].ttf` 121px track -0.47px — IoU 0.7218
-- `PlayfairDisplay[wght].ttf` 120px track -1.03px — IoU 0.7197
+- `PlayfairDisplay[wght].ttf` 119px track -0.29px — IoU 0.6995
+- `PlayfairDisplay[wght].ttf` 120px track -1.03px — IoU 0.6928
+- `PlayfairDisplay[wght].ttf` 121px track -0.47px — IoU 0.6905
 
-### `text-6` — detail
+### `text-6` — body
 
 **Text:** "Mickey Rooney"  (OCR confidence 0.9978)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=388, y=710, w=306, h=44 |
-| Normalised | x=35.93%, y=65.74%, w=28.33%, h=4.07% |
+| Bounding box (px) | x=387, y=709, w=308, h=45 |
+| Normalised | x=35.83%, y=65.65%, w=28.52%, h=4.17% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlayfairDisplay[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 45 px |
-| Letter-spacing | -0.33 px (-0.0073 em) |
+| Font size | 46 px |
+| Letter-spacing | -0.73 px (-0.0159 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#122c19` |
+| Colour | `#132c19` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.74:1 |
+| Contrast vs local bg | 4.72:1 |
 | Stroke (median/mean) | 3.0 / 3.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Playfair Display, Playfair Display SC |
-| Match IoU | 0.6122 |
+| Match IoU | 0.6225 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 78 px |
-| Gap to next | -1 px |
+| Gap to previous | 76 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `PlayfairDisplay[wght].ttf` 44px track 0.25px — IoU 0.6116
-- `PlayfairDisplay[wght].ttf` 45px track -0.04px — IoU 0.5962
-- `PlayfairDisplay[wght].ttf` 45px track -0.61px — IoU 0.566
+- `PlayfairDisplay[wght].ttf` 45px track -0.16px — IoU 0.5946
+- `PlayfairDisplay[wght].ttf` 45px track -0.73px — IoU 0.5866
+- `PlayfairDisplay[wght].ttf` 45px track -0.45px — IoU 0.5508
 
 ### `text-7` — headline
 
@@ -259,16 +265,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=174, y=753, w=82, h=85 |
-| Normalised | x=16.11%, y=69.72%, w=7.59%, h=7.87% |
+| Bounding box (px) | x=178, y=759, w=72, h=71 |
+| Normalised | x=16.48%, y=70.28%, w=6.67%, h=6.57% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlayfairDisplaySC-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 155 px |
-| Letter-spacing | -0.31 px (-0.002 em) |
+| Font size | 136 px |
+| Letter-spacing | -0.22 px (-0.0016 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -276,18 +282,20 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.13:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Playfair Display, Playfair Display SC |
-| Match IoU | 0.3171 |
+| Match IoU | 0.3933 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7703) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -1 px |
+| Gap to previous | 5 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `PlayfairDisplaySC-BlackItalic.ttf` 153px track 0.75px — IoU 0.3157
-- `PlayfairDisplaySC-BlackItalic.ttf` 154px track 0.22px — IoU 0.3156
-- `PlayfairDisplaySC-BoldItalic.ttf` 167px track 0.17px — IoU 0.292
+- `PlayfairDisplaySC-BlackItalic.ttf` 135px track 0.31px — IoU 0.3929
+- `PlayfairDisplaySC-BlackItalic.ttf` 137px track -0.75px — IoU 0.3906
+- `PlayfairDisplaySC-BoldItalic.ttf` 148px track -0.52px — IoU 0.3663
 
 ## 4. Colours (semantic)
 
@@ -295,11 +303,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefd` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f0e09d` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of '?' | glyph ink median |
-| textSecondary | `#fca008` | glyph ink of 'SUCCESS' | glyph ink median |
+| textPrimary | `#fca008` | glyph ink of 'SUCCESS' | glyph ink median |
+| textSecondary | `#0d471c` | glyph ink of 'you always pass' | glyph ink median |
 | accent | `#f89f0b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f0e09d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -323,7 +331,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1406 |
+| Text coverage | 0.1388 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -350,29 +358,29 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline_line1` | text | ? |
-| `subheadline_line2` | text | you always pass |
-| `subheadline_line3` | text | FAILURE |
+| `subheadline` | text | ? |
+| `headline_line1` | text | you always pass |
+| `headline_line2` | text | FAILURE |
 | `supporting` | text | on your way |
-| `subheadline` | text | SUCCESS |
-| `detail` | text | Mickey Rooney |
+| `headline` | text | SUCCESS |
+| `body` | text | Mickey Rooney |
 | `headline` | text | ? |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefd |
 | `surface` | colour | #f0e09d |
-| `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #fca008 |
+| `textPrimary` | colour | #fca008 |
+| `textSecondary` | colour | #0d471c |
 | `accent` | colour | #f89f0b |
 | `accentSecondary` | colour | #f0e09d |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Playfair Display |
 | `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |

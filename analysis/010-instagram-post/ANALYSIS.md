@@ -33,81 +33,83 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
 ### `text-1` — headline
 
-**Text:** "FASHIONISN'TABOUT"  (OCR confidence 0.9767)
+**Text:** "FASHION ISN'TABOUT"  (OCR confidence 0.9767)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=90, y=112, w=772, h=90 |
-| Normalised | x=8.33%, y=10.37%, w=71.48%, h=8.33% |
+| Bounding box (px) | x=90, y=111, w=781, h=97 |
+| Normalised | x=8.33%, y=10.28%, w=72.31%, h=8.98% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BebasNeue-Regular.ttf` |
 | Variation axes | None |
-| Font size | 128 px |
-| Letter-spacing | -0.31 px (-0.0024 em) |
-| Line-height | 150.2 px (ratio 1.173) |
+| Font size | 126 px |
+| Letter-spacing | -0.23 px (-0.0018 em) |
+| Line-height | 150.5 px (ratio 1.194) |
 | Line | 1 of 5 |
 | Transform | uppercase |
-| Colour | `#e8e9eb` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.05:1 |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.1:1 |
 | Stroke (median/mean) | 16.0 / 18.7 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Bebas Neue |
-| Match IoU | 0.1898 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Match IoU | 0.3875 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 60 px |
+| Gap to next | 54 px |
 
 Alternate font fits considered:
-- `BebasNeue-Regular.ttf` 127px track 0.07px — IoU 0.1239
-- `BebasNeue-Regular.ttf` 126px track 0.45px — IoU 0.1212
-- `Poppins-Regular.ttf` 79px track 0.27px — IoU 0.1047
+- `BebasNeue-Regular.ttf` 125px track 0.13px — IoU 0.6775
+- `BebasNeue-Regular.ttf` 124px track 0.5px — IoU 0.6612
+- `Poppins-Regular.ttf` 77px track 0.72px — IoU 0.3287
 
 ### `text-2` — headline
 
-**Text:** "FITTINGIN.IT'S"  (OCR confidence 0.9867)
+**Text:** "FITTING IN .IT'S"  (OCR confidence 0.9867)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=90, y=262, w=548, h=90 |
-| Normalised | x=8.33%, y=24.26%, w=50.74%, h=8.33% |
+| Bounding box (px) | x=90, y=262, w=549, h=91 |
+| Normalised | x=8.33%, y=24.26%, w=50.83%, h=8.43% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BebasNeue-Regular.ttf` |
 | Variation axes | None |
-| Font size | 128 px |
-| Letter-spacing | -0.31 px (-0.0024 em) |
-| Line-height | 150.2 px (ratio 1.173) |
+| Font size | 126 px |
+| Letter-spacing | -0.23 px (-0.0018 em) |
+| Line-height | 150.5 px (ratio 1.194) |
 | Line | 2 of 5 |
 | Transform | uppercase |
-| Colour | `#e8e9eb` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.18:1 |
 | Stroke (median/mean) | 16.0 / 18.3 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Bebas Neue |
-| Match IoU | 0.1651 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7972 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 60 px |
-| Gap to next | 60 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 54 px |
+| Gap to next | 59 px |
 
 Alternate font fits considered:
-- `BebasNeue-Regular.ttf` 127px track 0.07px — IoU 0.1239
-- `BebasNeue-Regular.ttf` 126px track 0.45px — IoU 0.1212
-- `Poppins-Regular.ttf` 79px track 0.27px — IoU 0.1047
+- `BebasNeue-Regular.ttf` 125px track 0.13px — IoU 0.6775
+- `BebasNeue-Regular.ttf` 124px track 0.5px — IoU 0.6612
+- `Poppins-Regular.ttf` 77px track 0.72px — IoU 0.3287
 
 ### `text-3` — headline
 
@@ -115,35 +117,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=86, y=412, w=240, h=91 |
-| Normalised | x=7.96%, y=38.15%, w=22.22%, h=8.43% |
+| Bounding box (px) | x=86, y=412, w=241, h=91 |
+| Normalised | x=7.96%, y=38.15%, w=22.31%, h=8.43% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BebasNeue-Regular.ttf` |
 | Variation axes | None |
-| Font size | 128 px |
-| Letter-spacing | -0.31 px (-0.0024 em) |
-| Line-height | 150.2 px (ratio 1.173) |
+| Font size | 126 px |
+| Letter-spacing | -0.23 px (-0.0018 em) |
+| Line-height | 150.5 px (ratio 1.194) |
 | Line | 3 of 5 |
 | Transform | uppercase |
-| Colour | `#e9eaec` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.01:1 |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.16:1 |
 | Stroke (median/mean) | 15.0 / 19.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Bebas Neue |
-| Match IoU | 0.0003 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.816 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 60 px |
-| Gap to next | 56 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 59 px |
+| Gap to next | 61 px |
 
 Alternate font fits considered:
-- `BebasNeue-Regular.ttf` 127px track 0.07px — IoU 0.1239
-- `BebasNeue-Regular.ttf` 126px track 0.45px — IoU 0.1212
-- `Poppins-Regular.ttf` 79px track 0.27px — IoU 0.1047
+- `BebasNeue-Regular.ttf` 125px track 0.13px — IoU 0.6775
+- `BebasNeue-Regular.ttf` 124px track 0.5px — IoU 0.6612
+- `Poppins-Regular.ttf` 77px track 0.72px — IoU 0.3287
 
 ### `text-4` — headline
 
@@ -151,35 +154,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=82, y=559, w=366, h=103 |
-| Normalised | x=7.59%, y=51.76%, w=33.89%, h=9.54% |
+| Bounding box (px) | x=87, y=564, w=355, h=89 |
+| Normalised | x=8.06%, y=52.22%, w=32.87%, h=8.24% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BebasNeue-Regular.ttf` |
 | Variation axes | None |
-| Font size | 128 px |
-| Letter-spacing | -0.31 px (-0.0024 em) |
-| Line-height | 150.2 px (ratio 1.173) |
+| Font size | 126 px |
+| Letter-spacing | -0.23 px (-0.0018 em) |
+| Line-height | 150.5 px (ratio 1.194) |
 | Line | 4 of 5 |
 | Transform | uppercase |
-| Colour | `#e9eaec` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.01:1 |
-| Stroke (median/mean) | 7.0 / 9.12 px |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 2.36:1 |
+| Stroke (median/mean) | 16.0 / 18.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Bebas Neue |
-| Match IoU | 0.2079 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7483 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 56 px |
-| Gap to next | 51 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 61 px |
+| Gap to next | 60 px |
 
 Alternate font fits considered:
-- `BebasNeue-Regular.ttf` 127px track 0.07px — IoU 0.1239
-- `BebasNeue-Regular.ttf` 126px track 0.45px — IoU 0.1212
-- `Poppins-Regular.ttf` 79px track 0.27px — IoU 0.1047
+- `BebasNeue-Regular.ttf` 125px track 0.13px — IoU 0.6775
+- `BebasNeue-Regular.ttf` 124px track 0.5px — IoU 0.6612
+- `Poppins-Regular.ttf` 77px track 0.72px — IoU 0.3287
 
 ### `text-5` — headline
 
@@ -187,44 +191,45 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=89, y=713, w=150, h=90 |
-| Normalised | x=8.24%, y=66.02%, w=13.89%, h=8.33% |
+| Bounding box (px) | x=89, y=713, w=150, h=91 |
+| Normalised | x=8.24%, y=66.02%, w=13.89%, h=8.43% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BebasNeue-Regular.ttf` |
 | Variation axes | None |
-| Font size | 128 px |
-| Letter-spacing | -0.31 px (-0.0024 em) |
-| Line-height | 150.2 px (ratio 1.173) |
+| Font size | 126 px |
+| Letter-spacing | -0.23 px (-0.0018 em) |
+| Line-height | 150.5 px (ratio 1.194) |
 | Line | 5 of 5 |
 | Transform | uppercase |
-| Colour | `#e9eaec` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.2:1 |
 | Stroke (median/mean) | 16.0 / 18.21 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Bebas Neue |
-| Match IoU | 0.0655 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6656 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 51 px |
-| Gap to next | 135 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 60 px |
+| Gap to next | 133 px |
 
 Alternate font fits considered:
-- `BebasNeue-Regular.ttf` 127px track 0.07px — IoU 0.1239
-- `BebasNeue-Regular.ttf` 126px track 0.45px — IoU 0.1212
-- `Poppins-Regular.ttf` 79px track 0.27px — IoU 0.1047
+- `BebasNeue-Regular.ttf` 125px track 0.13px — IoU 0.6775
+- `BebasNeue-Regular.ttf` 124px track 0.5px — IoU 0.6612
+- `Poppins-Regular.ttf` 77px track 0.72px — IoU 0.3287
 
-### `text-6` — subheadline
+### `text-6` — fine-print
 
 **Text:** "www.yourbrandname.com"  (OCR confidence 0.9972)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=87, y=938, w=305, h=22 |
-| Normalised | x=8.06%, y=86.85%, w=28.24%, h=2.04% |
+| Bounding box (px) | x=87, y=937, w=305, h=23 |
+| Normalised | x=8.06%, y=86.76%, w=28.24%, h=2.13% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -240,18 +245,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.59:1 |
 | Stroke (median/mean) | 1.0 / 1.45 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Bebas Neue |
-| Match IoU | 0.5755 |
+| Match IoU | 0.6766 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — single long token with no spaces |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 135 px |
+| Gap to previous | 133 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 22px track 0.53px — IoU 0.5363
-- `Poppins-Regular.ttf` 24px track -0.81px — IoU 0.4682
-- `BebasNeue-Regular.ttf` 34px track 0.4px — IoU 0.179
+- `Poppins-Regular.ttf` 22px track 0.53px — IoU 0.6176
+- `Poppins-Regular.ttf` 24px track -0.81px — IoU 0.5621
+- `BebasNeue-Regular.ttf` 34px track 0.4px — IoU 0.1731
 
 ## 4. Colours (semantic)
 
@@ -259,11 +265,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#edeeec` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#1f363b` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#e9eaec` | glyph ink of 'STANDING' | glyph ink median |
-| textSecondary | `#383838` | glyph ink of 'www.yourbrandname.com' | glyph ink median |
+| textPrimary | `#2e2e2e` | glyph ink of 'FASHION ISN'TABOUT' | glyph ink median |
+| textSecondary | `#2e2e2e` | glyph ink of 'FITTING IN .IT'S' | glyph ink median |
 | accent | `#1f363b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#98b5c2` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1702 |
+| Text coverage | 0.1714 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -314,18 +320,18 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `headline_line1` | text | FASHIONISN'TABOUT |
-| `headline_line2` | text | FITTINGIN.IT'S |
+| `headline_line1` | text | FASHION ISN'TABOUT |
+| `headline_line2` | text | FITTING IN .IT'S |
 | `headline_line3` | text | ABOUT |
 | `headline_line4` | text | STANDING |
 | `headline_line5` | text | OUT. |
-| `subheadline` | text | www.yourbrandname.com |
+| `fine-print` | text | www.yourbrandname.com |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #edeeec |
 | `surface` | colour | #1f363b |
-| `textPrimary` | colour | #e9eaec |
-| `textSecondary` | colour | #383838 |
+| `textPrimary` | colour | #2e2e2e |
+| `textSecondary` | colour | #2e2e2e |
 | `accent` | colour | #1f363b |
 | `accentSecondary` | colour | #98b5c2 |
 | `onAccent` | colour | #000000 |
@@ -335,7 +341,7 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 60.2 |
 | `imageFocalY` | number | 51.2 |
 

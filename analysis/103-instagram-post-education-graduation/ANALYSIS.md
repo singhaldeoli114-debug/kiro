@@ -34,9 +34,47 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
+
+### `text-1` — headline
+
+**Text:** "Smart"  (OCR confidence 0.9802)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=633, y=694, w=365, h=124 |
+| Normalised | x=58.61%, y=64.26%, w=33.8%, h=11.48% |
+| Alignment | right |
+| z-order | 100 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 75.0] |
+| Font size | 152 px |
+| Letter-spacing | -0.39 px (-0.0026 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | none |
+| Colour | `#f1df08` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.2:1 |
+| Stroke (median/mean) | 34.0 / 35.58 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| Font family (authoritative) | Anton, Allura, Roboto |
+| Match IoU | 0.1895 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | True  |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | None px |
+| Gap to next | -3 px |
+
+Alternate font fits considered:
+- `Roboto[wdth,wght].ttf` 151px track 0.21px — IoU 0.189
+- `Roboto[wdth,wght].ttf` 150px track 0.81px — IoU 0.1859
+- `Roboto[wdth,wght].ttf` 143px track -0.64px — IoU 0.1832
 
 ### `text-2` — headline
 
@@ -44,88 +82,53 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=225, y=803, w=794, h=159 |
-| Normalised | x=20.83%, y=74.35%, w=73.52%, h=14.72% |
+| Bounding box (px) | x=233, y=815, w=771, h=131 |
+| Normalised | x=21.57%, y=75.46%, w=71.39%, h=12.13% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 151 px |
-| Letter-spacing | -0.07 px (-0.0005 em) |
+| Font size | 146 px |
+| Letter-spacing | 0.23 px (0.0016 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 13.0 / 15.96 px |
+| Colour | `#120a35` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.43:1 |
+| Stroke (median/mean) | 26.0 / 30.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.2415 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8796 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | None px |
-| Gap to next | -146 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -3 px |
+| Gap to next | 48 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 152px track -0.55px — IoU 0.2391
-- `Anton-Regular.ttf` 150px track 0.41px — IoU 0.2382
-- `Roboto[wdth,wght].ttf` 126px track 0.38px — IoU 0.2108
+- `Anton-Regular.ttf` 147px track -0.25px — IoU 0.8728
+- `Anton-Regular.ttf` 145px track 0.71px — IoU 0.8674
+- `Roboto[wdth,wght].ttf` 124px track -0.57px — IoU 0.6968
 
-### `text-1` — subheadline
-
-**Text:** "S m a r t"  (OCR confidence 0.9802)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=677, y=816, w=321, h=7 |
-| Normalised | x=62.69%, y=75.56%, w=29.72%, h=0.65% |
-| Alignment | right |
-| z-order | 100 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 96 px |
-| Letter-spacing | 0.12 px (0.0013 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 34.5 / 36.93 px |
-| Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.2421 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -146 px |
-| Gap to next | 172 px |
-
-Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 95px track 0.54px — IoU 0.2408
-- `Roboto[wdth,wght].ttf` 97px track -0.29px — IoU 0.2366
-- `Roboto[wdth,wght].ttf` 90px track 0.44px — IoU 0.2326
-
-### `text-3` — supporting
+### `text-3` — fine-print
 
 **Text:** "www.smart.com"  (OCR confidence 0.9988)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=688, y=995, w=217, h=19 |
-| Normalised | x=63.7%, y=92.13%, w=20.09%, h=1.76% |
+| Bounding box (px) | x=688, y=994, w=217, h=21 |
+| Normalised | x=63.7%, y=92.04%, w=20.09%, h=1.94% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 100.0] |
-| Font size | 31 px |
-| Letter-spacing | -0.92 px (-0.0297 em) |
+| Font size | 30 px |
+| Letter-spacing | -0.3 px (-0.01 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -133,18 +136,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 4.0 / 4.48 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Allura, Roboto |
-| Match IoU | 0.7814 |
+| Match IoU | 0.7515 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 172 px |
+| Gap to previous | 48 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 31px track -0.92px — IoU 0.7551
-- `Roboto[wdth,wght].ttf` 29px track 0.31px — IoU 0.7378
-- `Roboto[wdth,wght].ttf` 31px track 0.25px — IoU 0.7238
+- `Roboto[wdth,wght].ttf` 31px track -0.92px — IoU 0.7462
+- `Roboto[wdth,wght].ttf` 32px track -0.32px — IoU 0.7319
+- `Roboto[wdth,wght].ttf` 34px track -0.29px — IoU 0.714
 
 ## 4. Colours (semantic)
 
@@ -152,11 +156,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefd` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#1f2230` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'WAY TO LEARN' | glyph ink median |
-| textSecondary | `#000000` | glyph ink of 'www.smart.com' | glyph ink median |
+| textPrimary | `#120a35` | glyph ink of 'WAY TO LEARN' | glyph ink median |
+| textSecondary | `#f1df08` | glyph ink of 'Smart' | glyph ink median |
 | accent | `#f9e712` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1f2230` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -180,7 +184,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.1137 |
+| Text coverage | 0.1293 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,22 +211,22 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
+| `headline` | text | Smart |
 | `headline` | text | WAY TO LEARN |
-| `subheadline` | text | S m a r t |
-| `supporting` | text | www.smart.com |
+| `fine-print` | text | www.smart.com |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefd |
 | `surface` | colour | #1f2230 |
-| `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #000000 |
+| `textPrimary` | colour | #120a35 |
+| `textSecondary` | colour | #f1df08 |
 | `accent` | colour | #f9e712 |
 | `accentSecondary` | colour | #1f2230 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Anton |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 67.3 |
 | `imageFocalY` | number | 41.8 |
 

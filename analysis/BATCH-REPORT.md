@@ -1,6 +1,6 @@
 # Batch Report — Instagram Post template analysis
 
-Generated: 2026-07-28T13:12:34+00:00
+Generated: 2026-07-28T15:04:56+00:00
 
 > Scope: **analysis and asset collection only.** No HTML, CSS or renderer manifest is produced by this batch.
 
@@ -12,8 +12,8 @@ Generated: 2026-07-28T13:12:34+00:00
 | Analysed successfully | 200 |
 | Failed | 0 |
 | State | complete |
-| Started | 2026-07-28T12:44:37+00:00 |
-| Updated | 2026-07-28T13:03:47+00:00 |
+| Started | 2026-07-28T14:44:50+00:00 |
+| Updated | 2026-07-28T14:58:02+00:00 |
 
 ## Asset outcomes
 
@@ -24,6 +24,18 @@ Generated: 2026-07-28T13:12:34+00:00
 | Missing | 203 | recorded and skipped without halting the batch |
 
 Every template records one unavoidable missing asset: the original unflattened background photograph. Pixy's API exposes only a flattened render, with no layer or asset endpoint.
+
+## Analysis quality
+
+| Metric | Value |
+|---|---|
+| Text elements analysed | 1280 |
+| High or medium geometry fit | 755 / 1181 fittable (63.9%) |
+| Mean fit IoU (fittable text only) | 0.599 |
+| Text-in-photograph (not editable type) | 99 |
+| OCR text flagged for review | 175 / 1280 (13.7%) |
+
+A low fit tier is **not promoted artificially**. Remaining low and very-low elements are retained as review flags because their flattened appearance uses a rendering model the solid-font fitter cannot reproduce reliably (commonly outlined/hollow text, duplicate shadow layers, overlapping word copies, curved/path text, or incomplete OCR capture).
 
 ## Font identification
 
@@ -39,22 +51,22 @@ Size, weight, width axis and tracking are recovered by rendering candidates and 
 
 | Fit score | Elements | Meaning |
 |---|---|---|
-| high | 382 | fitted metrics closely reproduce the reference ink |
-| medium | 196 | reproduces well, minor drift |
-| low | 94 | plausible but unverified |
-| very-low | 444 | not verified — usually corrupted OCR text or per-character placement |
-| unresolved | 10 | no candidate could be rendered |
+| high | 503 | fitted metrics closely reproduce the reference ink |
+| medium | 252 | reproduces well, with minor residual drift |
+| low | 146 | plausible but requires visual review before recreation |
+| very-low | 275 | not verified — preserve the reference and review manually |
+| unresolved | 5 | no candidate could be rendered |
+| not-applicable-rasterText | 99 | text is part of a photograph, not an editable text layer |
 
-**A low fit score does not mean the font family is wrong.** The score is a conservative lower bound. Measured across this batch, OCR text quality is the dominant driver: elements with OCR confidence below 0.90 average an IoU of 0.27, while those above 0.98 average 0.53. Where a text string is corrupted (for example `confdence`, `delivereffortless`), the comparison penalises the fit even when family and size are correct. Such elements are flagged with `textReliability.reliable = false`.
+**Font family and fitted geometry are separate claims.** The font-family list is authoritative because Pixy declares it. Size, weight, width and tracking remain fitted estimates and each element retains its own score. Text strings repaired for lost `fi`/`fl` ligatures or merged word gaps keep an audit trail in `textRepairs`; other suspicious OCR stays flagged instead of being silently rewritten.
 
-Two alternative scoring metrics were trialled and rejected on measurement:
+Validated quality fixes applied across the batch:
 
-| Alternative | Result | Decision |
-|---|---|---|
-| Tracking + size refinement sweep | mean IoU gain of only +0.025 | rejected, not worth a full re-run |
-| Height-normalised IoU with shift search | mean IoU **-0.254** | rejected, ink height depends on which ascenders/descenders a line contains, so normalising by height misscales the candidate |
-
-The box-normalised IoU retained here was the best of the three.
+- Variable-font axes are read from each font's `fvar` table. Filename axis order was proven unsafe because Archivo's filename and internal axis order differ.
+- Text polarity is read from a background border ring. The former minority-class rule inverted large display text; fixing it moved `LESS NOISE.` from IoU 0.109 to 0.793 and `MORE` from 0.104 to 0.832.
+- OCR boxes use horizontal padding only. Vertical padding captured fragments of adjacent lines; removing it raised mean IoU from 0.537 to 0.579.
+- Multi-line blocks share a reconciled font, size and tracking instead of being fitted independently line by line.
+- Raster text printed on photographed objects is classified as not applicable rather than being presented as a failed editable-font match.
 
 ## Font families that could not be resolved
 
@@ -128,7 +140,7 @@ The box-normalised IoU retained here was the best of the three.
 | 058 | Instagram motivation post | 4 | 4 | 1 | 1 |
 | 059 | Instagram post fashion sale | 9 | 5 | 1 | 1 |
 | 060 | Instagram post fitness coach | 5 | 4 | 1 | 1 |
-| 061 | Instagram post podcast men | 4 | 6 | 1 | 1 |
+| 061 | Instagram post podcast men | 5 | 6 | 1 | 1 |
 | 062 | Instagram post quote self | 3 | 3 | 1 | 1 |
 | 063 | Instagram skincare 101 | 1 | 2 | 1 | 1 |
 | 064 | Instagram baked post | 3 | 3 | 1 | 1 |
@@ -145,7 +157,7 @@ The box-normalised IoU retained here was the best of the three.
 | 075 | Instagram post interior estate | 5 | 6 | 1 | 1 |
 | 076 | Instagram post movational quote | 3 | 6 | 1 | 1 |
 | 077 | Instagram post natural esssentials | 3 | 4 | 1 | 1 |
-| 078 | Instagram post ootd outfit | 4 | 3 | 1 | 1 |
+| 078 | Instagram post ootd outfit | 7 | 3 | 1 | 1 |
 | 079 | Instagram post ootd style | 4 | 3 | 1 | 1 |
 | 080 | Instagram post pizza notification | 5 | 4 | 1 | 1 |
 | 081 | Instagram post quotes negativity | 4 | 5 | 1 | 1 |

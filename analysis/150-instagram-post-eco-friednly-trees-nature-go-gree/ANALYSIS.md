@@ -33,11 +33,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — fine-print
 
 **Text:** "LET'S PLANT A"  (OCR confidence 0.9595)
 
@@ -60,11 +60,12 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.62:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Amatic SC, Lemonada |
 | Match IoU | 0.2589 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
 | Gap to next | 61 px |
 
@@ -79,35 +80,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=216, y=298, w=420, h=121 |
-| Normalised | x=20.0%, y=27.59%, w=38.89%, h=11.2% |
+| Bounding box (px) | x=216, y=298, w=421, h=121 |
+| Normalised | x=20.0%, y=27.59%, w=38.98%, h=11.2% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AmaticSC-Regular.ttf` |
-| Variation axes | None |
-| Font size | 382 px |
-| Letter-spacing | -0.07 px (-0.0002 em) |
+| Font file matched | `Lemonada[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 160 px |
+| Letter-spacing | -0.95 px (-0.0059 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#429b29` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Amatic SC, Lemonada |
-| Match IoU | 0.1473 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.95 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 61 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AmaticSC-Regular.ttf` 381px track 0.3px — IoU 0.1454
-- `AmaticSC-Regular.ttf` 383px track -0.43px — IoU 0.1417
-- `AmaticSC-Bold.ttf` 378px track 0.53px — IoU 0.0681
+- `Lemonada[wght].ttf` 159px track -0.06px — IoU 0.9441
+- `Lemonada[wght].ttf` 158px track 0.82px — IoU 0.9437
+- `Lemonada[wght].ttf` 165px track -0.85px — IoU 0.8265
 
 ## 4. Colours (semantic)
 
@@ -115,11 +117,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#b0def7` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'TREE' | glyph ink median |
+| textPrimary | `#429b29` | glyph ink of 'TREE' | glyph ink median |
 | textSecondary | `#63af54` | glyph ink of 'LET'S PLANT A' | glyph ink median |
 | accent | `#98ad3f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#029a80` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -143,7 +145,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.0552 |
+| Text coverage | 0.0553 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -170,19 +172,19 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | LET'S PLANT A |
+| `fine-print` | text | LET'S PLANT A |
 | `headline` | text | TREE |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #b0def7 |
-| `textPrimary` | colour | #ffffff |
+| `textPrimary` | colour | #429b29 |
 | `textSecondary` | colour | #63af54 |
 | `accent` | colour | #98ad3f |
 | `accentSecondary` | colour | #029a80 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Amatic SC |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |

@@ -35,35 +35,36 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — fine-print
 
 **Text:** "LOGO"  (OCR confidence 0.9974)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=451, y=59, w=123, h=33 |
-| Normalised | x=41.76%, y=5.46%, w=11.39%, h=3.06% |
+| Bounding box (px) | x=450, y=58, w=124, h=34 |
+| Normalised | x=41.67%, y=5.37%, w=11.48%, h=3.15% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 46 px |
-| Letter-spacing | -0.56 px (-0.0122 em) |
+| Font size | 47 px |
+| Letter-spacing | -1.14 px (-0.0243 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.09:1 |
+| Contrast vs local bg | 3.07:1 |
 | Stroke (median/mean) | 5.0 / 7.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Annie Use Your Telescope, Bilbo Swash Caps, Alike |
-| Match IoU | 0.701 |
+| Match IoU | 0.7172 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -71,9 +72,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 90 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 45px track 0.33px — IoU 0.6789
-- `Actor-Regular.ttf` 44px track 1.24px — IoU 0.5762
-- `Alike-Regular.ttf` 45px track -0.55px — IoU 0.4027
+- `Actor-Regular.ttf` 46px track -0.23px — IoU 0.713
+- `Actor-Regular.ttf` 45px track 0.67px — IoU 0.6747
+- `Alike-Regular.ttf` 45px track -0.22px — IoU 0.45
 
 ### `text-2` — headline
 
@@ -81,44 +82,46 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=98, y=182, w=685, h=242 |
-| Normalised | x=9.07%, y=16.85%, w=63.43%, h=22.41% |
+| Bounding box (px) | x=98, y=182, w=685, h=237 |
+| Normalised | x=9.07%, y=16.85%, w=63.43%, h=21.94% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Alike-Regular.ttf` |
+| Font file matched | `BilboSwashCaps-Regular.ttf` |
 | Variation axes | None |
-| Font size | 214 px |
-| Letter-spacing | -0.76 px (-0.0036 em) |
+| Font size | 295 px |
+| Letter-spacing | -0.44 px (-0.0015 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.18:1 |
-| Stroke (median/mean) | 11.0 / 12.2 px |
+| Stroke (median/mean) | 11.0 / 12.28 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor, Annie Use Your Telescope, Bilbo Swash Caps, Alike |
-| Match IoU | 0.1101 |
+| Match IoU | 0.112 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 90 px |
-| Gap to next | -100 px |
+| Gap to next | -90 px |
 
 Alternate font fits considered:
-- `BilboSwashCaps-Regular.ttf` 295px track -0.44px — IoU 0.1095
-- `Alike-Regular.ttf` 213px track -0.21px — IoU 0.1094
-- `Alike-Regular.ttf` 212px track 0.33px — IoU 0.1091
+- `BilboSwashCaps-Regular.ttf` 293px track 0.34px — IoU 0.1103
+- `BilboSwashCaps-Regular.ttf` 294px track -0.05px — IoU 0.1098
+- `Alike-Regular.ttf` 214px track -0.76px — IoU 0.1093
 
-### `text-3` — headline
+### `text-3` — subheadline
 
 **Text:** "Eyes"  (OCR confidence 0.8505)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=517, y=324, w=475, h=328 |
-| Normalised | x=47.87%, y=30.0%, w=43.98%, h=30.37% |
+| Bounding box (px) | x=517, y=329, w=475, h=318 |
+| Normalised | x=47.87%, y=30.46%, w=43.98%, h=29.44% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -133,36 +136,38 @@ Alternate font fits considered:
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.46:1 |
-| Stroke (median/mean) | 9.0 / 11.27 px |
+| Stroke (median/mean) | 9.0 / 11.29 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor, Annie Use Your Telescope, Bilbo Swash Caps, Alike |
-| Match IoU | 0.1036 |
+| Match IoU | 0.1055 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8505) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -100 px |
-| Gap to next | -248 px |
+| Gap to previous | -90 px |
+| Gap to next | -243 px |
 
 Alternate font fits considered:
-- `Alike-Regular.ttf` 223px track 0.37px — IoU 0.1024
-- `Alike-Regular.ttf` 225px track -1.04px — IoU 0.1009
-- `Actor-Regular.ttf` 240px track -0.39px — IoU 0.099
+- `Alike-Regular.ttf` 223px track 0.37px — IoU 0.1046
+- `Alike-Regular.ttf` 225px track -1.04px — IoU 0.1035
+- `Actor-Regular.ttf` 239px track 0.28px — IoU 0.1025
 
-### `text-4` — supporting
+### `text-4` — fine-print
 
 **Text:** "Your"  (OCR confidence 0.9973)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=400, y=404, w=119, h=58 |
-| Normalised | x=37.04%, y=37.41%, w=11.02%, h=5.37% |
+| Bounding box (px) | x=399, y=404, w=121, h=58 |
+| Normalised | x=36.94%, y=37.41%, w=11.2%, h=5.37% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 61 px |
-| Letter-spacing | -0.64 px (-0.0105 em) |
+| Font size | 62 px |
+| Letter-spacing | -0.63 px (-0.0102 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -170,27 +175,29 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.4:1 |
 | Stroke (median/mean) | 5.0 / 5.33 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor, Annie Use Your Telescope, Bilbo Swash Caps, Alike |
-| Match IoU | 0.2108 |
+| Match IoU | 0.1995 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -248 px |
-| Gap to next | 425 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -243 px |
+| Gap to next | 424 px |
 
 Alternate font fits considered:
-- `AnnieUseYourTelescope-Regular.ttf` 78px track -0.68px — IoU 0.1933
-- `Actor-Regular.ttf` 60px track 0.03px — IoU 0.187
-- `Actor-Regular.ttf` 59px track 0.69px — IoU 0.1826
+- `Actor-Regular.ttf` 61px track 0.03px — IoU 0.1983
+- `AnnieUseYourTelescope-Regular.ttf` 78px track -0.02px — IoU 0.1851
+- `Actor-Regular.ttf` 60px track 0.69px — IoU 0.1836
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "50%"  (OCR confidence 0.9994)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=62, y=887, w=147, h=78 |
-| Normalised | x=5.74%, y=82.13%, w=13.61%, h=7.22% |
+| Bounding box (px) | x=61, y=886, w=148, h=74 |
+| Normalised | x=5.65%, y=82.04%, w=13.7%, h=6.85% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -198,62 +205,64 @@ Alternate font fits considered:
 | Font file matched | `Alike-Regular.ttf` |
 | Variation axes | None |
 | Font size | 81 px |
-| Letter-spacing | -1.18 px (-0.0146 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.68 px (-0.0084 em) |
+| Line-height | 72.0 px (ratio 0.889) |
+| Line | 1 of 2 |
 | Transform | none |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.74:1 |
-| Stroke (median/mean) | 9.0 / 10.77 px |
+| Contrast vs local bg | 3.72:1 |
+| Stroke (median/mean) | 9.0 / 9.92 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Annie Use Your Telescope, Bilbo Swash Caps, Alike |
-| Match IoU | 0.343 |
+| Match IoU | 0.367 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 425 px |
-| Gap to next | -19 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 424 px |
+| Gap to next | -2 px |
 
 Alternate font fits considered:
-- `Alike-Regular.ttf` 80px track -0.26px — IoU 0.3279
-- `Alike-Regular.ttf` 79px track 0.66px — IoU 0.3166
-- `Actor-Regular.ttf` 80px track -0.98px — IoU 0.2502
+- `Alike-Regular.ttf` 80px track 0.24px — IoU 0.4977
+- `Alike-Regular.ttf` 79px track 1.16px — IoU 0.4724
+- `Actor-Regular.ttf` 80px track -0.48px — IoU 0.416
 
-### `text-6` — subheadline
+### `text-6` — body
 
 **Text:** "OFF"  (OCR confidence 0.9982)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=60, y=946, w=149, h=75 |
-| Normalised | x=5.56%, y=87.59%, w=13.8%, h=6.94% |
+| Bounding box (px) | x=60, y=958, w=149, h=64 |
+| Normalised | x=5.56%, y=88.7%, w=13.8%, h=5.93% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alike-Regular.ttf` |
 | Variation axes | None |
-| Font size | 79 px |
-| Letter-spacing | 0.45 px (0.0057 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 81 px |
+| Letter-spacing | -0.68 px (-0.0084 em) |
+| Line-height | 72.0 px (ratio 0.889) |
+| Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.88:1 |
-| Stroke (median/mean) | 10.0 / 12.16 px |
+| Contrast vs local bg | 3.91:1 |
+| Stroke (median/mean) | 10.0 / 12.08 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Annie Use Your Telescope, Bilbo Swash Caps, Alike |
-| Match IoU | 0.4171 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.6832 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -19 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -2 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alike-Regular.ttf` 80px track -0.49px — IoU 0.4133
-- `Alike-Regular.ttf` 78px track 1.37px — IoU 0.4091
-- `Actor-Regular.ttf` 81px track -0.11px — IoU 0.3779
+- `Alike-Regular.ttf` 80px track 0.24px — IoU 0.4977
+- `Alike-Regular.ttf` 79px track 1.16px — IoU 0.4724
+- `Actor-Regular.ttf` 80px track -0.48px — IoU 0.416
 
 ## 4. Colours (semantic)
 
@@ -265,7 +274,7 @@ Alternate font fits considered:
 | textSecondary | `#2e2e2e` | glyph ink of 'Protect' | glyph ink median |
 | accent | `#eda5a6` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f6b7b8` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -289,7 +298,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.3045 |
+| Text coverage | 0.2959 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -316,12 +325,12 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | LOGO |
+| `fine-print` | text | LOGO |
 | `headline` | text | Protect |
-| `headline` | text | Eyes |
-| `supporting` | text | Your |
-| `subheadline` | text | 50% |
-| `subheadline` | text | OFF |
+| `subheadline` | text | Eyes |
+| `fine-print` | text | Your |
+| `body_line1` | text | 50% |
+| `body_line2` | text | OFF |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fdd2d1 |
@@ -332,12 +341,12 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #f6b7b8 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Actor |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 44.1 |
 | `imageFocalY` | number | 62.6 |
 

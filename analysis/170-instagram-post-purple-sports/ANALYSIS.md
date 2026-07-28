@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,80 +43,84 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=429, y=347, w=201, h=210 |
-| Normalised | x=39.72%, y=32.13%, w=18.61%, h=19.44% |
+| Bounding box (px) | x=459, y=352, w=171, h=200 |
+| Normalised | x=42.5%, y=32.59%, w=15.83%, h=18.52% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AbhayaLibre-ExtraBold.ttf` |
 | Variation axes | None |
-| Font size | 325 px |
-| Letter-spacing | 0.73 px (0.0022 em) |
+| Font size | 276 px |
+| Letter-spacing | 0.92 px (0.0033 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#1a041f` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 4.15:1 |
-| Stroke (median/mean) | 32.5 / 30.92 px |
+| Colour | `#6e7c2b` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.23:1 |
+| Stroke (median/mean) | 2.0 / 2.3 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Aguafina Script, Abhaya Libre |
-| Match IoU | 0.3968 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4554 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | None px |
-| Gap to next | 343 px |
+| Gap to next | 132 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 327px track -0.5px — IoU 0.3935
-- `AbhayaLibre-ExtraBold.ttf` 326px track 0.11px — IoU 0.3923
-- `AbhayaLibre-Bold.ttf` 326px track 0.11px — IoU 0.3811
+- `AbhayaLibre-ExtraBold.ttf` 278px track -0.31px — IoU 0.4491
+- `AbhayaLibre-ExtraBold.ttf` 277px track 0.31px — IoU 0.4487
+- `AbhayaLibre-Bold.ttf` 277px track 0.31px — IoU 0.3882
 
 ### `text-2` — subheadline
 
-**Text:** "S p o rlsT i me"  (OCR confidence 0.9016)
+**Text:** "SporlsTime"  (OCR confidence 0.9016)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=427, y=900, w=561, h=33 |
-| Normalised | x=39.54%, y=83.33%, w=51.94%, h=3.06% |
+| Bounding box (px) | x=198, y=684, w=831, h=247 |
+| Normalised | x=18.33%, y=63.33%, w=76.94%, h=22.87% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AbhayaLibre-ExtraBold.ttf` |
 | Variation axes | None |
-| Font size | 98 px |
-| Letter-spacing | -0.25 px (-0.0026 em) |
+| Font size | 173 px |
+| Letter-spacing | -0.08 px (-0.0005 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#e3e1e4` |
+| Colour | `#fa9f07` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 10.2:1 |
+| Contrast vs local bg | 7.71:1 |
 | Stroke (median/mean) | 3.0 / 2.81 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Aguafina Script, Abhaya Libre |
-| Match IoU | 0.1906 |
+| Match IoU | 0.2019 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9016) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 343 px |
-| Gap to next | -33 px |
+| Gap to previous | 132 px |
+| Gap to next | -32 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 96px track 0.58px — IoU 0.1879
-- `AbhayaLibre-ExtraBold.ttf` 97px track 0.16px — IoU 0.18
-- `AbhayaLibre-Bold.ttf` 99px track -0.45px — IoU 0.1747
+- `AbhayaLibre-ExtraBold.ttf` 174px track -0.62px — IoU 0.2008
+- `AbhayaLibre-ExtraBold.ttf` 172px track 0.45px — IoU 0.1992
+- `AguafinaScript-Regular.ttf` 247px track 0.26px — IoU 0.1915
 
-### `text-3` — supporting
+### `text-3` — fine-print
 
 **Text:** "You only fail when you stop trying."  (OCR confidence 0.9957)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=427, y=900, w=561, h=33 |
-| Normalised | x=39.54%, y=83.33%, w=51.94%, h=3.06% |
+| Bounding box (px) | x=427, y=899, w=561, h=34 |
+| Normalised | x=39.54%, y=83.24%, w=51.94%, h=3.15% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -128,22 +132,23 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#e3e1e4` |
+| Colour | `#e3e0e4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 10.2:1 |
+| Contrast vs local bg | 10.18:1 |
 | Stroke (median/mean) | 3.0 / 2.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aguafina Script, Abhaya Libre |
-| Match IoU | 0.7117 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6626 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -33 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -32 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbhayaLibre-Medium.ttf` 41px track -0.54px — IoU 0.6977
-- `AbhayaLibre-Bold.ttf` 40px track -0.31px — IoU 0.6833
-- `AbhayaLibre-SemiBold.ttf` 40px track -0.2px — IoU 0.6655
+- `AbhayaLibre-Medium.ttf` 40px track -0.13px — IoU 0.6592
+- `AbhayaLibre-Bold.ttf` 40px track -0.31px — IoU 0.6544
+- `AbhayaLibre-Medium.ttf` 41px track -0.54px — IoU 0.646
 
 ## 4. Colours (semantic)
 
@@ -151,11 +156,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#b1b8ab` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#1a051f` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#1a041f` | glyph ink of '十' | glyph ink median |
-| textSecondary | `#e3e1e4` | glyph ink of 'S p o rlsT i me' | glyph ink median |
+| textPrimary | `#fa9f07` | glyph ink of 'SporlsTime' | glyph ink median |
+| textSecondary | `#6e7c2b` | glyph ink of '十' | glyph ink median |
 | accent | `#1a051f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f39b08` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +184,7 @@ Full palette (k-means):
 | Subject position | upper-right |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0679 |
+| Text coverage | 0.2216 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,21 +212,21 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | 十 |
-| `subheadline` | text | S p o rlsT i me |
-| `supporting` | text | You only fail when you stop trying. |
+| `subheadline` | text | SporlsTime |
+| `fine-print` | text | You only fail when you stop trying. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #b1b8ab |
 | `surface` | colour | #1a051f |
-| `textPrimary` | colour | #1a041f |
-| `textSecondary` | colour | #e3e1e4 |
+| `textPrimary` | colour | #fa9f07 |
+| `textSecondary` | colour | #6e7c2b |
 | `accent` | colour | #1a051f |
 | `accentSecondary` | colour | #f39b08 |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Aguafina Script |
 | `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 71.8 |
 | `imageFocalY` | number | 36.6 |
 

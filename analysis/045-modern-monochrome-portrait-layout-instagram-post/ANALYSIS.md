@@ -34,18 +34,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "Elegance"  (OCR confidence 0.9989)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=106, w=476, h=105 |
-| Normalised | x=7.41%, y=9.81%, w=44.07%, h=9.72% |
+| Bounding box (px) | x=80, y=106, w=476, h=100 |
+| Normalised | x=7.41%, y=9.81%, w=44.07%, h=9.26% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,55 +60,57 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
-| Stroke (median/mean) | 22.0 / 32.12 px |
+| Stroke (median/mean) | 22.0 / 32.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.626 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7302 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -19 px |
+| Gap to next | -9 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 124px track -0.59px — IoU 0.6227
-- `ArchivoBlack-Regular.ttf` 95px track -0.63px — IoU 0.6189
-- `ArchivoBlack-Regular.ttf` 94px track 0.09px — IoU 0.6179
+- `ArchivoBlack-Regular.ttf` 95px track -0.63px — IoU 0.7192
+- `ArchivoBlack-Regular.ttf` 94px track 0.09px — IoU 0.7179
+- `Archivo[wdth,wght].ttf` 124px track -0.59px — IoU 0.7164
 
-### `text-3` — supporting
+### `text-3` — headline
 
 **Text:** "Every"  (OCR confidence 0.9978)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=208, y=192, w=289, h=107 |
-| Normalised | x=19.26%, y=17.78%, w=26.76%, h=9.91% |
+| Bounding box (px) | x=208, y=197, w=289, h=94 |
+| Normalised | x=19.26%, y=18.24%, w=26.76%, h=8.7% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Archivo[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 96 px |
-| Letter-spacing | -1.07 px (-0.0111 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 122 px |
+| Letter-spacing | 0.09 px (0.0007 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
-| Stroke (median/mean) | 22.0 / 30.11 px |
+| Stroke (median/mean) | 22.0 / 30.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.6684 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7462 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -19 px |
-| Gap to next | -101 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -9 px |
+| Gap to next | -93 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 122px track 0.09px — IoU 0.6676
-- `ArchivoBlack-Regular.ttf` 95px track -0.31px — IoU 0.6664
-- `Archivo[wdth,wght].ttf` 121px track 0.68px — IoU 0.6649
+- `Archivo[wdth,wght].ttf` 121px track 0.68px — IoU 0.7431
+- `Archivo[wdth,wght].ttf` 123px track -0.5px — IoU 0.7423
+- `Archivo[wdth,wght].ttf` 95px track -0.31px — IoU 0.7379
 
 ### `text-2` — headline
 
@@ -116,35 +118,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=198, w=85, h=72 |
-| Normalised | x=7.41%, y=18.33%, w=7.87%, h=6.67% |
+| Bounding box (px) | x=80, y=198, w=86, h=73 |
+| Normalised | x=7.41%, y=18.33%, w=7.96%, h=6.76% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Archivo[wdth,wght].ttf` |
-| Variation axes | [300, 112.5] |
-| Font size | 101 px |
-| Letter-spacing | -0.9 px (-0.0089 em) |
-| Line-height | 88.0 px (ratio 0.871) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 95 px |
+| Letter-spacing | -0.99 px (-0.0104 em) |
+| Line-height | 97.0 px (ratio 1.021) |
 | Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 21.0 / 22.72 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.0611 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8854 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -101 px |
-| Gap to next | 16 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -93 px |
+| Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 100px track -0.08px — IoU 0.0963
-- `Archivo[wdth,wght].ttf` 113px track -0.42px — IoU 0.0857
-- `Archivo[wdth,wght].ttf` 99px track -0.53px — IoU 0.0853
+- `Archivo[wdth,wght].ttf` 85px track -0.15px — IoU 0.8802
+- `Archivo[wdth,wght].ttf` 104px track 1.01px — IoU 0.8793
+- `ArchivoBlack-Regular.ttf` 94px track -0.12px — IoU 0.8772
 
 ### `text-4` — headline
 
@@ -152,44 +155,45 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=286, w=410, h=78 |
-| Normalised | x=7.41%, y=26.48%, w=37.96%, h=7.22% |
+| Bounding box (px) | x=79, y=295, w=412, h=69 |
+| Normalised | x=7.31%, y=27.31%, w=38.15%, h=6.39% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Archivo[wdth,wght].ttf` |
-| Variation axes | [300, 112.5] |
-| Font size | 101 px |
-| Letter-spacing | -0.9 px (-0.0089 em) |
-| Line-height | 88.0 px (ratio 0.871) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 95 px |
+| Letter-spacing | -0.99 px (-0.0104 em) |
+| Line-height | 97.0 px (ratio 1.021) |
 | Line | 2 of 2 |
 | Transform | none |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 21.0 / 26.42 px |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
+| Stroke (median/mean) | 21.0 / 26.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.1328 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.887 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 16 px |
-| Gap to next | 110 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 24 px |
+| Gap to next | 109 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 100px track -0.08px — IoU 0.0963
-- `Archivo[wdth,wght].ttf` 113px track -0.42px — IoU 0.0857
-- `Archivo[wdth,wght].ttf` 99px track -0.53px — IoU 0.0853
+- `Archivo[wdth,wght].ttf` 85px track -0.15px — IoU 0.8802
+- `Archivo[wdth,wght].ttf` 104px track 1.01px — IoU 0.8793
+- `ArchivoBlack-Regular.ttf` 94px track -0.12px — IoU 0.8772
 
-### `text-5` — detail
+### `text-5` — supporting
 
 **Text:** "Where Simplicity"  (OCR confidence 0.9573)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=76, y=474, w=330, h=37 |
-| Normalised | x=7.04%, y=43.89%, w=30.56%, h=3.43% |
+| Bounding box (px) | x=75, y=473, w=331, h=38 |
+| Normalised | x=6.94%, y=43.8%, w=30.65%, h=3.52% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -197,35 +201,36 @@ Alternate font fits considered:
 | Font file matched | `Archivo[wdth,wght].ttf` |
 | Variation axes | [700, 100.0] |
 | Font size | 41 px |
-| Letter-spacing | -0.1 px (-0.0024 em) |
-| Line-height | 54.0 px (ratio 1.317) |
+| Letter-spacing | -0.05 px (-0.0012 em) |
+| Line-height | 55.0 px (ratio 1.341) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 5.0 / 6.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.8656 |
+| Match IoU | 0.7954 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 110 px |
+| Gap to previous | 109 px |
 | Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 45px track 0.31px — IoU 0.8423
-- `Archivo[wdth,wght].ttf` 40px track -0.75px — IoU 0.8228
-- `Archivo[wdth,wght].ttf` 35px track -0.19px — IoU 0.811
+- `Archivo[wdth,wght].ttf` 46px track -0.11px — IoU 0.8029
+- `Archivo[wdth,wght].ttf` 40px track -0.69px — IoU 0.7996
+- `Archivo[wdth,wght].ttf` 45px track 0.36px — IoU 0.792
 
-### `text-6` — detail
+### `text-6` — supporting
 
 **Text:** "Meets Sophistication"  (OCR confidence 0.999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=78, y=528, w=410, h=37 |
-| Normalised | x=7.22%, y=48.89%, w=37.96%, h=3.43% |
+| Bounding box (px) | x=78, y=528, w=411, h=37 |
+| Normalised | x=7.22%, y=48.89%, w=38.06%, h=3.43% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -233,16 +238,17 @@ Alternate font fits considered:
 | Font file matched | `Archivo[wdth,wght].ttf` |
 | Variation axes | [700, 100.0] |
 | Font size | 41 px |
-| Letter-spacing | -0.1 px (-0.0024 em) |
-| Line-height | 54.0 px (ratio 1.317) |
+| Letter-spacing | -0.05 px (-0.0012 em) |
+| Line-height | 55.0 px (ratio 1.341) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 5.0 / 6.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.8617 |
+| Match IoU | 0.8279 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -250,11 +256,11 @@ Alternate font fits considered:
 | Gap to next | 107 px |
 
 Alternate font fits considered:
-- `Archivo[wdth,wght].ttf` 45px track 0.31px — IoU 0.8423
-- `Archivo[wdth,wght].ttf` 40px track -0.75px — IoU 0.8228
-- `Archivo[wdth,wght].ttf` 35px track -0.19px — IoU 0.811
+- `Archivo[wdth,wght].ttf` 46px track -0.11px — IoU 0.8029
+- `Archivo[wdth,wght].ttf` 40px track -0.69px — IoU 0.7996
+- `Archivo[wdth,wght].ttf` 45px track 0.36px — IoU 0.792
 
-### `text-7` — fine-print
+### `text-7` — body
 
 **Text:** "Celebrate confidence and"  (OCR confidence 0.9971)
 
@@ -269,35 +275,36 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 34 px |
-| Letter-spacing | 0.26 px (0.0076 em) |
-| Line-height | 46.5 px (ratio 1.368) |
+| Letter-spacing | 0.29 px (0.0085 em) |
+| Line-height | 46.0 px (ratio 1.353) |
 | Line | 1 of 3 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 2.0 / 3.21 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.6219 |
+| Match IoU | 0.6282 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 107 px |
-| Gap to next | 20 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 35px track -0.16px — IoU 0.6458
-- `Actor-Regular.ttf` 36px track -0.58px — IoU 0.5673
-- `Archivo[wdth,wght].ttf` 33px track 0.54px — IoU 0.465
+- `Actor-Regular.ttf` 35px track -0.12px — IoU 0.6308
+- `Actor-Regular.ttf` 36px track -0.54px — IoU 0.5705
+- `Archivo[wdth,wght].ttf` 33px track 0.58px — IoU 0.462
 
-### `text-8` — fine-print
+### `text-8` — body
 
 **Text:** "timeless style. Every detail"  (OCR confidence 0.9997)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=76, y=719, w=386, h=33 |
-| Normalised | x=7.04%, y=66.57%, w=35.74%, h=3.06% |
+| Bounding box (px) | x=75, y=718, w=387, h=35 |
+| Normalised | x=6.94%, y=66.48%, w=35.83%, h=3.24% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
@@ -305,35 +312,36 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 34 px |
-| Letter-spacing | 0.26 px (0.0076 em) |
-| Line-height | 46.5 px (ratio 1.368) |
+| Letter-spacing | 0.29 px (0.0085 em) |
+| Line-height | 46.0 px (ratio 1.353) |
 | Line | 2 of 3 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 3.04 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.6713 |
+| Match IoU | 0.6502 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 20 px |
-| Gap to next | 13 px |
+| Gap to previous | 19 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 35px track -0.16px — IoU 0.6458
-- `Actor-Regular.ttf` 36px track -0.58px — IoU 0.5673
-- `Archivo[wdth,wght].ttf` 33px track 0.54px — IoU 0.465
+- `Actor-Regular.ttf` 35px track -0.12px — IoU 0.6308
+- `Actor-Regular.ttf` 36px track -0.54px — IoU 0.5705
+- `Archivo[wdth,wght].ttf` 33px track 0.58px — IoU 0.462
 
-### `text-9` — fine-print
+### `text-9` — body
 
 **Text:** "speaks."  (OCR confidence 0.996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=77, y=765, w=104, h=33 |
-| Normalised | x=7.13%, y=70.83%, w=9.63%, h=3.06% |
+| Bounding box (px) | x=76, y=764, w=106, h=34 |
+| Normalised | x=7.04%, y=70.74%, w=9.81%, h=3.15% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
@@ -341,28 +349,29 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 34 px |
-| Letter-spacing | 0.26 px (0.0076 em) |
-| Line-height | 46.5 px (ratio 1.368) |
+| Letter-spacing | 0.29 px (0.0085 em) |
+| Line-height | 46.0 px (ratio 1.353) |
 | Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 3.31 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
-| Match IoU | 0.7066 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.64 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 13 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 11 px |
 | Gap to next | 125 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 35px track -0.16px — IoU 0.6458
-- `Actor-Regular.ttf` 36px track -0.58px — IoU 0.5673
-- `Archivo[wdth,wght].ttf` 33px track 0.54px — IoU 0.465
+- `Actor-Regular.ttf` 35px track -0.12px — IoU 0.6308
+- `Actor-Regular.ttf` 36px track -0.54px — IoU 0.5705
+- `Archivo[wdth,wght].ttf` 33px track 0.58px — IoU 0.462
 
-### `text-10` — detail
+### `text-10` — body
 
 **Text:** "Explore Now"  (OCR confidence 0.9991)
 
@@ -385,6 +394,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 8.0 / 10.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Archivo, Actor |
 | Match IoU | 0.9024 |
 | **Geometry fit confidence** | **high** |
@@ -404,11 +414,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#0d0d0d` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#000000` | glyph ink of 'Every' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'Moment' | glyph ink median |
+| textPrimary | `#000000` | glyph ink of 'Elegance' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'Explore Now' | glyph ink median |
 | accent | — | not identified | — |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | — | not identified | — |
 
 Full palette (k-means):
@@ -432,7 +442,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.1572 |
+| Text coverage | 0.1502 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -459,16 +469,16 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | Elegance |
-| `supporting` | text | Every |
+| `headline` | text | Elegance |
+| `headline` | text | Every |
 | `headline_line1` | text | in |
 | `headline_line2` | text | Moment |
-| `detail_line1` | text | Where Simplicity |
-| `detail_line2` | text | Meets Sophistication |
-| `fine-print_line1` | text | Celebrate confidence and |
-| `fine-print_line2` | text | timeless style. Every detail |
-| `fine-print_line3` | text | speaks. |
-| `detail` | text | Explore Now |
+| `supporting_line1` | text | Where Simplicity |
+| `supporting_line2` | text | Meets Sophistication |
+| `body_line1` | text | Celebrate confidence and |
+| `body_line2` | text | timeless style. Every detail |
+| `body_line3` | text | speaks. |
+| `body` | text | Explore Now |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -476,16 +486,16 @@ _Recommendations only — no manifest is generated._
 | `textPrimary` | colour | #000000 |
 | `textSecondary` | colour | #ffffff |
 | `brandFont` | font | Archivo Black |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_fine-print` | boolean | — |
-| `show_fine-print` | boolean | — |
-| `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 55.7 |
 | `imageFocalY` | number | 47.3 |
 

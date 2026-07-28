@@ -28,6 +28,9 @@ import json
 import re
 from pathlib import Path
 
+import analyzer as AZ
+from analyse_one import render_markdown
+
 VOWELS = set("aeiouyAEIOUY")
 
 
@@ -52,8 +55,14 @@ def suspicious_text(text: str, ocr_conf: float) -> tuple[bool, list[str]]:
     return (bool(reasons), reasons)
 
 
-def classify(iou: float | None, text_ok: bool) -> tuple[str, str]:
+def classify(iou: float | None, text_ok: bool,
+             render_model: str = "solid-vector-text") -> tuple[str, str]:
     """Return (label, interpretation) for a geometry fit score."""
+    if render_model == "text-in-photograph":
+        return "not-applicable-rasterText", (
+            "this is text printed on a photographed object, not editable type, so a "
+            "font fit is not meaningful and no font claim is made"
+        )
     if iou is None:
         return "unresolved", "no viable candidate could be rendered"
     if iou >= 0.70:
@@ -70,23 +79,34 @@ def classify(iou: float | None, text_ok: bool) -> tuple[str, str]:
         "not verified; "
         + ("driven by corrupted OCR text rather than a wrong family"
            if not text_ok else
-           "decorative/letter-spaced type, or per-character positioning in the source")
+           "commonly outlined/hollow type, an offset duplicate layer, overlapping "
+           "copies of a word, or incomplete OCR capture")
     )
 
 
 def process(path: Path) -> dict:
     a = json.loads(path.read_text())
+
+    # Keep the required semantic colour schema complete. Overlay evidence was
+    # already measured in effects.overlayGradient, so this pass can update old
+    # analyses without rerunning OCR or font fitting.
+    semantic = a.setdefault("colours", {}).setdefault("semantic", {})
+    overlay = (a.get("effects") or {}).get("overlayGradient") or {}
+    semantic["overlay"] = AZ.semantic_overlay(overlay)
+
     declared = [f["family"] for f in a.get("fonts", [])]
     resolved = [f["family"] for f in a.get("fonts", []) if f.get("resolved")]
 
-    stats = {"high": 0, "medium": 0, "low": 0, "very-low": 0,
-             "unresolved": 0, "textUnreliable": 0}
+    stats = {"high": 0, "medium": 0, "low": 0, "very-low": 0, "unresolved": 0,
+             "not-applicable-rasterText": 0, "textUnreliable": 0}
 
     for e in a.get("elements", []):
         t = e.setdefault("typography", {})
         ok, reasons = suspicious_text(e.get("text", ""), e.get("ocrConfidence", 1.0))
         text_ok = not ok
-        label, interp = classify(t.get("matchIou"), text_ok)
+        rm = (e.get("renderModel") or {}).get("model", "solid-vector-text")
+        label, interp = classify(t.get("matchIou"), text_ok, rm)
+        t["renderModel"] = rm
 
         t["fontFamilyIdentification"] = {
             "value": declared,
@@ -137,6 +157,7 @@ def process(path: Path) -> dict:
         },
     }
     path.write_text(json.dumps(a, indent=2))
+    path.with_name("ANALYSIS.md").write_text(render_markdown(a))
     return stats
 
 

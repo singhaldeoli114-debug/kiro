@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -50,19 +50,20 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-SemiBold.ttf` |
+| Font file matched | `AbhayaLibre-Medium.ttf` |
 | Variation axes | None |
-| Font size | 120 px |
-| Letter-spacing | -0.25 px (-0.0021 em) |
-| Line-height | 126.0 px (ratio 1.05) |
+| Font size | 119 px |
+| Letter-spacing | 0.33 px (0.0028 em) |
+| Line-height | 126.0 px (ratio 1.059) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.52:1 |
 | Stroke (median/mean) | 11.0 / 11.15 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre, Abril Fatface, Roboto |
-| Match IoU | 0.7962 |
+| Match IoU | 0.8425 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -70,9 +71,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 51 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 121px track -0.91px — IoU 0.8091
-- `AbhayaLibre-Medium.ttf` 121px track -0.5px — IoU 0.796
-- `AbhayaLibre-Medium.ttf` 119px track 0.83px — IoU 0.7946
+- `AbhayaLibre-Medium.ttf` 120px track -0.34px — IoU 0.8145
+- `AbhayaLibre-Medium.ttf` 118px track 0.99px — IoU 0.8099
+- `AbhayaLibre-SemiBold.ttf` 120px track -0.75px — IoU 0.809
 
 ### `text-2` — headline
 
@@ -80,25 +81,26 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=611, y=264, w=320, h=77 |
-| Normalised | x=56.57%, y=24.44%, w=29.63%, h=7.13% |
+| Bounding box (px) | x=612, y=264, w=318, h=77 |
+| Normalised | x=56.67%, y=24.44%, w=29.44%, h=7.13% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-SemiBold.ttf` |
+| Font file matched | `AbhayaLibre-Medium.ttf` |
 | Variation axes | None |
-| Font size | 120 px |
-| Letter-spacing | -0.25 px (-0.0021 em) |
-| Line-height | 126.0 px (ratio 1.05) |
+| Font size | 119 px |
+| Letter-spacing | 0.33 px (0.0028 em) |
+| Line-height | 126.0 px (ratio 1.059) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.52:1 |
-| Stroke (median/mean) | 12.0 / 12.92 px |
+| Stroke (median/mean) | 12.0 / 12.87 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre, Abril Fatface, Roboto |
-| Match IoU | 0.8323 |
+| Match IoU | 0.8089 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -106,11 +108,11 @@ Alternate font fits considered:
 | Gap to next | 451 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 121px track -0.91px — IoU 0.8091
-- `AbhayaLibre-Medium.ttf` 121px track -0.5px — IoU 0.796
-- `AbhayaLibre-Medium.ttf` 119px track 0.83px — IoU 0.7946
+- `AbhayaLibre-Medium.ttf` 120px track -0.34px — IoU 0.8145
+- `AbhayaLibre-Medium.ttf` 118px track 0.99px — IoU 0.8099
+- `AbhayaLibre-SemiBold.ttf` 120px track -0.75px — IoU 0.809
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Get Discount"  (OCR confidence 0.9988)
 
@@ -133,6 +135,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.52:1 |
 | Stroke (median/mean) | 6.0 / 8.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre, Abril Fatface, Roboto |
 | Match IoU | 0.8466 |
 | **Geometry fit confidence** | **high** |
@@ -152,8 +155,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=38, y=867, w=504, h=91 |
-| Normalised | x=3.52%, y=80.28%, w=46.67%, h=8.43% |
+| Bounding box (px) | x=38, y=867, w=505, h=91 |
+| Normalised | x=3.52%, y=80.28%, w=46.76%, h=8.43% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,7 +164,7 @@ Alternate font fits considered:
 | Font file matched | `AbrilFatface-Regular.ttf` |
 | Variation axes | None |
 | Font size | 125 px |
-| Letter-spacing | 0.67 px (0.0054 em) |
+| Letter-spacing | 0.83 px (0.0066 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -169,8 +172,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.25:1 |
 | Stroke (median/mean) | 19.0 / 18.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre, Abril Fatface, Roboto |
-| Match IoU | 0.7605 |
+| Match IoU | 0.7786 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -178,9 +182,9 @@ Alternate font fits considered:
 | Gap to next | 32 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 126px track 0.0px — IoU 0.7566
-- `AbrilFatface-Regular.ttf` 127px track -0.67px — IoU 0.7416
-- `Roboto[wdth,wght].ttf` 150px track 0.57px — IoU 0.6178
+- `AbrilFatface-Regular.ttf` 126px track 0.17px — IoU 0.7634
+- `AbrilFatface-Regular.ttf` 127px track -0.5px — IoU 0.7588
+- `Roboto[wdth,wght].ttf` 141px track 0.42px — IoU 0.6114
 
 ### `text-5` — headline
 
@@ -205,6 +209,8 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.52:1 |
 | Stroke (median/mean) | 7.0 / 7.17 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abhaya Libre, Abril Fatface, Roboto |
 | Match IoU | 0.2264 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
@@ -228,7 +234,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'STYLE' | glyph ink median |
 | accent | `#fe914d` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7f552f` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -252,7 +258,7 @@ Full palette (k-means):
 | Subject position | middle-left |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.0961 |
+| Text coverage | 0.096 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -281,7 +287,7 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | NEW |
 | `headline_line2` | text | STYLE |
-| `subheadline` | text | Get Discount |
+| `supporting` | text | Get Discount |
 | `headline` | text | 50% 0FF |
 | `headline` | text | //// |
 | `heroImage` | image | framed/panelled artwork |
@@ -296,7 +302,7 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Abhaya Libre |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 33.5 |

@@ -33,11 +33,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "Mauris pharetra"  (OCR confidence 0.9676)
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.41:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
 | Match IoU | 0.8213 |
 | **Geometry fit confidence** | **high** |
@@ -85,46 +86,47 @@ Alternate font fits considered:
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 68 px |
-| Letter-spacing | -0.84 px (-0.0124 em) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 84 px |
+| Letter-spacing | -0.87 px (-0.0104 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#582276` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.02:1 |
+| Colour | `#fa8bb1` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.71:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.1115 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9338 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | -15 px |
-| Gap to next | -40 px |
+| Gap to next | -38 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 67px track -0.08px — IoU 0.0952
-- `Raleway[wght].ttf` 68px track -0.74px — IoU 0.0897
-- `Raleway[wght].ttf` 66px track 0.67px — IoU 0.0839
+- `Oswald[wght].ttf` 83px track -0.25px — IoU 0.9255
+- `Oswald[wght].ttf` 82px track 0.35px — IoU 0.9137
+- `Oswald[wght].ttf` 84px track 0.23px — IoU 0.8729
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "ef"  (OCR confidence 0.8409)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=769, y=123, w=35, h=31 |
-| Normalised | x=71.2%, y=11.39%, w=3.24%, h=2.87% |
+| Bounding box (px) | x=774, y=125, w=26, h=24 |
+| Normalised | x=71.67%, y=11.57%, w=2.41%, h=2.22% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 36 px |
-| Letter-spacing | -1.39 px (-0.0386 em) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 33 px |
+| Letter-spacing | -0.08 px (-0.0024 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -132,56 +134,58 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.43:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.4168 |
-| **Geometry fit confidence** | **low-textUnreliable** |
+| Match IoU | 0.7044 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.8409) |
-| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
-| Gap to previous | -40 px |
-| Gap to next | -18 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -38 px |
+| Gap to next | -8 px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 44px track 0.23px — IoU 0.4083
-- `Oswald[wght].ttf` 48px track -1.0px — IoU 0.4039
-- `Oswald[wght].ttf` 45px track -0.56px — IoU 0.4021
+- `Oswald[wght].ttf` 34px track -0.28px — IoU 0.7042
+- `Oswald[wght].ttf` 36px track -1.0px — IoU 0.6971
+- `Oswald[wght].ttf` 35px track -0.25px — IoU 0.6969
 
-### `text-4` — fine-print
+### `text-4` — body
 
 **Text:** "Ut placerat orci nulta pellentesque dignissim."  (OCR confidence 0.9955)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=611, y=136, w=422, h=40 |
-| Normalised | x=56.57%, y=12.59%, w=39.07%, h=3.7% |
+| Bounding box (px) | x=612, y=141, w=421, h=26 |
+| Normalised | x=56.67%, y=13.06%, w=38.98%, h=2.41% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 19 px |
-| Letter-spacing | -0.19 px (-0.01 em) |
+| Variation axes | [500] |
+| Font size | 21 px |
+| Letter-spacing | -0.55 px (-0.0262 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#de82ac` |
+| Colour | `#dd81ac` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.24:1 |
+| Contrast vs local bg | 2.22:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.2483 |
+| Match IoU | 0.2808 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -18 px |
-| Gap to next | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -8 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 20px track -0.69px — IoU 0.2359
-- `Raleway[wght].ttf` 18px track 0.32px — IoU 0.2273
-- `Raleway[wght].ttf` 20px track -0.51px — IoU 0.2183
+- `Raleway[wght].ttf` 20px track -0.71px — IoU 0.2758
+- `Raleway[wght].ttf` 20px track -0.36px — IoU 0.2594
+- `Raleway[wght].ttf` 21px track -0.69px — IoU 0.2548
 
-### `text-5` — detail
+### `text-5` — body
 
 **Text:** "Elit at imperdiet dui accumsan sit amet."  (OCR confidence 0.9913)
 
@@ -197,61 +201,63 @@ Alternate font fits considered:
 | Variation axes | [600] |
 | Font size | 21 px |
 | Letter-spacing | -0.66 px (-0.0314 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 27.0 px (ratio 1.286) |
+| Line | 1 of 2 |
 | Transform | none |
 | Colour | `#e185af` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.24:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.7076 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6939 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -1 px |
-| Gap to next | -3 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 21px track -0.52px — IoU 0.6305
-- `Raleway[wght].ttf` 20px track -0.19px — IoU 0.6065
-- `Raleway[wght].ttf` 20px track -0.32px — IoU 0.582
+- `Raleway[wght].ttf` 21px track -0.52px — IoU 0.5807
+- `Raleway[wght].ttf` 20px track -0.32px — IoU 0.4781
+- `Raleway[wght].ttf` 20px track -0.19px — IoU 0.4585
 
-### `text-6` — supporting
+### `text-6` — body
 
 **Text:** "Rhoncus urna neque viverra justo."  (OCR confidence 0.9982)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=718, y=191, w=315, h=31 |
-| Normalised | x=66.48%, y=17.69%, w=29.17%, h=2.87% |
+| Bounding box (px) | x=718, y=202, w=315, h=20 |
+| Normalised | x=66.48%, y=18.7%, w=29.17%, h=1.85% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Oswald[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 25 px |
-| Letter-spacing | -0.37 px (-0.0148 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Raleway[wght].ttf` |
+| Variation axes | [600] |
+| Font size | 21 px |
+| Letter-spacing | -0.66 px (-0.0314 em) |
+| Line-height | 27.0 px (ratio 1.286) |
+| Line | 2 of 2 |
 | Transform | none |
-| Colour | `#db7fab` |
+| Colour | `#dc7fab` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.15:1 |
+| Contrast vs local bg | 2.16:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.1694 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5859 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -3 px |
-| Gap to next | -20 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
+| Gap to next | -14 px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 24px track -0.31px — IoU 0.1622
-- `Oswald[wght].ttf` 24px track -0.59px — IoU 0.1612
-- `Raleway[wght].ttf` 20px track -0.31px — IoU 0.157
+- `Raleway[wght].ttf` 21px track -0.52px — IoU 0.5807
+- `Raleway[wght].ttf` 20px track -0.32px — IoU 0.4781
+- `Raleway[wght].ttf` 20px track -0.19px — IoU 0.4585
 
 ### `text-7` — headline
 
@@ -259,37 +265,38 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=50, y=202, w=411, h=86 |
-| Normalised | x=4.63%, y=18.7%, w=38.06%, h=7.96% |
+| Bounding box (px) | x=55, y=208, w=398, h=72 |
+| Normalised | x=5.09%, y=19.26%, w=36.85%, h=6.67% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 69 px |
-| Letter-spacing | 0.34 px (0.0049 em) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 84 px |
+| Letter-spacing | -0.21 px (-0.0025 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#5f2375` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.04:1 |
+| Colour | `#fa8bb1` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.57:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.2757 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9172 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -20 px |
-| Gap to next | -21 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -14 px |
+| Gap to next | -13 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 70px track -0.4px — IoU 0.2755
-- `Raleway[wght].ttf` 68px track 1.08px — IoU 0.274
-- `Raleway[wght].ttf` 69px track 0.57px — IoU 0.2511
+- `Oswald[wght].ttf` 85px track -0.8px — IoU 0.9071
+- `Oswald[wght].ttf` 83px track 0.38px — IoU 0.8968
+- `Oswald[wght].ttf` 86px track -0.34px — IoU 0.8554
 
-### `text-8` — subheadline
+### `text-8` — supporting
 
 **Text:** "Urna id volutpat"  (OCR confidence 0.9916)
 
@@ -312,12 +319,13 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.32:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
 | Match IoU | 0.869 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -21 px |
+| Gap to previous | -13 px |
 | Gap to next | 13 px |
 
 Alternate font fits considered:
@@ -325,7 +333,7 @@ Alternate font fits considered:
 - `Oswald[wght].ttf` 34px track -0.35px — IoU 0.8419
 - `Oswald[wght].ttf` 33px track 0.08px — IoU 0.8224
 
-### `text-9` — detail
+### `text-9` — body
 
 **Text:** "Condimentum mattis pellentesque id nibh"  (OCR confidence 0.9842)
 
@@ -340,35 +348,36 @@ Alternate font fits considered:
 | Font file matched | `Raleway[wght].ttf` |
 | Variation axes | [600] |
 | Font size | 21 px |
-| Letter-spacing | -0.64 px (-0.0305 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.6 px (-0.0286 em) |
+| Line-height | 28.0 px (ratio 1.333) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#db7eab` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.14:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.6633 |
+| Match IoU | 0.6302 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 13 px |
-| Gap to next | -1 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 21px track -0.51px — IoU 0.6353
-- `Raleway[wght].ttf` 20px track -0.26px — IoU 0.561
-- `Raleway[wght].ttf` 20px track -0.12px — IoU 0.5011
+- `Raleway[wght].ttf` 20px track -0.16px — IoU 0.5424
+- `Raleway[wght].ttf` 21px track -0.46px — IoU 0.5161
+- `Raleway[wght].ttf` 20px track -0.3px — IoU 0.47
 
-### `text-10` — detail
+### `text-10` — body
 
 **Text:** "tortor id aliquet lectus. Libero id faucibus nisl"  (OCR confidence 0.988)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=615, y=338, w=419, h=29 |
-| Normalised | x=56.94%, y=31.3%, w=38.8%, h=2.69% |
+| Bounding box (px) | x=615, y=347, w=419, h=20 |
+| Normalised | x=56.94%, y=32.13%, w=38.8%, h=1.85% |
 | Alignment | right |
 | z-order | 109 |
 | Rotation | 0° |
@@ -377,27 +386,28 @@ Alternate font fits considered:
 | Variation axes | [600] |
 | Font size | 21 px |
 | Letter-spacing | -0.6 px (-0.0286 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 28.0 px (ratio 1.333) |
+| Line | 2 of 3 |
 | Transform | none |
 | Colour | `#da7daa` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.1:1 |
+| Contrast vs local bg | 2.12:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.21 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.583 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
 | Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 25px track -0.47px — IoU 0.1957
-- `Raleway[wght].ttf` 20px track -0.16px — IoU 0.1952
-- `Oswald[wght].ttf` 23px track -0.28px — IoU 0.192
+- `Raleway[wght].ttf` 20px track -0.16px — IoU 0.5424
+- `Raleway[wght].ttf` 21px track -0.46px — IoU 0.5161
+- `Raleway[wght].ttf` 20px track -0.3px — IoU 0.47
 
-### `text-11` — detail
+### `text-11` — body
 
 **Text:** "tincidunt eget nullam non nisi."  (OCR confidence 0.9813)
 
@@ -410,28 +420,29 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [600] |
 | Font size | 21 px |
-| Letter-spacing | -0.51 px (-0.0243 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.6 px (-0.0286 em) |
+| Line-height | 28.0 px (ratio 1.333) |
+| Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#e183ae` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.16:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Oswald |
-| Match IoU | 0.5754 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.4752 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 8 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 21px track -0.65px — IoU 0.5496
-- `Raleway[wght].ttf` 20px track -0.18px — IoU 0.5439
-- `Raleway[wght].ttf` 20px track -0.33px — IoU 0.531
+- `Raleway[wght].ttf` 20px track -0.16px — IoU 0.5424
+- `Raleway[wght].ttf` 21px track -0.46px — IoU 0.5161
+- `Raleway[wght].ttf` 20px track -0.3px — IoU 0.47
 
 ## 4. Colours (semantic)
 
@@ -439,11 +450,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fcfcfc` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#6f2773` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#5f2375` | glyph ink of 'MARKETING' | glyph ink median |
-| textSecondary | `#de82ac` | glyph ink of 'Ut placerat orci nulta pelle' | glyph ink median |
+| textPrimary | `#fa8bb1` | glyph ink of 'MARKETING' | glyph ink median |
+| textSecondary | `#dd81ac` | glyph ink of 'Ut placerat orci nulta pelle' | glyph ink median |
 | accent | `#5f2375` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#6f2773` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -467,7 +478,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1086 |
+| Text coverage | 0.0912 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -494,38 +505,38 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | Mauris pharetra |
+| `supporting` | text | Mauris pharetra |
 | `headline` | text | EMAIL |
-| `subheadline` | text | ef |
-| `fine-print` | text | Ut placerat orci nulta pellentesque dignissim. |
-| `detail` | text | Elit at imperdiet dui accumsan sit amet. |
-| `supporting` | text | Rhoncus urna neque viverra justo. |
+| `supporting` | text | ef |
+| `body` | text | Ut placerat orci nulta pellentesque dignissim. |
+| `body_line1` | text | Elit at imperdiet dui accumsan sit amet. |
+| `body_line2` | text | Rhoncus urna neque viverra justo. |
 | `headline` | text | MARKETING |
-| `subheadline` | text | Urna id volutpat |
-| `detail` | text | Condimentum mattis pellentesque id nibh |
-| `detail` | text | tortor id aliquet lectus. Libero id faucibus nisl |
-| `detail` | text | tincidunt eget nullam non nisi. |
+| `supporting` | text | Urna id volutpat |
+| `body_line1` | text | Condimentum mattis pellentesque id nibh |
+| `body_line2` | text | tortor id aliquet lectus. Libero id faucibus nisl |
+| `body_line3` | text | tincidunt eget nullam non nisi. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fcfcfc |
 | `surface` | colour | #6f2773 |
-| `textPrimary` | colour | #5f2375 |
-| `textSecondary` | colour | #de82ac |
+| `textPrimary` | colour | #fa8bb1 |
+| `textSecondary` | colour | #dd81ac |
 | `accent` | colour | #5f2375 |
 | `accentSecondary` | colour | #6f2773 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Raleway |
-| `show_subheadline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 54.1 |
 | `imageFocalY` | number | 50.0 |
 

@@ -33,26 +33,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — fine-print
 
 **Text:** "LOGO"  (OCR confidence 0.9982)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=59, y=72, w=108, h=29 |
-| Normalised | x=5.46%, y=6.67%, w=10.0%, h=2.69% |
+| Bounding box (px) | x=58, y=72, w=109, h=29 |
+| Normalised | x=5.37%, y=6.67%, w=10.09%, h=2.69% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `RobotoSlab[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 40 px |
-| Letter-spacing | 0.98 px (0.0245 em) |
+| Variation axes | [400] |
+| Font size | 41 px |
+| Letter-spacing | 1.24 px (0.0302 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 4.0 / 4.59 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Niconne, Roboto Slab |
-| Match IoU | 0.7074 |
+| Match IoU | 0.7163 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 561 px |
+| Gap to next | 566 px |
 
 Alternate font fits considered:
-- `RobotoSlab[wght].ttf` 41px track 0.11px — IoU 0.6768
-- `RobotoSlab[wght].ttf` 39px track 1.31px — IoU 0.6741
-- `RobotoSlab[wght].ttf` 41px track 0.91px — IoU 0.6423
+- `RobotoSlab[wght].ttf` 42px track -0.43px — IoU 0.6946
+- `RobotoSlab[wght].ttf` 42px track 0.39px — IoU 0.6876
+- `RobotoSlab[wght].ttf` 41px track 0.16px — IoU 0.6859
 
 ### `text-2` — headline
 
@@ -79,44 +80,46 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=63, y=662, w=567, h=279 |
-| Normalised | x=5.83%, y=61.3%, w=52.5%, h=25.83% |
+| Bounding box (px) | x=54, y=667, w=584, h=269 |
+| Normalised | x=5.0%, y=61.76%, w=54.07%, h=24.91% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `RobotoSlab[wght].ttf` |
 | Variation axes | [900.0] |
-| Font size | 198 px |
-| Letter-spacing | -0.15 px (-0.0008 em) |
+| Font size | 204 px |
+| Letter-spacing | -0.2 px (-0.001 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#f46928` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 6.87:1 |
-| Stroke (median/mean) | 5.0 / 5.55 px |
+| Stroke (median/mean) | 5.0 / 5.73 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Niconne, Roboto Slab |
-| Match IoU | 0.1669 |
+| Match IoU | 0.1626 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 561 px |
-| Gap to next | -30 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 566 px |
+| Gap to next | -25 px |
 
 Alternate font fits considered:
-- `RobotoSlab[wght].ttf` 199px track -0.87px — IoU 0.1663
-- `RobotoSlab[wght].ttf` 197px track 0.57px — IoU 0.1661
-- `RobotoSlab[wght].ttf` 199px track -0.16px — IoU 0.1603
+- `RobotoSlab[wght].ttf` 205px track -0.92px — IoU 0.1623
+- `RobotoSlab[wght].ttf` 203px track 0.51px — IoU 0.1608
+- `RobotoSlab[wght].ttf` 206px track -0.91px — IoU 0.1578
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "C O L L E C T I O N"  (OCR confidence 0.9935)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=63, y=911, w=517, h=40 |
-| Normalised | x=5.83%, y=84.35%, w=47.87%, h=3.7% |
+| Bounding box (px) | x=62, y=911, w=518, h=40 |
+| Normalised | x=5.74%, y=84.35%, w=47.96%, h=3.7% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,7 +127,7 @@ Alternate font fits considered:
 | Font file matched | `RobotoSlab[wght].ttf` |
 | Variation axes | [400] |
 | Font size | 60 px |
-| Letter-spacing | 0.61 px (0.0102 em) |
+| Letter-spacing | 0.67 px (0.0112 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -132,18 +135,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 19.47:1 |
 | Stroke (median/mean) | 5.0 / 6.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Niconne, Roboto Slab |
-| Match IoU | 0.7111 |
+| Match IoU | 0.7203 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -30 px |
+| Gap to previous | -25 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `RobotoSlab[wght].ttf` 61px track 0.14px — IoU 0.6528
-- `RobotoSlab[wght].ttf` 62px track -0.32px — IoU 0.6333
-- `RobotoSlab[wght].ttf` 60px track 0.42px — IoU 0.5695
+- `RobotoSlab[wght].ttf` 61px track 0.2px — IoU 0.6482
+- `RobotoSlab[wght].ttf` 62px track -0.27px — IoU 0.6247
+- `RobotoSlab[wght].ttf` 60px track 0.48px — IoU 0.6051
 
 ## 4. Colours (semantic)
 
@@ -155,7 +159,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'C O L L E C T I O N' | glyph ink median |
 | accent | `#9c8173` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +183,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.156 |
+| Text coverage | 0.1552 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -206,9 +210,9 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | LOGO |
+| `fine-print` | text | LOGO |
 | `headline` | text | Shoes |
-| `subheadline` | text | C O L L E C T I O N |
+| `body` | text | C O L L E C T I O N |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #c6c7c6 |
@@ -218,9 +222,9 @@ _Recommendations only — no manifest is generated._
 | `accent` | colour | #9c8173 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Niconne |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 55.3 |
 | `imageFocalY` | number | 44.2 |
 

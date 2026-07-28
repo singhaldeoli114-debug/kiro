@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=150, y=86, w=490, h=69 |
-| Normalised | x=13.89%, y=7.96%, w=45.37%, h=6.39% |
+| Bounding box (px) | x=149, y=85, w=491, h=70 |
+| Normalised | x=13.8%, y=7.87%, w=45.46%, h=6.48% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,26 +52,27 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 72 px |
-| Letter-spacing | -0.56 px (-0.0078 em) |
-| Line-height | 68.0 px (ratio 0.944) |
+| Letter-spacing | -0.46 px (-0.0064 em) |
+| Line-height | 77.0 px (ratio 1.069) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.39:1 |
 | Stroke (median/mean) | 16.0 / 21.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.8491 |
+| Match IoU | 0.8634 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -1 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 71px track 0.07px — IoU 0.7195
-- `ArchivoBlack-Regular.ttf` 70px track 0.7px — IoU 0.7069
-- `Poppins-Regular.ttf` 78px track -0.24px — IoU 0.3618
+- `ArchivoBlack-Regular.ttf` 71px track 0.16px — IoU 0.8153
+- `ArchivoBlack-Regular.ttf` 70px track 0.79px — IoU 0.8037
+- `Poppins-Regular.ttf` 79px track -0.73px — IoU 0.4046
 
 ### `text-2` — subheadline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=150, y=154, w=217, h=75 |
-| Normalised | x=13.89%, y=14.26%, w=20.09%, h=6.94% |
+| Bounding box (px) | x=149, y=162, w=219, h=67 |
+| Normalised | x=13.8%, y=15.0%, w=20.28%, h=6.2% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,26 +89,27 @@ Alternate font fits considered:
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 72 px |
-| Letter-spacing | -0.56 px (-0.0078 em) |
-| Line-height | 68.0 px (ratio 0.944) |
+| Letter-spacing | -0.46 px (-0.0064 em) |
+| Line-height | 77.0 px (ratio 1.069) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.39:1 |
-| Stroke (median/mean) | 16.0 / 21.84 px |
+| Stroke (median/mean) | 16.0 / 21.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.6315 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.8149 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -1 px |
-| Gap to next | -66 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 7 px |
+| Gap to next | -67 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 71px track 0.07px — IoU 0.7195
-- `ArchivoBlack-Regular.ttf` 70px track 0.7px — IoU 0.7069
-- `Poppins-Regular.ttf` 78px track -0.24px — IoU 0.3618
+- `ArchivoBlack-Regular.ttf` 71px track 0.16px — IoU 0.8153
+- `ArchivoBlack-Regular.ttf` 70px track 0.79px — IoU 0.8037
+- `Poppins-Regular.ttf` 79px track -0.73px — IoU 0.4046
 
 ### `text-3` — subheadline
 
@@ -115,8 +117,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=392, y=163, w=317, h=66 |
-| Normalised | x=36.3%, y=15.09%, w=29.35%, h=6.11% |
+| Bounding box (px) | x=392, y=162, w=318, h=67 |
+| Normalised | x=36.3%, y=15.0%, w=29.44%, h=6.2% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,7 +126,7 @@ Alternate font fits considered:
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 72 px |
-| Letter-spacing | 0.15 px (0.0021 em) |
+| Letter-spacing | 0.32 px (0.0044 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -132,18 +134,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.39:1 |
 | Stroke (median/mean) | 15.0 / 18.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.8234 |
+| Match IoU | 0.8208 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -66 px |
+| Gap to previous | -67 px |
 | Gap to next | 114 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 71px track 0.88px — IoU 0.8147
-- `ArchivoBlack-Regular.ttf` 73px track -0.58px — IoU 0.812
-- `Poppins-Regular.ttf` 80px track -0.58px — IoU 0.4079
+- `ArchivoBlack-Regular.ttf` 71px track 1.05px — IoU 0.8026
+- `ArchivoBlack-Regular.ttf` 73px track -0.41px — IoU 0.7943
+- `Poppins-Regular.ttf` 80px track -0.42px — IoU 0.4051
 
 ### `text-4` — supporting
 
@@ -151,8 +154,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=173, y=343, w=427, h=43 |
-| Normalised | x=16.02%, y=31.76%, w=39.54%, h=3.98% |
+| Bounding box (px) | x=172, y=343, w=428, h=44 |
+| Normalised | x=15.93%, y=31.76%, w=39.63%, h=4.07% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,7 +163,7 @@ Alternate font fits considered:
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 40 px |
-| Letter-spacing | -0.72 px (-0.018 em) |
+| Letter-spacing | -0.67 px (-0.0168 em) |
 | Line-height | 54.0 px (ratio 1.35) |
 | Line | 1 of 2 |
 | Transform | none |
@@ -168,18 +171,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.39:1 |
 | Stroke (median/mean) | 6.0 / 8.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.7036 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6567 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 114 px |
-| Gap to next | 11 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 38px track 0.5px — IoU 0.6673
-- `ArchivoBlack-Regular.ttf` 39px track -0.11px — IoU 0.6663
-- `Poppins-Regular.ttf` 42px track -0.02px — IoU 0.4448
+- `ArchivoBlack-Regular.ttf` 38px track 0.56px — IoU 0.6555
+- `ArchivoBlack-Regular.ttf` 39px track -0.06px — IoU 0.6302
+- `Poppins-Regular.ttf` 42px track 0.04px — IoU 0.4221
 
 ### `text-5` — supporting
 
@@ -187,8 +191,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=172, y=397, w=382, h=43 |
-| Normalised | x=15.93%, y=36.76%, w=35.37%, h=3.98% |
+| Bounding box (px) | x=172, y=397, w=383, h=44 |
+| Normalised | x=15.93%, y=36.76%, w=35.46%, h=4.07% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -196,7 +200,7 @@ Alternate font fits considered:
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 40 px |
-| Letter-spacing | -0.72 px (-0.018 em) |
+| Letter-spacing | -0.67 px (-0.0168 em) |
 | Line-height | 54.0 px (ratio 1.35) |
 | Line | 2 of 2 |
 | Transform | lowercase |
@@ -204,200 +208,207 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.39:1 |
 | Stroke (median/mean) | 6.0 / 7.32 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.6913 |
+| Match IoU | 0.6766 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 11 px |
-| Gap to next | 73 px |
+| Gap to previous | 10 px |
+| Gap to next | 71 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 38px track 0.5px — IoU 0.6673
-- `ArchivoBlack-Regular.ttf` 39px track -0.11px — IoU 0.6663
-- `Poppins-Regular.ttf` 42px track -0.02px — IoU 0.4448
+- `ArchivoBlack-Regular.ttf` 38px track 0.56px — IoU 0.6555
+- `ArchivoBlack-Regular.ttf` 39px track -0.06px — IoU 0.6302
+- `Poppins-Regular.ttf` 42px track 0.04px — IoU 0.4221
 
-### `text-6` — detail
+### `text-6` — body
 
 **Text:** "Every collection is"  (OCR confidence 0.9978)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=174, y=513, w=242, h=27 |
-| Normalised | x=16.11%, y=47.5%, w=22.41%, h=2.5% |
+| Bounding box (px) | x=173, y=512, w=243, h=29 |
+| Normalised | x=16.02%, y=47.41%, w=22.5%, h=2.69% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 27 px |
-| Letter-spacing | 0.34 px (0.0126 em) |
-| Line-height | 36.7 px (ratio 1.359) |
+| Font size | 28 px |
+| Letter-spacing | -0.09 px (-0.0032 em) |
+| Line-height | 36.8 px (ratio 1.314) |
 | Line | 1 of 7 |
 | Transform | none |
 | Colour | `#303030` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.25:1 |
 | Stroke (median/mean) | 2.0 / 2.14 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.6409 |
+| Match IoU | 0.6197 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 73 px |
-| Gap to next | 10 px |
+| Gap to previous | 71 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track -0.18px — IoU 0.5684
-- `Poppins-Regular.ttf` 29px track -0.7px — IoU 0.494
-- `ArchivoBlack-Regular.ttf` 24px track 0.71px — IoU 0.3481
+- `Poppins-Regular.ttf` 27px track 0.43px — IoU 0.5881
+- `Poppins-Regular.ttf` 29px track -0.61px — IoU 0.5558
+- `ArchivoBlack-Regular.ttf` 26px track -0.34px — IoU 0.3673
 
-### `text-7` — detail
+### `text-7` — body
 
 **Text:** "thoughtfully created to"  (OCR confidence 0.9992)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=173, y=550, w=317, h=27 |
-| Normalised | x=16.02%, y=50.93%, w=29.35%, h=2.5% |
+| Bounding box (px) | x=172, y=549, w=319, h=29 |
+| Normalised | x=15.93%, y=50.83%, w=29.54%, h=2.69% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 27 px |
-| Letter-spacing | 0.34 px (0.0126 em) |
-| Line-height | 36.7 px (ratio 1.359) |
+| Font size | 28 px |
+| Letter-spacing | -0.09 px (-0.0032 em) |
+| Line-height | 36.8 px (ratio 1.314) |
 | Line | 2 of 7 |
 | Transform | lowercase |
-| Colour | `#343433` |
+| Colour | `#353534` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.99:1 |
+| Contrast vs local bg | 3.93:1 |
 | Stroke (median/mean) | 2.0 / 1.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.6398 |
+| Match IoU | 0.6573 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 10 px |
-| Gap to next | 9 px |
+| Gap to previous | 8 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track -0.18px — IoU 0.5684
-- `Poppins-Regular.ttf` 29px track -0.7px — IoU 0.494
-- `ArchivoBlack-Regular.ttf` 24px track 0.71px — IoU 0.3481
+- `Poppins-Regular.ttf` 27px track 0.43px — IoU 0.5881
+- `Poppins-Regular.ttf` 29px track -0.61px — IoU 0.5558
+- `ArchivoBlack-Regular.ttf` 26px track -0.34px — IoU 0.3673
 
-### `text-8` — detail
+### `text-8` — body
 
 **Text:** "combine comfort,"  (OCR confidence 0.9963)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=173, y=586, w=246, h=25 |
-| Normalised | x=16.02%, y=54.26%, w=22.78%, h=2.31% |
+| Bounding box (px) | x=172, y=586, w=248, h=25 |
+| Normalised | x=15.93%, y=54.26%, w=22.96%, h=2.31% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 27 px |
-| Letter-spacing | 0.34 px (0.0126 em) |
-| Line-height | 36.7 px (ratio 1.359) |
+| Font size | 28 px |
+| Letter-spacing | -0.09 px (-0.0032 em) |
+| Line-height | 36.8 px (ratio 1.314) |
 | Line | 3 of 7 |
 | Transform | lowercase |
 | Colour | `#2f2f2f` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.32:1 |
 | Stroke (median/mean) | 2.0 / 2.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.694 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7075 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 9 px |
-| Gap to next | 12 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 8 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track -0.18px — IoU 0.5684
-- `Poppins-Regular.ttf` 29px track -0.7px — IoU 0.494
-- `ArchivoBlack-Regular.ttf` 24px track 0.71px — IoU 0.3481
+- `Poppins-Regular.ttf` 27px track 0.43px — IoU 0.5881
+- `Poppins-Regular.ttf` 29px track -0.61px — IoU 0.5558
+- `ArchivoBlack-Regular.ttf` 26px track -0.34px — IoU 0.3673
 
-### `text-9` — detail
+### `text-9` — body
 
 **Text:** "confidence, and timeless"  (OCR confidence 0.9816)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=173, y=623, w=347, h=23 |
-| Normalised | x=16.02%, y=57.69%, w=32.13%, h=2.13% |
+| Bounding box (px) | x=172, y=622, w=349, h=26 |
+| Normalised | x=15.93%, y=57.59%, w=32.31%, h=2.41% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 27 px |
-| Letter-spacing | 0.34 px (0.0126 em) |
-| Line-height | 36.7 px (ratio 1.359) |
+| Font size | 28 px |
+| Letter-spacing | -0.09 px (-0.0032 em) |
+| Line-height | 36.8 px (ratio 1.314) |
 | Line | 4 of 7 |
 | Transform | lowercase |
 | Colour | `#2f2f2f` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.32:1 |
 | Stroke (median/mean) | 2.0 / 2.19 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.4758 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.66 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 12 px |
-| Gap to next | 14 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 11 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track -0.18px — IoU 0.5684
-- `Poppins-Regular.ttf` 29px track -0.7px — IoU 0.494
-- `ArchivoBlack-Regular.ttf` 24px track 0.71px — IoU 0.3481
+- `Poppins-Regular.ttf` 27px track 0.43px — IoU 0.5881
+- `Poppins-Regular.ttf` 29px track -0.61px — IoU 0.5558
+- `ArchivoBlack-Regular.ttf` 26px track -0.34px — IoU 0.3673
 
-### `text-10` — detail
+### `text-10` — body
 
-**Text:** "design-because great"  (OCR confidence 0.9959)
+**Text:** "design because great"  (OCR confidence 0.9959)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=173, y=660, w=322, h=27 |
-| Normalised | x=16.02%, y=61.11%, w=29.81%, h=2.5% |
+| Bounding box (px) | x=172, y=659, w=324, h=29 |
+| Normalised | x=15.93%, y=61.02%, w=30.0%, h=2.69% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 27 px |
-| Letter-spacing | 0.34 px (0.0126 em) |
-| Line-height | 36.7 px (ratio 1.359) |
+| Font size | 28 px |
+| Letter-spacing | -0.09 px (-0.0032 em) |
+| Line-height | 36.8 px (ratio 1.314) |
 | Line | 5 of 7 |
 | Transform | lowercase |
-| Colour | `#2f2f2f` |
+| Colour | `#303030` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.28:1 |
+| Contrast vs local bg | 4.25:1 |
 | Stroke (median/mean) | 2.0 / 2.3 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'designbecause' -> 'design because' |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.2559 |
+| Match IoU | 0.2333 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 14 px |
-| Gap to next | 9 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 11 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track -0.18px — IoU 0.5684
-- `Poppins-Regular.ttf` 29px track -0.7px — IoU 0.494
-- `ArchivoBlack-Regular.ttf` 24px track 0.71px — IoU 0.3481
+- `Poppins-Regular.ttf` 27px track 0.43px — IoU 0.5881
+- `Poppins-Regular.ttf` 29px track -0.61px — IoU 0.5558
+- `ArchivoBlack-Regular.ttf` 26px track -0.34px — IoU 0.3673
 
-### `text-11` — detail
+### `text-11` — body
 
 **Text:** "style starts with great"  (OCR confidence 0.9809)
 
@@ -411,63 +422,65 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 27 px |
-| Letter-spacing | 0.34 px (0.0126 em) |
-| Line-height | 36.7 px (ratio 1.359) |
+| Font size | 28 px |
+| Letter-spacing | -0.09 px (-0.0032 em) |
+| Line-height | 36.8 px (ratio 1.314) |
 | Line | 6 of 7 |
 | Transform | lowercase |
 | Colour | `#303030` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.25:1 |
 | Stroke (median/mean) | 2.0 / 2.12 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.633 |
+| Match IoU | 0.6589 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 9 px |
+| Gap to previous | 8 px |
 | Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track -0.18px — IoU 0.5684
-- `Poppins-Regular.ttf` 29px track -0.7px — IoU 0.494
-- `ArchivoBlack-Regular.ttf` 24px track 0.71px — IoU 0.3481
+- `Poppins-Regular.ttf` 27px track 0.43px — IoU 0.5881
+- `Poppins-Regular.ttf` 29px track -0.61px — IoU 0.5558
+- `ArchivoBlack-Regular.ttf` 26px track -0.34px — IoU 0.3673
 
-### `text-12` — detail
+### `text-12` — body
 
 **Text:** "craftsmanship."  (OCR confidence 0.9999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=173, y=733, w=206, h=28 |
-| Normalised | x=16.02%, y=67.87%, w=19.07%, h=2.59% |
+| Bounding box (px) | x=172, y=733, w=208, h=28 |
+| Normalised | x=15.93%, y=67.87%, w=19.26%, h=2.59% |
 | Alignment | left |
 | z-order | 111 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 27 px |
-| Letter-spacing | 0.34 px (0.0126 em) |
-| Line-height | 36.7 px (ratio 1.359) |
+| Font size | 28 px |
+| Letter-spacing | -0.09 px (-0.0032 em) |
+| Line-height | 36.8 px (ratio 1.314) |
 | Line | 7 of 7 |
 | Transform | lowercase |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.39:1 |
 | Stroke (median/mean) | 2.0 / 2.23 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.6528 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7196 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 9 px |
-| Gap to next | 101 px |
+| Gap to next | 106 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track -0.18px — IoU 0.5684
-- `Poppins-Regular.ttf` 29px track -0.7px — IoU 0.494
-- `ArchivoBlack-Regular.ttf` 24px track 0.71px — IoU 0.3481
+- `Poppins-Regular.ttf` 27px track 0.43px — IoU 0.5881
+- `Poppins-Regular.ttf` 29px track -0.61px — IoU 0.5558
+- `ArchivoBlack-Regular.ttf` 26px track -0.34px — IoU 0.3673
 
 ### `text-13` — headline
 
@@ -475,35 +488,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=164, y=862, w=755, h=87 |
-| Normalised | x=15.19%, y=79.81%, w=69.91%, h=8.06% |
+| Bounding box (px) | x=168, y=867, w=748, h=74 |
+| Normalised | x=15.56%, y=80.28%, w=69.26%, h=6.85% |
 | Alignment | center |
 | z-order | 112 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 135 px |
-| Letter-spacing | -0.18 px (-0.0013 em) |
+| Font size | 100 px |
+| Letter-spacing | -0.75 px (-0.0075 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#000000` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 13.0 / 19.09 px |
+| Colour | `#fff4e6` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 20.24:1 |
+| Stroke (median/mean) | 24.0 / 34.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Archivo Black |
-| Match IoU | 0.1849 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8876 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 101 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 106 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 136px track -0.74px — IoU 0.1848
-- `Poppins-Regular.ttf` 134px track 0.38px — IoU 0.1806
-- `ArchivoBlack-Regular.ttf` 99px track 0.7px — IoU 0.1439
+- `ArchivoBlack-Regular.ttf` 99px track 0.0px — IoU 0.8781
+- `ArchivoBlack-Regular.ttf` 98px track 0.76px — IoU 0.856
+- `Poppins-Regular.ttf` 133px track 0.24px — IoU 0.4141
 
 ## 4. Colours (semantic)
 
@@ -511,11 +525,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f2f2f2` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#14100f` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#000000` | glyph ink of 'BEST SELLER' | glyph ink median |
-| textSecondary | `#2e2e2e` | glyph ink of 'Every' | glyph ink median |
+| textPrimary | `#fff4e6` | glyph ink of 'BEST SELLER' | glyph ink median |
+| textSecondary | `#2e2e2e` | glyph ink of 'Designed for' | glyph ink median |
 | accent | `#14100f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7a6052` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -539,7 +553,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1916 |
+| Text coverage | 0.1856 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -571,19 +585,19 @@ _Recommendations only — no manifest is generated._
 | `subheadline` | text | Journey |
 | `supporting_line1` | text | Clothing that moves |
 | `supporting_line2` | text | with your lifestyle. |
-| `detail_line1` | text | Every collection is |
-| `detail_line2` | text | thoughtfully created to |
-| `detail_line3` | text | combine comfort, |
-| `detail_line4` | text | confidence, and timeless |
-| `detail_line5` | text | design-because great |
-| `detail_line6` | text | style starts with great |
-| `detail_line7` | text | craftsmanship. |
+| `body_line1` | text | Every collection is |
+| `body_line2` | text | thoughtfully created to |
+| `body_line3` | text | combine comfort, |
+| `body_line4` | text | confidence, and timeless |
+| `body_line5` | text | design because great |
+| `body_line6` | text | style starts with great |
+| `body_line7` | text | craftsmanship. |
 | `headline` | text | BEST SELLER |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f2f2f2 |
 | `surface` | colour | #14100f |
-| `textPrimary` | colour | #000000 |
+| `textPrimary` | colour | #fff4e6 |
 | `textSecondary` | colour | #2e2e2e |
 | `accent` | colour | #14100f |
 | `accentSecondary` | colour | #7a6052 |
@@ -594,13 +608,13 @@ _Recommendations only — no manifest is generated._
 | `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 55.0 |
 | `imageFocalY` | number | 48.8 |

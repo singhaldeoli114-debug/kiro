@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -59,6 +59,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.31:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata |
 | Match IoU | 0.8519 |
 | **Geometry fit confidence** | **high** |
@@ -68,8 +69,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 97px track -0.18px — IoU 0.5019
-- `Alata-Regular.ttf` 96px track 0.3px — IoU 0.4901
+- `Alata-Regular.ttf` 97px track -0.18px — IoU 0.5122
+- `Alata-Regular.ttf` 96px track 0.3px — IoU 0.5007
 
 ### `text-2` — headline
 
@@ -77,8 +78,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=64, y=366, w=418, h=91 |
-| Normalised | x=5.93%, y=33.89%, w=38.7%, h=8.43% |
+| Bounding box (px) | x=64, y=366, w=418, h=86 |
+| Normalised | x=5.93%, y=33.89%, w=38.7%, h=7.96% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -94,34 +95,35 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.31:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata |
-| Match IoU | 0.1655 |
+| Match IoU | 0.1866 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 24 px |
-| Gap to next | 336 px |
+| Gap to next | 340 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 97px track -0.18px — IoU 0.5019
-- `Alata-Regular.ttf` 96px track 0.3px — IoU 0.4901
+- `Alata-Regular.ttf` 97px track -0.18px — IoU 0.5122
+- `Alata-Regular.ttf` 96px track 0.3px — IoU 0.5007
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "GET 25% OFF"  (OCR confidence 0.9953)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=150, y=793, w=198, h=24 |
-| Normalised | x=13.89%, y=73.43%, w=18.33%, h=2.22% |
+| Bounding box (px) | x=150, y=792, w=199, h=26 |
+| Normalised | x=13.89%, y=73.33%, w=18.43%, h=2.41% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
-| Font size | 32 px |
-| Letter-spacing | -0.19 px (-0.0059 em) |
+| Font size | 33 px |
+| Letter-spacing | -0.71 px (-0.0215 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -129,26 +131,27 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.58:1 |
 | Stroke (median/mean) | 4.0 / 4.94 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata |
-| Match IoU | 0.6627 |
+| Match IoU | 0.566 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 336 px |
-| Gap to next | 85 px |
+| Gap to previous | 340 px |
+| Gap to next | 84 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 33px track -0.81px — IoU 0.6228
-- `Alata-Regular.ttf` 31px track 0.43px — IoU 0.577
+- `Alata-Regular.ttf` 31px track 0.53px — IoU 0.5556
+- `Alata-Regular.ttf` 32px track -0.09px — IoU 0.5414
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "Lorem ipsum dolor sit amet, consectetur adipiscing"  (OCR confidence 0.9861)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=101, y=902, w=649, h=28 |
-| Normalised | x=9.35%, y=83.52%, w=60.09%, h=2.59% |
+| Bounding box (px) | x=100, y=902, w=650, h=29 |
+| Normalised | x=9.26%, y=83.52%, w=60.19%, h=2.69% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -156,7 +159,7 @@ Alternate font fits considered:
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
 | Font size | 29 px |
-| Letter-spacing | -0.41 px (-0.0141 em) |
+| Letter-spacing | -0.39 px (-0.0134 em) |
 | Line-height | 39.0 px (ratio 1.345) |
 | Line | 1 of 2 |
 | Transform | none |
@@ -164,26 +167,27 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.87:1 |
 | Stroke (median/mean) | 3.0 / 4.02 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata |
-| Match IoU | 0.6045 |
+| Match IoU | 0.6672 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 85 px |
-| Gap to next | 11 px |
+| Gap to previous | 84 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 28px track 0.06px — IoU 0.5772
-- `Alata-Regular.ttf` 27px track 0.53px — IoU 0.5281
+- `Alata-Regular.ttf` 28px track 0.08px — IoU 0.6131
+- `Alata-Regular.ttf` 27px track 0.55px — IoU 0.5458
 
-### `text-5` — supporting
+### `text-5` — body
 
 **Text:** "elit, sed do eiusmod tempor incididunt ut labore"  (OCR confidence 0.9767)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=100, y=941, w=616, h=29 |
-| Normalised | x=9.26%, y=87.13%, w=57.04%, h=2.69% |
+| Bounding box (px) | x=99, y=941, w=618, h=29 |
+| Normalised | x=9.17%, y=87.13%, w=57.22%, h=2.69% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -191,7 +195,7 @@ Alternate font fits considered:
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
 | Font size | 29 px |
-| Letter-spacing | -0.41 px (-0.0141 em) |
+| Letter-spacing | -0.39 px (-0.0134 em) |
 | Line-height | 39.0 px (ratio 1.345) |
 | Line | 2 of 2 |
 | Transform | lowercase |
@@ -199,17 +203,18 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.87:1 |
 | Stroke (median/mean) | 3.0 / 4.08 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata |
-| Match IoU | 0.681 |
+| Match IoU | 0.6815 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 11 px |
+| Gap to previous | 10 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 28px track 0.06px — IoU 0.5772
-- `Alata-Regular.ttf` 27px track 0.53px — IoU 0.5281
+- `Alata-Regular.ttf` 28px track 0.08px — IoU 0.6131
+- `Alata-Regular.ttf` 27px track 0.55px — IoU 0.5458
 
 ## 4. Colours (semantic)
 
@@ -218,10 +223,10 @@ Alternate font fits considered:
 | background | `#f1f2f4` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#63813d` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#427409` | glyph ink of 'collection' | glyph ink median |
-| textSecondary | `#1d1003` | glyph ink of 'elit, sed do eiusmod tempor ' | glyph ink median |
+| textSecondary | `#1d1003` | glyph ink of 'Lorem ipsum dolor sit amet, ' | glyph ink median |
 | accent | `#63813d` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#a67f48` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -245,7 +250,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0855 |
+| Text coverage | 0.0847 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -274,9 +279,9 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | greeny |
 | `headline_line2` | text | collection |
-| `subheadline` | text | GET 25% OFF |
-| `supporting_line1` | text | Lorem ipsum dolor sit amet, consectetur adipiscing |
-| `supporting_line2` | text | elit, sed do eiusmod tempor incididunt ut labore |
+| `supporting` | text | GET 25% OFF |
+| `body_line1` | text | Lorem ipsum dolor sit amet, consectetur adipiscing |
+| `body_line2` | text | elit, sed do eiusmod tempor incididunt ut labore |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f1f2f4 |
@@ -289,9 +294,9 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Alata |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 60.1 |
 | `imageFocalY` | number | 48.4 |
 

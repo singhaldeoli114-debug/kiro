@@ -36,18 +36,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "30"  (OCR confidence 0.9983)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=618, y=120, w=154, h=117 |
-| Normalised | x=57.22%, y=11.11%, w=14.26%, h=10.83% |
+| Bounding box (px) | x=618, y=120, w=154, h=112 |
+| Normalised | x=57.22%, y=11.11%, w=14.26%, h=10.37% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -63,35 +63,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 15.55:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Calistoga, Satisfy, Atomic Age, Aldrich, Roboto |
-| Match IoU | 0.4907 |
+| Match IoU | 0.5281 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
-| Gap to next | -32 px |
+| Gap to next | -22 px |
 
 Alternate font fits considered:
-- `Calistoga-Regular.ttf` 119px track 0.86px — IoU 0.4902
-- `Calistoga-Regular.ttf` 121px track -1.72px — IoU 0.4844
-- `Roboto[wdth,wght].ttf` 151px track -0.41px — IoU 0.4655
+- `Calistoga-Regular.ttf` 119px track 0.86px — IoU 0.526
+- `Calistoga-Regular.ttf` 121px track -1.72px — IoU 0.5193
+- `Roboto[wdth,wght].ttf` 151px track -0.41px — IoU 0.5049
 
-### `text-2` — supporting
+### `text-2` — body
 
-**Text:** "o ff"  (OCR confidence 0.7963)
+**Text:** "off"  (OCR confidence 0.7963)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=674, y=205, w=98, h=55 |
-| Normalised | x=62.41%, y=18.98%, w=9.07%, h=5.09% |
+| Bounding box (px) | x=689, y=210, w=83, h=50 |
+| Normalised | x=63.8%, y=19.44%, w=7.69%, h=4.63% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 67 px |
-| Letter-spacing | 0.08 px (0.0012 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 71 px |
+| Letter-spacing | 0.43 px (0.0061 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -99,90 +100,132 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 15.55:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Calistoga, Satisfy, Atomic Age, Aldrich, Roboto |
-| Match IoU | 0.2861 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.4399 |
+| **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7963) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -32 px |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
+| Gap to previous | -22 px |
 | Gap to next | 360 px |
 
 Alternate font fits considered:
-- `Calistoga-Regular.ttf` 66px track 0.49px — IoU 0.2756
-- `Roboto[wdth,wght].ttf` 63px track 0.4px — IoU 0.2748
-- `Roboto[wdth,wght].ttf` 72px track -0.58px — IoU 0.2742
+- `Roboto[wdth,wght].ttf` 72px track -0.15px — IoU 0.4378
+- `Roboto[wdth,wght].ttf` 67px track 0.63px — IoU 0.4328
+- `Calistoga-Regular.ttf` 64px track 0.79px — IoU 0.4322
 
-### `text-3` — headline
+### `text-3` — subheadline
 
 **Text:** "COME"  (OCR confidence 0.9948)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=58, y=620, w=464, h=125 |
-| Normalised | x=5.37%, y=57.41%, w=42.96%, h=11.57% |
+| Bounding box (px) | x=58, y=620, w=464, h=132 |
+| Normalised | x=5.37%, y=57.41%, w=42.96%, h=12.22% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 191 px |
-| Letter-spacing | 0.42 px (0.0022 em) |
-| Line-height | 233.0 px (ratio 1.22) |
-| Line | 1 of 2 |
+| Font file matched | `Calistoga-Regular.ttf` |
+| Variation axes | None |
+| Font size | 167 px |
+| Letter-spacing | 0.42 px (0.0025 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#000000` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 29.0 / 28.64 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Calistoga, Satisfy, Atomic Age, Aldrich, Roboto |
-| Match IoU | 0.237 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8219 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 360 px |
-| Gap to next | 108 px |
+| Gap to next | 72 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 193px track -1.21px — IoU 0.2206
-- `Roboto[wdth,wght].ttf` 192px track -0.4px — IoU 0.2169
-- `Roboto[wdth,wght].ttf` 179px track -0.21px — IoU 0.214
+- `Calistoga-Regular.ttf` 168px track -0.51px — IoU 0.8141
+- `Calistoga-Regular.ttf` 166px track 1.34px — IoU 0.8056
+- `Roboto[wdth,wght].ttf` 180px track -1.08px — IoU 0.5187
 
-### `text-5` — headline
+### `text-4` — headline
+
+**Text:** "Us"  (OCR confidence 0.5014)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=403, y=824, w=262, h=197 |
+| Normalised | x=37.31%, y=76.3%, w=24.26%, h=18.24% |
+| Alignment | center |
+| z-order | 103 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 100.0] |
+| Font size | 224 px |
+| Letter-spacing | -1.7 px (-0.0076 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | none |
+| Colour | `#15f533` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 15.38:1 |
+| Stroke (median/mean) | 2.0 / 2.8 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| Font family (authoritative) | Calistoga, Satisfy, Atomic Age, Aldrich, Roboto |
+| Match IoU | 0.2587 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | False — low OCR confidence (0.5014) |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 72 px |
+| Gap to next | -168 px |
+
+Alternate font fits considered:
+- `Roboto[wdth,wght].ttf` 222px track 0.66px — IoU 0.2584
+- `Roboto[wdth,wght].ttf` 240px track -1.56px — IoU 0.2572
+- `Roboto[wdth,wght].ttf` 223px track -0.52px — IoU 0.2572
+
+### `text-5` — subheadline
 
 **Text:** "with"  (OCR confidence 0.9699)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=169, y=853, w=331, h=137 |
-| Normalised | x=15.65%, y=78.98%, w=30.65%, h=12.69% |
+| Bounding box (px) | x=169, y=853, w=331, h=136 |
+| Normalised | x=15.65%, y=78.98%, w=30.65%, h=12.59% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 191 px |
-| Letter-spacing | 0.42 px (0.0022 em) |
-| Line-height | 233.0 px (ratio 1.22) |
-| Line | 2 of 2 |
+| Variation axes | [900.0, 87.5] |
+| Font size | 185 px |
+| Letter-spacing | -0.53 px (-0.0029 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#15f833` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 15.55:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Calistoga, Satisfy, Atomic Age, Aldrich, Roboto |
-| Match IoU | 0.2046 |
+| Match IoU | 0.2109 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 108 px |
-| Gap to next | 9 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -168 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 193px track -1.21px — IoU 0.2206
-- `Roboto[wdth,wght].ttf` 192px track -0.4px — IoU 0.2169
-- `Roboto[wdth,wght].ttf` 179px track -0.21px — IoU 0.214
+- `Roboto[wdth,wght].ttf` 174px track -0.4px — IoU 0.2109
+- `Roboto[wdth,wght].ttf` 173px track 0.23px — IoU 0.2101
+- `Roboto[wdth,wght].ttf` 196px track -0.4px — IoU 0.2088
 
 ### `text-6` — fine-print
 
@@ -190,71 +233,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=238, y=999, w=225, h=21 |
-| Normalised | x=22.04%, y=92.5%, w=20.83%, h=1.94% |
+| Bounding box (px) | x=238, y=999, w=226, h=21 |
+| Normalised | x=22.04%, y=92.5%, w=20.93%, h=1.94% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
+| Variation axes | [600, 100.0] |
 | Font size | 28 px |
-| Letter-spacing | -0.37 px (-0.0132 em) |
+| Letter-spacing | -0.31 px (-0.0111 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#fafafa` |
+| Colour | `#f9f9f9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 20.61:1 |
+| Contrast vs local bg | 20.53:1 |
 | Stroke (median/mean) | 2.0 / 2.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Calistoga, Satisfy, Atomic Age, Aldrich, Roboto |
-| Match IoU | 0.7273 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6587 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 9 px |
-| Gap to next | -15 px |
-
-Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 28px track -0.38px — IoU 0.6967
-- `Roboto[wdth,wght].ttf` 32px track -0.51px — IoU 0.6699
-- `Roboto[wdth,wght].ttf` 30px track -0.46px — IoU 0.6605
-
-### `text-4` — detail
-
-**Text:** "Us"  (OCR confidence 0.5014)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=405, y=1005, w=58, h=15 |
-| Normalised | x=37.5%, y=93.06%, w=5.37%, h=1.39% |
-| Alignment | left |
-| z-order | 103 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 54 px |
-| Letter-spacing | -1.44 px (-0.0267 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#fcfcfc` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 20.76:1 |
-| Stroke (median/mean) | 2.0 / 2.8 px |
-| Font family (authoritative) | Calistoga, Satisfy, Atomic Age, Aldrich, Roboto |
-| Match IoU | 0.2605 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.5014) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -15 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 10 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 57px track -0.72px — IoU 0.2546
-- `Roboto[wdth,wght].ttf` 54px track -1.31px — IoU 0.2508
-- `Roboto[wdth,wght].ttf` 53px track -0.33px — IoU 0.248
+- `Roboto[wdth,wght].ttf` 30px track -0.41px — IoU 0.6405
+- `Roboto[wdth,wght].ttf` 32px track -0.44px — IoU 0.6251
+- `Roboto[wdth,wght].ttf` 28px track -0.3px — IoU 0.6222
 
 ## 4. Colours (semantic)
 
@@ -262,11 +270,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#dbdcde` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#000100` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#15f833` | glyph ink of 'with' | glyph ink median |
-| textSecondary | `#000000` | glyph ink of 'COME' | glyph ink median |
+| textPrimary | `#15f533` | glyph ink of 'Us' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'COME' | glyph ink median |
 | accent | `#000100` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#0018fe` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -290,7 +298,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1135 |
+| Text coverage | 0.1578 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -317,28 +325,28 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | 30 |
-| `supporting` | text | o ff |
-| `headline_line1` | text | COME |
-| `headline_line2` | text | with |
+| `supporting` | text | 30 |
+| `body` | text | off |
+| `subheadline` | text | COME |
+| `headline` | text | Us |
+| `subheadline` | text | with |
 | `fine-print` | text | www.website.com |
-| `detail` | text | Us |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #dbdcde |
 | `surface` | colour | #000100 |
-| `textPrimary` | colour | #15f833 |
-| `textSecondary` | colour | #000000 |
+| `textPrimary` | colour | #15f533 |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #000100 |
 | `accentSecondary` | colour | #0018fe |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Calistoga |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
 | `imageFocalX` | number | 55.3 |
 | `imageFocalY` | number | 53.5 |
 

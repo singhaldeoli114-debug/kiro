@@ -34,47 +34,48 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — body
 
 **Text:** "www.fashion.com"  (OCR confidence 0.9977)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=70, y=76, w=261, h=25 |
-| Normalised | x=6.48%, y=7.04%, w=24.17%, h=2.31% |
+| Bounding box (px) | x=69, y=76, w=262, h=26 |
+| Normalised | x=6.39%, y=7.04%, w=24.26%, h=2.41% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [700, 100.0] |
+| Variation axes | [600, 100.0] |
 | Font size | 33 px |
-| Letter-spacing | -0.43 px (-0.013 em) |
+| Letter-spacing | -0.35 px (-0.0106 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#000000` |
+| Colour | `#010101` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 21.0:1 |
+| Contrast vs local bg | 19.47:1 |
 | Stroke (median/mean) | 3.0 / 3.11 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Allura, Roboto |
-| Match IoU | 0.7004 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6423 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 157 px |
+| Gap to next | 156 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 32px track 0.16px — IoU 0.6884
-- `Roboto[wdth,wght].ttf` 33px track -0.42px — IoU 0.687
-- `Roboto[wdth,wght].ttf` 32px track 0.17px — IoU 0.6767
+- `Roboto[wdth,wght].ttf` 35px track -0.29px — IoU 0.6311
+- `Roboto[wdth,wght].ttf` 33px track -0.36px — IoU 0.628
+- `Roboto[wdth,wght].ttf` 32px track 0.23px — IoU 0.6227
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "The"  (OCR confidence 0.997)
 
@@ -97,12 +98,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.28:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Allura, Roboto |
 | Match IoU | 0.9047 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 157 px |
+| Gap to previous | 156 px |
 | Gap to next | 56 px |
 
 Alternate font fits considered:
@@ -110,7 +112,7 @@ Alternate font fits considered:
 - `AbrilFatface-Regular.ttf` 94px track 0.89px — IoU 0.8707
 - `Roboto[wdth,wght].ttf` 104px track -0.43px — IoU 0.6644
 
-### `text-3` — subheadline
+### `text-3` — headline
 
 **Text:** "Look"  (OCR confidence 0.9928)
 
@@ -133,6 +135,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.28:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Allura, Roboto |
 | Match IoU | 0.8993 |
 | **Geometry fit confidence** | **high** |
@@ -146,7 +149,7 @@ Alternate font fits considered:
 - `AbrilFatface-Regular.ttf` 94px track 0.89px — IoU 0.8707
 - `Roboto[wdth,wght].ttf` 104px track -0.43px — IoU 0.6644
 
-### `text-4` — subheadline
+### `text-4` — headline
 
 **Text:** "Book"  (OCR confidence 0.9926)
 
@@ -169,35 +172,36 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.28:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Allura, Roboto |
 | Match IoU | 0.9086 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 56 px |
-| Gap to next | 43 px |
+| Gap to next | 42 px |
 
 Alternate font fits considered:
 - `AbrilFatface-Regular.ttf` 95px track 0.11px — IoU 0.8869
 - `AbrilFatface-Regular.ttf` 94px track 0.89px — IoU 0.8707
 - `Roboto[wdth,wght].ttf` 104px track -0.43px — IoU 0.6644
 
-### `text-5` — supporting
+### `text-5` — body
 
 **Text:** "lorem ipsun igtan en"  (OCR confidence 0.9942)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=44, y=635, w=293, h=31 |
-| Normalised | x=4.07%, y=58.8%, w=27.13%, h=2.87% |
+| Bounding box (px) | x=43, y=634, w=294, h=32 |
+| Normalised | x=3.98%, y=58.7%, w=27.22%, h=2.96% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [400, 100.0] |
-| Font size | 31 px |
-| Letter-spacing | 0.67 px (0.0216 em) |
+| Variation axes | [500, 100.0] |
+| Font size | 32 px |
+| Letter-spacing | 0.12 px (0.0037 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -205,18 +209,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 3.54 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Allura, Roboto |
-| Match IoU | 0.6869 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7531 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 43 px |
-| Gap to next | 50 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 42 px |
+| Gap to next | 55 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 37px track -0.37px — IoU 0.6712
-- `Roboto[wdth,wght].ttf` 37px track -0.43px — IoU 0.6389
-- `Roboto[wdth,wght].ttf` 31px track 0.55px — IoU 0.6387
+- `Roboto[wdth,wght].ttf` 37px track -0.31px — IoU 0.7441
+- `Roboto[wdth,wght].ttf` 32px track 0.07px — IoU 0.7373
+- `Roboto[wdth,wght].ttf` 37px track -0.38px — IoU 0.7151
 
 ### `text-6` — headline
 
@@ -224,35 +229,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=233, y=716, w=189, h=158 |
-| Normalised | x=21.57%, y=66.3%, w=17.5%, h=14.63% |
+| Bounding box (px) | x=223, y=721, w=179, h=143 |
+| Normalised | x=20.65%, y=66.76%, w=16.57%, h=13.24% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
-| Font size | 116 px |
-| Letter-spacing | -0.36 px (-0.0031 em) |
+| Font size | 110 px |
+| Letter-spacing | -0.42 px (-0.0038 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#290300` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 11.34:1 |
-| Stroke (median/mean) | 8.0 / 9.53 px |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.0:1 |
+| Stroke (median/mean) | 14.0 / 18.55 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Allura, Roboto |
-| Match IoU | 0.2771 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.4088 |
+| **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9235) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 50 px |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
+| Gap to previous | 55 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 115px track 0.18px — IoU 0.277
-- `Roboto[wdth,wght].ttf` 115px track 0.18px — IoU 0.2763
-- `Roboto[wdth,wght].ttf` 116px track -0.36px — IoU 0.2755
+- `Roboto[wdth,wght].ttf` 108px track 0.67px — IoU 0.4026
+- `Roboto[wdth,wght].ttf` 103px track 0.11px — IoU 0.4017
+- `Roboto[wdth,wght].ttf` 109px track 0.13px — IoU 0.4006
 
 ## 4. Colours (semantic)
 
@@ -260,11 +266,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#be1a19` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#290300` | glyph ink of 'clas' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of 'clas' | glyph ink median |
 | textSecondary | `#c22323` | glyph ink of 'The' | glyph ink median |
 | accent | `#be1a19` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#623728` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -288,7 +294,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | False |
-| Text coverage | 0.0779 |
+| Text coverage | 0.0747 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -315,27 +321,27 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | www.fashion.com |
-| `subheadline_line1` | text | The |
-| `subheadline_line2` | text | Look |
-| `subheadline_line3` | text | Book |
-| `supporting` | text | lorem ipsun igtan en |
+| `body` | text | www.fashion.com |
+| `headline_line1` | text | The |
+| `headline_line2` | text | Look |
+| `headline_line3` | text | Book |
+| `body` | text | lorem ipsun igtan en |
 | `headline` | text | clas |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #be1a19 |
-| `textPrimary` | colour | #290300 |
+| `textPrimary` | colour | #ffffff |
 | `textSecondary` | colour | #c22323 |
 | `accent` | colour | #be1a19 |
 | `accentSecondary` | colour | #623728 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abril Fatface |
-| `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 55.1 |
 | `imageFocalY` | number | 43.4 |

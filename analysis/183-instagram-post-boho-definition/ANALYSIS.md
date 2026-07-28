@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -61,6 +61,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.03:1 |
 | Stroke (median/mean) | 12.0 / 13.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville, Roboto |
 | Match IoU | 0.8736 |
 | **Geometry fit confidence** | **high** |
@@ -74,22 +75,22 @@ Alternate font fits considered:
 - `LibreBaskerville[wght].ttf` 100px track 0.49px — IoU 0.8551
 - `LibreBaskerville[wght].ttf` 101px track 0.2px — IoU 0.8334
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "/a'fekSH()n"  (OCR confidence 0.9302)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=181, y=392, w=220, h=41 |
-| Normalised | x=16.76%, y=36.3%, w=20.37%, h=3.8% |
+| Bounding box (px) | x=180, y=392, w=221, h=41 |
+| Normalised | x=16.67%, y=36.3%, w=20.46%, h=3.8% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 45 px |
-| Letter-spacing | 0.38 px (0.0084 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 50 px |
+| Letter-spacing | -0.6 px (-0.012 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -97,18 +98,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.1:1 |
 | Stroke (median/mean) | 4.0 / 4.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville, Roboto |
-| Match IoU | 0.365 |
+| Match IoU | 0.3709 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 33 px |
-| Gap to next | 100 px |
+| Gap to next | 98 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 48px track 0.2px — IoU 0.3632
-- `Roboto[wdth,wght].ttf` 49px track -0.25px — IoU 0.3628
-- `Roboto[wdth,wght].ttf` 48px track 0.2px — IoU 0.3597
+- `Roboto[wdth,wght].ttf` 45px track 0.49px — IoU 0.3671
+- `Roboto[wdth,wght].ttf` 49px track -0.15px — IoU 0.3639
+- `Roboto[wdth,wght].ttf` 48px track 0.3px — IoU 0.3618
 
 ### `text-3` — supporting
 
@@ -116,8 +118,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=181, y=533, w=684, h=48 |
-| Normalised | x=16.76%, y=49.35%, w=63.33%, h=4.44% |
+| Bounding box (px) | x=181, y=531, w=684, h=51 |
+| Normalised | x=16.76%, y=49.17%, w=63.33%, h=4.72% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -129,22 +131,23 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#0f0e0b` |
+| Colour | `#100e0b` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 7.09:1 |
+| Contrast vs local bg | 7.03:1 |
 | Stroke (median/mean) | 3.0 / 3.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville, Roboto |
-| Match IoU | 0.5039 |
+| Match IoU | 0.4408 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 100 px |
-| Gap to next | 66 px |
+| Gap to previous | 98 px |
+| Gap to next | 60 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 40px track -0.55px — IoU 0.5014
-- `Raleway[wght].ttf` 38px track 0.37px — IoU 0.4799
-- `Raleway[wght].ttf` 39px track -0.33px — IoU 0.4796
+- `Raleway[wght].ttf` 40px track -0.55px — IoU 0.4375
+- `Raleway[wght].ttf` 39px track -0.33px — IoU 0.4292
+- `Raleway[wght].ttf` 38px track 0.37px — IoU 0.4163
 
 ### `text-4` — supporting
 
@@ -152,35 +155,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=182, y=647, w=735, h=33 |
-| Normalised | x=16.85%, y=59.91%, w=68.06%, h=3.06% |
+| Bounding box (px) | x=182, y=642, w=735, h=42 |
+| Normalised | x=16.85%, y=59.44%, w=68.06%, h=3.89% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 41 px |
-| Letter-spacing | -0.67 px (-0.0163 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [700] |
+| Font size | 40 px |
+| Letter-spacing | -0.63 px (-0.0158 em) |
+| Line-height | 52.0 px (ratio 1.3) |
+| Line | 1 of 2 |
 | Transform | none |
-| Colour | `#0b0a08` |
+| Colour | `#0d0c09` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 7.71:1 |
+| Contrast vs local bg | 7.25:1 |
 | Stroke (median/mean) | 3.0 / 3.86 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville, Roboto |
-| Match IoU | 0.6319 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.5204 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 66 px |
-| Gap to next | 13 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 60 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 40px track -0.18px — IoU 0.5819
-- `Raleway[wght].ttf` 41px track -0.43px — IoU 0.5699
-- `Raleway[wght].ttf` 40px track -0.63px — IoU 0.539
+- `Raleway[wght].ttf` 40px track -0.18px — IoU 0.4016
+- `Raleway[wght].ttf` 39px track -0.13px — IoU 0.3895
+- `Raleway[wght].ttf` 41px track -0.67px — IoU 0.3878
 
 ### `text-5` — supporting
 
@@ -188,35 +192,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=182, y=693, w=629, h=48 |
-| Normalised | x=16.85%, y=64.17%, w=58.24%, h=4.44% |
+| Bounding box (px) | x=181, y=694, w=630, h=51 |
+| Normalised | x=16.76%, y=64.26%, w=58.33%, h=4.72% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 38 px |
-| Letter-spacing | -0.6 px (-0.0158 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [700] |
+| Font size | 40 px |
+| Letter-spacing | -0.63 px (-0.0158 em) |
+| Line-height | 52.0 px (ratio 1.3) |
+| Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#110f0b` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 6.81:1 |
+| Contrast vs local bg | 6.83:1 |
 | Stroke (median/mean) | 3.0 / 3.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Libre Baskerville, Roboto |
-| Match IoU | 0.2363 |
+| Match IoU | 0.2934 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 13 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 10 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 38px track -0.29px — IoU 0.2284
-- `Raleway[wght].ttf` 37px track -0.13px — IoU 0.2277
-- `Raleway[wght].ttf` 39px track -0.47px — IoU 0.2273
+- `Raleway[wght].ttf` 40px track -0.18px — IoU 0.4016
+- `Raleway[wght].ttf` 39px track -0.13px — IoU 0.3895
+- `Raleway[wght].ttf` 41px track -0.67px — IoU 0.3878
 
 ## 4. Colours (semantic)
 
@@ -225,10 +230,10 @@ Alternate font fits considered:
 | background | `#cdcbc3` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#bcb6ac` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#000000` | glyph ink of 'AF·FEC·TION' | glyph ink median |
-| textSecondary | `#0f0e0b` | glyph ink of 'A gentle feeling of fondness' | glyph ink median |
+| textSecondary | `#100e0b` | glyph ink of 'A gentle feeling of fondness' | glyph ink median |
 | accent | `#927149` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ae9270` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -252,7 +257,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.135 |
+| Text coverage | 0.1441 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -280,22 +285,22 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | AF·FEC·TION |
-| `subheadline` | text | /a'fekSH()n |
+| `supporting` | text | /a'fekSH()n |
 | `supporting` | text | A gentle feeling of fondness or liking. |
-| `supporting` | text | Sometimes, the world need to be full of |
-| `supporting` | text | affection to be able to enjoy living. |
+| `supporting_line1` | text | Sometimes, the world need to be full of |
+| `supporting_line2` | text | affection to be able to enjoy living. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #cdcbc3 |
 | `surface` | colour | #bcb6ac |
 | `textPrimary` | colour | #000000 |
-| `textSecondary` | colour | #0f0e0b |
+| `textSecondary` | colour | #100e0b |
 | `accent` | colour | #927149 |
 | `accentSecondary` | colour | #ae9270 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Raleway |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |

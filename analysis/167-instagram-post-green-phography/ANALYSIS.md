@@ -32,44 +32,45 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "PHOTO"  (OCR confidence 0.9963)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=333, y=199, w=315, h=117 |
-| Normalised | x=30.83%, y=18.43%, w=29.17%, h=10.83% |
+| Bounding box (px) | x=154, y=204, w=483, h=107 |
+| Normalised | x=14.26%, y=18.89%, w=44.72%, h=9.91% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 81 px |
-| Letter-spacing | -1.09 px (-0.0135 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 122 px |
+| Letter-spacing | 0.49 px (0.004 em) |
+| Line-height | 131.0 px (ratio 1.074) |
+| Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#daedf4` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.04:1 |
-| Stroke (median/mean) | 31.0 / 26.43 px |
+| Colour | `#f54f23` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.03:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black |
-| Match IoU | 0.3182 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.622 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 14 px |
+| Gap to next | 24 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 80px track -0.11px — IoU 0.3152
-- `ArchivoBlack-Regular.ttf` 79px track 0.88px — IoU 0.3149
+- `ArchivoBlack-Regular.ttf` 121px track 1.47px — IoU 0.4214
+- `ArchivoBlack-Regular.ttf` 123px track -0.5px — IoU 0.4203
 
 ### `text-2` — headline
 
@@ -77,34 +78,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=309, y=330, w=352, h=53 |
-| Normalised | x=28.61%, y=30.56%, w=32.59%, h=4.91% |
+| Bounding box (px) | x=307, y=335, w=354, h=83 |
+| Normalised | x=28.43%, y=31.02%, w=32.78%, h=7.69% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 92 px |
-| Letter-spacing | -1.45 px (-0.0158 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 122 px |
+| Letter-spacing | 0.49 px (0.004 em) |
+| Line-height | 131.0 px (ratio 1.074) |
+| Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#d0e2e7` |
+| Colour | `#c9d9df` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.15:1 |
+| Contrast vs local bg | 1.93:1 |
 | Stroke (median/mean) | 22.0 / 22.76 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black |
-| Match IoU | 0.3051 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2311 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 14 px |
-| Gap to next | 441 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 24 px |
+| Gap to next | 406 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 91px track -0.47px — IoU 0.3035
-- `ArchivoBlack-Regular.ttf` 90px track 0.5px — IoU 0.301
+- `ArchivoBlack-Regular.ttf` 121px track 1.47px — IoU 0.4214
+- `ArchivoBlack-Regular.ttf` 123px track -0.5px — IoU 0.4203
 
 ### `text-3` — supporting
 
@@ -112,34 +115,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=811, y=824, w=198, h=49 |
-| Normalised | x=75.09%, y=76.3%, w=18.33%, h=4.54% |
+| Bounding box (px) | x=811, y=824, w=199, h=49 |
+| Normalised | x=75.09%, y=76.3%, w=18.43%, h=4.54% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 64 px |
-| Letter-spacing | -0.45 px (-0.007 em) |
-| Line-height | 75.0 px (ratio 1.172) |
+| Font size | 65 px |
+| Letter-spacing | -1.02 px (-0.0157 em) |
+| Line-height | 74.0 px (ratio 1.138) |
 | Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#28291a` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.78:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.88:1 |
 | Stroke (median/mean) | 13.0 / 16.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black |
-| Match IoU | 0.0073 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9234 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 441 px |
-| Gap to next | 26 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 406 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 63px track 0.37px — IoU 0.4205
-- `ArchivoBlack-Regular.ttf` 62px track 1.19px — IoU 0.4168
+- `ArchivoBlack-Regular.ttf` 64px track -0.2px — IoU 0.9131
+- `ArchivoBlack-Regular.ttf` 63px track 0.62px — IoU 0.8698
 
 ### `text-4` — supporting
 
@@ -147,34 +151,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=801, y=899, w=208, h=61 |
-| Normalised | x=74.17%, y=83.24%, w=19.26%, h=5.65% |
+| Bounding box (px) | x=801, y=898, w=209, h=62 |
+| Normalised | x=74.17%, y=83.15%, w=19.35%, h=5.74% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 64 px |
-| Letter-spacing | -0.45 px (-0.007 em) |
-| Line-height | 75.0 px (ratio 1.172) |
+| Font size | 65 px |
+| Letter-spacing | -1.02 px (-0.0157 em) |
+| Line-height | 74.0 px (ratio 1.138) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.88:1 |
 | Stroke (median/mean) | 13.0 / 16.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black |
-| Match IoU | 0.888 |
+| Match IoU | 0.9171 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 26 px |
+| Gap to previous | 25 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 63px track 0.37px — IoU 0.4205
-- `ArchivoBlack-Regular.ttf` 62px track 1.19px — IoU 0.4168
+- `ArchivoBlack-Regular.ttf` 64px track -0.2px — IoU 0.9131
+- `ArchivoBlack-Regular.ttf` 63px track 0.62px — IoU 0.8698
 
 ## 4. Colours (semantic)
 
@@ -182,11 +187,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#c7dde6` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#375b28` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#daedf4` | glyph ink of 'PHOTO' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'ipsum' | glyph ink median |
+| textPrimary | `#f54f23` | glyph ink of 'PHOTO' | glyph ink median |
+| textSecondary | `#c9d9df` | glyph ink of 'GRAPY' | glyph ink median |
 | accent | `#375b28` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f34f23` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -210,7 +215,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0668 |
+| Text coverage | 0.089 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -237,21 +242,21 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | PHOTO |
-| `headline` | text | GRAPY |
+| `headline_line1` | text | PHOTO |
+| `headline_line2` | text | GRAPY |
 | `supporting_line1` | text | lorem |
 | `supporting_line2` | text | ipsum |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #c7dde6 |
 | `surface` | colour | #375b28 |
-| `textPrimary` | colour | #daedf4 |
-| `textSecondary` | colour | #ffffff |
+| `textPrimary` | colour | #f54f23 |
+| `textSecondary` | colour | #c9d9df |
 | `accent` | colour | #375b28 |
 | `accentSecondary` | colour | #f34f23 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Archivo Black |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |

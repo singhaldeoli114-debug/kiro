@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,8 +42,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=215, y=78, w=655, h=90 |
-| Normalised | x=19.91%, y=7.22%, w=60.65%, h=8.33% |
+| Bounding box (px) | x=215, y=78, w=655, h=91 |
+| Normalised | x=19.91%, y=7.22%, w=60.65%, h=8.43% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -59,17 +59,18 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.32:1 |
 | Stroke (median/mean) | 7.0 / 8.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Schoolbell |
-| Match IoU | 0.7731 |
+| Match IoU | 0.7885 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 161 px |
+| Gap to next | 160 px |
 
 Alternate font fits considered:
-- `Schoolbell-Regular.ttf` 80px track -0.49px — IoU 0.7569
-- `Schoolbell-Regular.ttf` 78px track 0.49px — IoU 0.7526
+- `Schoolbell-Regular.ttf` 80px track -0.49px — IoU 0.7681
+- `Schoolbell-Regular.ttf` 78px track 0.49px — IoU 0.7656
 
 ### `text-2` — subheadline
 
@@ -77,8 +78,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=367, y=329, w=122, h=42 |
-| Normalised | x=33.98%, y=30.46%, w=11.3%, h=3.89% |
+| Bounding box (px) | x=366, y=329, w=123, h=42 |
+| Normalised | x=33.89%, y=30.46%, w=11.39%, h=3.89% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -86,7 +87,7 @@ Alternate font fits considered:
 | Font file matched | `Schoolbell-Regular.ttf` |
 | Variation axes | None |
 | Font size | 49 px |
-| Letter-spacing | -0.5 px (-0.0102 em) |
+| Letter-spacing | -0.3 px (-0.0061 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -94,17 +95,18 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.12:1 |
 | Stroke (median/mean) | 4.0 / 5.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Schoolbell |
-| Match IoU | 0.7288 |
+| Match IoU | 0.7333 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 161 px |
+| Gap to previous | 160 px |
 | Gap to next | 145 px |
 
 Alternate font fits considered:
-- `Schoolbell-Regular.ttf` 47px track 0.51px — IoU 0.708
-- `Schoolbell-Regular.ttf` 48px track 0.01px — IoU 0.6961
+- `Schoolbell-Regular.ttf` 47px track 0.71px — IoU 0.7084
+- `Schoolbell-Regular.ttf` 48px track 0.21px — IoU 0.6996
 
 ### `text-3` — subheadline
 
@@ -112,8 +114,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=362, y=516, w=75, h=53 |
-| Normalised | x=33.52%, y=47.78%, w=6.94%, h=4.91% |
+| Bounding box (px) | x=362, y=516, w=74, h=53 |
+| Normalised | x=33.52%, y=47.78%, w=6.85%, h=4.91% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -121,16 +123,17 @@ Alternate font fits considered:
 | Font file matched | `Schoolbell-Regular.ttf` |
 | Variation axes | None |
 | Font size | 46 px |
-| Letter-spacing | 0.2 px (0.0043 em) |
+| Letter-spacing | -0.13 px (-0.0028 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.43:1 |
-| Stroke (median/mean) | 5.0 / 5.78 px |
+| Stroke (median/mean) | 5.0 / 5.77 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Schoolbell |
-| Match IoU | 0.1633 |
+| Match IoU | 0.1671 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5365) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
@@ -138,8 +141,8 @@ Alternate font fits considered:
 | Gap to next | -53 px |
 
 Alternate font fits considered:
-- `Schoolbell-Regular.ttf` 47px track -0.33px — IoU 0.1614
-- `Schoolbell-Regular.ttf` 45px track 0.74px — IoU 0.1584
+- `Schoolbell-Regular.ttf` 47px track -0.67px — IoU 0.1649
+- `Schoolbell-Regular.ttf` 45px track 0.41px — IoU 0.1577
 
 ### `text-4` — subheadline
 
@@ -147,34 +150,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=617, y=516, w=96, h=55 |
-| Normalised | x=57.13%, y=47.78%, w=8.89%, h=5.09% |
+| Bounding box (px) | x=617, y=516, w=96, h=54 |
+| Normalised | x=57.13%, y=47.78%, w=8.89%, h=5.0% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Schoolbell-Regular.ttf` |
 | Variation axes | None |
-| Font size | 49 px |
-| Letter-spacing | -0.02 px (-0.0004 em) |
+| Font size | 50 px |
+| Letter-spacing | -0.51 px (-0.0102 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.27:1 |
-| Stroke (median/mean) | 5.0 / 6.95 px |
+| Stroke (median/mean) | 5.0 / 6.98 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Schoolbell |
-| Match IoU | 0.7407 |
+| Match IoU | 0.7124 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | -53 px |
-| Gap to next | 323 px |
+| Gap to next | 324 px |
 
 Alternate font fits considered:
-- `Schoolbell-Regular.ttf` 50px track -0.51px — IoU 0.7383
-- `Schoolbell-Regular.ttf` 48px track 0.47px — IoU 0.6724
+- `Schoolbell-Regular.ttf` 49px track -0.02px — IoU 0.7091
+- `Schoolbell-Regular.ttf` 48px track 0.47px — IoU 0.6344
 
 ### `text-5` — supporting
 
@@ -190,26 +194,27 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Schoolbell-Regular.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | -0.2 px (-0.0054 em) |
-| Line-height | 41.0 px (ratio 1.108) |
+| Font size | 38 px |
+| Letter-spacing | -0.62 px (-0.0163 em) |
+| Line-height | 51.0 px (ratio 1.342) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#fefefe` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.31:1 |
 | Stroke (median/mean) | 3.0 / 3.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Schoolbell |
-| Match IoU | 0.6677 |
+| Match IoU | 0.6495 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 323 px |
-| Gap to next | -2 px |
+| Gap to previous | 324 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Schoolbell-Regular.ttf` 38px track -0.62px — IoU 0.4304
-- `Schoolbell-Regular.ttf` 36px track 0.23px — IoU 0.4106
+- `Schoolbell-Regular.ttf` 37px track -0.2px — IoU 0.5823
+- `Schoolbell-Regular.ttf` 36px track 0.23px — IoU 0.5226
 
 ### `text-6` — supporting
 
@@ -217,34 +222,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=414, y=935, w=560, h=50 |
-| Normalised | x=38.33%, y=86.57%, w=51.85%, h=4.63% |
+| Bounding box (px) | x=414, y=945, w=560, h=41 |
+| Normalised | x=38.33%, y=87.5%, w=51.85%, h=3.8% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Schoolbell-Regular.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | -0.2 px (-0.0054 em) |
-| Line-height | 41.0 px (ratio 1.108) |
+| Font size | 38 px |
+| Letter-spacing | -0.62 px (-0.0163 em) |
+| Line-height | 51.0 px (ratio 1.342) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#fefefe` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.31:1 |
-| Stroke (median/mean) | 3.0 / 3.82 px |
+| Stroke (median/mean) | 3.0 / 3.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Schoolbell |
-| Match IoU | 0.2054 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5663 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -2 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Schoolbell-Regular.ttf` 38px track -0.62px — IoU 0.4304
-- `Schoolbell-Regular.ttf` 36px track 0.23px — IoU 0.4106
+- `Schoolbell-Regular.ttf` 37px track -0.2px — IoU 0.5823
+- `Schoolbell-Regular.ttf` 36px track 0.23px — IoU 0.5226
 
 ## 4. Colours (semantic)
 
@@ -256,7 +262,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'Sleep' | glyph ink median |
 | accent | `#103663` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#fb4893` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -280,7 +286,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1065 |
+| Text coverage | 0.1027 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

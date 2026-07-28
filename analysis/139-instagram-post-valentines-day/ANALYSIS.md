@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,16 +43,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=371, y=295, w=345, h=116 |
-| Normalised | x=34.35%, y=27.31%, w=31.94%, h=10.74% |
+| Bounding box (px) | x=371, y=295, w=345, h=117 |
+| Normalised | x=34.35%, y=27.31%, w=31.94%, h=10.83% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 87.5] |
+| Variation axes | [400, 87.5] |
 | Font size | 130 px |
-| Letter-spacing | -0.87 px (-0.0067 em) |
+| Letter-spacing | -0.55 px (-0.0042 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.08:1 |
 | Stroke (median/mean) | 13.0 / 15.22 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Pacifico, Roboto |
-| Match IoU | 0.8678 |
+| Match IoU | 0.8564 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 21 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 130px track -0.55px — IoU 0.8634
-- `Roboto[wdth,wght].ttf` 120px track 0.38px — IoU 0.8594
-- `Roboto[wdth,wght].ttf` 120px track 0.64px — IoU 0.8568
+- `Roboto[wdth,wght].ttf` 130px track -0.87px — IoU 0.846
+- `Roboto[wdth,wght].ttf` 121px track -0.34px — IoU 0.843
+- `Roboto[wdth,wght].ttf` 120px track 0.38px — IoU 0.8386
 
 ### `text-2` — headline
 
@@ -79,35 +80,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=189, y=432, w=764, h=184 |
-| Normalised | x=17.5%, y=40.0%, w=70.74%, h=17.04% |
+| Bounding box (px) | x=188, y=429, w=765, h=224 |
+| Normalised | x=17.41%, y=39.72%, w=70.83%, h=20.74% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 160 px |
-| Letter-spacing | -0.5 px (-0.0031 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 180 px |
+| Letter-spacing | -0.51 px (-0.0028 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.23:1 |
+| Contrast vs local bg | 2.28:1 |
 | Stroke (median/mean) | 23.0 / 25.03 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Pacifico, Roboto |
-| Match IoU | 0.4062 |
-| **Geometry fit confidence** | **low-textUnreliable** |
+| Match IoU | 0.3161 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9026) |
-| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
-| Gap to previous | 21 px |
-| Gap to next | 69 px |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | 17 px |
+| Gap to next | 31 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 158px track 0.57px — IoU 0.4051
-- `Roboto[wdth,wght].ttf` 169px track -0.14px — IoU 0.4048
-- `Roboto[wdth,wght].ttf` 170px track -0.65px — IoU 0.4047
+- `Roboto[wdth,wght].ttf` 169px track -0.03px — IoU 0.314
+- `Roboto[wdth,wght].ttf` 158px track 0.68px — IoU 0.3139
+- `Roboto[wdth,wght].ttf` 178px track 0.44px — IoU 0.3138
 
 ### `text-3` — subheadline
 
@@ -115,16 +117,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=445, y=685, w=197, h=116 |
-| Normalised | x=41.2%, y=63.43%, w=18.24%, h=10.74% |
+| Bounding box (px) | x=444, y=684, w=198, h=117 |
+| Normalised | x=41.11%, y=63.33%, w=18.33%, h=10.83% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [400, 87.5] |
-| Font size | 127 px |
-| Letter-spacing | -0.94 px (-0.0074 em) |
+| Variation axes | [400, 100.0] |
+| Font size | 118 px |
+| Letter-spacing | 0.27 px (0.0023 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -132,18 +134,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.43:1 |
 | Stroke (median/mean) | 12.0 / 16.25 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Pacifico, Roboto |
-| Match IoU | 0.8753 |
+| Match IoU | 0.8615 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 69 px |
+| Gap to previous | 31 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 118px track -0.23px — IoU 0.8625
-- `Roboto[wdth,wght].ttf` 119px track -1.06px — IoU 0.8597
-- `Roboto[wdth,wght].ttf` 117px track 0.12px — IoU 0.8594
+- `Roboto[wdth,wght].ttf` 119px track -1.06px — IoU 0.8581
+- `Roboto[wdth,wght].ttf` 119px track -0.56px — IoU 0.8572
+- `Roboto[wdth,wght].ttf` 127px track -0.44px — IoU 0.853
 
 ## 4. Colours (semantic)
 
@@ -155,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'Happy' | glyph ink median |
 | accent | `#af0803` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f83e2d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1744 |
+| Text coverage | 0.2014 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

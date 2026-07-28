@@ -32,11 +32,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "Learn How To Cook Like A"  (OCR confidence 0.9963)
 
@@ -59,6 +59,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.57:1 |
 | Stroke (median/mean) | 3.0 / 4.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway |
 | Match IoU | 0.5638 |
 | **Geometry fit confidence** | **medium** |
@@ -95,6 +96,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.61:1 |
 | Stroke (median/mean) | 14.0 / 20.31 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway |
 | Match IoU | 0.8974 |
 | **Geometry fit confidence** | **high** |
@@ -108,7 +110,7 @@ Alternate font fits considered:
 - `Raleway[wght].ttf` 90px track 0.31px — IoU 0.8923
 - `Raleway[wght].ttf` 90px track 0.16px — IoU 0.8828
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "MONDAY - FRIDAY"  (OCR confidence 0.9714)
 
@@ -131,6 +133,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.58:1 |
 | Stroke (median/mean) | 3.0 / 4.09 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway |
 | Match IoU | 0.4018 |
 | **Geometry fit confidence** | **low** |
@@ -144,7 +147,7 @@ Alternate font fits considered:
 - `Raleway[wght].ttf` 34px track -0.04px — IoU 0.557
 - `Raleway[wght].ttf` 36px track -0.5px — IoU 0.5477
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "5:00 PM - 8:00 PM"  (OCR confidence 0.995)
 
@@ -167,6 +170,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.58:1 |
 | Stroke (median/mean) | 3.0 / 4.31 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway |
 | Match IoU | 0.7005 |
 | **Geometry fit confidence** | **high** |
@@ -180,7 +184,7 @@ Alternate font fits considered:
 - `Raleway[wght].ttf` 34px track -0.04px — IoU 0.557
 - `Raleway[wght].ttf` 36px track -0.5px — IoU 0.5477
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "Ingredients will be provided"  (OCR confidence 0.9983)
 
@@ -203,6 +207,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.57:1 |
 | Stroke (median/mean) | 3.0 / 4.05 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway |
 | Match IoU | 0.6 |
 | **Geometry fit confidence** | **medium** |
@@ -226,7 +231,7 @@ Alternate font fits considered:
 | textSecondary | `#fdf7f3` | glyph ink of 'Ingredients will be provided' | glyph ink median |
 | accent | `#e38b4f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1c3b64` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -277,11 +282,11 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | Learn How To Cook Like A |
+| `supporting` | text | Learn How To Cook Like A |
 | `headline` | text | PROFESSIONAL |
-| `subheadline_line1` | text | MONDAY - FRIDAY |
-| `subheadline_line2` | text | 5:00 PM - 8:00 PM |
-| `subheadline_line3` | text | Ingredients will be provided |
+| `supporting_line1` | text | MONDAY - FRIDAY |
+| `supporting_line2` | text | 5:00 PM - 8:00 PM |
+| `supporting_line3` | text | Ingredients will be provided |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -292,11 +297,11 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #1c3b64 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Raleway |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

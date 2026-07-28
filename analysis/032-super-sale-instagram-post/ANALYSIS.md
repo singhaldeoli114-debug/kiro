@@ -33,11 +33,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — body
 
 **Text:** "LOGO"  (OCR confidence 0.9986)
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 12.74:1 |
 | Stroke (median/mean) | 6.0 / 8.05 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Yeseva One, Actor |
 | Match IoU | 0.6875 |
 | **Geometry fit confidence** | **medium** |
@@ -89,25 +90,26 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 144 px |
 | Letter-spacing | 0.3 px (0.0021 em) |
-| Line-height | 132.0 px (ratio 0.917) |
+| Line-height | 131.0 px (ratio 0.91) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 13.7:1 |
 | Stroke (median/mean) | 23.0 / 20.69 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Yeseva One, Actor |
 | Match IoU | 0.9537 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 196 px |
-| Gap to next | 28 px |
+| Gap to next | 27 px |
 
 Alternate font fits considered:
-- `YesevaOne-Regular.ttf` 145px track -0.54px — IoU 0.9109
-- `YesevaOne-Regular.ttf` 143px track 1.13px — IoU 0.9029
-- `Actor-Regular.ttf` 164px track 0.07px — IoU 0.4736
+- `YesevaOne-Regular.ttf` 145px track -0.54px — IoU 0.9172
+- `YesevaOne-Regular.ttf` 143px track 1.13px — IoU 0.9048
+- `Actor-Regular.ttf` 164px track 0.07px — IoU 0.4783
 
 ### `text-3` — headline
 
@@ -115,8 +117,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=63, y=426, w=355, h=103 |
-| Normalised | x=5.83%, y=39.44%, w=32.87%, h=9.54% |
+| Bounding box (px) | x=63, y=425, w=355, h=105 |
+| Normalised | x=5.83%, y=39.35%, w=32.87%, h=9.72% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -125,34 +127,35 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 144 px |
 | Letter-spacing | 0.3 px (0.0021 em) |
-| Line-height | 132.0 px (ratio 0.917) |
+| Line-height | 131.0 px (ratio 0.91) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#9d011c` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.63:1 |
 | Stroke (median/mean) | 23.0 / 18.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Yeseva One, Actor |
-| Match IoU | 0.8881 |
+| Match IoU | 0.8915 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 28 px |
-| Gap to next | 449 px |
+| Gap to previous | 27 px |
+| Gap to next | 448 px |
 
 Alternate font fits considered:
-- `YesevaOne-Regular.ttf` 145px track -0.54px — IoU 0.9109
-- `YesevaOne-Regular.ttf` 143px track 1.13px — IoU 0.9029
-- `Actor-Regular.ttf` 164px track 0.07px — IoU 0.4736
+- `YesevaOne-Regular.ttf` 145px track -0.54px — IoU 0.9172
+- `YesevaOne-Regular.ttf` 143px track 1.13px — IoU 0.9048
+- `Actor-Regular.ttf` 164px track 0.07px — IoU 0.4783
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "BUY NOW"  (OCR confidence 0.9736)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=85, y=978, w=139, h=23 |
-| Normalised | x=7.87%, y=90.56%, w=12.87%, h=2.13% |
+| Bounding box (px) | x=85, y=978, w=140, h=23 |
+| Normalised | x=7.87%, y=90.56%, w=12.96%, h=2.13% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,7 +163,7 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 32 px |
-| Letter-spacing | -0.62 px (-0.0194 em) |
+| Letter-spacing | -0.46 px (-0.0144 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -168,18 +171,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 20.53:1 |
 | Stroke (median/mean) | 3.0 / 3.99 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Yeseva One, Actor |
-| Match IoU | 0.6068 |
+| Match IoU | 0.5973 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 449 px |
+| Gap to previous | 448 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 31px track 0.12px — IoU 0.5816
-- `Actor-Regular.ttf` 30px track 0.86px — IoU 0.5391
-- `YesevaOne-Regular.ttf` 29px track -0.03px — IoU 0.3763
+- `Actor-Regular.ttf` 31px track 0.28px — IoU 0.5424
+- `Actor-Regular.ttf` 30px track 1.03px — IoU 0.4385
+- `YesevaOne-Regular.ttf` 30px track -0.67px — IoU 0.3722
 
 ## 4. Colours (semantic)
 
@@ -187,11 +191,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#56595a` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#6db9d4` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#000000` | glyph ink of 'SUPER' | glyph ink median |
-| textSecondary | `#9d011c` | glyph ink of 'SALE' | glyph ink median |
+| textPrimary | `#9d011c` | glyph ink of 'SALE' | glyph ink median |
+| textSecondary | `#000000` | glyph ink of 'SUPER' | glyph ink median |
 | accent | `#370912` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#5ab1cd` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.0802 |
+| Text coverage | 0.0809 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -242,24 +246,24 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | LOGO |
+| `body` | text | LOGO |
 | `headline_line1` | text | SUPER |
 | `headline_line2` | text | SALE |
-| `supporting` | text | BUY NOW |
+| `body` | text | BUY NOW |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #56595a |
 | `surface` | colour | #6db9d4 |
-| `textPrimary` | colour | #000000 |
-| `textSecondary` | colour | #9d011c |
+| `textPrimary` | colour | #9d011c |
+| `textSecondary` | colour | #000000 |
 | `accent` | colour | #370912 |
 | `accentSecondary` | colour | #5ab1cd |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Yeseva One |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 66.4 |
 | `imageFocalY` | number | 58.4 |
 

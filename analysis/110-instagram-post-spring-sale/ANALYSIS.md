@@ -34,45 +34,46 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — subheadline
 
 **Text:** "SPRING"  (OCR confidence 0.9188)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=630, y=78, w=316, h=76 |
-| Normalised | x=58.33%, y=7.22%, w=29.26%, h=7.04% |
+| Bounding box (px) | x=633, y=84, w=308, h=61 |
+| Normalised | x=58.61%, y=7.78%, w=28.52%, h=5.65% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 75 px |
-| Letter-spacing | -0.95 px (-0.0127 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 73 px |
+| Letter-spacing | -0.84 px (-0.0115 em) |
+| Line-height | 86.0 px (ratio 1.178) |
+| Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 5.0 / 6.2 px |
+| Colour | `#fd4f0b` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.65:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Alata, Archivo Black |
-| Match IoU | 0.2896 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.5377 |
+| **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9188) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
 | Gap to previous | None px |
-| Gap to next | 16 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 74px track -0.1px — IoU 0.2886
-- `ArchivoBlack-Regular.ttf` 73px track 0.76px — IoU 0.2836
-- `AbrilFatface-Regular.ttf` 86px track -0.41px — IoU 0.2751
+- `ArchivoBlack-Regular.ttf` 72px track 0.01px — IoU 0.6967
+- `ArchivoBlack-Regular.ttf` 71px track 0.87px — IoU 0.6828
+- `AbrilFatface-Regular.ttf` 83px track 0.21px — IoU 0.4657
 
 ### `text-2` — subheadline
 
@@ -86,29 +87,30 @@ Alternate font fits considered:
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Alata-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 93 px |
-| Letter-spacing | -0.36 px (-0.0039 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 73 px |
+| Letter-spacing | -0.84 px (-0.0115 em) |
+| Line-height | 86.0 px (ratio 1.178) |
+| Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 16.0 / 23.17 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Alata, Archivo Black |
-| Match IoU | 0.1671 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.865 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 16 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 25 px |
 | Gap to next | 278 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 91px track 0.81px — IoU 0.163
-- `Alata-Regular.ttf` 92px track 0.22px — IoU 0.1628
-- `AbrilFatface-Regular.ttf` 77px track 0.74px — IoU 0.0618
+- `ArchivoBlack-Regular.ttf` 72px track 0.01px — IoU 0.6967
+- `ArchivoBlack-Regular.ttf` 71px track 0.87px — IoU 0.6828
+- `AbrilFatface-Regular.ttf` 83px track 0.21px — IoU 0.4657
 
 ### `text-3` — headline
 
@@ -116,16 +118,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=455, y=499, w=229, h=91 |
-| Normalised | x=42.13%, y=46.2%, w=21.2%, h=8.43% |
+| Bounding box (px) | x=455, y=499, w=229, h=92 |
+| Normalised | x=42.13%, y=46.2%, w=21.2%, h=8.52% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AbrilFatface-Regular.ttf` |
 | Variation axes | None |
-| Font size | 123 px |
-| Letter-spacing | -1.19 px (-0.0097 em) |
+| Font size | 121 px |
+| Letter-spacing | 0.7 px (0.0058 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -133,35 +135,36 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.04:1 |
 | Stroke (median/mean) | 16.0 / 16.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Alata, Archivo Black |
-| Match IoU | 0.8609 |
+| Match IoU | 0.8554 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 278 px |
-| Gap to next | 17 px |
+| Gap to next | 16 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 121px track 0.7px — IoU 0.8605
-- `AbrilFatface-Regular.ttf` 122px track -0.24px — IoU 0.8448
-- `ArchivoBlack-Regular.ttf` 98px track 0.14px — IoU 0.5909
+- `AbrilFatface-Regular.ttf` 123px track -1.19px — IoU 0.8542
+- `AbrilFatface-Regular.ttf` 122px track -0.24px — IoU 0.8356
+- `ArchivoBlack-Regular.ttf` 98px track 0.14px — IoU 0.594
 
-### `text-4` — detail
+### `text-4` — supporting
 
-**Text:** "CASHBACK"  (OCR confidence 0.9953)
+**Text:** "CASH BACK"  (OCR confidence 0.9953)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=450, y=607, w=235, h=36 |
-| Normalised | x=41.67%, y=56.2%, w=21.76%, h=3.33% |
+| Bounding box (px) | x=449, y=607, w=236, h=36 |
+| Normalised | x=41.57%, y=56.2%, w=21.85%, h=3.33% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
-| Font size | 48 px |
-| Letter-spacing | -1.06 px (-0.0221 em) |
+| Font size | 46 px |
+| Letter-spacing | -0.96 px (-0.0209 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -169,107 +172,112 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 10.3:1 |
 | Stroke (median/mean) | 6.0 / 8.11 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'CASHBACK' -> 'CASH BACK' |
 | Font family (authoritative) | Abril Fatface, Alata, Archivo Black |
-| Match IoU | 0.8323 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.4212 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 17 px |
-| Gap to next | 61 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 16 px |
+| Gap to next | 66 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 47px track -0.34px — IoU 0.779
-- `Alata-Regular.ttf` 46px track 0.38px — IoU 0.7341
-- `ArchivoBlack-Regular.ttf` 38px track -0.51px — IoU 0.6145
+- `ArchivoBlack-Regular.ttf` 37px track -1.08px — IoU 0.3945
+- `Alata-Regular.ttf` 45px track -0.29px — IoU 0.3838
+- `ArchivoBlack-Regular.ttf` 36px track -0.25px — IoU 0.3746
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "adidas"  (OCR confidence 0.9842)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=748, y=704, w=24, h=11 |
-| Normalised | x=69.26%, y=65.19%, w=2.22%, h=1.02% |
+| Bounding box (px) | x=739, y=709, w=38, h=20 |
+| Normalised | x=68.43%, y=65.65%, w=3.52%, h=1.85% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 6 px |
-| Letter-spacing | 0.47 px (0.0783 em) |
+| Font size | 12 px |
+| Letter-spacing | -1.07 px (-0.0892 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#4c381d` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.56:1 |
-| Stroke (median/mean) | 1.0 / 1.6 px |
+| Colour | `#9e8454` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.71:1 |
+| Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Abril Fatface, Alata, Archivo Black |
-| Match IoU | 0.2925 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.3055 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 61 px |
-| Gap to next | 112 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 66 px |
+| Gap to next | 97 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 8px track -0.04px — IoU 0.1905
-- `ArchivoBlack-Regular.ttf` 7px track -0.26px — IoU 0.1844
-- `Alata-Regular.ttf` 7px track 0.35px — IoU 0.1647
+- `AbrilFatface-Regular.ttf` 14px track -0.87px — IoU 0.2608
+- `ArchivoBlack-Regular.ttf` 11px track -0.35px — IoU 0.2566
+- `ArchivoBlack-Regular.ttf` 10px track 0.38px — IoU 0.2536
 
-### `text-6` — supporting
+### `text-6` — subheadline
 
 **Text:** "DISCOUNT"  (OCR confidence 0.992)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=72, y=827, w=412, h=51 |
-| Normalised | x=6.67%, y=76.57%, w=38.15%, h=4.72% |
+| Bounding box (px) | x=72, y=826, w=412, h=52 |
+| Normalised | x=6.67%, y=76.48%, w=38.15%, h=4.81% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbrilFatface-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 78 px |
-| Letter-spacing | 1.09 px (0.014 em) |
+| Font size | 70 px |
+| Letter-spacing | -0.02 px (-0.0003 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#f05d0e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 2.04:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Alata, Archivo Black |
-| Match IoU | 0.1739 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9196 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 112 px |
-| Gap to next | 48 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 97 px |
+| Gap to next | 47 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 80px track -0.39px — IoU 0.1684
-- `AbrilFatface-Regular.ttf` 79px track 0.35px — IoU 0.1558
-- `Alata-Regular.ttf` 84px track -0.05px — IoU 0.0584
+- `ArchivoBlack-Regular.ttf` 69px track 0.81px — IoU 0.9188
+- `ArchivoBlack-Regular.ttf` 71px track -0.86px — IoU 0.9142
+- `Alata-Regular.ttf` 85px track -0.75px — IoU 0.4718
 
-### `text-7` — fine-print
+### `text-7` — supporting
 
 **Text:** "SHOP NOW"  (OCR confidence 0.9975)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=73, y=926, w=229, h=33 |
-| Normalised | x=6.76%, y=85.74%, w=21.2%, h=3.06% |
+| Bounding box (px) | x=73, y=925, w=230, h=34 |
+| Normalised | x=6.76%, y=85.65%, w=21.3%, h=3.15% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
-| Font size | 43 px |
-| Letter-spacing | 0.19 px (0.0044 em) |
+| Font size | 44 px |
+| Letter-spacing | -0.42 px (-0.0095 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -277,18 +285,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 5.0 / 6.12 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Alata, Archivo Black |
-| Match IoU | 0.7332 |
+| Match IoU | 0.7718 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 48 px |
+| Gap to previous | 47 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 44px track -0.56px — IoU 0.7301
-- `Alata-Regular.ttf` 42px track 0.95px — IoU 0.7128
-- `ArchivoBlack-Regular.ttf` 38px track -0.45px — IoU 0.329
+- `Alata-Regular.ttf` 43px track 0.33px — IoU 0.698
+- `Alata-Regular.ttf` 42px track 1.1px — IoU 0.6456
+- `ArchivoBlack-Regular.ttf` 39px track -1.18px — IoU 0.3042
 
 ## 4. Colours (semantic)
 
@@ -297,10 +306,10 @@ Alternate font fits considered:
 | background | `#fefcfc` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#744021` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of '35%' | glyph ink median |
-| textSecondary | `#000000` | glyph ink of 'CASHBACK' | glyph ink median |
+| textSecondary | `#fd4f0b` | glyph ink of 'SPRING' | glyph ink median |
 | accent | `#ef5b0e` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#744021` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -324,7 +333,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.0869 |
+| Text coverage | 0.0837 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -351,30 +360,30 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | SPRING |
-| `subheadline` | text | FESTIVAL |
+| `subheadline_line1` | text | SPRING |
+| `subheadline_line2` | text | FESTIVAL |
 | `headline` | text | 35% |
-| `detail` | text | CASHBACK |
-| `detail` | text | adidas |
-| `supporting` | text | DISCOUNT |
-| `fine-print` | text | SHOP NOW |
+| `supporting` | text | CASH BACK |
+| `fine-print` | text | adidas |
+| `subheadline` | text | DISCOUNT |
+| `supporting` | text | SHOP NOW |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefcfc |
 | `surface` | colour | #744021 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #000000 |
+| `textSecondary` | colour | #fd4f0b |
 | `accent` | colour | #ef5b0e |
 | `accentSecondary` | colour | #744021 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abril Fatface |
-| `show_supporting` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_fine-print` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 41.9 |
 | `imageFocalY` | number | 46.7 |
 

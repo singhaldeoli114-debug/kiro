@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -61,11 +61,12 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.29:1 |
 | Stroke (median/mean) | 5.0 / 13.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre, Abel, Agdasima |
 | Match IoU | 0.2712 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
 | Gap to next | -814 px |
 
@@ -74,14 +75,14 @@ Alternate font fits considered:
 - `Agdasima-Bold.ttf` 35px track 0.17px — IoU 0.2545
 - `AbhayaLibre-ExtraBold.ttf` 27px track -0.5px — IoU 0.1967
 
-### `text-2` — supporting
+### `text-2` — body
 
 **Text:** "GRAB IT FAST"  (OCR confidence 0.9422)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=231, y=135, w=30, h=286 |
-| Normalised | x=21.39%, y=12.5%, w=2.78%, h=26.48% |
+| Bounding box (px) | x=231, y=135, w=31, h=287 |
+| Normalised | x=21.39%, y=12.5%, w=2.87%, h=26.57% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,7 +90,7 @@ Alternate font fits considered:
 | Font file matched | `Agdasima-Bold.ttf` |
 | Variation axes | None |
 | Font size | 8 px |
-| Letter-spacing | -0.57 px (-0.0712 em) |
+| Letter-spacing | -0.48 px (-0.06 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -97,19 +98,20 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.67:1 |
 | Stroke (median/mean) | 3.0 / 5.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre, Abel, Agdasima |
-| Match IoU | 0.1506 |
+| Match IoU | 0.1305 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | -814 px |
-| Gap to next | 581 px |
+| Gap to next | 580 px |
 
 Alternate font fits considered:
-- `Agdasima-Bold.ttf` 7px track -0.16px — IoU 0.0891
-- `AbhayaLibre-ExtraBold.ttf` 6px track -0.55px — IoU 0.0644
+- `Agdasima-Bold.ttf` 7px track -0.07px — IoU 0.0902
+- `AbhayaLibre-ExtraBold.ttf` 6px track -0.46px — IoU 0.0491
 
-### `text-3` — subheadline
+### `text-3` — headline
 
 **Text:** "SHOP"  (OCR confidence 0.999)
 
@@ -121,29 +123,30 @@ Alternate font fits considered:
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-Bold.ttf` |
+| Font file matched | `Agdasima-Bold.ttf` |
 | Variation axes | None |
-| Font size | 26 px |
-| Letter-spacing | -0.55 px (-0.0212 em) |
+| Font size | 34 px |
+| Letter-spacing | -0.08 px (-0.0024 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#4ebfcf` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.48:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre, Abel, Agdasima |
-| Match IoU | 0.1253 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8298 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 581 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 580 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 26px track -0.47px — IoU 0.1033
-- `AbhayaLibre-Medium.ttf` 26px track -0.4px — IoU 0.0901
-- `AbhayaLibre-Bold.ttf` 24px track 1.1px — IoU 0.0898
+- `Agdasima-Bold.ttf` 35px track -0.69px — IoU 0.8011
+- `Agdasima-Bold.ttf` 33px track 0.55px — IoU 0.8
+- `Agdasima-Regular.ttf` 37px track -0.15px — IoU 0.5076
 
 ## 4. Colours (semantic)
 
@@ -155,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#303233` | glyph ink of 'GRAB IT FAST' | glyph ink median |
 | accent | `#332815` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#60b2c2` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.1061 |
+| Text coverage | 0.1063 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,8 +210,8 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | CLEARANCE |
-| `supporting` | text | GRAB IT FAST |
-| `subheadline` | text | SHOP |
+| `body` | text | GRAB IT FAST |
+| `headline` | text | SHOP |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fdfefe |
@@ -220,8 +223,8 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Abhaya Libre |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_headline` | boolean | — |
 | `imageFocalX` | number | 62.0 |
 | `imageFocalY` | number | 53.2 |
 

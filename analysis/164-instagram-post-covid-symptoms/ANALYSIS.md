@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,35 +43,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=113, y=112, w=603, h=113 |
-| Normalised | x=10.46%, y=10.37%, w=55.83%, h=10.46% |
+| Bounding box (px) | x=112, y=112, w=604, h=114 |
+| Normalised | x=10.37%, y=10.37%, w=55.93%, h=10.56% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 123 px |
-| Letter-spacing | -0.57 px (-0.0046 em) |
-| Line-height | 169.0 px (ratio 1.374) |
+| Font size | 122 px |
+| Letter-spacing | -0.07 px (-0.0006 em) |
+| Line-height | 169.0 px (ratio 1.385) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 11.0 / 13.43 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.8722 |
+| Match IoU | 0.877 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 56 px |
+| Gap to next | 55 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 122px track -0.07px — IoU 0.8816
-- `CrimsonPro[wght].ttf` 121px track 0.43px — IoU 0.8748
-- `CrimsonPro[wght].ttf` 125px track -0.59px — IoU 0.8272
+- `CrimsonPro[wght].ttf` 121px track 0.43px — IoU 0.8805
+- `CrimsonPro[wght].ttf` 123px track -0.57px — IoU 0.8788
+- `CrimsonPro[wght].ttf` 125px track -0.59px — IoU 0.8294
 
 ### `text-2` — headline
 
@@ -87,44 +88,45 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 123 px |
-| Letter-spacing | -0.57 px (-0.0046 em) |
-| Line-height | 169.0 px (ratio 1.374) |
+| Font size | 122 px |
+| Letter-spacing | -0.07 px (-0.0006 em) |
+| Line-height | 169.0 px (ratio 1.385) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 11.0 / 13.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.8927 |
+| Match IoU | 0.8992 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 56 px |
+| Gap to previous | 55 px |
 | Gap to next | 88 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 122px track -0.07px — IoU 0.8816
-- `CrimsonPro[wght].ttf` 121px track 0.43px — IoU 0.8748
-- `CrimsonPro[wght].ttf` 125px track -0.59px — IoU 0.8272
+- `CrimsonPro[wght].ttf` 121px track 0.43px — IoU 0.8805
+- `CrimsonPro[wght].ttf` 123px track -0.57px — IoU 0.8788
+- `CrimsonPro[wght].ttf` 125px track -0.59px — IoU 0.8294
 
-### `text-3` — detail
+### `text-3` — supporting
 
 **Text:** "Fever"  (OCR confidence 0.9997)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=109, y=483, w=98, h=27 |
-| Normalised | x=10.09%, y=44.72%, w=9.07%, h=2.5% |
+| Bounding box (px) | x=109, y=483, w=98, h=28 |
+| Normalised | x=10.09%, y=44.72%, w=9.07%, h=2.59% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 42 px |
-| Letter-spacing | -0.09 px (-0.0021 em) |
+| Variation axes | [600] |
+| Font size | 44 px |
+| Letter-spacing | -0.61 px (-0.0139 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -132,18 +134,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.63 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.775 |
+| Match IoU | 0.7907 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 88 px |
-| Gap to next | 32 px |
+| Gap to next | 31 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 44px track -0.61px — IoU 0.7635
-- `CrimsonPro[wght].ttf` 43px track -0.03px — IoU 0.7559
-- `CrimsonPro[wght].ttf` 43px track -0.67px — IoU 0.7343
+- `CrimsonPro[wght].ttf` 42px track -0.09px — IoU 0.7786
+- `CrimsonPro[wght].ttf` 41px track 0.49px — IoU 0.7652
+- `CrimsonPro[wght].ttf` 41px track -0.16px — IoU 0.7596
 
 ### `text-4` — supporting
 
@@ -158,280 +161,288 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [600] |
 | Font size | 46 px |
-| Letter-spacing | -0.79 px (-0.0172 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 1 of 8 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.8065 |
+| Match IoU | 0.8264 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 32 px |
-| Gap to next | 22 px |
+| Gap to previous | 31 px |
+| Gap to next | 21 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 43px track 0.74px — IoU 0.7846
-- `CrimsonPro[wght].ttf` 44px track -0.54px — IoU 0.7773
-- `CrimsonPro[wght].ttf` 45px track -0.62px — IoU 0.7772
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "Colds"  (OCR confidence 0.9998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=109, y=606, w=102, h=31 |
-| Normalised | x=10.09%, y=56.11%, w=9.44%, h=2.87% |
+| Bounding box (px) | x=109, y=605, w=102, h=33 |
+| Normalised | x=10.09%, y=56.02%, w=9.44%, h=3.06% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 43 px |
-| Letter-spacing | -0.01 px (-0.0002 em) |
-| Line-height | 61.8 px (ratio 1.437) |
-| Line | 1 of 7 |
+| Variation axes | [600] |
+| Font size | 46 px |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 2 of 8 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.41 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.787 |
+| Match IoU | 0.8089 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 22 px |
-| Gap to next | 32 px |
+| Gap to previous | 21 px |
+| Gap to next | 31 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 44px track -0.61px — IoU 0.7821
-- `CrimsonPro[wght].ttf` 44px track -0.13px — IoU 0.7707
-- `CrimsonPro[wght].ttf` 45px track -0.71px — IoU 0.7641
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "Headache"  (OCR confidence 0.9999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=109, y=669, w=180, h=32 |
-| Normalised | x=10.09%, y=61.94%, w=16.67%, h=2.96% |
+| Bounding box (px) | x=109, y=669, w=181, h=32 |
+| Normalised | x=10.09%, y=61.94%, w=16.76%, h=2.96% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [600] |
 | Font size | 46 px |
-| Letter-spacing | -0.59 px (-0.0128 em) |
-| Line-height | 61.8 px (ratio 1.343) |
-| Line | 2 of 7 |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 3 of 8 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.8149 |
+| Match IoU | 0.8176 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 32 px |
-| Gap to next | 32 px |
+| Gap to previous | 31 px |
+| Gap to next | 31 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 45px track -0.01px — IoU 0.8114
-- `CrimsonPro[wght].ttf` 44px track 0.12px — IoU 0.7868
-- `CrimsonPro[wght].ttf` 45px track -0.46px — IoU 0.7646
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "Diarrhea"  (OCR confidence 0.9999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=109, y=733, w=162, h=31 |
-| Normalised | x=10.09%, y=67.87%, w=15.0%, h=2.87% |
+| Bounding box (px) | x=109, y=732, w=163, h=33 |
+| Normalised | x=10.09%, y=67.78%, w=15.09%, h=3.06% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 45 px |
-| Letter-spacing | -0.08 px (-0.0018 em) |
-| Line-height | 61.8 px (ratio 1.373) |
-| Line | 3 of 7 |
+| Variation axes | [600] |
+| Font size | 46 px |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 4 of 8 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.85 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.8189 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.697 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 32 px |
-| Gap to next | 32 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 31 px |
+| Gap to next | 30 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 46px track -0.6px — IoU 0.8013
-- `CrimsonPro[wght].ttf` 44px track -0.08px — IoU 0.76
-- `CrimsonPro[wght].ttf` 45px track -0.6px — IoU 0.7492
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
-### `text-8` — subheadline
+### `text-8` — supporting
 
 **Text:** "Shortness of breath"  (OCR confidence 0.9963)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=109, y=796, w=359, h=32 |
-| Normalised | x=10.09%, y=73.7%, w=33.24%, h=2.96% |
+| Bounding box (px) | x=109, y=795, w=359, h=33 |
+| Normalised | x=10.09%, y=73.61%, w=33.24%, h=3.06% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
 | Variation axes | [600] |
-| Font size | 45 px |
-| Letter-spacing | -0.23 px (-0.0051 em) |
-| Line-height | 61.8 px (ratio 1.373) |
-| Line | 4 of 7 |
+| Font size | 46 px |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 5 of 8 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.7848 |
+| Match IoU | 0.7525 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 32 px |
+| Gap to previous | 30 px |
 | Gap to next | 31 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 42px track 0.65px — IoU 0.7501
-- `CrimsonPro[wght].ttf` 43px track 0.2px — IoU 0.7372
-- `CrimsonPro[wght].ttf` 44px track 0.21px — IoU 0.7338
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
-### `text-9` — subheadline
+### `text-9` — supporting
 
 **Text:** "Sore throat"  (OCR confidence 0.9914)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=110, y=859, w=203, h=32 |
-| Normalised | x=10.19%, y=79.54%, w=18.8%, h=2.96% |
+| Bounding box (px) | x=109, y=859, w=205, h=33 |
+| Normalised | x=10.09%, y=79.54%, w=18.98%, h=3.06% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [600] |
 | Font size | 46 px |
-| Letter-spacing | -0.65 px (-0.0141 em) |
-| Line-height | 61.8 px (ratio 1.343) |
-| Line | 5 of 7 |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 6 of 8 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.8225 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6889 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 31 px |
-| Gap to next | 32 px |
+| Gap to next | 30 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 43px track 0.27px — IoU 0.7818
-- `CrimsonPro[wght].ttf` 45px track -0.19px — IoU 0.7637
-- `CrimsonPro[wght].ttf` 44px track -0.2px — IoU 0.7572
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
-### `text-10` — subheadline
+### `text-10` — supporting
 
 **Text:** "Joint and Muscle Pain"  (OCR confidence 0.99)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=104, y=923, w=405, h=40 |
-| Normalised | x=9.63%, y=85.46%, w=37.5%, h=3.7% |
+| Bounding box (px) | x=103, y=922, w=407, h=42 |
+| Normalised | x=9.54%, y=85.37%, w=37.69%, h=3.89% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CrimsonPro[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 47 px |
-| Letter-spacing | -0.46 px (-0.0098 em) |
-| Line-height | 61.8 px (ratio 1.315) |
-| Line | 6 of 7 |
+| Variation axes | [600] |
+| Font size | 46 px |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 7 of 8 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.32:1 |
 | Stroke (median/mean) | 4.0 / 4.39 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.7285 |
+| Match IoU | 0.8075 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 32 px |
-| Gap to next | 14 px |
+| Gap to previous | 30 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 45px track 0.42px — IoU 0.7098
-- `CrimsonPro[wght].ttf` 44px track 0.45px — IoU 0.7088
-- `CrimsonPro[wght].ttf` 46px track -0.02px — IoU 0.6941
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
-### `text-11` — subheadline
+### `text-11` — supporting
 
 **Text:** "#STOP COVID 19"  (OCR confidence 0.9984)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=626, y=977, w=365, h=35 |
-| Normalised | x=57.96%, y=90.46%, w=33.8%, h=3.24% |
+| Bounding box (px) | x=626, y=976, w=365, h=37 |
+| Normalised | x=57.96%, y=90.37%, w=33.8%, h=3.43% |
 | Alignment | right |
 | z-order | 110 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-Medium.ttf` |
-| Variation axes | None |
-| Font size | 53 px |
-| Letter-spacing | -0.57 px (-0.0108 em) |
-| Line-height | 61.8 px (ratio 1.166) |
-| Line | 7 of 7 |
+| Font file matched | `CrimsonPro[wght].ttf` |
+| Variation axes | [600] |
+| Font size | 46 px |
+| Letter-spacing | -0.35 px (-0.0076 em) |
+| Line-height | 62.0 px (ratio 1.348) |
+| Line | 8 of 8 |
 | Transform | uppercase |
 | Colour | `#fefefe` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.29:1 |
 | Stroke (median/mean) | 4.0 / 4.4 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crimson Pro, Abhaya Libre |
-| Match IoU | 0.7371 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.4644 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 14 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 12 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 52px track -0.1px — IoU 0.7161
-- `AbhayaLibre-SemiBold.ttf` 53px track -0.64px — IoU 0.6966
-- `AbhayaLibre-Bold.ttf` 53px track -0.71px — IoU 0.68
+- `CrimsonPro[wght].ttf` 45px track 0.1px — IoU 0.7027
+- `CrimsonPro[wght].ttf` 45px track -0.4px — IoU 0.6991
+- `CrimsonPro[wght].ttf` 44px track 0.06px — IoU 0.6965
 
 ## 4. Colours (semantic)
 
@@ -439,11 +450,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fbfcfb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#091805` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'these symptoms?' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'Do you have' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of 'Do you have' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'these symptoms?' | glyph ink median |
 | accent | `#091805` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -467,7 +478,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.2005 |
+| Text coverage | 0.2036 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -496,15 +507,15 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | Do you have |
 | `headline_line2` | text | these symptoms? |
-| `detail` | text | Fever |
-| `supporting` | text | Cough |
-| `subheadline_line1` | text | Colds |
-| `subheadline_line2` | text | Headache |
-| `subheadline_line3` | text | Diarrhea |
-| `subheadline_line4` | text | Shortness of breath |
-| `subheadline_line5` | text | Sore throat |
-| `subheadline_line6` | text | Joint and Muscle Pain |
-| `subheadline_line7` | text | #STOP COVID 19 |
+| `supporting` | text | Fever |
+| `supporting_line1` | text | Cough |
+| `supporting_line2` | text | Colds |
+| `supporting_line3` | text | Headache |
+| `supporting_line4` | text | Diarrhea |
+| `supporting_line5` | text | Shortness of breath |
+| `supporting_line6` | text | Sore throat |
+| `supporting_line7` | text | Joint and Muscle Pain |
+| `supporting_line8` | text | #STOP COVID 19 |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fbfcfb |
@@ -516,15 +527,15 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Crimson Pro |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

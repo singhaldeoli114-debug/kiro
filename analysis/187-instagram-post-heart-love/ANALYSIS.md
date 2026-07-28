@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — body
 
 **Text:** "TO ME, YOU ARE"  (OCR confidence 0.9637)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=373, y=411, w=363, h=38 |
-| Normalised | x=34.54%, y=38.06%, w=33.61%, h=3.52% |
+| Bounding box (px) | x=373, y=411, w=364, h=38 |
+| Normalised | x=34.54%, y=38.06%, w=33.7%, h=3.52% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Raleway[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 47 px |
-| Letter-spacing | -0.67 px (-0.0143 em) |
+| Letter-spacing | -0.59 px (-0.0126 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 4.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Lobster Two |
-| Match IoU | 0.7993 |
+| Match IoU | 0.7437 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 38 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 46px track -0.06px — IoU 0.7443
-- `Raleway[wght].ttf` 46px track -0.04px — IoU 0.7089
-- `Raleway[wght].ttf` 47px track -0.65px — IoU 0.69
+- `Raleway[wght].ttf` 46px track 0.02px — IoU 0.7002
+- `Raleway[wght].ttf` 47px track -0.57px — IoU 0.6584
+- `Raleway[wght].ttf` 45px track 0.64px — IoU 0.6486
 
 ### `text-2` — headline
 
@@ -79,16 +80,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=327, y=487, w=430, h=176 |
-| Normalised | x=30.28%, y=45.09%, w=39.81%, h=16.3% |
+| Bounding box (px) | x=326, y=487, w=431, h=176 |
+| Normalised | x=30.19%, y=45.09%, w=39.91%, h=16.3% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `LobsterTwo-Regular.ttf` |
 | Variation axes | None |
-| Font size | 166 px |
-| Letter-spacing | 0.45 px (0.0027 em) |
+| Font size | 168 px |
+| Letter-spacing | -0.24 px (-0.0014 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -96,8 +97,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 18.0 / 20.17 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Lobster Two |
-| Match IoU | 0.7771 |
+| Match IoU | 0.7914 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -105,9 +107,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `LobsterTwo-Regular.ttf` 168px track -0.41px — IoU 0.7758
-- `LobsterTwo-Regular.ttf` 167px track 0.03px — IoU 0.7714
-- `LobsterTwo-Bold.ttf` 160px track -0.44px — IoU 0.7391
+- `LobsterTwo-Regular.ttf` 167px track 0.2px — IoU 0.775
+- `LobsterTwo-Regular.ttf` 166px track 0.62px — IoU 0.773
+- `LobsterTwo-Bold.ttf` 160px track -0.27px — IoU 0.7169
 
 ## 4. Colours (semantic)
 
@@ -119,7 +121,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'TO ME, YOU ARE' | glyph ink median |
 | accent | `#da1a2b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ec9cb9` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -143,7 +145,7 @@ Full palette (k-means):
 | Subject position | middle-left |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0767 |
+| Text coverage | 0.0769 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -170,7 +172,7 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | TO ME, YOU ARE |
+| `body` | text | TO ME, YOU ARE |
 | `headline` | text | Perfect |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -182,7 +184,7 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #ec9cb9 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Raleway |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 36.3 |
 | `imageFocalY` | number | 41.8 |

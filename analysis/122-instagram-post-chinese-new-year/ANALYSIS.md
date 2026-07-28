@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -59,6 +59,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster |
 | Match IoU | 0.7142 |
 | **Geometry fit confidence** | **high** |
@@ -94,6 +95,8 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.12:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Lobster |
 | Match IoU | 0.8806 |
 | **Geometry fit confidence** | **high** |
@@ -112,8 +115,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=554, y=829, w=240, h=96 |
-| Normalised | x=51.3%, y=76.76%, w=22.22%, h=8.89% |
+| Bounding box (px) | x=554, y=829, w=240, h=95 |
+| Normalised | x=51.3%, y=76.76%, w=22.22%, h=8.8% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -129,8 +132,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.12:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster |
-| Match IoU | 0.7604 |
+| Match IoU | 0.7681 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -138,8 +142,8 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Lobster-Regular.ttf` 130px track 0.75px — IoU 0.7469
-- `Lobster-Regular.ttf` 132px track -0.47px — IoU 0.7226
+- `Lobster-Regular.ttf` 130px track 0.75px — IoU 0.7509
+- `Lobster-Regular.ttf` 132px track -0.47px — IoU 0.7302
 
 ## 4. Colours (semantic)
 
@@ -151,7 +155,7 @@ Alternate font fits considered:
 | textSecondary | `#f5a623` | glyph ink of 'New' | glyph ink median |
 | accent | `#540807` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ad1617` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -175,7 +179,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0673 |
+| Text coverage | 0.0671 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

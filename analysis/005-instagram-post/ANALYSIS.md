@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Cinzel[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 94 px |
-| Letter-spacing | -0.62 px (-0.0066 em) |
+| Letter-spacing | -0.46 px (-0.0049 em) |
 | Line-height | 124.5 px (ratio 1.324) |
 | Line | 1 of 3 |
 | Transform | uppercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.72:1 |
 | Stroke (median/mean) | 14.0 / 14.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.9159 |
+| Match IoU | 0.9588 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 56 px |
 
 Alternate font fits considered:
-- `Cinzel[wght].ttf` 93px track 0.16px — IoU 0.8964
-- `Cinzel[wght].ttf` 92px track 0.95px — IoU 0.8524
-- `Cinzel[wght].ttf` 90px track 0.7px — IoU 0.8286
+- `Cinzel[wght].ttf` 93px track 0.33px — IoU 0.8573
+- `Cinzel[wght].ttf` 90px track 0.87px — IoU 0.8221
+- `Cinzel[wght].ttf` 92px track 1.11px — IoU 0.8213
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=110, y=241, w=439, h=70 |
-| Normalised | x=10.19%, y=22.31%, w=40.65%, h=6.48% |
+| Bounding box (px) | x=109, y=241, w=440, h=72 |
+| Normalised | x=10.09%, y=22.31%, w=40.74%, h=6.67% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,7 +89,7 @@ Alternate font fits considered:
 | Font file matched | `Cinzel[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 94 px |
-| Letter-spacing | -0.62 px (-0.0066 em) |
+| Letter-spacing | -0.46 px (-0.0049 em) |
 | Line-height | 124.5 px (ratio 1.324) |
 | Line | 2 of 3 |
 | Transform | uppercase |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.79:1 |
 | Stroke (median/mean) | 14.0 / 13.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.8535 |
+| Match IoU | 0.738 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 56 px |
-| Gap to next | 55 px |
+| Gap to next | 53 px |
 
 Alternate font fits considered:
-- `Cinzel[wght].ttf` 93px track 0.16px — IoU 0.8964
-- `Cinzel[wght].ttf` 92px track 0.95px — IoU 0.8524
-- `Cinzel[wght].ttf` 90px track 0.7px — IoU 0.8286
+- `Cinzel[wght].ttf` 93px track 0.33px — IoU 0.8573
+- `Cinzel[wght].ttf` 90px track 0.87px — IoU 0.8221
+- `Cinzel[wght].ttf` 92px track 1.11px — IoU 0.8213
 
 ### `text-3` — headline
 
@@ -124,7 +126,7 @@ Alternate font fits considered:
 | Font file matched | `Cinzel[wght].ttf` |
 | Variation axes | [700] |
 | Font size | 94 px |
-| Letter-spacing | -0.62 px (-0.0066 em) |
+| Letter-spacing | -0.46 px (-0.0049 em) |
 | Line-height | 124.5 px (ratio 1.324) |
 | Line | 3 of 3 |
 | Transform | uppercase |
@@ -132,27 +134,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.69:1 |
 | Stroke (median/mean) | 14.0 / 13.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.9362 |
+| Match IoU | 0.9208 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 55 px |
-| Gap to next | 42 px |
+| Gap to previous | 53 px |
+| Gap to next | 40 px |
 
 Alternate font fits considered:
-- `Cinzel[wght].ttf` 93px track 0.16px — IoU 0.8964
-- `Cinzel[wght].ttf` 92px track 0.95px — IoU 0.8524
-- `Cinzel[wght].ttf` 90px track 0.7px — IoU 0.8286
+- `Cinzel[wght].ttf` 93px track 0.33px — IoU 0.8573
+- `Cinzel[wght].ttf` 90px track 0.87px — IoU 0.8221
+- `Cinzel[wght].ttf` 92px track 1.11px — IoU 0.8213
 
-### `text-4` — subheadline
+### `text-4` — body
 
 **Text:** "Every cup is crafted to"  (OCR confidence 0.9975)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=107, y=477, w=317, h=28 |
-| Normalised | x=9.91%, y=44.17%, w=29.35%, h=2.59% |
+| Bounding box (px) | x=107, y=475, w=317, h=30 |
+| Normalised | x=9.91%, y=43.98%, w=29.35%, h=2.78% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,35 +163,36 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 30 px |
-| Letter-spacing | -0.59 px (-0.0197 em) |
-| Line-height | 38.0 px (ratio 1.267) |
-| Line | 1 of 2 |
+| Letter-spacing | -0.58 px (-0.0193 em) |
+| Line-height | 37.3 px (ratio 1.243) |
+| Line | 1 of 7 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.87:1 |
 | Stroke (median/mean) | 3.0 / 3.59 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.7175 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.4981 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 42 px |
-| Gap to next | 10 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 40 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.7029
-- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.6537
-- `Cinzel[wght].ttf` 25px track -0.9px — IoU 0.2
+- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.3978
+- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.3669
+- `Cinzel[wght].ttf` 25px track -0.55px — IoU 0.1762
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "highlight the rich character"  (OCR confidence 0.9904)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=107, y=515, w=392, h=28 |
-| Normalised | x=9.91%, y=47.69%, w=36.3%, h=2.59% |
+| Bounding box (px) | x=99, y=514, w=400, h=29 |
+| Normalised | x=9.17%, y=47.59%, w=37.04%, h=2.69% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -196,35 +200,36 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 30 px |
-| Letter-spacing | -0.59 px (-0.0197 em) |
-| Line-height | 38.0 px (ratio 1.267) |
-| Line | 2 of 2 |
+| Letter-spacing | -0.58 px (-0.0193 em) |
+| Line-height | 37.3 px (ratio 1.243) |
+| Line | 2 of 7 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.87:1 |
 | Stroke (median/mean) | 3.0 / 3.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.7609 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.2322 |
+| **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 10 px |
-| Gap to next | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 9 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.7029
-- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.6537
-- `Cinzel[wght].ttf` 25px track -0.9px — IoU 0.2
+- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.3978
+- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.3669
+- `Cinzel[wght].ttf` 25px track -0.55px — IoU 0.1762
 
-### `text-6` — subheadline
+### `text-6` — body
 
 **Text:** "of carefully selected coffee"  (OCR confidence 0.9761)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=106, y=542, w=389, h=43 |
-| Normalised | x=9.81%, y=50.19%, w=36.02%, h=3.98% |
+| Bounding box (px) | x=106, y=549, w=389, h=34 |
+| Normalised | x=9.81%, y=50.83%, w=36.02%, h=3.15% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -233,34 +238,35 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 30 px |
 | Letter-spacing | -0.58 px (-0.0193 em) |
-| Line-height | 38.0 px (ratio 1.267) |
-| Line | 1 of 5 |
+| Line-height | 37.3 px (ratio 1.243) |
+| Line | 3 of 7 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.86:1 |
-| Stroke (median/mean) | 3.0 / 3.79 px |
+| Contrast vs local bg | 1.87:1 |
+| Stroke (median/mean) | 3.0 / 3.78 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.3311 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4563 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | -1 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 6 px |
+| Gap to next | 3 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.2464
-- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.228
-- `Cinzel[wght].ttf` 24px track 0.05px — IoU 0.1583
+- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.3978
+- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.3669
+- `Cinzel[wght].ttf` 25px track -0.55px — IoU 0.1762
 
-### `text-7` — subheadline
+### `text-7` — body
 
 **Text:** "beans, delivering a smooth,"  (OCR confidence 0.9959)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=107, y=584, w=396, h=35 |
-| Normalised | x=9.91%, y=54.07%, w=36.67%, h=3.24% |
+| Bounding box (px) | x=107, y=586, w=396, h=33 |
+| Normalised | x=9.91%, y=54.26%, w=36.67%, h=3.06% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -269,34 +275,35 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 30 px |
 | Letter-spacing | -0.58 px (-0.0193 em) |
-| Line-height | 38.0 px (ratio 1.267) |
-| Line | 2 of 5 |
+| Line-height | 37.3 px (ratio 1.243) |
+| Line | 4 of 7 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.92:1 |
+| Contrast vs local bg | 1.93:1 |
 | Stroke (median/mean) | 3.0 / 3.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.2647 |
+| Match IoU | 0.2884 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | 10 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 3 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.2464
-- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.228
-- `Cinzel[wght].ttf` 24px track 0.05px — IoU 0.1583
+- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.3978
+- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.3669
+- `Cinzel[wght].ttf` 25px track -0.55px — IoU 0.1762
 
-### `text-8` — subheadline
+### `text-8` — body
 
 **Text:** "balanced flavor that turns"  (OCR confidence 0.9923)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=107, y=629, w=374, h=30 |
-| Normalised | x=9.91%, y=58.24%, w=34.63%, h=2.78% |
+| Bounding box (px) | x=107, y=624, w=375, h=34 |
+| Normalised | x=9.91%, y=57.78%, w=34.72%, h=3.15% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
@@ -305,34 +312,35 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 30 px |
 | Letter-spacing | -0.58 px (-0.0193 em) |
-| Line-height | 38.0 px (ratio 1.267) |
-| Line | 3 of 5 |
+| Line-height | 37.3 px (ratio 1.243) |
+| Line | 5 of 7 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.98:1 |
-| Stroke (median/mean) | 3.0 / 3.33 px |
+| Stroke (median/mean) | 3.0 / 3.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.2637 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4078 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 10 px |
-| Gap to next | -1 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 5 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.2464
-- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.228
-- `Cinzel[wght].ttf` 24px track 0.05px — IoU 0.1583
+- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.3978
+- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.3669
+- `Cinzel[wght].ttf` 25px track -0.55px — IoU 0.1762
 
-### `text-9` — subheadline
+### `text-9` — body
 
 **Text:** "everyday routines into"  (OCR confidence 0.988)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=106, y=658, w=320, h=37 |
-| Normalised | x=9.81%, y=60.93%, w=29.63%, h=3.43% |
+| Bounding box (px) | x=106, y=667, w=320, h=28 |
+| Normalised | x=9.81%, y=61.76%, w=29.63%, h=2.59% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
@@ -341,34 +349,35 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 30 px |
 | Letter-spacing | -0.58 px (-0.0193 em) |
-| Line-height | 38.0 px (ratio 1.267) |
-| Line | 4 of 5 |
+| Line-height | 37.3 px (ratio 1.243) |
+| Line | 6 of 7 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.98:1 |
-| Stroke (median/mean) | 3.0 / 3.32 px |
+| Contrast vs local bg | 1.99:1 |
+| Stroke (median/mean) | 3.0 / 3.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.2306 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6864 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 9 px |
+| Gap to next | 4 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.2464
-- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.228
-- `Cinzel[wght].ttf` 24px track 0.05px — IoU 0.1583
+- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.3978
+- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.3669
+- `Cinzel[wght].ttf` 25px track -0.55px — IoU 0.1762
 
-### `text-10` — subheadline
+### `text-10` — body
 
 **Text:** "something worth savoring."  (OCR confidence 0.9806)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=107, y=694, w=382, h=39 |
-| Normalised | x=9.91%, y=64.26%, w=35.37%, h=3.61% |
+| Bounding box (px) | x=107, y=699, w=383, h=34 |
+| Normalised | x=9.91%, y=64.72%, w=35.46%, h=3.15% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
@@ -377,25 +386,26 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 30 px |
 | Letter-spacing | -0.58 px (-0.0193 em) |
-| Line-height | 38.0 px (ratio 1.267) |
-| Line | 5 of 5 |
+| Line-height | 37.3 px (ratio 1.243) |
+| Line | 7 of 7 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.04:1 |
+| Contrast vs local bg | 2.06:1 |
 | Stroke (median/mean) | 3.0 / 3.23 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Cinzel, Poppins |
-| Match IoU | 0.2303 |
+| Match IoU | 0.2992 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 4 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.2464
-- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.228
-- `Cinzel[wght].ttf` 24px track 0.05px — IoU 0.1583
+- `Poppins-Regular.ttf` 29px track -0.09px — IoU 0.3978
+- `Poppins-Regular.ttf` 28px track 0.42px — IoU 0.3669
+- `Cinzel[wght].ttf` 25px track -0.55px — IoU 0.1762
 
 ## 4. Colours (semantic)
 
@@ -407,7 +417,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'BREW' | glyph ink median |
 | accent | `#1e0a04` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#573a26` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -431,7 +441,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1307 |
+| Text coverage | 0.1261 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -461,13 +471,13 @@ _Recommendations only — no manifest is generated._
 | `headline_line1` | text | THE |
 | `headline_line2` | text | PERFECT |
 | `headline_line3` | text | BREW |
-| `subheadline_line1` | text | Every cup is crafted to |
-| `subheadline_line2` | text | highlight the rich character |
-| `subheadline_line1` | text | of carefully selected coffee |
-| `subheadline_line2` | text | beans, delivering a smooth, |
-| `subheadline_line3` | text | balanced flavor that turns |
-| `subheadline_line4` | text | everyday routines into |
-| `subheadline_line5` | text | something worth savoring. |
+| `body_line1` | text | Every cup is crafted to |
+| `body_line2` | text | highlight the rich character |
+| `body_line3` | text | of carefully selected coffee |
+| `body_line4` | text | beans, delivering a smooth, |
+| `body_line5` | text | balanced flavor that turns |
+| `body_line6` | text | everyday routines into |
+| `body_line7` | text | something worth savoring. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f4f1eb |
@@ -481,13 +491,13 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 48.5 |
 | `imageFocalY` | number | 54.9 |
 

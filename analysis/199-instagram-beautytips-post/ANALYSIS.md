@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,8 +44,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=327, y=226, w=304, h=101 |
-| Normalised | x=30.28%, y=20.93%, w=28.15%, h=9.35% |
+| Bounding box (px) | x=327, y=225, w=304, h=103 |
+| Normalised | x=30.28%, y=20.83%, w=28.15%, h=9.54% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -61,34 +61,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.29:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.2474 |
+| Match IoU | 0.2449 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | -100 px |
+| Gap to next | -99 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 108px track -0.22px — IoU 0.2439
-- `Acme-Regular.ttf` 107px track 0.35px — IoU 0.2432
+- `Acme-Regular.ttf` 108px track -0.22px — IoU 0.2413
+- `Acme-Regular.ttf` 107px track 0.35px — IoU 0.2401
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "Tips"  (OCR confidence 0.7821)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=630, y=227, w=158, h=101 |
-| Normalised | x=58.33%, y=21.02%, w=14.63%, h=9.35% |
+| Bounding box (px) | x=629, y=229, w=159, h=99 |
+| Normalised | x=58.24%, y=21.2%, w=14.72%, h=9.17% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 97 px |
-| Letter-spacing | 0.12 px (0.0012 em) |
+| Font size | 99 px |
+| Letter-spacing | -0.62 px (-0.0063 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -96,17 +98,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.29:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.2776 |
+| Match IoU | 0.2793 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7821) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -100 px |
-| Gap to next | 49 px |
+| Gap to previous | -99 px |
+| Gap to next | 48 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 98px track -0.41px — IoU 0.2765
-- `Acme-Regular.ttf` 96px track 0.67px — IoU 0.2697
+- `Acme-Regular.ttf` 98px track -0.08px — IoU 0.2761
+- `Acme-Regular.ttf` 97px track 0.46px — IoU 0.2704
 
 ### `text-3` — supporting
 
@@ -114,34 +118,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=261, y=377, w=373, h=53 |
-| Normalised | x=24.17%, y=34.91%, w=34.54%, h=4.91% |
+| Bounding box (px) | x=261, y=376, w=373, h=54 |
+| Normalised | x=24.17%, y=34.81%, w=34.54%, h=5.0% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 54 px |
-| Letter-spacing | -0.18 px (-0.0033 em) |
-| Line-height | 73.6 px (ratio 1.363) |
+| Font size | 53 px |
+| Letter-spacing | 0.28 px (0.0053 em) |
+| Line-height | 73.6 px (ratio 1.389) |
 | Line | 1 of 6 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 7.0 / 8.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.8023 |
+| Match IoU | 0.7972 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 49 px |
-| Gap to next | 20 px |
+| Gap to previous | 48 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 53px track 0.24px — IoU 0.748
-- `Acme-Regular.ttf` 55px track -0.59px — IoU 0.7361
+- `Acme-Regular.ttf` 55px track -0.55px — IoU 0.7433
+- `Acme-Regular.ttf` 54px track -0.14px — IoU 0.7404
 
 ### `text-4` — supporting
 
@@ -149,34 +154,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=263, y=450, w=391, h=53 |
-| Normalised | x=24.35%, y=41.67%, w=36.2%, h=4.91% |
+| Bounding box (px) | x=263, y=449, w=391, h=54 |
+| Normalised | x=24.35%, y=41.57%, w=36.2%, h=5.0% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 54 px |
-| Letter-spacing | -0.18 px (-0.0033 em) |
-| Line-height | 73.6 px (ratio 1.363) |
+| Font size | 53 px |
+| Letter-spacing | 0.28 px (0.0053 em) |
+| Line-height | 73.6 px (ratio 1.389) |
 | Line | 2 of 6 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 6.0 / 8.06 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.798 |
+| Match IoU | 0.786 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 20 px |
-| Gap to next | 20 px |
+| Gap to previous | 19 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 53px track 0.24px — IoU 0.748
-- `Acme-Regular.ttf` 55px track -0.59px — IoU 0.7361
+- `Acme-Regular.ttf` 55px track -0.55px — IoU 0.7433
+- `Acme-Regular.ttf` 54px track -0.14px — IoU 0.7404
 
 ### `text-5` — supporting
 
@@ -184,34 +190,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=267, y=523, w=413, h=41 |
-| Normalised | x=24.72%, y=48.43%, w=38.24%, h=3.8% |
+| Bounding box (px) | x=266, y=522, w=414, h=43 |
+| Normalised | x=24.63%, y=48.33%, w=38.33%, h=3.98% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 54 px |
-| Letter-spacing | -0.18 px (-0.0033 em) |
-| Line-height | 73.6 px (ratio 1.363) |
+| Font size | 53 px |
+| Letter-spacing | 0.28 px (0.0053 em) |
+| Line-height | 73.6 px (ratio 1.389) |
 | Line | 3 of 6 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 6.0 / 7.67 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.5455 |
+| Match IoU | 0.5235 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 20 px |
-| Gap to next | 32 px |
+| Gap to previous | 19 px |
+| Gap to next | 31 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 53px track 0.24px — IoU 0.748
-- `Acme-Regular.ttf` 55px track -0.59px — IoU 0.7361
+- `Acme-Regular.ttf` 55px track -0.55px — IoU 0.7433
+- `Acme-Regular.ttf` 54px track -0.14px — IoU 0.7404
 
 ### `text-6` — supporting
 
@@ -219,34 +226,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=263, y=596, w=551, h=53 |
-| Normalised | x=24.35%, y=55.19%, w=51.02%, h=4.91% |
+| Bounding box (px) | x=263, y=596, w=552, h=54 |
+| Normalised | x=24.35%, y=55.19%, w=51.11%, h=5.0% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 54 px |
-| Letter-spacing | -0.18 px (-0.0033 em) |
-| Line-height | 73.6 px (ratio 1.363) |
+| Font size | 53 px |
+| Letter-spacing | 0.28 px (0.0053 em) |
+| Line-height | 73.6 px (ratio 1.389) |
 | Line | 4 of 6 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 6.0 / 7.72 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.8287 |
+| Match IoU | 0.7633 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 32 px |
-| Gap to next | 22 px |
+| Gap to previous | 31 px |
+| Gap to next | 21 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 53px track 0.24px — IoU 0.748
-- `Acme-Regular.ttf` 55px track -0.59px — IoU 0.7361
+- `Acme-Regular.ttf` 55px track -0.55px — IoU 0.7433
+- `Acme-Regular.ttf` 54px track -0.14px — IoU 0.7404
 
 ### `text-7` — supporting
 
@@ -262,26 +270,27 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 54 px |
-| Letter-spacing | -0.18 px (-0.0033 em) |
-| Line-height | 73.6 px (ratio 1.363) |
+| Font size | 53 px |
+| Letter-spacing | 0.28 px (0.0053 em) |
+| Line-height | 73.6 px (ratio 1.389) |
 | Line | 5 of 6 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 7.0 / 7.98 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.8005 |
+| Match IoU | 0.8003 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 22 px |
-| Gap to next | 20 px |
+| Gap to previous | 21 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 53px track 0.24px — IoU 0.748
-- `Acme-Regular.ttf` 55px track -0.59px — IoU 0.7361
+- `Acme-Regular.ttf` 55px track -0.55px — IoU 0.7433
+- `Acme-Regular.ttf` 54px track -0.14px — IoU 0.7404
 
 ### `text-8` — supporting
 
@@ -289,34 +298,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=269, y=745, w=577, h=53 |
-| Normalised | x=24.91%, y=68.98%, w=53.43%, h=4.91% |
+| Bounding box (px) | x=269, y=744, w=578, h=54 |
+| Normalised | x=24.91%, y=68.89%, w=53.52%, h=5.0% |
 | Alignment | right |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 54 px |
-| Letter-spacing | -0.18 px (-0.0033 em) |
-| Line-height | 73.6 px (ratio 1.363) |
+| Font size | 53 px |
+| Letter-spacing | 0.28 px (0.0053 em) |
+| Line-height | 73.6 px (ratio 1.389) |
 | Line | 6 of 6 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 6.0 / 7.72 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Arizonia, Acme |
-| Match IoU | 0.833 |
+| Match IoU | 0.79 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 20 px |
+| Gap to previous | 19 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 53px track 0.24px — IoU 0.748
-- `Acme-Regular.ttf` 55px track -0.59px — IoU 0.7361
+- `Acme-Regular.ttf` 55px track -0.55px — IoU 0.7433
+- `Acme-Regular.ttf` 54px track -0.14px — IoU 0.7404
 
 ## 4. Colours (semantic)
 
@@ -325,10 +335,10 @@ Alternate font fits considered:
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#2e181c` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#f9b5ac` | glyph ink of 'Beauty' | glyph ink median |
-| textSecondary | `#000000` | glyph ink of 'Use a face mask regularly.' | glyph ink median |
+| textSecondary | `#000000` | glyph ink of 'Get enough sleep.' | glyph ink median |
 | accent | `#2e181c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#eb9590` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -352,7 +362,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat / near-flat neutral background |
 | Full bleed | False |
-| Text coverage | 0.1655 |
+| Text coverage | 0.1683 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -380,7 +390,7 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Beauty |
-| `subheadline` | text | Tips |
+| `headline` | text | Tips |
 | `supporting_line1` | text | Get enough sleep. |
 | `supporting_line2` | text | Massage your face. |
 | `supporting_line3` | text | Drinka lot of water. |
@@ -398,7 +408,7 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Arizonia |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |

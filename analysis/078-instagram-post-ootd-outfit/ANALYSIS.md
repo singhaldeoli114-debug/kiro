@@ -33,9 +33,120 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
+
+### `text-1` — subheadline
+
+**Text:** "OUTEIT"  (OCR confidence 0.9817)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=123, y=57, w=419, h=89 |
+| Normalised | x=11.39%, y=5.28%, w=38.8%, h=8.24% |
+| Alignment | left |
+| z-order | 100 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `AlfaSlabOne-Regular.ttf` |
+| Variation axes | None |
+| Font size | 99 px |
+| Letter-spacing | -0.67 px (-0.0068 em) |
+| Line-height | 134.0 px (ratio 1.354) |
+| Line | 1 of 3 |
+| Transform | uppercase |
+| Colour | `#9b0315` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.15:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Alfa Slab One, Aguafina Script |
+| Match IoU | 0.4201 |
+| **Geometry fit confidence** | **low** |
+| OCR text reliable | True  |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | None px |
+| Gap to next | 44 px |
+
+Alternate font fits considered:
+- `AlfaSlabOne-Regular.ttf` 98px track 0.19px — IoU 0.4197
+- `AlfaSlabOne-Regular.ttf` 97px track 1.04px — IoU 0.418
+- `AguafinaScript-Regular.ttf` 174px track -0.53px — IoU 0.2179
+
+### `text-2` — subheadline
+
+**Text:** "OF THE"  (OCR confidence 0.9019)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=129, y=190, w=406, h=90 |
+| Normalised | x=11.94%, y=17.59%, w=37.59%, h=8.33% |
+| Alignment | left |
+| z-order | 101 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `AlfaSlabOne-Regular.ttf` |
+| Variation axes | None |
+| Font size | 99 px |
+| Letter-spacing | -0.67 px (-0.0068 em) |
+| Line-height | 134.0 px (ratio 1.354) |
+| Line | 2 of 3 |
+| Transform | uppercase |
+| Colour | `#9b0315` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.15:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Alfa Slab One, Aguafina Script |
+| Match IoU | 0.4187 |
+| **Geometry fit confidence** | **low-textUnreliable** |
+| OCR text reliable | False — low OCR confidence (0.9019) |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
+| Gap to previous | 44 px |
+| Gap to next | 45 px |
+
+Alternate font fits considered:
+- `AlfaSlabOne-Regular.ttf` 98px track 0.19px — IoU 0.4197
+- `AlfaSlabOne-Regular.ttf` 97px track 1.04px — IoU 0.418
+- `AguafinaScript-Regular.ttf` 174px track -0.53px — IoU 0.2179
+
+### `text-3` — subheadline
+
+**Text:** "DAY"  (OCR confidence 0.9878)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=213, y=325, w=232, h=92 |
+| Normalised | x=19.72%, y=30.09%, w=21.48%, h=8.52% |
+| Alignment | left |
+| z-order | 102 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `AlfaSlabOne-Regular.ttf` |
+| Variation axes | None |
+| Font size | 99 px |
+| Letter-spacing | -0.67 px (-0.0068 em) |
+| Line-height | 134.0 px (ratio 1.354) |
+| Line | 3 of 3 |
+| Transform | uppercase |
+| Colour | `#9b0315` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.82:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Alfa Slab One, Aguafina Script |
+| Match IoU | 0.4267 |
+| **Geometry fit confidence** | **low** |
+| OCR text reliable | True  |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 45 px |
+| Gap to next | 196 px |
+
+Alternate font fits considered:
+- `AlfaSlabOne-Regular.ttf` 98px track 0.19px — IoU 0.4197
+- `AlfaSlabOne-Regular.ttf` 97px track 1.04px — IoU 0.418
+- `AguafinaScript-Regular.ttf` 174px track -0.53px — IoU 0.2179
 
 ### `text-4` — headline
 
@@ -43,8 +154,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=402, y=613, w=469, h=315 |
-| Normalised | x=37.22%, y=56.76%, w=43.43%, h=29.17% |
+| Bounding box (px) | x=401, y=613, w=471, h=310 |
+| Normalised | x=37.13%, y=56.76%, w=43.61%, h=28.7% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -52,64 +163,67 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
 | Font size | 129 px |
-| Letter-spacing | -0.7 px (-0.0054 em) |
+| Letter-spacing | -0.36 px (-0.0028 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 11.86:1 |
-| Stroke (median/mean) | 17.0 / 16.28 px |
+| Stroke (median/mean) | 17.0 / 16.31 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alfa Slab One, Aguafina Script |
-| Match IoU | 0.2447 |
+| Match IoU | 0.244 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8451) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | None px |
-| Gap to next | -10 px |
+| Gap to previous | 196 px |
+| Gap to next | -5 px |
 
 Alternate font fits considered:
-- `AlfaSlabOne-Regular.ttf` 128px track -0.08px — IoU 0.2421
-- `AlfaSlabOne-Regular.ttf` 127px track 0.53px — IoU 0.2415
-- `AguafinaScript-Regular.ttf` 232px track -0.21px — IoU 0.1327
+- `AlfaSlabOne-Regular.ttf` 128px track 0.25px — IoU 0.2424
+- `AlfaSlabOne-Regular.ttf` 127px track 0.86px — IoU 0.2416
+- `AguafinaScript-Regular.ttf` 233px track -0.21px — IoU 0.1334
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "06"  (OCR confidence 0.9996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=466, y=918, w=41, h=24 |
-| Normalised | x=43.15%, y=85.0%, w=3.8%, h=2.22% |
+| Bounding box (px) | x=465, y=918, w=42, h=24 |
+| Normalised | x=43.06%, y=85.0%, w=3.89%, h=2.22% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AguafinaScript-Regular.ttf` |
+| Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 44 px |
-| Letter-spacing | 0.44 px (0.01 em) |
-| Line-height | 50.0 px (ratio 1.136) |
+| Font size | 30 px |
+| Letter-spacing | -0.75 px (-0.025 em) |
+| Line-height | 49.5 px (ratio 1.65) |
 | Line | 1 of 3 |
 | Transform | none |
-| Colour | `#08053f` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#aa071b` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.47:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Aguafina Script |
-| Match IoU | 0.1325 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9224 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -10 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -5 px |
 | Gap to next | 26 px |
 
 Alternate font fits considered:
-- `AguafinaScript-Regular.ttf` 43px track 1.34px — IoU 0.1385
-- `AguafinaScript-Regular.ttf` 45px track -0.45px — IoU 0.1311
-- `AlfaSlabOne-Regular.ttf` 28px track 1.36px — IoU 0.0217
+- `AlfaSlabOne-Regular.ttf` 29px track 0.67px — IoU 0.8117
+- `AlfaSlabOne-Regular.ttf` 28px track 2.09px — IoU 0.7766
+- `AguafinaScript-Regular.ttf` 44px track -0.64px — IoU 0.2187
 
-### `text-6` — subheadline
+### `text-6` — body
 
 **Text:** "07"  (OCR confidence 0.9993)
 
@@ -121,65 +235,68 @@ Alternate font fits considered:
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AguafinaScript-Regular.ttf` |
+| Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 44 px |
-| Letter-spacing | 0.44 px (0.01 em) |
-| Line-height | 50.0 px (ratio 1.136) |
+| Font size | 30 px |
+| Letter-spacing | -0.75 px (-0.025 em) |
+| Line-height | 49.5 px (ratio 1.65) |
 | Line | 2 of 3 |
 | Transform | none |
-| Colour | `#08053f` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#aa071b` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.47:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alfa Slab One, Aguafina Script |
-| Match IoU | 0.1558 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8757 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 26 px |
-| Gap to next | 26 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `AguafinaScript-Regular.ttf` 43px track 1.34px — IoU 0.1385
-- `AguafinaScript-Regular.ttf` 45px track -0.45px — IoU 0.1311
-- `AlfaSlabOne-Regular.ttf` 28px track 1.36px — IoU 0.0217
+- `AlfaSlabOne-Regular.ttf` 29px track 0.67px — IoU 0.8117
+- `AlfaSlabOne-Regular.ttf` 28px track 2.09px — IoU 0.7766
+- `AguafinaScript-Regular.ttf` 44px track -0.64px — IoU 0.2187
 
-### `text-7` — subheadline
+### `text-7` — body
 
 **Text:** "21"  (OCR confidence 0.9998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=469, y=1018, w=33, h=23 |
-| Normalised | x=43.43%, y=94.26%, w=3.06%, h=2.13% |
+| Bounding box (px) | x=469, y=1017, w=34, h=24 |
+| Normalised | x=43.43%, y=94.17%, w=3.15%, h=2.22% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AguafinaScript-Regular.ttf` |
+| Font file matched | `AlfaSlabOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 44 px |
-| Letter-spacing | 0.44 px (0.01 em) |
-| Line-height | 50.0 px (ratio 1.136) |
+| Font size | 30 px |
+| Letter-spacing | -0.75 px (-0.025 em) |
+| Line-height | 49.5 px (ratio 1.65) |
 | Line | 3 of 3 |
 | Transform | none |
-| Colour | `#08053f` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#aa071b` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.47:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alfa Slab One, Aguafina Script |
-| Match IoU | 0.1272 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.848 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 26 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 25 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AguafinaScript-Regular.ttf` 43px track 1.34px — IoU 0.1385
-- `AguafinaScript-Regular.ttf` 45px track -0.45px — IoU 0.1311
-- `AlfaSlabOne-Regular.ttf` 28px track 1.36px — IoU 0.0217
+- `AlfaSlabOne-Regular.ttf` 29px track 0.67px — IoU 0.8117
+- `AlfaSlabOne-Regular.ttf` 28px track 2.09px — IoU 0.7766
+- `AguafinaScript-Regular.ttf` 44px track -0.64px — IoU 0.2187
 
 ## 4. Colours (semantic)
 
@@ -188,10 +305,10 @@ Alternate font fits considered:
 | background | `#ebe1dc` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#08053f` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'Stylish' | glyph ink median |
-| textSecondary | `#08053f` | glyph ink of '06' | glyph ink median |
+| textSecondary | `#9b0315` | glyph ink of 'DAY' | glyph ink median |
 | accent | `#08053f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ac030b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +332,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.129 |
+| Text coverage | 0.2092 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -242,24 +359,30 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
+| `subheadline_line1` | text | OUTEIT |
+| `subheadline_line2` | text | OF THE |
+| `subheadline_line3` | text | DAY |
 | `headline` | text | Stylish |
-| `subheadline_line1` | text | 06 |
-| `subheadline_line2` | text | 07 |
-| `subheadline_line3` | text | 21 |
+| `body_line1` | text | 06 |
+| `body_line2` | text | 07 |
+| `body_line3` | text | 21 |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #ebe1dc |
 | `surface` | colour | #08053f |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #08053f |
+| `textSecondary` | colour | #9b0315 |
 | `accent` | colour | #08053f |
 | `accentSecondary` | colour | #ac030b |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Alfa Slab One |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 60.4 |
 | `imageFocalY` | number | 44.0 |
 

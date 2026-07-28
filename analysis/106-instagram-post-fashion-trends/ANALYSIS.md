@@ -33,26 +33,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — fine-print
 
-**Text:** "FASHION.TRENDS"  (OCR confidence 0.9869)
+**Text:** "FASHION TRENDS"  (OCR confidence 0.9869)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=348, y=38, w=342, h=33 |
-| Normalised | x=32.22%, y=3.52%, w=31.67%, h=3.06% |
+| Bounding box (px) | x=347, y=38, w=343, h=33 |
+| Normalised | x=32.13%, y=3.52%, w=31.76%, h=3.06% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 46 px |
-| Letter-spacing | -0.4 px (-0.0087 em) |
+| Font size | 47 px |
+| Letter-spacing | -0.72 px (-0.0153 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,8 +60,10 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 13.36:1 |
 | Stroke (median/mean) | 6.0 / 7.8 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'FASHIONTRENDS' -> 'FASHION TRENDS' |
 | Font family (authoritative) | Acme, Anton |
-| Match IoU | 0.8381 |
+| Match IoU | 0.7785 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,26 +71,26 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 78 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 45px track 0.18px — IoU 0.7817
-- `Acme-Regular.ttf` 44px track 0.76px — IoU 0.7655
-- `Anton-Regular.ttf` 57px track -0.09px — IoU 0.5661
+- `Acme-Regular.ttf` 46px track -0.14px — IoU 0.7725
+- `Acme-Regular.ttf` 45px track 0.43px — IoU 0.7618
+- `Anton-Regular.ttf` 57px track -0.04px — IoU 0.5878
 
-### `text-2` — detail
+### `text-2` — fine-print
 
 **Text:** "WWW.FASHION.COM"  (OCR confidence 0.9945)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=239, y=149, w=413, h=33 |
-| Normalised | x=22.13%, y=13.8%, w=38.24%, h=3.06% |
+| Bounding box (px) | x=238, y=149, w=415, h=33 |
+| Normalised | x=22.04%, y=13.8%, w=38.43%, h=3.06% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
-| Font size | 46 px |
-| Letter-spacing | -0.31 px (-0.0067 em) |
+| Font size | 47 px |
+| Letter-spacing | -0.82 px (-0.0174 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -96,8 +98,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 14.91:1 |
 | Stroke (median/mean) | 6.0 / 6.88 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Acme, Anton |
-| Match IoU | 0.8173 |
+| Match IoU | 0.8033 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -105,18 +108,18 @@ Alternate font fits considered:
 | Gap to next | 243 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 45px track 0.33px — IoU 0.7985
-- `Acme-Regular.ttf` 47px track -0.96px — IoU 0.7487
-- `Anton-Regular.ttf` 57px track -0.45px — IoU 0.442
+- `Acme-Regular.ttf` 46px track -0.17px — IoU 0.7952
+- `Acme-Regular.ttf` 45px track 0.48px — IoU 0.7323
+- `Anton-Regular.ttf` 56px track 0.22px — IoU 0.4173
 
 ### `text-3` — headline
 
-**Text:** "FASHION.TRENDS"  (OCR confidence 0.9762)
+**Text:** "FASHION TRENDS"  (OCR confidence 0.9762)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=1007, y=425, w=25, h=268 |
-| Normalised | x=93.24%, y=39.35%, w=2.31%, h=24.81% |
+| Bounding box (px) | x=1006, y=425, w=26, h=268 |
+| Normalised | x=93.15%, y=39.35%, w=2.41%, h=24.81% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -132,121 +135,126 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 13.36:1 |
 | Stroke (median/mean) | 5.0 / 8.94 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'FASHIONTRENDS' -> 'FASHION TRENDS' |
 | Font family (authoritative) | Acme, Anton |
 | Match IoU | — |
 | **Geometry fit confidence** | **unresolved** |
 | OCR text reliable | True  |
 | Fit interpretation | no viable candidate could be rendered |
 | Gap to previous | 243 px |
-| Gap to next | 92 px |
+| Gap to next | 97 px |
 
-### `text-4` — subheadline
+### `text-4` — body
 
 **Text:** "iMs"  (OCR confidence 0.6024)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=801, y=785, w=107, h=140 |
-| Normalised | x=74.17%, y=72.69%, w=9.91%, h=12.96% |
+| Bounding box (px) | x=812, y=790, w=89, h=127 |
+| Normalised | x=75.19%, y=73.15%, w=8.24%, h=11.76% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 74 px |
-| Letter-spacing | -0.67 px (-0.0091 em) |
+| Font size | 62 px |
+| Letter-spacing | -0.88 px (-0.0142 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#bd10e0` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | None / None px |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.45:1 |
+| Stroke (median/mean) | 27.0 / 29.71 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Acme, Anton |
-| Match IoU | 0.3866 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.4976 |
+| **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6024) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 92 px |
-| Gap to next | 0 px |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
+| Gap to previous | 97 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 73px track 0.07px — IoU 0.3843
-- `Anton-Regular.ttf` 72px track 0.8px — IoU 0.3747
-- `Acme-Regular.ttf` 78px track -0.52px — IoU 0.3115
+- `Anton-Regular.ttf` 61px track -0.15px — IoU 0.4779
+- `Anton-Regular.ttf` 60px track 0.58px — IoU 0.4623
+- `Acme-Regular.ttf` 65px track -0.52px — IoU 0.3737
 
-### `text-5` — supporting
+### `text-5` — fine-print
 
-**Text:** "DISCO UNTINALL"  (OCR confidence 0.9858)
+**Text:** "DISCOUNT IN ALL"  (OCR confidence 0.9858)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=148, y=925, w=376, h=52 |
-| Normalised | x=13.7%, y=85.65%, w=34.81%, h=4.81% |
+| Bounding box (px) | x=154, y=930, w=364, h=42 |
+| Normalised | x=14.26%, y=86.11%, w=33.7%, h=3.89% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 66 px |
-| Letter-spacing | -0.26 px (-0.0039 em) |
-| Line-height | 55.0 px (ratio 0.833) |
+| Font size | 61 px |
+| Letter-spacing | -0.07 px (-0.0011 em) |
+| Line-height | 55.0 px (ratio 0.902) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#131411` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 2.67:1 |
-| Stroke (median/mean) | 10.0 / 11.91 px |
+| Colour | `#f4f3f2` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.13:1 |
+| Stroke (median/mean) | 7.0 / 8.05 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Acme, Anton |
-| Match IoU | 0.3739 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4986 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 0 px |
-| Gap to next | 3 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 13 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 65px track 0.18px — IoU 0.2816
-- `Anton-Regular.ttf` 64px track 0.62px — IoU 0.2803
-- `Acme-Regular.ttf` 52px track 0.33px — IoU 0.2289
+- `Anton-Regular.ttf` 62px track -0.49px — IoU 0.4715
+- `Anton-Regular.ttf` 60px track 0.36px — IoU 0.4671
+- `Acme-Regular.ttf` 51px track -0.6px — IoU 0.4393
 
-### `text-6` — supporting
+### `text-6` — fine-print
 
 **Text:** "ITEMS"  (OCR confidence 0.977)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=353, y=980, w=55, h=56 |
-| Normalised | x=32.69%, y=90.74%, w=5.09%, h=5.19% |
+| Bounding box (px) | x=338, y=985, w=70, h=46 |
+| Normalised | x=31.3%, y=91.2%, w=6.48%, h=4.26% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 66 px |
-| Letter-spacing | -0.26 px (-0.0039 em) |
-| Line-height | 55.0 px (ratio 0.833) |
+| Font size | 61 px |
+| Letter-spacing | -0.07 px (-0.0011 em) |
+| Line-height | 55.0 px (ratio 0.902) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 7.8:1 |
-| Stroke (median/mean) | 11.0 / 16.09 px |
+| Colour | `#151512` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.08:1 |
+| Stroke (median/mean) | 10.0 / 13.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Acme, Anton |
-| Match IoU | 0.199 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4511 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 3 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 13 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 65px track 0.18px — IoU 0.2816
-- `Anton-Regular.ttf` 64px track 0.62px — IoU 0.2803
-- `Acme-Regular.ttf` 52px track 0.33px — IoU 0.2289
+- `Anton-Regular.ttf` 62px track -0.49px — IoU 0.4715
+- `Anton-Regular.ttf` 60px track 0.36px — IoU 0.4671
+- `Acme-Regular.ttf` 51px track -0.6px — IoU 0.4393
 
 ## 4. Colours (semantic)
 
@@ -254,11 +262,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#c4bfb2` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#231710` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#000000` | glyph ink of 'FASHION.TRENDS' | glyph ink median |
-| textSecondary | `#bd10e0` | glyph ink of 'iMs' | glyph ink median |
+| textPrimary | `#000000` | glyph ink of 'FASHION TRENDS' | glyph ink median |
+| textSecondary | `#151512` | glyph ink of 'ITEMS' | glyph ink median |
 | accent | `#bb0fde` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#231710` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -282,7 +290,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | False |
-| Text coverage | 0.0594 |
+| Text coverage | 0.053 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -309,28 +317,28 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | FASHION.TRENDS |
-| `detail` | text | WWW.FASHION.COM |
-| `headline` | text | FASHION.TRENDS |
-| `subheadline` | text | iMs |
-| `supporting_line1` | text | DISCO UNTINALL |
-| `supporting_line2` | text | ITEMS |
+| `fine-print` | text | FASHION TRENDS |
+| `fine-print` | text | WWW.FASHION.COM |
+| `headline` | text | FASHION TRENDS |
+| `body` | text | iMs |
+| `fine-print_line1` | text | DISCOUNT IN ALL |
+| `fine-print_line2` | text | ITEMS |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #c4bfb2 |
 | `surface` | colour | #231710 |
 | `textPrimary` | colour | #000000 |
-| `textSecondary` | colour | #bd10e0 |
+| `textSecondary` | colour | #151512 |
 | `accent` | colour | #bb0fde |
 | `accentSecondary` | colour | #231710 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Acme |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 44.7 |
 | `imageFocalY` | number | 57.8 |
 

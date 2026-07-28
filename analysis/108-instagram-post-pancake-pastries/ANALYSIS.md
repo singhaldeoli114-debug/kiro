@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — fine-print
 
 **Text:** "NEW FLAVORS"  (OCR confidence 0.9887)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=98, y=173, w=67, h=736 |
-| Normalised | x=9.07%, y=16.02%, w=6.2%, h=68.15% |
+| Bounding box (px) | x=98, y=176, w=67, h=733 |
+| Normalised | x=9.07%, y=16.3%, w=6.2%, h=67.87% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -56,22 +56,60 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#5d6639` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#f89f0b` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.64:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Dancing Script |
-| Match IoU | 0.2788 |
+| Match IoU | 0.3538 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 13 px |
+| Gap to next | -101 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 8px track 0.21px — IoU 0.253
-- `ArchivoBlack-Regular.ttf` 7px track 1.02px — IoU 0.2512
-- `DancingScript[wght].ttf` 11px track -0.52px — IoU 0.0707
+- `ArchivoBlack-Regular.ttf` 8px track 0.21px — IoU 0.302
+- `ArchivoBlack-Regular.ttf` 7px track 1.02px — IoU 0.2806
+- `DancingScript[wght].ttf` 11px track -0.66px — IoU 0.071
+
+### `text-2` — headline
+
+**Text:** "Iriginal"  (OCR confidence 0.9093)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=441, y=808, w=368, h=114 |
+| Normalised | x=40.83%, y=74.81%, w=34.07%, h=10.56% |
+| Alignment | right |
+| z-order | 101 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 97 px |
+| Letter-spacing | -0.54 px (-0.0056 em) |
+| Line-height | 114.0 px (ratio 1.175) |
+| Line | 1 of 2 |
+| Transform | none |
+| Colour | `#25221c` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.74:1 |
+| Stroke (median/mean) | 13.0 / 14.68 px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Archivo Black, Dancing Script |
+| Match IoU | 0.3218 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
+| OCR text reliable | False — low OCR confidence (0.9093) |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | -101 px |
+| Gap to next | 0 px |
+
+Alternate font fits considered:
+- `ArchivoBlack-Regular.ttf` 96px track 0.0px — IoU 0.568
+- `ArchivoBlack-Regular.ttf` 95px track 0.55px — IoU 0.5671
+- `DancingScript[wght].ttf` 127px track -0.39px — IoU 0.1979
 
 ### `text-3` — headline
 
@@ -85,65 +123,30 @@ Alternate font fits considered:
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `DancingScript[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 155 px |
-| Letter-spacing | -1.09 px (-0.007 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | uppercase |
-| Colour | `#5d6639` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 28.0 / 31.24 px |
-| Font family (authoritative) | Archivo Black, Dancing Script |
-| Match IoU | 0.1252 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 13 px |
-| Gap to next | -88 px |
-
-Alternate font fits considered:
-- `DancingScript[wght].ttf` 149px track 0.6px — IoU 0.1236
-- `DancingScript[wght].ttf` 150px track -0.15px — IoU 0.1233
-- `DancingScript[wght].ttf` 153px track 0.37px — IoU 0.1222
-
-### `text-2` — subheadline
-
-**Text:** "Iriginal"  (OCR confidence 0.9093)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=599, y=923, w=210, h=6 |
-| Normalised | x=55.46%, y=85.46%, w=19.44%, h=0.56% |
-| Alignment | right |
-| z-order | 101 |
-| Rotation | 0° |
-| Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 55 px |
-| Letter-spacing | -0.12 px (-0.0022 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#5d6639` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.01:1 |
-| Stroke (median/mean) | 18.0 / 22.36 px |
+| Font size | 97 px |
+| Letter-spacing | -0.54 px (-0.0056 em) |
+| Line-height | 114.0 px (ratio 1.175) |
+| Line | 2 of 2 |
+| Transform | uppercase |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.44:1 |
+| Stroke (median/mean) | 28.0 / 31.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Dancing Script |
-| Match IoU | 0.2688 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.9093) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -88 px |
+| Match IoU | 0.831 |
+| **Geometry fit confidence** | **high** |
+| OCR text reliable | True  |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 0 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 56px track -0.66px — IoU 0.2654
-- `ArchivoBlack-Regular.ttf` 54px track 0.43px — IoU 0.2551
-- `DancingScript[wght].ttf` 73px track -0.44px — IoU 0.1103
+- `ArchivoBlack-Regular.ttf` 96px track 0.0px — IoU 0.568
+- `ArchivoBlack-Regular.ttf` 95px track 0.55px — IoU 0.5671
+- `DancingScript[wght].ttf` 127px track -0.39px — IoU 0.1979
 
 ## 4. Colours (semantic)
 
@@ -151,11 +154,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f8f0dc` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#606435` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#5d6639` | glyph ink of 'NEW FLAVORS' | glyph ink median |
-| textSecondary | `#5d6639` | glyph ink of 'TASTY' | glyph ink median |
+| textPrimary | `#f89f0b` | glyph ink of 'NEW FLAVORS' | glyph ink median |
+| textSecondary | `#25221c` | glyph ink of 'Iriginal' | glyph ink median |
 | accent | `#606435` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#e6960d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0775 |
+| Text coverage | 0.1122 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -206,22 +209,22 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | NEW FLAVORS |
-| `headline` | text | TASTY |
-| `subheadline` | text | Iriginal |
+| `fine-print` | text | NEW FLAVORS |
+| `headline_line1` | text | Iriginal |
+| `headline_line2` | text | TASTY |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f8f0dc |
 | `surface` | colour | #606435 |
-| `textPrimary` | colour | #5d6639 |
-| `textSecondary` | colour | #5d6639 |
+| `textPrimary` | colour | #f89f0b |
+| `textSecondary` | colour | #25221c |
 | `accent` | colour | #606435 |
 | `accentSecondary` | colour | #e6960d |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Archivo Black |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `imageFocalX` | number | 54.1 |
 | `imageFocalY` | number | 51.7 |
 

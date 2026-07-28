@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 10.52:1 |
 | Stroke (median/mean) | 11.0 / 11.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Architects Daughter |
 | Match IoU | 0.8563 |
 | **Geometry fit confidence** | **high** |
@@ -73,7 +74,7 @@ Alternate font fits considered:
 - `OleoScript-Regular.ttf` 76px track -0.47px — IoU 0.8499
 - `OleoScript-Regular.ttf` 75px track -0.04px — IoU 0.8421
 
-### `text-2` — supporting
+### `text-2` — subheadline
 
 **Text:** "item I"  (OCR confidence 0.867)
 
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.37:1 |
 | Stroke (median/mean) | 4.0 / 5.63 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Architects Daughter |
 | Match IoU | 0.6484 |
 | **Geometry fit confidence** | **medium** |
@@ -109,7 +111,7 @@ Alternate font fits considered:
 - `ArchitectsDaughter-Regular.ttf` 41px track 0.1px — IoU 0.6326
 - `OleoScript-Regular.ttf` 44px track 0.42px — IoU 0.3186
 
-### `text-3` — supporting
+### `text-3` — subheadline
 
 **Text:** "item 2"  (OCR confidence 0.9966)
 
@@ -132,6 +134,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.96:1 |
 | Stroke (median/mean) | 4.0 / 5.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Architects Daughter |
 | Match IoU | 0.694 |
 | **Geometry fit confidence** | **medium** |
@@ -151,35 +154,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=481, y=853, w=144, h=45 |
-| Normalised | x=44.54%, y=78.98%, w=13.33%, h=4.17% |
+| Bounding box (px) | x=495, y=853, w=116, h=29 |
+| Normalised | x=45.83%, y=78.98%, w=10.74%, h=2.69% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchitectsDaughter-Regular.ttf` |
 | Variation axes | None |
-| Font size | 38 px |
-| Letter-spacing | -0.07 px (-0.0018 em) |
-| Line-height | 81.0 px (ratio 2.132) |
-| Line | 1 of 2 |
+| Font size | 43 px |
+| Letter-spacing | -0.75 px (-0.0174 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#e9d3c4` |
+| Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 11.35:1 |
+| Contrast vs local bg | 13.37:1 |
 | Stroke (median/mean) | 3.0 / 4.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Architects Daughter |
-| Match IoU | 0.1691 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6626 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 202 px |
-| Gap to next | 36 px |
+| Gap to next | 52 px |
 
 Alternate font fits considered:
-- `ArchitectsDaughter-Regular.ttf` 39px track -0.56px — IoU 0.1845
-- `ArchitectsDaughter-Regular.ttf` 37px track 0.41px — IoU 0.1773
-- `OleoScript-Bold.ttf` 43px track 0.06px — IoU 0.1674
+- `ArchitectsDaughter-Regular.ttf` 41px track 0.37px — IoU 0.626
+- `ArchitectsDaughter-Regular.ttf` 42px track -0.19px — IoU 0.6027
+- `OleoScript-Regular.ttf` 49px track -0.09px — IoU 0.293
 
 ### `text-5` — subheadline
 
@@ -187,71 +191,73 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=90, y=934, w=901, h=57 |
-| Normalised | x=8.33%, y=86.48%, w=83.43%, h=5.28% |
+| Bounding box (px) | x=90, y=934, w=902, h=46 |
+| Normalised | x=8.33%, y=86.48%, w=83.52%, h=4.26% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchitectsDaughter-Regular.ttf` |
 | Variation axes | None |
-| Font size | 38 px |
-| Letter-spacing | -0.07 px (-0.0018 em) |
-| Line-height | 81.0 px (ratio 2.132) |
-| Line | 2 of 2 |
+| Font size | 39 px |
+| Letter-spacing | -0.54 px (-0.0138 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | none |
 | Colour | `#060605` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 12.17:1 |
-| Stroke (median/mean) | 3.0 / 3.72 px |
+| Stroke (median/mean) | 3.0 / 3.73 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Architects Daughter |
-| Match IoU | 0.2252 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6465 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 36 px |
-| Gap to next | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 52 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `ArchitectsDaughter-Regular.ttf` 39px track -0.56px — IoU 0.1845
-- `ArchitectsDaughter-Regular.ttf` 37px track 0.41px — IoU 0.1773
-- `OleoScript-Bold.ttf` 43px track 0.06px — IoU 0.1674
+- `ArchitectsDaughter-Regular.ttf` 38px track -0.05px — IoU 0.5919
+- `ArchitectsDaughter-Regular.ttf` 37px track 0.44px — IoU 0.5867
+- `OleoScript-Bold.ttf` 44px track -0.35px — IoU 0.2385
 
-### `text-6` — detail
+### `text-6` — subheadline
 
 **Text:** "elit"  (OCR confidence 0.8141)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=517, y=990, w=46, h=26 |
-| Normalised | x=47.87%, y=91.67%, w=4.26%, h=2.41% |
+| Bounding box (px) | x=517, y=990, w=47, h=26 |
+| Normalised | x=47.87%, y=91.67%, w=4.35%, h=2.41% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchitectsDaughter-Regular.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | -0.12 px (-0.0032 em) |
+| Font size | 38 px |
+| Letter-spacing | -0.21 px (-0.0055 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 17.83:1 |
+| Contrast vs local bg | 17.16:1 |
 | Stroke (median/mean) | 3.0 / 3.47 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Architects Daughter |
-| Match IoU | 0.6815 |
+| Match IoU | 0.6514 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.8141) |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -1 px |
+| Gap to previous | 10 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `ArchitectsDaughter-Regular.ttf` 36px track 0.28px — IoU 0.5987
-- `ArchitectsDaughter-Regular.ttf` 38px track -0.55px — IoU 0.5895
-- `OleoScript-Bold.ttf` 35px track -0.66px — IoU 0.4157
+- `ArchitectsDaughter-Regular.ttf` 37px track 0.21px — IoU 0.6047
+- `ArchitectsDaughter-Regular.ttf` 36px track 0.61px — IoU 0.5443
+- `OleoScript-Bold.ttf` 35px track -0.33px — IoU 0.4036
 
 ## 4. Colours (semantic)
 
@@ -263,7 +269,7 @@ Alternate font fits considered:
 | textSecondary | `#060605` | glyph ink of 'Lorem ipsum dolor sit amet, ' | glyph ink median |
 | accent | `#220c36` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ae60f2` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.0915 |
+| Text coverage | 0.0804 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -315,11 +321,11 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Pyramid Chart Title |
-| `supporting` | text | item I |
-| `supporting` | text | item 2 |
-| `subheadline_line1` | text | item 3 |
-| `subheadline_line2` | text | Lorem ipsum dolor sit amet, consectetur adipiscing |
-| `detail` | text | elit |
+| `subheadline` | text | item I |
+| `subheadline` | text | item 2 |
+| `subheadline` | text | item 3 |
+| `subheadline` | text | Lorem ipsum dolor sit amet, consectetur adipiscing |
+| `subheadline` | text | elit |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fbf7fc |
@@ -331,11 +337,11 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Oleo Script |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

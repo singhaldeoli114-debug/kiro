@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -51,7 +51,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `CreteRound-Regular.ttf` |
 | Variation axes | None |
 | Font size | 130 px |
-| Letter-spacing | -1.03 px (-0.0079 em) |
+| Letter-spacing | -0.9 px (-0.0069 em) |
 | Line-height | 146.0 px (ratio 1.123) |
 | Line | 1 of 2 |
 | Transform | uppercase |
@@ -59,8 +59,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.75:1 |
 | Stroke (median/mean) | 16.0 / 20.01 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crete Round |
-| Match IoU | 0.7576 |
+| Match IoU | 0.7608 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -68,8 +69,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 56 px |
 
 Alternate font fits considered:
-- `CreteRound-Regular.ttf` 129px track -0.34px — IoU 0.8213
-- `CreteRound-Regular.ttf` 128px track 0.36px — IoU 0.8068
+- `CreteRound-Regular.ttf` 129px track -0.21px — IoU 0.8155
+- `CreteRound-Regular.ttf` 128px track 0.48px — IoU 0.8057
 
 ### `text-2` — headline
 
@@ -77,8 +78,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=270, y=487, w=713, h=93 |
-| Normalised | x=25.0%, y=45.09%, w=66.02%, h=8.61% |
+| Bounding box (px) | x=269, y=487, w=714, h=93 |
+| Normalised | x=24.91%, y=45.09%, w=66.11%, h=8.61% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -86,7 +87,7 @@ Alternate font fits considered:
 | Font file matched | `CreteRound-Regular.ttf` |
 | Variation axes | None |
 | Font size | 130 px |
-| Letter-spacing | -1.03 px (-0.0079 em) |
+| Letter-spacing | -0.9 px (-0.0069 em) |
 | Line-height | 146.0 px (ratio 1.123) |
 | Line | 2 of 2 |
 | Transform | uppercase |
@@ -94,8 +95,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.75:1 |
 | Stroke (median/mean) | 16.0 / 20.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Crete Round |
-| Match IoU | 0.8939 |
+| Match IoU | 0.8814 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -103,8 +105,8 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `CreteRound-Regular.ttf` 129px track -0.34px — IoU 0.8213
-- `CreteRound-Regular.ttf` 128px track 0.36px — IoU 0.8068
+- `CreteRound-Regular.ttf` 129px track -0.21px — IoU 0.8155
+- `CreteRound-Regular.ttf` 128px track 0.48px — IoU 0.8057
 
 ## 4. Colours (semantic)
 
@@ -116,7 +118,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'MERRY' | glyph ink median |
 | accent | `#07113a` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#4f90dc` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -140,7 +142,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.0896 |
+| Text coverage | 0.0897 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

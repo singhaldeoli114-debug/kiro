@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,16 +43,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=61, y=356, w=516, h=224 |
-| Normalised | x=5.65%, y=32.96%, w=47.78%, h=20.74% |
+| Bounding box (px) | x=61, y=355, w=532, h=225 |
+| Normalised | x=5.65%, y=32.87%, w=49.26%, h=20.83% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [800, 100.0] |
-| Font size | 131 px |
-| Letter-spacing | -0.79 px (-0.006 em) |
+| Variation axes | [700, 87.5] |
+| Font size | 142 px |
+| Letter-spacing | 0.11 px (0.0008 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -60,18 +60,20 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.1:1 |
 | Stroke (median/mean) | 12.0 / 12.95 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Alex Brush, Roboto |
-| Match IoU | 0.1324 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.1299 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | None px |
-| Gap to next | -98 px |
+| Gap to next | -93 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 128px track 0.78px — IoU 0.1315
-- `Roboto[wdth,wght].ttf` 130px track -0.23px — IoU 0.1312
-- `Roboto[wdth,wght].ttf` 138px track -0.2px — IoU 0.1311
+- `Roboto[wdth,wght].ttf` 141px track 0.35px — IoU 0.1299
+- `Roboto[wdth,wght].ttf` 134px track -0.22px — IoU 0.1295
+- `Roboto[wdth,wght].ttf` 141px track 0.64px — IoU 0.1294
 
 ### `text-2` — headline
 
@@ -79,44 +81,46 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=78, y=482, w=288, h=98 |
-| Normalised | x=7.22%, y=44.63%, w=26.67%, h=9.07% |
+| Bounding box (px) | x=78, y=487, w=415, h=277 |
+| Normalised | x=7.22%, y=45.09%, w=38.43%, h=25.65% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 147 px |
-| Letter-spacing | -0.88 px (-0.006 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 237 px |
+| Letter-spacing | -0.84 px (-0.0035 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#351a04` |
+| Colour | `#f39b09` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.1:1 |
-| Stroke (median/mean) | 12.0 / 12.01 px |
+| Contrast vs local bg | 1.0:1 |
+| Stroke (median/mean) | 12.0 / 11.97 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Alex Brush, Roboto |
-| Match IoU | 0.155 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4805 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -98 px |
-| Gap to next | 239 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -93 px |
+| Gap to next | 55 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 147px track -0.35px — IoU 0.1545
-- `Roboto[wdth,wght].ttf` 148px track -0.47px — IoU 0.1535
-- `Roboto[wdth,wght].ttf` 147px track 0.17px — IoU 0.1532
+- `Roboto[wdth,wght].ttf` 236px track -0.26px — IoU 0.4747
+- `Roboto[wdth,wght].ttf` 235px track 0.33px — IoU 0.4735
+- `Roboto[wdth,wght].ttf` 224px track -0.9px — IoU 0.469
 
-### `text-3` — detail
+### `text-3` — fine-print
 
 **Text:** "www.vacation.com"  (OCR confidence 0.9979)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=147, y=819, w=268, h=23 |
-| Normalised | x=13.61%, y=75.83%, w=24.81%, h=2.13% |
+| Bounding box (px) | x=146, y=819, w=269, h=23 |
+| Normalised | x=13.52%, y=75.83%, w=24.91%, h=2.13% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,7 +128,7 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
 | Font size | 32 px |
-| Letter-spacing | -0.38 px (-0.0119 em) |
+| Letter-spacing | -0.31 px (-0.0097 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -132,54 +136,56 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 11.87:1 |
 | Stroke (median/mean) | 3.0 / 3.43 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alex Brush, Roboto |
-| Match IoU | 0.6976 |
+| Match IoU | 0.6505 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — single long token with no spaces |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 239 px |
-| Gap to next | 143 px |
+| Gap to previous | 55 px |
+| Gap to next | 142 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 32px track -0.39px — IoU 0.6902
-- `Roboto[wdth,wght].ttf` 32px track -0.4px — IoU 0.6698
-- `Roboto[wdth,wght].ttf` 32px track -0.41px — IoU 0.6573
+- `Roboto[wdth,wght].ttf` 32px track -0.32px — IoU 0.6483
+- `Roboto[wdth,wght].ttf` 32px track -0.33px — IoU 0.6288
+- `Roboto[wdth,wght].ttf` 35px track -0.8px — IoU 0.6248
 
-### `text-4` — supporting
+### `text-4` — fine-print
 
-**Text:** "LEA R NMORE"  (OCR confidence 0.9562)
+**Text:** "LEARN MORE"  (OCR confidence 0.9562)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=215, y=985, w=200, h=23 |
-| Normalised | x=19.91%, y=91.2%, w=18.52%, h=2.13% |
+| Bounding box (px) | x=215, y=984, w=200, h=25 |
+| Normalised | x=19.91%, y=91.11%, w=18.52%, h=2.31% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [700, 75.0] |
-| Font size | 36 px |
-| Letter-spacing | -0.16 px (-0.0044 em) |
+| Variation axes | [800, 100.0] |
+| Font size | 33 px |
+| Letter-spacing | -0.33 px (-0.01 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 5.0 / 6.05 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alex Brush, Roboto |
-| Match IoU | 0.224 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8621 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 143 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 142 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 37px track -0.82px — IoU 0.2179
-- `Roboto[wdth,wght].ttf` 33px track 0.19px — IoU 0.2178
-- `Roboto[wdth,wght].ttf` 36px track -0.11px — IoU 0.2155
+- `Roboto[wdth,wght].ttf` 33px track -0.39px — IoU 0.8486
+- `Roboto[wdth,wght].ttf` 34px track -1.02px — IoU 0.8362
+- `Roboto[wdth,wght].ttf` 36px track -0.78px — IoU 0.8357
 
 ## 4. Colours (semantic)
 
@@ -187,11 +193,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#efede8` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f29a09` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#351a04` | glyph ink of 'Vacation' | glyph ink median |
-| textSecondary | `#030200` | glyph ink of 'www.vacation.com' | glyph ink median |
+| textPrimary | `#f39b09` | glyph ink of 'Sale' | glyph ink median |
+| textSecondary | `#351a04` | glyph ink of 'Vacation' | glyph ink median |
 | accent | `#f29a09` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#dab89a` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +221,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.1325 |
+| Text coverage | 0.2108 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -244,22 +250,22 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `subheadline` | text | Vacation |
 | `headline` | text | Sale |
-| `detail` | text | www.vacation.com |
-| `supporting` | text | LEA R NMORE |
+| `fine-print` | text | www.vacation.com |
+| `fine-print` | text | LEARN MORE |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #efede8 |
 | `surface` | colour | #f29a09 |
-| `textPrimary` | colour | #351a04 |
-| `textSecondary` | colour | #030200 |
+| `textPrimary` | colour | #f39b09 |
+| `textSecondary` | colour | #351a04 |
 | `accent` | colour | #f29a09 |
 | `accentSecondary` | colour | #dab89a |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Alex Brush |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 63.4 |
 | `imageFocalY` | number | 46.4 |
 

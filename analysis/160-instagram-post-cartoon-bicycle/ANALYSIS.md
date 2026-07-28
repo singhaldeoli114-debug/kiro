@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=414, y=97, w=230, h=42 |
-| Normalised | x=38.33%, y=8.98%, w=21.3%, h=3.89% |
+| Bounding box (px) | x=414, y=97, w=230, h=43 |
+| Normalised | x=38.33%, y=8.98%, w=21.3%, h=3.98% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.42:1 |
 | Stroke (median/mean) | 7.0 / 8.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Libre Baskerville, Crimson Pro |
-| Match IoU | 0.8588 |
+| Match IoU | 0.8241 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 47 px |
+| Gap to next | 46 px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 68px track -0.51px — IoU 0.8496
-- `CrimsonPro[wght].ttf` 69px track -0.39px — IoU 0.8439
-- `CrimsonPro[wght].ttf` 67px track 0.35px — IoU 0.8217
+- `CrimsonPro[wght].ttf` 68px track -0.51px — IoU 0.8212
+- `CrimsonPro[wght].ttf` 66px track 0.04px — IoU 0.7937
+- `CrimsonPro[wght].ttf` 69px track -0.39px — IoU 0.7936
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=86, y=186, w=909, h=97 |
-| Normalised | x=7.96%, y=17.22%, w=84.17%, h=8.98% |
+| Bounding box (px) | x=87, y=186, w=908, h=97 |
+| Normalised | x=8.06%, y=17.22%, w=84.07%, h=8.98% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,7 +89,7 @@ Alternate font fits considered:
 | Font file matched | `LibreBaskerville[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 117 px |
-| Letter-spacing | 0.05 px (0.0004 em) |
+| Letter-spacing | -0.05 px (-0.0004 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.89:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Libre Baskerville, Crimson Pro |
-| Match IoU | 0.529 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.5635 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 47 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 46 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `CrimsonPro[wght].ttf` 154px track 0.56px — IoU 0.5281
-- `LibreBaskerville[wght].ttf` 117px track -0.61px — IoU 0.5274
-- `CrimsonPro[wght].ttf` 159px track -0.25px — IoU 0.5248
+- `LibreBaskerville[wght].ttf` 117px track -0.71px — IoU 0.5485
+- `LibreBaskerville[wght].ttf` 118px track 0.55px — IoU 0.5431
+- `LibreBaskerville[wght].ttf` 115px track 0.85px — IoU 0.5394
 
 ## 4. Colours (semantic)
 
@@ -119,7 +121,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'WORLD' | glyph ink median |
 | accent | `#94c934` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#a4c8f5` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -143,7 +145,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.0839 |
+| Text coverage | 0.084 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

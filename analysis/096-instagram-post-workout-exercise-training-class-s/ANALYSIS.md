@@ -34,26 +34,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "O N L I N E"  (OCR confidence 0.9478)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=150, y=276, w=381, h=32 |
-| Normalised | x=13.89%, y=25.56%, w=35.28%, h=2.96% |
+| Bounding box (px) | x=149, y=276, w=382, h=32 |
+| Normalised | x=13.8%, y=25.56%, w=35.37%, h=2.96% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [800, 75.0] |
-| Font size | 89 px |
-| Letter-spacing | 0.54 px (0.0061 em) |
+| Variation axes | [600, 75.0] |
+| Font size | 90 px |
+| Letter-spacing | 0.22 px (0.0024 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -61,54 +61,58 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.95:1 |
 | Stroke (median/mean) | 7.0 / 8.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Condiment, Roboto, Arimo |
-| Match IoU | 0.3305 |
+| Match IoU | 0.3338 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
 | Gap to next | 70 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 89px track 0.54px — IoU 0.3268
-- `Roboto[wdth,wght].ttf` 90px track 0.12px — IoU 0.3248
-- `Roboto[wdth,wght].ttf` 89px track 0.54px — IoU 0.3244
+- `Roboto[wdth,wght].ttf` 90px track 0.26px — IoU 0.3331
+- `Roboto[wdth,wght].ttf` 91px track -0.19px — IoU 0.332
+- `Roboto[wdth,wght].ttf` 92px track -0.62px — IoU 0.3318
 
 ### `text-2` — headline
 
-**Text:** "WorkoutClass"  (OCR confidence 0.9413)
+**Text:** "Workout Class"  (OCR confidence 0.9413)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=97, y=378, w=914, h=219 |
-| Normalised | x=8.98%, y=35.0%, w=84.63%, h=20.28% |
+| Bounding box (px) | x=97, y=378, w=914, h=214 |
+| Normalised | x=8.98%, y=35.0%, w=84.63%, h=19.81% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Condiment-Regular.ttf` |
 | Variation axes | None |
-| Font size | 188 px |
-| Letter-spacing | -0.35 px (-0.0019 em) |
+| Font size | 181 px |
+| Letter-spacing | -0.19 px (-0.001 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.97:1 |
-| Stroke (median/mean) | 23.0 / 25.04 px |
+| Contrast vs local bg | 1.95:1 |
+| Stroke (median/mean) | 23.0 / 25.64 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
+| OCR repairs (audited) | split camelCase: 'WorkoutClass' -> 'Workout Class' |
 | Font family (authoritative) | Condiment, Roboto, Arimo |
-| Match IoU | 0.3063 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4556 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 70 px |
-| Gap to next | -13 px |
+| Gap to next | -8 px |
 
 Alternate font fits considered:
-- `Condiment-Regular.ttf` 187px track 0.1px — IoU 0.3028
-- `Condiment-Regular.ttf` 186px track 0.54px — IoU 0.3027
-- `Roboto[wdth,wght].ttf` 165px track -0.62px — IoU 0.2866
+- `Condiment-Regular.ttf` 182px track -0.61px — IoU 0.4502
+- `Condiment-Regular.ttf` 180px track 0.24px — IoU 0.4439
+- `Roboto[wdth,wght].ttf` 158px track -0.35px — IoU 0.2819
 
 ### `text-3` — supporting
 
@@ -133,12 +137,13 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.3:1 |
 | Stroke (median/mean) | 8.0 / 9.36 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Condiment, Roboto, Arimo |
 | Match IoU | 0.2574 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -13 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -8 px |
 | Gap to next | 326 px |
 
 Alternate font fits considered:
@@ -146,7 +151,7 @@ Alternate font fits considered:
 - `Roboto[wdth,wght].ttf` 76px track 0.66px — IoU 0.2538
 - `Roboto[wdth,wght].ttf` 78px track -0.27px — IoU 0.2534
 
-### `text-4` — detail
+### `text-4` — fine-print
 
 **Text:** "Last date for booking is 29th September, 2026. Seats are limited s0 bookings"  (OCR confidence 0.9818)
 
@@ -162,34 +167,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 22 px |
 | Letter-spacing | -0.64 px (-0.0291 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 28.5 px (ratio 1.295) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#fbe8eb` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.1:1 |
 | Stroke (median/mean) | 2.0 / 2.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Condiment, Roboto, Arimo |
-| Match IoU | 0.5251 |
+| Match IoU | 0.4677 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 326 px |
-| Gap to next | -1 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 20px track 0.29px — IoU 0.5199
-- `Arimo[wght].ttf` 21px track -0.17px — IoU 0.505
-- `Roboto[wdth,wght].ttf` 20px track 0.31px — IoU 0.5015
+- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.4675
+- `Arimo[wght].ttf` 21px track -0.17px — IoU 0.4664
+- `Arimo[wght].ttf` 22px track -0.41px — IoU 0.4561
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "will be done on first come first serve basis. No booking will be allowed after the"  (OCR confidence 0.9744)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=174, y=966, w=736, h=29 |
-| Normalised | x=16.11%, y=89.44%, w=68.15%, h=2.69% |
+| Bounding box (px) | x=174, y=975, w=736, h=20 |
+| Normalised | x=16.11%, y=90.28%, w=68.15%, h=1.85% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -197,28 +203,29 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.63 px (-0.0286 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.64 px (-0.0291 em) |
+| Line-height | 28.5 px (ratio 1.295) |
+| Line | 2 of 3 |
 | Transform | none |
-| Colour | `#fbe7eb` |
+| Colour | `#fbe9ec` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.1:1 |
+| Contrast vs local bg | 2.12:1 |
 | Stroke (median/mean) | 2.0 / 2.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Condiment, Roboto, Arimo |
-| Match IoU | 0.2402 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6216 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
 | Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 22px track -0.65px — IoU 0.2296
-- `Roboto[wdth,wght].ttf` 23px track -0.53px — IoU 0.2289
-- `Roboto[wdth,wght].ttf` 22px track -0.58px — IoU 0.2257
+- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.4675
+- `Arimo[wght].ttf` 21px track -0.17px — IoU 0.4664
+- `Arimo[wght].ttf` 22px track -0.41px — IoU 0.4561
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "deadline. Pleasev isito urw ebsitefo rm orein formation."  (OCR confidence 0.9924)
 
@@ -233,16 +240,17 @@ Alternate font fits considered:
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 22 px |
-| Letter-spacing | -0.67 px (-0.0305 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.64 px (-0.0291 em) |
+| Line-height | 28.5 px (ratio 1.295) |
+| Line | 3 of 3 |
 | Transform | none |
 | Colour | `#f8dee4` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.05:1 |
 | Stroke (median/mean) | 2.0 / 2.37 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Condiment, Roboto, Arimo |
-| Match IoU | 0.4795 |
+| Match IoU | 0.466 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -250,9 +258,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 22px track -0.41px — IoU 0.4503
-- `Arimo[wght].ttf` 21px track 0.04px — IoU 0.4456
-- `Arimo[wght].ttf` 21px track -0.47px — IoU 0.4242
+- `Arimo[wght].ttf` 21px track 0.05px — IoU 0.4675
+- `Arimo[wght].ttf` 21px track -0.17px — IoU 0.4664
+- `Arimo[wght].ttf` 22px track -0.41px — IoU 0.4561
 
 ## 4. Colours (semantic)
 
@@ -260,11 +268,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefbfb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#d83b41` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'WorkoutClass' | glyph ink median |
-| textSecondary | `#fbe7eb` | glyph ink of 'will be done on first come f' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of 'Workout Class' | glyph ink median |
+| textSecondary | `#fbe8eb` | glyph ink of 'Last date for booking is 29t' | glyph ink median |
 | accent | `#d83b41` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#d94960` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -288,7 +296,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.2358 |
+| Text coverage | 0.2262 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -315,28 +323,28 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | O N L I N E |
-| `headline` | text | WorkoutClass |
+| `supporting` | text | O N L I N E |
+| `headline` | text | Workout Class |
 | `supporting` | text | B O O K N O W ! |
-| `detail` | text | Last date for booking is 29th September, 2026. Seats are ... |
-| `detail` | text | will be done on first come first serve basis. No booking ... |
-| `detail` | text | deadline. Pleasev isito urw ebsitefo rm orein formation. |
+| `fine-print_line1` | text | Last date for booking is 29th September, 2026. Seats are ... |
+| `fine-print_line2` | text | will be done on first come first serve basis. No booking ... |
+| `fine-print_line3` | text | deadline. Pleasev isito urw ebsitefo rm orein formation. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefbfb |
 | `surface` | colour | #d83b41 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #fbe7eb |
+| `textSecondary` | colour | #fbe8eb |
 | `accent` | colour | #d83b41 |
 | `accentSecondary` | colour | #d94960 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Condiment |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.3 |
 | `imageFocalY` | number | 59.5 |
 

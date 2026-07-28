@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.6:1 |
 | Stroke (median/mean) | 11.0 / 14.03 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
 | Match IoU | 0.9305 |
 | **Geometry fit confidence** | **high** |
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.6:1 |
 | Stroke (median/mean) | 11.0 / 15.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
 | Match IoU | 0.8775 |
 | **Geometry fit confidence** | **high** |
@@ -109,7 +111,7 @@ Alternate font fits considered:
 - `NunitoSans[YTLC,opsz,wdth,wght].ttf` 79px track -0.41px — IoU 0.8959
 - `NunitoSans[YTLC,opsz,wdth,wght].ttf` 72px track -1.09px — IoU 0.8928
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "CONSULTING"  (OCR confidence 0.9942)
 
@@ -122,18 +124,19 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [700, 100.0, 12.0, 500.0] |
-| Font size | 36 px |
-| Letter-spacing | -1.0 px (-0.0278 em) |
-| Line-height | 60.0 px (ratio 1.667) |
-| Line | 1 of 2 |
+| Variation axes | [600, 112.5, 12.0, 500.0] |
+| Font size | 33 px |
+| Letter-spacing | -1.12 px (-0.0339 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.6:1 |
 | Stroke (median/mean) | 4.0 / 5.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.6105 |
+| Match IoU | 0.6136 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -141,153 +144,157 @@ Alternate font fits considered:
 | Gap to next | 32 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 33px track -1.12px — IoU 0.4169
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.64px — IoU 0.4148
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.97px — IoU 0.4092
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.64px — IoU 0.6101
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 39px track -0.71px — IoU 0.6051
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.33px — IoU 0.6015
 
-### `text-4` — subheadline
+### `text-4` — fine-print
 
 **Text:** "Sapien et ligula ullamcorper"  (OCR confidence 0.9897)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=90, y=323, w=191, h=23 |
-| Normalised | x=8.33%, y=29.91%, w=17.69%, h=2.13% |
+| Bounding box (px) | x=90, y=323, w=191, h=16 |
+| Normalised | x=8.33%, y=29.91%, w=17.69%, h=1.48% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [700, 100.0, 12.0, 500.0] |
-| Font size | 36 px |
-| Letter-spacing | -1.0 px (-0.0278 em) |
-| Line-height | 60.0 px (ratio 1.667) |
-| Line | 2 of 2 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 1 of 9 |
 | Transform | none |
-| Colour | `#f0e8ef` |
+| Colour | `#f1e8ef` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.47:1 |
-| Stroke (median/mean) | 2.0 / 2.32 px |
+| Stroke (median/mean) | 2.0 / 2.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2324 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6332 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 32 px |
-| Gap to next | -10 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 33px track -1.12px — IoU 0.4169
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.64px — IoU 0.4148
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.97px — IoU 0.4092
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "malesuada proin libero nunc"  (OCR confidence 0.9981)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=89, y=336, w=194, h=32 |
-| Normalised | x=8.24%, y=31.11%, w=17.96%, h=2.96% |
+| Bounding box (px) | x=89, y=344, w=194, h=16 |
+| Normalised | x=8.24%, y=31.85%, w=17.96%, h=1.48% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
+| Variation axes | [800, 100.0] |
 | Font size | 16 px |
-| Letter-spacing | -0.34 px (-0.0213 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 2 of 9 |
 | Transform | lowercase |
-| Colour | `#f2e9f0` |
+| Colour | `#f2eaf0` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.48:1 |
-| Stroke (median/mean) | 2.0 / 2.24 px |
+| Stroke (median/mean) | 2.0 / 2.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2664 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5998 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -10 px |
-| Gap to next | -11 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 5 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 16px track -0.36px — IoU 0.2651
-- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.2524
-- `Roboto[wdth,wght].ttf` 17px track -0.36px — IoU 0.2391
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "consequat interdum. Nulla posuere"  (OCR confidence 0.9867)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=65, y=357, w=241, h=32 |
-| Normalised | x=6.02%, y=33.06%, w=22.31%, h=2.96% |
+| Bounding box (px) | x=65, y=365, w=241, h=16 |
+| Normalised | x=6.02%, y=33.8%, w=22.31%, h=1.48% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
+| Variation axes | [800, 100.0] |
 | Font size | 16 px |
-| Letter-spacing | -0.31 px (-0.0194 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 3 of 9 |
 | Transform | none |
-| Colour | `#f0e7ee` |
+| Colour | `#f0e7ef` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.47:1 |
-| Stroke (median/mean) | 2.0 / 2.29 px |
+| Stroke (median/mean) | 2.0 / 2.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2466 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5085 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -11 px |
-| Gap to next | -12 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 5 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 17px track -0.39px — IoU 0.2426
-- `Roboto[wdth,wght].ttf` 15px track 0.14px — IoU 0.2422
-- `Roboto[wdth,wght].ttf` 17px track -0.34px — IoU 0.2419
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-7` — detail
+### `text-7` — fine-print
 
 **Text:** "sollicitudin aliquam ultrices"  (OCR confidence 0.982)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=92, y=377, w=198, h=33 |
-| Normalised | x=8.52%, y=34.91%, w=18.33%, h=3.06% |
+| Bounding box (px) | x=92, y=386, w=187, h=16 |
+| Normalised | x=8.52%, y=35.74%, w=17.31%, h=1.48% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 17 px |
-| Letter-spacing | -0.53 px (-0.0312 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [800, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 4 of 9 |
 | Transform | lowercase |
-| Colour | `#ece0ea` |
+| Colour | `#f0e7ee` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 2.0 / 2.07 px |
+| Contrast vs local bg | 1.47:1 |
+| Stroke (median/mean) | 2.0 / 2.14 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.1735 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5968 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -12 px |
-| Gap to next | -11 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 5 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 16px track 0.56px — IoU 0.1721
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 12px track 0.72px — IoU 0.1714
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 15px track -0.67px — IoU 0.1713
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
 ### `text-8` — fine-print
 
@@ -295,80 +302,82 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=66, y=399, w=231, h=33 |
-| Normalised | x=6.11%, y=36.94%, w=21.39%, h=3.06% |
+| Bounding box (px) | x=75, y=408, w=221, h=15 |
+| Normalised | x=6.94%, y=37.78%, w=20.46%, h=1.39% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [900, 75.0, 12.0, 500.0] |
-| Font size | 19 px |
-| Letter-spacing | -0.57 px (-0.03 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 5 of 9 |
 | Transform | lowercase |
-| Colour | `#ede2eb` |
+| Colour | `#eee3ec` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.44:1 |
-| Stroke (median/mean) | 2.0 / 2.35 px |
+| Contrast vs local bg | 1.45:1 |
+| Stroke (median/mean) | 2.0 / 2.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.1815 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7233 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -11 px |
-| Gap to next | -13 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 6 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 16px track -0.54px — IoU 0.1712
-- `Roboto[wdth,wght].ttf` 17px track 0.19px — IoU 0.17
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 17px track -0.37px — IoU 0.1695
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-9` — detail
+### `text-9` — fine-print
 
 **Text:** "Vitae congue eu consequat ac felis"  (OCR confidence 0.9855)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=66, y=419, w=239, h=35 |
-| Normalised | x=6.11%, y=38.8%, w=22.13%, h=3.24% |
+| Bounding box (px) | x=65, y=428, w=240, h=16 |
+| Normalised | x=6.02%, y=39.63%, w=22.22%, h=1.48% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [700, 87.5] |
-| Font size | 15 px |
-| Letter-spacing | 0.51 px (0.034 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [800, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 6 of 9 |
 | Transform | none |
-| Colour | `#ebdfe9` |
+| Colour | `#ede2eb` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 2.0 / 2.38 px |
+| Contrast vs local bg | 1.44:1 |
+| Stroke (median/mean) | 2.0 / 2.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.248 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6664 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -13 px |
-| Gap to next | -11 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 5 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 15px track 0.48px — IoU 0.2468
-- `Roboto[wdth,wght].ttf` 15px track 0.09px — IoU 0.2452
-- `Roboto[wdth,wght].ttf` 15px track 0.5px — IoU 0.2438
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-10` — detail
+### `text-10` — fine-print
 
 **Text:** "donec et. Morbi enim nunc"  (OCR confidence 0.9342)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=94, y=443, w=183, h=29 |
-| Normalised | x=8.7%, y=41.02%, w=16.94%, h=2.69% |
+| Bounding box (px) | x=94, y=450, w=183, h=12 |
+| Normalised | x=8.7%, y=41.67%, w=16.94%, h=1.11% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
@@ -376,35 +385,36 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [800, 100.0] |
 | Font size | 16 px |
-| Letter-spacing | -0.41 px (-0.0256 em) |
-| Line-height | 28.0 px (ratio 1.75) |
-| Line | 1 of 2 |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 7 of 9 |
 | Transform | none |
-| Colour | `#ebdfe9` |
+| Colour | `#ede1ea` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 2.0 / 2.29 px |
+| Contrast vs local bg | 1.44:1 |
+| Stroke (median/mean) | 2.0 / 2.3 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2917 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5722 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -11 px |
-| Gap to next | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 6 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 16px track -0.44px — IoU 0.2781
-- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.2696
-- `Roboto[wdth,wght].ttf` 16px track -0.33px — IoU 0.268
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-11` — detail
+### `text-11` — fine-print
 
 **Text:** "faucibus a pellentesque sit. Orci"  (OCR confidence 0.9941)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=76, y=471, w=219, h=23 |
-| Normalised | x=7.04%, y=43.61%, w=20.28%, h=2.13% |
+| Bounding box (px) | x=76, y=470, w=219, h=16 |
+| Normalised | x=7.04%, y=43.52%, w=20.28%, h=1.48% |
 | Alignment | left |
 | z-order | 110 |
 | Rotation | 0° |
@@ -412,64 +422,66 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [800, 100.0] |
 | Font size | 16 px |
-| Letter-spacing | -0.41 px (-0.0256 em) |
-| Line-height | 28.0 px (ratio 1.75) |
-| Line | 2 of 2 |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 8 of 9 |
 | Transform | none |
-| Colour | `#ece0ea` |
+| Colour | `#ede1ea` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 2.0 / 2.41 px |
+| Contrast vs local bg | 1.44:1 |
+| Stroke (median/mean) | 2.0 / 2.45 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2719 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5928 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
-| Gap to next | -11 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 16px track -0.44px — IoU 0.2781
-- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.2696
-- `Roboto[wdth,wght].ttf` 16px track -0.33px — IoU 0.268
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-12` — detail
+### `text-12` — fine-print
 
 **Text:** "dapibus ultrices in iaculis."  (OCR confidence 0.9927)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=97, y=483, w=176, h=24 |
-| Normalised | x=8.98%, y=44.72%, w=16.3%, h=2.22% |
+| Bounding box (px) | x=97, y=492, w=176, h=15 |
+| Normalised | x=8.98%, y=45.56%, w=16.3%, h=1.39% |
 | Alignment | left |
 | z-order | 111 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [800, 100.0, 12.0, 500.0] |
-| Font size | 15 px |
-| Letter-spacing | -0.26 px (-0.0173 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.36 px (-0.0225 em) |
+| Line-height | 21.1 px (ratio 1.319) |
+| Line | 9 of 9 |
 | Transform | lowercase |
 | Colour | `#ebdee8` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.42:1 |
-| Stroke (median/mean) | 2.0 / 2.25 px |
+| Stroke (median/mean) | 2.0 / 2.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.3226 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6355 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -11 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 6 px |
 | Gap to next | 423 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 15px track -0.43px — IoU 0.3165
-- `Roboto[wdth,wght].ttf` 17px track -0.4px — IoU 0.3063
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 14px track -0.46px — IoU 0.3035
+- `Roboto[wdth,wght].ttf` 16px track -0.38px — IoU 0.6025
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.602
+- `Roboto[wdth,wght].ttf` 16px track -0.3px — IoU 0.5852
 
-### `text-13` — detail
+### `text-13` — body
 
 **Text:** "Proin sagittis"  (OCR confidence 0.9984)
 
@@ -492,6 +504,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.49:1 |
 | Stroke (median/mean) | 3.0 / 3.86 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
 | Match IoU | 0.7554 |
 | **Geometry fit confidence** | **high** |
@@ -528,6 +541,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.59:1 |
 | Stroke (median/mean) | 4.0 / 4.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
 | Match IoU | 0.7784 |
 | **Geometry fit confidence** | **high** |
@@ -541,7 +555,7 @@ Alternate font fits considered:
 - `NunitoSans[YTLC,opsz,wdth,wght].ttf` 23px track -0.66px — IoU 0.759
 - `NunitoSans[YTLC,opsz,wdth,wght].ttf` 25px track -0.47px — IoU 0.7567
 
-### `text-15` — detail
+### `text-15` — body
 
 **Text:** "Sapien et ligula"  (OCR confidence 0.978)
 
@@ -564,6 +578,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.6:1 |
 | Stroke (median/mean) | 4.0 / 4.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
 | Match IoU | 0.8277 |
 | **Geometry fit confidence** | **high** |
@@ -577,52 +592,16 @@ Alternate font fits considered:
 - `NunitoSans[YTLC,opsz,wdth,wght].ttf` 22px track -0.42px — IoU 0.7978
 - `NunitoSans[YTLC,opsz,wdth,wght].ttf` 25px track -0.51px — IoU 0.7765
 
-### `text-16` — detail
+### `text-16` — fine-print
 
 **Text:** "An operational document that outlines an"  (OCR confidence 0.9794)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=398, y=965, w=283, h=24 |
-| Normalised | x=36.85%, y=89.35%, w=26.2%, h=2.22% |
+| Bounding box (px) | x=398, y=965, w=283, h=15 |
+| Normalised | x=36.85%, y=89.35%, w=26.2%, h=1.39% |
 | Alignment | center |
 | z-order | 115 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 16 px |
-| Letter-spacing | -0.4 px (-0.025 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#dcdbe2` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 3.03:1 |
-| Stroke (median/mean) | 1.0 / 1.52 px |
-| Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2625 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -3 px |
-| Gap to next | -22 px |
-
-Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 16px track -0.36px — IoU 0.2602
-- `Roboto[wdth,wght].ttf` 16px track -0.39px — IoU 0.2602
-- `Roboto[wdth,wght].ttf` 16px track -0.32px — IoU 0.2575
-
-### `text-17` — detail
-
-**Text:** "An operational document that outlines an"  (OCR confidence 0.9808)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=39, y=967, w=283, h=24 |
-| Normalised | x=3.61%, y=89.54%, w=26.2%, h=2.22% |
-| Alignment | left |
-| z-order | 116 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
@@ -632,346 +611,393 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#f5eff4` |
+| Colour | `#dedce2` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.51:1 |
-| Stroke (median/mean) | 2.0 / 2.19 px |
+| Contrast vs local bg | 3.05:1 |
+| Stroke (median/mean) | 1.0 / 1.54 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2498 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6774 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -22 px |
-| Gap to next | -10 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -3 px |
+| Gap to next | -13 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 18px track -0.39px — IoU 0.2497
-- `Roboto[wdth,wght].ttf` 16px track -0.36px — IoU 0.2491
-- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.2481
+- `Roboto[wdth,wght].ttf` 16px track -0.36px — IoU 0.6659
+- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.6586
+- `Roboto[wdth,wght].ttf` 17px track -0.33px — IoU 0.6422
 
-### `text-18` — detail
+### `text-17` — fine-print
+
+**Text:** "An operational document that outlines an"  (OCR confidence 0.9808)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=39, y=967, w=283, h=15 |
+| Normalised | x=3.61%, y=89.54%, w=26.2%, h=1.39% |
+| Alignment | left |
+| z-order | 116 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [600, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.34 px (-0.0213 em) |
+| Line-height | 14.0 px (ratio 0.875) |
+| Line | 1 of 2 |
+| Transform | none |
+| Colour | `#f7f2f6` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.53:1 |
+| Stroke (median/mean) | 2.0 / 2.22 px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Nunito Sans, Roboto |
+| Match IoU | 0.61 |
+| **Geometry fit confidence** | **medium** |
+| OCR text reliable | True  |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -13 px |
+| Gap to next | -1 px |
+
+Alternate font fits considered:
+- `Roboto[wdth,wght].ttf` 16px track -0.36px — IoU 0.6511
+- `Roboto[wdth,wght].ttf` 16px track -0.32px — IoU 0.647
+- `Roboto[wdth,wght].ttf` 17px track -0.33px — IoU 0.6131
+
+### `text-18` — fine-print
 
 **Text:** "An operational document that outlines an"  (OCR confidence 0.9414)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=761, y=981, w=283, h=22 |
-| Normalised | x=70.46%, y=90.83%, w=26.2%, h=2.04% |
+| Bounding box (px) | x=761, y=981, w=283, h=15 |
+| Normalised | x=70.46%, y=90.83%, w=26.2%, h=1.39% |
 | Alignment | right |
 | z-order | 117 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [800, 100.0] |
+| Variation axes | [600, 100.0] |
 | Font size | 16 px |
-| Letter-spacing | -0.39 px (-0.0244 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.34 px (-0.0213 em) |
+| Line-height | 14.0 px (ratio 0.875) |
+| Line | 2 of 2 |
 | Transform | none |
-| Colour | `#ece0e9` |
+| Colour | `#ece0ea` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 2.0 / 2.4 px |
+| Stroke (median/mean) | 2.0 / 2.41 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.3084 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6947 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -10 px |
-| Gap to next | -16 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -1 px |
+| Gap to next | -10 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 16px track -0.4px — IoU 0.307
-- `Roboto[wdth,wght].ttf` 16px track -0.34px — IoU 0.3033
-- `Roboto[wdth,wght].ttf` 16px track -0.36px — IoU 0.3028
+- `Roboto[wdth,wght].ttf` 16px track -0.36px — IoU 0.6511
+- `Roboto[wdth,wght].ttf` 16px track -0.32px — IoU 0.647
+- `Roboto[wdth,wght].ttf` 17px track -0.33px — IoU 0.6131
 
 ### `text-19` — fine-print
 
-**Text:** "advertisingstrategythatanorganization"  (OCR confidence 0.9974)
+**Text:** "advertising strategy that an organization"  (OCR confidence 0.9974)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=402, y=987, w=279, h=22 |
-| Normalised | x=37.22%, y=91.39%, w=25.83%, h=2.04% |
+| Bounding box (px) | x=402, y=986, w=276, h=15 |
+| Normalised | x=37.22%, y=91.3%, w=25.56%, h=1.39% |
 | Alignment | center |
 | z-order | 118 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 19 px |
-| Letter-spacing | -0.43 px (-0.0226 em) |
+| Variation axes | [500, 87.5] |
+| Font size | 17 px |
+| Letter-spacing | -0.35 px (-0.0206 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#e3e2e7` |
+| Colour | `#e5e4e8` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.12:1 |
-| Stroke (median/mean) | 1.0 / 1.6 px |
+| Contrast vs local bg | 3.15:1 |
+| Stroke (median/mean) | 1.0 / 1.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.1762 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -16 px |
-| Gap to next | -21 px |
+| Match IoU | 0.7064 |
+| **Geometry fit confidence** | **high** |
+| OCR text reliable | True  |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -10 px |
+| Gap to next | -13 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 18px track -0.45px — IoU 0.1748
-- `Roboto[wdth,wght].ttf` 18px track 0.01px — IoU 0.1722
-- `Roboto[wdth,wght].ttf` 18px track -0.41px — IoU 0.1704
+- `Roboto[wdth,wght].ttf` 17px track -0.38px — IoU 0.6535
+- `Roboto[wdth,wght].ttf` 16px track -0.33px — IoU 0.6336
+- `Roboto[wdth,wght].ttf` 16px track -0.43px — IoU 0.6046
 
-### `text-20` — detail
+### `text-20` — fine-print
 
-**Text:** "advertising strategy that anorganization"  (OCR confidence 0.9741)
+**Text:** "advertising strategy that an organization"  (OCR confidence 0.9741)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=43, y=988, w=279, h=23 |
-| Normalised | x=3.98%, y=91.48%, w=25.83%, h=2.13% |
+| Bounding box (px) | x=43, y=988, w=276, h=15 |
+| Normalised | x=3.98%, y=91.48%, w=25.56%, h=1.39% |
 | Alignment | left |
 | z-order | 119 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [900, 75.0, 12.0, 500.0] |
-| Font size | 16 px |
-| Letter-spacing | 0.35 px (0.0219 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [500, 87.5] |
+| Font size | 17 px |
+| Letter-spacing | -0.35 px (-0.0206 em) |
+| Line-height | 14.0 px (ratio 0.824) |
+| Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#f4eef3` |
+| Colour | `#f6f0f5` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.51:1 |
-| Stroke (median/mean) | 2.0 / 2.31 px |
+| Contrast vs local bg | 1.52:1 |
+| Stroke (median/mean) | 2.0 / 2.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.1782 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.67 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -21 px |
-| Gap to next | -17 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -13 px |
+| Gap to next | -1 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 18px track -0.31px — IoU 0.1769
-- `Roboto[wdth,wght].ttf` 18px track -0.25px — IoU 0.1761
-- `Roboto[wdth,wght].ttf` 16px track -0.29px — IoU 0.1761
+- `Roboto[wdth,wght].ttf` 17px track -0.38px — IoU 0.607
+- `Roboto[wdth,wght].ttf` 17px track -0.48px — IoU 0.5653
+- `Roboto[wdth,wght].ttf` 15px track 0.01px — IoU 0.5635
 
-### `text-21` — detail
+### `text-21` — fine-print
 
 **Text:** "advertising strategy that an organization"  (OCR confidence 0.9828)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=765, y=994, w=280, h=31 |
-| Normalised | x=70.83%, y=92.04%, w=25.93%, h=2.87% |
+| Bounding box (px) | x=765, y=1002, w=276, h=15 |
+| Normalised | x=70.83%, y=92.78%, w=25.56%, h=1.39% |
 | Alignment | right |
 | z-order | 120 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [900, 87.5, 12.0, 500.0] |
-| Font size | 15 px |
-| Letter-spacing | 0.13 px (0.0087 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.43 px (-0.0269 em) |
+| Line-height | 14.0 px (ratio 0.875) |
+| Line | 2 of 2 |
 | Transform | lowercase |
-| Colour | `#ebdfe8` |
+| Colour | `#ecdfe9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 2.0 / 2.41 px |
+| Stroke (median/mean) | 2.0 / 2.45 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2323 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6951 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -17 px |
-| Gap to next | -27 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -1 px |
+| Gap to next | -10 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 15px track -0.48px — IoU 0.2316
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 14px track -0.68px — IoU 0.2261
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 14px track 0.02px — IoU 0.2232
+- `Roboto[wdth,wght].ttf` 16px track -0.46px — IoU 0.677
+- `Roboto[wdth,wght].ttf` 18px track -0.42px — IoU 0.6624
+- `Roboto[wdth,wght].ttf` 16px track -0.33px — IoU 0.6535
 
-### `text-22` — detail
+### `text-22` — fine-print
 
-**Text:** "will implement to generateleads and reach"  (OCR confidence 0.9494)
+**Text:** "wil limplemen tto generate leads and reach"  (OCR confidence 0.9494)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=393, y=998, w=293, h=34 |
-| Normalised | x=36.39%, y=92.41%, w=27.13%, h=3.15% |
+| Bounding box (px) | x=393, y=1007, w=294, h=15 |
+| Normalised | x=36.39%, y=93.24%, w=27.22%, h=1.39% |
 | Alignment | center |
 | z-order | 121 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 15 px |
-| Letter-spacing | 0.13 px (0.0087 em) |
+| Variation axes | [600, 87.5] |
+| Font size | 17 px |
+| Letter-spacing | -0.36 px (-0.0212 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#dedce2` |
+| Colour | `#e0dfe4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.05:1 |
-| Stroke (median/mean) | 1.0 / 1.65 px |
+| Contrast vs local bg | 3.08:1 |
+| Stroke (median/mean) | 1.0 / 1.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2063 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6321 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -27 px |
-| Gap to next | -33 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -10 px |
+| Gap to next | -13 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 15px track 0.54px — IoU 0.2033
-- `Roboto[wdth,wght].ttf` 15px track 0.58px — IoU 0.1957
-- `Roboto[wdth,wght].ttf` 15px track 0.17px — IoU 0.1948
+- `Roboto[wdth,wght].ttf` 17px track -0.33px — IoU 0.6032
+- `Roboto[wdth,wght].ttf` 18px track -0.36px — IoU 0.5874
+- `Roboto[wdth,wght].ttf` 17px track -0.38px — IoU 0.5707
 
-### `text-23` — detail
+### `text-23` — fine-print
 
-**Text:** "willimplement to generate leads and reach"  (OCR confidence 0.9624)
+**Text:** "will implemen tto generate leads and reach"  (OCR confidence 0.9624)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=33, y=999, w=294, h=35 |
-| Normalised | x=3.06%, y=92.5%, w=27.22%, h=3.24% |
+| Bounding box (px) | x=33, y=1009, w=294, h=15 |
+| Normalised | x=3.06%, y=93.43%, w=27.22%, h=1.39% |
 | Alignment | left |
 | z-order | 122 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [800, 100.0, 12.0, 500.0] |
-| Font size | 15 px |
-| Letter-spacing | -0.3 px (-0.02 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 100.0] |
+| Font size | 16 px |
+| Letter-spacing | -0.42 px (-0.0262 em) |
+| Line-height | 14.0 px (ratio 0.875) |
+| Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#f6f0f5` |
+| Colour | `#f6f1f5` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.52:1 |
-| Stroke (median/mean) | 2.0 / 2.36 px |
+| Stroke (median/mean) | 2.0 / 2.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.1886 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5076 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -33 px |
-| Gap to next | -20 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | -13 px |
+| Gap to next | -1 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 14px track -0.52px — IoU 0.1822
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 15px track -0.47px — IoU 0.175
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 18px track -0.21px — IoU 0.1742
+- `Roboto[wdth,wght].ttf` 16px track -0.4px — IoU 0.5882
+- `Roboto[wdth,wght].ttf` 18px track -0.36px — IoU 0.5729
+- `Roboto[wdth,wght].ttf` 18px track -0.38px — IoU 0.5709
 
-### `text-24` — detail
+### `text-24` — fine-print
 
 **Text:** "will implement to generate leads and reach"  (OCR confidence 0.9764)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=756, y=1014, w=294, h=32 |
-| Normalised | x=70.0%, y=93.89%, w=27.22%, h=2.96% |
+| Bounding box (px) | x=756, y=1023, w=294, h=15 |
+| Normalised | x=70.0%, y=94.72%, w=27.22%, h=1.39% |
 | Alignment | right |
 | z-order | 123 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 100.0] |
-| Font size | 15 px |
-| Letter-spacing | 0.06 px (0.004 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 16 px |
+| Letter-spacing | -0.42 px (-0.0262 em) |
+| Line-height | 14.0 px (ratio 0.875) |
+| Line | 2 of 2 |
 | Transform | lowercase |
-| Colour | `#ebdfe9` |
+| Colour | `#ece0ea` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 2.0 / 2.52 px |
+| Stroke (median/mean) | 2.0 / 2.51 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.3285 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6727 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -20 px |
-| Gap to next | -26 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -1 px |
+| Gap to next | -10 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 17px track -0.43px — IoU 0.302
-- `Roboto[wdth,wght].ttf` 17px track -0.36px — IoU 0.2943
-- `Roboto[wdth,wght].ttf` 15px track 0.08px — IoU 0.2927
+- `Roboto[wdth,wght].ttf` 16px track -0.4px — IoU 0.5882
+- `Roboto[wdth,wght].ttf` 18px track -0.36px — IoU 0.5729
+- `Roboto[wdth,wght].ttf` 18px track -0.38px — IoU 0.5709
 
-### `text-25` — detail
+### `text-25` — fine-print
 
 **Text:** "its target market."  (OCR confidence 0.9835)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=482, y=1020, w=115, h=23 |
-| Normalised | x=44.63%, y=94.44%, w=10.65%, h=2.13% |
+| Bounding box (px) | x=482, y=1028, w=116, h=15 |
+| Normalised | x=44.63%, y=95.19%, w=10.74%, h=1.39% |
 | Alignment | center |
 | z-order | 124 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
+| Variation axes | [500, 87.5] |
 | Font size | 17 px |
-| Letter-spacing | -0.55 px (-0.0324 em) |
+| Letter-spacing | -0.45 px (-0.0265 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#dbdbe1` |
+| Colour | `#dcdbe1` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.03:1 |
 | Stroke (median/mean) | 1.0 / 1.64 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.2775 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.712 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -26 px |
-| Gap to next | -21 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -10 px |
+| Gap to next | -13 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 17px track -0.51px — IoU 0.2736
-- `Roboto[wdth,wght].ttf` 17px track -0.59px — IoU 0.2728
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 14px track -0.74px — IoU 0.2715
+- `Roboto[wdth,wght].ttf` 17px track -0.53px — IoU 0.704
+- `Roboto[wdth,wght].ttf` 17px track -0.49px — IoU 0.6839
+- `Roboto[wdth,wght].ttf` 16px track -0.54px — IoU 0.6672
 
-### `text-26` — detail
+### `text-26` — fine-print
 
 **Text:** "its target market."  (OCR confidence 0.9918)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=123, y=1022, w=115, h=24 |
-| Normalised | x=11.39%, y=94.63%, w=10.65%, h=2.22% |
+| Bounding box (px) | x=123, y=1030, w=115, h=16 |
+| Normalised | x=11.39%, y=95.37%, w=10.65%, h=1.48% |
 | Alignment | left |
 | z-order | 125 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [700, 112.5, 12.0, 500.0] |
-| Font size | 14 px |
-| Letter-spacing | -0.53 px (-0.0379 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [600, 75.0] |
+| Font size | 18 px |
+| Letter-spacing | -0.51 px (-0.0283 em) |
+| Line-height | 14.0 px (ratio 0.778) |
+| Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#f5eef3` |
+| Colour | `#f5eff4` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.51:1 |
-| Stroke (median/mean) | 2.0 / 2.49 px |
+| Stroke (median/mean) | 2.0 / 2.48 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.3382 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7857 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -21 px |
-| Gap to next | -12 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -13 px |
+| Gap to next | -2 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 14px track -0.74px — IoU 0.3238
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 12px track 0.14px — IoU 0.3066
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 18px track -0.46px — IoU 0.3026
+- `Roboto[wdth,wght].ttf` 16px track -0.54px — IoU 0.7016
+- `Roboto[wdth,wght].ttf` 16px track -0.5px — IoU 0.7006
+- `Roboto[wdth,wght].ttf` 18px track -0.47px — IoU 0.6975
 
 ### `text-27` — fine-print
 
@@ -979,35 +1005,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=837, y=1034, w=132, h=25 |
-| Normalised | x=77.5%, y=95.74%, w=12.22%, h=2.31% |
+| Bounding box (px) | x=845, y=1044, w=116, h=15 |
+| Normalised | x=78.24%, y=96.67%, w=10.74%, h=1.39% |
 | Alignment | right |
 | z-order | 126 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [900, 75.0, 12.0, 500.0] |
-| Font size | 19 px |
-| Letter-spacing | -0.34 px (-0.0179 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [600, 75.0] |
+| Font size | 18 px |
+| Letter-spacing | -0.51 px (-0.0283 em) |
+| Line-height | 14.0 px (ratio 0.778) |
+| Line | 2 of 2 |
 | Transform | lowercase |
-| Colour | `#e9dce7` |
+| Colour | `#ece0ea` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.41:1 |
-| Stroke (median/mean) | 2.0 / 2.53 px |
+| Contrast vs local bg | 1.43:1 |
+| Stroke (median/mean) | 2.0 / 2.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Nunito Sans, Roboto |
-| Match IoU | 0.1553 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7452 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -12 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -2 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 18px track -0.57px — IoU 0.1478
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 15px track -0.52px — IoU 0.1469
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 20px track -0.03px — IoU 0.1448
+- `Roboto[wdth,wght].ttf` 16px track -0.54px — IoU 0.7016
+- `Roboto[wdth,wght].ttf` 16px track -0.5px — IoU 0.7006
+- `Roboto[wdth,wght].ttf` 18px track -0.47px — IoU 0.6975
 
 ## 4. Colours (semantic)
 
@@ -1016,10 +1043,10 @@ Alternate font fits considered:
 | background | `#f4ebf0` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#b98fae` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'JAMES' | glyph ink median |
-| textSecondary | `#ebdfe9` | glyph ink of 'Vitae congue eu consequat ac' | glyph ink median |
+| textSecondary | `#f1e8ef` | glyph ink of 'Sapien et ligula ullamcorper' | glyph ink median |
 | accent | `#d06e5e` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#b98fae` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -1043,7 +1070,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.1561 |
+| Text coverage | 0.1025 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -1072,67 +1099,67 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | ANNIE |
 | `headline_line2` | text | JAMES |
-| `subheadline_line1` | text | CONSULTING |
-| `subheadline_line2` | text | Sapien et ligula ullamcorper |
-| `detail` | text | malesuada proin libero nunc |
-| `detail` | text | consequat interdum. Nulla posuere |
-| `detail` | text | sollicitudin aliquam ultrices |
-| `fine-print` | text | sagittis orci a scelerisque purus. |
-| `detail` | text | Vitae congue eu consequat ac felis |
-| `detail_line1` | text | donec et. Morbi enim nunc |
-| `detail_line2` | text | faucibus a pellentesque sit. Orci |
-| `detail` | text | dapibus ultrices in iaculis. |
-| `detail` | text | Proin sagittis |
+| `supporting` | text | CONSULTING |
+| `fine-print_line1` | text | Sapien et ligula ullamcorper |
+| `fine-print_line2` | text | malesuada proin libero nunc |
+| `fine-print_line3` | text | consequat interdum. Nulla posuere |
+| `fine-print_line4` | text | sollicitudin aliquam ultrices |
+| `fine-print_line5` | text | sagittis orci a scelerisque purus. |
+| `fine-print_line6` | text | Vitae congue eu consequat ac felis |
+| `fine-print_line7` | text | donec et. Morbi enim nunc |
+| `fine-print_line8` | text | faucibus a pellentesque sit. Orci |
+| `fine-print_line9` | text | dapibus ultrices in iaculis. |
+| `body` | text | Proin sagittis |
 | `supporting` | text | Urna id volutpat |
-| `detail` | text | Sapien et ligula |
-| `detail` | text | An operational document that outlines an |
-| `detail` | text | An operational document that outlines an |
-| `detail` | text | An operational document that outlines an |
-| `fine-print` | text | advertisingstrategythatanorganization |
-| `detail` | text | advertising strategy that anorganization |
-| `detail` | text | advertising strategy that an organization |
-| `detail` | text | will implement to generateleads and reach |
-| `detail` | text | willimplement to generate leads and reach |
-| `detail` | text | will implement to generate leads and reach |
-| `detail` | text | its target market. |
-| `detail` | text | its target market. |
+| `body` | text | Sapien et ligula |
+| `fine-print` | text | An operational document that outlines an |
+| `fine-print_line1` | text | An operational document that outlines an |
+| `fine-print_line2` | text | An operational document that outlines an |
+| `fine-print` | text | advertising strategy that an organization |
+| `fine-print_line1` | text | advertising strategy that an organization |
+| `fine-print_line2` | text | advertising strategy that an organization |
+| `fine-print` | text | wil limplemen tto generate leads and reach |
+| `fine-print_line1` | text | will implemen tto generate leads and reach |
+| `fine-print_line2` | text | will implement to generate leads and reach |
 | `fine-print` | text | its target market. |
+| `fine-print_line1` | text | its target market. |
+| `fine-print_line2` | text | its target market. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f4ebf0 |
 | `surface` | colour | #b98fae |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #ebdfe9 |
+| `textSecondary` | colour | #f1e8ef |
 | `accent` | colour | #d06e5e |
 | `accentSecondary` | colour | #b98fae |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Nunito Sans |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.8 |
 | `imageFocalY` | number | 51.1 |

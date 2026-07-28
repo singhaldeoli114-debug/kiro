@@ -40,10 +40,11 @@
     {
       "elementId": "text-1",
       "type": "text",
-      "text": "miom",
+      "text": "m iom",
       "textRawOcr": "miom",
-      "textSpacesRestored": false,
-      "wordGapCount": 0,
+      "textSpacesRestored": true,
+      "wordGapCount": 1,
+      "textRepairs": [],
       "slant": {
         "angleDeg": 0.0,
         "style": "normal",
@@ -51,35 +52,60 @@
         "shearGainOverUpright": 1.0,
         "method": "shear-variance maximisation of column ink projection"
       },
+      "renderModel": {
+        "model": "solid-vector-text",
+        "fittableBySolidRender": true,
+        "notes": [],
+        "unvalidatedSignals": {
+          "enclosedAreaRatio": 0.002,
+          "offsetDuplicate": {
+            "detected": false,
+            "selfOverlapAtOffset": 0.857,
+            "offsetX": 0,
+            "offsetY": -4
+          },
+          "rasterSignals": {
+            "edgeSharpness": 0.3722,
+            "backgroundTexture": 33.14
+          },
+          "note": "diagnostic only; not used for classification"
+        }
+      },
       "maskDiagnostics": {
-        "method": "otsu-minority",
-        "threshold": 126,
-        "inkCoverage": 0.4116,
-        "highClassPixels": 6260,
-        "lowClassPixels": 8949
+        "method": "otsu with supplied polarity",
+        "threshold": 127,
+        "inkCoverage": 0.4124,
+        "highClassPixels": 5336,
+        "lowClassPixels": 7603,
+        "polarity": {
+          "method": "border-ring polarity",
+          "threshold": 126,
+          "borderMedian": 106.0,
+          "backgroundIsLight": false
+        }
       },
       "ocrConfidence": 0.6896,
       "zOrder": 100,
       "rotationDeg": 0,
       "boundingBox": {
         "x": 244,
-        "y": 146,
+        "y": 151,
         "width": 227,
-        "height": 67
+        "height": 57
       },
       "boundingBoxNormalised": {
         "xPct": 22.59,
-        "yPct": 13.52,
+        "yPct": 13.98,
         "widthPct": 21.02,
-        "heightPct": 6.2
+        "heightPct": 5.28
       },
       "inkBox": {
         "x": 244,
-        "y": 146,
+        "y": 151,
         "width": 227,
-        "height": 67,
-        "inkPixels": 4923,
-        "fillRatio": 0.3237
+        "height": 57,
+        "inkPixels": 5336,
+        "fillRatio": 0.4124
       },
       "ocrBox": {
         "x": 250.0,
@@ -90,8 +116,8 @@
       "alignment": "left",
       "strokeMetrics": {
         "medianStroke": 13.0,
-        "meanStroke": 10.3,
-        "runCount": 430
+        "meanStroke": 10.53,
+        "runCount": 401
       },
       "colour": {
         "hex": "#ffffff",
@@ -102,14 +128,14 @@
         ]
       },
       "localBackground": {
-        "hex": "#7c756f",
+        "hex": "#6f6866",
         "rgb": [
-          124,
-          117,
-          111
+          111,
+          104,
+          102
         ]
       },
-      "contrastRatioVsLocalBackground": 2.05,
+      "contrastRatioVsLocalBackground": 2.27,
       "polarity": "light-on-dark",
       "opacity": 1.0,
       "borderRadius": null,
@@ -120,24 +146,24 @@
         "matchedFontFile": "AbrilFatface-Regular.ttf",
         "variationAxes": null,
         "candidateLabel": "AbrilFatface-Regular.ttf",
-        "fontSizePx": 87,
-        "letterSpacingPx": -0.77,
-        "letterSpacingEm": -0.0089,
-        "matchIou": 0.3104,
+        "fontSizePx": 80,
+        "letterSpacingPx": 0.43,
+        "letterSpacingEm": 0.0054,
+        "matchIou": 0.2768,
         "confidence": "very-low-textUnreliable",
         "alternates": [
           {
-            "iou": 0.3089,
+            "iou": 0.2708,
             "fontFile": "AbrilFatface-Regular.ttf",
-            "fontSizePx": 85,
-            "letterSpacingPx": 0.98,
+            "fontSizePx": 81,
+            "letterSpacingPx": -0.27,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           },
           {
-            "iou": 0.3065,
+            "iou": 0.2684,
             "fontFile": "AbrilFatface-Regular.ttf",
-            "fontSizePx": 86,
-            "letterSpacingPx": 0.09,
+            "fontSizePx": 82,
+            "letterSpacingPx": -0.98,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           }
         ],
@@ -146,6 +172,7 @@
         "textTransform": "lowercase",
         "textAlign": "left",
         "colour": "#ffffff",
+        "renderModel": "solid-vector-text",
         "fontFamilyIdentification": {
           "value": [
             "Abril Fatface"
@@ -156,7 +183,7 @@
         },
         "geometryFitConfidence": {
           "label": "very-low-textUnreliable",
-          "matchIou": 0.3104,
+          "matchIou": 0.2768,
           "metric": "scale-normalised IoU between the fitted render and the reference glyph ink",
           "interpretation": "not verified; driven by corrupted OCR text rather than a wrong family",
           "isLowerBound": true,
@@ -168,13 +195,13 @@
           "flags": [
             "low OCR confidence (0.6896)"
           ],
-          "spacesRestored": false
+          "spacesRestored": true
         }
       },
       "spacing": {
         "gapToPreviousPx": null,
-        "gapToNextPx": -29,
-        "topToCanvasPx": 146,
+        "gapToNextPx": -15,
+        "topToCanvasPx": 151,
         "baselineToCanvasBottomPx": null
       },
       "textBlock": {
@@ -184,16 +211,20 @@
         "lineHeightPx": null,
         "lineHeightRatio": null,
         "blockRole": "headline",
-        "blockTypeSizePx": 87.0
+        "blockTypeSizePx": 80.0,
+        "blockSizeRatioToLargest": 0.952
       }
     },
     {
       "elementId": "text-2",
       "type": "text",
-      "text": "ONFASHION FAS",
+      "text": "ON FASHION FAS",
       "textRawOcr": "ONFASHION FAS",
-      "textSpacesRestored": false,
+      "textSpacesRestored": true,
       "wordGapCount": 0,
+      "textRepairs": [
+        "split run-together: 'ONFASHION' -> 'ON FASHION'"
+      ],
       "slant": {
         "angleDeg": 0.0,
         "style": "normal",
@@ -201,35 +232,60 @@
         "shearGainOverUpright": 1.0,
         "method": "shear-variance maximisation of column ink projection"
       },
+      "renderModel": {
+        "model": "solid-vector-text",
+        "fittableBySolidRender": true,
+        "notes": [],
+        "unvalidatedSignals": {
+          "enclosedAreaRatio": 0.035,
+          "offsetDuplicate": {
+            "detected": true,
+            "selfOverlapAtOffset": 0.959,
+            "offsetX": -4,
+            "offsetY": 0
+          },
+          "rasterSignals": {
+            "edgeSharpness": 0.2852,
+            "backgroundTexture": 17.31
+          },
+          "note": "diagnostic only; not used for classification"
+        }
+      },
       "maskDiagnostics": {
-        "method": "otsu-minority",
+        "method": "otsu with supplied polarity",
         "threshold": 113,
-        "inkCoverage": 0.3617,
-        "highClassPixels": 56823,
-        "lowClassPixels": 32199
+        "inkCoverage": 0.6461,
+        "highClassPixels": 56515,
+        "lowClassPixels": 30953,
+        "polarity": {
+          "method": "border-ring polarity",
+          "threshold": 113,
+          "borderMedian": 37.0,
+          "backgroundIsLight": false
+        }
       },
       "ocrConfidence": 0.9368,
       "zOrder": 101,
       "rotationDeg": 0,
       "boundingBox": {
         "x": 969,
-        "y": 184,
+        "y": 193,
         "width": 111,
-        "height": 802
+        "height": 788
       },
       "boundingBoxNormalised": {
         "xPct": 89.72,
-        "yPct": 17.04,
+        "yPct": 17.87,
         "widthPct": 10.28,
-        "heightPct": 74.26
+        "heightPct": 72.96
       },
       "inkBox": {
         "x": 969,
-        "y": 184,
+        "y": 193,
         "width": 111,
-        "height": 802,
-        "inkPixels": 30914,
-        "fillRatio": 0.3473
+        "height": 788,
+        "inkPixels": 56515,
+        "fillRatio": 0.6429
       },
       "ocrBox": {
         "x": 975.0,
@@ -239,16 +295,16 @@
       },
       "alignment": "right",
       "strokeMetrics": {
-        "medianStroke": 22.0,
-        "meanStroke": 22.94,
-        "runCount": 940
+        "medianStroke": 19.0,
+        "meanStroke": 21.4,
+        "runCount": 980
       },
       "colour": {
-        "hex": "#141414",
+        "hex": "#dbd1cf",
         "rgb": [
-          20,
-          20,
-          20
+          219,
+          209,
+          207
         ]
       },
       "localBackground": {
@@ -259,8 +315,8 @@
           26
         ]
       },
-      "contrastRatioVsLocalBackground": 5.89,
-      "polarity": "dark-on-light",
+      "contrastRatioVsLocalBackground": 1.16,
+      "polarity": "light-on-dark",
       "opacity": 1.0,
       "borderRadius": null,
       "typography": {
@@ -271,23 +327,23 @@
         "variationAxes": null,
         "candidateLabel": "AbrilFatface-Regular.ttf",
         "fontSizePx": 15,
-        "letterSpacingPx": -0.61,
-        "letterSpacingEm": -0.0407,
-        "matchIou": 0.2046,
+        "letterSpacingPx": -0.77,
+        "letterSpacingEm": -0.0513,
+        "matchIou": 0.3023,
         "confidence": "very-low",
         "alternates": [
           {
-            "iou": 0.196,
+            "iou": 0.262,
             "fontFile": "AbrilFatface-Regular.ttf",
             "fontSizePx": 14,
-            "letterSpacingPx": 0.04,
+            "letterSpacingPx": -0.15,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           },
           {
-            "iou": 0.179,
+            "iou": 0.2345,
             "fontFile": "AbrilFatface-Regular.ttf",
             "fontSizePx": 13,
-            "letterSpacingPx": 0.7,
+            "letterSpacingPx": 0.47,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           }
         ],
@@ -295,7 +351,8 @@
         "measuredSlantDeg": 0.0,
         "textTransform": "uppercase",
         "textAlign": "right",
-        "colour": "#141414",
+        "colour": "#dbd1cf",
+        "renderModel": "solid-vector-text",
         "fontFamilyIdentification": {
           "value": [
             "Abril Fatface"
@@ -306,9 +363,9 @@
         },
         "geometryFitConfidence": {
           "label": "very-low",
-          "matchIou": 0.2046,
+          "matchIou": 0.3023,
           "metric": "scale-normalised IoU between the fitted render and the reference glyph ink",
-          "interpretation": "not verified; decorative/letter-spaced type, or per-character positioning in the source",
+          "interpretation": "not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture",
           "isLowerBound": true,
           "note": "a conservative similarity score; a mid-range value does not imply the wrong family, and is frequently caused by OCR text error or per-character placement in the source design"
         },
@@ -316,13 +373,13 @@
           "reliable": true,
           "ocrConfidence": 0.9368,
           "flags": [],
-          "spacesRestored": false
+          "spacesRestored": true
         }
       },
       "spacing": {
-        "gapToPreviousPx": -29,
-        "gapToNextPx": -533,
-        "topToCanvasPx": 184,
+        "gapToPreviousPx": -15,
+        "gapToNextPx": -523,
+        "topToCanvasPx": 193,
         "baselineToCanvasBottomPx": null
       },
       "textBlock": {
@@ -331,8 +388,9 @@
         "lineCount": 1,
         "lineHeightPx": null,
         "lineHeightRatio": null,
-        "blockRole": "detail",
-        "blockTypeSizePx": 15.0
+        "blockRole": "fine-print",
+        "blockTypeSizePx": 15.0,
+        "blockSizeRatioToLargest": 0.179
       }
     },
     {
@@ -342,42 +400,70 @@
       "textRawOcr": "6232",
       "textSpacesRestored": false,
       "wordGapCount": 0,
+      "textRepairs": [],
       "slant": {
-        "angleDeg": 3.0,
+        "angleDeg": 4.0,
         "style": "normal",
         "confidence": "medium",
-        "shearGainOverUpright": 1.093,
+        "shearGainOverUpright": 1.0652,
         "method": "shear-variance maximisation of column ink projection"
       },
+      "renderModel": {
+        "model": "text-in-photograph",
+        "fittableBySolidRender": false,
+        "notes": [
+          "soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match"
+        ],
+        "unvalidatedSignals": {
+          "enclosedAreaRatio": 0.298,
+          "offsetDuplicate": {
+            "detected": false,
+            "selfOverlapAtOffset": 0.833,
+            "offsetX": -12,
+            "offsetY": -14
+          },
+          "rasterSignals": {
+            "edgeSharpness": 0.2253,
+            "backgroundTexture": 18.64
+          },
+          "note": "diagnostic only; not used for classification"
+        }
+      },
       "maskDiagnostics": {
-        "method": "otsu-minority",
-        "threshold": 172,
-        "inkCoverage": 0.3054,
-        "highClassPixels": 596,
-        "lowClassPixels": 262
+        "method": "otsu with supplied polarity",
+        "threshold": 170,
+        "inkCoverage": 0.3556,
+        "highClassPixels": 377,
+        "lowClassPixels": 208,
+        "polarity": {
+          "method": "border-ring polarity",
+          "threshold": 171,
+          "borderMedian": 203.0,
+          "backgroundIsLight": true
+        }
       },
       "ocrConfidence": 0.7626,
       "zOrder": 102,
       "rotationDeg": 0,
       "boundingBox": {
         "x": 764,
-        "y": 453,
+        "y": 458,
         "width": 39,
-        "height": 22
+        "height": 15
       },
       "boundingBoxNormalised": {
         "xPct": 70.74,
-        "yPct": 41.94,
+        "yPct": 42.41,
         "widthPct": 3.61,
-        "heightPct": 2.04
+        "heightPct": 1.39
       },
       "inkBox": {
         "x": 764,
-        "y": 453,
+        "y": 458,
         "width": 39,
-        "height": 22,
-        "inkPixels": 226,
-        "fillRatio": 0.2318
+        "height": 15,
+        "inkPixels": 208,
+        "fillRatio": 0.3556
       },
       "ocrBox": {
         "x": 770.0,
@@ -392,22 +478,22 @@
         "runCount": 1
       },
       "colour": {
-        "hex": "#8a899f",
+        "hex": "#858298",
         "rgb": [
-          138,
-          137,
-          159
+          133,
+          130,
+          152
         ]
       },
       "localBackground": {
-        "hex": "#c4c9e1",
+        "hex": "#c3c8e0",
         "rgb": [
-          196,
-          201,
-          225
+          195,
+          200,
+          224
         ]
       },
-      "contrastRatioVsLocalBackground": 1.41,
+      "contrastRatioVsLocalBackground": 1.47,
       "polarity": "dark-on-light",
       "opacity": 1.0,
       "borderRadius": null,
@@ -418,32 +504,33 @@
         "matchedFontFile": "AbrilFatface-Regular.ttf",
         "variationAxes": null,
         "candidateLabel": "AbrilFatface-Regular.ttf",
-        "fontSizePx": 17,
-        "letterSpacingPx": 0.01,
-        "letterSpacingEm": 0.0006,
-        "matchIou": 0.2009,
-        "confidence": "very-low-textUnreliable",
+        "fontSizePx": 18,
+        "letterSpacingPx": -0.76,
+        "letterSpacingEm": -0.0422,
+        "matchIou": 0.255,
+        "confidence": "not-applicable-rasterText",
         "alternates": [
           {
-            "iou": 0.1996,
-            "fontFile": "AbrilFatface-Regular.ttf",
-            "fontSizePx": 18,
-            "letterSpacingPx": -0.76,
-            "candidateLabel": "AbrilFatface-Regular.ttf"
-          },
-          {
-            "iou": 0.1766,
+            "iou": 0.226,
             "fontFile": "AbrilFatface-Regular.ttf",
             "fontSizePx": 16,
             "letterSpacingPx": 0.77,
             "candidateLabel": "AbrilFatface-Regular.ttf"
+          },
+          {
+            "iou": 0.2006,
+            "fontFile": "AbrilFatface-Regular.ttf",
+            "fontSizePx": 17,
+            "letterSpacingPx": 0.01,
+            "candidateLabel": "AbrilFatface-Regular.ttf"
           }
         ],
         "fontStyle": "normal",
-        "measuredSlantDeg": 3.0,
+        "measuredSlantDeg": 4.0,
         "textTransform": "none",
         "textAlign": "right",
-        "colour": "#8a899f",
+        "colour": "#858298",
+        "renderModel": "text-in-photograph",
         "fontFamilyIdentification": {
           "value": [
             "Abril Fatface"
@@ -453,10 +540,10 @@
           "note": "the family is not inferred from pixels; only size, weight, width and tracking are fitted"
         },
         "geometryFitConfidence": {
-          "label": "very-low-textUnreliable",
-          "matchIou": 0.2009,
+          "label": "not-applicable-rasterText",
+          "matchIou": 0.255,
           "metric": "scale-normalised IoU between the fitted render and the reference glyph ink",
-          "interpretation": "not verified; driven by corrupted OCR text rather than a wrong family",
+          "interpretation": "this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made",
           "isLowerBound": true,
           "note": "a conservative similarity score; a mid-range value does not imply the wrong family, and is frequently caused by OCR text error or per-character placement in the source design"
         },
@@ -470,9 +557,9 @@
         }
       },
       "spacing": {
-        "gapToPreviousPx": -533,
-        "gapToNextPx": 530,
-        "topToCanvasPx": 453,
+        "gapToPreviousPx": -523,
+        "gapToNextPx": 537,
+        "topToCanvasPx": 458,
         "baselineToCanvasBottomPx": null
       },
       "textBlock": {
@@ -481,53 +568,80 @@
         "lineCount": 1,
         "lineHeightPx": null,
         "lineHeightRatio": null,
-        "blockRole": "supporting",
-        "blockTypeSizePx": 17.0
+        "blockRole": "fine-print",
+        "blockTypeSizePx": 18.0,
+        "blockSizeRatioToLargest": 0.214
       }
     },
     {
       "elementId": "text-4",
       "type": "text",
-      "text": "A SH IO NLE",
+      "text": "A SHIO NLE",
       "textRawOcr": "ASHIONLE",
       "textSpacesRestored": true,
-      "wordGapCount": 3,
+      "wordGapCount": 2,
+      "textRepairs": [],
       "slant": {
-        "angleDeg": 0.0,
+        "angleDeg": 3.0,
         "style": "normal",
         "confidence": "low",
-        "shearGainOverUpright": 1.003,
+        "shearGainOverUpright": 1.001,
         "method": "shear-variance maximisation of column ink projection"
       },
+      "renderModel": {
+        "model": "solid-vector-text",
+        "fittableBySolidRender": true,
+        "notes": [],
+        "unvalidatedSignals": {
+          "enclosedAreaRatio": 0.0,
+          "offsetDuplicate": {
+            "detected": false,
+            "selfOverlapAtOffset": 0.829,
+            "offsetX": -4,
+            "offsetY": 0
+          },
+          "rasterSignals": {
+            "edgeSharpness": 0.2898,
+            "backgroundTexture": 11.95
+          },
+          "note": "diagnostic only; not used for classification"
+        }
+      },
       "maskDiagnostics": {
-        "method": "otsu-minority",
-        "threshold": 119,
-        "inkCoverage": 0.1881,
-        "highClassPixels": 6424,
-        "lowClassPixels": 1488
+        "method": "otsu with supplied polarity",
+        "threshold": 109,
+        "inkCoverage": 0.0788,
+        "highClassPixels": 9765,
+        "lowClassPixels": 835,
+        "polarity": {
+          "method": "border-ring polarity",
+          "threshold": 121,
+          "borderMedian": 216.0,
+          "backgroundIsLight": true
+        }
       },
       "ocrConfidence": 0.8329,
       "zOrder": 103,
       "rotationDeg": 0,
       "boundingBox": {
-        "x": 143,
-        "y": 1005,
-        "width": 344,
-        "height": 23
+        "x": 275,
+        "y": 1010,
+        "width": 212,
+        "height": 50
       },
       "boundingBoxNormalised": {
-        "xPct": 13.24,
-        "yPct": 93.06,
-        "widthPct": 31.85,
-        "heightPct": 2.13
+        "xPct": 25.46,
+        "yPct": 93.52,
+        "widthPct": 19.63,
+        "heightPct": 4.63
       },
       "inkBox": {
-        "x": 143,
-        "y": 1005,
-        "width": 344,
-        "height": 23,
-        "inkPixels": 1011,
-        "fillRatio": 0.0316
+        "x": 275,
+        "y": 1010,
+        "width": 212,
+        "height": 50,
+        "inkPixels": 843,
+        "fillRatio": 0.031
       },
       "ocrBox": {
         "x": 16.0,
@@ -537,27 +651,27 @@
       },
       "alignment": "left",
       "strokeMetrics": {
-        "medianStroke": 14.5,
-        "meanStroke": 14.44,
-        "runCount": 70
+        "medianStroke": 15.5,
+        "meanStroke": 15.96,
+        "runCount": 46
       },
       "colour": {
-        "hex": "#151114",
+        "hex": "#101010",
         "rgb": [
-          21,
-          17,
-          20
+          16,
+          16,
+          16
         ]
       },
       "localBackground": {
-        "hex": "#dbb85a",
+        "hex": "#dbb852",
         "rgb": [
           219,
           184,
-          90
+          82
         ]
       },
-      "contrastRatioVsLocalBackground": 6.41,
+      "contrastRatioVsLocalBackground": 6.85,
       "polarity": "dark-on-light",
       "opacity": 1.0,
       "borderRadius": null,
@@ -568,32 +682,33 @@
         "matchedFontFile": "AbrilFatface-Regular.ttf",
         "variationAxes": null,
         "candidateLabel": "AbrilFatface-Regular.ttf",
-        "fontSizePx": 63,
-        "letterSpacingPx": -0.73,
-        "letterSpacingEm": -0.0116,
-        "matchIou": 0.1037,
+        "fontSizePx": 40,
+        "letterSpacingPx": -0.43,
+        "letterSpacingEm": -0.0107,
+        "matchIou": 0.0676,
         "confidence": "very-low-textUnreliable",
         "alternates": [
           {
-            "iou": 0.0983,
+            "iou": 0.0617,
             "fontFile": "AbrilFatface-Regular.ttf",
-            "fontSizePx": 62,
-            "letterSpacingPx": -0.17,
+            "fontSizePx": 39,
+            "letterSpacingPx": 0.17,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           },
           {
-            "iou": 0.0894,
+            "iou": 0.0537,
             "fontFile": "AbrilFatface-Regular.ttf",
-            "fontSizePx": 61,
-            "letterSpacingPx": 0.39,
+            "fontSizePx": 38,
+            "letterSpacingPx": 0.77,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           }
         ],
         "fontStyle": "normal",
-        "measuredSlantDeg": 0.0,
+        "measuredSlantDeg": 3.0,
         "textTransform": "uppercase",
         "textAlign": "left",
-        "colour": "#151114",
+        "colour": "#101010",
+        "renderModel": "solid-vector-text",
         "fontFamilyIdentification": {
           "value": [
             "Abril Fatface"
@@ -604,7 +719,7 @@
         },
         "geometryFitConfidence": {
           "label": "very-low-textUnreliable",
-          "matchIou": 0.1037,
+          "matchIou": 0.0676,
           "metric": "scale-normalised IoU between the fitted render and the reference glyph ink",
           "interpretation": "not verified; driven by corrupted OCR text rather than a wrong family",
           "isLowerBound": true,
@@ -620,9 +735,9 @@
         }
       },
       "spacing": {
-        "gapToPreviousPx": 530,
-        "gapToNextPx": -18,
-        "topToCanvasPx": 1005,
+        "gapToPreviousPx": 537,
+        "gapToNextPx": -45,
+        "topToCanvasPx": 1010,
         "baselineToCanvasBottomPx": null
       },
       "textBlock": {
@@ -631,8 +746,9 @@
         "lineCount": 1,
         "lineHeightPx": null,
         "lineHeightRatio": null,
-        "blockRole": "subheadline",
-        "blockTypeSizePx": 63.0
+        "blockRole": "supporting",
+        "blockTypeSizePx": 40.0,
+        "blockSizeRatioToLargest": 0.476
       }
     },
     {
@@ -642,6 +758,7 @@
       "textRawOcr": "FASEII",
       "textSpacesRestored": true,
       "wordGapCount": 3,
+      "textRepairs": [],
       "slant": {
         "angleDeg": 0.0,
         "style": "normal",
@@ -649,35 +766,60 @@
         "shearGainOverUpright": 1.0,
         "method": "shear-variance maximisation of column ink projection"
       },
+      "renderModel": {
+        "model": "solid-vector-text",
+        "fittableBySolidRender": true,
+        "notes": [],
+        "unvalidatedSignals": {
+          "enclosedAreaRatio": 0.0,
+          "offsetDuplicate": {
+            "detected": true,
+            "selfOverlapAtOffset": 0.905,
+            "offsetX": 0,
+            "offsetY": -4
+          },
+          "rasterSignals": {
+            "edgeSharpness": 0.3164,
+            "backgroundTexture": 20.22
+          },
+          "note": "diagnostic only; not used for classification"
+        }
+      },
       "maskDiagnostics": {
-        "method": "otsu-minority",
+        "method": "otsu with supplied polarity",
         "threshold": 98,
-        "inkCoverage": 0.4315,
-        "highClassPixels": 10029,
-        "lowClassPixels": 7612
+        "inkCoverage": 0.4528,
+        "highClassPixels": 8044,
+        "lowClassPixels": 6656,
+        "polarity": {
+          "method": "border-ring polarity",
+          "threshold": 98,
+          "borderMedian": 176.0,
+          "backgroundIsLight": true
+        }
       },
       "ocrConfidence": 0.7216,
       "zOrder": 104,
       "rotationDeg": 0,
       "boundingBox": {
         "x": 642,
-        "y": 1010,
-        "width": 299,
-        "height": 59
+        "y": 1015,
+        "width": 300,
+        "height": 49
       },
       "boundingBoxNormalised": {
         "xPct": 59.44,
-        "yPct": 93.52,
-        "widthPct": 27.69,
-        "heightPct": 5.46
+        "yPct": 93.98,
+        "widthPct": 27.78,
+        "heightPct": 4.54
       },
       "inkBox": {
         "x": 642,
-        "y": 1010,
-        "width": 299,
-        "height": 59,
-        "inkPixels": 7191,
-        "fillRatio": 0.3944
+        "y": 1015,
+        "width": 300,
+        "height": 49,
+        "inkPixels": 6653,
+        "fillRatio": 0.4394
       },
       "ocrBox": {
         "x": 648.0,
@@ -688,14 +830,14 @@
       "alignment": "right",
       "strokeMetrics": {
         "medianStroke": 14.0,
-        "meanStroke": 16.38,
-        "runCount": 439
+        "meanStroke": 16.22,
+        "runCount": 389
       },
       "colour": {
-        "hex": "#0e0e0d",
+        "hex": "#0d0d0d",
         "rgb": [
-          14,
-          14,
+          13,
+          13,
           13
         ]
       },
@@ -707,7 +849,7 @@
           26
         ]
       },
-      "contrastRatioVsLocalBackground": 7.23,
+      "contrastRatioVsLocalBackground": 7.49,
       "polarity": "dark-on-light",
       "opacity": 1.0,
       "borderRadius": null,
@@ -718,24 +860,24 @@
         "matchedFontFile": "AbrilFatface-Regular.ttf",
         "variationAxes": null,
         "candidateLabel": "AbrilFatface-Regular.ttf",
-        "fontSizePx": 83,
-        "letterSpacingPx": 0.26,
-        "letterSpacingEm": 0.0031,
-        "matchIou": 0.29,
+        "fontSizePx": 84,
+        "letterSpacingPx": -0.1,
+        "letterSpacingEm": -0.0012,
+        "matchIou": 0.3035,
         "confidence": "very-low-textUnreliable",
         "alternates": [
           {
-            "iou": 0.2888,
+            "iou": 0.2974,
             "fontFile": "AbrilFatface-Regular.ttf",
             "fontSizePx": 85,
-            "letterSpacingPx": -0.75,
+            "letterSpacingPx": -0.61,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           },
           {
-            "iou": 0.2875,
+            "iou": 0.2952,
             "fontFile": "AbrilFatface-Regular.ttf",
-            "fontSizePx": 84,
-            "letterSpacingPx": -0.25,
+            "fontSizePx": 83,
+            "letterSpacingPx": 0.41,
             "candidateLabel": "AbrilFatface-Regular.ttf"
           }
         ],
@@ -743,7 +885,8 @@
         "measuredSlantDeg": 0.0,
         "textTransform": "uppercase",
         "textAlign": "right",
-        "colour": "#0e0e0d",
+        "colour": "#0d0d0d",
+        "renderModel": "solid-vector-text",
         "fontFamilyIdentification": {
           "value": [
             "Abril Fatface"
@@ -754,7 +897,7 @@
         },
         "geometryFitConfidence": {
           "label": "very-low-textUnreliable",
-          "matchIou": 0.29,
+          "matchIou": 0.3035,
           "metric": "scale-normalised IoU between the fitted render and the reference glyph ink",
           "interpretation": "not verified; driven by corrupted OCR text rather than a wrong family",
           "isLowerBound": true,
@@ -770,9 +913,9 @@
         }
       },
       "spacing": {
-        "gapToPreviousPx": -18,
+        "gapToPreviousPx": -45,
         "gapToNextPx": null,
-        "topToCanvasPx": 1010,
+        "topToCanvasPx": 1015,
         "baselineToCanvasBottomPx": null
       },
       "textBlock": {
@@ -782,7 +925,8 @@
         "lineHeightPx": null,
         "lineHeightRatio": null,
         "blockRole": "headline",
-        "blockTypeSizePx": 83.0
+        "blockTypeSizePx": 84.0,
+        "blockSizeRatioToLargest": 1.0
       }
     }
   ],
@@ -820,13 +964,13 @@
         "method": "k-means secondary cluster"
       },
       "textPrimary": {
-        "hex": "#141414",
+        "hex": "#dbd1cf",
         "rgb": [
-          20,
-          20,
-          20
+          219,
+          209,
+          207
         ],
-        "sampledAt": "glyph ink of 'ONFASHION FAS'",
+        "sampledAt": "glyph ink of 'ON FASHION FAS'",
         "method": "glyph ink median"
       },
       "textSecondary": {
@@ -836,7 +980,7 @@
           255,
           255
         ],
-        "sampledAt": "glyph ink of 'miom'",
+        "sampledAt": "glyph ink of 'm iom'",
         "method": "glyph ink median"
       },
       "accent": {
@@ -869,6 +1013,42 @@
         "sampledAt": "derived",
         "method": "max WCAG contrast against accent",
         "contrastRatio": 14.99
+      },
+      "overlay": {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "rgba": "rgba(0, 0, 0, 0.512)",
+        "opacity": 0.512,
+        "direction": "to left",
+        "stops": [
+          {
+            "position": "0%",
+            "estimatedBlackAlpha": 0.502
+          },
+          {
+            "position": "25%",
+            "estimatedBlackAlpha": 0.478
+          },
+          {
+            "position": "50%",
+            "estimatedBlackAlpha": 0.512
+          },
+          {
+            "position": "75%",
+            "estimatedBlackAlpha": 0.209
+          },
+          {
+            "position": "100%",
+            "estimatedBlackAlpha": 0.457
+          }
+        ],
+        "sampledAt": "derived from the reference brightness gradient",
+        "method": "brightness-gradient estimate from flattened pixels",
+        "note": "Estimated black scrim; photo shading and a separate overlay layer cannot be distinguished."
       }
     },
     "palette": [
@@ -989,7 +1169,7 @@
       "likelyFullBleed": true,
       "likelyFramed": false
     },
-    "textCoverageShare": 0.112,
+    "textCoverageShare": 0.1083,
     "minimumRecommendedResolution": {
       "width": 1080,
       "height": 1080,
@@ -1077,7 +1257,7 @@
     },
     "dropShadowOnText": {
       "detected": null,
-      "innerVsRingMedianDelta": -10.2,
+      "innerVsRingMedianDelta": -7.0,
       "note": "a large positive delta on light text suggests either a shadow/scrim or naturally darker artwork behind the text; not separable here"
     }
   },
@@ -1086,50 +1266,50 @@
     "path": "116-instagram-fashion-post/assets/background-approx.png",
     "accuracy": "APPROXIMATE \u2014 reconstructed, not the original asset",
     "method": "vertical neighbour interpolation over text spans + local blur",
-    "maskedPixels": 150394,
-    "maskedShare": 0.1289
+    "maskedPixels": 144388,
+    "maskedShare": 0.1238
   },
   "editableVariableRecommendations": {
     "text": [
       {
         "suggestedName": "headline",
         "kind": "text",
-        "currentValue": "miom",
+        "currentValue": "m iom",
         "elementId": "text-1",
         "role": "headline",
         "lineIndex": 1,
         "lineCount": 1,
-        "maxLengthObserved": 4
+        "maxLengthObserved": 5
       },
       {
-        "suggestedName": "detail",
+        "suggestedName": "fine-print",
         "kind": "text",
-        "currentValue": "ONFASHION FAS",
+        "currentValue": "ON FASHION FAS",
         "elementId": "text-2",
-        "role": "detail",
+        "role": "fine-print",
         "lineIndex": 1,
         "lineCount": 1,
-        "maxLengthObserved": 13
+        "maxLengthObserved": 14
+      },
+      {
+        "suggestedName": "fine-print",
+        "kind": "text",
+        "currentValue": "6232",
+        "elementId": "text-3",
+        "role": "fine-print",
+        "lineIndex": 1,
+        "lineCount": 1,
+        "maxLengthObserved": 4
       },
       {
         "suggestedName": "supporting",
         "kind": "text",
-        "currentValue": "6232",
-        "elementId": "text-3",
+        "currentValue": "A SHIO NLE",
+        "elementId": "text-4",
         "role": "supporting",
         "lineIndex": 1,
         "lineCount": 1,
-        "maxLengthObserved": 4
-      },
-      {
-        "suggestedName": "subheadline",
-        "kind": "text",
-        "currentValue": "A SH IO NLE",
-        "elementId": "text-4",
-        "role": "subheadline",
-        "lineIndex": 1,
-        "lineCount": 1,
-        "maxLengthObserved": 11
+        "maxLengthObserved": 10
       },
       {
         "suggestedName": "headline",
@@ -1176,7 +1356,7 @@
       {
         "suggestedName": "textPrimary",
         "kind": "colour",
-        "currentValue": "#141414"
+        "currentValue": "#dbd1cf"
       },
       {
         "suggestedName": "textSecondary",
@@ -1216,17 +1396,17 @@
         "targets": "text-1"
       },
       {
-        "suggestedName": "show_detail",
+        "suggestedName": "show_fine-print",
         "kind": "boolean",
         "targets": "text-2"
       },
       {
-        "suggestedName": "show_supporting",
+        "suggestedName": "show_fine-print",
         "kind": "boolean",
         "targets": "text-3"
       },
       {
-        "suggestedName": "show_subheadline",
+        "suggestedName": "show_supporting",
         "kind": "boolean",
         "targets": "text-4"
       },
@@ -1308,8 +1488,9 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "very-low": 5,
+        "very-low": 4,
         "unresolved": 0,
+        "not-applicable-rasterText": 1,
         "textUnreliable": 4
       },
       "caveat": "IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md."

@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,13 +60,14 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.91:1 |
 | Stroke (median/mean) | 11.0 / 14.52 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Crimson Pro |
 | Match IoU | 0.9006 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -13 px |
+| Gap to next | -8 px |
 
 Alternate font fits considered:
 - `CrimsonPro[wght].ttf` 118px track 0.29px — IoU 0.8871
@@ -79,35 +80,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=213, y=149, w=642, h=228 |
-| Normalised | x=19.72%, y=13.8%, w=59.44%, h=21.11% |
+| Bounding box (px) | x=212, y=154, w=644, h=218 |
+| Normalised | x=19.63%, y=14.26%, w=59.63%, h=20.19% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Lobster-Regular.ttf` |
 | Variation axes | None |
-| Font size | 167 px |
-| Letter-spacing | 0.13 px (0.0008 em) |
+| Font size | 168 px |
+| Letter-spacing | -0.1 px (-0.0006 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#284409` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.23:1 |
-| Stroke (median/mean) | 23.0 / 21.3 px |
+| Stroke (median/mean) | 23.0 / 21.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Crimson Pro |
-| Match IoU | 0.4181 |
+| Match IoU | 0.4475 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -13 px |
+| Gap to previous | -8 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Lobster-Regular.ttf` 168px track -0.35px — IoU 0.4175
-- `Lobster-Regular.ttf` 166px track 0.61px — IoU 0.4173
-- `CrimsonPro[wght].ttf` 146px track -0.63px — IoU 0.3071
+- `Lobster-Regular.ttf` 169px track -0.58px — IoU 0.4458
+- `Lobster-Regular.ttf` 167px track 0.38px — IoU 0.4441
+- `CrimsonPro[wght].ttf` 145px track 0.18px — IoU 0.3274
 
 ## 4. Colours (semantic)
 
@@ -119,7 +121,7 @@ Alternate font fits considered:
 | textSecondary | `#110d66` | glyph ink of 'HAPPY' | glyph ink median |
 | accent | `#0d1545` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#b7e885` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -143,7 +145,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1463 |
+| Text coverage | 0.1412 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

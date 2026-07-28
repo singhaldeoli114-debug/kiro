@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=410, y=372, w=316, h=60 |
-| Normalised | x=37.96%, y=34.44%, w=29.26%, h=5.56% |
+| Bounding box (px) | x=410, y=372, w=317, h=60 |
+| Normalised | x=37.96%, y=34.44%, w=29.35%, h=5.56% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,26 +52,28 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `MeieScript-Regular.ttf` |
 | Variation axes | None |
 | Font size | 77 px |
-| Letter-spacing | -0.5 px (-0.0065 em) |
-| Line-height | 79.5 px (ratio 1.032) |
+| Letter-spacing | -0.36 px (-0.0047 em) |
+| Line-height | 79.2 px (ratio 1.029) |
 | Line | 1 of 5 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.94:1 |
 | Stroke (median/mean) | 7.0 / 6.87 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Aleo, Meie Script |
-| Match IoU | 0.702 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6821 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 22 px |
+| Gap to next | 21 px |
 
 Alternate font fits considered:
-- `MeieScript-Regular.ttf` 76px track 0.09px — IoU 0.6763
-- `MeieScript-Regular.ttf` 75px track 0.68px — IoU 0.6609
-- `Aleo[wght].ttf` 67px track -0.73px — IoU 0.2201
+- `MeieScript-Regular.ttf` 76px track 0.23px — IoU 0.6651
+- `MeieScript-Regular.ttf` 75px track 0.83px — IoU 0.6274
+- `Aleo[wght].ttf` 67px track -0.58px — IoU 0.2174
 
 ### `text-2` — headline
 
@@ -79,35 +81,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=360, y=454, w=403, h=50 |
-| Normalised | x=33.33%, y=42.04%, w=37.31%, h=4.63% |
+| Bounding box (px) | x=359, y=453, w=405, h=51 |
+| Normalised | x=33.24%, y=41.94%, w=37.5%, h=4.72% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Aleo[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 53 px |
-| Letter-spacing | 0.44 px (0.0083 em) |
-| Line-height | 79.5 px (ratio 1.5) |
+| Font size | 55 px |
+| Letter-spacing | -0.49 px (-0.0089 em) |
+| Line-height | 79.2 px (ratio 1.44) |
 | Line | 2 of 5 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.94:1 |
 | Stroke (median/mean) | 5.0 / 6.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aleo, Meie Script |
-| Match IoU | 0.7873 |
+| Match IoU | 0.8303 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 22 px |
+| Gap to previous | 21 px |
 | Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Aleo[wght].ttf` 54px track -0.1px — IoU 0.769
-- `Aleo[wght].ttf` 53px track 0.1px — IoU 0.7538
-- `Aleo[wght].ttf` 54px track -0.44px — IoU 0.7503
+- `Aleo[wght].ttf` 54px track 0.05px — IoU 0.7941
+- `Aleo[wght].ttf` 54px track -0.3px — IoU 0.7869
+- `Aleo[wght].ttf` 53px track 0.24px — IoU 0.7642
 
 ### `text-3` — headline
 
@@ -115,35 +118,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=470, y=528, w=182, h=41 |
-| Normalised | x=43.52%, y=48.89%, w=16.85%, h=3.8% |
+| Bounding box (px) | x=470, y=528, w=182, h=42 |
+| Normalised | x=43.52%, y=48.89%, w=16.85%, h=3.89% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Aleo[wght].ttf` |
-| Variation axes | [700] |
+| Variation axes | [500] |
 | Font size | 53 px |
-| Letter-spacing | -0.69 px (-0.013 em) |
-| Line-height | 79.5 px (ratio 1.5) |
+| Letter-spacing | -0.01 px (-0.0002 em) |
+| Line-height | 79.2 px (ratio 1.494) |
 | Line | 3 of 5 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.94:1 |
 | Stroke (median/mean) | 5.0 / 6.84 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aleo, Meie Script |
-| Match IoU | 0.8011 |
+| Match IoU | 0.7323 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 24 px |
-| Gap to next | 34 px |
+| Gap to next | 32 px |
 
 Alternate font fits considered:
-- `Aleo[wght].ttf` 51px track 0.68px — IoU 0.7951
-- `Aleo[wght].ttf` 52px track -0.18px — IoU 0.7895
-- `Aleo[wght].ttf` 53px track -0.01px — IoU 0.7894
+- `Aleo[wght].ttf` 52px track -0.18px — IoU 0.7309
+- `Aleo[wght].ttf` 52px track -0.56px — IoU 0.7244
+- `Aleo[wght].ttf` 53px track -0.31px — IoU 0.7218
 
 ### `text-4` — headline
 
@@ -151,8 +155,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=336, y=603, w=451, h=41 |
-| Normalised | x=31.11%, y=55.83%, w=41.76%, h=3.8% |
+| Bounding box (px) | x=336, y=602, w=451, h=42 |
+| Normalised | x=31.11%, y=55.74%, w=41.76%, h=3.89% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,25 +165,26 @@ Alternate font fits considered:
 | Variation axes | [600] |
 | Font size | 54 px |
 | Letter-spacing | -0.17 px (-0.0031 em) |
-| Line-height | 79.5 px (ratio 1.472) |
+| Line-height | 79.2 px (ratio 1.467) |
 | Line | 4 of 5 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.94:1 |
 | Stroke (median/mean) | 5.0 / 6.77 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aleo, Meie Script |
-| Match IoU | 0.8304 |
+| Match IoU | 0.8559 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 34 px |
-| Gap to next | 46 px |
+| Gap to previous | 32 px |
+| Gap to next | 45 px |
 
 Alternate font fits considered:
-- `Aleo[wght].ttf` 53px track 0.04px — IoU 0.8135
-- `Aleo[wght].ttf` 54px track -0.43px — IoU 0.8039
-- `Aleo[wght].ttf` 53px track 0.3px — IoU 0.7944
+- `Aleo[wght].ttf` 53px track 0.04px — IoU 0.8545
+- `Aleo[wght].ttf` 53px track 0.3px — IoU 0.8367
+- `Aleo[wght].ttf` 55px track -0.42px — IoU 0.8312
 
 ### `text-5` — headline
 
@@ -187,52 +192,53 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=462, y=690, w=197, h=38 |
-| Normalised | x=42.78%, y=63.89%, w=18.24%, h=3.52% |
+| Bounding box (px) | x=462, y=689, w=198, h=39 |
+| Normalised | x=42.78%, y=63.8%, w=18.33%, h=3.61% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Aleo[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 51 px |
-| Letter-spacing | 0.84 px (0.0165 em) |
-| Line-height | 79.5 px (ratio 1.559) |
+| Variation axes | [600] |
+| Font size | 54 px |
+| Letter-spacing | -0.57 px (-0.0106 em) |
+| Line-height | 79.2 px (ratio 1.467) |
 | Line | 5 of 5 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.94:1 |
 | Stroke (median/mean) | 5.0 / 7.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aleo, Meie Script |
-| Match IoU | 0.8434 |
+| Match IoU | 0.8334 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 46 px |
+| Gap to previous | 45 px |
 | Gap to next | 73 px |
 
 Alternate font fits considered:
-- `Aleo[wght].ttf` 53px track -0.41px — IoU 0.8272
-- `Aleo[wght].ttf` 54px track -0.74px — IoU 0.8243
-- `Aleo[wght].ttf` 54px track -0.49px — IoU 0.8158
+- `Aleo[wght].ttf` 52px track 0.39px — IoU 0.8265
+- `Aleo[wght].ttf` 54px track -0.87px — IoU 0.8257
+- `Aleo[wght].ttf` 53px track 0.05px — IoU 0.8195
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "ACCEPT"  (OCR confidence 0.9992)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=333, y=801, w=145, h=28 |
-| Normalised | x=30.83%, y=74.17%, w=13.43%, h=2.59% |
+| Bounding box (px) | x=332, y=801, w=147, h=28 |
+| Normalised | x=30.74%, y=74.17%, w=13.61%, h=2.59% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Aleo[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 36 px |
-| Letter-spacing | 0.47 px (0.0131 em) |
+| Variation axes | [600] |
+| Font size | 38 px |
+| Letter-spacing | -0.54 px (-0.0142 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -240,8 +246,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 7.21:1 |
 | Stroke (median/mean) | 3.0 / 4.52 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aleo, Meie Script |
-| Match IoU | 0.8428 |
+| Match IoU | 0.8222 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -249,26 +256,26 @@ Alternate font fits considered:
 | Gap to next | -28 px |
 
 Alternate font fits considered:
-- `Aleo[wght].ttf` 37px track -0.54px — IoU 0.803
-- `Aleo[wght].ttf` 38px track -0.76px — IoU 0.7999
-- `Aleo[wght].ttf` 36px track 0.26px — IoU 0.797
+- `Aleo[wght].ttf` 37px track -0.14px — IoU 0.8053
+- `Aleo[wght].ttf` 36px track 0.87px — IoU 0.7973
+- `Aleo[wght].ttf` 38px track -0.72px — IoU 0.7949
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "OK"  (OCR confidence 0.999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=728, y=801, w=54, h=28 |
-| Normalised | x=67.41%, y=74.17%, w=5.0%, h=2.59% |
+| Bounding box (px) | x=727, y=801, w=55, h=28 |
+| Normalised | x=67.31%, y=74.17%, w=5.09%, h=2.59% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Aleo[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 36 px |
-| Letter-spacing | -0.55 px (-0.0153 em) |
+| Variation axes | [600] |
+| Font size | 37 px |
+| Letter-spacing | -0.5 px (-0.0135 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -276,8 +283,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 7.21:1 |
 | Stroke (median/mean) | 3.0 / 4.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aleo, Meie Script |
-| Match IoU | 0.8618 |
+| Match IoU | 0.8894 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -285,9 +293,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Aleo[wght].ttf` 37px track -2.05px — IoU 0.8482
-- `Aleo[wght].ttf` 37px track -1.5px — IoU 0.8277
-- `Aleo[wght].ttf` 36px track 0.0px — IoU 0.8151
+- `Aleo[wght].ttf` 36px track 0.45px — IoU 0.868
+- `Aleo[wght].ttf` 37px track -1.05px — IoU 0.8488
+- `Aleo[wght].ttf` 37px track -0.02px — IoU 0.8393
 
 ## 4. Colours (semantic)
 
@@ -299,7 +307,7 @@ Alternate font fits considered:
 | textSecondary | `#251405` | glyph ink of 'ACCEPT' | glyph ink median |
 | accent | `#552e0b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#a8865c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -323,7 +331,7 @@ Full palette (k-means):
 | Subject position | lower-left |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.067 |
+| Text coverage | 0.0683 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -355,8 +363,8 @@ _Recommendations only — no manifest is generated._
 | `headline_line3` | text | started. |
 | `headline_line4` | text | Success is the best |
 | `headline_line5` | text | revenge |
-| `subheadline` | text | ACCEPT |
-| `subheadline` | text | OK |
+| `supporting` | text | ACCEPT |
+| `supporting` | text | OK |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #c3c0bd |
@@ -372,8 +380,8 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 33.3 |
 | `imageFocalY` | number | 72.8 |
 

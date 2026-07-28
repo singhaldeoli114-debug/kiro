@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -49,46 +49,48 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-MediumItalic.ttf` |
+| Font file matched | `Poppins-BlackItalic.ttf` |
 | Variation axes | None |
-| Font size | 127 px |
-| Letter-spacing | -1.41 px (-0.0111 em) |
+| Font size | 111 px |
+| Letter-spacing | 1.17 px (0.0105 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#6f18d5` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 3.89:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.3121 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.4936 |
+| **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6364) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
 | Gap to previous | None px |
 | Gap to next | 120 px |
 
 Alternate font fits considered:
-- `Poppins-Italic.ttf` 131px track -1.08px — IoU 0.3071
-- `Poppins-MediumItalic.ttf` 126px track -0.14px — IoU 0.304
-- `Poppins-Italic.ttf` 130px track 0.14px — IoU 0.3021
+- `Poppins-BlackItalic.ttf` 112px track -0.27px — IoU 0.4931
+- `Poppins-BlackItalic.ttf` 113px track -1.69px — IoU 0.4918
+- `Poppins-ExtraBoldItalic.ttf` 115px track -0.16px — IoU 0.4428
 
-### `text-3` — subheadline
+### `text-3` — headline
 
 **Text:** "WHY"  (OCR confidence 0.9933)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=244, y=264, w=199, h=69 |
-| Normalised | x=22.59%, y=24.44%, w=18.43%, h=6.39% |
+| Bounding box (px) | x=243, y=264, w=200, h=69 |
+| Normalised | x=22.5%, y=24.44%, w=18.52%, h=6.39% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Afacad[wght].ttf` |
 | Variation axes | [700.0] |
-| Font size | 104 px |
-| Letter-spacing | 0.91 px (0.0088 em) |
+| Font size | 106 px |
+| Letter-spacing | -0.48 px (-0.0045 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -96,8 +98,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.37:1 |
 | Stroke (median/mean) | 13.0 / 14.02 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.9372 |
+| Match IoU | 0.9264 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -105,11 +108,11 @@ Alternate font fits considered:
 | Gap to next | -69 px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 106px track -0.98px — IoU 0.9136
-- `Afacad[wght].ttf` 105px track -0.02px — IoU 0.8947
-- `Afacad[wght].ttf` 106px track -0.61px — IoU 0.8872
+- `Afacad[wght].ttf` 105px track 0.48px — IoU 0.9085
+- `Afacad[wght].ttf` 106px track -0.11px — IoU 0.8869
+- `Afacad[wght].ttf` 104px track 1.41px — IoU 0.8851
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "CHOOSE"  (OCR confidence 0.9929)
 
@@ -132,6 +135,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.37:1 |
 | Stroke (median/mean) | 14.0 / 19.55 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
 | Match IoU | 0.9283 |
 | **Geometry fit confidence** | **high** |
@@ -145,7 +149,7 @@ Alternate font fits considered:
 - `Afacad[wght].ttf` 109px track -0.56px — IoU 0.6639
 - `Afacad[wght].ttf` 109px track -0.56px — IoU 0.6243
 
-### `text-4` — subheadline
+### `text-4` — headline
 
 **Text:** "OUr SERVICeS?"  (OCR confidence 0.7907)
 
@@ -168,27 +172,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.37:1 |
 | Stroke (median/mean) | 14.0 / 17.79 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
 | Match IoU | 0.4253 |
 | **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7907) |
 | Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
 | Gap to previous | 35 px |
-| Gap to next | 86 px |
+| Gap to next | 85 px |
 
 Alternate font fits considered:
 - `Afacad[wght].ttf` 107px track 0.43px — IoU 0.6648
 - `Afacad[wght].ttf` 109px track -0.56px — IoU 0.6639
 - `Afacad[wght].ttf` 109px track -0.56px — IoU 0.6243
 
-### `text-5` — detail
+### `text-5` — supporting
 
 **Text:** "Creative & Modern Solutions"  (OCR confidence 0.9944)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=334, y=523, w=414, h=24 |
-| Normalised | x=30.93%, y=48.43%, w=38.33%, h=2.22% |
+| Bounding box (px) | x=330, y=522, w=418, h=28 |
+| Normalised | x=30.56%, y=48.33%, w=38.7%, h=2.59% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -196,35 +201,36 @@ Alternate font fits considered:
 | Font file matched | `Afacad[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 38 px |
-| Letter-spacing | -0.35 px (-0.0092 em) |
+| Letter-spacing | -0.19 px (-0.005 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#010101` |
+| Colour | `#0a0a0a` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 19.47:1 |
+| Contrast vs local bg | 11.77:1 |
 | Stroke (median/mean) | 2.0 / 2.88 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.2317 |
+| Match IoU | 0.24 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 86 px |
-| Gap to next | 41 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 85 px |
+| Gap to next | 37 px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 36px track 0.51px — IoU 0.23
-- `Afacad[wght].ttf` 36px track 0.47px — IoU 0.2273
-- `Afacad[wght].ttf` 37px track 0.08px — IoU 0.2254
+- `Afacad[wght].ttf` 39px track -0.62px — IoU 0.2348
+- `Afacad[wght].ttf` 36px track 0.62px — IoU 0.2296
+- `Afacad[wght].ttf` 37px track 0.15px — IoU 0.2264
 
-### `text-6` — detail
+### `text-6` — supporting
 
 **Text:** "Fast Turnaround Time"  (OCR confidence 0.9984)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=377, y=588, w=327, h=26 |
-| Normalised | x=34.91%, y=54.44%, w=30.28%, h=2.41% |
+| Bounding box (px) | x=374, y=587, w=330, h=27 |
+| Normalised | x=34.63%, y=54.35%, w=30.56%, h=2.5% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
@@ -232,64 +238,66 @@ Alternate font fits considered:
 | Font file matched | `Afacad[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 38 px |
-| Letter-spacing | 0.07 px (0.0018 em) |
+| Letter-spacing | 0.23 px (0.0061 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#010101` |
+| Colour | `#030303` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 19.47:1 |
+| Contrast vs local bg | 17.0:1 |
 | Stroke (median/mean) | 2.0 / 2.65 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.2296 |
+| Match IoU | 0.2085 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 41 px |
-| Gap to next | 41 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 37 px |
+| Gap to next | 38 px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 37px track 0.48px — IoU 0.2215
-- `Afacad[wght].ttf` 38px track 0.03px — IoU 0.2182
-- `Afacad[wght].ttf` 37px track 0.52px — IoU 0.215
+- `Afacad[wght].ttf` 40px track -0.67px — IoU 0.206
+- `Afacad[wght].ttf` 37px track 0.64px — IoU 0.2056
+- `Afacad[wght].ttf` 38px track 0.19px — IoU 0.2038
 
-### `text-7` — detail
+### `text-7` — supporting
 
 **Text:** " Affordable Pricing"  (OCR confidence 0.9643)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=403, y=655, w=271, h=29 |
-| Normalised | x=37.31%, y=60.65%, w=25.09%, h=2.69% |
+| Bounding box (px) | x=402, y=652, w=273, h=32 |
+| Normalised | x=37.22%, y=60.37%, w=25.28%, h=2.96% |
 | Alignment | center |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Afacad[wght].ttf` |
 | Variation axes | [700.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.61 px (0.0169 em) |
-| Line-height | 63.5 px (ratio 1.764) |
+| Font size | 37 px |
+| Letter-spacing | 0.16 px (0.0043 em) |
+| Line-height | 65.0 px (ratio 1.757) |
 | Line | 1 of 3 |
 | Transform | none |
-| Colour | `#020202` |
+| Colour | `#080808` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 18.15:1 |
+| Contrast vs local bg | 12.9:1 |
 | Stroke (median/mean) | 2.0 / 2.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.2256 |
+| Match IoU | 0.2527 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 41 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 38 px |
 | Gap to next | 33 px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 37px track 0.16px — IoU 0.2128
-- `Afacad[wght].ttf` 36px track 0.53px — IoU 0.211
-- `Afacad[wght].ttf` 38px track -0.29px — IoU 0.2093
+- `Afacad[wght].ttf` 36px track 0.53px — IoU 0.2333
+- `Afacad[wght].ttf` 36px track 0.61px — IoU 0.2319
+- `Afacad[wght].ttf` 38px track -0.37px — IoU 0.23
 
-### `text-8` — detail
+### `text-8` — supporting
 
 **Text:** " Dedicated Customer Support"  (OCR confidence 0.9829)
 
@@ -303,63 +311,65 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Afacad[wght].ttf` |
 | Variation axes | [700.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.61 px (0.0169 em) |
-| Line-height | 63.5 px (ratio 1.764) |
+| Font size | 37 px |
+| Letter-spacing | 0.16 px (0.0043 em) |
+| Line-height | 65.0 px (ratio 1.757) |
 | Line | 2 of 3 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 2.0 / 2.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.2221 |
+| Match IoU | 0.2362 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 33 px |
 | Gap to next | 33 px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 37px track 0.16px — IoU 0.2128
-- `Afacad[wght].ttf` 36px track 0.53px — IoU 0.211
-- `Afacad[wght].ttf` 38px track -0.29px — IoU 0.2093
+- `Afacad[wght].ttf` 36px track 0.53px — IoU 0.2333
+- `Afacad[wght].ttf` 36px track 0.61px — IoU 0.2319
+- `Afacad[wght].ttf` 38px track -0.37px — IoU 0.23
 
-### `text-9` — detail
+### `text-9` — supporting
 
 **Text:** "100% Client Satisfaction"  (OCR confidence 0.9844)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=365, y=782, w=347, h=27 |
-| Normalised | x=33.8%, y=72.41%, w=32.13%, h=2.5% |
+| Bounding box (px) | x=364, y=782, w=349, h=27 |
+| Normalised | x=33.7%, y=72.41%, w=32.31%, h=2.5% |
 | Alignment | center |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Afacad[wght].ttf` |
 | Variation axes | [700.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.61 px (0.0169 em) |
-| Line-height | 63.5 px (ratio 1.764) |
+| Font size | 37 px |
+| Letter-spacing | 0.16 px (0.0043 em) |
+| Line-height | 65.0 px (ratio 1.757) |
 | Line | 3 of 3 |
 | Transform | none |
-| Colour | `#020202` |
+| Colour | `#030303` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 18.15:1 |
+| Contrast vs local bg | 17.0:1 |
 | Stroke (median/mean) | 2.0 / 2.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.1927 |
+| Match IoU | 0.2116 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 33 px |
 | Gap to next | 101 px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 37px track 0.16px — IoU 0.2128
-- `Afacad[wght].ttf` 36px track 0.53px — IoU 0.211
-- `Afacad[wght].ttf` 38px track -0.29px — IoU 0.2093
+- `Afacad[wght].ttf` 36px track 0.53px — IoU 0.2333
+- `Afacad[wght].ttf` 36px track 0.61px — IoU 0.2319
+- `Afacad[wght].ttf` 38px track -0.37px — IoU 0.23
 
 ### `text-10` — supporting
 
@@ -374,28 +384,29 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Afacad[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 53 px |
-| Letter-spacing | -0.62 px (-0.0117 em) |
-| Line-height | 46.0 px (ratio 0.868) |
+| Variation axes | [700.0] |
+| Font size | 51 px |
+| Letter-spacing | 0.51 px (0.01 em) |
+| Line-height | 46.0 px (ratio 0.902) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#7950f2` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.37:1 |
 | Stroke (median/mean) | 8.0 / 10.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.1551 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4803 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 101 px |
 | Gap to next | 16 px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 52px track -0.05px — IoU 0.0995
-- `Afacad[wght].ttf` 53px track -0.6px — IoU 0.0928
-- `Afacad[wght].ttf` 53px track -0.64px — IoU 0.0921
+- `Afacad[wght].ttf` 53px track -0.6px — IoU 0.5626
+- `Afacad[wght].ttf` 52px track -0.05px — IoU 0.5407
+- `Afacad[wght].ttf` 51px track 0.49px — IoU 0.5307
 
 ### `text-11` — supporting
 
@@ -410,28 +421,29 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Afacad[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 53 px |
-| Letter-spacing | -0.62 px (-0.0117 em) |
-| Line-height | 46.0 px (ratio 0.868) |
+| Variation axes | [700.0] |
+| Font size | 51 px |
+| Letter-spacing | 0.51 px (0.01 em) |
+| Line-height | 46.0 px (ratio 0.902) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#7950f2` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.37:1 |
 | Stroke (median/mean) | 8.0 / 10.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Afacad, Poppins |
-| Match IoU | 0.0499 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6763 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 16 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Afacad[wght].ttf` 52px track -0.05px — IoU 0.0995
-- `Afacad[wght].ttf` 53px track -0.6px — IoU 0.0928
-- `Afacad[wght].ttf` 53px track -0.64px — IoU 0.0921
+- `Afacad[wght].ttf` 53px track -0.6px — IoU 0.5626
+- `Afacad[wght].ttf` 52px track -0.05px — IoU 0.5407
+- `Afacad[wght].ttf` 51px track 0.49px — IoU 0.5307
 
 ## 4. Colours (semantic)
 
@@ -439,11 +451,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#080808` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#784ff1` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'IW' | glyph ink median |
-| textSecondary | `#000000` | glyph ink of ' Dedicated Customer Support' | glyph ink median |
+| textPrimary | `#6f18d5` | glyph ink of 'IW' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'WHY' | glyph ink median |
 | accent | `#784ff1` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -467,7 +479,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.1409 |
+| Text coverage | 0.1436 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -495,34 +507,34 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | IW |
-| `subheadline` | text | WHY |
-| `subheadline_line1` | text | CHOOSE |
-| `subheadline_line2` | text | OUr SERVICeS? |
-| `detail` | text | Creative & Modern Solutions |
-| `detail` | text | Fast Turnaround Time |
-| `detail_line1` | text |  Affordable Pricing |
-| `detail_line2` | text |  Dedicated Customer Support |
-| `detail_line3` | text | 100% Client Satisfaction |
+| `headline` | text | WHY |
+| `headline_line1` | text | CHOOSE |
+| `headline_line2` | text | OUr SERVICeS? |
+| `supporting` | text | Creative & Modern Solutions |
+| `supporting` | text | Fast Turnaround Time |
+| `supporting_line1` | text |  Affordable Pricing |
+| `supporting_line2` | text |  Dedicated Customer Support |
+| `supporting_line3` | text | 100% Client Satisfaction |
 | `supporting_line1` | text | YOUR SUCCESS |
 | `supporting_line2` | text | STARTS HERE |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #080808 |
 | `surface` | colour | #784ff1 |
-| `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #000000 |
+| `textPrimary` | colour | #6f18d5 |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #784ff1 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Afacad |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |

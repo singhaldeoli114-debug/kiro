@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -59,6 +59,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 7.0 / 9.3 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto |
 | Match IoU | 0.8355 |
 | **Geometry fit confidence** | **high** |
@@ -74,12 +75,12 @@ Alternate font fits considered:
 
 ### `text-2` — supporting
 
-**Text:** "inspiringleaders in"  (OCR confidence 0.9982)
+**Text:** "inspiring leaders in"  (OCR confidence 0.9982)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=341, y=498, w=287, h=53 |
-| Normalised | x=31.57%, y=46.11%, w=26.57%, h=4.91% |
+| Bounding box (px) | x=340, y=498, w=289, h=53 |
+| Normalised | x=31.48%, y=46.11%, w=26.76%, h=4.91% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -87,7 +88,7 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
 | Font size | 38 px |
-| Letter-spacing | 0.0 px (0.0 em) |
+| Letter-spacing | -0.35 px (-0.0092 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -95,35 +96,37 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 6.0 / 8.63 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'inspiringleaders' -> 'inspiring leaders' |
 | Font family (authoritative) | Roboto |
-| Match IoU | 0.2782 |
+| Match IoU | 0.2511 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 17 px |
-| Gap to next | 48 px |
+| Gap to next | 47 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 39px track -0.41px — IoU 0.269
-- `Roboto[wdth,wght].ttf` 37px track -0.44px — IoU 0.2685
-- `Roboto[wdth,wght].ttf` 35px track -0.43px — IoU 0.2628
+- `Roboto[wdth,wght].ttf` 36px track -0.34px — IoU 0.2423
+- `Roboto[wdth,wght].ttf` 37px track 0.06px — IoU 0.2419
+- `Roboto[wdth,wght].ttf` 35px track 0.09px — IoU 0.2393
 
-### `text-3` — subheadline
+### `text-3` — headline
 
 **Text:** "start up."  (OCR confidence 0.9631)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=40, y=599, w=283, h=66 |
-| Normalised | x=3.7%, y=55.46%, w=26.2%, h=6.11% |
+| Bounding box (px) | x=39, y=598, w=285, h=68 |
+| Normalised | x=3.61%, y=55.37%, w=26.39%, h=6.3% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [800, 100.0] |
-| Font size | 75 px |
-| Letter-spacing | 0.01 px (0.0001 em) |
+| Font size | 76 px |
+| Letter-spacing | -0.21 px (-0.0028 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -131,18 +134,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.9:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto |
-| Match IoU | 0.8852 |
+| Match IoU | 0.9167 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 48 px |
+| Gap to previous | 47 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 75px track -0.15px — IoU 0.8777
-- `Roboto[wdth,wght].ttf` 76px track -0.46px — IoU 0.8776
-- `Roboto[wdth,wght].ttf` 76px track -0.63px — IoU 0.8717
+- `Roboto[wdth,wght].ttf` 77px track -0.69px — IoU 0.9125
+- `Roboto[wdth,wght].ttf` 76px track -0.38px — IoU 0.9113
+- `Roboto[wdth,wght].ttf` 81px track -0.58px — IoU 0.9073
 
 ## 4. Colours (semantic)
 
@@ -154,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#111bc2` | glyph ink of 'start up.' | glyph ink median |
 | accent | `#392c99` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#000000` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -178,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.076 |
+| Text coverage | 0.0767 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -206,8 +210,8 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Insight from the most |
-| `supporting` | text | inspiringleaders in |
-| `subheadline` | text | start up. |
+| `supporting` | text | inspiring leaders in |
+| `headline` | text | start up. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #3f403b |
@@ -220,7 +224,7 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Roboto |
 | `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `imageFocalX` | number | 47.7 |
 | `imageFocalY` | number | 52.7 |
 

@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,16 +43,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=296, y=786, w=505, h=124 |
-| Normalised | x=27.41%, y=72.78%, w=46.76%, h=11.48% |
+| Bounding box (px) | x=296, y=791, w=506, h=120 |
+| Normalised | x=27.41%, y=73.24%, w=46.85%, h=11.11% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 121 px |
-| Letter-spacing | 0.58 px (0.0048 em) |
+| Font size | 123 px |
+| Letter-spacing | -0.14 px (-0.0011 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -60,90 +60,93 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.65:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Monoton, Anton |
-| Match IoU | 0.5086 |
+| Match IoU | 0.5413 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
-| Gap to next | 27 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 123px track -0.24px — IoU 0.5031
-- `Anton-Regular.ttf` 122px track 0.18px — IoU 0.5011
-- `Monoton-Regular.ttf` 99px track -0.61px — IoU 0.2557
+- `Anton-Regular.ttf` 124px track -0.56px — IoU 0.5377
+- `Anton-Regular.ttf` 122px track 0.28px — IoU 0.5356
+- `Monoton-Regular.ttf` 99px track -0.51px — IoU 0.2566
 
-### `text-2` — subheadline
+### `text-2` — body
 
 **Text:** "STARTS AT 9PM"  (OCR confidence 0.9944)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=434, y=937, w=228, h=35 |
-| Normalised | x=40.19%, y=86.76%, w=21.11%, h=3.24% |
+| Bounding box (px) | x=433, y=936, w=229, h=36 |
+| Normalised | x=40.09%, y=86.67%, w=21.2%, h=3.33% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Monoton-Regular.ttf` |
+| Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 29 px |
-| Letter-spacing | -0.52 px (-0.0179 em) |
-| Line-height | 48.0 px (ratio 1.655) |
+| Font size | 41 px |
+| Letter-spacing | -0.4 px (-0.0098 em) |
+| Line-height | 49.0 px (ratio 1.195) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#0d120d` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.03:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 8.85:1 |
 | Stroke (median/mean) | 7.0 / 8.37 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Monoton, Anton |
-| Match IoU | 0.1212 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8565 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 27 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 25 px |
 | Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Monoton-Regular.ttf` 27px track 0.68px — IoU 0.096
-- `Monoton-Regular.ttf` 28px track 0.08px — IoU 0.0864
-- `Anton-Regular.ttf` 39px track 0.39px — IoU 0.0214
+- `Anton-Regular.ttf` 40px track 0.02px — IoU 0.8249
+- `Anton-Regular.ttf` 39px track 0.45px — IoU 0.7714
+- `Monoton-Regular.ttf` 27px track 0.73px — IoU 0.1501
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "CITY, STATES 12345"  (OCR confidence 0.993)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=403, y=985, w=286, h=39 |
-| Normalised | x=37.31%, y=91.2%, w=26.48%, h=3.61% |
+| Bounding box (px) | x=403, y=985, w=287, h=40 |
+| Normalised | x=37.31%, y=91.2%, w=26.57%, h=3.7% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Monoton-Regular.ttf` |
+| Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 29 px |
-| Letter-spacing | -0.52 px (-0.0179 em) |
-| Line-height | 48.0 px (ratio 1.655) |
+| Font size | 41 px |
+| Letter-spacing | -0.4 px (-0.0098 em) |
+| Line-height | 49.0 px (ratio 1.195) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#0d130c` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.01:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 8.85:1 |
 | Stroke (median/mean) | 7.0 / 8.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Monoton, Anton |
-| Match IoU | 0.1008 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8359 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 13 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Monoton-Regular.ttf` 27px track 0.68px — IoU 0.096
-- `Monoton-Regular.ttf` 28px track 0.08px — IoU 0.0864
-- `Anton-Regular.ttf` 39px track 0.39px — IoU 0.0214
+- `Anton-Regular.ttf` 40px track 0.02px — IoU 0.8249
+- `Anton-Regular.ttf` 39px track 0.45px — IoU 0.7714
+- `Monoton-Regular.ttf` 27px track 0.73px — IoU 0.1501
 
 ## 4. Colours (semantic)
 
@@ -152,10 +155,10 @@ Alternate font fits considered:
 | background | `#5b4d52` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#0f120d` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#d61939` | glyph ink of '06 .05 . 22' | glyph ink median |
-| textSecondary | `#0d130c` | glyph ink of 'CITY, STATES 12345' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'CITY, STATES 12345' | glyph ink median |
 | accent | `#d52946` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#0f120d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0701 |
+| Text coverage | 0.069 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,21 +210,21 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | 06 .05 . 22 |
-| `subheadline_line1` | text | STARTS AT 9PM |
-| `subheadline_line2` | text | CITY, STATES 12345 |
+| `body_line1` | text | STARTS AT 9PM |
+| `body_line2` | text | CITY, STATES 12345 |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #5b4d52 |
 | `surface` | colour | #0f120d |
 | `textPrimary` | colour | #d61939 |
-| `textSecondary` | colour | #0d130c |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #d52946 |
 | `accentSecondary` | colour | #0f120d |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Monoton |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 53.4 |
 | `imageFocalY` | number | 44.0 |
 

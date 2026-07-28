@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,8 +42,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=269, y=173, w=542, h=35 |
-| Normalised | x=24.91%, y=16.02%, w=50.19%, h=3.24% |
+| Bounding box (px) | x=269, y=173, w=542, h=36 |
+| Normalised | x=24.91%, y=16.02%, w=50.19%, h=3.33% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,24 +52,25 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Variation axes | None |
 | Font size | 54 px |
 | Letter-spacing | -0.37 px (-0.0069 em) |
-| Line-height | 48.0 px (ratio 0.889) |
+| Line-height | 47.0 px (ratio 0.87) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.45:1 |
 | Stroke (median/mean) | 9.0 / 11.27 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
-| Match IoU | 0.5091 |
+| Match IoU | 0.5066 |
 | **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9119) |
 | Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
 | Gap to previous | None px |
-| Gap to next | 13 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 53px track 0.18px — IoU 0.4604
-- `Poppins-Regular.ttf` 52px track 0.72px — IoU 0.4599
+- `Poppins-Regular.ttf` 52px track 0.72px — IoU 0.4473
+- `Poppins-Regular.ttf` 53px track 0.18px — IoU 0.446
 
 ### `text-2` — headline
 
@@ -77,8 +78,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=164, y=221, w=753, h=36 |
-| Normalised | x=15.19%, y=20.46%, w=69.72%, h=3.33% |
+| Bounding box (px) | x=164, y=220, w=753, h=38 |
+| Normalised | x=15.19%, y=20.37%, w=69.72%, h=3.52% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -87,61 +88,63 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 54 px |
 | Letter-spacing | -0.37 px (-0.0069 em) |
-| Line-height | 48.0 px (ratio 0.889) |
+| Line-height | 47.0 px (ratio 0.87) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.67:1 |
+| Contrast vs local bg | 8.73:1 |
 | Stroke (median/mean) | 9.0 / 11.55 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
-| Match IoU | 0.4392 |
+| Match IoU | 0.4101 |
 | **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8854) |
 | Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
-| Gap to previous | 13 px |
-| Gap to next | 681 px |
+| Gap to previous | 11 px |
+| Gap to next | 679 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 53px track 0.18px — IoU 0.4604
-- `Poppins-Regular.ttf` 52px track 0.72px — IoU 0.4599
+- `Poppins-Regular.ttf` 52px track 0.72px — IoU 0.4473
+- `Poppins-Regular.ttf` 53px track 0.18px — IoU 0.446
 
-### `text-3` — subheadline
+### `text-3` — headline
 
-**Text:** "BOO KYOU R FRE E"  (OCR confidence 0.9935)
+**Text:** "BOOK YOUR FREE"  (OCR confidence 0.9935)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=349, y=938, w=383, h=31 |
-| Normalised | x=32.31%, y=86.85%, w=35.46%, h=2.87% |
+| Bounding box (px) | x=349, y=937, w=383, h=32 |
+| Normalised | x=32.31%, y=86.76%, w=35.46%, h=2.96% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 47 px |
-| Letter-spacing | 0.69 px (0.0147 em) |
-| Line-height | 48.0 px (ratio 1.021) |
+| Font size | 48 px |
+| Letter-spacing | 0.04 px (0.0008 em) |
+| Line-height | 49.0 px (ratio 1.021) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#516fec` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.12:1 |
 | Stroke (median/mean) | 8.0 / 11.06 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
-| Match IoU | 0.1728 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5424 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 681 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 679 px |
 | Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 48px track 0.04px — IoU 0.2963
-- `Poppins-Regular.ttf` 49px track -0.6px — IoU 0.2748
+- `Poppins-Regular.ttf` 47px track 0.69px — IoU 0.4592
+- `Poppins-Regular.ttf` 49px track -0.6px — IoU 0.4448
 
-### `text-4` — subheadline
+### `text-4` — headline
 
 **Text:** "CONSULTATION TODAY"  (OCR confidence 0.9926)
 
@@ -155,17 +158,18 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 47 px |
-| Letter-spacing | 0.69 px (0.0147 em) |
-| Line-height | 48.0 px (ratio 1.021) |
+| Font size | 48 px |
+| Letter-spacing | 0.04 px (0.0008 em) |
+| Line-height | 49.0 px (ratio 1.021) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.18:1 |
 | Stroke (median/mean) | 8.0 / 10.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
-| Match IoU | 0.4229 |
+| Match IoU | 0.4064 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -173,8 +177,8 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 48px track 0.04px — IoU 0.2963
-- `Poppins-Regular.ttf` 49px track -0.6px — IoU 0.2748
+- `Poppins-Regular.ttf` 47px track 0.69px — IoU 0.4592
+- `Poppins-Regular.ttf` 49px track -0.6px — IoU 0.4448
 
 ## 4. Colours (semantic)
 
@@ -183,10 +187,10 @@ Alternate font fits considered:
 | background | `#f6f3f1` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#1a1615` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'BUSINESS TO THE NEXT LEVEL?' | glyph ink median |
-| textSecondary | `#516fec` | glyph ink of 'BOO KYOU R FRE E' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'READY TO TAKE YOUR' | glyph ink median |
 | accent | `#4f6ce8` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#635547` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -210,7 +214,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0642 |
+| Text coverage | 0.0663 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -239,22 +243,22 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | READY TO TAKE YOUR |
 | `headline_line2` | text | BUSINESS TO THE NEXT LEVEL? |
-| `subheadline_line1` | text | BOO KYOU R FRE E |
-| `subheadline_line2` | text | CONSULTATION TODAY |
+| `headline_line1` | text | BOOK YOUR FREE |
+| `headline_line2` | text | CONSULTATION TODAY |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f6f3f1 |
 | `surface` | colour | #1a1615 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #516fec |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #4f6ce8 |
 | `accentSecondary` | colour | #635547 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Poppins |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
 | `imageFocalX` | number | 51.6 |
 | `imageFocalY` | number | 55.0 |
 

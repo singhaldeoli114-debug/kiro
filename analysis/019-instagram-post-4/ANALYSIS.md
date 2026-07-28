@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.97:1 |
 | Stroke (median/mean) | 15.0 / 18.73 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Poppins |
 | Match IoU | 0.7038 |
 | **Geometry fit confidence** | **high** |
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.97:1 |
 | Stroke (median/mean) | 16.0 / 20.05 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Poppins |
 | Match IoU | 0.7479 |
 | **Geometry fit confidence** | **high** |
@@ -109,7 +111,7 @@ Alternate font fits considered:
 - `Alata-Regular.ttf` 107px track 0.33px — IoU 0.7002
 - `Poppins-Regular.ttf` 104px track -0.42px — IoU 0.4961
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "Professional service, amazing"  (OCR confidence 0.9995)
 
@@ -123,36 +125,37 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 30 px |
-| Letter-spacing | -0.05 px (-0.0017 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 31 px |
+| Letter-spacing | -0.42 px (-0.0135 em) |
+| Line-height | 39.0 px (ratio 1.258) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 3.0 / 3.15 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Poppins |
-| Match IoU | 0.7066 |
+| Match IoU | 0.7721 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 87 px |
-| Gap to next | -3 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 31px track -0.58px — IoU 0.7043
-- `Poppins-Regular.ttf` 29px track 0.47px — IoU 0.639
-- `Alata-Regular.ttf` 34px track -0.62px — IoU 0.4364
+- `Poppins-Regular.ttf` 30px track 0.06px — IoU 0.5313
+- `Poppins-Regular.ttf` 29px track 0.53px — IoU 0.5027
+- `Alata-Regular.ttf` 33px track -0.24px — IoU 0.3585
 
-### `text-4` — subheadline
+### `text-4` — body
 
 **Text:** "quality, and fast delivery. Highly"  (OCR confidence 0.9939)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=304, y=594, w=474, h=53 |
-| Normalised | x=28.15%, y=55.0%, w=43.89%, h=4.91% |
+| Bounding box (px) | x=304, y=605, w=474, h=32 |
+| Normalised | x=28.15%, y=56.02%, w=43.89%, h=2.96% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,34 +164,35 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 31 px |
 | Letter-spacing | -0.42 px (-0.0135 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 39.0 px (ratio 1.258) |
+| Line | 2 of 3 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 3.0 / 2.96 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Poppins |
-| Match IoU | 0.318 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6518 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -3 px |
-| Gap to next | -11 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 30px track 0.06px — IoU 0.3047
-- `Alata-Regular.ttf` 33px track -0.24px — IoU 0.3027
-- `Poppins-Regular.ttf` 29px track 0.53px — IoU 0.2749
+- `Poppins-Regular.ttf` 30px track 0.06px — IoU 0.5313
+- `Poppins-Regular.ttf` 29px track 0.53px — IoU 0.5027
+- `Alata-Regular.ttf` 33px track -0.24px — IoU 0.3585
 
-### `text-5` — subheadline
+### `text-5` — body
 
-**Text:** "recommended!""  (OCR confidence 0.9963)
+**Text:** "recommended! ""  (OCR confidence 0.9963)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=420, y=636, w=242, h=32 |
-| Normalised | x=38.89%, y=58.89%, w=22.41%, h=2.96% |
+| Bounding box (px) | x=420, y=644, w=242, h=25 |
+| Normalised | x=38.89%, y=59.63%, w=22.41%, h=2.31% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -196,62 +200,64 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 31 px |
-| Letter-spacing | -0.82 px (-0.0265 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.42 px (-0.0135 em) |
+| Line-height | 39.0 px (ratio 1.258) |
+| Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.56:1 |
-| Stroke (median/mean) | 3.0 / 3.36 px |
+| Stroke (median/mean) | 3.0 / 3.37 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Poppins |
-| Match IoU | 0.3345 |
+| Match IoU | 0.2397 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -11 px |
-| Gap to next | 59 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 7 px |
+| Gap to next | 58 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 30px track -0.14px — IoU 0.3291
-- `Poppins-Regular.ttf` 29px track 0.54px — IoU 0.3008
-- `Alata-Regular.ttf` 32px track 0.75px — IoU 0.2516
+- `Poppins-Regular.ttf` 30px track 0.06px — IoU 0.5313
+- `Poppins-Regular.ttf` 29px track 0.53px — IoU 0.5027
+- `Alata-Regular.ttf` 33px track -0.24px — IoU 0.3585
 
-### `text-6` — supporting
+### `text-6` — fine-print
 
 **Text:** "2838282838"  (OCR confidence 0.6462)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=476, y=727, w=132, h=23 |
-| Normalised | x=44.07%, y=67.31%, w=12.22%, h=2.13% |
+| Bounding box (px) | x=475, y=727, w=134, h=23 |
+| Normalised | x=43.98%, y=67.31%, w=12.41%, h=2.13% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
+| Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
 | Font size | 22 px |
-| Letter-spacing | -0.14 px (-0.0064 em) |
+| Letter-spacing | -0.86 px (-0.0391 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#aeaeae` |
+| Colour | `#adadad` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.18:1 |
+| Contrast vs local bg | 3.16:1 |
 | Stroke (median/mean) | 1.0 / 2.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Poppins |
-| Match IoU | 0.2202 |
+| Match IoU | 0.2259 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6462) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 59 px |
+| Gap to previous | 58 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 21px track -0.36px — IoU 0.2158
-- `Poppins-Regular.ttf` 21px track 0.53px — IoU 0.2072
-- `Poppins-Regular.ttf` 23px track -0.81px — IoU 0.1992
+- `Poppins-Regular.ttf` 23px track -0.59px — IoU 0.2225
+- `Alata-Regular.ttf` 21px track -0.14px — IoU 0.2108
+- `Poppins-Regular.ttf` 22px track 0.08px — IoU 0.2074
 
 ## 4. Colours (semantic)
 
@@ -260,10 +266,10 @@ Alternate font fits considered:
 | background | `#2e2e2e` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#8b69e0` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'WHAT OUR' | glyph ink median |
-| textSecondary | `#aeaeae` | glyph ink of '2838282838' | glyph ink median |
+| textSecondary | `#adadad` | glyph ink of '2838282838' | glyph ink median |
 | accent | `#8b69e0` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#825dd3` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1296 |
+| Text coverage | 0.1196 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -316,26 +322,26 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | WHAT OUR |
 | `headline_line2` | text | CLIENTS SAY |
-| `subheadline` | text | Professional service, amazing |
-| `subheadline` | text | quality, and fast delivery. Highly |
-| `subheadline` | text | recommended!" |
-| `supporting` | text | 2838282838 |
+| `body_line1` | text | Professional service, amazing |
+| `body_line2` | text | quality, and fast delivery. Highly |
+| `body_line3` | text | recommended! " |
+| `fine-print` | text | 2838282838 |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #2e2e2e |
 | `surface` | colour | #8b69e0 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #aeaeae |
+| `textSecondary` | colour | #adadad |
 | `accent` | colour | #8b69e0 |
 | `accentSecondary` | colour | #825dd3 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Alata |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 46.7 |
 | `imageFocalY` | number | 50.0 |
 

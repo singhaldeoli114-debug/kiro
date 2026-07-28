@@ -33,45 +33,46 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
 ### `text-1` — headline
 
-**Text:** "TH E ART OF"  (OCR confidence 0.9967)
+**Text:** "THE ART OF"  (OCR confidence 0.9967)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=82, y=95, w=703, h=84 |
-| Normalised | x=7.59%, y=8.8%, w=65.09%, h=7.78% |
+| Bounding box (px) | x=81, y=95, w=712, h=95 |
+| Normalised | x=7.5%, y=8.8%, w=65.93%, h=8.8% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
+| Font file matched | `CastoroTitling-Regular.ttf` |
 | Variation axes | None |
-| Font size | 129 px |
-| Letter-spacing | -0.12 px (-0.0009 em) |
-| Line-height | 145.0 px (ratio 1.124) |
+| Font size | 117 px |
+| Letter-spacing | -0.84 px (-0.0072 em) |
+| Line-height | 150.0 px (ratio 1.282) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.19:1 |
 | Stroke (median/mean) | 9.0 / 9.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.3454 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4048 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
-| Gap to next | 61 px |
+| Gap to next | 55 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 130px track -0.82px — IoU 0.2965
-- `Poppins-Regular.ttf` 128px track 0.58px — IoU 0.2936
-- `CastoroTitling-Regular.ttf` 117px track -0.84px — IoU 0.2194
+- `CastoroTitling-Regular.ttf` 116px track -0.06px — IoU 0.3213
+- `CastoroTitling-Regular.ttf` 115px track 0.72px — IoU 0.3158
+- `Poppins-Regular.ttf` 130px track -0.82px — IoU 0.2606
 
 ### `text-2` — headline
 
@@ -79,37 +80,38 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=90, y=240, w=631, h=105 |
-| Normalised | x=8.33%, y=22.22%, w=58.43%, h=9.72% |
+| Bounding box (px) | x=90, y=245, w=631, h=95 |
+| Normalised | x=8.33%, y=22.69%, w=58.43%, h=8.8% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Poppins-Regular.ttf` |
+| Font file matched | `CastoroTitling-Regular.ttf` |
 | Variation axes | None |
-| Font size | 129 px |
-| Letter-spacing | -0.12 px (-0.0009 em) |
-| Line-height | 145.0 px (ratio 1.124) |
+| Font size | 117 px |
+| Letter-spacing | -0.84 px (-0.0072 em) |
+| Line-height | 150.0 px (ratio 1.282) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.03:1 |
-| Stroke (median/mean) | 10.0 / 10.06 px |
+| Stroke (median/mean) | 10.0 / 10.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.2495 |
+| Match IoU | 0.2488 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 61 px |
-| Gap to next | 135 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 55 px |
+| Gap to next | 140 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 130px track -0.82px — IoU 0.2965
-- `Poppins-Regular.ttf` 128px track 0.58px — IoU 0.2936
-- `CastoroTitling-Regular.ttf` 117px track -0.84px — IoU 0.2194
+- `CastoroTitling-Regular.ttf` 116px track -0.06px — IoU 0.3213
+- `CastoroTitling-Regular.ttf` 115px track 0.72px — IoU 0.3158
+- `Poppins-Regular.ttf` 130px track -0.82px — IoU 0.2606
 
-### `text-3` — supporting
+### `text-3` — body
 
 **Text:** "Discover thoughtfully"  (OCR confidence 0.9941)
 
@@ -125,34 +127,35 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 34 px |
 | Letter-spacing | -0.2 px (-0.0059 em) |
-| Line-height | 45.0 px (ratio 1.324) |
-| Line | 1 of 2 |
+| Line-height | 44.5 px (ratio 1.309) |
+| Line | 1 of 7 |
 | Transform | none |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.0:1 |
 | Stroke (median/mean) | 3.0 / 3.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
 | Match IoU | 0.7711 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 135 px |
-| Gap to next | 11 px |
+| Gap to previous | 140 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7377
-- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.5804
-- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1029
+- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7084
+- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.6235
+- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1032
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "crafted pieces that"  (OCR confidence 0.9993)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=525, w=321, h=34 |
-| Normalised | x=7.41%, y=48.61%, w=29.72%, h=3.15% |
+| Bounding box (px) | x=80, y=524, w=321, h=34 |
+| Normalised | x=7.41%, y=48.52%, w=29.72%, h=3.15% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,63 +164,65 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 34 px |
 | Letter-spacing | -0.2 px (-0.0059 em) |
-| Line-height | 45.0 px (ratio 1.324) |
-| Line | 2 of 2 |
+| Line-height | 44.5 px (ratio 1.309) |
+| Line | 2 of 7 |
 | Transform | lowercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.0:1 |
 | Stroke (median/mean) | 3.0 / 4.58 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.744 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.5672 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 11 px |
-| Gap to next | 10 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 10 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7377
-- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.5804
-- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1029
+- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7084
+- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.6235
+- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1032
 
-### `text-5` — supporting
+### `text-5` — body
 
-**Text:** "combi ner efined"  (OCR confidence 0.9894)
+**Text:** "combine refined"  (OCR confidence 0.9894)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=569, w=276, h=25 |
-| Normalised | x=7.41%, y=52.69%, w=25.56%, h=2.31% |
+| Bounding box (px) | x=80, y=569, w=276, h=26 |
+| Normalised | x=7.41%, y=52.69%, w=25.56%, h=2.41% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 33 px |
-| Letter-spacing | -0.29 px (-0.0088 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 34 px |
+| Letter-spacing | -0.2 px (-0.0059 em) |
+| Line-height | 44.5 px (ratio 1.309) |
+| Line | 3 of 7 |
 | Transform | lowercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.02:1 |
 | Stroke (median/mean) | 3.0 / 4.17 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.3671 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7455 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 10 px |
-| Gap to next | 20 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 11 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 32px track 0.27px — IoU 0.304
-- `Poppins-Regular.ttf` 31px track 0.84px — IoU 0.2467
-- `CastoroTitling-Regular.ttf` 28px track -0.8px — IoU 0.1403
+- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7084
+- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.6235
+- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1032
 
-### `text-6` — supporting
+### `text-6` — body
 
 **Text:** "details, everyday"  (OCR confidence 0.9969)
 
@@ -232,28 +237,29 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 34 px |
-| Letter-spacing | -0.07 px (-0.0021 em) |
-| Line-height | 44.3 px (ratio 1.303) |
-| Line | 1 of 4 |
+| Letter-spacing | -0.2 px (-0.0059 em) |
+| Line-height | 44.5 px (ratio 1.309) |
+| Line | 4 of 7 |
 | Transform | lowercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.01:1 |
 | Stroke (median/mean) | 3.0 / 4.22 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.8083 |
+| Match IoU | 0.7553 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 20 px |
+| Gap to previous | 19 px |
 | Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 33px track 0.43px — IoU 0.7227
-- `Poppins-Regular.ttf` 35px track -0.57px — IoU 0.636
-- `CastoroTitling-Regular.ttf` 25px track 0.86px — IoU 0.0894
+- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7084
+- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.6235
+- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1032
 
-### `text-7` — supporting
+### `text-7` — body
 
 **Text:** "comfort, and"  (OCR confidence 0.9972)
 
@@ -268,28 +274,29 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 34 px |
-| Letter-spacing | -0.07 px (-0.0021 em) |
-| Line-height | 44.3 px (ratio 1.303) |
-| Line | 2 of 4 |
+| Letter-spacing | -0.2 px (-0.0059 em) |
+| Line-height | 44.5 px (ratio 1.309) |
+| Line | 5 of 7 |
 | Transform | lowercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.03:1 |
 | Stroke (median/mean) | 3.0 / 3.89 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.6914 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7553 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 10 px |
 | Gap to next | 14 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 33px track 0.43px — IoU 0.7227
-- `Poppins-Regular.ttf` 35px track -0.57px — IoU 0.636
-- `CastoroTitling-Regular.ttf` 25px track 0.86px — IoU 0.0894
+- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7084
+- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.6235
+- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1032
 
-### `text-8` — supporting
+### `text-8` — body
 
 **Text:** "effortless beauty for"  (OCR confidence 0.9989)
 
@@ -304,16 +311,17 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 34 px |
-| Letter-spacing | -0.07 px (-0.0021 em) |
-| Line-height | 44.3 px (ratio 1.303) |
-| Line | 3 of 4 |
+| Letter-spacing | -0.2 px (-0.0059 em) |
+| Line-height | 44.5 px (ratio 1.309) |
+| Line | 6 of 7 |
 | Transform | lowercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.0:1 |
 | Stroke (median/mean) | 3.0 / 4.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.7448 |
+| Match IoU | 0.7999 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -321,11 +329,11 @@ Alternate font fits considered:
 | Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 33px track 0.43px — IoU 0.7227
-- `Poppins-Regular.ttf` 35px track -0.57px — IoU 0.636
-- `CastoroTitling-Regular.ttf` 25px track 0.86px — IoU 0.0894
+- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7084
+- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.6235
+- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1032
 
-### `text-9` — supporting
+### `text-9` — body
 
 **Text:** "every occasion."  (OCR confidence 0.9987)
 
@@ -340,35 +348,36 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 34 px |
-| Letter-spacing | -0.07 px (-0.0021 em) |
-| Line-height | 44.3 px (ratio 1.303) |
-| Line | 4 of 4 |
+| Letter-spacing | -0.2 px (-0.0059 em) |
+| Line-height | 44.5 px (ratio 1.309) |
+| Line | 7 of 7 |
 | Transform | lowercase |
 | Colour | `#fefff2` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.04:1 |
 | Stroke (median/mean) | 3.0 / 4.14 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.7171 |
+| Match IoU | 0.7267 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 10 px |
-| Gap to next | 139 px |
+| Gap to next | 138 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 33px track 0.43px — IoU 0.7227
-- `Poppins-Regular.ttf` 35px track -0.57px — IoU 0.636
-- `CastoroTitling-Regular.ttf` 25px track 0.86px — IoU 0.0894
+- `Poppins-Regular.ttf` 33px track 0.32px — IoU 0.7084
+- `Poppins-Regular.ttf` 35px track -0.73px — IoU 0.6235
+- `CastoroTitling-Regular.ttf` 25px track -0.09px — IoU 0.1032
 
-### `text-10` — subheadline
+### `text-10` — body
 
 **Text:** "Explore the"  (OCR confidence 0.9988)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=82, y=921, w=185, h=35 |
-| Normalised | x=7.59%, y=85.28%, w=17.13%, h=3.24% |
+| Bounding box (px) | x=82, y=920, w=186, h=37 |
+| Normalised | x=7.59%, y=85.19%, w=17.22%, h=3.43% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
@@ -384,27 +393,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.14:1 |
 | Stroke (median/mean) | 3.0 / 4.23 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.7241 |
+| Match IoU | 0.7217 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 139 px |
-| Gap to next | 8 px |
+| Gap to previous | 138 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 43px track -0.74px — IoU 0.404
-- `Poppins-Regular.ttf` 41px track 0.32px — IoU 0.3921
-- `CastoroTitling-Regular.ttf` 30px track 0.74px — IoU 0.12
+- `Poppins-Regular.ttf` 41px track 0.32px — IoU 0.4308
+- `Poppins-Regular.ttf` 43px track -0.74px — IoU 0.4163
+- `CastoroTitling-Regular.ttf` 31px track 0.03px — IoU 0.1158
 
-### `text-11` — subheadline
+### `text-11` — body
 
 **Text:** "Collectio n"  (OCR confidence 0.9983)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=964, w=220, h=33 |
-| Normalised | x=7.41%, y=89.26%, w=20.37%, h=3.06% |
+| Bounding box (px) | x=80, y=963, w=220, h=35 |
+| Normalised | x=7.41%, y=89.17%, w=20.37%, h=3.24% |
 | Alignment | left |
 | z-order | 110 |
 | Rotation | 0° |
@@ -420,18 +430,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.15:1 |
 | Stroke (median/mean) | 3.0 / 3.63 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Castoro Titling, Poppins |
-| Match IoU | 0.1588 |
+| Match IoU | 0.1481 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 8 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 6 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 43px track -0.74px — IoU 0.404
-- `Poppins-Regular.ttf` 41px track 0.32px — IoU 0.3921
-- `CastoroTitling-Regular.ttf` 30px track 0.74px — IoU 0.12
+- `Poppins-Regular.ttf` 41px track 0.32px — IoU 0.4308
+- `Poppins-Regular.ttf` 43px track -0.74px — IoU 0.4163
+- `CastoroTitling-Regular.ttf` 31px track 0.03px — IoU 0.1158
 
 ## 4. Colours (semantic)
 
@@ -439,11 +450,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fbf8eb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#cc5b55` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#fefff2` | glyph ink of 'ELEGANCE' | glyph ink median |
-| textSecondary | `#fefff2` | glyph ink of 'TH E ART OF' | glyph ink median |
+| textPrimary | `#fefff2` | glyph ink of 'THE ART OF' | glyph ink median |
+| textSecondary | `#fefff2` | glyph ink of 'ELEGANCE' | glyph ink median |
 | accent | `#cc5b55` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ae6356` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -467,7 +478,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.1766 |
+| Text coverage | 0.1795 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -494,17 +505,17 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `headline_line1` | text | TH E ART OF |
+| `headline_line1` | text | THE ART OF |
 | `headline_line2` | text | ELEGANCE |
-| `supporting_line1` | text | Discover thoughtfully |
-| `supporting_line2` | text | crafted pieces that |
-| `supporting` | text | combi ner efined |
-| `supporting_line1` | text | details, everyday |
-| `supporting_line2` | text | comfort, and |
-| `supporting_line3` | text | effortless beauty for |
-| `supporting_line4` | text | every occasion. |
-| `subheadline_line1` | text | Explore the |
-| `subheadline_line2` | text | Collectio n |
+| `body_line1` | text | Discover thoughtfully |
+| `body_line2` | text | crafted pieces that |
+| `body_line3` | text | combine refined |
+| `body_line4` | text | details, everyday |
+| `body_line5` | text | comfort, and |
+| `body_line6` | text | effortless beauty for |
+| `body_line7` | text | every occasion. |
+| `body_line1` | text | Explore the |
+| `body_line2` | text | Collectio n |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fbf8eb |
@@ -517,15 +528,15 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Castoro Titling |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 54.2 |
 | `imageFocalY` | number | 52.1 |
 

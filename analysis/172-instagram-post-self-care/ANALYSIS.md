@@ -33,26 +33,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — body
 
 **Text:** "drink water"  (OCR confidence 0.9995)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=449, y=290, w=192, h=28 |
-| Normalised | x=41.57%, y=26.85%, w=17.78%, h=2.59% |
+| Bounding box (px) | x=449, y=289, w=192, h=29 |
+| Normalised | x=41.57%, y=26.76%, w=17.78%, h=2.69% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `OpenSans[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 40 px |
-| Letter-spacing | -0.37 px (-0.0092 em) |
+| Variation axes | [500, 87.5] |
+| Font size | 41 px |
+| Letter-spacing | -0.3 px (-0.0073 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 18.15:1 |
 | Stroke (median/mean) | 3.0 / 3.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Open Sans, Dancing Script |
-| Match IoU | 0.7682 |
+| Match IoU | 0.7896 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 112 px |
 
 Alternate font fits considered:
-- `OpenSans[wdth,wght].ttf` 41px track -0.3px — IoU 0.7302
-- `OpenSans[wdth,wght].ttf` 36px track -0.47px — IoU 0.7257
-- `OpenSans[wdth,wght].ttf` 35px track -0.4px — IoU 0.7133
+- `OpenSans[wdth,wght].ttf` 40px track -0.37px — IoU 0.7891
+- `OpenSans[wdth,wght].ttf` 36px track -0.47px — IoU 0.771
+- `OpenSans[wdth,wght].ttf` 35px track 0.07px — IoU 0.7465
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=470, y=430, w=176, h=117 |
-| Normalised | x=43.52%, y=39.81%, w=16.3%, h=10.83% |
+| Bounding box (px) | x=470, y=430, w=177, h=118 |
+| Normalised | x=43.52%, y=39.81%, w=16.39%, h=10.93% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,26 +89,28 @@ Alternate font fits considered:
 | Font file matched | `DancingScript[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 120 px |
-| Letter-spacing | -0.66 px (-0.0055 em) |
-| Line-height | 146.0 px (ratio 1.217) |
+| Letter-spacing | -0.32 px (-0.0027 em) |
+| Line-height | 145.0 px (ratio 1.208) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#212122` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.07:1 |
 | Stroke (median/mean) | 8.0 / 7.75 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Open Sans, Dancing Script |
-| Match IoU | 0.8971 |
+| Match IoU | 0.8409 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 112 px |
-| Gap to next | 29 px |
+| Gap to next | 27 px |
 
 Alternate font fits considered:
-- `DancingScript[wght].ttf` 120px track 0.27px — IoU 0.7904
-- `DancingScript[wght].ttf` 122px track -0.71px — IoU 0.787
-- `DancingScript[wght].ttf` 121px track -0.22px — IoU 0.7815
+- `DancingScript[wght].ttf` 121px track 0.11px — IoU 0.7454
+- `DancingScript[wght].ttf` 119px track 0.18px — IoU 0.7434
+- `DancingScript[wght].ttf` 118px track 0.67px — IoU 0.7404
 
 ### `text-3` — headline
 
@@ -115,8 +118,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=462, y=576, w=190, h=94 |
-| Normalised | x=42.78%, y=53.33%, w=17.59%, h=8.7% |
+| Bounding box (px) | x=462, y=575, w=190, h=96 |
+| Normalised | x=42.78%, y=53.24%, w=17.59%, h=8.89% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,28 +127,30 @@ Alternate font fits considered:
 | Font file matched | `DancingScript[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 120 px |
-| Letter-spacing | -0.66 px (-0.0055 em) |
-| Line-height | 146.0 px (ratio 1.217) |
+| Letter-spacing | -0.32 px (-0.0027 em) |
+| Line-height | 145.0 px (ratio 1.208) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#212122` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.07:1 |
 | Stroke (median/mean) | 8.0 / 8.19 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Open Sans, Dancing Script |
-| Match IoU | 0.7031 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6871 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 29 px |
-| Gap to next | -76 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 27 px |
+| Gap to next | -77 px |
 
 Alternate font fits considered:
-- `DancingScript[wght].ttf` 120px track 0.27px — IoU 0.7904
-- `DancingScript[wght].ttf` 122px track -0.71px — IoU 0.787
-- `DancingScript[wght].ttf` 121px track -0.22px — IoU 0.7815
+- `DancingScript[wght].ttf` 121px track 0.11px — IoU 0.7454
+- `DancingScript[wght].ttf` 119px track 0.18px — IoU 0.7434
+- `DancingScript[wght].ttf` 118px track 0.67px — IoU 0.7404
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "dream more"  (OCR confidence 0.9965)
 
@@ -168,54 +173,56 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.0:1 |
 | Stroke (median/mean) | 3.0 / 3.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Open Sans, Dancing Script |
 | Match IoU | 0.7711 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -76 px |
-| Gap to next | -22 px |
+| Gap to previous | -77 px |
+| Gap to next | -23 px |
 
 Alternate font fits considered:
 - `OpenSans[wdth,wght].ttf` 35px track -0.1px — IoU 0.7481
 - `OpenSans[wdth,wght].ttf` 41px track -0.08px — IoU 0.7463
 - `OpenSans[wdth,wght].ttf` 48px track -0.17px — IoU 0.7455
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "yoga"  (OCR confidence 0.9997)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=831, y=600, w=77, h=28 |
-| Normalised | x=76.94%, y=55.56%, w=7.13%, h=2.59% |
+| Bounding box (px) | x=831, y=599, w=78, h=29 |
+| Normalised | x=76.94%, y=55.46%, w=7.22%, h=2.69% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `OpenSans[wdth,wght].ttf` |
-| Variation axes | [500, 75.0] |
-| Font size | 47 px |
-| Letter-spacing | -0.41 px (-0.0087 em) |
+| Variation axes | [600, 75.0] |
+| Font size | 46 px |
+| Letter-spacing | -0.49 px (-0.0107 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#010101` |
+| Colour | `#030303` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 19.47:1 |
+| Contrast vs local bg | 17.0:1 |
 | Stroke (median/mean) | 3.0 / 3.86 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Open Sans, Dancing Script |
-| Match IoU | 0.7639 |
+| Match IoU | 0.8016 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -22 px |
+| Gap to previous | -23 px |
 | Gap to next | 260 px |
 
 Alternate font fits considered:
-- `OpenSans[wdth,wght].ttf` 39px track -0.23px — IoU 0.754
-- `OpenSans[wdth,wght].ttf` 46px track 0.15px — IoU 0.7506
-- `OpenSans[wdth,wght].ttf` 45px track -0.25px — IoU 0.7403
+- `OpenSans[wdth,wght].ttf` 40px track -0.57px — IoU 0.8011
+- `OpenSans[wdth,wght].ttf` 48px track -0.63px — IoU 0.7888
+- `OpenSans[wdth,wght].ttf` 41px track -0.52px — IoU 0.781
 
 ### `text-6` — supporting
 
@@ -240,6 +247,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.0:1 |
 | Stroke (median/mean) | 3.0 / 3.59 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Open Sans, Dancing Script |
 | Match IoU | 0.7887 |
 | **Geometry fit confidence** | **high** |
@@ -263,7 +271,7 @@ Alternate font fits considered:
 | textSecondary | `#020202` | glyph ink of 'drink water' | glyph ink median |
 | accent | `#fedd58` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#222836` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +295,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0489 |
+| Text coverage | 0.0497 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -314,11 +322,11 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | drink water |
+| `body` | text | drink water |
 | `headline_line1` | text | Self |
 | `headline_line2` | text | Care |
-| `supporting` | text | dream more |
-| `subheadline` | text | yoga |
+| `body` | text | dream more |
+| `supporting` | text | yoga |
 | `supporting` | text | read books |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -330,11 +338,11 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #222836 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Open Sans |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |

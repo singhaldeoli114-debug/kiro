@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,35 +43,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=278, y=127, w=524, h=58 |
-| Normalised | x=25.74%, y=11.76%, w=48.52%, h=5.37% |
+| Bounding box (px) | x=278, y=127, w=524, h=59 |
+| Normalised | x=25.74%, y=11.76%, w=48.52%, h=5.46% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AnnapurnaSIL-Regular.ttf` |
 | Variation axes | None |
-| Font size | 92 px |
-| Letter-spacing | -0.2 px (-0.0022 em) |
-| Line-height | 95.0 px (ratio 1.033) |
+| Font size | 93 px |
+| Letter-spacing | -0.66 px (-0.0071 em) |
+| Line-height | 94.0 px (ratio 1.011) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffff9e` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 20.45:1 |
 | Stroke (median/mean) | 8.0 / 9.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Annapurna SIL, Poppins |
-| Match IoU | 0.8944 |
+| Match IoU | 0.8536 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 37 px |
+| Gap to next | 35 px |
 
 Alternate font fits considered:
-- `AnnapurnaSIL-Regular.ttf` 93px track -0.74px — IoU 0.7377
-- `AnnapurnaSIL-Regular.ttf` 91px track 0.34px — IoU 0.6739
-- `AnnapurnaSIL-Bold.ttf` 90px track -0.74px — IoU 0.5803
+- `AnnapurnaSIL-Regular.ttf` 91px track 0.43px — IoU 0.823
+- `AnnapurnaSIL-Regular.ttf` 92px track -0.12px — IoU 0.8111
+- `AnnapurnaSIL-Bold.ttf` 88px track 0.46px — IoU 0.6829
 
 ### `text-2` — headline
 
@@ -79,44 +80,45 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=243, y=222, w=595, h=65 |
-| Normalised | x=22.5%, y=20.56%, w=55.09%, h=6.02% |
+| Bounding box (px) | x=242, y=221, w=596, h=59 |
+| Normalised | x=22.41%, y=20.46%, w=55.19%, h=5.46% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AnnapurnaSIL-Regular.ttf` |
 | Variation axes | None |
-| Font size | 92 px |
-| Letter-spacing | -0.2 px (-0.0022 em) |
-| Line-height | 95.0 px (ratio 1.033) |
+| Font size | 93 px |
+| Letter-spacing | -0.66 px (-0.0071 em) |
+| Line-height | 94.0 px (ratio 1.011) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffff9e` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 20.45:1 |
-| Stroke (median/mean) | 8.0 / 9.46 px |
+| Stroke (median/mean) | 8.0 / 9.47 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Annapurna SIL, Poppins |
-| Match IoU | 0.5833 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7944 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 37 px |
-| Gap to next | 596 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 35 px |
+| Gap to next | 599 px |
 
 Alternate font fits considered:
-- `AnnapurnaSIL-Regular.ttf` 93px track -0.74px — IoU 0.7377
-- `AnnapurnaSIL-Regular.ttf` 91px track 0.34px — IoU 0.6739
-- `AnnapurnaSIL-Bold.ttf` 90px track -0.74px — IoU 0.5803
+- `AnnapurnaSIL-Regular.ttf` 91px track 0.43px — IoU 0.823
+- `AnnapurnaSIL-Regular.ttf` 92px track -0.12px — IoU 0.8111
+- `AnnapurnaSIL-Bold.ttf` 88px track 0.46px — IoU 0.6829
 
-### `text-3` — supporting
+### `text-3` — body
 
 **Text:** "Experience a thoughtfully curated menu where"  (OCR confidence 0.9988)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=204, y=883, w=673, h=33 |
-| Normalised | x=18.89%, y=81.76%, w=62.31%, h=3.06% |
+| Bounding box (px) | x=203, y=879, w=674, h=32 |
+| Normalised | x=18.8%, y=81.39%, w=62.41%, h=2.96% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,98 +126,101 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 30 px |
-| Letter-spacing | -0.64 px (-0.0213 em) |
+| Letter-spacing | -0.62 px (-0.0207 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffff9e` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.11:1 |
-| Stroke (median/mean) | 2.5 / 3.09 px |
+| Contrast vs local bg | 2.1:1 |
+| Stroke (median/mean) | 2.0 / 3.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Annapurna SIL, Poppins |
-| Match IoU | 0.3954 |
+| Match IoU | 0.3687 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 596 px |
-| Gap to next | -14 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 599 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 29px track -0.1px — IoU 0.3678
-- `Poppins-Regular.ttf` 28px track 0.45px — IoU 0.3649
-- `AnnapurnaSIL-Bold.ttf` 34px track -0.45px — IoU 0.179
+- `Poppins-Regular.ttf` 29px track -0.08px — IoU 0.3497
+- `Poppins-Regular.ttf` 28px track 0.47px — IoU 0.3288
+- `AnnapurnaSIL-Bold.ttf` 34px track -0.43px — IoU 0.2644
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "premium ingredients and refined techniques come"  (OCR confidence 0.9951)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=172, y=902, w=737, h=47 |
-| Normalised | x=15.93%, y=83.52%, w=68.24%, h=4.35% |
+| Bounding box (px) | x=172, y=907, w=737, h=37 |
+| Normalised | x=15.93%, y=83.98%, w=68.24%, h=3.43% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 30 px |
-| Letter-spacing | -0.64 px (-0.0213 em) |
+| Font size | 28 px |
+| Letter-spacing | 0.48 px (0.0171 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#ffff9e` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.41:1 |
-| Stroke (median/mean) | 3.0 / 3.26 px |
+| Stroke (median/mean) | 3.0 / 3.16 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Annapurna SIL, Poppins |
-| Match IoU | 0.2529 |
+| Match IoU | 0.3657 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -14 px |
-| Gap to next | -17 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -4 px |
+| Gap to next | -7 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 28px track 0.48px — IoU 0.2416
-- `Poppins-Regular.ttf` 29px track -0.08px — IoU 0.2303
-- `AnnapurnaSIL-Bold.ttf` 35px track -0.58px — IoU 0.1587
+- `Poppins-Regular.ttf` 30px track -0.64px — IoU 0.365
+- `Poppins-Regular.ttf` 29px track -0.08px — IoU 0.344
+- `AnnapurnaSIL-Bold.ttf` 33px track 0.37px — IoU 0.2145
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "together in perfect harmony."  (OCR confidence 0.9983)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=332, y=932, w=426, h=39 |
-| Normalised | x=30.74%, y=86.3%, w=39.44%, h=3.61% |
+| Bounding box (px) | x=333, y=937, w=414, h=34 |
+| Normalised | x=30.83%, y=86.76%, w=38.33%, h=3.15% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AnnapurnaSIL-Bold.ttf` |
+| Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 34 px |
-| Letter-spacing | 0.06 px (0.0018 em) |
+| Font size | 30 px |
+| Letter-spacing | -0.61 px (-0.0203 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#ffff9e` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.41:1 |
-| Stroke (median/mean) | 2.0 / 3.14 px |
+| Contrast vs local bg | 2.44:1 |
+| Stroke (median/mean) | 2.0 / 3.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Annapurna SIL, Poppins |
-| Match IoU | 0.167 |
+| Match IoU | 0.3161 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -17 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -7 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AnnapurnaSIL-Bold.ttf` 33px track 0.52px — IoU 0.1651
-- `AnnapurnaSIL-Bold.ttf` 35px track -0.4px — IoU 0.1649
-- `AnnapurnaSIL-Regular.ttf` 36px track 0.36px — IoU 0.1405
+- `Poppins-Regular.ttf` 29px track -0.08px — IoU 0.2955
+- `AnnapurnaSIL-Bold.ttf` 34px track -0.38px — IoU 0.2632
+- `AnnapurnaSIL-Bold.ttf` 33px track 0.08px — IoU 0.2486
 
 ## 4. Colours (semantic)
 
@@ -223,11 +228,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#d4d5b8` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#010000` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffff9e` | glyph ink of 'TELLS A STORY' | glyph ink median |
-| textSecondary | `#ffff9e` | glyph ink of 'EVERY PLATE' | glyph ink median |
+| textPrimary | `#ffff9e` | glyph ink of 'EVERY PLATE' | glyph ink median |
+| textSecondary | `#ffff9e` | glyph ink of 'TELLS A STORY' | glyph ink median |
 | accent | `#010000` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1e140c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +256,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1222 |
+| Text coverage | 0.1106 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -280,9 +285,9 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | EVERY PLATE |
 | `headline_line2` | text | TELLS A STORY |
-| `supporting` | text | Experience a thoughtfully curated menu where |
-| `supporting` | text | premium ingredients and refined techniques come |
-| `subheadline` | text | together in perfect harmony. |
+| `body` | text | Experience a thoughtfully curated menu where |
+| `body` | text | premium ingredients and refined techniques come |
+| `body` | text | together in perfect harmony. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #d4d5b8 |
@@ -295,9 +300,9 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Annapurna SIL |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 51.0 |
 | `imageFocalY` | number | 50.7 |
 

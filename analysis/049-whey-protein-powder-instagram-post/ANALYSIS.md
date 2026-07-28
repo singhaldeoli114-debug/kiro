@@ -32,18 +32,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — supporting
 
 **Text:** "LOGO"  (OCR confidence 0.9994)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=68, w=110, h=28 |
-| Normalised | x=7.41%, y=6.3%, w=10.19%, h=2.59% |
+| Bounding box (px) | x=80, y=67, w=110, h=29 |
+| Normalised | x=7.41%, y=6.2%, w=10.19%, h=2.69% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -59,8 +59,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 12.31:1 |
 | Stroke (median/mean) | 4.0 / 4.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.7918 |
+| Match IoU | 0.8287 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -68,8 +69,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 101 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 40px track 0.52px — IoU 0.7548
-- `Actor-Regular.ttf` 42px track -1.29px — IoU 0.7419
+- `Actor-Regular.ttf` 40px track 0.52px — IoU 0.7925
+- `Actor-Regular.ttf` 42px track -1.29px — IoU 0.7591
 
 ### `text-2` — subheadline
 
@@ -77,16 +78,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=77, y=197, w=208, h=54 |
-| Normalised | x=7.13%, y=18.24%, w=19.26%, h=5.0% |
+| Bounding box (px) | x=78, y=197, w=207, h=54 |
+| Normalised | x=7.22%, y=18.24%, w=19.17%, h=5.0% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 77 px |
-| Letter-spacing | -1.09 px (-0.0142 em) |
+| Font size | 76 px |
+| Letter-spacing | -0.51 px (-0.0067 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -94,17 +95,18 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 9.72:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.7156 |
+| Match IoU | 0.7097 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 101 px |
-| Gap to next | 25 px |
+| Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 75px track 0.73px — IoU 0.6891
-- `Actor-Regular.ttf` 76px track -0.18px — IoU 0.6727
+- `Actor-Regular.ttf` 75px track 0.4px — IoU 0.7095
+- `Actor-Regular.ttf` 74px track 1.32px — IoU 0.6529
 
 ### `text-3` — headline
 
@@ -112,8 +114,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=77, y=276, w=429, h=82 |
-| Normalised | x=7.13%, y=25.56%, w=39.72%, h=7.59% |
+| Bounding box (px) | x=77, y=275, w=429, h=83 |
+| Normalised | x=7.13%, y=25.46%, w=39.72%, h=7.69% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -129,34 +131,35 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 11.77:1 |
 | Stroke (median/mean) | 12.0 / 17.05 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.7632 |
+| Match IoU | 0.764 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 25 px |
+| Gap to previous | 24 px |
 | Gap to next | 30 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 109px track -0.06px — IoU 0.7382
-- `Actor-Regular.ttf` 108px track 0.6px — IoU 0.733
+- `Actor-Regular.ttf` 109px track -0.06px — IoU 0.7408
+- `Actor-Regular.ttf` 108px track 0.6px — IoU 0.7396
 
-### `text-4` — detail
+### `text-4` — body
 
 **Text:** "Fuel Every Rep"  (OCR confidence 0.9507)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=388, w=182, h=29 |
-| Normalised | x=7.41%, y=35.93%, w=16.85%, h=2.69% |
+| Bounding box (px) | x=80, y=388, w=183, h=29 |
+| Normalised | x=7.41%, y=35.93%, w=16.94%, h=2.69% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 29 px |
-| Letter-spacing | 0.01 px (0.0003 em) |
+| Font size | 30 px |
+| Letter-spacing | -0.4 px (-0.0133 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -164,61 +167,65 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 14.12:1 |
 | Stroke (median/mean) | 2.0 / 2.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.6819 |
+| Match IoU | 0.6843 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 30 px |
-| Gap to next | 36 px |
+| Gap to next | 29 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 28px track 0.49px — IoU 0.6378
-- `Actor-Regular.ttf` 30px track -0.48px — IoU 0.5363
+- `Actor-Regular.ttf` 28px track 0.56px — IoU 0.6513
+- `Actor-Regular.ttf` 29px track 0.08px — IoU 0.5719
 
-### `text-5` — detail
+### `text-5` — fine-print
 
-**Text:** "+LEANMUSCLEGROWTH"  (OCR confidence 0.978)
+**Text:** "+LEAN MUSCLE GROWTH"  (OCR confidence 0.978)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=794, y=453, w=182, h=35 |
-| Normalised | x=73.52%, y=41.94%, w=16.85%, h=3.24% |
+| Bounding box (px) | x=796, y=446, w=182, h=37 |
+| Normalised | x=73.7%, y=41.3%, w=16.85%, h=3.43% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 18 px |
-| Letter-spacing | -0.86 px (-0.0478 em) |
+| Font size | 17 px |
+| Letter-spacing | -0.59 px (-0.0347 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#a6a9ad` |
+| Colour | `#a3a6aa` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 6.22:1 |
-| Stroke (median/mean) | 2.0 / 2.03 px |
+| Contrast vs local bg | 6.51:1 |
+| Stroke (median/mean) | 2.0 / 1.98 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| OCR repairs (audited) | split run-together: 'LEANMUSCLEGROWTH' -> 'LEAN MUSCLE GROWTH' |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1867 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 36 px |
-| Gap to next | -32 px |
+| Match IoU | 0.166 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | True  |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 29 px |
+| Gap to next | -22 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 17px track -0.18px — IoU 0.1732
-- `Actor-Regular.ttf` 16px track 0.5px — IoU 0.1271
+- `Actor-Regular.ttf` 16px track 0.04px — IoU 0.1215
+- `Actor-Regular.ttf` 15px track 0.67px — IoU 0.1116
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "+MUSCLESTRENOTH"  (OCR confidence 0.9452)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=788, y=456, w=169, h=44 |
-| Normalised | x=72.96%, y=42.22%, w=15.65%, h=4.07% |
+| Bounding box (px) | x=781, y=461, w=174, h=36 |
+| Normalised | x=72.31%, y=42.69%, w=16.11%, h=3.33% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
@@ -226,34 +233,36 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 19 px |
-| Letter-spacing | -0.41 px (-0.0216 em) |
+| Letter-spacing | -0.06 px (-0.0032 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#a8acaf` |
+| Colour | `#a9adb1` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 6.52:1 |
-| Stroke (median/mean) | 2.0 / 2.02 px |
+| Contrast vs local bg | 6.34:1 |
+| Stroke (median/mean) | 2.0 / 2.07 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1937 |
+| Match IoU | 0.1894 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -32 px |
-| Gap to next | -42 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -22 px |
+| Gap to next | -34 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 18px track 0.24px — IoU 0.1722
-- `Actor-Regular.ttf` 17px track 0.9px — IoU 0.1576
+- `Actor-Regular.ttf` 20px track -0.71px — IoU 0.1796
+- `Actor-Regular.ttf` 18px track 0.6px — IoU 0.1665
 
-### `text-7` — fine-print
+### `text-7` — supporting
 
 **Text:** "MEN"  (OCR confidence 0.7989)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=593, y=458, w=101, h=51 |
-| Normalised | x=54.91%, y=42.41%, w=9.35%, h=4.72% |
+| Bounding box (px) | x=593, y=463, w=99, h=41 |
+| Normalised | x=54.91%, y=42.87%, w=9.17%, h=3.8% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
@@ -261,69 +270,73 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 47 px |
-| Letter-spacing | 0.86 px (0.0183 em) |
+| Letter-spacing | -0.14 px (-0.003 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#0e0c04` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.97:1 |
-| Stroke (median/mean) | 6.0 / 8.59 px |
+| Colour | `#dcac1f` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.74:1 |
+| Stroke (median/mean) | 3.5 / 5.33 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.3016 |
+| Match IoU | 0.2196 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7989) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -42 px |
-| Gap to next | -33 px |
+| Gap to previous | -34 px |
+| Gap to next | -23 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 48px track -0.2px — IoU 0.299
-- `Actor-Regular.ttf` 49px track -1.25px — IoU 0.2959
+- `Actor-Regular.ttf` 48px track -1.2px — IoU 0.2062
+- `Actor-Regular.ttf` 46px track 0.93px — IoU 0.2056
 
-### `text-8` — detail
+### `text-8` — body
 
 **Text:** "RECOVERY"  (OCR confidence 0.9918)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=788, y=476, w=94, h=24 |
-| Normalised | x=72.96%, y=44.07%, w=8.7%, h=2.22% |
+| Bounding box (px) | x=782, y=481, w=94, h=27 |
+| Normalised | x=72.41%, y=44.54%, w=8.7%, h=2.5% |
 | Alignment | right |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 19 px |
-| Letter-spacing | 0.42 px (0.0221 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 21 px |
+| Letter-spacing | -0.95 px (-0.0452 em) |
+| Line-height | 37.0 px (ratio 1.762) |
+| Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#aeb2b5` |
+| Colour | `#adb2b5` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.85:1 |
-| Stroke (median/mean) | 2.0 / 2.3 px |
+| Contrast vs local bg | 6.25:1 |
+| Stroke (median/mean) | 2.0 / 2.33 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1721 |
+| Match IoU | 0.1803 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -33 px |
-| Gap to next | 17 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -23 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 21px track -0.95px — IoU 0.1717
-- `Actor-Regular.ttf` 20px track -0.27px — IoU 0.165
+- `Actor-Regular.ttf` 20px track -0.27px — IoU 0.1686
+- `Actor-Regular.ttf` 19px track 0.42px — IoU 0.1674
 
-### `text-9` — detail
+### `text-9` — body
 
 **Text:** "Shop Now"  (OCR confidence 0.9997)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=107, y=517, w=131, h=29 |
-| Normalised | x=9.91%, y=47.87%, w=12.13%, h=2.69% |
+| Bounding box (px) | x=107, y=518, w=131, h=28 |
+| Normalised | x=9.91%, y=47.96%, w=12.13%, h=2.59% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
@@ -332,103 +345,109 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 30 px |
 | Letter-spacing | -0.27 px (-0.009 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 37.0 px (ratio 1.233) |
+| Line | 2 of 2 |
 | Transform | none |
 | Colour | `#fbb538` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 11.25:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.6863 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.746 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 17 px |
-| Gap to next | -23 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 10 px |
+| Gap to next | -28 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 29px track 0.37px — IoU 0.5942
-- `Actor-Regular.ttf` 31px track -0.9px — IoU 0.5448
+- `Actor-Regular.ttf` 29px track 0.37px — IoU 0.62
+- `Actor-Regular.ttf` 31px track -0.9px — IoU 0.591
 
-### `text-10` — supporting
+### `text-10` — headline
 
 **Text:** "NPL"  (OCR confidence 0.7891)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=695, y=523, w=107, h=70 |
-| Normalised | x=64.35%, y=48.43%, w=9.91%, h=6.48% |
+| Bounding box (px) | x=695, y=518, w=169, h=72 |
+| Normalised | x=64.35%, y=47.96%, w=15.65%, h=6.67% |
 | Alignment | right |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 63 px |
-| Letter-spacing | -0.96 px (-0.0152 em) |
+| Font size | 98 px |
+| Letter-spacing | -0.23 px (-0.0023 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#e0ae2c` |
+| Colour | `#e0ad1e` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 6.19:1 |
+| Contrast vs local bg | 5.97:1 |
 | Stroke (median/mean) | 4.0 / 4.42 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1955 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.2142 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.7891) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -23 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -28 px |
 | Gap to next | -60 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 62px track -0.1px — IoU 0.181
-- `Actor-Regular.ttf` 61px track 0.77px — IoU 0.1762
+- `Actor-Regular.ttf` 99px track -1.09px — IoU 0.2054
+- `Actor-Regular.ttf` 97px track 0.64px — IoU 0.1968
 
-### `text-11` — detail
+### `text-11` — fine-print
 
-**Text:** "THIRDPARTY"  (OCR confidence 0.996)
+**Text:** "THIRD PARTY"  (OCR confidence 0.996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=881, y=533, w=57, h=17 |
-| Normalised | x=81.57%, y=49.35%, w=5.28%, h=1.57% |
+| Bounding box (px) | x=881, y=530, w=66, h=15 |
+| Normalised | x=81.57%, y=49.07%, w=6.11%, h=1.39% |
 | Alignment | right |
 | z-order | 110 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 10 px |
-| Letter-spacing | 0.1 px (0.01 em) |
+| Font size | 12 px |
+| Letter-spacing | -0.41 px (-0.0342 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#303c38` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.6:1 |
-| Stroke (median/mean) | 1.0 / 1.28 px |
+| Colour | `#a5abaf` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.59:1 |
+| Stroke (median/mean) | 1.0 / 1.33 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| OCR repairs (audited) | split run-together: 'THIRDPARTY' -> 'THIRD PARTY' |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1495 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2044 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | -60 px |
-| Gap to next | -14 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 11px track -0.52px — IoU 0.1299
-- `Actor-Regular.ttf` 9px track 0.72px — IoU 0.0921
+- `Actor-Regular.ttf` 11px track 0.18px — IoU 0.1751
+- `Actor-Regular.ttf` 10px track 0.76px — IoU 0.1095
 
-### `text-12` — detail
+### `text-12` — fine-print
 
 **Text:** "senies"  (OCR confidence 0.9053)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=608, y=536, w=52, h=28 |
-| Normalised | x=56.3%, y=49.63%, w=4.81%, h=2.59% |
+| Bounding box (px) | x=605, y=541, w=55, h=21 |
+| Normalised | x=56.02%, y=50.09%, w=5.09%, h=1.94% |
 | Alignment | right |
 | z-order | 111 |
 | Rotation | 0° |
@@ -436,69 +455,72 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 20 px |
-| Letter-spacing | -0.07 px (-0.0035 em) |
+| Letter-spacing | 0.53 px (0.0265 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#121314` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.21:1 |
-| Stroke (median/mean) | 5.0 / 5.04 px |
+| Colour | `#b3b4b9` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.98:1 |
+| Stroke (median/mean) | 5.0 / 5.08 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.2153 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.1402 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.9053) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -14 px |
-| Gap to next | -28 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -4 px |
+| Gap to next | -21 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 21px track -0.59px — IoU 0.2079
-- `Actor-Regular.ttf` 19px track 0.46px — IoU 0.1978
+- `Actor-Regular.ttf` 21px track 0.01px — IoU 0.1245
+- `Actor-Regular.ttf` 22px track -0.51px — IoU 0.1173
 
-### `text-13` — detail
+### `text-13` — fine-print
 
 **Text:** "LABTESTED"  (OCR confidence 0.9941)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=881, y=536, w=57, h=17 |
-| Normalised | x=81.57%, y=49.63%, w=5.28%, h=1.57% |
+| Bounding box (px) | x=880, y=541, w=67, h=13 |
+| Normalised | x=81.48%, y=50.09%, w=6.2%, h=1.2% |
 | Alignment | right |
 | z-order | 112 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 12 px |
-| Letter-spacing | -0.59 px (-0.0492 em) |
+| Font size | 13 px |
+| Letter-spacing | 0.02 px (0.0015 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#303c39` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.61:1 |
-| Stroke (median/mean) | 1.0 / 1.38 px |
+| Colour | `#afb5b8` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.6:1 |
+| Stroke (median/mean) | 1.0 / 1.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1752 |
+| Match IoU | 0.1773 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -28 px |
-| Gap to next | -15 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -21 px |
+| Gap to next | -9 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 11px track 0.05px — IoU 0.1461
-- `Actor-Regular.ttf` 10px track 0.7px — IoU 0.0649
+- `Actor-Regular.ttf` 12px track 0.66px — IoU 0.1763
+- `Actor-Regular.ttf` 14px track -0.63px — IoU 0.0936
 
-### `text-14` — detail
+### `text-14` — fine-print
 
 **Text:** "★"  (OCR confidence 0.9736)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=657, y=538, w=14, h=14 |
-| Normalised | x=60.83%, y=49.81%, w=1.3%, h=1.3% |
+| Bounding box (px) | x=650, y=545, w=20, h=11 |
+| Normalised | x=60.19%, y=50.46%, w=1.85%, h=1.02% |
 | Alignment | right |
 | z-order | 113 |
 | Rotation | 0° |
@@ -510,87 +532,92 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#0c0c0b` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.03:1 |
-| Stroke (median/mean) | 4.0 / 4.67 px |
+| Colour | `#b9bcc2` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 6.58:1 |
+| Stroke (median/mean) | 2.0 / 3.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
 | Match IoU | — |
 | **Geometry fit confidence** | **unresolved** |
 | OCR text reliable | True  |
 | Fit interpretation | no viable candidate could be rendered |
-| Gap to previous | -15 px |
-| Gap to next | 59 px |
+| Gap to previous | -9 px |
+| Gap to next | 54 px |
 
-### `text-15` — detail
+### `text-15` — supporting
 
 **Text:** "100"  (OCR confidence 0.9968)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=615, y=611, w=43, h=16 |
-| Normalised | x=56.94%, y=56.57%, w=3.98%, h=1.48% |
+| Bounding box (px) | x=605, y=610, w=66, h=24 |
+| Normalised | x=56.02%, y=56.48%, w=6.11%, h=2.22% |
 | Alignment | right |
 | z-order | 114 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 28 px |
-| Letter-spacing | -0.02 px (-0.0007 em) |
+| Font size | 43 px |
+| Letter-spacing | -0.06 px (-0.0014 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#0c1013` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.04:1 |
+| Colour | `#cacfd7` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 8.66:1 |
 | Stroke (median/mean) | 4.0 / 4.92 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1609 |
+| Match IoU | 0.1353 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 59 px |
-| Gap to next | -14 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 54 px |
+| Gap to next | -16 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 29px track -0.8px — IoU 0.1578
-- `Actor-Regular.ttf` 27px track 0.73px — IoU 0.1376
+- `Actor-Regular.ttf` 44px track -0.84px — IoU 0.1304
+- `Actor-Regular.ttf` 42px track 0.7px — IoU 0.1222
 
-### `text-17` — detail
+### `text-17` — fine-print
 
 **Text:** "SERVINGS"  (OCR confidence 0.9801)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=615, y=613, w=43, h=14 |
-| Normalised | x=56.94%, y=56.76%, w=3.98%, h=1.3% |
+| Bounding box (px) | x=602, y=618, w=69, h=25 |
+| Normalised | x=55.74%, y=57.22%, w=6.39%, h=2.31% |
 | Alignment | right |
 | z-order | 116 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 11 px |
-| Letter-spacing | -0.82 px (-0.0745 em) |
+| Font size | 17 px |
+| Letter-spacing | -0.91 px (-0.0535 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#0d1014` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.02:1 |
-| Stroke (median/mean) | 4.0 / 4.75 px |
+| Colour | `#888b8d` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 5.92:1 |
+| Stroke (median/mean) | 4.0 / 4.9 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.2213 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2096 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -14 px |
-| Gap to next | -4 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -16 px |
+| Gap to next | -21 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 10px track -0.19px — IoU 0.1661
-- `Actor-Regular.ttf` 9px track 0.44px — IoU 0.1472
+- `Actor-Regular.ttf` 15px track 0.36px — IoU 0.147
+- `Actor-Regular.ttf` 16px track -0.28px — IoU 0.1227
 
 ### `text-16` — subheadline
 
@@ -598,43 +625,45 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=701, y=623, w=176, h=61 |
-| Normalised | x=64.91%, y=57.69%, w=16.3%, h=5.65% |
+| Bounding box (px) | x=701, y=622, w=177, h=57 |
+| Normalised | x=64.91%, y=57.59%, w=16.39%, h=5.28% |
 | Alignment | right |
 | z-order | 115 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 77 px |
-| Letter-spacing | -0.45 px (-0.0058 em) |
+| Font size | 76 px |
+| Letter-spacing | 0.66 px (0.0087 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#d5dce6` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 10.36:1 |
-| Stroke (median/mean) | 8.0 / 10.26 px |
+| Contrast vs local bg | 10.42:1 |
+| Stroke (median/mean) | 11.0 / 11.23 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.2287 |
+| Match IoU | 0.2358 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -4 px |
-| Gap to next | -30 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -21 px |
+| Gap to next | -20 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 76px track 0.32px — IoU 0.2238
-- `Actor-Regular.ttf` 75px track 1.09px — IoU 0.2179
+- `Actor-Regular.ttf` 77px track -0.11px — IoU 0.2282
+- `Actor-Regular.ttf` 78px track -0.88px — IoU 0.2271
 
-### `text-18` — detail
+### `text-18` — body
 
 **Text:** "MICRONISED"  (OCR confidence 0.9876)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=708, y=654, w=156, h=38 |
-| Normalised | x=65.56%, y=60.56%, w=14.44%, h=3.52% |
+| Bounding box (px) | x=708, y=659, w=158, h=43 |
+| Normalised | x=65.56%, y=61.02%, w=14.63%, h=3.98% |
 | Alignment | right |
 | z-order | 117 |
 | Rotation | 0° |
@@ -642,209 +671,221 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 28 px |
-| Letter-spacing | -0.77 px (-0.0275 em) |
+| Letter-spacing | -0.55 px (-0.0196 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#d4d7e1` |
+| Colour | `#d6c4cb` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.38:1 |
-| Stroke (median/mean) | 4.5 / 7.77 px |
+| Contrast vs local bg | 3.25:1 |
+| Stroke (median/mean) | 4.0 / 6.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.2047 |
+| Match IoU | 0.2007 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -30 px |
-| Gap to next | -24 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -20 px |
+| Gap to next | -29 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 27px track -0.12px — IoU 0.1898
-- `Actor-Regular.ttf` 26px track 0.52px — IoU 0.1752
+- `Actor-Regular.ttf` 27px track 0.1px — IoU 0.181
+- `Actor-Regular.ttf` 26px track 0.74px — IoU 0.161
 
-### `text-19` — detail
+### `text-19` — subheadline
 
 **Text:** "CREATINE"  (OCR confidence 0.9947)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=682, y=668, w=254, h=88 |
-| Normalised | x=63.15%, y=61.85%, w=23.52%, h=8.15% |
+| Bounding box (px) | x=618, y=673, w=344, h=78 |
+| Normalised | x=57.22%, y=62.31%, w=31.85%, h=7.22% |
 | Alignment | right |
 | z-order | 118 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 57 px |
-| Letter-spacing | 0.3 px (0.0053 em) |
+| Font size | 79 px |
+| Letter-spacing | -0.74 px (-0.0094 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#dcac12` |
+| Colour | `#ddac10` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.09:1 |
-| Stroke (median/mean) | 4.0 / 4.13 px |
+| Contrast vs local bg | 5.26:1 |
+| Stroke (median/mean) | 4.0 / 4.07 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.21 |
+| Match IoU | 0.2491 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -24 px |
-| Gap to next | -45 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -29 px |
+| Gap to next | -42 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 58px track -0.34px — IoU 0.2097
-- `Actor-Regular.ttf` 56px track 0.93px — IoU 0.2058
+- `Actor-Regular.ttf` 78px track -0.1px — IoU 0.2436
+- `Actor-Regular.ttf` 77px track 0.53px — IoU 0.2347
 
-### `text-20` — fine-print
+### `text-20` — supporting
 
-**Text:** "MONOHYDRATE"  (OCR confidence 0.9947)
+**Text:** "MONO HYDRATE"  (OCR confidence 0.9947)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=606, y=711, w=330, h=75 |
-| Normalised | x=56.11%, y=65.83%, w=30.56%, h=6.94% |
+| Bounding box (px) | x=603, y=709, w=359, h=84 |
+| Normalised | x=55.83%, y=65.65%, w=33.24%, h=7.78% |
 | Alignment | right |
 | z-order | 119 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 46 px |
-| Letter-spacing | -0.65 px (-0.0141 em) |
+| Font size | 49 px |
+| Letter-spacing | -0.97 px (-0.0198 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#deae18` |
+| Colour | `#ddae18` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 5.07:1 |
+| Contrast vs local bg | 5.52:1 |
 | Stroke (median/mean) | 3.0 / 3.87 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| OCR repairs (audited) | split run-together: 'MONOHYDRATE' -> 'MONO HYDRATE' |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.2147 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2104 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -45 px |
-| Gap to next | -32 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -42 px |
+| Gap to next | -47 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 45px track 0.08px — IoU 0.2098
-- `Actor-Regular.ttf` 44px track 0.81px — IoU 0.2026
+- `Actor-Regular.ttf` 47px track 0.4px — IoU 0.2086
+- `Actor-Regular.ttf` 48px track -0.29px — IoU 0.2073
 
-### `text-21` — detail
+### `text-21` — body
 
 **Text:** "POWDER"  (OCR confidence 0.9955)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=868, y=754, w=68, h=17 |
-| Normalised | x=80.37%, y=69.81%, w=6.3%, h=1.57% |
+| Bounding box (px) | x=858, y=746, w=98, h=25 |
+| Normalised | x=79.44%, y=69.07%, w=9.07%, h=2.31% |
 | Alignment | right |
 | z-order | 120 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 18 px |
-| Letter-spacing | -1.18 px (-0.0656 em) |
+| Font size | 25 px |
+| Letter-spacing | -0.92 px (-0.0368 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#0a0c0d` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.13:1 |
+| Colour | `#bcb6b7` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 7.45:1 |
 | Stroke (median/mean) | 3.0 / 3.35 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.2703 |
+| Match IoU | 0.195 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -32 px |
-| Gap to next | 59 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -47 px |
+| Gap to next | 61 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 17px track -0.36px — IoU 0.2486
-- `Actor-Regular.ttf` 16px track 0.47px — IoU 0.1708
+- `Actor-Regular.ttf` 24px track -0.09px — IoU 0.1842
+- `Actor-Regular.ttf` 23px track 0.72px — IoU 0.1734
 
-### `text-22` — detail
+### `text-22` — fine-print
 
 **Text:** "RECOVERY"  (OCR confidence 0.9926)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=827, y=830, w=71, h=24 |
-| Normalised | x=76.57%, y=76.85%, w=6.57%, h=2.22% |
+| Bounding box (px) | x=826, y=832, w=83, h=29 |
+| Normalised | x=76.48%, y=77.04%, w=7.69%, h=2.69% |
 | Alignment | right |
 | z-order | 121 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 16 px |
-| Letter-spacing | -0.82 px (-0.0512 em) |
+| Font size | 18 px |
+| Letter-spacing | -0.47 px (-0.0261 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#b0a99e` |
+| Colour | `#b59d82` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.12:1 |
-| Stroke (median/mean) | 1.0 / 1.67 px |
+| Contrast vs local bg | 7.72:1 |
+| Stroke (median/mean) | 1.0 / 1.69 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.148 |
+| Match IoU | 0.1695 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 59 px |
-| Gap to next | -17 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 61 px |
+| Gap to next | -19 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 15px track -0.13px — IoU 0.1395
-- `Actor-Regular.ttf` 14px track 0.56px — IoU 0.1284
+- `Actor-Regular.ttf` 17px track 0.21px — IoU 0.161
+- `Actor-Regular.ttf` 16px track 0.9px — IoU 0.1163
 
-### `text-23` — detail
+### `text-23` — fine-print
 
-**Text:** "MUSCLEGROWTH"  (OCR confidence 0.9867)
+**Text:** "MUSCLE GROWTH"  (OCR confidence 0.9867)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=673, y=837, w=137, h=50 |
-| Normalised | x=62.31%, y=77.5%, w=12.69%, h=4.63% |
+| Bounding box (px) | x=672, y=842, w=139, h=40 |
+| Normalised | x=62.22%, y=77.96%, w=12.87%, h=3.7% |
 | Alignment | right |
 | z-order | 122 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 17 px |
-| Letter-spacing | 0.12 px (0.0071 em) |
+| Font size | 18 px |
+| Letter-spacing | -0.73 px (-0.0406 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#d5ac5b` |
+| Colour | `#d3b179` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 5.51:1 |
-| Stroke (median/mean) | 2.0 / 3.08 px |
+| Contrast vs local bg | 5.63:1 |
+| Stroke (median/mean) | 2.0 / 3.05 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'MUSCLEGROWTH' -> 'MUSCLE GROWTH' |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1732 |
+| Match IoU | 0.17 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -17 px |
-| Gap to next | -2 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -19 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 18px track -0.61px — IoU 0.1725
-- `Actor-Regular.ttf` 16px track 0.84px — IoU 0.1279
+- `Actor-Regular.ttf` 17px track -0.05px — IoU 0.1617
+- `Actor-Regular.ttf` 16px track 0.63px — IoU 0.1204
 
-### `text-24` — detail
+### `text-24` — fine-print
 
 **Text:** "500g"  (OCR confidence 0.9974)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=894, y=885, w=47, h=32 |
-| Normalised | x=82.78%, y=81.94%, w=4.35%, h=2.96% |
+| Bounding box (px) | x=894, y=889, w=47, h=20 |
+| Normalised | x=82.78%, y=82.31%, w=4.35%, h=1.85% |
 | Alignment | right |
 | z-order | 123 |
 | Rotation | 0° |
@@ -856,30 +897,31 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#9d9d9c` |
+| Colour | `#9e9d9c` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.59:1 |
+| Contrast vs local bg | 7.83:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.1964 |
+| Match IoU | 0.2238 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -2 px |
-| Gap to next | -13 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 7 px |
+| Gap to next | 2 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 21px track -0.01px — IoU 0.1825
-- `Actor-Regular.ttf` 20px track 0.74px — IoU 0.1705
+- `Actor-Regular.ttf` 21px track -0.01px — IoU 0.1745
+- `Actor-Regular.ttf` 20px track 0.74px — IoU 0.1496
 
-### `text-25` — detail
+### `text-25` — fine-print
 
 **Text:** "UNFLAVOUF"  (OCR confidence 0.9024)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=892, y=904, w=47, h=15 |
-| Normalised | x=82.59%, y=83.7%, w=4.35%, h=1.39% |
+| Bounding box (px) | x=892, y=911, w=47, h=8 |
+| Normalised | x=82.59%, y=84.35%, w=4.35%, h=0.74% |
 | Alignment | right |
 | z-order | 124 |
 | Rotation | 0° |
@@ -891,69 +933,74 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#9d9d9b` |
+| Colour | `#383835` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 6.88:1 |
+| Contrast vs local bg | 2.79:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.125 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.0894 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.9024) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -13 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 2 px |
 | Gap to next | 7 px |
 
-### `text-26` — detail
+### `text-26` — fine-print
 
-**Text:** "BestSell"  (OCR confidence 0.959)
+**Text:** "Best Sell"  (OCR confidence 0.959)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=868, y=926, w=77, h=24 |
-| Normalised | x=80.37%, y=85.74%, w=7.13%, h=2.22% |
+| Bounding box (px) | x=868, y=926, w=77, h=19 |
+| Normalised | x=80.37%, y=85.74%, w=7.13%, h=1.76% |
 | Alignment | right |
 | z-order | 125 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 24 px |
-| Letter-spacing | -0.46 px (-0.0192 em) |
+| Font size | 23 px |
+| Letter-spacing | -0.64 px (-0.0278 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#886915` |
+| Colour | `#876914` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.09:1 |
+| Contrast vs local bg | 3.83:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| OCR repairs (audited) | split camelCase: 'BestSell' -> 'Best Sell' |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.2247 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2313 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | 7 px |
-| Gap to next | 36 px |
+| Gap to next | 41 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 23px track 0.02px — IoU 0.2227
-- `Actor-Regular.ttf` 22px track 0.5px — IoU 0.1655
+- `Actor-Regular.ttf` 22px track -0.19px — IoU 0.1966
+- `Actor-Regular.ttf` 21px track 0.25px — IoU 0.1893
 
-### `text-27` — detail
+### `text-27` — body
 
 **Text:** "www.wheyprotein.com"  (OCR confidence 0.9978)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=78, y=986, w=292, h=29 |
-| Normalised | x=7.22%, y=91.3%, w=27.04%, h=2.69% |
+| Bounding box (px) | x=77, y=986, w=293, h=29 |
+| Normalised | x=7.13%, y=91.3%, w=27.13%, h=2.69% |
 | Alignment | left |
 | z-order | 126 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 29 px |
-| Letter-spacing | 0.24 px (0.0083 em) |
+| Font size | 30 px |
+| Letter-spacing | -0.26 px (-0.0087 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -961,17 +1008,18 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 15.93:1 |
 | Stroke (median/mean) | 2.0 / 2.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor |
-| Match IoU | 0.6358 |
+| Match IoU | 0.6257 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — single long token with no spaces |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 36 px |
+| Gap to previous | 41 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 28px track 0.79px — IoU 0.5835
-- `Actor-Regular.ttf` 30px track -0.32px — IoU 0.4656
+- `Actor-Regular.ttf` 29px track 0.29px — IoU 0.5778
+- `Actor-Regular.ttf` 31px track -0.81px — IoU 0.4591
 
 ## 4. Colours (semantic)
 
@@ -979,11 +1027,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#060606` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#faba42` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#dcac12` | glyph ink of 'CREATINE' | glyph ink median |
+| textPrimary | `#ddae18` | glyph ink of 'MONO HYDRATE' | glyph ink median |
 | textSecondary | `#ffffff` | glyph ink of 'PROTEIN' | glyph ink median |
 | accent | `#faba42` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#3a3629` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -1007,7 +1055,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | False |
-| Text coverage | 0.1527 |
+| Text coverage | 0.1653 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -1034,70 +1082,70 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | LOGO |
+| `supporting` | text | LOGO |
 | `subheadline` | text | WHEY |
 | `headline` | text | PROTEIN |
-| `detail` | text | Fuel Every Rep |
-| `detail` | text | +LEANMUSCLEGROWTH |
-| `detail` | text | +MUSCLESTRENOTH |
-| `fine-print` | text | MEN |
-| `detail` | text | RECOVERY |
-| `detail` | text | Shop Now |
-| `supporting` | text | NPL |
-| `detail` | text | THIRDPARTY |
-| `detail` | text | senies |
-| `detail` | text | LABTESTED |
-| `detail` | text | ★ |
-| `detail` | text | 100 |
-| `detail` | text | SERVINGS |
+| `body` | text | Fuel Every Rep |
+| `fine-print` | text | +LEAN MUSCLE GROWTH |
+| `fine-print` | text | +MUSCLESTRENOTH |
+| `supporting` | text | MEN |
+| `body_line1` | text | RECOVERY |
+| `body_line2` | text | Shop Now |
+| `headline` | text | NPL |
+| `fine-print` | text | THIRD PARTY |
+| `fine-print` | text | senies |
+| `fine-print` | text | LABTESTED |
+| `fine-print` | text | ★ |
+| `supporting` | text | 100 |
+| `fine-print` | text | SERVINGS |
 | `subheadline` | text | 100% |
-| `detail` | text | MICRONISED |
-| `detail` | text | CREATINE |
-| `fine-print` | text | MONOHYDRATE |
-| `detail` | text | POWDER |
-| `detail` | text | RECOVERY |
-| `detail` | text | MUSCLEGROWTH |
-| `detail` | text | 500g |
-| `detail` | text | UNFLAVOUF |
-| `detail` | text | BestSell |
-| `detail` | text | www.wheyprotein.com |
+| `body` | text | MICRONISED |
+| `subheadline` | text | CREATINE |
+| `supporting` | text | MONO HYDRATE |
+| `body` | text | POWDER |
+| `fine-print` | text | RECOVERY |
+| `fine-print` | text | MUSCLE GROWTH |
+| `fine-print` | text | 500g |
+| `fine-print` | text | UNFLAVOUF |
+| `fine-print` | text | Best Sell |
+| `body` | text | www.wheyprotein.com |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #060606 |
 | `surface` | colour | #faba42 |
-| `textPrimary` | colour | #dcac12 |
+| `textPrimary` | colour | #ddae18 |
 | `textSecondary` | colour | #ffffff |
 | `accent` | colour | #faba42 |
 | `accentSecondary` | colour | #3a3629 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Actor |
-| `show_detail` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 51.9 |
 | `imageFocalY` | number | 59.0 |
 

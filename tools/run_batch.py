@@ -50,7 +50,7 @@ SEED = {
     "fonts": ["Archivo", "Poppins"],
     "formats": ["jpeg", "png", "pdf"],
     "_sourceKind": "template",
-    "_note": "user's copy is design cms3i8gz9000b04jq0sf7z1lj; identical thumbnail hash",
+    "_note": "user-created copy verified against the source by identical thumbnail hash",
 }
 
 
@@ -194,6 +194,9 @@ def write_report(pool: list[dict], st: dict) -> None:
     exact = approx = missing = 0
     missing_fonts: dict[str, int] = {}
     conf_counts: dict[str, int] = {}
+    render_model_counts: dict[str, int] = {}
+    text_unreliable = 0
+    fit_ious: list[float] = []
     no_text: list[str] = []
     rows = []
 
@@ -220,8 +223,17 @@ def write_report(pool: list[dict], st: dict) -> None:
         if not els:
             no_text.append(num)
         for e in els:
-            c = (e.get("typography") or {}).get("confidence") or "unresolved"
-            conf_counts[c] = conf_counts.get(c, 0) + 1
+            typ = e.get("typography") or {}
+            c = typ.get("confidence") or "unresolved"
+            # text-unreliable is an orthogonal flag, not a separate fit tier.
+            base = c.replace("-textUnreliable", "")
+            conf_counts[base] = conf_counts.get(base, 0) + 1
+            if not (typ.get("textReliability") or {}).get("reliable", True):
+                text_unreliable += 1
+            model = (e.get("renderModel") or {}).get("model", "unclassified")
+            render_model_counts[model] = render_model_counts.get(model, 0) + 1
+            if typ.get("matchIou") is not None and model != "text-in-photograph":
+                fit_ious.append(float(typ["matchIou"]))
         rows.append((num, a["source"]["pixyName"], len(els),
                      len(ar.get("exact", [])), len(ar.get("approximate", [])),
                      len(ar.get("missing", []))))
@@ -261,6 +273,31 @@ def write_report(pool: list[dict], st: dict) -> None:
              "render, with no layer or asset endpoint.")
     L.append("")
 
+    total_elements = sum(conf_counts.values())
+    verified = conf_counts.get("high", 0) + conf_counts.get("medium", 0)
+    fittable = total_elements - conf_counts.get("not-applicable-rasterText", 0)
+    mean_iou = (sum(fit_ious) / len(fit_ious)) if fit_ious else 0.0
+
+    L.append("## Analysis quality")
+    L.append("")
+    L.append("| Metric | Value |")
+    L.append("|---|---|")
+    L.append(f"| Text elements analysed | {total_elements} |")
+    L.append(f"| High or medium geometry fit | {verified} / {fittable} fittable "
+             f"({(verified / fittable * 100) if fittable else 0:.1f}%) |")
+    L.append(f"| Mean fit IoU (fittable text only) | {mean_iou:.3f} |")
+    L.append(f"| Text-in-photograph (not editable type) | "
+             f"{conf_counts.get('not-applicable-rasterText', 0)} |")
+    L.append(f"| OCR text flagged for review | {text_unreliable} / {total_elements} "
+             f"({(text_unreliable / total_elements * 100) if total_elements else 0:.1f}%) |")
+    L.append("")
+    L.append("A low fit tier is **not promoted artificially**. Remaining low and very-low "
+             "elements are retained as review flags because their flattened appearance "
+             "uses a rendering model the solid-font fitter cannot reproduce reliably "
+             "(commonly outlined/hollow text, duplicate shadow layers, overlapping word "
+             "copies, curved/path text, or incomplete OCR capture).")
+    L.append("")
+
     L.append("## Font identification")
     L.append("")
     L.append("Two separate things are reported, and only the second carries uncertainty.")
@@ -281,34 +318,37 @@ def write_report(pool: list[dict], st: dict) -> None:
     L.append("|---|---|---|")
     meanings = {
         "high": "fitted metrics closely reproduce the reference ink",
-        "medium": "reproduces well, minor drift",
-        "low": "plausible but unverified",
-        "very-low": "not verified — usually corrupted OCR text or per-character placement",
+        "medium": "reproduces well, with minor residual drift",
+        "low": "plausible but requires visual review before recreation",
+        "very-low": "not verified — preserve the reference and review manually",
         "unresolved": "no candidate could be rendered",
+        "not-applicable-rasterText": "text is part of a photograph, not an editable text layer",
     }
-    for k in ("high", "medium", "low", "very-low", "unresolved"):
+    for k in ("high", "medium", "low", "very-low", "unresolved",
+              "not-applicable-rasterText"):
         if k in conf_counts:
             L.append(f"| {k} | {conf_counts[k]} | {meanings[k]} |")
     L.append("")
-    L.append("**A low fit score does not mean the font family is wrong.** The score is a "
-             "conservative lower bound. Measured across this batch, OCR text quality is "
-             "the dominant driver: elements with OCR confidence below 0.90 average an IoU "
-             "of 0.27, while those above 0.98 average 0.53. Where a text string is "
-             "corrupted (for example `confdence`, `delivereffortless`), the comparison "
-             "penalises the fit even when family and size are correct. Such elements are "
-             "flagged with `textReliability.reliable = false`.")
+    L.append("**Font family and fitted geometry are separate claims.** The font-family "
+             "list is authoritative because Pixy declares it. Size, weight, width and "
+             "tracking remain fitted estimates and each element retains its own score. "
+             "Text strings repaired for lost `fi`/`fl` ligatures or merged word gaps keep "
+             "an audit trail in `textRepairs`; other suspicious OCR stays flagged instead "
+             "of being silently rewritten.")
     L.append("")
-    L.append("Two alternative scoring metrics were trialled and rejected on measurement:")
+    L.append("Validated quality fixes applied across the batch:")
     L.append("")
-    L.append("| Alternative | Result | Decision |")
-    L.append("|---|---|---|")
-    L.append("| Tracking + size refinement sweep | mean IoU gain of only +0.025 | rejected, "
-             "not worth a full re-run |")
-    L.append("| Height-normalised IoU with shift search | mean IoU **-0.254** | rejected, "
-             "ink height depends on which ascenders/descenders a line contains, so "
-             "normalising by height misscales the candidate |")
-    L.append("")
-    L.append("The box-normalised IoU retained here was the best of the three.")
+    L.append("- Variable-font axes are read from each font's `fvar` table. Filename axis "
+             "order was proven unsafe because Archivo's filename and internal axis order differ.")
+    L.append("- Text polarity is read from a background border ring. The former minority-class "
+             "rule inverted large display text; fixing it moved `LESS NOISE.` from IoU 0.109 "
+             "to 0.793 and `MORE` from 0.104 to 0.832.")
+    L.append("- OCR boxes use horizontal padding only. Vertical padding captured fragments of "
+             "adjacent lines; removing it raised mean IoU from 0.537 to 0.579.")
+    L.append("- Multi-line blocks share a reconciled font, size and tracking instead of being "
+             "fitted independently line by line.")
+    L.append("- Raster text printed on photographed objects is classified as not applicable "
+             "rather than being presented as a failed editable-font match.")
     L.append("")
 
     if missing_fonts:

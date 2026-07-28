@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,44 +43,45 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=601, y=746, w=460, h=132 |
-| Normalised | x=55.65%, y=69.07%, w=42.59%, h=12.22% |
+| Bounding box (px) | x=602, y=746, w=458, h=132 |
+| Normalised | x=55.74%, y=69.07%, w=42.41%, h=12.22% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Lobster-Regular.ttf` |
 | Variation axes | None |
-| Font size | 175 px |
-| Letter-spacing | -0.64 px (-0.0037 em) |
+| Font size | 173 px |
+| Letter-spacing | 0.01 px (0.0001 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.46:1 |
-| Stroke (median/mean) | 26.0 / 26.47 px |
+| Stroke (median/mean) | 26.0 / 26.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Lobster |
-| Match IoU | 0.7778 |
+| Match IoU | 0.7835 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 63 px |
+| Gap to next | 62 px |
 
 Alternate font fits considered:
-- `Lobster-Regular.ttf` 174px track -0.11px — IoU 0.7762
-- `Lobster-Regular.ttf` 173px track 0.41px — IoU 0.7735
-- `Raleway[wght].ttf` 130px track 0.09px — IoU 0.5496
+- `Lobster-Regular.ttf` 174px track -0.51px — IoU 0.7828
+- `Lobster-Regular.ttf` 172px track 0.54px — IoU 0.7701
+- `Raleway[wght].ttf` 130px track -0.31px — IoU 0.5478
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "SHOP NOW"  (OCR confidence 0.9923)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=592, y=941, w=434, h=58 |
-| Normalised | x=54.81%, y=87.13%, w=40.19%, h=5.37% |
+| Bounding box (px) | x=592, y=940, w=434, h=59 |
+| Normalised | x=54.81%, y=87.04%, w=40.19%, h=5.46% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.0:1 |
 | Stroke (median/mean) | 12.0 / 15.09 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Raleway, Lobster |
-| Match IoU | 0.6411 |
+| Match IoU | 0.6377 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 63 px |
+| Gap to previous | 62 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 79px track -0.66px — IoU 0.6375
-- `Raleway[wght].ttf` 78px track 0.13px — IoU 0.6296
-- `Raleway[wght].ttf` 78px track 0.09px — IoU 0.6267
+- `Raleway[wght].ttf` 79px track -0.66px — IoU 0.6337
+- `Raleway[wght].ttf` 78px track 0.13px — IoU 0.6275
+- `Raleway[wght].ttf` 78px track 0.09px — IoU 0.6254
 
 ## 4. Colours (semantic)
 
@@ -119,7 +121,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'SHOP NOW' | glyph ink median |
 | accent | `#4f392a` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#af896f` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -143,7 +145,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.0736 |
+| Text coverage | 0.0738 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -171,7 +173,7 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Tomizc |
-| `subheadline` | text | SHOP NOW |
+| `supporting` | text | SHOP NOW |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fdfdfd |
@@ -183,7 +185,7 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Raleway |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 55.7 |
 | `imageFocalY` | number | 52.3 |
 

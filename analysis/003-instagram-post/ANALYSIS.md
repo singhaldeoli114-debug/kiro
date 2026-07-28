@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=73, y=110, w=939, h=104 |
-| Normalised | x=6.76%, y=10.19%, w=86.94%, h=9.63% |
+| Bounding box (px) | x=73, y=109, w=939, h=100 |
+| Normalised | x=6.76%, y=10.09%, w=86.94%, h=9.26% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,20 +60,21 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.63:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.5674 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.5145 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
-| Gap to next | 132 px |
+| Gap to next | 137 px |
 
 Alternate font fits considered:
-- `BonaNova-Bold.ttf` 120px track 0.97px — IoU 0.5495
-- `BonaNova-Bold.ttf` 122px track -0.43px — IoU 0.5434
-- `BonaNova-Regular.ttf` 127px track -0.07px — IoU 0.3522
+- `BonaNova-Bold.ttf` 120px track 0.97px — IoU 0.5004
+- `BonaNova-Bold.ttf` 122px track -0.43px — IoU 0.4939
+- `PlusJakartaSans[wght].ttf` 129px track 0.62px — IoU 0.3317
 
-### `text-2` — subheadline
+### `text-2` — fine-print
 
 **Text:** "Timeless design for those who"  (OCR confidence 0.969)
 
@@ -89,99 +90,102 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 26 px |
 | Letter-spacing | -0.7 px (-0.0269 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 33.0 px (ratio 1.269) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#73572d` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.3:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.6001 |
+| Match IoU | 0.5994 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 132 px |
-| Gap to next | -2 px |
+| Gap to previous | 137 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 24px track 0.22px — IoU 0.5809
-- `PlusJakartaSans[wght].ttf` 25px track -0.19px — IoU 0.5533
-- `PlusJakartaSans[wght].ttf` 24px track 0.12px — IoU 0.5461
+- `PlusJakartaSans[wght].ttf` 25px track -0.19px — IoU 0.6524
+- `PlusJakartaSans[wght].ttf` 25px track -0.3px — IoU 0.5836
+- `PlusJakartaSans[wght].ttf` 25px track -0.08px — IoU 0.58
 
-### `text-3` — subheadline
+### `text-3` — fine-print
 
 **Text:** "let their presence speak"  (OCR confidence 0.9628)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=573, y=369, w=281, h=44 |
-| Normalised | x=53.06%, y=34.17%, w=26.02%, h=4.07% |
+| Bounding box (px) | x=574, y=379, w=280, h=24 |
+| Normalised | x=53.15%, y=35.09%, w=25.93%, h=2.22% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
-| Font size | 25 px |
-| Letter-spacing | -0.3 px (-0.012 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [500] |
+| Font size | 26 px |
+| Letter-spacing | -0.7 px (-0.0269 em) |
+| Line-height | 33.0 px (ratio 1.269) |
+| Line | 2 of 3 |
 | Transform | lowercase |
 | Colour | `#74582f` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.27:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.2659 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7131 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -2 px |
-| Gap to next | -2 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 8 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 24px track 0.29px — IoU 0.2608
-- `PlusJakartaSans[wght].ttf` 24px track 0.2px — IoU 0.2553
-- `PlusJakartaSans[wght].ttf` 25px track -0.5px — IoU 0.2552
+- `PlusJakartaSans[wght].ttf` 25px track -0.19px — IoU 0.6524
+- `PlusJakartaSans[wght].ttf` 25px track -0.3px — IoU 0.5836
+- `PlusJakartaSans[wght].ttf` 25px track -0.08px — IoU 0.58
 
-### `text-4` — subheadline
+### `text-4` — fine-print
 
 **Text:** "louder than their words."  (OCR confidence 0.9847)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=573, y=411, w=273, h=20 |
-| Normalised | x=53.06%, y=38.06%, w=25.28%, h=1.85% |
+| Bounding box (px) | x=574, y=412, w=272, h=19 |
+| Normalised | x=53.15%, y=38.15%, w=25.19%, h=1.76% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [400] |
-| Font size | 25 px |
-| Letter-spacing | -0.18 px (-0.0072 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [500] |
+| Font size | 26 px |
+| Letter-spacing | -0.7 px (-0.0269 em) |
+| Line-height | 33.0 px (ratio 1.269) |
+| Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#73572e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.29:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.651 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7745 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -2 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 9 px |
 | Gap to next | 83 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 25px track -0.37px — IoU 0.6076
-- `PlusJakartaSans[wght].ttf` 24px track 0.3px — IoU 0.5529
-- `PlusJakartaSans[wght].ttf` 24px track 0.12px — IoU 0.5522
+- `PlusJakartaSans[wght].ttf` 25px track -0.19px — IoU 0.6524
+- `PlusJakartaSans[wght].ttf` 25px track -0.3px — IoU 0.5836
+- `PlusJakartaSans[wght].ttf` 25px track -0.08px — IoU 0.58
 
-### `text-5` — subheadline
+### `text-5` — fine-print
 
 **Text:** "Crafted with premium materials and"  (OCR confidence 0.9676)
 
@@ -194,18 +198,19 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 25 px |
-| Letter-spacing | -0.43 px (-0.0172 em) |
+| Letter-spacing | -0.29 px (-0.0116 em) |
 | Line-height | 32.8 px (ratio 1.312) |
-| Line | 1 of 5 |
+| Line | 1 of 6 |
 | Transform | none |
 | Colour | `#73562d` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.33:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.7494 |
+| Match IoU | 0.7693 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -213,119 +218,124 @@ Alternate font fits considered:
 | Gap to next | 9 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5104
-- `PlusJakartaSans[wght].ttf` 25px track -0.29px — IoU 0.5005
-- `PlusJakartaSans[wght].ttf` 25px track -0.56px — IoU 0.4976
+- `PlusJakartaSans[wght].ttf` 25px track -0.43px — IoU 0.641
+- `PlusJakartaSans[wght].ttf` 24px track 0.23px — IoU 0.5942
+- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5891
 
-### `text-6` — subheadline
+### `text-6` — fine-print
 
 **Text:** "a refined aesthetic ,every piece is"  (OCR confidence 0.9642)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=567, y=547, w=389, h=24 |
-| Normalised | x=52.5%, y=50.65%, w=36.02%, h=2.22% |
+| Bounding box (px) | x=568, y=547, w=388, h=24 |
+| Normalised | x=52.59%, y=50.65%, w=35.93%, h=2.22% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 25 px |
-| Letter-spacing | -0.43 px (-0.0172 em) |
+| Letter-spacing | -0.29 px (-0.0116 em) |
 | Line-height | 32.8 px (ratio 1.312) |
-| Line | 2 of 5 |
+| Line | 2 of 6 |
 | Transform | lowercase |
 | Colour | `#755931` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.27:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.5942 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.5379 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 9 px |
 | Gap to next | 8 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5104
-- `PlusJakartaSans[wght].ttf` 25px track -0.29px — IoU 0.5005
-- `PlusJakartaSans[wght].ttf` 25px track -0.56px — IoU 0.4976
+- `PlusJakartaSans[wght].ttf` 25px track -0.43px — IoU 0.641
+- `PlusJakartaSans[wght].ttf` 24px track 0.23px — IoU 0.5942
+- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5891
 
-### `text-7` — subheadline
+### `text-7` — fine-print
 
-**Text:** "designed to delivereffortless"  (OCR confidence 0.9891)
+**Text:** "designed to deliver effortless"  (OCR confidence 0.9891)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=567, y=579, w=345, h=25 |
-| Normalised | x=52.5%, y=53.61%, w=31.94%, h=2.31% |
+| Bounding box (px) | x=568, y=579, w=344, h=25 |
+| Normalised | x=52.59%, y=53.61%, w=31.85%, h=2.31% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 25 px |
-| Letter-spacing | -0.43 px (-0.0172 em) |
+| Letter-spacing | -0.29 px (-0.0116 em) |
 | Line-height | 32.8 px (ratio 1.312) |
-| Line | 3 of 5 |
+| Line | 3 of 6 |
 | Transform | lowercase |
 | Colour | `#72552c` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.35:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'delivereffortless' -> 'deliver effortless' |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.595 |
+| Match IoU | 0.6534 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 8 px |
-| Gap to next | -1 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5104
-- `PlusJakartaSans[wght].ttf` 25px track -0.29px — IoU 0.5005
-- `PlusJakartaSans[wght].ttf` 25px track -0.56px — IoU 0.4976
+- `PlusJakartaSans[wght].ttf` 25px track -0.43px — IoU 0.641
+- `PlusJakartaSans[wght].ttf` 24px track 0.23px — IoU 0.5942
+- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5891
 
-### `text-8` — subheadline
+### `text-8` — fine-print
 
-**Text:** "confdence, modern comfort, and"  (OCR confidence 0.9848)
+**Text:** "confidence, modern comfort, and"  (OCR confidence 0.9848)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=567, y=603, w=398, h=31 |
-| Normalised | x=52.5%, y=55.83%, w=36.85%, h=2.87% |
+| Bounding box (px) | x=568, y=612, w=397, h=22 |
+| Normalised | x=52.59%, y=56.67%, w=36.76%, h=2.04% |
 | Alignment | right |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 25 px |
-| Letter-spacing | -0.43 px (-0.0172 em) |
+| Letter-spacing | -0.29 px (-0.0116 em) |
 | Line-height | 32.8 px (ratio 1.312) |
-| Line | 4 of 5 |
+| Line | 4 of 6 |
 | Transform | lowercase |
 | Colour | `#72552b` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.36:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | ligature insertion: 'confdence' -> 'confidence' |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.1305 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.667 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5104
-- `PlusJakartaSans[wght].ttf` 25px track -0.29px — IoU 0.5005
-- `PlusJakartaSans[wght].ttf` 25px track -0.56px — IoU 0.4976
+- `PlusJakartaSans[wght].ttf` 25px track -0.43px — IoU 0.641
+- `PlusJakartaSans[wght].ttf` 24px track 0.23px — IoU 0.5942
+- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5891
 
-### `text-9` — subheadline
+### `text-9` — fine-print
 
 **Text:** "understated elegance that never"  (OCR confidence 0.9715)
 
@@ -338,66 +348,68 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 25 px |
-| Letter-spacing | -0.43 px (-0.0172 em) |
+| Letter-spacing | -0.29 px (-0.0116 em) |
 | Line-height | 32.8 px (ratio 1.312) |
-| Line | 5 of 5 |
+| Line | 5 of 6 |
 | Transform | lowercase |
 | Colour | `#755931` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.27:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.6059 |
+| Match IoU | 0.5888 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 11 px |
-| Gap to next | -2 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5104
-- `PlusJakartaSans[wght].ttf` 25px track -0.29px — IoU 0.5005
-- `PlusJakartaSans[wght].ttf` 25px track -0.56px — IoU 0.4976
+- `PlusJakartaSans[wght].ttf` 25px track -0.43px — IoU 0.641
+- `PlusJakartaSans[wght].ttf` 24px track 0.23px — IoU 0.5942
+- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5891
 
-### `text-10` — subheadline
+### `text-10` — fine-print
 
 **Text:** "goes out of style."  (OCR confidence 0.9785)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=567, y=668, w=201, h=35 |
-| Normalised | x=52.5%, y=61.85%, w=18.61%, h=3.24% |
+| Bounding box (px) | x=568, y=678, w=200, h=24 |
+| Normalised | x=52.59%, y=62.78%, w=18.52%, h=2.22% |
 | Alignment | right |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 25 px |
-| Letter-spacing | -0.45 px (-0.018 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.29 px (-0.0116 em) |
+| Line-height | 32.8 px (ratio 1.312) |
+| Line | 6 of 6 |
 | Transform | lowercase |
-| Colour | `#74582e` |
+| Colour | `#74572e` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.29:1 |
+| Contrast vs local bg | 2.31:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
-| Match IoU | 0.2502 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6428 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -2 px |
-| Gap to next | 156 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 8 px |
+| Gap to next | 157 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 26px track -0.68px — IoU 0.2125
-- `PlusJakartaSans[wght].ttf` 25px track -0.33px — IoU 0.2072
-- `PlusJakartaSans[wght].ttf` 25px track -0.2px — IoU 0.203
+- `PlusJakartaSans[wght].ttf` 25px track -0.43px — IoU 0.641
+- `PlusJakartaSans[wght].ttf` 24px track 0.23px — IoU 0.5942
+- `PlusJakartaSans[wght].ttf` 24px track 0.09px — IoU 0.5891
 
-### `text-11` — subheadline
+### `text-11` — fine-print
 
 **Text:** "Explore the Collection →"  (OCR confidence 0.988)
 
@@ -420,12 +432,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.58:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bona Nova, Plus Jakarta Sans |
 | Match IoU | 0.8378 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 156 px |
+| Gap to previous | 157 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -440,10 +453,10 @@ Alternate font fits considered:
 | background | `#e7eae3` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#a3875d` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#9f8156` | glyph ink of 'QUIET LUXURY' | glyph ink median |
-| textSecondary | `#74582f` | glyph ink of 'let their presence speak' | glyph ink median |
+| textSecondary | `#73572d` | glyph ink of 'Timeless design for those wh' | glyph ink median |
 | accent | `#6e4c29` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#a3875d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -467,7 +480,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1613 |
+| Text coverage | 0.1479 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -495,37 +508,37 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | QUIET LUXURY |
-| `subheadline` | text | Timeless design for those who |
-| `subheadline` | text | let their presence speak |
-| `subheadline` | text | louder than their words. |
-| `subheadline_line1` | text | Crafted with premium materials and |
-| `subheadline_line2` | text | a refined aesthetic ,every piece is |
-| `subheadline_line3` | text | designed to delivereffortless |
-| `subheadline_line4` | text | confdence, modern comfort, and |
-| `subheadline_line5` | text | understated elegance that never |
-| `subheadline` | text | goes out of style. |
-| `subheadline` | text | Explore the Collection → |
+| `fine-print_line1` | text | Timeless design for those who |
+| `fine-print_line2` | text | let their presence speak |
+| `fine-print_line3` | text | louder than their words. |
+| `fine-print_line1` | text | Crafted with premium materials and |
+| `fine-print_line2` | text | a refined aesthetic ,every piece is |
+| `fine-print_line3` | text | designed to deliver effortless |
+| `fine-print_line4` | text | confidence, modern comfort, and |
+| `fine-print_line5` | text | understated elegance that never |
+| `fine-print_line6` | text | goes out of style. |
+| `fine-print` | text | Explore the Collection → |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #e7eae3 |
 | `surface` | colour | #a3875d |
 | `textPrimary` | colour | #9f8156 |
-| `textSecondary` | colour | #74582f |
+| `textSecondary` | colour | #73572d |
 | `accent` | colour | #6e4c29 |
 | `accentSecondary` | colour | #a3875d |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Bona Nova |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 41.7 |
 | `imageFocalY` | number | 50.0 |
 

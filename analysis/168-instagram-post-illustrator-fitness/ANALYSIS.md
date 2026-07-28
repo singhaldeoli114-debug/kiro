@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,8 +42,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=90, y=0, w=307, h=94 |
-| Normalised | x=8.33%, y=0.0%, w=28.43%, h=8.7% |
+| Bounding box (px) | x=89, y=1, w=308, h=94 |
+| Normalised | x=8.24%, y=0.09%, w=28.52%, h=8.7% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,24 +52,25 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Variation axes | None |
 | Font size | 125 px |
 | Letter-spacing | -0.33 px (-0.0026 em) |
-| Line-height | 155.3 px (ratio 1.242) |
+| Line-height | 155.0 px (ratio 1.24) |
 | Line | 1 of 4 |
 | Transform | none |
 | Colour | `#4f9906` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.92:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
-| Match IoU | 0.5867 |
+| Match IoU | 0.5784 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 56 px |
+| Gap to next | 55 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5109
-- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.509
+- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.5102
+- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5101
 
 ### `text-2` — headline
 
@@ -87,24 +88,25 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 125 px |
 | Letter-spacing | -0.33 px (-0.0026 em) |
-| Line-height | 155.3 px (ratio 1.242) |
+| Line-height | 155.0 px (ratio 1.24) |
 | Line | 2 of 4 |
 | Transform | lowercase |
 | Colour | `#4f9906` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.92:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
 | Match IoU | 0.5372 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 56 px |
+| Gap to previous | 55 px |
 | Gap to next | 83 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5109
-- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.509
+- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.5102
+- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5101
 
 ### `text-3` — headline
 
@@ -112,8 +114,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=86, y=333, w=295, h=104 |
-| Normalised | x=7.96%, y=30.83%, w=27.31%, h=9.63% |
+| Bounding box (px) | x=87, y=333, w=294, h=104 |
+| Normalised | x=8.06%, y=30.83%, w=27.22%, h=9.63% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -122,15 +124,16 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 125 px |
 | Letter-spacing | -0.33 px (-0.0026 em) |
-| Line-height | 155.3 px (ratio 1.242) |
+| Line-height | 155.0 px (ratio 1.24) |
 | Line | 3 of 4 |
 | Transform | lowercase |
 | Colour | `#4f9906` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.92:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
-| Match IoU | 0.5286 |
+| Match IoU | 0.5347 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -138,8 +141,8 @@ Alternate font fits considered:
 | Gap to next | 29 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5109
-- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.509
+- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.5102
+- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5101
 
 ### `text-4` — headline
 
@@ -157,24 +160,25 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 125 px |
 | Letter-spacing | -0.33 px (-0.0026 em) |
-| Line-height | 155.3 px (ratio 1.242) |
+| Line-height | 155.0 px (ratio 1.24) |
 | Line | 4 of 4 |
 | Transform | lowercase |
 | Colour | `#4f9906` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.64:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins |
 | Match IoU | 0.3952 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 29 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5109
-- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.509
+- `Poppins-Regular.ttf` 123px track 0.84px — IoU 0.5102
+- `Poppins-Regular.ttf` 124px track 0.25px — IoU 0.5101
 
 ## 4. Colours (semantic)
 
@@ -186,7 +190,7 @@ Alternate font fits considered:
 | textSecondary | `#4f9906` | glyph ink of 'your' | glyph ink median |
 | accent | `#bce386` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#51752a` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):

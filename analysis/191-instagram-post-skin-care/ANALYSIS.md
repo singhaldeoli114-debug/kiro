@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -50,17 +50,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Opacity | 1.0 |
 | Font file matched | `LibreCaslonDisplay-Regular.ttf` |
 | Variation axes | None |
-| Font size | 188 px |
-| Letter-spacing | -0.8 px (-0.0043 em) |
-| Line-height | 161.0 px (ratio 0.856) |
+| Font size | 176 px |
+| Letter-spacing | -0.14 px (-0.0008 em) |
+| Line-height | 161.0 px (ratio 0.915) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#f67a20` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.5:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Libre Caslon Display |
-| Match IoU | 0.5643 |
+| Match IoU | 0.5513 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -68,8 +70,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 31 px |
 
 Alternate font fits considered:
-- `LibreCaslonDisplay-Regular.ttf` 187px track -0.2px — IoU 0.3264
-- `LibreCaslonDisplay-Regular.ttf` 186px track 0.4px — IoU 0.3116
+- `LibreCaslonDisplay-Regular.ttf` 177px track -0.74px — IoU 0.4217
+- `LibreCaslonDisplay-Regular.ttf` 175px track 0.45px — IoU 0.4097
 
 ### `text-2` — headline
 
@@ -77,34 +79,35 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=99, y=229, w=445, h=165 |
-| Normalised | x=9.17%, y=21.2%, w=41.2%, h=15.28% |
+| Bounding box (px) | x=99, y=229, w=419, h=160 |
+| Normalised | x=9.17%, y=21.2%, w=38.8%, h=14.81% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `LibreCaslonDisplay-Regular.ttf` |
 | Variation axes | None |
-| Font size | 188 px |
-| Letter-spacing | -0.8 px (-0.0043 em) |
-| Line-height | 161.0 px (ratio 0.856) |
+| Font size | 176 px |
+| Letter-spacing | -0.14 px (-0.0008 em) |
+| Line-height | 161.0 px (ratio 0.915) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#f67a20` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.54:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Libre Caslon Display |
-| Match IoU | 0.0973 |
+| Match IoU | 0.2986 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 31 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `LibreCaslonDisplay-Regular.ttf` 187px track -0.2px — IoU 0.3264
-- `LibreCaslonDisplay-Regular.ttf` 186px track 0.4px — IoU 0.3116
+- `LibreCaslonDisplay-Regular.ttf` 177px track -0.74px — IoU 0.4217
+- `LibreCaslonDisplay-Regular.ttf` 175px track 0.45px — IoU 0.4097
 
 ## 4. Colours (semantic)
 
@@ -116,7 +119,7 @@ Alternate font fits considered:
 | textSecondary | `#f67a20` | glyph ink of 'New' | glyph ink median |
 | accent | `#c75417` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#a78f72` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -140,7 +143,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0977 |
+| Text coverage | 0.0922 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

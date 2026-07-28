@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -59,6 +59,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.52:1 |
 | Stroke (median/mean) | 10.0 / 11.44 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Niconne |
 | Match IoU | 0.8061 |
 | **Geometry fit confidence** | **high** |
@@ -77,34 +79,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=399, y=783, w=294, h=114 |
-| Normalised | x=36.94%, y=72.5%, w=27.22%, h=10.56% |
+| Bounding box (px) | x=399, y=783, w=295, h=114 |
+| Normalised | x=36.94%, y=72.5%, w=27.31%, h=10.56% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Niconne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 180 px |
-| Letter-spacing | 0.09 px (0.0005 em) |
-| Line-height | 138.0 px (ratio 0.767) |
+| Font size | 182 px |
+| Letter-spacing | -0.67 px (-0.0037 em) |
+| Line-height | 138.0 px (ratio 0.758) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.52:1 |
 | Stroke (median/mean) | 11.0 / 12.23 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Niconne |
-| Match IoU | 0.1737 |
+| Match IoU | 0.1868 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | -114 px |
 | Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Niconne-Regular.ttf` 181px track -0.45px — IoU 0.5026
-- `Niconne-Regular.ttf` 179px track 0.64px — IoU 0.4961
+- `Niconne-Regular.ttf` 181px track -0.12px — IoU 0.503
+- `Niconne-Regular.ttf` 180px track 0.42px — IoU 0.4922
 
 ### `text-3` — headline
 
@@ -112,25 +116,27 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=40, y=921, w=282, h=90 |
-| Normalised | x=3.7%, y=85.28%, w=26.11%, h=8.33% |
+| Bounding box (px) | x=39, y=921, w=283, h=90 |
+| Normalised | x=3.61%, y=85.28%, w=26.2%, h=8.33% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Niconne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 180 px |
-| Letter-spacing | 0.09 px (0.0005 em) |
-| Line-height | 138.0 px (ratio 0.767) |
+| Font size | 182 px |
+| Letter-spacing | -0.67 px (-0.0037 em) |
+| Line-height | 138.0 px (ratio 0.758) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.52:1 |
 | Stroke (median/mean) | 11.0 / 11.7 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Niconne |
-| Match IoU | 0.8331 |
+| Match IoU | 0.8268 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -138,8 +144,8 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Niconne-Regular.ttf` 181px track -0.45px — IoU 0.5026
-- `Niconne-Regular.ttf` 179px track 0.64px — IoU 0.4961
+- `Niconne-Regular.ttf` 181px track -0.12px — IoU 0.503
+- `Niconne-Regular.ttf` 180px track 0.42px — IoU 0.4922
 
 ## 4. Colours (semantic)
 
@@ -151,7 +157,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of ' Spa' | glyph ink median |
 | accent | `#5353e6` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7a5738` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -175,7 +181,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.0848 |
+| Text coverage | 0.085 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

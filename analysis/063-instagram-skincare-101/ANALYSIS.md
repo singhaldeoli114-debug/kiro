@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,34 +42,35 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=357, y=845, w=364, h=76 |
-| Normalised | x=33.06%, y=78.24%, w=33.7%, h=7.04% |
+| Bounding box (px) | x=357, y=852, w=364, h=69 |
+| Normalised | x=33.06%, y=78.89%, w=33.7%, h=6.39% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `CoveredByYourGrace.ttf` |
 | Variation axes | None |
-| Font size | 91 px |
-| Letter-spacing | -0.18 px (-0.002 em) |
+| Font size | 90 px |
+| Letter-spacing | 0.19 px (0.0021 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#232424` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.84:1 |
-| Stroke (median/mean) | 8.0 / 9.16 px |
+| Contrast vs local bg | 4.82:1 |
+| Stroke (median/mean) | 8.0 / 9.18 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Covered By Your Grace |
-| Match IoU | 0.797 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6184 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.8423) |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `CoveredByYourGrace.ttf` 92px track -0.55px — IoU 0.7917
-- `CoveredByYourGrace.ttf` 90px track 0.19px — IoU 0.7885
+- `CoveredByYourGrace.ttf` 91px track -0.18px — IoU 0.6036
+- `CoveredByYourGrace.ttf` 92px track -0.55px — IoU 0.5842
 
 ## 4. Colours (semantic)
 
@@ -81,7 +82,7 @@ Alternate font fits considered:
 | textSecondary | — | not identified | — |
 | accent | `#302212` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#6c5746` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -105,7 +106,7 @@ Full palette (k-means):
 | Subject position | upper-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0237 |
+| Text coverage | 0.0215 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

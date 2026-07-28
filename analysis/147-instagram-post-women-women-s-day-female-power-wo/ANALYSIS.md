@@ -34,35 +34,36 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — body
 
 **Text:** "10"  (OCR confidence 0.9994)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=886, y=209, w=30, h=24 |
-| Normalised | x=82.04%, y=19.35%, w=2.78%, h=2.22% |
+| Bounding box (px) | x=886, y=210, w=29, h=23 |
+| Normalised | x=82.04%, y=19.44%, w=2.69%, h=2.13% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `EncodeSans[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 30 px |
-| Letter-spacing | 0.97 px (0.0323 em) |
+| Variation axes | [500, 100.0] |
+| Font size | 27 px |
+| Letter-spacing | 1.5 px (0.0556 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.29:1 |
-| Stroke (median/mean) | 4.0 / 4.88 px |
+| Stroke (median/mean) | 4.0 / 4.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Anton, Encode Sans |
-| Match IoU | 0.6656 |
+| Match IoU | 0.6595 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -70,9 +71,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 167 px |
 
 Alternate font fits considered:
-- `EncodeSans[wdth,wght].ttf` 29px track 1.05px — IoU 0.6133
-- `EncodeSans[wdth,wght].ttf` 32px track 0.59px — IoU 0.6123
-- `EncodeSans[wdth,wght].ttf` 28px track -0.38px — IoU 0.6065
+- `EncodeSans[wdth,wght].ttf` 25px track 0.81px — IoU 0.6399
+- `EncodeSans[wdth,wght].ttf` 29px track 0.94px — IoU 0.6335
+- `EncodeSans[wdth,wght].ttf` 28px track 1.05px — IoU 0.6314
 
 ### `text-2` — subheadline
 
@@ -97,6 +98,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.4:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Anton, Encode Sans |
 | Match IoU | 0.4101 |
 | **Geometry fit confidence** | **low** |
@@ -133,6 +135,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.4:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Anton, Encode Sans |
 | Match IoU | 0.7506 |
 | **Geometry fit confidence** | **high** |
@@ -169,6 +172,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.4:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Anton, Encode Sans |
 | Match IoU | 0.8252 |
 | **Geometry fit confidence** | **high** |
@@ -182,113 +186,117 @@ Alternate font fits considered:
 - `Lobster-Regular.ttf` 101px track -0.11px — IoU 0.7762
 - `EncodeSans[wdth,wght].ttf` 70px track -0.93px — IoU 0.4997
 
-### `text-5` — detail
+### `text-5` — fine-print
 
-**Text:** "Nibhtortoridaliquetlectus"  (OCR confidence 0.9862)
+**Text:** "Nibh tortoridaliquetlectus"  (OCR confidence 0.9862)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=443, y=682, w=228, h=28 |
-| Normalised | x=41.02%, y=63.15%, w=21.11%, h=2.59% |
+| Bounding box (px) | x=443, y=682, w=228, h=20 |
+| Normalised | x=41.02%, y=63.15%, w=21.11%, h=1.85% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `EncodeSans[wdth,wght].ttf` |
-| Variation axes | [900.0, 112.5] |
-| Font size | 18 px |
-| Letter-spacing | -0.75 px (-0.0417 em) |
-| Line-height | 26.0 px (ratio 1.444) |
-| Line | 1 of 2 |
+| Variation axes | [900.0, 87.5] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.0 px (ratio 1.368) |
+| Line | 1 of 3 |
 | Transform | none |
-| Colour | `#cb6d6d` |
+| Colour | `#ca6c6c` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.89:1 |
+| Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Lobster, Anton, Encode Sans |
-| Match IoU | 0.2377 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Match IoU | 0.3654 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 26 px |
-| Gap to next | -2 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `EncodeSans[wdth,wght].ttf` 18px track 0.67px — IoU 0.2237
-- `EncodeSans[wdth,wght].ttf` 18px track -0.49px — IoU 0.218
-- `EncodeSans[wdth,wght].ttf` 18px track 0.18px — IoU 0.2142
+- `EncodeSans[wdth,wght].ttf` 20px track -0.14px — IoU 0.3769
+- `EncodeSans[wdth,wght].ttf` 19px track -0.35px — IoU 0.3736
+- `EncodeSans[wdth,wght].ttf` 20px track -0.37px — IoU 0.3701
 
-### `text-6` — detail
+### `text-6` — fine-print
 
-**Text:** "proin .Euaugueutlectusarcu"  (OCR confidence 0.9959)
+**Text:** "proin .Eu augue utlectusarcu"  (OCR confidence 0.9959)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=426, y=708, w=248, h=27 |
-| Normalised | x=39.44%, y=65.56%, w=22.96%, h=2.5% |
+| Bounding box (px) | x=426, y=708, w=248, h=20 |
+| Normalised | x=39.44%, y=65.56%, w=22.96%, h=1.85% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `EncodeSans[wdth,wght].ttf` |
-| Variation axes | [900.0, 112.5] |
-| Font size | 18 px |
-| Letter-spacing | -0.75 px (-0.0417 em) |
-| Line-height | 26.0 px (ratio 1.444) |
-| Line | 2 of 2 |
+| Variation axes | [900.0, 87.5] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.0 px (ratio 1.368) |
+| Line | 2 of 3 |
 | Transform | none |
-| Colour | `#ce7878` |
+| Colour | `#ce7777` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.77:1 |
+| Contrast vs local bg | 1.78:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Anton, Encode Sans |
-| Match IoU | 0.2159 |
+| Match IoU | 0.3397 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -2 px |
-| Gap to next | -9 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 6 px |
+| Gap to next | 6 px |
 
 Alternate font fits considered:
-- `EncodeSans[wdth,wght].ttf` 18px track 0.67px — IoU 0.2237
-- `EncodeSans[wdth,wght].ttf` 18px track -0.49px — IoU 0.218
-- `EncodeSans[wdth,wght].ttf` 18px track 0.18px — IoU 0.2142
+- `EncodeSans[wdth,wght].ttf` 20px track -0.14px — IoU 0.3769
+- `EncodeSans[wdth,wght].ttf` 19px track -0.35px — IoU 0.3736
+- `EncodeSans[wdth,wght].ttf` 20px track -0.37px — IoU 0.3701
 
-### `text-7` — detail
+### `text-7` — fine-print
 
-**Text:** "bibendumatvariusvelpharetra."  (OCR confidence 0.9974)
+**Text:** "bibendum at varius velpharetra."  (OCR confidence 0.9974)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=410, y=726, w=267, h=28 |
-| Normalised | x=37.96%, y=67.22%, w=24.72%, h=2.59% |
+| Bounding box (px) | x=410, y=734, w=267, h=20 |
+| Normalised | x=37.96%, y=67.96%, w=24.72%, h=1.85% |
 | Alignment | center |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `EncodeSans[wdth,wght].ttf` |
-| Variation axes | [900.0, 112.5] |
-| Font size | 17 px |
-| Letter-spacing | -0.44 px (-0.0259 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [900.0, 87.5] |
+| Font size | 19 px |
+| Letter-spacing | -0.59 px (-0.0311 em) |
+| Line-height | 26.0 px (ratio 1.368) |
+| Line | 3 of 3 |
 | Transform | lowercase |
-| Colour | `#cd7474` |
+| Colour | `#cd7373` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.81:1 |
+| Contrast vs local bg | 1.82:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Anton, Encode Sans |
-| Match IoU | 0.2243 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -9 px |
+| Match IoU | 0.4385 |
+| **Geometry fit confidence** | **low** |
+| OCR text reliable | True  |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 6 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `EncodeSans[wdth,wght].ttf` 21px track -0.41px — IoU 0.222
-- `EncodeSans[wdth,wght].ttf` 21px track -0.59px — IoU 0.2151
-- `EncodeSans[wdth,wght].ttf` 21px track 0.17px — IoU 0.212
+- `EncodeSans[wdth,wght].ttf` 20px track -0.14px — IoU 0.3769
+- `EncodeSans[wdth,wght].ttf` 19px track -0.35px — IoU 0.3736
+- `EncodeSans[wdth,wght].ttf` 20px track -0.37px — IoU 0.3701
 
 ## 4. Colours (semantic)
 
@@ -297,10 +305,10 @@ Alternate font fits considered:
 | background | `#fcfcfd` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#de875f` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#be4a4a` | glyph ink of 'Day' | glyph ink median |
-| textSecondary | `#cb6d6d` | glyph ink of 'Nibhtortoridaliquetlectus' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of '10' | glyph ink median |
 | accent | `#41afc1` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#de875f` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -324,7 +332,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.0603 |
+| Text coverage | 0.0553 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -351,30 +359,30 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | 10 |
+| `body` | text | 10 |
 | `subheadline` | text | H A P P Y |
 | `headline_line1` | text | Women's |
 | `headline_line2` | text | Day |
-| `detail_line1` | text | Nibhtortoridaliquetlectus |
-| `detail_line2` | text | proin .Euaugueutlectusarcu |
-| `detail` | text | bibendumatvariusvelpharetra. |
+| `fine-print_line1` | text | Nibh tortoridaliquetlectus |
+| `fine-print_line2` | text | proin .Eu augue utlectusarcu |
+| `fine-print_line3` | text | bibendum at varius velpharetra. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fcfcfd |
 | `surface` | colour | #de875f |
 | `textPrimary` | colour | #be4a4a |
-| `textSecondary` | colour | #cb6d6d |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #41afc1 |
 | `accentSecondary` | colour | #de875f |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Lobster |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

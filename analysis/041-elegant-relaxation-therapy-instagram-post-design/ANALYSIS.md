@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,16 +43,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=238, y=79, w=515, h=69 |
-| Normalised | x=22.04%, y=7.31%, w=47.69%, h=6.39% |
+| Bounding box (px) | x=238, y=79, w=516, h=69 |
+| Normalised | x=22.04%, y=7.31%, w=47.78%, h=6.39% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Cinzel[wght].ttf` |
 | Variation axes | [700] |
-| Font size | 84 px |
-| Letter-spacing | 0.43 px (0.0051 em) |
+| Font size | 85 px |
+| Letter-spacing | -0.2 px (-0.0024 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.62:1 |
 | Stroke (median/mean) | 13.0 / 11.84 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Cinzel |
-| Match IoU | 0.4537 |
+| Match IoU | 0.4683 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | -69 px |
 
 Alternate font fits considered:
-- `Cinzel[wght].ttf` 85px track -0.33px — IoU 0.451
-- `Cinzel[wght].ttf` 86px track 0.05px — IoU 0.4474
-- `Cinzel[wght].ttf` 86px track -1.09px — IoU 0.4404
+- `Cinzel[wght].ttf` 84px track 0.55px — IoU 0.4579
+- `Cinzel[wght].ttf` 87px track -0.57px — IoU 0.4506
+- `Cinzel[wght].ttf` 86px track -0.97px — IoU 0.4496
 
 ### `text-3` — headline
 
@@ -79,16 +80,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=784, y=79, w=256, h=68 |
-| Normalised | x=72.59%, y=7.31%, w=23.7%, h=6.3% |
+| Bounding box (px) | x=784, y=79, w=258, h=69 |
+| Normalised | x=72.59%, y=7.31%, w=23.89%, h=6.39% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
 | Variation axes | [800.0] |
-| Font size | 91 px |
-| Letter-spacing | -0.99 px (-0.0109 em) |
+| Font size | 92 px |
+| Letter-spacing | -1.28 px (-0.0139 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.62:1 |
 | Stroke (median/mean) | 14.0 / 13.15 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Cinzel |
-| Match IoU | 0.5455 |
+| Match IoU | 0.5386 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | -69 px |
-| Gap to next | -67 px |
+| Gap to next | -68 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 90px track -0.05px — IoU 0.5308
-- `PlusJakartaSans[wght].ttf` 89px track 0.9px — IoU 0.5209
-- `PlusJakartaSans[wght].ttf` 91px track -0.54px — IoU 0.5117
+- `Cinzel[wght].ttf` 86px track 0.4px — IoU 0.5306
+- `PlusJakartaSans[wght].ttf` 91px track -0.33px — IoU 0.5232
+- `PlusJakartaSans[wght].ttf` 92px track -0.82px — IoU 0.5098
 
 ### `text-2` — headline
 
@@ -132,35 +134,36 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.62:1 |
 | Stroke (median/mean) | 14.0 / 12.7 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Cinzel |
 | Match IoU | 0.6305 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -67 px |
-| Gap to next | 51 px |
+| Gap to previous | -68 px |
+| Gap to next | 50 px |
 
 Alternate font fits considered:
 - `Cinzel[wght].ttf` 83px track -0.05px — IoU 0.6138
 - `Cinzel[wght].ttf` 80px track 0.82px — IoU 0.6012
 - `Cinzel[wght].ttf` 84px track -1.02px — IoU 0.6006
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "True relaxation begins the moment you let go"  (OCR confidence 0.998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=62, y=197, w=961, h=44 |
-| Normalised | x=5.74%, y=18.24%, w=88.98%, h=4.07% |
+| Bounding box (px) | x=61, y=196, w=963, h=45 |
+| Normalised | x=5.65%, y=18.15%, w=89.17%, h=4.17% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
 | Variation axes | [400] |
-| Font size | 47 px |
-| Letter-spacing | -0.69 px (-0.0147 em) |
+| Font size | 45 px |
+| Letter-spacing | 0.34 px (0.0076 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -168,90 +171,95 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.62:1 |
 | Stroke (median/mean) | 3.0 / 4.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Cinzel |
-| Match IoU | 0.5437 |
+| Match IoU | 0.5335 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 51 px |
+| Gap to previous | 50 px |
 | Gap to next | 697 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 46px track -0.2px — IoU 0.4798
-- `PlusJakartaSans[wght].ttf` 45px track 0.29px — IoU 0.4678
-- `PlusJakartaSans[wght].ttf` 46px track -0.42px — IoU 0.4588
+- `PlusJakartaSans[wght].ttf` 47px track -0.64px — IoU 0.5201
+- `PlusJakartaSans[wght].ttf` 46px track -0.15px — IoU 0.5071
+- `PlusJakartaSans[wght].ttf` 46px track -0.37px — IoU 0.4816
 
 ### `text-5` — supporting
 
-**Text:** "Gentle touch, fowing warmth, and a quiet"  (OCR confidence 0.9986)
+**Text:** "Gentle touch, flowing warmth, and a quiet"  (OCR confidence 0.9986)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=221, y=938, w=639, h=32 |
-| Normalised | x=20.46%, y=86.85%, w=59.17%, h=2.96% |
+| Bounding box (px) | x=220, y=938, w=640, h=32 |
+| Normalised | x=20.37%, y=86.85%, w=59.26%, h=2.96% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 33 px |
-| Letter-spacing | -0.41 px (-0.0124 em) |
-| Line-height | 44.0 px (ratio 1.333) |
+| Letter-spacing | -0.36 px (-0.0109 em) |
+| Line-height | 43.0 px (ratio 1.303) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.62:1 |
 | Stroke (median/mean) | 2.0 / 2.78 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | ligature insertion: 'fowing' -> 'flowing' |
 | Font family (authoritative) | Plus Jakarta Sans, Cinzel |
-| Match IoU | 0.4458 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.6812 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 697 px |
-| Gap to next | 12 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 32px track 0.31px — IoU 0.4442
-- `PlusJakartaSans[wght].ttf` 33px track -0.62px — IoU 0.4397
-- `PlusJakartaSans[wght].ttf` 32px track 0.1px — IoU 0.439
+- `PlusJakartaSans[wght].ttf` 33px track -0.14px — IoU 0.656
+- `PlusJakartaSans[wght].ttf` 32px track 0.14px — IoU 0.6413
+- `PlusJakartaSans[wght].ttf` 32px track 0.35px — IoU 0.6323
 
 ### `text-6` — supporting
 
-**Text:** "escape foryour body and mind."  (OCR confidence 0.9975)
+**Text:** "escape for your body and mind."  (OCR confidence 0.9975)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=297, y=982, w=485, h=31 |
-| Normalised | x=27.5%, y=90.93%, w=44.91%, h=2.87% |
+| Bounding box (px) | x=296, y=981, w=486, h=33 |
+| Normalised | x=27.41%, y=90.83%, w=45.0%, h=3.06% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [600] |
+| Variation axes | [500] |
 | Font size | 33 px |
-| Letter-spacing | -0.41 px (-0.0124 em) |
-| Line-height | 44.0 px (ratio 1.333) |
+| Letter-spacing | -0.36 px (-0.0109 em) |
+| Line-height | 43.0 px (ratio 1.303) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.62:1 |
 | Stroke (median/mean) | 2.0 / 2.9 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'foryour' -> 'for your' |
 | Font family (authoritative) | Plus Jakarta Sans, Cinzel |
-| Match IoU | 0.4623 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.7523 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 12 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 11 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 32px track 0.31px — IoU 0.4442
-- `PlusJakartaSans[wght].ttf` 33px track -0.62px — IoU 0.4397
-- `PlusJakartaSans[wght].ttf` 32px track 0.1px — IoU 0.439
+- `PlusJakartaSans[wght].ttf` 33px track -0.14px — IoU 0.656
+- `PlusJakartaSans[wght].ttf` 32px track 0.14px — IoU 0.6413
+- `PlusJakartaSans[wght].ttf` 32px track 0.35px — IoU 0.6323
 
 ## 4. Colours (semantic)
 
@@ -263,7 +271,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'OVER' | glyph ink median |
 | accent | `#80594c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ba9380` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +295,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.1213 |
+| Text coverage | 0.1235 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -317,9 +325,9 @@ _Recommendations only — no manifest is generated._
 | `headline` | text | CALM TAKE |
 | `headline` | text | OVER |
 | `headline` | text | LET |
-| `subheadline` | text | True relaxation begins the moment you let go |
-| `supporting_line1` | text | Gentle touch, fowing warmth, and a quiet |
-| `supporting_line2` | text | escape foryour body and mind. |
+| `supporting` | text | True relaxation begins the moment you let go |
+| `supporting_line1` | text | Gentle touch, flowing warmth, and a quiet |
+| `supporting_line2` | text | escape for your body and mind. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #dcdcdc |
@@ -333,7 +341,7 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 54.6 |

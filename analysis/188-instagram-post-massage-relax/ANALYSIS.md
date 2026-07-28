@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.91:1 |
 | Stroke (median/mean) | 8.0 / 7.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Viaoda Libre, Roboto |
 | Match IoU | 0.424 |
 | **Geometry fit confidence** | **low** |
@@ -96,54 +97,56 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.91:1 |
 | Stroke (median/mean) | 8.0 / 7.79 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Viaoda Libre, Roboto |
 | Match IoU | 0.651 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 56 px |
-| Gap to next | -9 px |
+| Gap to next | -10 px |
 
 Alternate font fits considered:
 - `ViaodaLibre-Regular.ttf` 96px track 1.02px — IoU 0.5169
 - `ViaodaLibre-Regular.ttf` 98px track -0.46px — IoU 0.4981
 - `Roboto[wdth,wght].ttf` 100px track -0.94px — IoU 0.3842
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "MASSAGE CENTER"  (OCR confidence 0.984)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=89, y=990, w=228, h=19 |
-| Normalised | x=8.24%, y=91.67%, w=21.11%, h=1.76% |
+| Bounding box (px) | x=88, y=989, w=229, h=20 |
+| Normalised | x=8.15%, y=91.57%, w=21.2%, h=1.85% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 28 px |
-| Letter-spacing | 0.1 px (0.0036 em) |
+| Variation axes | [500, 87.5] |
+| Font size | 29 px |
+| Letter-spacing | -0.39 px (-0.0134 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fdfdfd` |
+| Colour | `#f7f7f7` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.06:1 |
+| Contrast vs local bg | 2.99:1 |
 | Stroke (median/mean) | 3.0 / 3.5 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Viaoda Libre, Roboto |
-| Match IoU | 0.7027 |
+| Match IoU | 0.7772 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -9 px |
+| Gap to previous | -10 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.6964
-- `Roboto[wdth,wght].ttf` 26px track 0.26px — IoU 0.694
-- `Roboto[wdth,wght].ttf` 27px track -0.4px — IoU 0.6923
+- `Roboto[wdth,wght].ttf` 29px track -0.45px — IoU 0.7648
+- `Roboto[wdth,wght].ttf` 27px track -0.38px — IoU 0.7505
+- `Roboto[wdth,wght].ttf` 28px track -0.99px — IoU 0.7501
 
 ## 4. Colours (semantic)
 
@@ -155,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'NOW OPEN' | glyph ink median |
 | accent | `#ab7729` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#d79367` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0572 |
+| Text coverage | 0.0574 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -208,7 +211,7 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | WERE |
 | `headline_line2` | text | NOW OPEN |
-| `subheadline` | text | MASSAGE CENTER |
+| `body` | text | MASSAGE CENTER |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f1e0cc |
@@ -221,7 +224,7 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Viaoda Libre |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 55.9 |
 | `imageFocalY` | number | 41.2 |
 

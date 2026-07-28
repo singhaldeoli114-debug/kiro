@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=483, y=431, w=458, h=168 |
-| Normalised | x=44.72%, y=39.91%, w=42.41%, h=15.56% |
+| Bounding box (px) | x=483, y=396, w=458, h=198 |
+| Normalised | x=44.72%, y=36.67%, w=42.41%, h=18.33% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -59,19 +59,21 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 20.45:1 |
-| Stroke (median/mean) | 11.0 / 11.92 px |
+| Stroke (median/mean) | 11.0 / 11.96 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Dancing Script, Roboto |
-| Match IoU | 0.2007 |
+| Match IoU | 0.197 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | -52 px |
+| Gap to next | -42 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 148px track 0.09px — IoU 0.2001
-- `Roboto[wdth,wght].ttf` 149px track -0.42px — IoU 0.1993
-- `Roboto[wdth,wght].ttf` 149px track -0.04px — IoU 0.1974
+- `Roboto[wdth,wght].ttf` 148px track 0.09px — IoU 0.196
+- `Roboto[wdth,wght].ttf` 149px track -0.42px — IoU 0.196
+- `Roboto[wdth,wght].ttf` 139px track 0.4px — IoU 0.1951
 
 ### `text-2` — subheadline
 
@@ -79,8 +81,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=653, y=547, w=378, h=131 |
-| Normalised | x=60.46%, y=50.65%, w=35.0%, h=12.13% |
+| Bounding box (px) | x=653, y=552, w=378, h=126 |
+| Normalised | x=60.46%, y=51.11%, w=35.0%, h=11.67% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -95,108 +97,112 @@ Alternate font fits considered:
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
-| Stroke (median/mean) | 8.0 / 8.06 px |
+| Stroke (median/mean) | 8.0 / 8.03 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Dancing Script, Roboto |
-| Match IoU | 0.3485 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4025 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -52 px |
-| Gap to next | 94 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | -42 px |
+| Gap to next | 93 px |
 
 Alternate font fits considered:
-- `DancingScript[wght].ttf` 109px track 0.28px — IoU 0.335
-- `DancingScript[wght].ttf` 111px track -0.71px — IoU 0.3315
-- `DancingScript[wght].ttf` 110px track 0.38px — IoU 0.3311
+- `DancingScript[wght].ttf` 111px track -0.71px — IoU 0.3954
+- `DancingScript[wght].ttf` 112px track -0.59px — IoU 0.3953
+- `DancingScript[wght].ttf` 113px track -0.53px — IoU 0.3919
 
-### `text-3` — detail
+### `text-3` — fine-print
 
 **Text:** "Protein-ric hwholesom efood for the calorie"  (OCR confidence 0.9978)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=503, y=772, w=520, h=21 |
-| Normalised | x=46.57%, y=71.48%, w=48.15%, h=1.94% |
+| Bounding box (px) | x=503, y=771, w=521, h=22 |
+| Normalised | x=46.57%, y=71.39%, w=48.24%, h=2.04% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
-| Font size | 28 px |
-| Letter-spacing | -0.57 px (-0.0204 em) |
-| Line-height | 39.0 px (ratio 1.393) |
+| Font size | 26 px |
+| Letter-spacing | 0.38 px (0.0146 em) |
+| Line-height | 39.0 px (ratio 1.5) |
 | Line | 1 of 2 |
 | Transform | none |
-| Colour | `#070707` |
+| Colour | `#080808` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 13.2:1 |
+| Contrast vs local bg | 12.57:1 |
 | Stroke (median/mean) | 2.0 / 2.79 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Dancing Script, Roboto |
-| Match IoU | 0.5206 |
+| Match IoU | 0.4764 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 94 px |
-| Gap to next | 18 px |
+| Gap to previous | 93 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.27px — IoU 0.536
-- `Roboto[wdth,wght].ttf` 27px track -0.17px — IoU 0.5254
-- `Roboto[wdth,wght].ttf` 27px track -0.11px — IoU 0.5234
+- `Roboto[wdth,wght].ttf` 28px track -0.55px — IoU 0.5609
+- `Roboto[wdth,wght].ttf` 28px track 0.18px — IoU 0.5573
+- `Roboto[wdth,wght].ttf` 27px track -0.08px — IoU 0.5495
 
-### `text-4` — detail
+### `text-4` — fine-print
 
 **Text:** "conscious."  (OCR confidence 0.9948)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=699, y=811, w=126, h=20 |
-| Normalised | x=64.72%, y=75.09%, w=11.67%, h=1.85% |
+| Bounding box (px) | x=699, y=810, w=127, h=21 |
+| Normalised | x=64.72%, y=75.0%, w=11.76%, h=1.94% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
-| Font size | 28 px |
-| Letter-spacing | -0.57 px (-0.0204 em) |
-| Line-height | 39.0 px (ratio 1.393) |
+| Font size | 26 px |
+| Letter-spacing | 0.38 px (0.0146 em) |
+| Line-height | 39.0 px (ratio 1.5) |
 | Line | 2 of 2 |
 | Transform | lowercase |
-| Colour | `#090909` |
+| Colour | `#0a0a0a` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 12.31:1 |
+| Contrast vs local bg | 11.77:1 |
 | Stroke (median/mean) | 2.0 / 2.77 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Dancing Script, Roboto |
-| Match IoU | 0.572 |
+| Match IoU | 0.6611 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 18 px |
-| Gap to next | 54 px |
+| Gap to previous | 17 px |
+| Gap to next | 63 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.27px — IoU 0.536
-- `Roboto[wdth,wght].ttf` 27px track -0.17px — IoU 0.5254
-- `Roboto[wdth,wght].ttf` 27px track -0.11px — IoU 0.5234
+- `Roboto[wdth,wght].ttf` 28px track -0.55px — IoU 0.5609
+- `Roboto[wdth,wght].ttf` 28px track 0.18px — IoU 0.5573
+- `Roboto[wdth,wght].ttf` 27px track -0.08px — IoU 0.5495
 
-### `text-5` — supporting
+### `text-5` — fine-print
 
-**Text:** "ORDERNOW"  (OCR confidence 0.9921)
+**Text:** "ORDER NOW"  (OCR confidence 0.9921)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=653, y=885, w=188, h=42 |
-| Normalised | x=60.46%, y=81.94%, w=17.41%, h=3.89% |
+| Bounding box (px) | x=660, y=894, w=174, h=23 |
+| Normalised | x=61.11%, y=82.78%, w=16.11%, h=2.13% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 41 px |
-| Letter-spacing | -0.92 px (-0.0224 em) |
+| Variation axes | [500, 100.0] |
+| Font size | 32 px |
+| Letter-spacing | -1.02 px (-0.0319 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -204,18 +210,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.27:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Dancing Script, Roboto |
-| Match IoU | 0.1871 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7964 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 54 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 63 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 35px track -0.46px — IoU 0.1861
-- `Roboto[wdth,wght].ttf` 38px track -0.74px — IoU 0.1848
-- `Roboto[wdth,wght].ttf` 35px track -0.43px — IoU 0.1821
+- `Roboto[wdth,wght].ttf` 34px track -0.81px — IoU 0.7817
+- `Roboto[wdth,wght].ttf` 32px track -1.04px — IoU 0.7673
+- `Roboto[wdth,wght].ttf` 34px track -0.83px — IoU 0.7654
 
 ## 4. Colours (semantic)
 
@@ -224,10 +231,10 @@ Alternate font fits considered:
 | background | `#fbfbfb` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#b8e684` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#000000` | glyph ink of 'Healthy' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'ORDERNOW' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'ORDER NOW' | glyph ink median |
 | accent | `#2b340b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#b8e684` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +258,7 @@ Full palette (k-means):
 | Subject position | middle-left |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1267 |
+| Text coverage | 0.1341 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -280,9 +287,9 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline` | text | Healthy |
 | `subheadline` | text | Cueryday |
-| `detail_line1` | text | Protein-ric hwholesom efood for the calorie |
-| `detail_line2` | text | conscious. |
-| `supporting` | text | ORDERNOW |
+| `fine-print_line1` | text | Protein-ric hwholesom efood for the calorie |
+| `fine-print_line2` | text | conscious. |
+| `fine-print` | text | ORDER NOW |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fbfbfb |
@@ -295,9 +302,9 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Dancing Script |
 | `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 29.4 |
 | `imageFocalY` | number | 47.9 |
 

@@ -34,11 +34,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — body
 
 **Text:** "LOGO"  (OCR confidence 0.9936)
 
@@ -61,6 +61,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.58:1 |
 | Stroke (median/mean) | 6.0 / 8.43 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Actor, Alex Brush |
 | Match IoU | 0.7232 |
 | **Geometry fit confidence** | **high** |
@@ -74,7 +75,7 @@ Alternate font fits considered:
 - `Actor-Regular.ttf` 46px track 1.1px — IoU 0.7085
 - `AbrilFatface-Regular.ttf` 45px track 0.45px — IoU 0.3288
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "Men CArrival"  (OCR confidence 0.8877)
 
@@ -97,13 +98,15 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.76:1 |
 | Stroke (median/mean) | 3.0 / 3.65 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abril Fatface, Actor, Alex Brush |
 | Match IoU | 0.1711 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8877) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | 84 px |
-| Gap to next | -1 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
 - `AlexBrush-Regular.ttf` 61px track -0.21px — IoU 0.1626
@@ -116,73 +119,75 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=198, y=239, w=684, h=122 |
-| Normalised | x=18.33%, y=22.13%, w=63.33%, h=11.3% |
+| Bounding box (px) | x=198, y=250, w=684, h=111 |
+| Normalised | x=18.33%, y=23.15%, w=63.33%, h=10.28% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AbrilFatface-Regular.ttf` |
 | Variation axes | None |
-| Font size | 146 px |
-| Letter-spacing | -0.03 px (-0.0002 em) |
-| Line-height | 146.0 px (ratio 1.0) |
+| Font size | 147 px |
+| Letter-spacing | -0.81 px (-0.0055 em) |
+| Line-height | 134.0 px (ratio 0.912) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ededed` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.55:1 |
-| Stroke (median/mean) | 33.0 / 27.75 px |
+| Stroke (median/mean) | 33.0 / 27.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Actor, Alex Brush |
-| Match IoU | 0.5745 |
+| Match IoU | 0.6553 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -1 px |
-| Gap to next | 24 px |
+| Gap to previous | 10 px |
+| Gap to next | 23 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 147px track -0.81px — IoU 0.3265
-- `AbrilFatface-Regular.ttf` 145px track 0.76px — IoU 0.3221
-- `Actor-Regular.ttf` 169px track -0.1px — IoU 0.2341
+- `AbrilFatface-Regular.ttf` 146px track -0.03px — IoU 0.6766
+- `AbrilFatface-Regular.ttf` 145px track 0.76px — IoU 0.6572
+- `Actor-Regular.ttf` 170px track -0.78px — IoU 0.3984
 
 ### `text-4` — headline
 
-**Text:** "B E LT"  (OCR confidence 0.9973)
+**Text:** "BELT"  (OCR confidence 0.9973)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=355, y=385, w=367, h=108 |
-| Normalised | x=32.87%, y=35.65%, w=33.98%, h=10.0% |
+| Bounding box (px) | x=355, y=384, w=368, h=109 |
+| Normalised | x=32.87%, y=35.56%, w=34.07%, h=10.09% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AbrilFatface-Regular.ttf` |
 | Variation axes | None |
-| Font size | 146 px |
-| Letter-spacing | -0.03 px (-0.0002 em) |
-| Line-height | 146.0 px (ratio 1.0) |
+| Font size | 147 px |
+| Letter-spacing | -0.81 px (-0.0055 em) |
+| Line-height | 134.0 px (ratio 0.912) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#988271` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.05:1 |
+| Colour | `#ededed` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.63:1 |
 | Stroke (median/mean) | 32.0 / 27.51 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Actor, Alex Brush |
-| Match IoU | 0.0813 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7075 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 24 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 23 px |
 | Gap to next | 503 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 147px track -0.81px — IoU 0.3265
-- `AbrilFatface-Regular.ttf` 145px track 0.76px — IoU 0.3221
-- `Actor-Regular.ttf` 169px track -0.1px — IoU 0.2341
+- `AbrilFatface-Regular.ttf` 146px track -0.03px — IoU 0.6766
+- `AbrilFatface-Regular.ttf` 145px track 0.76px — IoU 0.6572
+- `Actor-Regular.ttf` 170px track -0.78px — IoU 0.3984
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "SHOP"  (OCR confidence 0.9962)
 
@@ -205,6 +210,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.08:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Actor, Alex Brush |
 | Match IoU | 0.6316 |
 | **Geometry fit confidence** | **medium** |
@@ -225,10 +231,10 @@ Alternate font fits considered:
 | background | `#ebebea` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#4a3830` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ededed` | glyph ink of 'LEATHER' | glyph ink median |
-| textSecondary | `#988271` | glyph ink of 'B E LT' | glyph ink median |
+| textSecondary | `#544138` | glyph ink of 'SHOP' | glyph ink median |
 | accent | `#4a3830` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#2d211c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -252,7 +258,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1278 |
+| Text coverage | 0.1217 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -279,26 +285,26 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | LOGO |
-| `subheadline` | text | Men CArrival |
+| `body` | text | LOGO |
+| `supporting` | text | Men CArrival |
 | `headline_line1` | text | LEATHER |
-| `headline_line2` | text | B E LT |
-| `detail` | text | SHOP |
+| `headline_line2` | text | BELT |
+| `fine-print` | text | SHOP |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #ebebea |
 | `surface` | colour | #4a3830 |
 | `textPrimary` | colour | #ededed |
-| `textSecondary` | colour | #988271 |
+| `textSecondary` | colour | #544138 |
 | `accent` | colour | #4a3830 |
 | `accentSecondary` | colour | #2d211c |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abril Fatface |
+| `show_body` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 45.2 |
 | `imageFocalY` | number | 60.9 |
 

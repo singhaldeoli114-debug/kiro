@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,8 +44,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=477, y=52, w=128, h=36 |
-| Normalised | x=44.17%, y=4.81%, w=11.85%, h=3.33% |
+| Bounding box (px) | x=476, y=51, w=129, h=38 |
+| Normalised | x=44.07%, y=4.72%, w=11.94%, h=3.52% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -53,7 +53,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 47 px |
-| Letter-spacing | 0.19 px (0.004 em) |
+| Letter-spacing | 0.53 px (0.0113 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -61,162 +61,208 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 14.32:1 |
 | Stroke (median/mean) | 6.0 / 7.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.7104 |
+| Match IoU | 0.7293 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 530 px |
+| Gap to next | 529 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 48px track -0.71px — IoU 0.6999
-- `Actor-Regular.ttf` 46px track 1.1px — IoU 0.6995
-- `Abel-Regular.ttf` 64px track -0.5px — IoU 0.35
+- `Actor-Regular.ttf` 48px track -0.38px — IoU 0.7264
+- `Actor-Regular.ttf` 49px track -1.28px — IoU 0.7095
+- `Abel-Regular.ttf` 65px track -0.84px — IoU 0.3577
 
-### `text-2` — detail
+### `text-2` — fine-print
 
 **Text:** "001"  (OCR confidence 0.994)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=579, y=618, w=30, h=15 |
-| Normalised | x=53.61%, y=57.22%, w=2.78%, h=1.39% |
+| Bounding box (px) | x=579, y=618, w=31, h=16 |
+| Normalised | x=53.61%, y=57.22%, w=2.87%, h=1.48% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 23 px |
-| Letter-spacing | -0.45 px (-0.0196 em) |
-| Line-height | 28.0 px (ratio 1.217) |
+| Font size | 22 px |
+| Letter-spacing | 0.14 px (0.0064 em) |
+| Line-height | 28.0 px (ratio 1.273) |
 | Line | 1 of 2 |
 | Transform | none |
-| Colour | `#d9cfd8` |
+| Colour | `#d9cfd7` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.16:1 |
+| Contrast vs local bg | 4.18:1 |
 | Stroke (median/mean) | 1.0 / 1.25 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.25 |
+| Match IoU | 0.2414 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 530 px |
-| Gap to next | 13 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 529 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 22px track 0.05px — IoU 0.2092
-- `Actor-Regular.ttf` 21px track 0.53px — IoU 0.1996
-- `Abel-Regular.ttf` 24px track -0.24px — IoU 0.151
+- `Actor-Regular.ttf` 23px track -0.36px — IoU 0.1908
+- `Actor-Regular.ttf` 21px track 0.62px — IoU 0.1904
+- `Abel-Regular.ttf` 24px track -0.15px — IoU 0.1512
 
-### `text-3` — detail
+### `text-3` — fine-print
 
 **Text:** "iPhone17 Pro"  (OCR confidence 0.983)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=587, y=646, w=119, h=19 |
-| Normalised | x=54.35%, y=59.81%, w=11.02%, h=1.76% |
+| Bounding box (px) | x=587, y=646, w=120, h=19 |
+| Normalised | x=54.35%, y=59.81%, w=11.11%, h=1.76% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 23 px |
-| Letter-spacing | -0.45 px (-0.0196 em) |
-| Line-height | 28.0 px (ratio 1.217) |
+| Font size | 22 px |
+| Letter-spacing | 0.14 px (0.0064 em) |
+| Line-height | 28.0 px (ratio 1.273) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#cac9ce` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.56:1 |
 | Stroke (median/mean) | 1.0 / 1.38 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.1753 |
+| Match IoU | 0.1758 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 13 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 12 px |
 | Gap to next | 34 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 22px track 0.05px — IoU 0.2092
-- `Actor-Regular.ttf` 21px track 0.53px — IoU 0.1996
-- `Abel-Regular.ttf` 24px track -0.24px — IoU 0.151
+- `Actor-Regular.ttf` 23px track -0.36px — IoU 0.1908
+- `Actor-Regular.ttf` 21px track 0.62px — IoU 0.1904
+- `Abel-Regular.ttf` 24px track -0.15px — IoU 0.1512
 
-### `text-4` — detail
+### `text-4` — body
 
 **Text:** "AMockuply"  (OCR confidence 0.946)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=607, y=699, w=94, h=18 |
-| Normalised | x=56.2%, y=64.72%, w=8.7%, h=1.67% |
+| Bounding box (px) | x=606, y=699, w=96, h=18 |
+| Normalised | x=56.11%, y=64.72%, w=8.89%, h=1.67% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
-| Font size | 24 px |
-| Letter-spacing | -0.26 px (-0.0108 em) |
+| Font size | 25 px |
+| Letter-spacing | -0.51 px (-0.0204 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#d1d1d4` |
+| Colour | `#d0d0d3` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 9.77:1 |
+| Contrast vs local bg | 9.7:1 |
 | Stroke (median/mean) | 1.0 / 1.7 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.1597 |
+| Match IoU | 0.1888 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 34 px |
-| Gap to next | -9 px |
+| Gap to next | -10 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 20px track -0.17px — IoU 0.1562
-- `Actor-Regular.ttf` 21px track -0.76px — IoU 0.1536
-- `Abel-Regular.ttf` 23px track 0.25px — IoU 0.152
+- `Actor-Regular.ttf` 19px track 0.68px — IoU 0.1783
+- `Actor-Regular.ttf` 20px track 0.08px — IoU 0.1759
+- `Abel-Regular.ttf` 24px track -0.01px — IoU 0.1632
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "2025"  (OCR confidence 0.999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=776, y=708, w=25, h=8 |
-| Normalised | x=71.85%, y=65.56%, w=2.31%, h=0.74% |
+| Bounding box (px) | x=775, y=707, w=26, h=9 |
+| Normalised | x=71.76%, y=65.46%, w=2.41%, h=0.83% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
+| Font file matched | `AlexBrush-Regular.ttf` |
 | Variation axes | None |
-| Font size | 11 px |
-| Letter-spacing | 0.75 px (0.0682 em) |
+| Font size | 10 px |
+| Letter-spacing | 0.21 px (0.021 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#afb0b7` |
+| Colour | `#abaaad` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 8.39:1 |
+| Contrast vs local bg | 8.06:1 |
 | Stroke (median/mean) | 1.0 / 1.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.2547 |
+| Match IoU | 0.1818 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -9 px |
-| Gap to next | 74 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -10 px |
+| Gap to next | 47 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 13px track -0.63px — IoU 0.2273
-- `Actor-Regular.ttf` 12px track 0.06px — IoU 0.2087
-- `AlexBrush-Regular.ttf` 10px track -0.12px — IoU 0.189
+- `Actor-Regular.ttf` 12px track 0.39px — IoU 0.1742
+- `Actor-Regular.ttf` 14px track -0.98px — IoU 0.1705
+- `Abel-Regular.ttf` 14px track -0.75px — IoU 0.1641
+
+### `text-6` — supporting
+
+**Text:** "lem"  (OCR confidence 0.7076)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=120, y=763, w=62, h=31 |
+| Normalised | x=11.11%, y=70.65%, w=5.74%, h=2.87% |
+| Alignment | left |
+| z-order | 105 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Actor-Regular.ttf` |
+| Variation axes | None |
+| Font size | 39 px |
+| Letter-spacing | 0.64 px (0.0164 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | lowercase |
+| Colour | `#c56436` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 4.69:1 |
+| Stroke (median/mean) | 8.0 / 7.55 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| Font family (authoritative) | Abel, Actor, Alex Brush |
+| Match IoU | 0.2746 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | False — low OCR confidence (0.7076) |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 47 px |
+| Gap to next | -4 px |
+
+Alternate font fits considered:
+- `Actor-Regular.ttf` 40px track -0.13px — IoU 0.2553
+- `Abel-Regular.ttf` 44px track 0.59px — IoU 0.2443
+- `Actor-Regular.ttf` 41px track -0.92px — IoU 0.2233
 
 ### `text-7` — headline
 
@@ -224,8 +270,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=87, y=790, w=445, h=81 |
-| Normalised | x=8.06%, y=73.15%, w=41.2%, h=7.5% |
+| Bounding box (px) | x=86, y=790, w=446, h=82 |
+| Normalised | x=7.96%, y=73.15%, w=41.3%, h=7.59% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -233,62 +279,27 @@ Alternate font fits considered:
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
 | Font size | 109 px |
-| Letter-spacing | -0.68 px (-0.0062 em) |
+| Letter-spacing | -0.55 px (-0.005 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 10.01:1 |
+| Contrast vs local bg | 9.99:1 |
 | Stroke (median/mean) | 9.0 / 12.62 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.6788 |
+| Match IoU | 0.6614 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.9103) |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 74 px |
-| Gap to next | -80 px |
+| Gap to previous | -4 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 108px track -0.16px — IoU 0.6648
-- `Abel-Regular.ttf` 107px track 0.36px — IoU 0.6528
-- `Actor-Regular.ttf` 103px track 0.12px — IoU 0.1981
-
-### `text-6` — supporting
-
-**Text:** "le m"  (OCR confidence 0.7076)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=120, y=791, w=57, h=8 |
-| Normalised | x=11.11%, y=73.24%, w=5.28%, h=0.74% |
-| Alignment | left |
-| z-order | 105 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `AlexBrush-Regular.ttf` |
-| Variation axes | None |
-| Font size | 44 px |
-| Letter-spacing | -0.49 px (-0.0111 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | lowercase |
-| Colour | `#2c0149` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.02:1 |
-| Stroke (median/mean) | 9.0 / 12.73 px |
-| Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.1188 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.7076) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -80 px |
-| Gap to next | 71 px |
-
-Alternate font fits considered:
-- `Abel-Regular.ttf` 34px track 0.73px — IoU 0.1154
-- `Abel-Regular.ttf` 36px track -0.34px — IoU 0.1152
-- `AlexBrush-Regular.ttf` 43px track -0.05px — IoU 0.1117
+- `Abel-Regular.ttf` 108px track -0.04px — IoU 0.6601
+- `Abel-Regular.ttf` 107px track 0.48px — IoU 0.6469
+- `Actor-Regular.ttf` 104px track -0.29px — IoU 0.2056
 
 ### `text-8` — subheadline
 
@@ -296,35 +307,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=430, y=870, w=98, h=63 |
-| Normalised | x=39.81%, y=80.56%, w=9.07%, h=5.83% |
+| Bounding box (px) | x=431, y=883, w=97, h=50 |
+| Normalised | x=39.91%, y=81.76%, w=8.98%, h=4.63% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
-| Font size | 63 px |
-| Letter-spacing | -0.47 px (-0.0075 em) |
+| Font size | 62 px |
+| Letter-spacing | -0.18 px (-0.0029 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#c16235` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 5.98:1 |
+| Contrast vs local bg | 6.04:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.3295 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6222 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 71 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 11 px |
 | Gap to next | 65 px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 62px track 0.32px — IoU 0.3068
-- `Abel-Regular.ttf` 61px track 1.11px — IoU 0.3002
-- `Actor-Regular.ttf` 51px track 1.08px — IoU 0.1784
+- `Abel-Regular.ttf` 61px track 0.61px — IoU 0.6074
+- `Abel-Regular.ttf` 63px track -0.97px — IoU 0.6041
+- `Actor-Regular.ttf` 52px track -0.35px — IoU 0.3247
 
 ### `text-9` — fine-print
 
@@ -332,16 +344,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=96, y=998, w=113, h=14 |
-| Normalised | x=8.89%, y=92.41%, w=10.46%, h=1.3% |
+| Bounding box (px) | x=96, y=998, w=114, h=15 |
+| Normalised | x=8.89%, y=92.41%, w=10.56%, h=1.39% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 19 px |
-| Letter-spacing | 0.3 px (0.0158 em) |
+| Font size | 21 px |
+| Letter-spacing | -1.03 px (-0.049 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -349,8 +361,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.18:1 |
 | Stroke (median/mean) | 2.0 / 2.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Actor, Alex Brush |
-| Match IoU | 0.5278 |
+| Match IoU | 0.4872 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -358,9 +371,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 20px track -0.43px — IoU 0.524
-- `Actor-Regular.ttf` 18px track 1.02px — IoU 0.4166
-- `Abel-Regular.ttf` 25px track -0.59px — IoU 0.2738
+- `Actor-Regular.ttf` 20px track -0.3px — IoU 0.4836
+- `Actor-Regular.ttf` 19px track 0.43px — IoU 0.3692
+- `Abel-Regular.ttf` 25px track -0.46px — IoU 0.2175
 
 ## 4. Colours (semantic)
 
@@ -372,7 +385,7 @@ Alternate font fits considered:
 | textSecondary | `#c16235` | glyph ink of 'PRO' | glyph ink median |
 | accent | `#25013e` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#0a0222` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -396,7 +409,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0458 |
+| Text coverage | 0.0469 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -424,12 +437,12 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `supporting` | text | LOGO |
-| `detail_line1` | text | 001 |
-| `detail_line2` | text | iPhone17 Pro |
-| `detail` | text | AMockuply |
-| `detail` | text | 2025 |
+| `fine-print_line1` | text | 001 |
+| `fine-print_line2` | text | iPhone17 Pro |
+| `body` | text | AMockuply |
+| `fine-print` | text | 2025 |
+| `supporting` | text | lem |
 | `headline` | text | iPH0NE 17 |
-| `supporting` | text | le m |
 | `subheadline` | text | PRO |
 | `fine-print` | text | ORDER NOW |
 | `heroImage` | image | full-bleed artwork |
@@ -443,12 +456,12 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Abel |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_supporting` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 57.0 |

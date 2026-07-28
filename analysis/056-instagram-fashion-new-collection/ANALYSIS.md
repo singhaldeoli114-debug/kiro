@@ -35,7 +35,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -62,6 +62,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.13:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Abhaya Libre, Euphoria Script, Archivo Narrow |
 | Match IoU | 0.6587 |
 | **Geometry fit confidence** | **medium** |
@@ -75,22 +76,22 @@ Alternate font fits considered:
 - `EuphoriaScript-Regular.ttf` 83px track 0.34px — IoU 0.5913
 - `Roboto[wdth,wght].ttf` 65px track 0.29px — IoU 0.2214
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "New Collection"  (OCR confidence 0.9855)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=732, y=553, w=243, h=26 |
-| Normalised | x=67.78%, y=51.2%, w=22.5%, h=2.41% |
+| Bounding box (px) | x=732, y=553, w=245, h=26 |
+| Normalised | x=67.78%, y=51.2%, w=22.69%, h=2.41% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [800, 100.0] |
-| Font size | 36 px |
-| Letter-spacing | -0.09 px (-0.0025 em) |
+| Font file matched | `AbhayaLibre-SemiBold.ttf` |
+| Variation axes | None |
+| Font size | 40 px |
+| Letter-spacing | -0.32 px (-0.008 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -98,8 +99,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 7.49:1 |
 | Stroke (median/mean) | 3.0 / 2.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Abhaya Libre, Euphoria Script, Archivo Narrow |
-| Match IoU | 0.5555 |
+| Match IoU | 0.674 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -107,11 +109,11 @@ Alternate font fits considered:
 | Gap to next | 89 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-Bold.ttf` 39px track -0.1px — IoU 0.5472
-- `Roboto[wdth,wght].ttf` 36px track -0.14px — IoU 0.5465
-- `Roboto[wdth,wght].ttf` 39px track -0.48px — IoU 0.5426
+- `AbhayaLibre-Bold.ttf` 40px track -0.43px — IoU 0.6668
+- `AbhayaLibre-Medium.ttf` 40px track -0.24px — IoU 0.6667
+- `AbhayaLibre-ExtraBold.ttf` 40px track -0.55px — IoU 0.6371
 
-### `text-3` — supporting
+### `text-3` — body
 
 **Text:** "ORDER NOW"  (OCR confidence 0.9924)
 
@@ -134,6 +136,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.12:1 |
 | Stroke (median/mean) | 2.0 / 2.78 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Abhaya Libre, Euphoria Script, Archivo Narrow |
 | Match IoU | 0.7994 |
 | **Geometry fit confidence** | **high** |
@@ -157,7 +160,7 @@ Alternate font fits considered:
 | textSecondary | `#171717` | glyph ink of 'New Collection' | glyph ink median |
 | accent | `#331d2d` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7a6061` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -209,8 +212,8 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Fashion |
-| `subheadline` | text | New Collection |
-| `supporting` | text | ORDER NOW |
+| `supporting` | text | New Collection |
+| `body` | text | ORDER NOW |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -222,8 +225,8 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Roboto |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 42.3 |
 | `imageFocalY` | number | 47.0 |
 

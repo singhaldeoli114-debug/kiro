@@ -32,45 +32,47 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "new"  (OCR confidence 0.9745)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=272, y=173, w=121, h=97 |
-| Normalised | x=25.19%, y=16.02%, w=11.2%, h=8.98% |
+| Bounding box (px) | x=101, y=109, w=292, h=156 |
+| Normalised | x=9.35%, y=10.09%, w=27.04%, h=14.44% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `OleoScript-Bold.ttf` |
 | Variation axes | None |
-| Font size | 74 px |
-| Letter-spacing | -0.55 px (-0.0074 em) |
+| Font size | 178 px |
+| Letter-spacing | -0.85 px (-0.0048 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#0572f1` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.65:1 |
-| Stroke (median/mean) | 13.0 / 10.31 px |
+| Contrast vs local bg | 1.74:1 |
+| Stroke (median/mean) | 12.5 / 10.17 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Oleo Script |
-| Match IoU | 0.379 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.3356 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | None px |
-| Gap to next | -63 px |
+| Gap to next | -53 px |
 
 Alternate font fits considered:
-- `OleoScript-Bold.ttf` 73px track 0.27px — IoU 0.3643
-- `OleoScript-Bold.ttf` 72px track 1.1px — IoU 0.3526
-- `OleoScript-Regular.ttf` 78px track 0.79px — IoU 0.3338
+- `OleoScript-Bold.ttf` 177px track -0.02px — IoU 0.3355
+- `OleoScript-Bold.ttf` 176px track 0.8px — IoU 0.3317
+- `OleoScript-Regular.ttf` 192px track -0.98px — IoU 0.3297
 
 ### `text-2` — headline
 
@@ -78,80 +80,83 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=449, y=207, w=362, h=165 |
-| Normalised | x=41.57%, y=19.17%, w=33.52%, h=15.28% |
+| Bounding box (px) | x=462, y=212, w=571, h=155 |
+| Normalised | x=42.78%, y=19.63%, w=52.87%, h=14.35% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `OleoScript-Bold.ttf` |
 | Variation axes | None |
-| Font size | 99 px |
-| Letter-spacing | -0.56 px (-0.0057 em) |
+| Font size | 155 px |
+| Letter-spacing | -0.27 px (-0.0017 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#0572f1` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.12:1 |
-| Stroke (median/mean) | 18.0 / 21.67 px |
+| Contrast vs local bg | 1.65:1 |
+| Stroke (median/mean) | 14.0 / 11.65 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Oleo Script |
-| Match IoU | 0.3049 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.3855 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -63 px |
-| Gap to next | 95 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -53 px |
+| Gap to next | 105 px |
 
 Alternate font fits considered:
-- `OleoScript-Bold.ttf` 98px track -0.03px — IoU 0.3019
-- `OleoScript-Bold.ttf` 97px track 0.5px — IoU 0.2972
-- `OleoScript-Regular.ttf` 107px track -0.12px — IoU 0.2818
+- `OleoScript-Bold.ttf` 154px track 0.26px — IoU 0.3745
+- `OleoScript-Bold.ttf` 153px track 0.79px — IoU 0.3739
+- `OleoScript-Regular.ttf` 169px track -0.3px — IoU 0.3438
 
-### `text-3` — supporting
+### `text-3` — fine-print
 
 **Text:** "1s)tree"  (OCR confidence 0.8095)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=518, y=467, w=82, h=38 |
-| Normalised | x=47.96%, y=43.24%, w=7.59%, h=3.52% |
+| Bounding box (px) | x=509, y=472, w=92, h=39 |
+| Normalised | x=47.13%, y=43.7%, w=8.52%, h=3.61% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `OleoScript-Bold.ttf` |
 | Variation axes | None |
-| Font size | 16 px |
-| Letter-spacing | -0.41 px (-0.0256 em) |
-| Line-height | 70.0 px (ratio 4.375) |
-| Line | 1 of 2 |
+| Font size | 32 px |
+| Letter-spacing | 0.47 px (0.0147 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#92c2e4` |
+| Colour | `#8fc0e3` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.55:1 |
-| Stroke (median/mean) | 2.0 / 2.01 px |
+| Contrast vs local bg | 2.49:1 |
+| Stroke (median/mean) | 2.0 / 1.96 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script |
-| Match IoU | 0.2028 |
+| Match IoU | 0.2392 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8095) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 95 px |
-| Gap to next | 32 px |
+| Gap to previous | 105 px |
+| Gap to next | 31 px |
 
 Alternate font fits considered:
-- `OleoScript-Bold.ttf` 15px track 0.2px — IoU 0.1751
-- `OleoScript-Bold.ttf` 14px track 0.82px — IoU 0.1703
-- `OleoScript-Regular.ttf` 17px track -0.47px — IoU 0.1674
+- `OleoScript-Bold.ttf` 34px track -0.47px — IoU 0.2362
+- `OleoScript-Bold.ttf` 33px track -0.0px — IoU 0.2216
+- `OleoScript-Regular.ttf` 35px track 0.41px — IoU 0.1849
 
-### `text-4` — supporting
+### `text-4` — fine-print
 
 **Text:** "HYALURONIC ACID"  (OCR confidence 0.9515)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=493, y=537, w=132, h=38 |
-| Normalised | x=45.65%, y=49.72%, w=12.22%, h=3.52% |
+| Bounding box (px) | x=492, y=542, w=133, h=28 |
+| Normalised | x=45.56%, y=50.19%, w=12.31%, h=2.59% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -159,98 +164,103 @@ Alternate font fits considered:
 | Font file matched | `OleoScript-Bold.ttf` |
 | Variation axes | None |
 | Font size | 16 px |
-| Letter-spacing | -0.41 px (-0.0256 em) |
-| Line-height | 70.0 px (ratio 4.375) |
-| Line | 2 of 2 |
+| Letter-spacing | -0.34 px (-0.0213 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#93bde3` |
+| Colour | `#90bde4` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.89:1 |
-| Stroke (median/mean) | 2.0 / 2.24 px |
+| Contrast vs local bg | 1.76:1 |
+| Stroke (median/mean) | 2.0 / 2.32 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Oleo Script |
-| Match IoU | 0.1864 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.208 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 32 px |
-| Gap to next | -17 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 31 px |
+| Gap to next | -7 px |
 
 Alternate font fits considered:
-- `OleoScript-Bold.ttf` 15px track 0.2px — IoU 0.1751
-- `OleoScript-Bold.ttf` 14px track 0.82px — IoU 0.1703
-- `OleoScript-Regular.ttf` 17px track -0.47px — IoU 0.1674
+- `OleoScript-Bold.ttf` 15px track 0.28px — IoU 0.1983
+- `OleoScript-Regular.ttf` 17px track -0.4px — IoU 0.1938
+- `OleoScript-Bold.ttf` 14px track 0.9px — IoU 0.1727
 
-### `text-5` — detail
+### `text-5` — fine-print
 
-**Text:** "TONERPLUS"  (OCR confidence 0.9879)
+**Text:** "TONE RPLUS"  (OCR confidence 0.9879)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=493, y=558, w=101, h=22 |
-| Normalised | x=45.65%, y=51.67%, w=9.35%, h=2.04% |
+| Bounding box (px) | x=492, y=563, w=99, h=22 |
+| Normalised | x=45.56%, y=52.13%, w=9.17%, h=2.04% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `OleoScript-Bold.ttf` |
 | Variation axes | None |
-| Font size | 19 px |
-| Letter-spacing | -0.22 px (-0.0116 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 11 px |
+| Letter-spacing | -0.62 px (-0.0564 em) |
+| Line-height | 36.0 px (ratio 3.273) |
+| Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#b5daef` |
+| Colour | `#c0d2ea` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.27:1 |
-| Stroke (median/mean) | 2.0 / 2.55 px |
+| Contrast vs local bg | 2.23:1 |
+| Stroke (median/mean) | 2.0 / 2.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script |
-| Match IoU | 0.2778 |
+| Match IoU | 0.2237 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -17 px |
-| Gap to next | 29 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -7 px |
+| Gap to next | 14 px |
 
 Alternate font fits considered:
-- `OleoScript-Bold.ttf` 20px track -0.9px — IoU 0.2758
-- `OleoScript-Bold.ttf` 18px track 0.45px — IoU 0.2683
-- `OleoScript-Regular.ttf` 19px track 0.46px — IoU 0.2504
+- `OleoScript-Bold.ttf` 10px track -0.15px — IoU 0.1842
+- `OleoScript-Regular.ttf` 11px track -0.18px — IoU 0.1815
+- `OleoScript-Bold.ttf` 9px track 0.31px — IoU 0.1763
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "Fivetypesofhyaluronlcad"  (OCR confidence 0.682)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=503, y=609, w=89, h=20 |
-| Normalised | x=46.57%, y=56.39%, w=8.24%, h=1.85% |
+| Bounding box (px) | x=493, y=599, w=99, h=27 |
+| Normalised | x=45.65%, y=55.46%, w=9.17%, h=2.5% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `OleoScript-Bold.ttf` |
 | Variation axes | None |
-| Font size | 10 px |
-| Letter-spacing | -0.61 px (-0.061 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 11 px |
+| Letter-spacing | -0.62 px (-0.0564 em) |
+| Line-height | 36.0 px (ratio 3.273) |
+| Line | 2 of 2 |
 | Transform | none |
-| Colour | `#97bde3` |
+| Colour | `#90b7e2` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.04:1 |
-| Stroke (median/mean) | 1.0 / 1.29 px |
+| Contrast vs local bg | 2.02:1 |
+| Stroke (median/mean) | 1.0 / 1.26 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Oleo Script |
-| Match IoU | 0.1382 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.1686 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.682); single long token with no spaces |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 29 px |
-| Gap to next | 168 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 14 px |
+| Gap to next | 166 px |
 
 Alternate font fits considered:
-- `OleoScript-Bold.ttf` 8px track 0.32px — IoU 0.1289
-- `OleoScript-Bold.ttf` 9px track -0.14px — IoU 0.1169
-- `OleoScript-Regular.ttf` 11px track -0.63px — IoU 0.1024
+- `OleoScript-Bold.ttf` 10px track -0.15px — IoU 0.1842
+- `OleoScript-Regular.ttf` 11px track -0.18px — IoU 0.1815
+- `OleoScript-Bold.ttf` 9px track 0.31px — IoU 0.1763
 
 ### `text-7` — fine-print
 
@@ -258,8 +268,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=521, y=797, w=69, h=6 |
-| Normalised | x=48.24%, y=73.8%, w=6.39%, h=0.56% |
+| Bounding box (px) | x=520, y=792, w=70, h=16 |
+| Normalised | x=48.15%, y=73.33%, w=6.48%, h=1.48% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
@@ -267,26 +277,27 @@ Alternate font fits considered:
 | Font file matched | `OleoScript-Bold.ttf` |
 | Variation axes | None |
 | Font size | 12 px |
-| Letter-spacing | -0.75 px (-0.0625 em) |
+| Letter-spacing | -0.66 px (-0.055 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#3e5eb4` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.07:1 |
+| Colour | `#97afdf` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.88:1 |
 | Stroke (median/mean) | 1.0 / 1.32 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script |
-| Match IoU | 0.2305 |
+| Match IoU | 0.1955 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8233) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 168 px |
+| Gap to previous | 166 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `OleoScript-Regular.ttf` 12px track -0.3px — IoU 0.2232
-- `OleoScript-Bold.ttf` 11px track -0.21px — IoU 0.207
-- `OleoScript-Regular.ttf` 10px track 0.7px — IoU 0.2037
+- `OleoScript-Bold.ttf` 11px track -0.12px — IoU 0.1678
+- `OleoScript-Bold.ttf` 10px track 0.42px — IoU 0.1655
+- `OleoScript-Regular.ttf` 13px track -0.72px — IoU 0.1646
 
 ## 4. Colours (semantic)
 
@@ -294,11 +305,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#e2e3ea` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#9fcae7` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#0572f1` | glyph ink of 'Skincare' | glyph ink median |
-| textSecondary | `#92c2e4` | glyph ink of '1s)tree' | glyph ink median |
+| textPrimary | `#0572f1` | glyph ink of 'new' | glyph ink median |
+| textSecondary | `#8fc0e3` | glyph ink of '1s)tree' | glyph ink median |
 | accent | `#0b45d6` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#4eb7e4` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -322,7 +333,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.072 |
+| Text coverage | 0.1263 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -349,29 +360,29 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | new |
+| `headline` | text | new |
 | `headline` | text | Skincare |
-| `supporting_line1` | text | 1s)tree |
-| `supporting_line2` | text | HYALURONIC ACID |
-| `detail` | text | TONERPLUS |
-| `detail` | text | Fivetypesofhyaluronlcad |
+| `fine-print` | text | 1s)tree |
+| `fine-print` | text | HYALURONIC ACID |
+| `fine-print_line1` | text | TONE RPLUS |
+| `fine-print_line2` | text | Fivetypesofhyaluronlcad |
 | `fine-print` | text | 200ml/6.76几oz |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #e2e3ea |
 | `surface` | colour | #9fcae7 |
 | `textPrimary` | colour | #0572f1 |
-| `textSecondary` | colour | #92c2e4 |
+| `textSecondary` | colour | #8fc0e3 |
 | `accent` | colour | #0b45d6 |
 | `accentSecondary` | colour | #4eb7e4 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Oleo Script |
-| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 48.8 |
 | `imageFocalY` | number | 46.7 |

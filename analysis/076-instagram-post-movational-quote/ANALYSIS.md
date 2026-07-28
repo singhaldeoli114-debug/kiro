@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,35 +42,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=321, y=104, w=270, h=341 |
-| Normalised | x=29.72%, y=9.63%, w=25.0%, h=31.57% |
+| Bounding box (px) | x=321, y=104, w=270, h=336 |
+| Normalised | x=29.72%, y=9.63%, w=25.0%, h=31.11% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-SemiBold.ttf` |
+| Font file matched | `AbhayaLibre-Medium.ttf` |
 | Variation axes | None |
-| Font size | 508 px |
-| Letter-spacing | -0.38 px (-0.0007 em) |
+| Font size | 511 px |
+| Letter-spacing | 0.53 px (0.001 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.73:1 |
-| Stroke (median/mean) | 34.5 / 31.58 px |
+| Stroke (median/mean) | 34.5 / 31.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre |
-| Match IoU | 0.3653 |
+| Match IoU | 0.3686 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | -244 px |
+| Gap to next | -234 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 506px track 0.69px — IoU 0.3651
-- `AbhayaLibre-SemiBold.ttf` 507px track 0.16px — IoU 0.3648
-- `AbhayaLibre-Medium.ttf` 513px track -0.53px — IoU 0.3625
+- `AbhayaLibre-Medium.ttf` 513px track -0.53px — IoU 0.3684
+- `AbhayaLibre-SemiBold.ttf` 507px track 0.16px — IoU 0.3676
+- `AbhayaLibre-SemiBold.ttf` 508px track -0.38px — IoU 0.3676
 
 ### `text-2` — headline
 
@@ -78,8 +79,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=321, y=201, w=578, h=555 |
-| Normalised | x=29.72%, y=18.61%, w=53.52%, h=51.39% |
+| Bounding box (px) | x=321, y=206, w=578, h=545 |
+| Normalised | x=29.72%, y=19.07%, w=53.52%, h=50.46% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -94,21 +95,23 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.73:1 |
-| Stroke (median/mean) | 43.0 / 37.18 px |
+| Stroke (median/mean) | 43.0 / 37.13 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abhaya Libre |
-| Match IoU | 0.1297 |
+| Match IoU | 0.1313 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -244 px |
-| Gap to next | -45 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -234 px |
+| Gap to next | -40 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 493px track -1.19px — IoU 0.1294
-- `AbhayaLibre-ExtraBold.ttf` 492px track 0.0px — IoU 0.1281
-- `AbhayaLibre-Bold.ttf` 494px track 0.05px — IoU 0.1203
+- `AbhayaLibre-ExtraBold.ttf` 493px track -1.19px — IoU 0.131
+- `AbhayaLibre-ExtraBold.ttf` 492px track 0.0px — IoU 0.1293
+- `AbhayaLibre-Bold.ttf` 494px track 0.05px — IoU 0.1215
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "focus"  (OCR confidence 0.9975)
 
@@ -131,12 +134,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.55:1 |
 | Stroke (median/mean) | 12.0 / 12.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abhaya Libre |
 | Match IoU | 0.8572 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -45 px |
+| Gap to previous | -40 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -154,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#1b0d01` | glyph ink of 'focus' | glyph ink median |
 | accent | `#b38757` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#74441a` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -178,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.3792 |
+| Text coverage | 0.3731 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,7 +211,7 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline` | text | S |
 | `headline` | text | AT |
-| `subheadline` | text | focus |
+| `body` | text | focus |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -220,7 +224,7 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Abhaya Libre |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

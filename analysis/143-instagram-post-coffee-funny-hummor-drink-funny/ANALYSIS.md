@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — body
 
 **Text:** "Coffee is a beverage that"  (OCR confidence 0.9995)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=60, y=64, w=538, h=48 |
-| Normalised | x=5.56%, y=5.93%, w=49.81%, h=4.44% |
+| Bounding box (px) | x=59, y=63, w=539, h=50 |
+| Normalised | x=5.46%, y=5.83%, w=49.91%, h=4.63% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Quattrocento-Bold.ttf` |
 | Variation axes | None |
 | Font size | 50 px |
-| Letter-spacing | -0.67 px (-0.0134 em) |
+| Letter-spacing | -0.63 px (-0.0126 em) |
 | Line-height | 73.0 px (ratio 1.46) |
 | Line | 1 of 2 |
 | Transform | none |
@@ -60,27 +60,28 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.67:1 |
 | Stroke (median/mean) | 6.0 / 7.01 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento |
-| Match IoU | 0.7422 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6875 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 25 px |
+| Gap to next | 23 px |
 
 Alternate font fits considered:
-- `Quattrocento-Bold.ttf` 49px track -0.21px — IoU 0.7207
-- `Quattrocento-Bold.ttf` 48px track 0.25px — IoU 0.7095
-- `Quattrocento-Regular.ttf` 50px track -0.43px — IoU 0.4482
+- `Quattrocento-Bold.ttf` 49px track -0.17px — IoU 0.7284
+- `Quattrocento-Bold.ttf` 48px track 0.29px — IoU 0.7104
+- `Quattrocento-Regular.ttf` 50px track -0.38px — IoU 0.4577
 
-### `text-2` — detail
+### `text-2` — body
 
 **Text:** "puts one to"  (OCR confidence 0.9997)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=58, y=137, w=248, h=42 |
-| Normalised | x=5.37%, y=12.69%, w=22.96%, h=3.89% |
+| Bounding box (px) | x=58, y=136, w=248, h=44 |
+| Normalised | x=5.37%, y=12.59%, w=22.96%, h=4.07% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,7 +89,7 @@ Alternate font fits considered:
 | Font file matched | `Quattrocento-Bold.ttf` |
 | Variation axes | None |
 | Font size | 50 px |
-| Letter-spacing | -0.67 px (-0.0134 em) |
+| Letter-spacing | -0.63 px (-0.0126 em) |
 | Line-height | 73.0 px (ratio 1.46) |
 | Line | 2 of 2 |
 | Transform | lowercase |
@@ -96,18 +97,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.82:1 |
 | Stroke (median/mean) | 6.0 / 6.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento |
-| Match IoU | 0.7475 |
+| Match IoU | 0.7867 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 25 px |
-| Gap to next | 49 px |
+| Gap to previous | 23 px |
+| Gap to next | 48 px |
 
 Alternate font fits considered:
-- `Quattrocento-Bold.ttf` 49px track -0.21px — IoU 0.7207
-- `Quattrocento-Bold.ttf` 48px track 0.25px — IoU 0.7095
-- `Quattrocento-Regular.ttf` 50px track -0.43px — IoU 0.4482
+- `Quattrocento-Bold.ttf` 49px track -0.17px — IoU 0.7284
+- `Quattrocento-Bold.ttf` 48px track 0.29px — IoU 0.7104
+- `Quattrocento-Regular.ttf` 50px track -0.38px — IoU 0.4577
 
 ### `text-3` — headline
 
@@ -115,8 +117,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=68, y=228, w=557, h=146 |
-| Normalised | x=6.3%, y=21.11%, w=51.57%, h=13.52% |
+| Bounding box (px) | x=67, y=228, w=558, h=146 |
+| Normalised | x=6.2%, y=21.11%, w=51.67%, h=13.52% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,7 +126,7 @@ Alternate font fits considered:
 | Font file matched | `Quattrocento-Bold.ttf` |
 | Variation axes | None |
 | Font size | 197 px |
-| Letter-spacing | 0.36 px (0.0018 em) |
+| Letter-spacing | 0.61 px (0.0031 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -132,27 +134,29 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.35:1 |
 | Stroke (median/mean) | 23.0 / 26.82 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Rock Salt, Quattrocento |
-| Match IoU | 0.2588 |
+| Match IoU | 0.2615 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 49 px |
-| Gap to next | 394 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 48 px |
+| Gap to next | 393 px |
 
 Alternate font fits considered:
-- `Quattrocento-Bold.ttf` 198px track -0.33px — IoU 0.256
-- `Quattrocento-Bold.ttf` 199px track -1.04px — IoU 0.2524
-- `RockSalt-Regular.ttf` 124px track -0.89px — IoU 0.2391
+- `Quattrocento-Bold.ttf` 198px track -0.08px — IoU 0.2587
+- `Quattrocento-Bold.ttf` 199px track -0.79px — IoU 0.254
+- `RockSalt-Regular.ttf` 124px track -0.64px — IoU 0.2404
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "when not"  (OCR confidence 0.9972)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=744, y=768, w=261, h=44 |
-| Normalised | x=68.89%, y=71.11%, w=24.17%, h=4.07% |
+| Bounding box (px) | x=744, y=767, w=262, h=45 |
+| Normalised | x=68.89%, y=71.02%, w=24.26%, h=4.17% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,7 +164,7 @@ Alternate font fits considered:
 | Font file matched | `Quattrocento-Bold.ttf` |
 | Variation axes | None |
 | Font size | 60 px |
-| Letter-spacing | -0.65 px (-0.0108 em) |
+| Letter-spacing | -0.5 px (-0.0083 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -168,18 +172,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 15.08:1 |
 | Stroke (median/mean) | 7.0 / 7.67 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento |
-| Match IoU | 0.8047 |
+| Match IoU | 0.8108 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 394 px |
+| Gap to previous | 393 px |
 | Gap to next | 42 px |
 
 Alternate font fits considered:
-- `Quattrocento-Bold.ttf` 59px track -0.01px — IoU 0.8014
-- `Quattrocento-Bold.ttf` 58px track 0.62px — IoU 0.7823
-- `Quattrocento-Regular.ttf` 62px track -0.87px — IoU 0.5166
+- `Quattrocento-Bold.ttf` 58px track 0.76px — IoU 0.7547
+- `Quattrocento-Bold.ttf` 59px track 0.13px — IoU 0.751
+- `Quattrocento-Regular.ttf` 62px track -0.73px — IoU 0.5039
 
 ### `text-5` — subheadline
 
@@ -187,8 +192,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=337, y=854, w=703, h=166 |
-| Normalised | x=31.2%, y=79.07%, w=65.09%, h=15.37% |
+| Bounding box (px) | x=337, y=854, w=703, h=167 |
+| Normalised | x=31.2%, y=79.07%, w=65.09%, h=15.46% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
@@ -204,8 +209,10 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 15.99:1 |
 | Stroke (median/mean) | 22.0 / 24.86 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Rock Salt, Quattrocento |
-| Match IoU | 0.3219 |
+| Match IoU | 0.3228 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8203) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
@@ -213,9 +220,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `RockSalt-Regular.ttf` 147px track 0.46px — IoU 0.3199
-- `RockSalt-Regular.ttf` 148px track -0.5px — IoU 0.3174
-- `Quattrocento-Bold.ttf` 179px track -0.13px — IoU 0.2717
+- `RockSalt-Regular.ttf` 147px track 0.46px — IoU 0.3211
+- `RockSalt-Regular.ttf` 148px track -0.5px — IoU 0.3176
+- `Quattrocento-Bold.ttf` 179px track -0.13px — IoU 0.2703
 
 ## 4. Colours (semantic)
 
@@ -227,7 +234,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'SLEEP' | glyph ink median |
 | accent | — | not identified | — |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | — | not identified | — |
 
 Full palette (k-means):
@@ -251,7 +258,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.2107 |
+| Text coverage | 0.2131 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -278,10 +285,10 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail_line1` | text | Coffee is a beverage that |
-| `detail_line2` | text | puts one to |
+| `body_line1` | text | Coffee is a beverage that |
+| `body_line2` | text | puts one to |
 | `headline` | text | SLEEP |
-| `supporting` | text | when not |
+| `body` | text | when not |
 | `subheadline` | text | DIZANK |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -290,10 +297,10 @@ _Recommendations only — no manifest is generated._
 | `textPrimary` | colour | #ffffff |
 | `textSecondary` | colour | #000000 |
 | `brandFont` | font | Rock Salt |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `imageFocalX` | number | 52.4 |
 | `imageFocalY` | number | 46.5 |

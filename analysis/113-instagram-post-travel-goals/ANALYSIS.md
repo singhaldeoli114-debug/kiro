@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -61,54 +61,57 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | 5.0 / 6.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Cookie, Alata |
 | Match IoU | 0.7098 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 533 px |
+| Gap to next | 538 px |
 
 Alternate font fits considered:
 - `Alata-Regular.ttf` 39px track -0.17px — IoU 0.6846
 - `Alata-Regular.ttf` 38px track 0.45px — IoU 0.6704
 - `ArchivoBlack-Regular.ttf` 30px track 0.7px — IoU 0.461
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "Explore"  (OCR confidence 0.9348)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=590, y=653, w=440, h=219 |
-| Normalised | x=54.63%, y=60.46%, w=40.74%, h=20.28% |
+| Bounding box (px) | x=582, y=658, w=448, h=214 |
+| Normalised | x=53.89%, y=60.93%, w=41.48%, h=19.81% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 106 px |
-| Letter-spacing | -0.28 px (-0.0026 em) |
+| Font size | 109 px |
+| Letter-spacing | -1.03 px (-0.0094 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#03031b` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 7.77:1 |
-| Stroke (median/mean) | 14.0 / 13.97 px |
+| Stroke (median/mean) | 14.0 / 14.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Cookie, Alata |
-| Match IoU | 0.2906 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2621 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 533 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 538 px |
 | Gap to next | 26 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 105px track 0.41px — IoU 0.2891
-- `ArchivoBlack-Regular.ttf` 107px track -0.98px — IoU 0.2889
-- `Cookie-Regular.ttf` 200px track 0.03px — IoU 0.2285
+- `ArchivoBlack-Regular.ttf` 108px track -0.34px — IoU 0.2607
+- `ArchivoBlack-Regular.ttf` 107px track 0.35px — IoU 0.2575
+- `Cookie-Regular.ttf` 204px track -0.1px — IoU 0.2014
 
 ### `text-3` — headline
 
@@ -122,29 +125,30 @@ Alternate font fits considered:
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Cookie-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 174 px |
-| Letter-spacing | -0.71 px (-0.0041 em) |
+| Font size | 112 px |
+| Letter-spacing | -1.02 px (-0.0091 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f8680f` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | 26.0 / 29.67 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Cookie, Alata |
-| Match IoU | 0.095 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9364 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 26 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Cookie-Regular.ttf` 172px track 0.34px — IoU 0.0949
-- `Cookie-Regular.ttf` 173px track -0.18px — IoU 0.0933
-- `Alata-Regular.ttf` 141px track -0.34px — IoU 0.0731
+- `ArchivoBlack-Regular.ttf` 110px track 0.62px — IoU 0.918
+- `ArchivoBlack-Regular.ttf` 111px track -0.2px — IoU 0.9138
+- `Alata-Regular.ttf` 140px track 0.31px — IoU 0.4604
 
 ## 4. Colours (semantic)
 
@@ -153,10 +157,10 @@ Alternate font fits considered:
 | background | `#e0e8ee` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f7680f` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#03031b` | glyph ink of 'Explore' | glyph ink median |
-| textSecondary | `#f8680f` | glyph ink of 'NEW PLACE' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'NEW PLACE' | glyph ink median |
 | accent | `#f7680f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#3a181a` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -180,7 +184,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1399 |
+| Text coverage | 0.1395 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -208,20 +212,20 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `supporting` | text | TRAVEL GOALS |
-| `subheadline` | text | Explore |
+| `headline` | text | Explore |
 | `headline` | text | NEW PLACE |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #e0e8ee |
 | `surface` | colour | #f7680f |
 | `textPrimary` | colour | #03031b |
-| `textSecondary` | colour | #f8680f |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #f7680f |
 | `accentSecondary` | colour | #3a181a |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Archivo Black |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 45.0 |
 | `imageFocalY` | number | 51.1 |

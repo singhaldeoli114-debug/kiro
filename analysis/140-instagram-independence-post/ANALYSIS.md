@@ -33,45 +33,46 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "FOURTH OF"  (OCR confidence 0.9742)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=281, y=289, w=550, h=154 |
-| Normalised | x=26.02%, y=26.76%, w=50.93%, h=14.26% |
+| Bounding box (px) | x=287, y=294, w=536, h=133 |
+| Normalised | x=26.57%, y=27.22%, w=49.63%, h=12.31% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 116 px |
-| Letter-spacing | 0.65 px (0.0056 em) |
+| Font file matched | `Anton-Regular.ttf` |
+| Variation axes | None |
+| Font size | 139 px |
+| Letter-spacing | 0.12 px (0.0009 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f5f5f5` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.21:1 |
-| Stroke (median/mean) | 10.0 / 15.29 px |
+| Colour | `#c72033` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.9:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.291 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6178 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 227 px |
+| Gap to next | -14 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 118px track -0.52px — IoU 0.2902
-- `Anton-Regular.ttf` 143px track -0.06px — IoU 0.2894
-- `Anton-Regular.ttf` 144px track -0.54px — IoU 0.2893
+- `Anton-Regular.ttf` 140px track -0.37px — IoU 0.615
+- `Anton-Regular.ttf` 138px track 0.6px — IoU 0.6091
+- `Roboto[wdth,wght].ttf` 115px track -0.51px — IoU 0.5288
 
 ### `text-2` — headline
 
@@ -79,80 +80,82 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=283, y=670, w=539, h=35 |
-| Normalised | x=26.2%, y=62.04%, w=49.91%, h=3.24% |
+| Bounding box (px) | x=283, y=413, w=539, h=287 |
+| Normalised | x=26.2%, y=38.24%, w=49.91%, h=26.57% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 347 px |
-| Letter-spacing | -0.44 px (-0.0013 em) |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 75.0] |
+| Font size | 312 px |
+| Letter-spacing | 0.05 px (0.0002 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#04263a` |
+| Colour | `#c72033` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.61:1 |
-| Stroke (median/mean) | 5.0 / 6.53 px |
+| Contrast vs local bg | 2.43:1 |
+| Stroke (median/mean) | 5.0 / 7.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.2534 |
+| Match IoU | 0.3888 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5593) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 227 px |
-| Gap to next | -12 px |
+| Gap to previous | -14 px |
+| Gap to next | -7 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 346px track 0.07px — IoU 0.2533
-- `Anton-Regular.ttf` 345px track 0.59px — IoU 0.2521
-- `Roboto[wdth,wght].ttf` 312px track 0.05px — IoU 0.2114
+- `Roboto[wdth,wght].ttf` 297px track -0.84px — IoU 0.3886
+- `Roboto[wdth,wght].ttf` 295px track 0.39px — IoU 0.3883
+- `Roboto[wdth,wght].ttf` 313px track -0.53px — IoU 0.3877
 
-### `text-3` — detail
+### `text-3` — fine-print
 
-**Text:** "CE L EBRA TEI ND EPENDE NC E DAY"  (OCR confidence 0.9932)
+**Text:** "CELEBRATE INDEPENDENCE DAY"  (OCR confidence 0.9932)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=294, y=693, w=518, h=25 |
-| Normalised | x=27.22%, y=64.17%, w=47.96%, h=2.31% |
+| Bounding box (px) | x=293, y=693, w=520, h=26 |
+| Normalised | x=27.13%, y=64.17%, w=48.15%, h=2.41% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 42 px |
-| Letter-spacing | -0.28 px (-0.0067 em) |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [900.0, 100.0] |
+| Font size | 35 px |
+| Letter-spacing | -0.46 px (-0.0131 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#d0d0d0` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.03:1 |
+| Colour | `#042641` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.7:1 |
 | Stroke (median/mean) | 5.0 / 6.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.2941 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7415 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -12 px |
-| Gap to next | 21 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -7 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 40px track 0.52px — IoU 0.2857
-- `Anton-Regular.ttf` 41px track 0.12px — IoU 0.2831
-- `Roboto[wdth,wght].ttf` 34px track 0.58px — IoU 0.2327
+- `Roboto[wdth,wght].ttf` 37px track -0.24px — IoU 0.7293
+- `Roboto[wdth,wght].ttf` 33px track 0.77px — IoU 0.7237
+- `Roboto[wdth,wght].ttf` 35px track -0.41px — IoU 0.7187
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "F R E E"  (OCR confidence 0.9765)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=612, y=739, w=181, h=61 |
-| Normalised | x=56.67%, y=68.43%, w=16.76%, h=5.65% |
+| Bounding box (px) | x=612, y=738, w=181, h=62 |
+| Normalised | x=56.67%, y=68.33%, w=16.76%, h=5.74% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -168,162 +171,167 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.89:1 |
 | Stroke (median/mean) | 13.0 / 17.89 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.9282 |
+| Match IoU | 0.921 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 21 px |
-| Gap to next | -48 px |
+| Gap to previous | 19 px |
+| Gap to next | -43 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 74px track 0.55px — IoU 0.8934
-- `Anton-Regular.ttf` 76px track -0.26px — IoU 0.8911
-- `Roboto[wdth,wght].ttf` 67px track -0.09px — IoU 0.7534
+- `Anton-Regular.ttf` 74px track 0.55px — IoU 0.9079
+- `Anton-Regular.ttf` 76px track -0.26px — IoU 0.8835
+- `Roboto[wdth,wght].ttf` 67px track -0.09px — IoU 0.7666
 
-### `text-5` — supporting
+### `text-5` — body
 
 **Text:** "BARDEUUE"  (OCR confidence 0.792)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=279, y=752, w=324, h=149 |
-| Normalised | x=25.83%, y=69.63%, w=30.0%, h=13.8% |
+| Bounding box (px) | x=291, y=757, w=312, h=139 |
+| Normalised | x=26.94%, y=70.09%, w=28.89%, h=12.87% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 88 px |
-| Letter-spacing | -0.28 px (-0.0032 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | uppercase |
-| Colour | `#d4d3d3` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.09:1 |
-| Stroke (median/mean) | 5.0 / 8.46 px |
-| Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.4153 |
-| **Geometry fit confidence** | **low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.792) |
-| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
-| Gap to previous | -48 px |
-| Gap to next | -86 px |
-
-Alternate font fits considered:
-- `Anton-Regular.ttf` 87px track 0.25px — IoU 0.4127
-- `Anton-Regular.ttf` 86px track 0.78px — IoU 0.4102
-- `Roboto[wdth,wght].ttf` 69px track -0.44px — IoU 0.3802
-
-### `text-6` — supporting
-
-**Text:** "BEER"  (OCR confidence 0.9956)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=611, y=815, w=170, h=60 |
-| Normalised | x=56.57%, y=75.46%, w=15.74%, h=5.56% |
-| Alignment | right |
-| z-order | 105 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 81 px |
-| Letter-spacing | -0.35 px (-0.0043 em) |
+| Font size | 83 px |
+| Letter-spacing | 0.65 px (0.0078 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#c72033` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.08:1 |
-| Stroke (median/mean) | 11.0 / 14.97 px |
+| Contrast vs local bg | 2.4:1 |
+| Stroke (median/mean) | 3.0 / 6.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.4073 |
+| Match IoU | 0.4466 |
+| **Geometry fit confidence** | **low-textUnreliable** |
+| OCR text reliable | False — low OCR confidence (0.792) |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
+| Gap to previous | -43 px |
+| Gap to next | -82 px |
+
+Alternate font fits considered:
+- `Anton-Regular.ttf` 85px track -0.41px — IoU 0.4458
+- `Anton-Regular.ttf` 84px track 0.12px — IoU 0.4425
+- `Roboto[wdth,wght].ttf` 70px track 0.23px — IoU 0.3969
+
+### `text-6` — body
+
+**Text:** "BEER"  (OCR confidence 0.9956)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=611, y=814, w=180, h=56 |
+| Normalised | x=56.57%, y=75.37%, w=16.67%, h=5.19% |
+| Alignment | right |
+| z-order | 105 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Anton-Regular.ttf` |
+| Variation axes | None |
+| Font size | 100 px |
+| Letter-spacing | 0.72 px (0.0072 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | uppercase |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.28:1 |
+| Stroke (median/mean) | 11.0 / 14.97 px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Anton, Roboto |
+| Match IoU | 0.4966 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -86 px |
-| Gap to next | 12 px |
+| Gap to previous | -82 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 71px track -0.54px — IoU 0.4044
-- `Roboto[wdth,wght].ttf` 75px track 0.21px — IoU 0.4036
-- `Roboto[wdth,wght].ttf` 80px track 0.35px — IoU 0.4026
+- `Anton-Regular.ttf` 101px track 0.12px — IoU 0.4867
+- `Anton-Regular.ttf` 102px track -0.46px — IoU 0.4801
+- `Roboto[wdth,wght].ttf` 84px track 0.86px — IoU 0.4584
 
-### `text-7` — detail
+### `text-7` — fine-print
 
 **Text:** "T H U R S D A Y"  (OCR confidence 0.9965)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=367, y=887, w=194, h=15 |
-| Normalised | x=33.98%, y=82.13%, w=17.96%, h=1.39% |
+| Bounding box (px) | x=366, y=887, w=195, h=16 |
+| Normalised | x=33.89%, y=82.13%, w=18.06%, h=1.48% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
-| Font size | 30 px |
-| Letter-spacing | 0.58 px (0.0193 em) |
+| Font size | 31 px |
+| Letter-spacing | 0.22 px (0.0071 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#042641` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.79:1 |
+| Contrast vs local bg | 4.81:1 |
 | Stroke (median/mean) | 3.0 / 3.09 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.5713 |
+| Match IoU | 0.5574 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 12 px |
-| Gap to next | -15 px |
+| Gap to previous | 17 px |
+| Gap to next | -16 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 36px track 0.05px — IoU 0.5532
-- `Roboto[wdth,wght].ttf` 31px track 0.15px — IoU 0.5505
-- `Roboto[wdth,wght].ttf` 27px track 0.41px — IoU 0.5395
+- `Roboto[wdth,wght].ttf` 31px track 0.28px — IoU 0.5455
+- `Roboto[wdth,wght].ttf` 27px track 0.48px — IoU 0.544
+- `Roboto[wdth,wght].ttf` 30px track 0.66px — IoU 0.5353
 
-### `text-8` — detail
+### `text-8` — fine-print
 
 **Text:** "07"  (OCR confidence 0.9993)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=611, y=887, w=34, h=15 |
-| Normalised | x=56.57%, y=82.13%, w=3.15%, h=1.39% |
+| Bounding box (px) | x=611, y=887, w=35, h=16 |
+| Normalised | x=56.57%, y=82.13%, w=3.24%, h=1.48% |
 | Alignment | right |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 30 px |
-| Letter-spacing | 1.38 px (0.046 em) |
+| Variation axes | [700, 75.0] |
+| Font size | 34 px |
+| Letter-spacing | 0.62 px (0.0182 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#042641` |
+| Colour | `#062842` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.71:1 |
+| Contrast vs local bg | 4.57:1 |
 | Stroke (median/mean) | 2.0 / 2.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.3938 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4343 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -15 px |
-| Gap to next | 15 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | -16 px |
+| Gap to next | 14 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 32px track 1.28px — IoU 0.3851
-- `Roboto[wdth,wght].ttf` 32px track 1.47px — IoU 0.3828
-- `Roboto[wdth,wght].ttf` 33px track 0.25px — IoU 0.3565
+- `Roboto[wdth,wght].ttf` 31px track 1.28px — IoU 0.4175
+- `Roboto[wdth,wght].ttf` 33px track 1.25px — IoU 0.4146
+- `Roboto[wdth,wght].ttf` 33px track 1.44px — IoU 0.4123
 
 ### `text-9` — fine-print
 
@@ -331,8 +339,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=381, y=917, w=357, h=18 |
-| Normalised | x=35.28%, y=84.91%, w=33.06%, h=1.67% |
+| Bounding box (px) | x=381, y=917, w=357, h=19 |
+| Normalised | x=35.28%, y=84.91%, w=33.06%, h=1.76% |
 | Alignment | right |
 | z-order | 108 |
 | Rotation | 0° |
@@ -344,22 +352,23 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#062842` |
+| Colour | `#062843` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.59:1 |
 | Stroke (median/mean) | 2.0 / 3.1 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Roboto |
-| Match IoU | 0.1871 |
+| Match IoU | 0.176 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9221) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 15 px |
+| Gap to previous | 14 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 36px track 0.0px — IoU 0.1837
-- `Roboto[wdth,wght].ttf` 34px track 0.09px — IoU 0.1836
-- `Roboto[wdth,wght].ttf` 37px track -0.4px — IoU 0.1803
+- `Roboto[wdth,wght].ttf` 34px track 0.09px — IoU 0.1731
+- `Roboto[wdth,wght].ttf` 36px track 0.0px — IoU 0.172
+- `Roboto[wdth,wght].ttf` 37px track -0.4px — IoU 0.1697
 
 ## 4. Colours (semantic)
 
@@ -367,11 +376,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f4f4f4` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#812337` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#f5f5f5` | glyph ink of 'FOURTH OF' | glyph ink median |
-| textSecondary | `#d4d3d3` | glyph ink of 'BARDEUUE' | glyph ink median |
+| textPrimary | `#c72033` | glyph ink of 'AInr' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'F R E E' | glyph ink median |
 | accent | `#812337` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -395,7 +404,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.1679 |
+| Text coverage | 0.2697 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -422,32 +431,32 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | FOURTH OF |
+| `supporting` | text | FOURTH OF |
 | `headline` | text | AInr |
-| `detail` | text | CE L EBRA TEI ND EPENDE NC E DAY |
-| `supporting` | text | F R E E |
-| `supporting` | text | BARDEUUE |
-| `supporting` | text | BEER |
-| `detail` | text | T H U R S D A Y |
-| `detail` | text | 07 |
+| `fine-print` | text | CELEBRATE INDEPENDENCE DAY |
+| `body` | text | F R E E |
+| `body` | text | BARDEUUE |
+| `body` | text | BEER |
+| `fine-print` | text | T H U R S D A Y |
+| `fine-print` | text | 07 |
 | `fine-print` | text | C I T Y ， S T A T E 12 3 4 |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f4f4f4 |
 | `surface` | colour | #812337 |
-| `textPrimary` | colour | #f5f5f5 |
-| `textSecondary` | colour | #d4d3d3 |
+| `textPrimary` | colour | #c72033 |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #812337 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Anton |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 45.0 |
 | `imageFocalY` | number | 61.2 |

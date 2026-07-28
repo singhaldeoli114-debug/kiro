@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=40, y=19, w=313, h=138 |
-| Normalised | x=3.7%, y=1.76%, w=28.98%, h=12.78% |
+| Bounding box (px) | x=40, y=19, w=314, h=138 |
+| Normalised | x=3.7%, y=1.76%, w=29.07%, h=12.78% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [700, 87.5] |
 | Font size | 175 px |
-| Letter-spacing | 0.51 px (0.0029 em) |
+| Letter-spacing | 0.84 px (0.0048 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.63:1 |
 | Stroke (median/mean) | 24.0 / 25.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aclonica, Roboto |
-| Match IoU | 0.5716 |
+| Match IoU | 0.5828 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | -9 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 177px track -0.67px — IoU 0.5672
-- `Roboto[wdth,wght].ttf` 187px track 0.61px — IoU 0.5659
-- `Roboto[wdth,wght].ttf` 186px track 0.74px — IoU 0.5655
+- `Roboto[wdth,wght].ttf` 177px track -0.34px — IoU 0.5794
+- `Roboto[wdth,wght].ttf` 187px track 0.51px — IoU 0.577
+- `Roboto[wdth,wght].ttf` 176px track 0.62px — IoU 0.5746
 
 ### `text-2` — subheadline
 
@@ -79,73 +80,75 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=46, y=148, w=532, h=184 |
-| Normalised | x=4.26%, y=13.7%, w=49.26%, h=17.04% |
+| Bounding box (px) | x=45, y=153, w=533, h=174 |
+| Normalised | x=4.17%, y=14.17%, w=49.35%, h=16.11% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Aclonica-Regular.ttf` |
 | Variation axes | None |
-| Font size | 128 px |
-| Letter-spacing | -0.44 px (-0.0034 em) |
+| Font size | 129 px |
+| Letter-spacing | -0.96 px (-0.0074 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#051774` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.63:1 |
-| Stroke (median/mean) | 24.0 / 23.09 px |
+| Contrast vs local bg | 4.62:1 |
+| Stroke (median/mean) | 24.0 / 23.21 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aclonica, Roboto |
-| Match IoU | 0.5942 |
+| Match IoU | 0.6375 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -9 px |
-| Gap to next | -63 px |
+| Gap to previous | -4 px |
+| Gap to next | -74 px |
 
 Alternate font fits considered:
-- `Aclonica-Regular.ttf` 126px track 0.96px — IoU 0.5921
-- `Aclonica-Regular.ttf` 127px track 0.26px — IoU 0.5875
-- `Roboto[wdth,wght].ttf` 175px track -0.57px — IoU 0.5288
+- `Aclonica-Regular.ttf` 128px track -0.27px — IoU 0.624
+- `Aclonica-Regular.ttf` 127px track 0.42px — IoU 0.622
+- `Roboto[wdth,wght].ttf` 174px track 0.1px — IoU 0.5662
 
-### `text-3` — fine-print
+### `text-3` — body
 
-**Text:** "eel·KKOe I!"  (OCR confidence 0.5892)
+**Text:** "eel ·KKOe I!"  (OCR confidence 0.5892)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=622, y=269, w=57, h=9 |
-| Normalised | x=57.59%, y=24.91%, w=5.28%, h=0.83% |
+| Bounding box (px) | x=592, y=253, w=260, h=40 |
+| Normalised | x=54.81%, y=23.43%, w=24.07%, h=3.7% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 14 px |
-| Letter-spacing | -0.61 px (-0.0436 em) |
+| Variation axes | [800, 87.5] |
+| Font size | 51 px |
+| Letter-spacing | 0.62 px (0.0122 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#171819` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.08:1 |
+| Colour | `#62686a` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.0:1 |
 | Stroke (median/mean) | 2.0 / 2.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aclonica, Roboto |
-| Match IoU | 0.2278 |
+| Match IoU | 0.3031 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5892) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -63 px |
-| Gap to next | 536 px |
+| Gap to previous | -74 px |
+| Gap to next | 521 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 11px track 0.47px — IoU 0.2155
-- `Roboto[wdth,wght].ttf` 13px track -0.49px — IoU 0.2143
-- `Roboto[wdth,wght].ttf` 11px track 0.5px — IoU 0.2128
+- `Roboto[wdth,wght].ttf` 55px track 0.11px — IoU 0.3022
+- `Roboto[wdth,wght].ttf` 53px track -0.44px — IoU 0.3022
+- `Roboto[wdth,wght].ttf` 51px track 0.47px — IoU 0.3019
 
-### `text-4` — detail
+### `text-4` — fine-print
 
 **Text:** "45"  (OCR confidence 0.9996)
 
@@ -168,12 +171,13 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.55:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aclonica, Roboto |
 | Match IoU | 0.6846 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 536 px |
+| Gap to previous | 521 px |
 | Gap to next | 136 px |
 
 Alternate font fits considered:
@@ -181,31 +185,32 @@ Alternate font fits considered:
 - `Roboto[wdth,wght].ttf` 17px track 0.62px — IoU 0.6667
 - `Roboto[wdth,wght].ttf` 17px track 0.81px — IoU 0.6641
 
-### `text-5` — supporting
+### `text-5` — fine-print
 
 **Text:** "LEARN MORE"  (OCR confidence 0.9862)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=478, y=964, w=178, h=22 |
-| Normalised | x=44.26%, y=89.26%, w=16.48%, h=2.04% |
+| Bounding box (px) | x=477, y=964, w=180, h=22 |
+| Normalised | x=44.17%, y=89.26%, w=16.67%, h=2.04% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [600, 100.0] |
-| Font size | 28 px |
-| Letter-spacing | 0.72 px (0.0257 em) |
+| Font size | 30 px |
+| Letter-spacing | -0.43 px (-0.0143 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f8f8fd` |
+| Colour | `#f5f5fc` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 7.83:1 |
+| Contrast vs local bg | 7.74:1 |
 | Stroke (median/mean) | 3.0 / 3.4 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aclonica, Roboto |
-| Match IoU | 0.8235 |
+| Match IoU | 0.8406 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -213,9 +218,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 30px track -0.65px — IoU 0.8119
-- `Roboto[wdth,wght].ttf` 30px track -0.6px — IoU 0.8044
-- `Roboto[wdth,wght].ttf` 30px track -0.68px — IoU 0.8019
+- `Roboto[wdth,wght].ttf` 30px track -0.46px — IoU 0.8317
+- `Roboto[wdth,wght].ttf` 32px track -0.36px — IoU 0.8266
+- `Roboto[wdth,wght].ttf` 30px track -0.38px — IoU 0.8201
 
 ## 4. Colours (semantic)
 
@@ -224,10 +229,10 @@ Alternate font fits considered:
 | background | `#d7d7d7` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#eb9e1f` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#051774` | glyph ink of 'Healthy' | glyph ink median |
-| textSecondary | `#f8f8fd` | glyph ink of 'LEARN MORE' | glyph ink median |
+| textSecondary | `#62686a` | glyph ink of 'eel ·KKOe I!' | glyph ink median |
 | accent | `#eb9e1f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#df8d04` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +256,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.125 |
+| Text coverage | 0.1292 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -280,24 +285,24 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline` | text | stay |
 | `subheadline` | text | Healthy |
-| `fine-print` | text | eel·KKOe I! |
-| `detail` | text | 45 |
-| `supporting` | text | LEARN MORE |
+| `body` | text | eel ·KKOe I! |
+| `fine-print` | text | 45 |
+| `fine-print` | text | LEARN MORE |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #d7d7d7 |
 | `surface` | colour | #eb9e1f |
 | `textPrimary` | colour | #051774 |
-| `textSecondary` | colour | #f8f8fd |
+| `textSecondary` | colour | #62686a |
 | `accent` | colour | #eb9e1f |
 | `accentSecondary` | colour | #df8d04 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Aclonica |
 | `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 48.4 |
 | `imageFocalY` | number | 50.9 |
 

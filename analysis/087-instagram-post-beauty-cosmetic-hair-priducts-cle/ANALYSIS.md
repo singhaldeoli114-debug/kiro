@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,116 +43,120 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=592, y=151, w=377, h=86 |
-| Normalised | x=54.81%, y=13.98%, w=34.91%, h=7.96% |
+| Bounding box (px) | x=591, y=150, w=378, h=82 |
+| Normalised | x=54.72%, y=13.89%, w=35.0%, h=7.59% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
-| Font size | 86 px |
-| Letter-spacing | -0.38 px (-0.0044 em) |
+| Font size | 84 px |
+| Letter-spacing | 0.71 px (0.0085 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#181616` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.35:1 |
-| Stroke (median/mean) | 4.0 / 5.23 px |
+| Stroke (median/mean) | 4.0 / 5.25 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.1807 |
+| Match IoU | 0.1818 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 3 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 86px track -0.24px — IoU 0.1754
-- `Roboto[wdth,wght].ttf` 80px track 0.12px — IoU 0.1753
-- `Roboto[wdth,wght].ttf` 84px track 0.6px — IoU 0.1742
+- `Roboto[wdth,wght].ttf` 86px track -0.27px — IoU 0.1787
+- `Roboto[wdth,wght].ttf` 80px track 0.23px — IoU 0.1783
+- `Roboto[wdth,wght].ttf` 77px track -0.74px — IoU 0.1783
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "S K I N C A R E"  (OCR confidence 0.9783)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=513, y=240, w=451, h=55 |
-| Normalised | x=47.5%, y=22.22%, w=41.76%, h=5.09% |
+| Bounding box (px) | x=513, y=245, w=452, h=50 |
+| Normalised | x=47.5%, y=22.69%, w=41.85%, h=4.63% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
-| Font size | 76 px |
-| Letter-spacing | 0.49 px (0.0064 em) |
+| Font size | 77 px |
+| Letter-spacing | 0.15 px (0.0019 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#181616` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.35:1 |
-| Stroke (median/mean) | 6.0 / 7.68 px |
+| Stroke (median/mean) | 6.0 / 7.7 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.1953 |
+| Match IoU | 0.2373 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 3 px |
-| Gap to next | -33 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 13 px |
+| Gap to next | -28 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 76px track 0.61px — IoU 0.1936
-- `Roboto[wdth,wght].ttf` 77px track 0.07px — IoU 0.1922
-- `Roboto[wdth,wght].ttf` 77px track 0.41px — IoU 0.1912
+- `Roboto[wdth,wght].ttf` 72px track 0.46px — IoU 0.2363
+- `Roboto[wdth,wght].ttf` 77px track 0.49px — IoU 0.2344
+- `Roboto[wdth,wght].ttf` 77px track 0.27px — IoU 0.2337
 
-### `text-3` — detail
+### `text-3` — fine-print
 
 **Text:** "ERBO LOC"  (OCR confidence 0.935)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=267, y=262, w=53, h=33 |
-| Normalised | x=24.72%, y=24.26%, w=4.91%, h=3.06% |
+| Bounding box (px) | x=267, y=267, w=53, h=23 |
+| Normalised | x=24.72%, y=24.72%, w=4.91%, h=2.13% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 13 px |
-| Letter-spacing | 0.75 px (0.0577 em) |
-| Line-height | 58.0 px (ratio 4.462) |
-| Line | 1 of 2 |
+| Variation axes | [400, 87.5] |
+| Font size | 11 px |
+| Letter-spacing | 0.78 px (0.0709 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#0f1312` |
+| Colour | `#0b1213` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 6.85:1 |
-| Stroke (median/mean) | 3.0 / 3.95 px |
+| Contrast vs local bg | 7.75:1 |
+| Stroke (median/mean) | 3.0 / 2.77 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.1328 |
+| Match IoU | 0.1456 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -33 px |
-| Gap to next | 25 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -28 px |
+| Gap to next | 35 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 15px track -0.54px — IoU 0.1529
-- `Roboto[wdth,wght].ttf` 15px track -0.54px — IoU 0.1509
-- `Roboto[wdth,wght].ttf` 11px track 1.02px — IoU 0.1506
+- `Roboto[wdth,wght].ttf` 11px track 0.31px — IoU 0.1329
+- `Roboto[wdth,wght].ttf` 14px track -0.47px — IoU 0.1316
+- `Roboto[wdth,wght].ttf` 10px track 0.93px — IoU 0.1302
 
-### `text-4` — detail
+### `text-4` — fine-print
 
-**Text:** "HEMPSEED"  (OCR confidence 0.9652)
+**Text:** "HEMP SEED"  (OCR confidence 0.9652)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=256, y=320, w=64, h=37 |
-| Normalised | x=23.7%, y=29.63%, w=5.93%, h=3.43% |
+| Bounding box (px) | x=256, y=325, w=64, h=27 |
+| Normalised | x=23.7%, y=30.09%, w=5.93%, h=2.5% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,35 +164,38 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
 | Font size | 13 px |
-| Letter-spacing | 0.75 px (0.0577 em) |
-| Line-height | 58.0 px (ratio 4.462) |
-| Line | 2 of 2 |
+| Letter-spacing | 0.28 px (0.0215 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#3f4a49` |
+| Colour | `#43494c` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.74:1 |
-| Stroke (median/mean) | 1.0 / 2.23 px |
+| Contrast vs local bg | 2.77:1 |
+| Stroke (median/mean) | 1.0 / 2.16 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| OCR repairs (audited) | split run-together: 'HEMPSEED' -> 'HEMP SEED' |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.1763 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.1762 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 25 px |
-| Gap to next | -23 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 35 px |
+| Gap to next | -18 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 15px track -0.54px — IoU 0.1529
-- `Roboto[wdth,wght].ttf` 15px track -0.54px — IoU 0.1509
-- `Roboto[wdth,wght].ttf` 11px track 1.02px — IoU 0.1506
+- `Roboto[wdth,wght].ttf` 14px track -0.31px — IoU 0.1591
+- `Roboto[wdth,wght].ttf` 13px track -0.82px — IoU 0.158
+- `Roboto[wdth,wght].ttf` 13px track -0.25px — IoU 0.1572
 
-### `text-5` — supporting
+### `text-5` — subheadline
 
 **Text:** "R O U T I N E ?"  (OCR confidence 0.8748)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=557, y=334, w=407, h=45 |
-| Normalised | x=51.57%, y=30.93%, w=37.69%, h=4.17% |
+| Bounding box (px) | x=557, y=334, w=407, h=46 |
+| Normalised | x=51.57%, y=30.93%, w=37.69%, h=4.26% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
@@ -204,234 +211,245 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.35:1 |
 | Stroke (median/mean) | 6.0 / 7.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.8816 |
+| Match IoU | 0.8653 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.8748) |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -23 px |
-| Gap to next | 325 px |
+| Gap to previous | -18 px |
+| Gap to next | 317 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 72px track -0.05px — IoU 0.8621
-- `Roboto[wdth,wght].ttf` 69px track -0.23px — IoU 0.8593
-- `Roboto[wdth,wght].ttf` 71px track 0.36px — IoU 0.845
+- `Roboto[wdth,wght].ttf` 72px track -0.05px — IoU 0.844
+- `Roboto[wdth,wght].ttf` 68px track -0.06px — IoU 0.8292
+- `Roboto[wdth,wght].ttf` 71px track 0.36px — IoU 0.8254
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "Ordinary."  (OCR confidence 0.9135)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=838, y=704, w=47, h=11 |
-| Normalised | x=77.59%, y=65.19%, w=4.35%, h=1.02% |
+| Bounding box (px) | x=832, y=697, w=53, h=27 |
+| Normalised | x=77.04%, y=64.54%, w=4.91%, h=2.5% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [700, 87.5] |
-| Font size | 12 px |
-| Letter-spacing | 0.0 px (0.0 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 15 px |
+| Letter-spacing | -0.46 px (-0.0307 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#4e4b46` |
+| Colour | `#5c5853` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.38:1 |
+| Contrast vs local bg | 2.05:1 |
 | Stroke (median/mean) | 1.0 / 1.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.4688 |
-| **Geometry fit confidence** | **low-textUnreliable** |
+| Match IoU | 0.2171 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9135) |
-| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
-| Gap to previous | 325 px |
-| Gap to next | 40 px |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | 317 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 11px track 0.1px — IoU 0.4612
-- `Roboto[wdth,wght].ttf` 12px track 0.04px — IoU 0.4505
-- `Roboto[wdth,wght].ttf` 11px track 0.14px — IoU 0.4495
+- `Roboto[wdth,wght].ttf` 13px track 0.15px — IoU 0.2083
+- `Roboto[wdth,wght].ttf` 12px track 0.32px — IoU 0.195
+- `Roboto[wdth,wght].ttf` 13px track 0.21px — IoU 0.1928
 
-### `text-7` — detail
+### `text-7` — fine-print
 
 **Text:** "Ordinary."  (OCR confidence 0.9038)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=685, y=755, w=38, h=8 |
-| Normalised | x=63.43%, y=69.91%, w=3.52%, h=0.74% |
+| Bounding box (px) | x=679, y=749, w=56, h=22 |
+| Normalised | x=62.87%, y=69.35%, w=5.19%, h=2.04% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 87.5] |
-| Font size | 11 px |
-| Letter-spacing | -0.72 px (-0.0655 em) |
+| Font size | 15 px |
+| Letter-spacing | -0.46 px (-0.0307 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#47403a` |
+| Colour | `#715446` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.3:1 |
+| Contrast vs local bg | 1.76:1 |
 | Stroke (median/mean) | 1.0 / 1.11 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.3056 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.1812 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.9038) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 40 px |
-| Gap to next | 6 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 25 px |
+| Gap to next | -2 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 11px track -0.44px — IoU 0.2983
-- `Roboto[wdth,wght].ttf` 8px track 0.55px — IoU 0.2945
-- `Roboto[wdth,wght].ttf` 11px track -0.4px — IoU 0.2921
+- `Roboto[wdth,wght].ttf` 15px track -0.35px — IoU 0.1754
+- `Roboto[wdth,wght].ttf` 15px track -0.4px — IoU 0.1705
+- `Roboto[wdth,wght].ttf` 16px track -0.56px — IoU 0.1667
 
 ### `text-8` — fine-print
 
-**Text:** "G IVENCHY"  (OCR confidence 0.9878)
+**Text:** "GIVENCHY"  (OCR confidence 0.9878)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=251, y=769, w=62, h=18 |
-| Normalised | x=23.24%, y=71.2%, w=5.74%, h=1.67% |
+| Bounding box (px) | x=261, y=769, w=52, h=6 |
+| Normalised | x=24.17%, y=71.2%, w=4.81%, h=0.56% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [700, 75.0] |
-| Font size | 15 px |
-| Letter-spacing | -0.67 px (-0.0447 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 12 px |
+| Letter-spacing | 0.08 px (0.0067 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#765d68` |
+| Colour | `#745a64` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.75:1 |
+| Contrast vs local bg | 1.8:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.1515 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4364 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 6 px |
-| Gap to next | 4 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -2 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 13px track -0.61px — IoU 0.1511
-- `Roboto[wdth,wght].ttf` 14px track -0.66px — IoU 0.1488
-- `Roboto[wdth,wght].ttf` 14px track -0.64px — IoU 0.1474
+- `Roboto[wdth,wght].ttf` 12px track 0.1px — IoU 0.4329
+- `Roboto[wdth,wght].ttf` 12px track 0.12px — IoU 0.4233
+- `Roboto[wdth,wght].ttf` 11px track 0.69px — IoU 0.3886
 
-### `text-9` — detail
+### `text-9` — subheadline
 
 **Text:** "Ordinary."  (OCR confidence 0.9331)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=778, y=791, w=33, h=9 |
-| Normalised | x=72.04%, y=73.24%, w=3.06%, h=0.83% |
+| Bounding box (px) | x=767, y=784, w=55, h=24 |
+| Normalised | x=71.02%, y=72.59%, w=5.09%, h=2.22% |
 | Alignment | right |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 9 px |
-| Letter-spacing | -0.12 px (-0.0133 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto-Italic[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 52 px |
+| Letter-spacing | -0.31 px (-0.006 em) |
+| Line-height | 23.0 px (ratio 0.442) |
+| Line | 1 of 2 |
 | Transform | none |
-| Colour | `#5a5856` |
+| Colour | `#786961` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.94:1 |
+| Contrast vs local bg | 1.62:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.351 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.1711 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 4 px |
-| Gap to next | 8 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 9 px |
+| Gap to next | -1 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 9px track -0.36px — IoU 0.3464
-- `Roboto[wdth,wght].ttf` 9px track -0.6px — IoU 0.3355
-- `Roboto[wdth,wght].ttf` 10px track -0.6px — IoU 0.2987
+- `Roboto-Italic[wdth,wght].ttf` 51px track 0.14px — IoU 0.2021
+- `Roboto-Italic[wdth,wght].ttf` 52px track -0.31px — IoU 0.201
+- `Roboto-Italic[wdth,wght].ttf` 55px track -0.17px — IoU 0.2008
 
-### `text-10` — detail
+### `text-10` — subheadline
 
 **Text:** "串"  (OCR confidence 0.5383)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=277, y=808, w=22, h=23 |
-| Normalised | x=25.65%, y=74.81%, w=2.04%, h=2.13% |
+| Bounding box (px) | x=277, y=807, w=23, h=25 |
+| Normalised | x=25.65%, y=74.72%, w=2.13%, h=2.31% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [300, 87.5] |
-| Font size | 54 px |
-| Letter-spacing | -0.48 px (-0.0089 em) |
-| Line-height | 49.0 px (ratio 0.907) |
-| Line | 1 of 2 |
+| Font file matched | `Roboto-Italic[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 52 px |
+| Letter-spacing | -0.31 px (-0.006 em) |
+| Line-height | 23.0 px (ratio 0.442) |
+| Line | 2 of 2 |
 | Transform | none |
-| Colour | `#ad8995` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.13:1 |
+| Colour | `#352734` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 3.27:1 |
 | Stroke (median/mean) | 2.0 / 3.15 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.129 |
+| Match IoU | 0.2368 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5383) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 8 px |
-| Gap to next | 26 px |
+| Gap to previous | -1 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 54px track -0.48px — IoU 0.1287
-- `Roboto[wdth,wght].ttf` 54px track -0.48px — IoU 0.1287
-- `Roboto[wdth,wght].ttf` 54px track -0.48px — IoU 0.1287
+- `Roboto-Italic[wdth,wght].ttf` 51px track 0.14px — IoU 0.2021
+- `Roboto-Italic[wdth,wght].ttf` 52px track -0.31px — IoU 0.201
+- `Roboto-Italic[wdth,wght].ttf` 55px track -0.17px — IoU 0.2008
 
-### `text-11` — detail
+### `text-11` — fine-print
 
 **Text:** "LINTEMPOR"  (OCR confidence 0.8663)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=259, y=857, w=51, h=21 |
-| Normalised | x=23.98%, y=79.35%, w=4.72%, h=1.94% |
+| Bounding box (px) | x=259, y=857, w=51, h=12 |
+| Normalised | x=23.98%, y=79.35%, w=4.72%, h=1.11% |
 | Alignment | left |
 | z-order | 110 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [700, 100.0] |
+| Variation axes | [900.0, 100.0] |
 | Font size | 10 px |
-| Letter-spacing | -0.59 px (-0.059 em) |
-| Line-height | 49.0 px (ratio 4.9) |
-| Line | 2 of 2 |
+| Letter-spacing | -0.63 px (-0.063 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#8b6a71` |
+| Colour | `#816065` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.43:1 |
+| Contrast vs local bg | 1.56:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Roboto, Homemade Apple |
-| Match IoU | 0.2593 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.2533 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.8663) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 26 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 25 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 11px track -0.79px — IoU 0.2543
-- `Roboto[wdth,wght].ttf` 11px track -0.81px — IoU 0.2535
-- `Roboto[wdth,wght].ttf` 11px track -0.84px — IoU 0.2534
+- `Roboto[wdth,wght].ttf` 11px track -0.77px — IoU 0.25
+- `Roboto[wdth,wght].ttf` 10px track -0.62px — IoU 0.2453
+- `Roboto[wdth,wght].ttf` 10px track -0.59px — IoU 0.2405
 
 ## 4. Colours (semantic)
 
@@ -440,10 +458,10 @@ Alternate font fits considered:
 | background | `#d7d8d5` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#c3beb6` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#181616` | glyph ink of 'whatiayour' | glyph ink median |
-| textSecondary | `#3f4a49` | glyph ink of 'HEMPSEED' | glyph ink median |
+| textSecondary | `#43494c` | glyph ink of 'HEMP SEED' | glyph ink median |
 | accent | `#9f8682` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#2e2825` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -467,7 +485,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.0716 |
+| Text coverage | 0.0692 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -495,37 +513,37 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | whatiayour |
-| `subheadline` | text | S K I N C A R E |
-| `detail_line1` | text | ERBO LOC |
-| `detail_line2` | text | HEMPSEED |
-| `supporting` | text | R O U T I N E ? |
-| `detail` | text | Ordinary. |
-| `detail` | text | Ordinary. |
-| `fine-print` | text | G IVENCHY |
-| `detail` | text | Ordinary. |
-| `detail_line1` | text | 串 |
-| `detail_line2` | text | LINTEMPOR |
+| `headline` | text | S K I N C A R E |
+| `fine-print` | text | ERBO LOC |
+| `fine-print` | text | HEMP SEED |
+| `subheadline` | text | R O U T I N E ? |
+| `fine-print` | text | Ordinary. |
+| `fine-print` | text | Ordinary. |
+| `fine-print` | text | GIVENCHY |
+| `subheadline_line1` | text | Ordinary. |
+| `subheadline_line2` | text | 串 |
+| `fine-print` | text | LINTEMPOR |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #d7d8d5 |
 | `surface` | colour | #c3beb6 |
 | `textPrimary` | colour | #181616 |
-| `textSecondary` | colour | #3f4a49 |
+| `textSecondary` | colour | #43494c |
 | `accent` | colour | #9f8682 |
 | `accentSecondary` | colour | #2e2825 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Roboto |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 55.4 |
 | `imageFocalY` | number | 63.0 |
 

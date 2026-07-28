@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.66:1 |
 | Stroke (median/mean) | 13.0 / 16.18 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Sora |
 | Match IoU | 0.9068 |
 | **Geometry fit confidence** | **high** |
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.66:1 |
 | Stroke (median/mean) | 13.0 / 16.05 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Sora |
 | Match IoU | 0.9226 |
 | **Geometry fit confidence** | **high** |
@@ -109,7 +111,7 @@ Alternate font fits considered:
 - `Sora[wght].ttf` 76px track 0.17px — IoU 0.9035
 - `Sora[wght].ttf` 75px track 0.81px — IoU 0.8972
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Lightweight"  (OCR confidence 0.9999)
 
@@ -125,34 +127,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 38 px |
 | Letter-spacing | 0.09 px (0.0024 em) |
-| Line-height | 51.3 px (ratio 1.35) |
+| Line-height | 51.0 px (ratio 1.342) |
 | Line | 1 of 4 |
 | Transform | none |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 2.0 / 2.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Sora |
 | Match IoU | 0.8078 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 83 px |
-| Gap to next | 14 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7299
-- `PlusJakartaSans[wght].ttf` 39px track -0.32px — IoU 0.7272
-- `PlusJakartaSans[wght].ttf` 37px track 0.61px — IoU 0.7192
+- `PlusJakartaSans[wght].ttf` 39px track -0.44px — IoU 0.7767
+- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7431
+- `PlusJakartaSans[wght].ttf` 39px track -0.55px — IoU 0.7394
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "essentials designed"  (OCR confidence 0.9993)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=48, y=543, w=363, h=37 |
-| Normalised | x=4.44%, y=50.28%, w=33.61%, h=3.43% |
+| Bounding box (px) | x=48, y=542, w=363, h=38 |
+| Normalised | x=4.44%, y=50.19%, w=33.61%, h=3.52% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,34 +164,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 38 px |
 | Letter-spacing | 0.09 px (0.0024 em) |
-| Line-height | 51.3 px (ratio 1.35) |
+| Line-height | 51.0 px (ratio 1.342) |
 | Line | 2 of 4 |
 | Transform | lowercase |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 2.0 / 3.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Sora |
-| Match IoU | 0.8365 |
+| Match IoU | 0.8125 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 14 px |
-| Gap to next | 14 px |
+| Gap to previous | 13 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7299
-- `PlusJakartaSans[wght].ttf` 39px track -0.32px — IoU 0.7272
-- `PlusJakartaSans[wght].ttf` 37px track 0.61px — IoU 0.7192
+- `PlusJakartaSans[wght].ttf` 39px track -0.44px — IoU 0.7767
+- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7431
+- `PlusJakartaSans[wght].ttf` 39px track -0.55px — IoU 0.7394
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "for every sunny"  (OCR confidence 0.9984)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=47, y=594, w=272, h=37 |
-| Normalised | x=4.35%, y=55.0%, w=25.19%, h=3.43% |
+| Bounding box (px) | x=46, y=593, w=274, h=38 |
+| Normalised | x=4.26%, y=54.91%, w=25.37%, h=3.52% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -197,34 +201,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 38 px |
 | Letter-spacing | 0.09 px (0.0024 em) |
-| Line-height | 51.3 px (ratio 1.35) |
+| Line-height | 51.0 px (ratio 1.342) |
 | Line | 3 of 4 |
 | Transform | lowercase |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 2.0 / 2.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Sora |
-| Match IoU | 0.698 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.72 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 14 px |
-| Gap to next | 14 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 13 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7299
-- `PlusJakartaSans[wght].ttf` 39px track -0.32px — IoU 0.7272
-- `PlusJakartaSans[wght].ttf` 37px track 0.61px — IoU 0.7192
+- `PlusJakartaSans[wght].ttf` 39px track -0.44px — IoU 0.7767
+- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7431
+- `PlusJakartaSans[wght].ttf` 39px track -0.55px — IoU 0.7394
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "adventure."  (OCR confidence 0.9996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=48, y=645, w=193, h=29 |
-| Normalised | x=4.44%, y=59.72%, w=17.87%, h=2.69% |
+| Bounding box (px) | x=48, y=644, w=194, h=30 |
+| Normalised | x=4.44%, y=59.63%, w=17.96%, h=2.78% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -233,27 +238,28 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 38 px |
 | Letter-spacing | 0.09 px (0.0024 em) |
-| Line-height | 51.3 px (ratio 1.35) |
+| Line-height | 51.0 px (ratio 1.342) |
 | Line | 4 of 4 |
 | Transform | lowercase |
 | Colour | `#2e2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 2.0 / 2.99 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Sora |
-| Match IoU | 0.7071 |
+| Match IoU | 0.8263 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 14 px |
+| Gap to previous | 13 px |
 | Gap to next | 140 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7299
-- `PlusJakartaSans[wght].ttf` 39px track -0.32px — IoU 0.7272
-- `PlusJakartaSans[wght].ttf` 37px track 0.61px — IoU 0.7192
+- `PlusJakartaSans[wght].ttf` 39px track -0.44px — IoU 0.7767
+- `PlusJakartaSans[wght].ttf` 38px track -0.02px — IoU 0.7431
+- `PlusJakartaSans[wght].ttf` 39px track -0.55px — IoU 0.7394
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "SHOP SUMMER"  (OCR confidence 0.96)
 
@@ -276,6 +282,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.11:1 |
 | Stroke (median/mean) | 5.0 / 6.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Sora |
 | Match IoU | 0.8426 |
 | **Geometry fit confidence** | **high** |
@@ -299,7 +306,7 @@ Alternate font fits considered:
 | textSecondary | `#2e2e2e` | glyph ink of 'Lightweight' | glyph ink median |
 | accent | `#0d292c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#8e694a` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -323,7 +330,7 @@ Full palette (k-means):
 | Subject position | middle-right |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0866 |
+| Text coverage | 0.0874 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -352,11 +359,11 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | Summer Starts |
 | `headline_line2` | text | in Style |
-| `subheadline_line1` | text | Lightweight |
-| `subheadline_line2` | text | essentials designed |
-| `subheadline_line3` | text | for every sunny |
-| `subheadline_line4` | text | adventure. |
-| `subheadline` | text | SHOP SUMMER |
+| `supporting_line1` | text | Lightweight |
+| `supporting_line2` | text | essentials designed |
+| `supporting_line3` | text | for every sunny |
+| `supporting_line4` | text | adventure. |
+| `supporting` | text | SHOP SUMMER |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefd |
@@ -369,11 +376,11 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Plus Jakarta Sans |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 60.4 |
 | `imageFocalY` | number | 45.0 |
 

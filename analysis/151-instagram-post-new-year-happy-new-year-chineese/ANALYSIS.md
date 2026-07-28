@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,27 +60,28 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.54:1 |
 | Stroke (median/mean) | 12.0 / 12.85 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bilbo Swash Caps, Oswald |
 | Match IoU | 0.2247 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 33 px |
+| Gap to next | 32 px |
 
 Alternate font fits considered:
 - `Oswald[wght].ttf` 241px track -0.25px — IoU 0.2245
 - `Oswald[wght].ttf` 242px track -1.12px — IoU 0.2236
 - `Oswald[wght].ttf` 233px track -0.21px — IoU 0.2228
 
-### `text-2` — subheadline
+### `text-2` — fine-print
 
 **Text:** "H A P P Y"  (OCR confidence 0.9917)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=260, y=945, w=199, h=34 |
-| Normalised | x=24.07%, y=87.5%, w=18.43%, h=3.15% |
+| Bounding box (px) | x=260, y=944, w=200, h=35 |
+| Normalised | x=24.07%, y=87.41%, w=18.52%, h=3.24% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,7 +89,7 @@ Alternate font fits considered:
 | Font file matched | `Oswald[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 51 px |
-| Letter-spacing | 0.52 px (0.0102 em) |
+| Letter-spacing | 0.64 px (0.0125 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -96,27 +97,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.05:1 |
 | Stroke (median/mean) | 8.0 / 8.9 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bilbo Swash Caps, Oswald |
-| Match IoU | 0.7038 |
+| Match IoU | 0.7304 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 33 px |
-| Gap to next | -34 px |
+| Gap to previous | 32 px |
+| Gap to next | -35 px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 52px track 0.62px — IoU 0.6761
-- `Oswald[wght].ttf` 53px track 0.15px — IoU 0.6626
-- `Oswald[wght].ttf` 52px track 0.04px — IoU 0.6579
+- `Oswald[wght].ttf` 52px track 0.17px — IoU 0.6973
+- `Oswald[wght].ttf` 53px track 0.28px — IoU 0.6959
+- `Oswald[wght].ttf` 54px track -0.19px — IoU 0.6696
 
-### `text-4` — subheadline
+### `text-4` — fine-print
 
 **Text:** "N E W"  (OCR confidence 0.9826)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=516, y=945, w=110, h=34 |
-| Normalised | x=47.78%, y=87.5%, w=10.19%, h=3.15% |
+| Bounding box (px) | x=515, y=944, w=111, h=35 |
+| Normalised | x=47.69%, y=87.41%, w=10.28%, h=3.24% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -124,7 +126,7 @@ Alternate font fits considered:
 | Font file matched | `Oswald[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 49 px |
-| Letter-spacing | 0.34 px (0.0069 em) |
+| Letter-spacing | 0.59 px (0.012 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -132,27 +134,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.05:1 |
 | Stroke (median/mean) | 7.0 / 8.12 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bilbo Swash Caps, Oswald |
-| Match IoU | 0.6415 |
+| Match IoU | 0.6566 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -34 px |
-| Gap to next | -34 px |
+| Gap to previous | -35 px |
+| Gap to next | -35 px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 49px track 0.6px — IoU 0.5945
-- `Oswald[wght].ttf` 50px track -0.21px — IoU 0.5867
-- `Oswald[wght].ttf` 50px track 0.05px — IoU 0.5735
+- `Oswald[wght].ttf` 50px track 0.04px — IoU 0.6182
+- `Oswald[wght].ttf` 50px track 0.3px — IoU 0.6077
+- `Oswald[wght].ttf` 51px track -0.52px — IoU 0.5849
 
-### `text-3` — subheadline
+### `text-3` — fine-print
 
 **Text:** "Y E A R"  (OCR confidence 0.9353)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=681, y=945, w=149, h=34 |
-| Normalised | x=63.06%, y=87.5%, w=13.8%, h=3.15% |
+| Bounding box (px) | x=681, y=944, w=150, h=35 |
+| Normalised | x=63.06%, y=87.41%, w=13.89%, h=3.24% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -160,7 +163,7 @@ Alternate font fits considered:
 | Font file matched | `Oswald[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 51 px |
-| Letter-spacing | 0.53 px (0.0104 em) |
+| Letter-spacing | 0.7 px (0.0137 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -168,18 +171,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.05:1 |
 | Stroke (median/mean) | 7.0 / 8.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bilbo Swash Caps, Oswald |
-| Match IoU | 0.6892 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7273 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -34 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -35 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 52px track 0.58px — IoU 0.6839
-- `Oswald[wght].ttf` 54px track -0.36px — IoU 0.6592
-- `Oswald[wght].ttf` 52px track 0.05px — IoU 0.6524
+- `Oswald[wght].ttf` 53px track 0.27px — IoU 0.7006
+- `Oswald[wght].ttf` 52px track 0.22px — IoU 0.6912
+- `Oswald[wght].ttf` 54px track 0.46px — IoU 0.6849
 
 ## 4. Colours (semantic)
 
@@ -191,7 +195,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'H A P P Y' | glyph ink median |
 | accent | `#850f11` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f23333` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0932 |
+| Text coverage | 0.0937 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -243,9 +247,9 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | 新年快乐 |
-| `subheadline` | text | H A P P Y |
-| `subheadline` | text | N E W |
-| `subheadline` | text | Y E A R |
+| `fine-print` | text | H A P P Y |
+| `fine-print` | text | N E W |
+| `fine-print` | text | Y E A R |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f8e772 |
@@ -257,9 +261,9 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Bilbo Swash Caps |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

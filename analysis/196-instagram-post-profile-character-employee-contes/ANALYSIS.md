@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,8 +44,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=46, y=112, w=348, h=120 |
-| Normalised | x=4.26%, y=10.37%, w=32.22%, h=11.11% |
+| Bounding box (px) | x=46, y=112, w=348, h=106 |
+| Normalised | x=4.26%, y=10.37%, w=32.22%, h=9.81% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,19 +60,21 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.49:1 |
-| Stroke (median/mean) | 11.0 / 16.62 px |
+| Stroke (median/mean) | 11.0 / 16.7 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.1972 |
+| Match IoU | 0.1832 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7963) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | None px |
-| Gap to next | -3 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `RockSalt-Regular.ttf` 59px track 0.18px — IoU 0.1842
-- `RockSalt-Regular.ttf` 58px track 1.36px — IoU 0.1788
-- `Quattrocento-Bold.ttf` 90px track -1.09px — IoU 0.1609
+- `Quattrocento-Bold.ttf` 90px track -1.09px — IoU 0.1795
+- `Quattrocento-Bold.ttf` 89px track -0.3px — IoU 0.178
+- `Quattrocento-Bold.ttf` 88px track 0.49px — IoU 0.1769
 
 ### `text-2` — supporting
 
@@ -90,19 +92,20 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 41 px |
 | Letter-spacing | -0.5 px (-0.0122 em) |
-| Line-height | 45.2 px (ratio 1.102) |
+| Line-height | 45.3 px (ratio 1.105) |
 | Line | 1 of 7 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.49:1 |
 | Stroke (median/mean) | 6.0 / 6.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
 | Match IoU | 0.681 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -3 px |
+| Gap to previous | 11 px |
 | Gap to next | 23 px |
 
 Alternate font fits considered:
@@ -126,20 +129,21 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 40 px |
 | Letter-spacing | -0.01 px (-0.0003 em) |
-| Line-height | 45.2 px (ratio 1.13) |
+| Line-height | 45.3 px (ratio 1.132) |
 | Line | 2 of 7 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.47:1 |
 | Stroke (median/mean) | 5.0 / 6.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
 | Match IoU | 0.7301 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 23 px |
-| Gap to next | 26 px |
+| Gap to next | 27 px |
 
 Alternate font fits considered:
 - `Quattrocento-Bold.ttf` 39px track 0.41px — IoU 0.7267
@@ -152,35 +156,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=40, y=340, w=396, h=29 |
-| Normalised | x=3.7%, y=31.48%, w=36.67%, h=2.69% |
+| Bounding box (px) | x=41, y=341, w=395, h=28 |
+| Normalised | x=3.8%, y=31.57%, w=36.57%, h=2.59% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [400.0] |
-| Font size | 30 px |
-| Letter-spacing | -0.37 px (-0.0123 em) |
-| Line-height | 45.2 px (ratio 1.507) |
+| Variation axes | [500] |
+| Font size | 28 px |
+| Letter-spacing | 0.19 px (0.0068 em) |
+| Line-height | 45.3 px (ratio 1.618) |
 | Line | 3 of 7 |
 | Transform | none |
 | Colour | `#fdfaf5` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.45:1 |
-| Stroke (median/mean) | 4.0 / 4.48 px |
+| Stroke (median/mean) | 4.0 / 4.47 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.5479 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.6183 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 26 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 27 px |
 | Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track 0.1px — IoU 0.52
-- `Arimo[wght].ttf` 29px track -0.26px — IoU 0.5165
-- `Arimo[wght].ttf` 29px track -0.61px — IoU 0.4937
+- `Arimo[wght].ttf` 29px track -0.29px — IoU 0.6074
+- `Arimo[wght].ttf` 30px track -0.41px — IoU 0.566
+- `Arimo[wght].ttf` 29px track -0.65px — IoU 0.5557
 
 ### `text-5` — supporting
 
@@ -188,35 +193,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=40, y=381, w=411, h=22 |
-| Normalised | x=3.7%, y=35.28%, w=38.06%, h=2.04% |
+| Bounding box (px) | x=41, y=381, w=410, h=22 |
+| Normalised | x=3.8%, y=35.28%, w=37.96%, h=2.04% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 28 px |
-| Letter-spacing | 0.23 px (0.0082 em) |
-| Line-height | 45.2 px (ratio 1.614) |
+| Variation axes | [600] |
+| Font size | 29 px |
+| Letter-spacing | -0.64 px (-0.0221 em) |
+| Line-height | 45.3 px (ratio 1.562) |
 | Line | 4 of 7 |
 | Transform | none |
 | Colour | `#fefcf9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.46:1 |
-| Stroke (median/mean) | 4.0 / 4.26 px |
+| Stroke (median/mean) | 3.0 / 4.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.6032 |
+| Match IoU | 0.6603 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 12 px |
-| Gap to next | 17 px |
+| Gap to next | 18 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 28px track -0.46px — IoU 0.5961
-- `Arimo[wght].ttf` 28px track -0.12px — IoU 0.5831
-- `Arimo[wght].ttf` 29px track -0.61px — IoU 0.5698
+- `Arimo[wght].ttf` 28px track -0.49px — IoU 0.66
+- `Arimo[wght].ttf` 28px track -0.15px — IoU 0.6573
+- `Arimo[wght].ttf` 29px track -0.28px — IoU 0.6213
 
 ### `text-6` — supporting
 
@@ -224,35 +230,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=39, y=420, w=404, h=29 |
-| Normalised | x=3.61%, y=38.89%, w=37.41%, h=2.69% |
+| Bounding box (px) | x=39, y=421, w=404, h=28 |
+| Normalised | x=3.61%, y=38.98%, w=37.41%, h=2.59% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [600] |
 | Font size | 29 px |
-| Letter-spacing | -0.32 px (-0.011 em) |
-| Line-height | 45.2 px (ratio 1.559) |
+| Letter-spacing | -0.73 px (-0.0252 em) |
+| Line-height | 45.3 px (ratio 1.562) |
 | Line | 5 of 7 |
 | Transform | none |
 | Colour | `#fdfaf5` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.45:1 |
-| Stroke (median/mean) | 3.0 / 4.17 px |
+| Stroke (median/mean) | 3.0 / 4.18 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.7084 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6563 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 17 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 18 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track -0.73px — IoU 0.7022
-- `Arimo[wght].ttf` 29px track 0.09px — IoU 0.5726
-- `Arimo[wght].ttf` 30px track -0.38px — IoU 0.5538
+- `Arimo[wght].ttf` 29px track -0.32px — IoU 0.6547
+- `Arimo[wght].ttf` 30px track -0.38px — IoU 0.5804
+- `Arimo[wght].ttf` 29px track 0.09px — IoU 0.5286
 
 ### `text-7` — supporting
 
@@ -260,8 +267,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=39, y=460, w=441, h=29 |
-| Normalised | x=3.61%, y=42.59%, w=40.83%, h=2.69% |
+| Bounding box (px) | x=39, y=460, w=441, h=28 |
+| Normalised | x=3.61%, y=42.59%, w=40.83%, h=2.59% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -270,25 +277,26 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 29 px |
 | Letter-spacing | -0.25 px (-0.0086 em) |
-| Line-height | 45.2 px (ratio 1.559) |
+| Line-height | 45.3 px (ratio 1.562) |
 | Line | 6 of 7 |
 | Transform | lowercase |
 | Colour | `#fdfbf7` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.46:1 |
 | Stroke (median/mean) | 3.0 / 4.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.6366 |
+| Match IoU | 0.5874 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 11 px |
-| Gap to next | 11 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track 0.12px — IoU 0.6309
-- `Arimo[wght].ttf` 29px track -0.62px — IoU 0.5928
-- `Arimo[wght].ttf` 30px track -0.31px — IoU 0.545
+- `Arimo[wght].ttf` 29px track 0.12px — IoU 0.5765
+- `Arimo[wght].ttf` 29px track -0.62px — IoU 0.555
+- `Arimo[wght].ttf` 28px track 0.55px — IoU 0.5013
 
 ### `text-8` — supporting
 
@@ -296,35 +304,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=40, y=500, w=450, h=29 |
-| Normalised | x=3.7%, y=46.3%, w=41.67%, h=2.69% |
+| Bounding box (px) | x=41, y=501, w=449, h=28 |
+| Normalised | x=3.8%, y=46.39%, w=41.57%, h=2.59% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 29 px |
-| Letter-spacing | -0.25 px (-0.0086 em) |
-| Line-height | 45.2 px (ratio 1.559) |
+| Variation axes | [400.0] |
+| Font size | 30 px |
+| Letter-spacing | -0.39 px (-0.013 em) |
+| Line-height | 45.3 px (ratio 1.51) |
 | Line | 7 of 7 |
 | Transform | none |
 | Colour | `#fdfbf6` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.46:1 |
-| Stroke (median/mean) | 3.0 / 4.39 px |
+| Stroke (median/mean) | 3.0 / 4.4 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.5431 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.6093 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 11 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 13 px |
 | Gap to next | 38 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track 0.11px — IoU 0.5329
-- `Arimo[wght].ttf` 30px track -0.36px — IoU 0.4908
-- `Arimo[wght].ttf` 28px track 0.57px — IoU 0.4681
+- `Arimo[wght].ttf` 29px track 0.08px — IoU 0.5702
+- `Arimo[wght].ttf` 28px track 0.54px — IoU 0.5666
+- `Arimo[wght].ttf` 29px track -0.28px — IoU 0.4876
 
 ### `text-9` — headline
 
@@ -349,6 +358,8 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.46:1 |
 | Stroke (median/mean) | 13.0 / 15.7 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
 | Match IoU | 0.1715 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
@@ -385,27 +396,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.47:1 |
 | Stroke (median/mean) | 6.0 / 7.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
 | Match IoU | 0.7349 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 19 px |
-| Gap to next | 16 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
 - `Quattrocento-Bold.ttf` 42px track -0.42px — IoU 0.7316
 - `Quattrocento-Bold.ttf` 40px track 0.47px — IoU 0.6611
 - `Arimo[wght].ttf` 40px track 0.45px — IoU 0.4897
 
-### `text-11` — detail
+### `text-11` — body
 
 **Text:** "Augue mauris augue neque gravida in"  (OCR confidence 0.9862)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=545, y=778, w=497, h=29 |
-| Normalised | x=50.46%, y=72.04%, w=46.02%, h=2.69% |
+| Bounding box (px) | x=545, y=779, w=497, h=28 |
+| Normalised | x=50.46%, y=72.13%, w=46.02%, h=2.59% |
 | Alignment | right |
 | z-order | 110 |
 | Rotation | 0° |
@@ -414,34 +426,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 30 px |
 | Letter-spacing | -0.65 px (-0.0217 em) |
-| Line-height | 41.2 px (ratio 1.373) |
+| Line-height | 41.0 px (ratio 1.367) |
 | Line | 1 of 6 |
 | Transform | none |
 | Colour | `#fdfaf5` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.44:1 |
-| Stroke (median/mean) | 3.0 / 4.33 px |
+| Stroke (median/mean) | 3.0 / 4.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.6779 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.702 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 16 px |
-| Gap to next | 11 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 17 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.643
-- `Arimo[wght].ttf` 29px track -0.49px — IoU 0.6179
-- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.5997
+- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.6171
+- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.6139
+- `Arimo[wght].ttf` 28px track 0.03px — IoU 0.5949
 
-### `text-12` — detail
+### `text-12` — body
 
 **Text:** "fermentum et sollicitudin ac. Amet"  (OCR confidence 0.9736)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=545, y=818, w=441, h=23 |
-| Normalised | x=50.46%, y=75.74%, w=40.83%, h=2.13% |
+| Bounding box (px) | x=545, y=819, w=441, h=22 |
+| Normalised | x=50.46%, y=75.83%, w=40.83%, h=2.04% |
 | Alignment | right |
 | z-order | 111 |
 | Rotation | 0° |
@@ -450,34 +463,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 30 px |
 | Letter-spacing | -0.65 px (-0.0217 em) |
-| Line-height | 41.2 px (ratio 1.373) |
+| Line-height | 41.0 px (ratio 1.367) |
 | Line | 2 of 6 |
 | Transform | none |
 | Colour | `#fdfaf6` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.45:1 |
-| Stroke (median/mean) | 3.0 / 4.26 px |
+| Stroke (median/mean) | 3.0 / 4.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.6136 |
+| Match IoU | 0.645 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 11 px |
-| Gap to next | 17 px |
+| Gap to previous | 12 px |
+| Gap to next | 18 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.643
-- `Arimo[wght].ttf` 29px track -0.49px — IoU 0.6179
-- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.5997
+- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.6171
+- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.6139
+- `Arimo[wght].ttf` 28px track 0.03px — IoU 0.5949
 
-### `text-13` — detail
+### `text-13` — body
 
 **Text:** "cursus sit amet dictum sit amet justo"  (OCR confidence 0.9928)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=546, y=858, w=473, h=29 |
-| Normalised | x=50.56%, y=79.44%, w=43.8%, h=2.69% |
+| Bounding box (px) | x=546, y=859, w=473, h=28 |
+| Normalised | x=50.56%, y=79.54%, w=43.8%, h=2.59% |
 | Alignment | right |
 | z-order | 112 |
 | Rotation | 0° |
@@ -486,34 +500,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 30 px |
 | Letter-spacing | -0.65 px (-0.0217 em) |
-| Line-height | 41.2 px (ratio 1.373) |
+| Line-height | 41.0 px (ratio 1.367) |
 | Line | 3 of 6 |
 | Transform | lowercase |
 | Colour | `#fdfbf6` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.45:1 |
-| Stroke (median/mean) | 3.0 / 4.32 px |
+| Stroke (median/mean) | 3.0 / 4.34 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.656 |
+| Match IoU | 0.6924 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 17 px |
-| Gap to next | 11 px |
+| Gap to previous | 18 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.643
-- `Arimo[wght].ttf` 29px track -0.49px — IoU 0.6179
-- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.5997
+- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.6171
+- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.6139
+- `Arimo[wght].ttf` 28px track 0.03px — IoU 0.5949
 
-### `text-14` — detail
+### `text-14` — body
 
 **Text:** "donec enim. Hendrerit gravida rutrum"  (OCR confidence 0.9927)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=546, y=898, w=486, h=29 |
-| Normalised | x=50.56%, y=83.15%, w=45.0%, h=2.69% |
+| Bounding box (px) | x=546, y=899, w=486, h=27 |
+| Normalised | x=50.56%, y=83.24%, w=45.0%, h=2.5% |
 | Alignment | right |
 | z-order | 113 |
 | Rotation | 0° |
@@ -522,34 +537,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 30 px |
 | Letter-spacing | -0.65 px (-0.0217 em) |
-| Line-height | 41.2 px (ratio 1.373) |
+| Line-height | 41.0 px (ratio 1.367) |
 | Line | 4 of 6 |
 | Transform | none |
 | Colour | `#fdfbf7` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.44:1 |
-| Stroke (median/mean) | 4.0 / 4.33 px |
+| Stroke (median/mean) | 4.0 / 4.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.6541 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7033 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 11 px |
-| Gap to next | 11 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 12 px |
+| Gap to next | 13 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.643
-- `Arimo[wght].ttf` 29px track -0.49px — IoU 0.6179
-- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.5997
+- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.6171
+- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.6139
+- `Arimo[wght].ttf` 28px track 0.03px — IoU 0.5949
 
-### `text-15` — detail
+### `text-15` — body
 
 **Text:** "quisque non tellus orci ac auctor"  (OCR confidence 0.9926)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=546, y=938, w=422, h=29 |
-| Normalised | x=50.56%, y=86.85%, w=39.07%, h=2.69% |
+| Bounding box (px) | x=546, y=939, w=421, h=28 |
+| Normalised | x=50.56%, y=86.94%, w=38.98%, h=2.59% |
 | Alignment | right |
 | z-order | 114 |
 | Rotation | 0° |
@@ -558,34 +574,35 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 30 px |
 | Letter-spacing | -0.65 px (-0.0217 em) |
-| Line-height | 41.2 px (ratio 1.373) |
+| Line-height | 41.0 px (ratio 1.367) |
 | Line | 5 of 6 |
 | Transform | lowercase |
 | Colour | `#fdf9f4` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 3.0 / 4.3 px |
+| Stroke (median/mean) | 3.0 / 4.31 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.6972 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7122 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 11 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 13 px |
 | Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.643
-- `Arimo[wght].ttf` 29px track -0.49px — IoU 0.6179
-- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.5997
+- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.6171
+- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.6139
+- `Arimo[wght].ttf` 28px track 0.03px — IoU 0.5949
 
-### `text-16` — detail
+### `text-16` — body
 
 **Text:** "augue."  (OCR confidence 0.9984)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=546, y=984, w=87, h=23 |
-| Normalised | x=50.56%, y=91.11%, w=8.06%, h=2.13% |
+| Bounding box (px) | x=546, y=984, w=87, h=22 |
+| Normalised | x=50.56%, y=91.11%, w=8.06%, h=2.04% |
 | Alignment | right |
 | z-order | 115 |
 | Rotation | 0° |
@@ -594,25 +611,26 @@ Alternate font fits considered:
 | Variation axes | [500] |
 | Font size | 30 px |
 | Letter-spacing | -0.65 px (-0.0217 em) |
-| Line-height | 41.2 px (ratio 1.373) |
+| Line-height | 41.0 px (ratio 1.367) |
 | Line | 6 of 6 |
 | Transform | lowercase |
 | Colour | `#fdfbf7` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.43:1 |
-| Stroke (median/mean) | 4.0 / 4.66 px |
+| Stroke (median/mean) | 4.0 / 4.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Rock Salt, Quattrocento, Arimo |
-| Match IoU | 0.683 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.736 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 17 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.643
-- `Arimo[wght].ttf` 29px track -0.49px — IoU 0.6179
-- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.5997
+- `Arimo[wght].ttf` 28px track 0.37px — IoU 0.6171
+- `Arimo[wght].ttf` 29px track -0.14px — IoU 0.6139
+- `Arimo[wght].ttf` 28px track 0.03px — IoU 0.5949
 
 ## 4. Colours (semantic)
 
@@ -624,7 +642,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'FERZME' | glyph ink median |
 | accent | `#e0a348` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#743363` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -648,7 +666,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.2259 |
+| Text coverage | 0.2177 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -685,12 +703,12 @@ _Recommendations only — no manifest is generated._
 | `supporting_line7` | text | Morbi tincidunt ornare massa eget. |
 | `headline` | text | ULTTZICI |
 | `supporting` | text | Fringilla urna porttitor r |
-| `detail_line1` | text | Augue mauris augue neque gravida in |
-| `detail_line2` | text | fermentum et sollicitudin ac. Amet |
-| `detail_line3` | text | cursus sit amet dictum sit amet justo |
-| `detail_line4` | text | donec enim. Hendrerit gravida rutrum |
-| `detail_line5` | text | quisque non tellus orci ac auctor |
-| `detail_line6` | text | augue. |
+| `body_line1` | text | Augue mauris augue neque gravida in |
+| `body_line2` | text | fermentum et sollicitudin ac. Amet |
+| `body_line3` | text | cursus sit amet dictum sit amet justo |
+| `body_line4` | text | donec enim. Hendrerit gravida rutrum |
+| `body_line5` | text | quisque non tellus orci ac auctor |
+| `body_line6` | text | augue. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fcf8f3 |
@@ -711,12 +729,12 @@ _Recommendations only — no manifest is generated._
 | `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 46.6 |
 | `imageFocalY` | number | 52.7 |
 

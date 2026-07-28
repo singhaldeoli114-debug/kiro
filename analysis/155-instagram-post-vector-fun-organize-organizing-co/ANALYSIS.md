@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=67, y=92, w=492, h=146 |
-| Normalised | x=6.2%, y=8.52%, w=45.56%, h=13.52% |
+| Bounding box (px) | x=67, y=92, w=492, h=141 |
+| Normalised | x=6.2%, y=8.52%, w=45.56%, h=13.06% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,56 +60,58 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.88:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.6387 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7156 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -27 px |
+| Gap to next | -17 px |
 
 Alternate font fits considered:
-- `Lobster-Regular.ttf` 143px track -0.09px — IoU 0.6367
-- `Lobster-Regular.ttf` 144px track -0.58px — IoU 0.6249
-- `Roboto[wdth,wght].ttf` 137px track -0.58px — IoU 0.3449
+- `Lobster-Regular.ttf` 143px track -0.09px — IoU 0.7154
+- `Lobster-Regular.ttf` 144px track -0.58px — IoU 0.7034
+- `Roboto[wdth,wght].ttf` 137px track -0.58px — IoU 0.3643
 
-### `text-2` — subheadline
+### `text-2` — fine-print
 
 **Text:** "Vel fringilla est ullamcorper eget nulla"  (OCR confidence 0.9984)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=67, y=211, w=480, h=40 |
-| Normalised | x=6.2%, y=19.54%, w=44.44%, h=3.7% |
+| Bounding box (px) | x=67, y=216, w=480, h=35 |
+| Normalised | x=6.2%, y=20.0%, w=44.44%, h=3.24% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 87.5] |
-| Font size | 30 px |
-| Letter-spacing | -0.02 px (-0.0007 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [500, 100.0] |
+| Font size | 29 px |
+| Letter-spacing | -0.3 px (-0.0103 em) |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 1 of 8 |
 | Transform | none |
 | Colour | `#492976` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.88:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.2578 |
+| Match IoU | 0.2867 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -27 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -17 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 28px track 0.13px — IoU 0.2557
-- `Roboto[wdth,wght].ttf` 28px track 0.07px — IoU 0.2538
-- `Roboto[wdth,wght].ttf` 30px track -0.09px — IoU 0.2525
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
-### `text-3` — subheadline
+### `text-3` — fine-print
 
 **Text:** "facilisi etiam. Risus sed vulputate odio ut"  (OCR confidence 0.9993)
 
@@ -122,32 +124,33 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 29 px |
 | Letter-spacing | -0.3 px (-0.0103 em) |
-| Line-height | 39.2 px (ratio 1.352) |
-| Line | 1 of 7 |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 2 of 8 |
 | Transform | none |
 | Colour | `#4b2c78` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.73:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.701 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6971 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 11 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.25px — IoU 0.7136
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.7081
-- `Roboto[wdth,wght].ttf` 31px track -0.38px — IoU 0.6829
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
-### `text-4` — subheadline
+### `text-4` — fine-print
 
-**Text:** "enim blandit volutpat maecenas volutpat."  (OCR confidence 0.9993)
+**Text:** "enim bland it volutpat maecenas volutpat."  (OCR confidence 0.9993)
 
 | Property | Value |
 |---|---|
@@ -158,138 +161,143 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 29 px |
 | Letter-spacing | -0.3 px (-0.0103 em) |
-| Line-height | 39.2 px (ratio 1.352) |
-| Line | 2 of 7 |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 3 of 8 |
 | Transform | lowercase |
 | Colour | `#4c2c78` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.71:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'blandit' -> 'bland it' |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.6758 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.3452 |
+| **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 11 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.25px — IoU 0.7136
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.7081
-- `Roboto[wdth,wght].ttf` 31px track -0.38px — IoU 0.6829
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
-### `text-5` — subheadline
+### `text-5` — fine-print
 
 **Text:** "Sed libero enim sed faucibus turpis in eu"  (OCR confidence 0.9677)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=67, y=340, w=515, h=29 |
-| Normalised | x=6.2%, y=31.48%, w=47.69%, h=2.69% |
+| Bounding box (px) | x=67, y=340, w=515, h=28 |
+| Normalised | x=6.2%, y=31.48%, w=47.69%, h=2.59% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 29 px |
 | Letter-spacing | -0.3 px (-0.0103 em) |
-| Line-height | 39.2 px (ratio 1.352) |
-| Line | 3 of 7 |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 4 of 8 |
 | Transform | none |
 | Colour | `#4e2f7a` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.57:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.7648 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6508 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 11 px |
-| Gap to next | 10 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.25px — IoU 0.7136
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.7081
-- `Roboto[wdth,wght].ttf` 31px track -0.38px — IoU 0.6829
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
-### `text-6` — subheadline
+### `text-6` — fine-print
 
 **Text:** "mi bibendum. Elementum integer enim"  (OCR confidence 0.9976)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=68, y=379, w=491, h=29 |
-| Normalised | x=6.3%, y=35.09%, w=45.46%, h=2.69% |
+| Bounding box (px) | x=68, y=380, w=491, h=28 |
+| Normalised | x=6.3%, y=35.19%, w=45.46%, h=2.59% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 29 px |
 | Letter-spacing | -0.3 px (-0.0103 em) |
-| Line-height | 39.2 px (ratio 1.352) |
-| Line | 4 of 7 |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 5 of 8 |
 | Transform | none |
 | Colour | `#4d2d79` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.66:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.7075 |
+| Match IoU | 0.7718 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 10 px |
-| Gap to next | 10 px |
+| Gap to previous | 12 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.25px — IoU 0.7136
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.7081
-- `Roboto[wdth,wght].ttf` 31px track -0.38px — IoU 0.6829
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
-### `text-7` — subheadline
+### `text-7` — fine-print
 
 **Text:** "neque volutpat ac tincidunt vitae semper"  (OCR confidence 0.9957)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=68, y=418, w=517, h=29 |
-| Normalised | x=6.3%, y=38.7%, w=47.87%, h=2.69% |
+| Bounding box (px) | x=68, y=419, w=517, h=28 |
+| Normalised | x=6.3%, y=38.8%, w=47.87%, h=2.59% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 29 px |
 | Letter-spacing | -0.3 px (-0.0103 em) |
-| Line-height | 39.2 px (ratio 1.352) |
-| Line | 5 of 7 |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 6 of 8 |
 | Transform | lowercase |
 | Colour | `#4e307a` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.54:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.7348 |
+| Match IoU | 0.7509 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 10 px |
+| Gap to previous | 11 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.25px — IoU 0.7136
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.7081
-- `Roboto[wdth,wght].ttf` 31px track -0.38px — IoU 0.6829
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
-### `text-8` — subheadline
+### `text-8` — fine-print
 
 **Text:** "quis. Sagittis nisl rhoncus mattis rhoncus"  (OCR confidence 0.9994)
 
@@ -302,64 +310,66 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 29 px |
 | Letter-spacing | -0.3 px (-0.0103 em) |
-| Line-height | 39.2 px (ratio 1.352) |
-| Line | 6 of 7 |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 7 of 8 |
 | Transform | none |
 | Colour | `#52337c` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.39:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.7435 |
+| Match IoU | 0.7488 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 11 px |
-| Gap to next | 11 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.25px — IoU 0.7136
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.7081
-- `Roboto[wdth,wght].ttf` 31px track -0.38px — IoU 0.6829
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
-### `text-9` — subheadline
+### `text-9` — fine-print
 
 **Text:** "urna neque viverra justo."  (OCR confidence 0.9907)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=68, y=497, w=309, h=28 |
-| Normalised | x=6.3%, y=46.02%, w=28.61%, h=2.59% |
+| Bounding box (px) | x=68, y=498, w=309, h=27 |
+| Normalised | x=6.3%, y=46.11%, w=28.61%, h=2.5% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 29 px |
 | Letter-spacing | -0.3 px (-0.0103 em) |
-| Line-height | 39.2 px (ratio 1.352) |
-| Line | 7 of 7 |
+| Line-height | 40.3 px (ratio 1.39) |
+| Line | 8 of 8 |
 | Transform | lowercase |
 | Colour | `#55387f` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.2:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Lobster, Roboto |
-| Match IoU | 0.7645 |
+| Match IoU | 0.7013 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 11 px |
+| Gap to previous | 12 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 29px track -0.25px — IoU 0.7136
-- `Roboto[wdth,wght].ttf` 29px track -0.34px — IoU 0.7081
-- `Roboto[wdth,wght].ttf` 31px track -0.38px — IoU 0.6829
+- `Roboto[wdth,wght].ttf` 29px track -0.37px — IoU 0.6143
+- `Roboto[wdth,wght].ttf` 29px track -0.43px — IoU 0.6057
+- `Roboto[wdth,wght].ttf` 31px track -0.44px — IoU 0.5861
 
 ## 4. Colours (semantic)
 
@@ -371,7 +381,7 @@ Alternate font fits considered:
 | textSecondary | `#492976` | glyph ink of 'Vel fringilla est ullamcorpe' | glyph ink median |
 | accent | `#92739b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -395,7 +405,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1611 |
+| Text coverage | 0.1554 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -423,14 +433,14 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Organize |
-| `subheadline` | text | Vel fringilla est ullamcorper eget nulla |
-| `subheadline_line1` | text | facilisi etiam. Risus sed vulputate odio ut |
-| `subheadline_line2` | text | enim blandit volutpat maecenas volutpat. |
-| `subheadline_line3` | text | Sed libero enim sed faucibus turpis in eu |
-| `subheadline_line4` | text | mi bibendum. Elementum integer enim |
-| `subheadline_line5` | text | neque volutpat ac tincidunt vitae semper |
-| `subheadline_line6` | text | quis. Sagittis nisl rhoncus mattis rhoncus |
-| `subheadline_line7` | text | urna neque viverra justo. |
+| `fine-print_line1` | text | Vel fringilla est ullamcorper eget nulla |
+| `fine-print_line2` | text | facilisi etiam. Risus sed vulputate odio ut |
+| `fine-print_line3` | text | enim bland it volutpat maecenas volutpat. |
+| `fine-print_line4` | text | Sed libero enim sed faucibus turpis in eu |
+| `fine-print_line5` | text | mi bibendum. Elementum integer enim |
+| `fine-print_line6` | text | neque volutpat ac tincidunt vitae semper |
+| `fine-print_line7` | text | quis. Sagittis nisl rhoncus mattis rhoncus |
+| `fine-print_line8` | text | urna neque viverra justo. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f1f3f4 |
@@ -441,14 +451,14 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Lobster |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,35 +44,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=144, y=108, w=616, h=68 |
-| Normalised | x=13.33%, y=10.0%, w=57.04%, h=6.3% |
+| Bounding box (px) | x=136, y=107, w=624, h=70 |
+| Normalised | x=12.59%, y=9.91%, w=57.78%, h=6.48% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Acme-Regular.ttf` |
+| Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 74 px |
-| Letter-spacing | -0.26 px (-0.0035 em) |
-| Line-height | 94.0 px (ratio 1.27) |
+| Font size | 71 px |
+| Letter-spacing | -0.26 px (-0.0037 em) |
+| Line-height | 95.0 px (ratio 1.338) |
 | Line | 1 of 2 |
 | Transform | lowercase |
-| Colour | `#283a7f` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.28:1 |
+| Colour | `#f9ce42` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.37:1 |
 | Stroke (median/mean) | 12.0 / 12.99 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.1451 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6118 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 26 px |
+| Gap to next | 25 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 72px track 0.53px — IoU 0.1395
-- `Acme-Regular.ttf` 73px track 0.13px — IoU 0.1371
-- `SulphurPoint-Bold.ttf` 59px track 0.09px — IoU 0.0611
+- `Anton-Regular.ttf` 70px track 0.16px — IoU 0.6508
+- `Anton-Regular.ttf` 69px track 0.58px — IoU 0.6381
+- `Acme-Regular.ttf` 75px track -0.29px — IoU 0.2887
 
 ### `text-2` — headline
 
@@ -80,44 +81,45 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=197, y=202, w=510, h=77 |
-| Normalised | x=18.24%, y=18.7%, w=47.22%, h=7.13% |
+| Bounding box (px) | x=196, y=202, w=512, h=70 |
+| Normalised | x=18.15%, y=18.7%, w=47.41%, h=6.48% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 70 px |
-| Letter-spacing | -0.3 px (-0.0043 em) |
-| Line-height | 94.0 px (ratio 1.343) |
+| Font size | 71 px |
+| Letter-spacing | -0.26 px (-0.0037 em) |
+| Line-height | 95.0 px (ratio 1.338) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#f9ce42` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.03:1 |
-| Stroke (median/mean) | 11.0 / 12.34 px |
+| Contrast vs local bg | 2.83:1 |
+| Stroke (median/mean) | 11.0 / 12.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.602 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7271 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.8947) |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 26 px |
-| Gap to next | -2 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 25 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 68px track 0.56px — IoU 0.5952
-- `Anton-Regular.ttf` 69px track 0.13px — IoU 0.5852
-- `Acme-Regular.ttf` 72px track -0.3px — IoU 0.3413
+- `Anton-Regular.ttf` 70px track 0.16px — IoU 0.6508
+- `Anton-Regular.ttf` 69px track 0.58px — IoU 0.6381
+- `Acme-Regular.ttf` 75px track -0.29px — IoU 0.2887
 
-### `text-3` — detail
+### `text-3` — supporting
 
 **Text:** "STOPTH E SPREAD"  (OCR confidence 0.9833)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=337, y=277, w=214, h=20 |
-| Normalised | x=31.2%, y=25.65%, w=19.81%, h=1.85% |
+| Bounding box (px) | x=336, y=277, w=216, h=20 |
+| Normalised | x=31.11%, y=25.65%, w=20.0%, h=1.85% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -125,7 +127,7 @@ Alternate font fits considered:
 | Font file matched | `Acme-Regular.ttf` |
 | Variation axes | None |
 | Font size | 29 px |
-| Letter-spacing | -0.3 px (-0.0103 em) |
+| Letter-spacing | -0.16 px (-0.0055 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -133,27 +135,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.25:1 |
 | Stroke (median/mean) | 3.0 / 4.31 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.6377 |
+| Match IoU | 0.5887 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -2 px |
-| Gap to next | 80 px |
+| Gap to previous | 5 px |
+| Gap to next | 79 px |
 
 Alternate font fits considered:
-- `Acme-Regular.ttf` 28px track 0.24px — IoU 0.5954
-- `Acme-Regular.ttf` 27px track 0.77px — IoU 0.5504
-- `Anton-Regular.ttf` 33px track 0.22px — IoU 0.4242
+- `Acme-Regular.ttf` 30px track -0.7px — IoU 0.5732
+- `Acme-Regular.ttf` 28px track 0.38px — IoU 0.4948
+- `Anton-Regular.ttf` 35px track -0.55px — IoU 0.4056
 
-### `text-4` — supporting
+### `text-4` — subheadline
 
 **Text:** "Wash your hands frequently."  (OCR confidence 0.9648)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=377, w=477, h=33 |
-| Normalised | x=9.44%, y=34.91%, w=44.17%, h=3.06% |
+| Bounding box (px) | x=102, y=376, w=477, h=34 |
+| Normalised | x=9.44%, y=34.81%, w=44.17%, h=3.15% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,7 +164,7 @@ Alternate font fits considered:
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
 | Font size | 37 px |
-| Letter-spacing | -0.07 px (-0.0019 em) |
+| Letter-spacing | -0.05 px (-0.0014 em) |
 | Line-height | 56.0 px (ratio 1.514) |
 | Line | 1 of 3 |
 | Transform | none |
@@ -169,27 +172,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.23:1 |
 | Stroke (median/mean) | 2.0 / 2.75 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.5669 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.5395 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 80 px |
-| Gap to next | 29 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 79 px |
+| Gap to next | 28 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 36px track 0.43px — IoU 0.3303
-- `SulphurPoint-Bold.ttf` 38px track -0.57px — IoU 0.3245
-- `SulphurPoint-Regular.ttf` 36px track 0.47px — IoU 0.2866
+- `SulphurPoint-Bold.ttf` 38px track -0.54px — IoU 0.3565
+- `SulphurPoint-Bold.ttf` 36px track 0.45px — IoU 0.3494
+- `SulphurPoint-Regular.ttf` 37px track 0.0px — IoU 0.307
 
-### `text-5` — supporting
+### `text-5` — subheadline
 
 **Text:** "Avoid touching your eyes, nose and mouth."  (OCR confidence 0.9991)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=439, w=733, h=32 |
-| Normalised | x=9.44%, y=40.65%, w=67.87%, h=2.96% |
+| Bounding box (px) | x=102, y=438, w=734, h=34 |
+| Normalised | x=9.44%, y=40.56%, w=67.96%, h=3.15% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -197,7 +201,7 @@ Alternate font fits considered:
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
 | Font size | 37 px |
-| Letter-spacing | -0.07 px (-0.0019 em) |
+| Letter-spacing | -0.05 px (-0.0014 em) |
 | Line-height | 56.0 px (ratio 1.514) |
 | Line | 2 of 3 |
 | Transform | none |
@@ -205,27 +209,28 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.2:1 |
 | Stroke (median/mean) | 2.0 / 2.94 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.2756 |
+| Match IoU | 0.2414 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 29 px |
-| Gap to next | 18 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 28 px |
+| Gap to next | 16 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 36px track 0.43px — IoU 0.3303
-- `SulphurPoint-Bold.ttf` 38px track -0.57px — IoU 0.3245
-- `SulphurPoint-Regular.ttf` 36px track 0.47px — IoU 0.2866
+- `SulphurPoint-Bold.ttf` 38px track -0.54px — IoU 0.3565
+- `SulphurPoint-Bold.ttf` 36px track 0.45px — IoU 0.3494
+- `SulphurPoint-Regular.ttf` 37px track 0.0px — IoU 0.307
 
-### `text-6` — supporting
+### `text-6` — subheadline
 
 **Text:** "Cover your mouth when you cough using"  (OCR confidence 0.971)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=489, w=705, h=43 |
-| Normalised | x=9.44%, y=45.28%, w=65.28%, h=3.98% |
+| Bounding box (px) | x=101, y=488, w=707, h=34 |
+| Normalised | x=9.35%, y=45.19%, w=65.46%, h=3.15% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -233,62 +238,64 @@ Alternate font fits considered:
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
 | Font size | 37 px |
-| Letter-spacing | -0.07 px (-0.0019 em) |
+| Letter-spacing | -0.05 px (-0.0014 em) |
 | Line-height | 56.0 px (ratio 1.514) |
 | Line | 3 of 3 |
 | Transform | none |
-| Colour | `#bcdeea` |
+| Colour | `#bcdfeb` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.18:1 |
-| Stroke (median/mean) | 2.0 / 2.67 px |
+| Contrast vs local bg | 3.19:1 |
+| Stroke (median/mean) | 2.0 / 2.69 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.1997 |
+| Match IoU | 0.3828 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 18 px |
-| Gap to next | -26 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 16 px |
+| Gap to next | -16 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 36px track 0.43px — IoU 0.3303
-- `SulphurPoint-Bold.ttf` 38px track -0.57px — IoU 0.3245
-- `SulphurPoint-Regular.ttf` 36px track 0.47px — IoU 0.2866
+- `SulphurPoint-Bold.ttf` 38px track -0.54px — IoU 0.3565
+- `SulphurPoint-Bold.ttf` 36px track 0.45px — IoU 0.3494
+- `SulphurPoint-Regular.ttf` 37px track 0.0px — IoU 0.307
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "2M"  (OCR confidence 0.9962)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=900, y=506, w=62, h=29 |
-| Normalised | x=83.33%, y=46.85%, w=5.74%, h=2.69% |
+| Bounding box (px) | x=909, y=506, w=41, h=20 |
+| Normalised | x=84.17%, y=46.85%, w=3.8%, h=1.85% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 51 px |
-| Letter-spacing | -1.25 px (-0.0245 em) |
+| Font size | 32 px |
+| Letter-spacing | 1.31 px (0.0409 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#73c0df` |
+| Colour | `#73c9e0` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.65:1 |
+| Contrast vs local bg | 2.74:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.285 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5063 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -26 px |
-| Gap to next | -16 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | -16 px |
+| Gap to next | 1 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 50px track -0.02px — IoU 0.2779
-- `Anton-Regular.ttf` 49px track 1.22px — IoU 0.2691
-- `SulphurPoint-Bold.ttf` 53px track -1.06px — IoU 0.2489
+- `Anton-Regular.ttf` 34px track -1.17px — IoU 0.5035
+- `Anton-Regular.ttf` 33px track 0.06px — IoU 0.493
+- `SulphurPoint-Bold.ttf` 35px track -0.64px — IoU 0.4644
 
 ### `text-8` — supporting
 
@@ -296,35 +303,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=519, w=614, h=41 |
-| Normalised | x=9.44%, y=48.06%, w=56.85%, h=3.8% |
+| Bounding box (px) | x=101, y=527, w=615, h=34 |
+| Normalised | x=9.35%, y=48.8%, w=56.94%, h=3.15% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
+| Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 42 px |
-| Letter-spacing | 0.27 px (0.0064 em) |
-| Line-height | 60.0 px (ratio 1.429) |
-| Line | 1 of 2 |
+| Font size | 35 px |
+| Letter-spacing | 0.65 px (0.0186 em) |
+| Line-height | 47.3 px (ratio 1.351) |
+| Line | 1 of 4 |
 | Transform | lowercase |
 | Colour | `#bfe2ec` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.23:1 |
-| Stroke (median/mean) | 2.0 / 3.01 px |
+| Stroke (median/mean) | 2.0 / 2.99 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.2283 |
+| Match IoU | 0.3594 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -16 px |
-| Gap to next | 19 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 1 px |
+| Gap to next | 17 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 44px track -0.61px — IoU 0.2524
-- `Anton-Regular.ttf` 43px track -0.17px — IoU 0.2478
-- `SulphurPoint-Bold.ttf` 36px track 0.08px — IoU 0.2268
+- `Anton-Regular.ttf` 42px track 0.33px — IoU 0.2545
+- `Anton-Regular.ttf` 44px track -0.56px — IoU 0.254
+- `Anton-Regular.ttf` 43px track -0.12px — IoU 0.2535
 
 ### `text-9` — supporting
 
@@ -332,35 +340,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=103, y=579, w=695, h=32 |
-| Normalised | x=9.54%, y=53.61%, w=64.35%, h=2.96% |
+| Bounding box (px) | x=102, y=578, w=697, h=34 |
+| Normalised | x=9.44%, y=53.52%, w=64.54%, h=3.15% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
+| Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 42 px |
-| Letter-spacing | 0.27 px (0.0064 em) |
-| Line-height | 60.0 px (ratio 1.429) |
-| Line | 2 of 2 |
+| Font size | 35 px |
+| Letter-spacing | 0.65 px (0.0186 em) |
+| Line-height | 47.3 px (ratio 1.351) |
+| Line | 2 of 4 |
 | Transform | none |
 | Colour | `#bcdeea` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.18:1 |
 | Stroke (median/mean) | 2.0 / 2.9 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.2854 |
+| Match IoU | 0.2652 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 19 px |
-| Gap to next | -6 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 17 px |
+| Gap to next | -2 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 44px track -0.61px — IoU 0.2524
-- `Anton-Regular.ttf` 43px track -0.17px — IoU 0.2478
-- `SulphurPoint-Bold.ttf` 36px track 0.08px — IoU 0.2268
+- `Anton-Regular.ttf` 42px track 0.33px — IoU 0.2545
+- `Anton-Regular.ttf` 44px track -0.56px — IoU 0.254
+- `Anton-Regular.ttf` 43px track -0.12px — IoU 0.2535
 
 ### `text-10` — supporting
 
@@ -368,35 +377,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=103, y=605, w=645, h=45 |
-| Normalised | x=9.54%, y=56.02%, w=59.72%, h=4.17% |
+| Bounding box (px) | x=102, y=610, w=646, h=40 |
+| Normalised | x=9.44%, y=56.48%, w=59.81%, h=3.7% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
+| Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 44 px |
-| Letter-spacing | -0.28 px (-0.0064 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 35 px |
+| Letter-spacing | 0.65 px (0.0186 em) |
+| Line-height | 47.3 px (ratio 1.351) |
+| Line | 3 of 4 |
 | Transform | lowercase |
 | Colour | `#bee1eb` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.21:1 |
 | Stroke (median/mean) | 2.0 / 2.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.215 |
+| Match IoU | 0.2206 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -6 px |
-| Gap to next | 20 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -2 px |
+| Gap to next | 19 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 43px track 0.15px — IoU 0.2098
-- `Anton-Regular.ttf` 42px track 0.59px — IoU 0.2066
-- `SulphurPoint-Bold.ttf` 38px track -0.62px — IoU 0.1962
+- `Anton-Regular.ttf` 42px track 0.33px — IoU 0.2545
+- `Anton-Regular.ttf` 44px track -0.56px — IoU 0.254
+- `Anton-Regular.ttf` 43px track -0.12px — IoU 0.2535
 
 ### `text-11` — supporting
 
@@ -404,188 +414,193 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=62, y=670, w=530, h=32 |
-| Normalised | x=5.74%, y=62.04%, w=49.07%, h=2.96% |
+| Bounding box (px) | x=61, y=669, w=532, h=34 |
+| Normalised | x=5.65%, y=61.94%, w=49.26%, h=3.15% |
 | Alignment | left |
 | z-order | 110 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
+| Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 42 px |
-| Letter-spacing | 0.51 px (0.0121 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 35 px |
+| Letter-spacing | 0.65 px (0.0186 em) |
+| Line-height | 47.3 px (ratio 1.351) |
+| Line | 4 of 4 |
 | Transform | none |
-| Colour | `#bdd7e6` |
+| Colour | `#bcd6e5` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.11:1 |
+| Contrast vs local bg | 3.09:1 |
 | Stroke (median/mean) | 2.0 / 2.76 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.2267 |
+| Match IoU | 0.1952 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 20 px |
-| Gap to next | 34 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 19 px |
+| Gap to next | 32 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 44px track -0.3px — IoU 0.2208
-- `Anton-Regular.ttf` 43px track 0.1px — IoU 0.2192
-- `Acme-Regular.ttf` 46px track -0.47px — IoU 0.2046
+- `Anton-Regular.ttf` 42px track 0.33px — IoU 0.2545
+- `Anton-Regular.ttf` 44px track -0.56px — IoU 0.254
+- `Anton-Regular.ttf` 43px track -0.12px — IoU 0.2535
 
-### `text-12` — supporting
+### `text-12` — subheadline
 
 **Text:** "Seek medical care early if you have a"  (OCR confidence 0.9946)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=736, w=662, h=32 |
-| Normalised | x=9.44%, y=68.15%, w=61.3%, h=2.96% |
+| Bounding box (px) | x=102, y=735, w=662, h=34 |
+| Normalised | x=9.44%, y=68.06%, w=61.3%, h=3.15% |
 | Alignment | left |
 | z-order | 111 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | -0.18 px (-0.0049 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 38 px |
+| Letter-spacing | -0.34 px (-0.0089 em) |
+| Line-height | 38.5 px (ratio 1.013) |
+| Line | 1 of 3 |
 | Transform | none |
-| Colour | `#bbdeea` |
+| Colour | `#bbddea` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.17:1 |
+| Contrast vs local bg | 3.16:1 |
 | Stroke (median/mean) | 2.0 / 2.87 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.5262 |
+| Match IoU | 0.5448 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 34 px |
-| Gap to next | -4 px |
+| Gap to previous | 32 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 38px track -0.68px — IoU 0.511
-- `SulphurPoint-Regular.ttf` 38px track -0.58px — IoU 0.4908
-- `SulphurPoint-Regular.ttf` 37px track -0.09px — IoU 0.4806
+- `SulphurPoint-Bold.ttf` 37px track 0.11px — IoU 0.427
+- `SulphurPoint-Regular.ttf` 38px track -0.28px — IoU 0.407
+- `SulphurPoint-Bold.ttf` 36px track 0.57px — IoU 0.3713
 
-### `text-13` — supporting
+### `text-13` — subheadline
 
 **Text:** "fever, coughs, and difficulty breathing-but"  (OCR confidence 0.9927)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=764, w=715, h=51 |
-| Normalised | x=9.44%, y=70.74%, w=66.2%, h=4.72% |
+| Bounding box (px) | x=102, y=774, w=716, h=34 |
+| Normalised | x=9.44%, y=71.67%, w=66.3%, h=3.15% |
 | Alignment | left |
 | z-order | 112 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
+| Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 41 px |
-| Letter-spacing | 0.46 px (0.0112 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 38 px |
+| Letter-spacing | -0.34 px (-0.0089 em) |
+| Line-height | 38.5 px (ratio 1.013) |
+| Line | 2 of 3 |
 | Transform | lowercase |
 | Colour | `#bde0eb` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.2:1 |
 | Stroke (median/mean) | 2.0 / 2.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.1996 |
+| Match IoU | 0.2404 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -4 px |
-| Gap to next | -2 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 5 px |
+| Gap to next | 4 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 43px track -0.35px — IoU 0.1986
-- `Acme-Regular.ttf` 44px track -0.22px — IoU 0.1963
-- `Acme-Regular.ttf` 42px track 0.57px — IoU 0.1956
+- `SulphurPoint-Bold.ttf` 37px track 0.11px — IoU 0.427
+- `SulphurPoint-Regular.ttf` 38px track -0.28px — IoU 0.407
+- `SulphurPoint-Bold.ttf` 36px track 0.57px — IoU 0.3713
 
-### `text-14` — supporting
+### `text-14` — subheadline
 
 **Text:** "call first."  (OCR confidence 0.9888)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=813, w=131, h=24 |
-| Normalised | x=9.44%, y=75.28%, w=12.13%, h=2.22% |
+| Bounding box (px) | x=101, y=812, w=133, h=26 |
+| Normalised | x=9.35%, y=75.19%, w=12.31%, h=2.41% |
 | Alignment | left |
 | z-order | 113 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
-| Font size | 35 px |
-| Letter-spacing | -0.0 px (-0.0 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 38 px |
+| Letter-spacing | -0.34 px (-0.0089 em) |
+| Line-height | 38.5 px (ratio 1.013) |
+| Line | 3 of 3 |
 | Transform | lowercase |
-| Colour | `#bfe2ec` |
+| Colour | `#bbdde9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.23:1 |
+| Contrast vs local bg | 3.16:1 |
 | Stroke (median/mean) | 2.0 / 2.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.5771 |
+| Match IoU | 0.5642 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -2 px |
-| Gap to next | 41 px |
+| Gap to previous | 4 px |
+| Gap to next | 39 px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 36px track -0.38px — IoU 0.5143
-- `SulphurPoint-Regular.ttf` 36px track -0.19px — IoU 0.4681
-- `SulphurPoint-Regular.ttf` 35px track 0.18px — IoU 0.4619
+- `SulphurPoint-Bold.ttf` 37px track 0.11px — IoU 0.427
+- `SulphurPoint-Regular.ttf` 38px track -0.28px — IoU 0.407
+- `SulphurPoint-Bold.ttf` 36px track 0.57px — IoU 0.3713
 
-### `text-15` — supporting
+### `text-15` — subheadline
 
 **Text:** "7 Get information from trusted sources."  (OCR confidence 0.9937)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=878, w=624, h=25 |
-| Normalised | x=9.44%, y=81.3%, w=57.78%, h=2.31% |
+| Bounding box (px) | x=67, y=877, w=660, h=26 |
+| Normalised | x=6.2%, y=81.2%, w=61.11%, h=2.41% |
 | Alignment | left |
 | z-order | 114 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 40 px |
-| Letter-spacing | -0.31 px (-0.0077 em) |
+| Font size | 41 px |
+| Letter-spacing | 0.22 px (0.0054 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#bce0eb` |
+| Colour | `#bddee9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.2:1 |
+| Contrast vs local bg | 3.18:1 |
 | Stroke (median/mean) | 2.0 / 2.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.2744 |
+| Match IoU | 0.2653 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 41 px |
-| Gap to next | 136 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 39 px |
+| Gap to next | 135 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 38px track 0.53px — IoU 0.2727
-- `Anton-Regular.ttf` 39px track 0.11px — IoU 0.2689
-- `SulphurPoint-Bold.ttf` 36px track -0.62px — IoU 0.253
+- `Anton-Regular.ttf` 43px track -0.62px — IoU 0.2635
+- `Anton-Regular.ttf` 42px track -0.2px — IoU 0.2587
+- `SulphurPoint-Bold.ttf` 37px track -0.15px — IoU 0.2367
 
-### `text-16` — detail
+### `text-16` — supporting
 
 **Text:** "Source: World Health Organiztion"  (OCR confidence 0.9985)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=601, y=1039, w=440, h=26 |
-| Normalised | x=55.65%, y=96.2%, w=40.74%, h=2.41% |
+| Bounding box (px) | x=600, y=1038, w=442, h=27 |
+| Normalised | x=55.56%, y=96.11%, w=40.93%, h=2.5% |
 | Alignment | right |
 | z-order | 115 |
 | Rotation | 0° |
@@ -593,7 +608,7 @@ Alternate font fits considered:
 | Font file matched | `SulphurPoint-Bold.ttf` |
 | Variation axes | None |
 | Font size | 29 px |
-| Letter-spacing | 0.03 px (0.001 em) |
+| Letter-spacing | 0.09 px (0.0031 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -601,18 +616,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.85:1 |
 | Stroke (median/mean) | 1.0 / 1.5 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Acme, Sulphur Point |
-| Match IoU | 0.478 |
+| Match IoU | 0.4091 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 136 px |
+| Gap to previous | 135 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `SulphurPoint-Bold.ttf` 28px track 0.52px — IoU 0.4287
-- `SulphurPoint-Regular.ttf` 28px track 0.57px — IoU 0.4204
-- `SulphurPoint-Regular.ttf` 29px track 0.09px — IoU 0.4155
+- `SulphurPoint-Regular.ttf` 29px track 0.15px — IoU 0.3974
+- `SulphurPoint-Bold.ttf` 30px track -0.39px — IoU 0.3871
+- `SulphurPoint-Bold.ttf` 28px track 0.58px — IoU 0.363
 
 ## 4. Colours (semantic)
 
@@ -620,11 +636,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#b2d8e5` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#283a7e` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#f9ce42` | glyph ink of 'spread of coviD-19' | glyph ink median |
-| textSecondary | `#283a7f` | glyph ink of '7 steps to prevent the' | glyph ink median |
+| textPrimary | `#f9ce42` | glyph ink of '7 steps to prevent the' | glyph ink median |
+| textSecondary | `#bee1eb` | glyph ink of 'with anyone who has fever or' | glyph ink median |
 | accent | `#283a7e` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f3bb56` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -648,7 +664,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.2898 |
+| Text coverage | 0.2725 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -677,46 +693,46 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | 7 steps to prevent the |
 | `headline_line2` | text | spread of coviD-19 |
-| `detail` | text | STOPTH E SPREAD |
-| `supporting_line1` | text | Wash your hands frequently. |
-| `supporting_line2` | text | Avoid touching your eyes, nose and mouth. |
-| `supporting_line3` | text | Cover your mouth when you cough using |
-| `subheadline` | text | 2M |
+| `supporting` | text | STOPTH E SPREAD |
+| `subheadline_line1` | text | Wash your hands frequently. |
+| `subheadline_line2` | text | Avoid touching your eyes, nose and mouth. |
+| `subheadline_line3` | text | Cover your mouth when you cough using |
+| `supporting` | text | 2M |
 | `supporting_line1` | text | a tissue or the bend of your elbow. |
 | `supporting_line2` | text | Avoid crowded places and close contact |
-| `supporting` | text | with anyone who has fever or cough. |
-| `supporting` | text | 5 Stay home if you feel unwell. |
-| `supporting` | text | Seek medical care early if you have a |
-| `supporting` | text | fever, coughs, and difficulty breathing-but |
-| `supporting` | text | call first. |
-| `supporting` | text | 7 Get information from trusted sources. |
-| `detail` | text | Source: World Health Organiztion |
+| `supporting_line3` | text | with anyone who has fever or cough. |
+| `supporting_line4` | text | 5 Stay home if you feel unwell. |
+| `subheadline_line1` | text | Seek medical care early if you have a |
+| `subheadline_line2` | text | fever, coughs, and difficulty breathing-but |
+| `subheadline_line3` | text | call first. |
+| `subheadline` | text | 7 Get information from trusted sources. |
+| `supporting` | text | Source: World Health Organiztion |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #b2d8e5 |
 | `surface` | colour | #283a7e |
 | `textPrimary` | colour | #f9ce42 |
-| `textSecondary` | colour | #283a7f |
+| `textSecondary` | colour | #bee1eb |
 | `accent` | colour | #283a7e |
 | `accentSecondary` | colour | #f3bb56 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Anton |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
 | `imageFocalX` | number | 45.8 |
 | `imageFocalY` | number | 49.1 |
 

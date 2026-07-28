@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,13 +60,14 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 3.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
 | Match IoU | 0.3088 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 56 px |
+| Gap to next | 57 px |
 
 Alternate font fits considered:
 - `Montserrat[wght].ttf` 29px track -0.09px — IoU 0.3011
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=95, y=174, w=215, h=68 |
-| Normalised | x=8.8%, y=16.11%, w=19.91%, h=6.3% |
+| Bounding box (px) | x=95, y=175, w=215, h=68 |
+| Normalised | x=8.8%, y=16.2%, w=19.91%, h=6.3% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -95,19 +96,20 @@ Alternate font fits considered:
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
-| Stroke (median/mean) | 17.0 / 19.23 px |
+| Stroke (median/mean) | 17.0 / 19.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.5564 |
+| Match IoU | 0.571 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.8546) |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 56 px |
-| Gap to next | -67 px |
+| Gap to previous | 57 px |
+| Gap to next | -68 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 91px track 0.26px — IoU 0.5538
-- `Montserrat[wght].ttf` 92px track -0.92px — IoU 0.5516
-- `Montserrat[wght].ttf` 92px track 0.88px — IoU 0.5443
+- `Montserrat[wght].ttf` 91px track 0.26px — IoU 0.5668
+- `Montserrat[wght].ttf` 92px track -0.92px — IoU 0.5643
+- `Montserrat[wght].ttf` 92px track 0.88px — IoU 0.5584
 
 ### `text-2` — headline
 
@@ -115,8 +117,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=292, y=175, w=272, h=67 |
-| Normalised | x=27.04%, y=16.2%, w=25.19%, h=6.2% |
+| Bounding box (px) | x=292, y=175, w=272, h=68 |
+| Normalised | x=27.04%, y=16.2%, w=25.19%, h=6.3% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -132,18 +134,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 17.0 / 19.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.417 |
+| Match IoU | 0.414 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -67 px |
-| Gap to next | 17 px |
+| Gap to previous | -68 px |
+| Gap to next | 16 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 89px track 0.75px — IoU 0.5506
-- `Montserrat[wght].ttf` 88px track 0.35px — IoU 0.5481
-- `Montserrat[wght].ttf` 90px track 0.04px — IoU 0.5466
+- `Montserrat[wght].ttf` 88px track 0.35px — IoU 0.5495
+- `Montserrat[wght].ttf` 89px track 0.75px — IoU 0.5492
+- `Montserrat[wght].ttf` 90px track 0.04px — IoU 0.5458
 
 ### `text-4` — headline
 
@@ -168,63 +171,65 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 17.0 / 23.6 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
 | Match IoU | 0.7095 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 17 px |
-| Gap to next | 62 px |
+| Gap to previous | 16 px |
+| Gap to next | 61 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 89px track 0.75px — IoU 0.5506
-- `Montserrat[wght].ttf` 88px track 0.35px — IoU 0.5481
-- `Montserrat[wght].ttf` 90px track 0.04px — IoU 0.5466
+- `Montserrat[wght].ttf` 88px track 0.35px — IoU 0.5495
+- `Montserrat[wght].ttf` 89px track 0.75px — IoU 0.5492
+- `Montserrat[wght].ttf` 90px track 0.04px — IoU 0.5458
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "Minimal look,"  (OCR confidence 0.9965)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=95, y=388, w=280, h=46 |
-| Normalised | x=8.8%, y=35.93%, w=25.93%, h=4.26% |
+| Bounding box (px) | x=95, y=387, w=280, h=42 |
+| Normalised | x=8.8%, y=35.83%, w=25.93%, h=3.89% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 44 px |
-| Letter-spacing | -0.32 px (-0.0073 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 43 px |
+| Letter-spacing | 0.39 px (0.0091 em) |
+| Line-height | 41.0 px (ratio 0.953) |
+| Line | 1 of 2 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
-| Stroke (median/mean) | 3.0 / 4.06 px |
+| Stroke (median/mean) | 3.0 / 4.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.4418 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.7165 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 62 px |
-| Gap to next | -11 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 61 px |
+| Gap to next | -1 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 43px track 0.22px — IoU 0.433
-- `Poppins-Regular.ttf` 42px track 0.76px — IoU 0.4313
-- `Montserrat[wght].ttf` 42px track -0.42px — IoU 0.2985
+- `Poppins-Regular.ttf` 44px track -0.3px — IoU 0.7408
+- `Poppins-Regular.ttf` 45px track -0.99px — IoU 0.6276
+- `Montserrat[wght].ttf` 41px track 1.06px — IoU 0.3951
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "maximum impact"  (OCR confidence 0.9981)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=95, y=423, w=392, h=51 |
-| Normalised | x=8.8%, y=39.17%, w=36.3%, h=4.72% |
+| Bounding box (px) | x=95, y=428, w=392, h=45 |
+| Normalised | x=8.8%, y=39.63%, w=36.3%, h=4.17% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -233,171 +238,176 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 43 px |
 | Letter-spacing | 0.39 px (0.0091 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Line-height | 41.0 px (ratio 0.953) |
+| Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
-| Stroke (median/mean) | 4.0 / 4.37 px |
+| Stroke (median/mean) | 4.0 / 4.39 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.4912 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.803 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -11 px |
-| Gap to next | 70 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -1 px |
+| Gap to next | 71 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 44px track -0.3px — IoU 0.4551
-- `Montserrat[wght].ttf` 41px track 0.78px — IoU 0.4235
-- `Montserrat[wght].ttf` 42px track -0.24px — IoU 0.4214
+- `Poppins-Regular.ttf` 44px track -0.3px — IoU 0.7408
+- `Poppins-Regular.ttf` 45px track -0.99px — IoU 0.6276
+- `Montserrat[wght].ttf` 41px track 1.06px — IoU 0.3951
 
-### `text-7` — detail
+### `text-7` — supporting
 
 **Text:** "Confidence speaks before"  (OCR confidence 0.9969)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=94, y=544, w=416, h=31 |
-| Normalised | x=8.7%, y=50.37%, w=38.52%, h=2.87% |
+| Bounding box (px) | x=93, y=544, w=418, h=31 |
+| Normalised | x=8.61%, y=50.37%, w=38.7%, h=2.87% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 32 px |
-| Letter-spacing | -0.24 px (-0.0075 em) |
-| Line-height | 43.8 px (ratio 1.369) |
+| Font size | 33 px |
+| Letter-spacing | -0.72 px (-0.0218 em) |
+| Line-height | 43.8 px (ratio 1.327) |
 | Line | 1 of 5 |
 | Transform | none |
-| Colour | `#050505` |
+| Colour | `#060606` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 15.08:1 |
+| Contrast vs local bg | 14.28:1 |
 | Stroke (median/mean) | 2.0 / 2.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.7129 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.673 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 70 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 71 px |
 | Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 32px track -0.56px — IoU 0.5985
-- `Montserrat[wght].ttf` 33px track -0.81px — IoU 0.5731
-- `Montserrat[wght].ttf` 33px track -0.52px — IoU 0.5693
+- `Montserrat[wght].ttf` 32px track -0.15px — IoU 0.6381
+- `Montserrat[wght].ttf` 33px track -0.43px — IoU 0.6068
+- `Montserrat[wght].ttf` 32px track -0.47px — IoU 0.5748
 
-### `text-8` — detail
+### `text-8` — supporting
 
 **Text:** "you do. Elevate your style"  (OCR confidence 0.999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=91, y=587, w=407, h=31 |
-| Normalised | x=8.43%, y=54.35%, w=37.69%, h=2.87% |
+| Bounding box (px) | x=91, y=587, w=408, h=31 |
+| Normalised | x=8.43%, y=54.35%, w=37.78%, h=2.87% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 32 px |
-| Letter-spacing | -0.24 px (-0.0075 em) |
-| Line-height | 43.8 px (ratio 1.369) |
+| Font size | 33 px |
+| Letter-spacing | -0.72 px (-0.0218 em) |
+| Line-height | 43.8 px (ratio 1.327) |
 | Line | 2 of 5 |
 | Transform | none |
 | Colour | `#0d0d0d` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 10.4:1 |
 | Stroke (median/mean) | 2.0 / 2.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.536 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.7255 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 12 px |
 | Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 32px track -0.56px — IoU 0.5985
-- `Montserrat[wght].ttf` 33px track -0.81px — IoU 0.5731
-- `Montserrat[wght].ttf` 33px track -0.52px — IoU 0.5693
+- `Montserrat[wght].ttf` 32px track -0.15px — IoU 0.6381
+- `Montserrat[wght].ttf` 33px track -0.43px — IoU 0.6068
+- `Montserrat[wght].ttf` 32px track -0.47px — IoU 0.5748
 
-### `text-9` — detail
+### `text-9` — supporting
 
 **Text:** "with effortless elegance"  (OCR confidence 0.9818)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=92, y=630, w=386, h=31 |
-| Normalised | x=8.52%, y=58.33%, w=35.74%, h=2.87% |
+| Bounding box (px) | x=92, y=630, w=387, h=31 |
+| Normalised | x=8.52%, y=58.33%, w=35.83%, h=2.87% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 32 px |
-| Letter-spacing | -0.24 px (-0.0075 em) |
-| Line-height | 43.8 px (ratio 1.369) |
+| Font size | 33 px |
+| Letter-spacing | -0.72 px (-0.0218 em) |
+| Line-height | 43.8 px (ratio 1.327) |
 | Line | 3 of 5 |
 | Transform | lowercase |
 | Colour | `#030303` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.0:1 |
 | Stroke (median/mean) | 2.0 / 2.63 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.6461 |
+| Match IoU | 0.5605 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 12 px |
-| Gap to next | 12 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 32px track -0.56px — IoU 0.5985
-- `Montserrat[wght].ttf` 33px track -0.81px — IoU 0.5731
-- `Montserrat[wght].ttf` 33px track -0.52px — IoU 0.5693
+- `Montserrat[wght].ttf` 32px track -0.15px — IoU 0.6381
+- `Montserrat[wght].ttf` 33px track -0.43px — IoU 0.6068
+- `Montserrat[wght].ttf` 32px track -0.47px — IoU 0.5748
 
-### `text-10` — detail
+### `text-10` — supporting
 
 **Text:** "and bold individuality in"  (OCR confidence 0.9812)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=94, y=673, w=386, h=30 |
-| Normalised | x=8.7%, y=62.31%, w=35.74%, h=2.78% |
+| Bounding box (px) | x=93, y=672, w=388, h=32 |
+| Normalised | x=8.61%, y=62.22%, w=35.93%, h=2.96% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 32 px |
-| Letter-spacing | -0.24 px (-0.0075 em) |
-| Line-height | 43.8 px (ratio 1.369) |
+| Font size | 33 px |
+| Letter-spacing | -0.72 px (-0.0218 em) |
+| Line-height | 43.8 px (ratio 1.327) |
 | Line | 4 of 5 |
 | Transform | lowercase |
 | Colour | `#010101` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.47:1 |
 | Stroke (median/mean) | 2.0 / 2.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.4295 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.6973 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 12 px |
-| Gap to next | 16 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 11 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 32px track -0.56px — IoU 0.5985
-- `Montserrat[wght].ttf` 33px track -0.81px — IoU 0.5731
-- `Montserrat[wght].ttf` 33px track -0.52px — IoU 0.5693
+- `Montserrat[wght].ttf` 32px track -0.15px — IoU 0.6381
+- `Montserrat[wght].ttf` 33px track -0.43px — IoU 0.6068
+- `Montserrat[wght].ttf` 32px track -0.47px — IoU 0.5748
 
-### `text-11` — detail
+### `text-11` — supporting
 
 **Text:** "every step."  (OCR confidence 0.9996)
 
@@ -411,29 +421,30 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 32 px |
-| Letter-spacing | -0.24 px (-0.0075 em) |
-| Line-height | 43.8 px (ratio 1.369) |
+| Font size | 33 px |
+| Letter-spacing | -0.72 px (-0.0218 em) |
+| Line-height | 43.8 px (ratio 1.327) |
 | Line | 5 of 5 |
 | Transform | lowercase |
 | Colour | `#141414` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 8.18:1 |
 | Stroke (median/mean) | 2.0 / 2.86 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
-| Match IoU | 0.73 |
+| Match IoU | 0.7511 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 16 px |
+| Gap to previous | 15 px |
 | Gap to next | 193 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 32px track -0.56px — IoU 0.5985
-- `Montserrat[wght].ttf` 33px track -0.81px — IoU 0.5731
-- `Montserrat[wght].ttf` 33px track -0.52px — IoU 0.5693
+- `Montserrat[wght].ttf` 32px track -0.15px — IoU 0.6381
+- `Montserrat[wght].ttf` 33px track -0.43px — IoU 0.6068
+- `Montserrat[wght].ttf` 32px track -0.47px — IoU 0.5748
 
-### `text-12` — detail
+### `text-12` — body
 
 **Text:** "Step Into Your Power"  (OCR confidence 0.9843)
 
@@ -456,6 +467,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 5.0 / 6.12 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, Montserrat |
 | Match IoU | 0.8155 |
 | **Geometry fit confidence** | **high** |
@@ -479,7 +491,7 @@ Alternate font fits considered:
 | textSecondary | `#0d0d0d` | glyph ink of 'you do. Elevate your style' | glyph ink median |
 | accent | `#0a0f0f` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -503,7 +515,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | False |
-| Text coverage | 0.1408 |
+| Text coverage | 0.1389 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -534,14 +546,14 @@ _Recommendations only — no manifest is generated._
 | `headline` | text | own |
 | `headline_line1` | text | Y our |
 | `headline_line2` | text | Presence |
-| `subheadline` | text | Minimal look, |
-| `subheadline` | text | maximum impact |
-| `detail_line1` | text | Confidence speaks before |
-| `detail_line2` | text | you do. Elevate your style |
-| `detail_line3` | text | with effortless elegance |
-| `detail_line4` | text | and bold individuality in |
-| `detail_line5` | text | every step. |
-| `detail` | text | Step Into Your Power |
+| `supporting_line1` | text | Minimal look, |
+| `supporting_line2` | text | maximum impact |
+| `supporting_line1` | text | Confidence speaks before |
+| `supporting_line2` | text | you do. Elevate your style |
+| `supporting_line3` | text | with effortless elegance |
+| `supporting_line4` | text | and bold individuality in |
+| `supporting_line5` | text | every step. |
+| `body` | text | Step Into Your Power |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -555,14 +567,14 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 56.3 |
 | `imageFocalY` | number | 55.8 |
 

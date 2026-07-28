@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=217, y=435, w=637, h=234 |
-| Normalised | x=20.09%, y=40.28%, w=58.98%, h=21.67% |
+| Bounding box (px) | x=217, y=435, w=637, h=229 |
+| Normalised | x=20.09%, y=40.28%, w=58.98%, h=21.2% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -58,56 +58,58 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.87:1 |
-| Stroke (median/mean) | 33.0 / 25.88 px |
+| Contrast vs local bg | 2.88:1 |
+| Stroke (median/mean) | 36.0 / 27.12 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script Swash Caps, Bebas Neue |
-| Match IoU | 0.433 |
+| Match IoU | 0.4427 |
 | **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7986) |
 | Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
 | Gap to previous | None px |
-| Gap to next | -25 px |
+| Gap to next | -21 px |
 
 Alternate font fits considered:
-- `OleoScriptSwashCaps-Bold.ttf` 244px track 0.46px — IoU 0.4312
-- `OleoScriptSwashCaps-Bold.ttf` 245px track -0.18px — IoU 0.4304
-- `OleoScriptSwashCaps-Regular.ttf` 265px track -0.48px — IoU 0.4276
+- `OleoScriptSwashCaps-Bold.ttf` 244px track 0.46px — IoU 0.4411
+- `OleoScriptSwashCaps-Bold.ttf` 245px track -0.18px — IoU 0.44
+- `OleoScriptSwashCaps-Regular.ttf` 265px track -0.48px — IoU 0.4392
 
-### `text-2` — subheadline
+### `text-2` — body
 
 **Text:** "WHERE YOU ARE PLANTED"  (OCR confidence 0.9746)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=297, y=644, w=494, h=47 |
-| Normalised | x=27.5%, y=59.63%, w=45.74%, h=4.35% |
+| Bounding box (px) | x=297, y=643, w=494, h=48 |
+| Normalised | x=27.5%, y=59.54%, w=45.74%, h=4.44% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `OleoScriptSwashCaps-Bold.ttf` |
+| Font file matched | `BebasNeue-Regular.ttf` |
 | Variation axes | None |
-| Font size | 38 px |
-| Letter-spacing | -0.47 px (-0.0124 em) |
+| Font size | 65 px |
+| Letter-spacing | -0.13 px (-0.002 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#27252c` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.76:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.04:1 |
 | Stroke (median/mean) | 7.0 / 9.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script Swash Caps, Bebas Neue |
-| Match IoU | 0.1988 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8045 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -25 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | -21 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `OleoScriptSwashCaps-Bold.ttf` 37px track 0.19px — IoU 0.1861
-- `OleoScriptSwashCaps-Regular.ttf` 40px track -0.62px — IoU 0.1854
-- `OleoScriptSwashCaps-Regular.ttf` 39px track 0.01px — IoU 0.1751
+- `BebasNeue-Regular.ttf` 66px track -0.51px — IoU 0.7807
+- `BebasNeue-Regular.ttf` 64px track 0.25px — IoU 0.7786
+- `OleoScriptSwashCaps-Bold.ttf` 36px track 0.85px — IoU 0.3597
 
 ## 4. Colours (semantic)
 
@@ -116,10 +118,10 @@ Alternate font fits considered:
 | background | `#f0eae5` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#2e2d2f` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'Ploom' | glyph ink median |
-| textSecondary | `#27252c` | glyph ink of 'WHERE YOU ARE PLANTED' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'WHERE YOU ARE PLANTED' | glyph ink median |
 | accent | `#c34c44` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#181f21` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -143,7 +145,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1477 |
+| Text coverage | 0.1454 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -171,19 +173,19 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Ploom |
-| `subheadline` | text | WHERE YOU ARE PLANTED |
+| `body` | text | WHERE YOU ARE PLANTED |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f0eae5 |
 | `surface` | colour | #2e2d2f |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #27252c |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #c34c44 |
 | `accentSecondary` | colour | #181f21 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Oleo Script Swash Caps |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 45.8 |
 | `imageFocalY` | number | 73.3 |
 

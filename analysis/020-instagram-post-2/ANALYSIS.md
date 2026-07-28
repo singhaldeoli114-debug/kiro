@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=134, y=170, w=793, h=63 |
-| Normalised | x=12.41%, y=15.74%, w=73.43%, h=5.83% |
+| Bounding box (px) | x=133, y=170, w=794, h=63 |
+| Normalised | x=12.31%, y=15.74%, w=73.52%, h=5.83% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Alatsi-Regular.ttf` |
 | Variation axes | None |
 | Font size | 85 px |
-| Letter-spacing | -0.57 px (-0.0067 em) |
+| Letter-spacing | -0.51 px (-0.006 em) |
 | Line-height | 87.0 px (ratio 1.024) |
 | Line | 1 of 2 |
 | Transform | uppercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 13.0 / 16.7 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alatsi, Poppins |
-| Match IoU | 0.7379 |
+| Match IoU | 0.706 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Alatsi-Regular.ttf` 84px track -0.05px — IoU 0.7405
-- `Alatsi-Regular.ttf` 83px track 0.48px — IoU 0.714
-- `Poppins-Regular.ttf` 73px track -0.64px — IoU 0.3325
+- `Alatsi-Regular.ttf` 84px track 0.01px — IoU 0.7144
+- `Alatsi-Regular.ttf` 83px track 0.54px — IoU 0.7074
+- `Poppins-Regular.ttf` 73px track -0.58px — IoU 0.3277
 
 ### `text-2` — headline
 
@@ -88,7 +89,7 @@ Alternate font fits considered:
 | Font file matched | `Alatsi-Regular.ttf` |
 | Variation axes | None |
 | Font size | 85 px |
-| Letter-spacing | -0.57 px (-0.0067 em) |
+| Letter-spacing | -0.51 px (-0.006 em) |
 | Line-height | 87.0 px (ratio 1.024) |
 | Line | 2 of 2 |
 | Transform | uppercase |
@@ -96,8 +97,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 13.0 / 16.71 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alatsi, Poppins |
-| Match IoU | 0.7804 |
+| Match IoU | 0.7591 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -105,11 +107,11 @@ Alternate font fits considered:
 | Gap to next | 60 px |
 
 Alternate font fits considered:
-- `Alatsi-Regular.ttf` 84px track -0.05px — IoU 0.7405
-- `Alatsi-Regular.ttf` 83px track 0.48px — IoU 0.714
-- `Poppins-Regular.ttf` 73px track -0.64px — IoU 0.3325
+- `Alatsi-Regular.ttf` 84px track 0.01px — IoU 0.7144
+- `Alatsi-Regular.ttf` 83px track 0.54px — IoU 0.7074
+- `Poppins-Regular.ttf` 73px track -0.58px — IoU 0.3277
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Save this post for daily"  (OCR confidence 0.9967)
 
@@ -132,6 +134,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.12:1 |
 | Stroke (median/mean) | 6.0 / 7.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alatsi, Poppins |
 | Match IoU | 0.4274 |
 | **Geometry fit confidence** | **low** |
@@ -145,7 +148,7 @@ Alternate font fits considered:
 - `Alatsi-Regular.ttf` 41px track 0.29px — IoU 0.4798
 - `Poppins-Regular.ttf` 35px track 0.51px — IoU 0.4151
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "motivation."  (OCR confidence 0.9979)
 
@@ -168,6 +171,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.95:1 |
 | Stroke (median/mean) | 6.0 / 6.96 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alatsi, Poppins |
 | Match IoU | 0.6739 |
 | **Geometry fit confidence** | **medium** |
@@ -191,7 +195,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'Save this post for daily' | glyph ink median |
 | accent | `#0d0607` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#fbbd83` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0931 |
+| Text coverage | 0.0932 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -244,8 +248,8 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | SUCCESS STARTS WITH |
 | `headline_line2` | text | ONE SMALL STEP |
-| `subheadline_line1` | text | Save this post for daily |
-| `subheadline_line2` | text | motivation. |
+| `supporting_line1` | text | Save this post for daily |
+| `supporting_line2` | text | motivation. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fdf7e7 |
@@ -258,8 +262,8 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Alatsi |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.1 |
 | `imageFocalY` | number | 43.1 |
 

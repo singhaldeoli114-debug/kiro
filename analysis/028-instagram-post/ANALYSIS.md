@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,16 +43,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=51, y=51, w=102, h=26 |
-| Normalised | x=4.72%, y=4.72%, w=9.44%, h=2.41% |
+| Bounding box (px) | x=51, y=51, w=103, h=27 |
+| Normalised | x=4.72%, y=4.72%, w=9.54%, h=2.5% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [500] |
+| Variation axes | [600] |
 | Font size | 34 px |
-| Letter-spacing | -1.23 px (-0.0362 em) |
+| Letter-spacing | -0.9 px (-0.0265 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 2.0 / 2.9 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.797 |
+| Match IoU | 0.7767 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 159 px |
+| Gap to next | 158 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 33px track -0.19px — IoU 0.7911
-- `PlusJakartaSans[wght].ttf` 32px track 0.85px — IoU 0.7849
-- `PlusJakartaSans[wght].ttf` 33px track -0.18px — IoU 0.7437
+- `PlusJakartaSans[wght].ttf` 34px track -0.9px — IoU 0.7071
+- `PlusJakartaSans[wght].ttf` 33px track 0.15px — IoU 0.6855
+- `PlusJakartaSans[wght].ttf` 33px track 0.15px — IoU 0.6681
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=51, y=236, w=348, h=61 |
-| Normalised | x=4.72%, y=21.85%, w=32.22%, h=5.65% |
+| Bounding box (px) | x=50, y=236, w=350, h=61 |
+| Normalised | x=4.63%, y=21.85%, w=32.41%, h=5.65% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,26 +89,27 @@ Alternate font fits considered:
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 80 px |
-| Letter-spacing | -0.38 px (-0.0047 em) |
+| Letter-spacing | -0.13 px (-0.0016 em) |
 | Line-height | 106.5 px (ratio 1.331) |
 | Line | 1 of 3 |
 | Transform | none |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 17.0 / 21.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.017 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8241 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 159 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 158 px |
 | Gap to next | 46 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 92px track -0.43px — IoU 0.0564
-- `PlusJakartaSans[wght].ttf` 91px track 0.09px — IoU 0.0547
-- `ArchivoBlack-Regular.ttf` 78px track 0.81px — IoU 0.0527
+- `ArchivoBlack-Regular.ttf` 81px track -0.73px — IoU 0.8515
+- `ArchivoBlack-Regular.ttf` 79px track 0.46px — IoU 0.8324
+- `PlusJakartaSans[wght].ttf` 93px track -0.7px — IoU 0.6492
 
 ### `text-3` — headline
 
@@ -115,8 +117,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=51, y=343, w=379, h=59 |
-| Normalised | x=4.72%, y=31.76%, w=35.09%, h=5.46% |
+| Bounding box (px) | x=50, y=343, w=381, h=59 |
+| Normalised | x=4.63%, y=31.76%, w=35.28%, h=5.46% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,35 +126,36 @@ Alternate font fits considered:
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 80 px |
-| Letter-spacing | -0.38 px (-0.0047 em) |
+| Letter-spacing | -0.13 px (-0.0016 em) |
 | Line-height | 106.5 px (ratio 1.331) |
 | Line | 2 of 3 |
 | Transform | none |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 19.0 / 24.58 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.0085 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8569 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 46 px |
 | Gap to next | 47 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 92px track -0.43px — IoU 0.0564
-- `PlusJakartaSans[wght].ttf` 91px track 0.09px — IoU 0.0547
-- `ArchivoBlack-Regular.ttf` 78px track 0.81px — IoU 0.0527
+- `ArchivoBlack-Regular.ttf` 81px track -0.73px — IoU 0.8515
+- `ArchivoBlack-Regular.ttf` 79px track 0.46px — IoU 0.8324
+- `PlusJakartaSans[wght].ttf` 93px track -0.7px — IoU 0.6492
 
 ### `text-4` — headline
 
-**Text:** "H ome"  (OCR confidence 0.999)
+**Text:** "Home"  (OCR confidence 0.999)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=53, y=449, w=246, h=57 |
-| Normalised | x=4.91%, y=41.57%, w=22.78%, h=5.28% |
+| Bounding box (px) | x=53, y=449, w=246, h=58 |
+| Normalised | x=4.91%, y=41.57%, w=22.78%, h=5.37% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,43 +163,44 @@ Alternate font fits considered:
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
 | Font size | 80 px |
-| Letter-spacing | -0.38 px (-0.0047 em) |
+| Letter-spacing | -0.13 px (-0.0016 em) |
 | Line-height | 106.5 px (ratio 1.331) |
 | Line | 3 of 3 |
 | Transform | none |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 19.0 / 22.43 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.1515 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8753 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 47 px |
-| Gap to next | 82 px |
+| Gap to next | 80 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 92px track -0.43px — IoU 0.0564
-- `PlusJakartaSans[wght].ttf` 91px track 0.09px — IoU 0.0547
-- `ArchivoBlack-Regular.ttf` 78px track 0.81px — IoU 0.0527
+- `ArchivoBlack-Regular.ttf` 81px track -0.73px — IoU 0.8515
+- `ArchivoBlack-Regular.ttf` 79px track 0.46px — IoU 0.8324
+- `PlusJakartaSans[wght].ttf` 93px track -0.7px — IoU 0.6492
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "Create spaces"  (OCR confidence 0.9983)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=51, y=588, w=286, h=39 |
-| Normalised | x=4.72%, y=54.44%, w=26.48%, h=3.61% |
+| Bounding box (px) | x=51, y=587, w=287, h=41 |
+| Normalised | x=4.72%, y=54.35%, w=26.57%, h=3.8% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [400] |
+| Variation axes | [500] |
 | Font size | 41 px |
-| Letter-spacing | 0.08 px (0.002 em) |
+| Letter-spacing | 0.06 px (0.0015 em) |
 | Line-height | 55.5 px (ratio 1.354) |
 | Line | 1 of 3 |
 | Transform | none |
@@ -204,35 +208,36 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 3.0 / 3.79 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.7203 |
+| Match IoU | 0.7738 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 82 px |
-| Gap to next | 16 px |
+| Gap to previous | 80 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 41px track -0.03px — IoU 0.7033
-- `PlusJakartaSans[wght].ttf` 42px track -0.61px — IoU 0.7012
-- `PlusJakartaSans[wght].ttf` 40px track 0.55px — IoU 0.6964
+- `PlusJakartaSans[wght].ttf` 42px track -0.53px — IoU 0.7646
+- `PlusJakartaSans[wght].ttf` 42px track -0.63px — IoU 0.7087
+- `PlusJakartaSans[wght].ttf` 40px track 0.64px — IoU 0.7073
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "you truly enjoy"  (OCR confidence 0.9836)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=49, y=643, w=283, h=40 |
-| Normalised | x=4.54%, y=59.54%, w=26.2%, h=3.7% |
+| Bounding box (px) | x=48, y=643, w=285, h=41 |
+| Normalised | x=4.44%, y=59.54%, w=26.39%, h=3.8% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [400] |
+| Variation axes | [500] |
 | Font size | 41 px |
-| Letter-spacing | 0.08 px (0.002 em) |
+| Letter-spacing | 0.06 px (0.0015 em) |
 | Line-height | 55.5 px (ratio 1.354) |
 | Line | 2 of 3 |
 | Transform | lowercase |
@@ -240,35 +245,36 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 3.0 / 3.03 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.7167 |
+| Match IoU | 0.8236 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 16 px |
-| Gap to next | 16 px |
+| Gap to previous | 15 px |
+| Gap to next | 14 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 41px track -0.03px — IoU 0.7033
-- `PlusJakartaSans[wght].ttf` 42px track -0.61px — IoU 0.7012
-- `PlusJakartaSans[wght].ttf` 40px track 0.55px — IoU 0.6964
+- `PlusJakartaSans[wght].ttf` 42px track -0.53px — IoU 0.7646
+- `PlusJakartaSans[wght].ttf` 42px track -0.63px — IoU 0.7087
+- `PlusJakartaSans[wght].ttf` 40px track 0.64px — IoU 0.7073
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "living in."  (OCR confidence 0.998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=52, y=699, w=147, h=40 |
-| Normalised | x=4.81%, y=64.72%, w=13.61%, h=3.7% |
+| Bounding box (px) | x=51, y=698, w=149, h=41 |
+| Normalised | x=4.72%, y=64.63%, w=13.8%, h=3.8% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [400] |
+| Variation axes | [500] |
 | Font size | 41 px |
-| Letter-spacing | 0.08 px (0.002 em) |
+| Letter-spacing | 0.06 px (0.0015 em) |
 | Line-height | 55.5 px (ratio 1.354) |
 | Line | 3 of 3 |
 | Transform | lowercase |
@@ -276,27 +282,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.56:1 |
 | Stroke (median/mean) | 2.0 / 2.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.7223 |
+| Match IoU | 0.8309 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 16 px |
+| Gap to previous | 14 px |
 | Gap to next | 159 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 41px track -0.03px — IoU 0.7033
-- `PlusJakartaSans[wght].ttf` 42px track -0.61px — IoU 0.7012
-- `PlusJakartaSans[wght].ttf` 40px track 0.55px — IoU 0.6964
+- `PlusJakartaSans[wght].ttf` 42px track -0.53px — IoU 0.7646
+- `PlusJakartaSans[wght].ttf` 42px track -0.63px — IoU 0.7087
+- `PlusJakartaSans[wght].ttf` 40px track 0.64px — IoU 0.7073
 
-### `text-8` — subheadline
+### `text-8` — supporting
 
 **Text:** "Explore"  (OCR confidence 0.9997)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=87, y=898, w=146, h=40 |
-| Normalised | x=8.06%, y=83.15%, w=13.52%, h=3.7% |
+| Bounding box (px) | x=87, y=898, w=147, h=40 |
+| Normalised | x=8.06%, y=83.15%, w=13.61%, h=3.7% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
@@ -304,7 +311,7 @@ Alternate font fits considered:
 | Font file matched | `PlusJakartaSans[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 41 px |
-| Letter-spacing | -0.29 px (-0.0071 em) |
+| Letter-spacing | -0.07 px (-0.0017 em) |
 | Line-height | 55.0 px (ratio 1.341) |
 | Line | 1 of 2 |
 | Transform | none |
@@ -312,8 +319,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 4.25 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.8133 |
+| Match IoU | 0.7844 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -321,18 +329,18 @@ Alternate font fits considered:
 | Gap to next | 15 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 40px track 0.26px — IoU 0.8043
-- `PlusJakartaSans[wght].ttf` 40px track 0.43px — IoU 0.7886
-- `PlusJakartaSans[wght].ttf` 41px track -0.46px — IoU 0.7625
+- `PlusJakartaSans[wght].ttf` 42px track -0.8px — IoU 0.7473
+- `PlusJakartaSans[wght].ttf` 41px track 0.1px — IoU 0.747
+- `PlusJakartaSans[wght].ttf` 40px track 0.48px — IoU 0.7413
 
-### `text-9` — subheadline
+### `text-9` — supporting
 
 **Text:** "Collection"  (OCR confidence 0.9997)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=87, y=953, w=202, h=32 |
-| Normalised | x=8.06%, y=88.24%, w=18.7%, h=2.96% |
+| Bounding box (px) | x=86, y=953, w=204, h=33 |
+| Normalised | x=7.96%, y=88.24%, w=18.89%, h=3.06% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
@@ -340,7 +348,7 @@ Alternate font fits considered:
 | Font file matched | `PlusJakartaSans[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 41 px |
-| Letter-spacing | -0.29 px (-0.0071 em) |
+| Letter-spacing | -0.07 px (-0.0017 em) |
 | Line-height | 55.0 px (ratio 1.341) |
 | Line | 2 of 2 |
 | Transform | none |
@@ -348,8 +356,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 3.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Archivo Black |
-| Match IoU | 0.8043 |
+| Match IoU | 0.7672 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -357,9 +366,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 40px track 0.26px — IoU 0.8043
-- `PlusJakartaSans[wght].ttf` 40px track 0.43px — IoU 0.7886
-- `PlusJakartaSans[wght].ttf` 41px track -0.46px — IoU 0.7625
+- `PlusJakartaSans[wght].ttf` 42px track -0.8px — IoU 0.7473
+- `PlusJakartaSans[wght].ttf` 41px track 0.1px — IoU 0.747
+- `PlusJakartaSans[wght].ttf` 40px track 0.48px — IoU 0.7413
 
 ## 4. Colours (semantic)
 
@@ -367,11 +376,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#b3b4a9` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'Comfort' | glyph ink median |
-| textSecondary | `#2e2e2e` | glyph ink of 'you truly enjoy' | glyph ink median |
+| textPrimary | `#2e2e2e` | glyph ink of 'Comfort' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'Explore' | glyph ink median |
 | accent | `#27221b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7f7464` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -395,7 +404,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0865 |
+| Text coverage | 0.0883 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -425,18 +434,18 @@ _Recommendations only — no manifest is generated._
 | `supporting` | text | LOGO |
 | `headline_line1` | text | Comfort |
 | `headline_line2` | text | Starts at |
-| `headline_line3` | text | H ome |
-| `subheadline_line1` | text | Create spaces |
-| `subheadline_line2` | text | you truly enjoy |
-| `subheadline_line3` | text | living in. |
-| `subheadline_line1` | text | Explore |
-| `subheadline_line2` | text | Collection |
+| `headline_line3` | text | Home |
+| `supporting_line1` | text | Create spaces |
+| `supporting_line2` | text | you truly enjoy |
+| `supporting_line3` | text | living in. |
+| `supporting_line1` | text | Explore |
+| `supporting_line2` | text | Collection |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #b3b4a9 |
-| `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #2e2e2e |
+| `textPrimary` | colour | #2e2e2e |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #27221b |
 | `accentSecondary` | colour | #7f7464 |
 | `onAccent` | colour | #ffffff |
@@ -445,11 +454,11 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 60.0 |
 | `imageFocalY` | number | 64.1 |
 

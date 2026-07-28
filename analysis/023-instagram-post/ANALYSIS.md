@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=209, y=166, w=673, h=68 |
-| Normalised | x=19.35%, y=15.37%, w=62.31%, h=6.3% |
+| Bounding box (px) | x=209, y=166, w=674, h=68 |
+| Normalised | x=19.35%, y=15.37%, w=62.41%, h=6.3% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `CastoroTitling-Regular.ttf` |
 | Variation axes | None |
 | Font size | 96 px |
-| Letter-spacing | -0.46 px (-0.0048 em) |
+| Letter-spacing | -0.36 px (-0.0037 em) |
 | Line-height | 92.0 px (ratio 0.958) |
 | Line | 1 of 2 |
 | Transform | uppercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.48:1 |
 | Stroke (median/mean) | 7.0 / 7.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Castoro Titling |
-| Match IoU | 0.8824 |
+| Match IoU | 0.878 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 24 px |
 
 Alternate font fits considered:
-- `CastoroTitling-Regular.ttf` 95px track 0.25px — IoU 0.8628
-- `CastoroTitling-Regular.ttf` 94px track 0.95px — IoU 0.7801
-- `PlusJakartaSans[wght].ttf` 98px track 0.69px — IoU 0.2711
+- `CastoroTitling-Regular.ttf` 95px track 0.35px — IoU 0.8317
+- `CastoroTitling-Regular.ttf` 94px track 1.05px — IoU 0.7585
+- `PlusJakartaSans[wght].ttf` 98px track 0.79px — IoU 0.2723
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=259, y=258, w=562, h=69 |
-| Normalised | x=23.98%, y=23.89%, w=52.04%, h=6.39% |
+| Bounding box (px) | x=259, y=258, w=563, h=70 |
+| Normalised | x=23.98%, y=23.89%, w=52.13%, h=6.48% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,7 +89,7 @@ Alternate font fits considered:
 | Font file matched | `CastoroTitling-Regular.ttf` |
 | Variation axes | None |
 | Font size | 96 px |
-| Letter-spacing | -0.46 px (-0.0048 em) |
+| Letter-spacing | -0.36 px (-0.0037 em) |
 | Line-height | 92.0 px (ratio 0.958) |
 | Line | 2 of 2 |
 | Transform | uppercase |
@@ -96,27 +97,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.48:1 |
 | Stroke (median/mean) | 7.0 / 6.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Castoro Titling |
-| Match IoU | 0.8596 |
+| Match IoU | 0.8675 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 24 px |
-| Gap to next | 49 px |
+| Gap to next | 48 px |
 
 Alternate font fits considered:
-- `CastoroTitling-Regular.ttf` 95px track 0.25px — IoU 0.8628
-- `CastoroTitling-Regular.ttf` 94px track 0.95px — IoU 0.7801
-- `PlusJakartaSans[wght].ttf` 98px track 0.69px — IoU 0.2711
+- `CastoroTitling-Regular.ttf` 95px track 0.35px — IoU 0.8317
+- `CastoroTitling-Regular.ttf` 94px track 1.05px — IoU 0.7585
+- `PlusJakartaSans[wght].ttf` 98px track 0.79px — IoU 0.2723
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "Start your day with rich flavors and premium blends crafted to"  (OCR confidence 0.9882)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=146, y=376, w=789, h=26 |
-| Normalised | x=13.52%, y=34.81%, w=73.06%, h=2.41% |
+| Bounding box (px) | x=146, y=376, w=789, h=27 |
+| Normalised | x=13.52%, y=34.81%, w=73.06%, h=2.5% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
@@ -132,22 +134,23 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 13.1:1 |
 | Stroke (median/mean) | 2.0 / 2.3 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Castoro Titling |
-| Match IoU | 0.6538 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7132 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 49 px |
-| Gap to next | 10 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 48 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 28px track -0.27px — IoU 0.5641
-- `PlusJakartaSans[wght].ttf` 28px track -0.59px — IoU 0.5495
-- `PlusJakartaSans[wght].ttf` 27px track 0.2px — IoU 0.5378
+- `PlusJakartaSans[wght].ttf` 28px track -0.59px — IoU 0.6814
+- `PlusJakartaSans[wght].ttf` 28px track -0.27px — IoU 0.6601
+- `PlusJakartaSans[wght].ttf` 27px track 0.04px — IoU 0.6272
 
-### `text-4` — subheadline
+### `text-4` — body
 
-**Text:** "energize every moment. Experience coffee made fortrue"  (OCR confidence 0.9968)
+**Text:** "energize every moment. Experience coffee made for true"  (OCR confidence 0.9968)
 
 | Property | Value |
 |---|---|
@@ -168,20 +171,22 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 11.85:1 |
 | Stroke (median/mean) | 2.0 / 2.62 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'fortrue' -> 'for true' |
 | Font family (authoritative) | Plus Jakarta Sans, Castoro Titling |
-| Match IoU | 0.3547 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7538 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 10 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 9 px |
 | Gap to next | 9 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 28px track -0.27px — IoU 0.5641
-- `PlusJakartaSans[wght].ttf` 28px track -0.59px — IoU 0.5495
-- `PlusJakartaSans[wght].ttf` 27px track 0.2px — IoU 0.5378
+- `PlusJakartaSans[wght].ttf` 28px track -0.59px — IoU 0.6814
+- `PlusJakartaSans[wght].ttf` 28px track -0.27px — IoU 0.6601
+- `PlusJakartaSans[wght].ttf` 27px track 0.04px — IoU 0.6272
 
-### `text-5` — subheadline
+### `text-5` — body
 
 **Text:** "enthusiasts"  (OCR confidence 0.999)
 
@@ -204,6 +209,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 12.14:1 |
 | Stroke (median/mean) | 2.0 / 2.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Castoro Titling |
 | Match IoU | 0.7765 |
 | **Geometry fit confidence** | **high** |
@@ -213,26 +219,26 @@ Alternate font fits considered:
 | Gap to next | 105 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 28px track -0.27px — IoU 0.5641
-- `PlusJakartaSans[wght].ttf` 28px track -0.59px — IoU 0.5495
-- `PlusJakartaSans[wght].ttf` 27px track 0.2px — IoU 0.5378
+- `PlusJakartaSans[wght].ttf` 28px track -0.59px — IoU 0.6814
+- `PlusJakartaSans[wght].ttf` 28px track -0.27px — IoU 0.6601
+- `PlusJakartaSans[wght].ttf` 27px track 0.04px — IoU 0.6272
 
-### `text-6` — subheadline
+### `text-6` — body
 
 **Text:** "ORDER NOW"  (OCR confidence 0.996)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=455, y=574, w=172, h=21 |
-| Normalised | x=42.13%, y=53.15%, w=15.93%, h=1.94% |
+| Bounding box (px) | x=454, y=574, w=173, h=21 |
+| Normalised | x=42.04%, y=53.15%, w=16.02%, h=1.94% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 27 px |
-| Letter-spacing | 0.06 px (0.0022 em) |
+| Variation axes | [800.0] |
+| Font size | 26 px |
+| Letter-spacing | 0.91 px (0.035 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -240,54 +246,56 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.48:1 |
 | Stroke (median/mean) | 4.0 / 4.67 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Castoro Titling |
-| Match IoU | 0.8391 |
+| Match IoU | 0.7709 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 105 px |
-| Gap to next | 416 px |
+| Gap to next | 412 px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 27px track -0.01px — IoU 0.8365
-- `PlusJakartaSans[wght].ttf` 28px track -0.73px — IoU 0.8249
-- `PlusJakartaSans[wght].ttf` 26px track 0.79px — IoU 0.7653
+- `PlusJakartaSans[wght].ttf` 27px track 0.12px — IoU 0.741
+- `PlusJakartaSans[wght].ttf` 28px track -0.67px — IoU 0.7309
+- `PlusJakartaSans[wght].ttf` 27px track 0.19px — IoU 0.7235
 
-### `text-7` — subheadline
+### `text-7` — body
 
-**Text:** "WWW. COFFESHOP.COM"  (OCR confidence 0.9844)
+**Text:** "WWW.COFFESHOP.COM"  (OCR confidence 0.9844)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=371, y=1011, w=336, h=21 |
-| Normalised | x=34.35%, y=93.61%, w=31.11%, h=1.94% |
+| Bounding box (px) | x=371, y=1007, w=341, h=30 |
+| Normalised | x=34.35%, y=93.24%, w=31.57%, h=2.78% |
 | Alignment | center |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `PlusJakartaSans[wght].ttf` |
-| Variation axes | [500] |
-| Font size | 28 px |
-| Letter-spacing | -1.05 px (-0.0375 em) |
+| Variation axes | [700] |
+| Font size | 27 px |
+| Letter-spacing | -0.1 px (-0.0037 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f6f4f3` |
+| Colour | `#efebe9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.53:1 |
+| Contrast vs local bg | 3.45:1 |
 | Stroke (median/mean) | 2.0 / 2.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Plus Jakarta Sans, Castoro Titling |
-| Match IoU | 0.5156 |
-| **Geometry fit confidence** | **low** |
-| OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 416 px |
+| Match IoU | 0.2527 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
+| OCR text reliable | False — single long token with no spaces |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | 412 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `PlusJakartaSans[wght].ttf` 28px track -0.86px — IoU 0.4917
-- `PlusJakartaSans[wght].ttf` 27px track -0.49px — IoU 0.4767
-- `PlusJakartaSans[wght].ttf` 27px track -0.67px — IoU 0.4354
+- `PlusJakartaSans[wght].ttf` 26px track 0.7px — IoU 0.2483
+- `PlusJakartaSans[wght].ttf` 28px track -0.89px — IoU 0.2482
+- `PlusJakartaSans[wght].ttf` 26px track 0.52px — IoU 0.2439
 
 ## 4. Colours (semantic)
 
@@ -296,10 +304,10 @@ Alternate font fits considered:
 | background | `#fdfdfc` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#fee7d5` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#000000` | glyph ink of 'MORNINGS' | glyph ink median |
-| textSecondary | `#f6f4f3` | glyph ink of 'WWW. COFFESHOP.COM' | glyph ink median |
+| textSecondary | `#efebe9` | glyph ink of 'WWW.COFFESHOP.COM' | glyph ink median |
 | accent | `#180e0a` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#6d4935` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -323,7 +331,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1189 |
+| Text coverage | 0.1229 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -352,28 +360,28 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | BREW BETTER |
 | `headline_line2` | text | MORNINGS |
-| `subheadline_line1` | text | Start your day with rich flavors and premium blends craft... |
-| `subheadline_line2` | text | energize every moment. Experience coffee made fortrue |
-| `subheadline_line3` | text | enthusiasts |
-| `subheadline` | text | ORDER NOW |
-| `subheadline` | text | WWW. COFFESHOP.COM |
+| `body_line1` | text | Start your day with rich flavors and premium blends craft... |
+| `body_line2` | text | energize every moment. Experience coffee made for true |
+| `body_line3` | text | enthusiasts |
+| `body` | text | ORDER NOW |
+| `body` | text | WWW.COFFESHOP.COM |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fdfdfc |
 | `surface` | colour | #fee7d5 |
 | `textPrimary` | colour | #000000 |
-| `textSecondary` | colour | #f6f4f3 |
+| `textSecondary` | colour | #efebe9 |
 | `accent` | colour | #180e0a |
 | `accentSecondary` | colour | #6d4935 |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Plus Jakarta Sans |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 49.2 |
 | `imageFocalY` | number | 68.6 |
 

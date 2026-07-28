@@ -33,11 +33,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — body
 
 **Text:** "T H E R EI S N O TR E A S U R E LI K E"  (OCR confidence 0.9448)
 
@@ -60,11 +60,12 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.99:1 |
 | Stroke (median/mean) | 3.0 / 3.14 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Modak, Bahiana |
 | Match IoU | 0.1782 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
 | Gap to next | 39 px |
 
@@ -85,29 +86,30 @@ Alternate font fits considered:
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Bahiana-Regular.ttf` |
+| Font file matched | `Modak-Regular.ttf` |
 | Variation axes | None |
-| Font size | 227 px |
-| Letter-spacing | 0.01 px (0.0 em) |
+| Font size | 137 px |
+| Letter-spacing | 0.25 px (0.0018 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#c4666a` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.22:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.62:1 |
 | Stroke (median/mean) | 35.0 / 33.73 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Modak, Bahiana |
-| Match IoU | 0.2869 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9206 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 39 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Bahiana-Regular.ttf` 226px track 0.39px — IoU 0.2864
-- `Bahiana-Regular.ttf` 228px track -0.36px — IoU 0.2856
-- `Modak-Regular.ttf` 138px track -0.37px — IoU 0.021
+- `Modak-Regular.ttf` 138px track -0.37px — IoU 0.9038
+- `Modak-Regular.ttf` 136px track 0.87px — IoU 0.8998
+- `Bahiana-Regular.ttf` 228px track -0.36px — IoU 0.2903
 
 ## 4. Colours (semantic)
 
@@ -115,11 +117,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#efd1e2` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#d0898c` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#c4666a` | glyph ink of 'knowledge' | glyph ink median |
+| textPrimary | `#ffffff` | glyph ink of 'knowledge' | glyph ink median |
 | textSecondary | `#fcf8f8` | glyph ink of 'T H E R EI S N O TR E A S U ' | glyph ink median |
 | accent | `#c16265` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#d0898c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -170,19 +172,19 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | T H E R EI S N O TR E A S U R E LI K E |
+| `body` | text | T H E R EI S N O TR E A S U R E LI K E |
 | `headline` | text | knowledge |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #efd1e2 |
 | `surface` | colour | #d0898c |
-| `textPrimary` | colour | #c4666a |
+| `textPrimary` | colour | #ffffff |
 | `textSecondary` | colour | #fcf8f8 |
 | `accent` | colour | #c16265 |
 | `accentSecondary` | colour | #d0898c |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Modak |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |

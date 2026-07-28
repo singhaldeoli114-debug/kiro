@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.97:1 |
 | Stroke (median/mean) | 9.0 / 11.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Roboto |
 | Match IoU | 0.5369 |
 | **Geometry fit confidence** | **low** |
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.97:1 |
 | Stroke (median/mean) | 9.0 / 11.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Roboto |
 | Match IoU | 0.7154 |
 | **Geometry fit confidence** | **high** |
@@ -109,7 +111,7 @@ Alternate font fits considered:
 - `Alata-Regular.ttf` 62px track -0.49px — IoU 0.6145
 - `Roboto[wdth,wght].ttf` 61px track -0.59px — IoU 0.4441
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed"  (OCR confidence 0.998)
 
@@ -122,30 +124,31 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 29 px |
-| Letter-spacing | -0.5 px (-0.0172 em) |
-| Line-height | 36.5 px (ratio 1.259) |
+| Variation axes | [500, 100.0] |
+| Font size | 27 px |
+| Letter-spacing | -0.28 px (-0.0104 em) |
+| Line-height | 36.2 px (ratio 1.341) |
 | Line | 1 of 5 |
 | Transform | none |
 | Colour | `#fef1f6` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.89:1 |
 | Stroke (median/mean) | 3.0 / 3.47 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Roboto |
-| Match IoU | 0.5859 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7375 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 30 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 27px track -0.28px — IoU 0.6594
-- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6562
-- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6522
+- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6777
+- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6722
+- `Roboto[wdth,wght].ttf` 29px track -0.5px — IoU 0.6656
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "do eiusmod tempor incididunt ut labore et dolore magna"  (OCR confidence 0.9952)
 
@@ -158,54 +161,56 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 29 px |
-| Letter-spacing | -0.5 px (-0.0172 em) |
-| Line-height | 36.5 px (ratio 1.259) |
+| Variation axes | [500, 100.0] |
+| Font size | 27 px |
+| Letter-spacing | -0.28 px (-0.0104 em) |
+| Line-height | 36.2 px (ratio 1.341) |
 | Line | 2 of 5 |
 | Transform | lowercase |
 | Colour | `#fef7f9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.92:1 |
 | Stroke (median/mean) | 3.0 / 3.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Roboto |
-| Match IoU | 0.7578 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6592 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 11 px |
 | Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 27px track -0.28px — IoU 0.6594
-- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6562
-- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6522
+- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6777
+- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6722
+- `Roboto[wdth,wght].ttf` 29px track -0.5px — IoU 0.6656
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "aliqua. In metus vulputate eu scelerisque felis imperdiet"  (OCR confidence 0.9849)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=211, y=288, w=658, h=26 |
-| Normalised | x=19.54%, y=26.67%, w=60.93%, h=2.41% |
+| Bounding box (px) | x=211, y=288, w=659, h=26 |
+| Normalised | x=19.54%, y=26.67%, w=61.02%, h=2.41% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 29 px |
-| Letter-spacing | -0.5 px (-0.0172 em) |
-| Line-height | 36.5 px (ratio 1.259) |
+| Variation axes | [500, 100.0] |
+| Font size | 27 px |
+| Letter-spacing | -0.28 px (-0.0104 em) |
+| Line-height | 36.2 px (ratio 1.341) |
 | Line | 3 of 5 |
 | Transform | none |
 | Colour | `#fef7f9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.92:1 |
 | Stroke (median/mean) | 3.0 / 3.56 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Roboto |
-| Match IoU | 0.703 |
+| Match IoU | 0.7211 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -213,11 +218,11 @@ Alternate font fits considered:
 | Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 27px track -0.28px — IoU 0.6594
-- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6562
-- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6522
+- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6777
+- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6722
+- `Roboto[wdth,wght].ttf` 29px track -0.5px — IoU 0.6656
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "proin. Lacus vestibulum sed arcu non odio euismod lacinia"  (OCR confidence 0.9978)
 
@@ -230,64 +235,66 @@ Alternate font fits considered:
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 29 px |
-| Letter-spacing | -0.5 px (-0.0172 em) |
-| Line-height | 36.5 px (ratio 1.259) |
+| Variation axes | [500, 100.0] |
+| Font size | 27 px |
+| Letter-spacing | -0.28 px (-0.0104 em) |
+| Line-height | 36.2 px (ratio 1.341) |
 | Line | 4 of 5 |
 | Transform | none |
 | Colour | `#fef3f7` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | 3.0 / 3.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Roboto |
-| Match IoU | 0.6607 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7231 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 10 px |
-| Gap to next | 11 px |
+| Gap to next | 10 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 27px track -0.28px — IoU 0.6594
-- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6562
-- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6522
+- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6777
+- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6722
+- `Roboto[wdth,wght].ttf` 29px track -0.5px — IoU 0.6656
 
-### `text-7` — subheadline
+### `text-7` — supporting
 
 **Text:** "at quis. Viverra aliquet eget sit amet tellus cras."  (OCR confidence 0.9865)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=261, y=361, w=558, h=25 |
-| Normalised | x=24.17%, y=33.43%, w=51.67%, h=2.31% |
+| Bounding box (px) | x=261, y=360, w=558, h=26 |
+| Normalised | x=24.17%, y=33.33%, w=51.67%, h=2.41% |
 | Alignment | center |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 87.5] |
-| Font size | 29 px |
-| Letter-spacing | -0.5 px (-0.0172 em) |
-| Line-height | 36.5 px (ratio 1.259) |
+| Variation axes | [500, 100.0] |
+| Font size | 27 px |
+| Letter-spacing | -0.28 px (-0.0104 em) |
+| Line-height | 36.2 px (ratio 1.341) |
 | Line | 5 of 5 |
 | Transform | none |
 | Colour | `#fef1f6` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.89:1 |
 | Stroke (median/mean) | 3.0 / 3.56 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Roboto |
-| Match IoU | 0.6076 |
+| Match IoU | 0.5784 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 11 px |
+| Gap to previous | 10 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 27px track -0.28px — IoU 0.6594
-- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6562
-- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6522
+- `Roboto[wdth,wght].ttf` 27px track -0.37px — IoU 0.6777
+- `Roboto[wdth,wght].ttf` 27px track -0.33px — IoU 0.6722
+- `Roboto[wdth,wght].ttf` 29px track -0.5px — IoU 0.6656
 
 ## 4. Colours (semantic)
 
@@ -299,7 +306,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'COMPULSORY' | glyph ink median |
 | accent | `#ef578e` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#5a4385` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -323,7 +330,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1017 |
+| Text coverage | 0.1022 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -352,11 +359,11 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | MASKARE |
 | `headline_line2` | text | COMPULSORY |
-| `subheadline_line1` | text | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed |
-| `subheadline_line2` | text | do eiusmod tempor incididunt ut labore et dolore magna |
-| `subheadline_line3` | text | aliqua. In metus vulputate eu scelerisque felis imperdiet |
-| `subheadline_line4` | text | proin. Lacus vestibulum sed arcu non odio euismod lacinia |
-| `subheadline_line5` | text | at quis. Viverra aliquet eget sit amet tellus cras. |
+| `supporting_line1` | text | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed |
+| `supporting_line2` | text | do eiusmod tempor incididunt ut labore et dolore magna |
+| `supporting_line3` | text | aliqua. In metus vulputate eu scelerisque felis imperdiet |
+| `supporting_line4` | text | proin. Lacus vestibulum sed arcu non odio euismod lacinia |
+| `supporting_line5` | text | at quis. Viverra aliquet eget sit amet tellus cras. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #3c3b3d |
@@ -369,11 +376,11 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Alata |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

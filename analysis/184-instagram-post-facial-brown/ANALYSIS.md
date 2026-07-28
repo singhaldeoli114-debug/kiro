@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,16 +43,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=861, y=619, w=156, h=63 |
-| Normalised | x=79.72%, y=57.31%, w=14.44%, h=5.83% |
+| Bounding box (px) | x=861, y=619, w=157, h=63 |
+| Normalised | x=79.72%, y=57.31%, w=14.54%, h=5.83% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Antic-Regular.ttf` |
+| Font file matched | `AnticSlab-Regular.ttf` |
 | Variation axes | None |
-| Font size | 71 px |
-| Letter-spacing | -0.64 px (-0.009 em) |
+| Font size | 72 px |
+| Letter-spacing | -1.05 px (-0.0146 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.02:1 |
 | Stroke (median/mean) | 7.0 / 8.39 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Antic, Antic Slab |
-| Match IoU | 0.2123 |
+| Match IoU | 0.2209 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9272) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 18 px |
 
 Alternate font fits considered:
-- `AnticSlab-Regular.ttf` 71px track -0.64px — IoU 0.2107
-- `AnticSlab-Regular.ttf` 70px track 0.1px — IoU 0.199
-- `Antic-Regular.ttf` 70px track 0.1px — IoU 0.1987
+- `Antic-Regular.ttf` 72px track -1.05px — IoU 0.22
+- `Antic-Regular.ttf` 71px track -0.3px — IoU 0.1958
+- `AnticSlab-Regular.ttf` 71px track -0.3px — IoU 0.1942
 
 ### `text-2` — supporting
 
@@ -79,35 +80,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=910, y=700, w=54, h=25 |
-| Normalised | x=84.26%, y=64.81%, w=5.0%, h=2.31% |
+| Bounding box (px) | x=910, y=700, w=55, h=25 |
+| Normalised | x=84.26%, y=64.81%, w=5.09%, h=2.31% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Antic-Regular.ttf` |
 | Variation axes | None |
-| Font size | 33 px |
-| Letter-spacing | -0.85 px (-0.0258 em) |
+| Font size | 34 px |
+| Letter-spacing | -1.2 px (-0.0353 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f9f8f8` |
+| Colour | `#f8f7f7` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.95:1 |
+| Contrast vs local bg | 2.94:1 |
 | Stroke (median/mean) | 2.0 / 3.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Antic, Antic Slab |
-| Match IoU | 0.6467 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7064 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 18 px |
 | Gap to next | 21 px |
 
 Alternate font fits considered:
-- `Antic-Regular.ttf` 32px track -0.01px — IoU 0.6343
-- `AnticSlab-Regular.ttf` 33px track -0.95px — IoU 0.4739
-- `Antic-Regular.ttf` 31px track 0.84px — IoU 0.4603
+- `Antic-Regular.ttf` 32px track 0.49px — IoU 0.5951
+- `Antic-Regular.ttf` 33px track -0.35px — IoU 0.5727
+- `AnticSlab-Regular.ttf` 33px track -0.45px — IoU 0.5504
 
 ### `text-3` — subheadline
 
@@ -132,6 +134,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.57:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Antic, Antic Slab |
 | Match IoU | 0.4571 |
 | **Geometry fit confidence** | **low** |
@@ -151,8 +154,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=99, y=822, w=857, h=33 |
-| Normalised | x=9.17%, y=76.11%, w=79.35%, h=3.06% |
+| Bounding box (px) | x=99, y=822, w=858, h=33 |
+| Normalised | x=9.17%, y=76.11%, w=79.44%, h=3.06% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,26 +163,27 @@ Alternate font fits considered:
 | Font file matched | `Antic-Regular.ttf` |
 | Variation axes | None |
 | Font size | 31 px |
-| Letter-spacing | 0.36 px (0.0116 em) |
-| Line-height | 45.0 px (ratio 1.452) |
+| Letter-spacing | 0.39 px (0.0126 em) |
+| Line-height | 44.5 px (ratio 1.435) |
 | Line | 1 of 3 |
 | Transform | none |
-| Colour | `#1b1a1a` |
+| Colour | `#1c1a1a` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 6.44:1 |
+| Contrast vs local bg | 6.41:1 |
 | Stroke (median/mean) | 2.0 / 2.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Antic, Antic Slab |
-| Match IoU | 0.3964 |
+| Match IoU | 0.3804 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 13 px |
-| Gap to next | 12 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Antic-Regular.ttf` 32px track -0.05px — IoU 0.4205
-- `Antic-Regular.ttf` 33px track -0.46px — IoU 0.3733
-- `AnticSlab-Regular.ttf` 29px track -0.24px — IoU 0.2117
+- `Antic-Regular.ttf` 32px track -0.02px — IoU 0.4417
+- `Antic-Regular.ttf` 33px track -0.43px — IoU 0.3992
+- `AnticSlab-Regular.ttf` 30px track -0.67px — IoU 0.1991
 
 ### `text-5` — supporting
 
@@ -187,8 +191,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=100, y=867, w=887, h=33 |
-| Normalised | x=9.26%, y=80.28%, w=82.13%, h=3.06% |
+| Bounding box (px) | x=99, y=866, w=889, h=34 |
+| Normalised | x=9.17%, y=80.19%, w=82.31%, h=3.15% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -196,26 +200,27 @@ Alternate font fits considered:
 | Font file matched | `Antic-Regular.ttf` |
 | Variation axes | None |
 | Font size | 31 px |
-| Letter-spacing | 0.36 px (0.0116 em) |
-| Line-height | 45.0 px (ratio 1.452) |
+| Letter-spacing | 0.39 px (0.0126 em) |
+| Line-height | 44.5 px (ratio 1.435) |
 | Line | 2 of 3 |
 | Transform | none |
 | Colour | `#181717` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.98:1 |
 | Stroke (median/mean) | 2.0 / 2.55 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Antic, Antic Slab |
-| Match IoU | 0.4518 |
+| Match IoU | 0.4803 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 12 px |
-| Gap to next | 12 px |
+| Gap to previous | 11 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Antic-Regular.ttf` 32px track -0.05px — IoU 0.4205
-- `Antic-Regular.ttf` 33px track -0.46px — IoU 0.3733
-- `AnticSlab-Regular.ttf` 29px track -0.24px — IoU 0.2117
+- `Antic-Regular.ttf` 32px track -0.02px — IoU 0.4417
+- `Antic-Regular.ttf` 33px track -0.43px — IoU 0.3992
+- `AnticSlab-Regular.ttf` 30px track -0.67px — IoU 0.1991
 
 ### `text-6` — supporting
 
@@ -223,8 +228,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=99, y=912, w=612, h=27 |
-| Normalised | x=9.17%, y=84.44%, w=56.67%, h=2.5% |
+| Bounding box (px) | x=99, y=911, w=612, h=29 |
+| Normalised | x=9.17%, y=84.35%, w=56.67%, h=2.69% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -232,26 +237,27 @@ Alternate font fits considered:
 | Font file matched | `Antic-Regular.ttf` |
 | Variation axes | None |
 | Font size | 31 px |
-| Letter-spacing | 0.36 px (0.0116 em) |
-| Line-height | 45.0 px (ratio 1.452) |
+| Letter-spacing | 0.39 px (0.0126 em) |
+| Line-height | 44.5 px (ratio 1.435) |
 | Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#161515` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 7.39:1 |
 | Stroke (median/mean) | 2.0 / 2.51 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Antic, Antic Slab |
-| Match IoU | 0.425 |
+| Match IoU | 0.5088 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 12 px |
+| Gap to previous | 11 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Antic-Regular.ttf` 32px track -0.05px — IoU 0.4205
-- `Antic-Regular.ttf` 33px track -0.46px — IoU 0.3733
-- `AnticSlab-Regular.ttf` 29px track -0.24px — IoU 0.2117
+- `Antic-Regular.ttf` 32px track -0.02px — IoU 0.4417
+- `Antic-Regular.ttf` 33px track -0.43px — IoU 0.3992
+- `AnticSlab-Regular.ttf` 30px track -0.67px — IoU 0.1991
 
 ## 4. Colours (semantic)
 
@@ -263,7 +269,7 @@ Alternate font fits considered:
 | textSecondary | `#4d3624` | glyph ink of 'Organic Peel' | glyph ink median |
 | accent | `#2b1d15` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#aa8570` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0913 |
+| Text coverage | 0.0933 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

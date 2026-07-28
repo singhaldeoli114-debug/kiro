@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -49,29 +49,30 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 89 px |
-| Letter-spacing | -0.49 px (-0.0055 em) |
-| Line-height | 92.5 px (ratio 1.039) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 77 px |
+| Letter-spacing | -0.46 px (-0.006 em) |
+| Line-height | 95.5 px (ratio 1.24) |
 | Line | 1 of 3 |
 | Transform | uppercase |
-| Colour | `#cdcefb` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#8379b0` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.59:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.0611 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9154 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 50 px |
+| Gap to next | 49 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 88px track 0.18px — IoU 0.2385
-- `Raleway[wght].ttf` 87px track 0.84px — IoU 0.2302
-- `Raleway[wght].ttf` 89px track -0.59px — IoU 0.2128
+- `ArchivoBlack-Regular.ttf` 76px track 0.3px — IoU 0.8743
+- `ArchivoBlack-Regular.ttf` 75px track 1.07px — IoU 0.8723
+- `Raleway[wght].ttf` 90px track -0.31px — IoU 0.7801
 
 ### `text-2` — headline
 
@@ -79,35 +80,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=350, y=208, w=383, h=55 |
-| Normalised | x=32.41%, y=19.26%, w=35.46%, h=5.09% |
+| Bounding box (px) | x=350, y=207, w=383, h=56 |
+| Normalised | x=32.41%, y=19.17%, w=35.46%, h=5.19% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 89 px |
-| Letter-spacing | -0.49 px (-0.0055 em) |
-| Line-height | 92.5 px (ratio 1.039) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 77 px |
+| Letter-spacing | -0.46 px (-0.006 em) |
+| Line-height | 95.5 px (ratio 1.24) |
 | Line | 2 of 3 |
 | Transform | uppercase |
-| Colour | `#cdcefb` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#8379b0` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.59:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.0574 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9268 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 50 px |
-| Gap to next | 25 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 49 px |
+| Gap to next | 31 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 88px track 0.18px — IoU 0.2385
-- `Raleway[wght].ttf` 87px track 0.84px — IoU 0.2302
-- `Raleway[wght].ttf` 89px track -0.59px — IoU 0.2128
+- `ArchivoBlack-Regular.ttf` 76px track 0.3px — IoU 0.8743
+- `ArchivoBlack-Regular.ttf` 75px track 1.07px — IoU 0.8723
+- `Raleway[wght].ttf` 90px track -0.31px — IoU 0.7801
 
 ### `text-3` — headline
 
@@ -115,219 +117,158 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=189, y=288, w=702, h=67 |
-| Normalised | x=17.5%, y=26.67%, w=65.0%, h=6.2% |
+| Bounding box (px) | x=192, y=294, w=695, h=55 |
+| Normalised | x=17.78%, y=27.22%, w=64.35%, h=5.09% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 89 px |
-| Letter-spacing | -0.49 px (-0.0055 em) |
-| Line-height | 92.5 px (ratio 1.039) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 77 px |
+| Letter-spacing | -0.46 px (-0.006 em) |
+| Line-height | 95.5 px (ratio 1.24) |
 | Line | 3 of 3 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.21:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.5988 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.8086 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 25 px |
-| Gap to next | 373 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 31 px |
+| Gap to next | 384 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 88px track 0.18px — IoU 0.2385
-- `Raleway[wght].ttf` 87px track 0.84px — IoU 0.2302
-- `Raleway[wght].ttf` 89px track -0.59px — IoU 0.2128
+- `ArchivoBlack-Regular.ttf` 76px track 0.3px — IoU 0.8743
+- `ArchivoBlack-Regular.ttf` 75px track 1.07px — IoU 0.8723
+- `Raleway[wght].ttf` 90px track -0.31px — IoU 0.7801
 
-### `text-4` — supporting
+### `text-4` — body
 
-**Text:** "XiXiU"  (OCR confidence 0.8454)
+**Text:** "X iX iU"  (OCR confidence 0.8454)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=704, y=728, w=77, h=41 |
-| Normalised | x=65.19%, y=67.41%, w=7.13%, h=3.8% |
+| Bounding box (px) | x=704, y=733, w=79, h=33 |
+| Normalised | x=65.19%, y=67.87%, w=7.31%, h=3.06% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [800] |
-| Font size | 31 px |
-| Letter-spacing | -0.82 px (-0.0265 em) |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 22 px |
+| Letter-spacing | -0.48 px (-0.0218 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#a78e6f` |
+| Colour | `#948d72` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.29:1 |
+| Contrast vs local bg | 1.35:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.1478 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.0725 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.8454) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 373 px |
-| Gap to next | -40 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 384 px |
+| Gap to next | -26 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 31px track -0.53px — IoU 0.1434
-- `Raleway[wght].ttf` 29px track 0.48px — IoU 0.1403
-- `Raleway[wght].ttf` 29px track 0.19px — IoU 0.1386
+- `Raleway[wght].ttf` 27px track -0.48px — IoU 0.0704
+- `Raleway[wght].ttf` 27px track -0.69px — IoU 0.0684
+- `Raleway[wght].ttf` 27px track -0.39px — IoU 0.0656
 
-### `text-5` — detail
+### `text-5` — body
 
-**Text:** "X iXiU"  (OCR confidence 0.8952)
+**Text:** "X i XiU"  (OCR confidence 0.8952)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=478, y=729, w=76, h=43 |
-| Normalised | x=44.26%, y=67.5%, w=7.04%, h=3.98% |
+| Bounding box (px) | x=478, y=740, w=76, h=27 |
+| Normalised | x=44.26%, y=68.52%, w=7.04%, h=2.5% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 22 px |
-| Letter-spacing | 0.29 px (0.0132 em) |
+| Font size | 20 px |
+| Letter-spacing | 0.27 px (0.0135 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#928c72` |
+| Colour | `#7b7f6b` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.32:1 |
+| Contrast vs local bg | 1.54:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.1001 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.1324 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.8952) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -40 px |
-| Gap to next | -21 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -26 px |
+| Gap to next | -17 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 23px track -0.38px — IoU 0.0983
-- `Raleway[wght].ttf` 27px track -0.04px — IoU 0.0948
-- `Raleway[wght].ttf` 27px track -0.21px — IoU 0.093
+- `ArchivoBlack-Regular.ttf` 21px track -0.36px — IoU 0.1153
+- `Raleway[wght].ttf` 24px track 0.35px — IoU 0.1123
+- `Raleway[wght].ttf` 24px track 0.54px — IoU 0.1068
 
-### `text-6` — detail
+### `text-6` — body
 
 **Text:** "Xi Xiu"  (OCR confidence 0.8702)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=628, y=751, w=52, h=17 |
-| Normalised | x=58.15%, y=69.54%, w=4.81%, h=1.57% |
+| Bounding box (px) | x=621, y=750, w=63, h=19 |
+| Normalised | x=57.5%, y=69.44%, w=5.83%, h=1.76% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [700] |
-| Font size | 20 px |
-| Letter-spacing | -0.24 px (-0.012 em) |
+| Variation axes | [900.0] |
+| Font size | 24 px |
+| Letter-spacing | -0.59 px (-0.0246 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#554533` |
+| Colour | `#61553a` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.52:1 |
+| Contrast vs local bg | 2.16:1 |
 | Stroke (median/mean) | 1.0 / 1.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.2589 |
+| Match IoU | 0.2419 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8702) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -21 px |
-| Gap to next | -4 px |
+| Gap to previous | -17 px |
+| Gap to next | 0 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 19px track 0.13px — IoU 0.251
-- `ArchivoBlack-Regular.ttf` 16px track 0.09px — IoU 0.248
-- `ArchivoBlack-Regular.ttf` 17px track -0.55px — IoU 0.2451
+- `ArchivoBlack-Regular.ttf` 21px track -0.94px — IoU 0.2359
+- `Raleway[wght].ttf` 23px track -0.04px — IoU 0.2208
+- `Raleway[wght].ttf` 24px track -0.37px — IoU 0.2115
 
-### `text-8` — supporting
-
-**Text:** "FACESERUM"  (OCR confidence 0.9873)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=643, y=764, w=28, h=30 |
-| Normalised | x=59.54%, y=70.74%, w=2.59%, h=2.78% |
-| Alignment | right |
-| z-order | 107 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `—` |
-| Variation axes | None |
-| Font size | — px |
-| Letter-spacing | — px (— em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | uppercase |
-| Colour | `#50422c` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 2.61:1 |
-| Stroke (median/mean) | 1.0 / 1.44 px |
-| Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | — |
-| **Geometry fit confidence** | **unresolved** |
-| OCR text reliable | True  |
-| Fit interpretation | no viable candidate could be rendered |
-| Gap to previous | -4 px |
-| Gap to next | -30 px |
-
-### `text-9` — detail
-
-**Text:** "NHITENING"  (OCR confidence 0.946)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=711, y=764, w=69, h=39 |
-| Normalised | x=65.83%, y=70.74%, w=6.39%, h=3.61% |
-| Alignment | right |
-| z-order | 108 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Raleway[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 12 px |
-| Letter-spacing | 0.22 px (0.0183 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | uppercase |
-| Colour | `#a99e7c` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.2:1 |
-| Stroke (median/mean) | None / None px |
-| Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.2843 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -30 px |
-| Gap to next | -28 px |
-
-Alternate font fits considered:
-- `Raleway[wght].ttf` 13px track -0.48px — IoU 0.2841
-- `ArchivoBlack-Regular.ttf` 12px track -0.96px — IoU 0.2839
-- `ArchivoBlack-Regular.ttf` 11px track -0.15px — IoU 0.2814
-
-### `text-7` — detail
+### `text-7` — fine-print
 
 **Text:** "WHITENING"  (OCR confidence 0.9413)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=479, y=775, w=87, h=29 |
-| Normalised | x=44.35%, y=71.76%, w=8.06%, h=2.69% |
+| Bounding box (px) | x=479, y=769, w=87, h=30 |
+| Normalised | x=44.35%, y=71.2%, w=8.06%, h=2.78% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -339,163 +280,252 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#a59d7c` |
+| Colour | `#a59c7c` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.23:1 |
+| Contrast vs local bg | 1.24:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.2798 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2743 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -28 px |
-| Gap to next | -23 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 0 px |
+| Gap to next | -30 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 14px track -0.59px — IoU 0.267
-- `ArchivoBlack-Regular.ttf` 13px track 0.22px — IoU 0.2647
-- `Raleway[wght].ttf` 15px track -0.2px — IoU 0.2414
+- `ArchivoBlack-Regular.ttf` 13px track 0.22px — IoU 0.2628
+- `ArchivoBlack-Regular.ttf` 14px track -0.59px — IoU 0.2595
+- `Raleway[wght].ttf` 15px track -0.02px — IoU 0.2432
 
-### `text-11` — fine-print
+### `text-8` — fine-print
+
+**Text:** "FACE SERUM"  (OCR confidence 0.9873)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=615, y=769, w=84, h=21 |
+| Normalised | x=56.94%, y=71.2%, w=7.78%, h=1.94% |
+| Alignment | right |
+| z-order | 107 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Raleway[wght].ttf` |
+| Variation axes | [600] |
+| Font size | 12 px |
+| Letter-spacing | 0.95 px (0.0792 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | uppercase |
+| Colour | `#c09778` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.23:1 |
+| Stroke (median/mean) | 2.0 / 2.0 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'FACESERUM' -> 'FACE SERUM' |
+| Font family (authoritative) | Archivo Black, Raleway |
+| Match IoU | 0.1442 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -30 px |
+| Gap to next | -21 px |
+
+Alternate font fits considered:
+- `Raleway[wght].ttf` 14px track -0.41px — IoU 0.1372
+- `Raleway[wght].ttf` 14px track -0.39px — IoU 0.1327
+- `Raleway[wght].ttf` 12px track 0.98px — IoU 0.1287
+
+### `text-9` — fine-print
+
+**Text:** "NHITENING"  (OCR confidence 0.946)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=711, y=769, w=82, h=29 |
+| Normalised | x=65.83%, y=71.2%, w=7.59%, h=2.69% |
+| Alignment | right |
+| z-order | 108 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 13 px |
+| Letter-spacing | -0.13 px (-0.01 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | uppercase |
+| Colour | `#a9a07c` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.19:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Archivo Black, Raleway |
+| Match IoU | 0.3168 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -21 px |
+| Gap to next | -16 px |
+
+Alternate font fits considered:
+- `Raleway[wght].ttf` 16px track -0.96px — IoU 0.3094
+- `Raleway[wght].ttf` 15px track -0.26px — IoU 0.3091
+- `Raleway[wght].ttf` 14px track 0.44px — IoU 0.3014
+
+### `text-10` — fine-print
+
+**Text:** "WHITENING"  (OCR confidence 0.9877)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=610, y=782, w=77, h=30 |
+| Normalised | x=56.48%, y=72.41%, w=7.13%, h=2.78% |
+| Alignment | right |
+| z-order | 109 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
+| Font size | 12 px |
+| Letter-spacing | -0.21 px (-0.0175 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | uppercase |
+| Colour | `#958856` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.42:1 |
+| Stroke (median/mean) | 1.0 / 1.55 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| Font family (authoritative) | Archivo Black, Raleway |
+| Match IoU | 0.3036 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | True  |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -16 px |
+| Gap to next | -26 px |
+
+Alternate font fits considered:
+- `ArchivoBlack-Regular.ttf` 11px track 0.62px — IoU 0.3004
+- `Raleway[wght].ttf` 12px track 0.76px — IoU 0.282
+- `ArchivoBlack-Regular.ttf` 13px track -1.03px — IoU 0.2745
+
+### `text-11` — body
 
 **Text:** "GOLD"  (OCR confidence 0.9882)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=722, y=781, w=53, h=27 |
-| Normalised | x=66.85%, y=72.31%, w=4.91%, h=2.5% |
+| Bounding box (px) | x=722, y=786, w=62, h=27 |
+| Normalised | x=66.85%, y=72.78%, w=5.74%, h=2.5% |
 | Alignment | right |
 | z-order | 110 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `ArchivoBlack-Regular.ttf` |
-| Variation axes | None |
-| Font size | 16 px |
-| Letter-spacing | 1.07 px (0.0669 em) |
+| Font file matched | `Raleway[wght].ttf` |
+| Variation axes | [900.0] |
+| Font size | 23 px |
+| Letter-spacing | -0.84 px (-0.0365 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#a8a07a` |
+| Colour | `#aba481` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.19:1 |
+| Contrast vs local bg | 1.16:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.3229 |
+| Match IoU | 0.1907 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -23 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -26 px |
 | Gap to next | -23 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 17px track 0.04px — IoU 0.3207
-- `Raleway[wght].ttf` 19px track -0.1px — IoU 0.309
-- `ArchivoBlack-Regular.ttf` 18px track -1.0px — IoU 0.2912
+- `ArchivoBlack-Regular.ttf` 21px track -1.11px — IoU 0.1845
+- `Raleway[wght].ttf` 22px track 0.09px — IoU 0.1715
+- `ArchivoBlack-Regular.ttf` 20px track -0.07px — IoU 0.1643
 
-### `text-12` — detail
+### `text-12` — body
 
 **Text:** "GOLD"  (OCR confidence 0.9672)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=494, y=785, w=60, h=25 |
-| Normalised | x=45.74%, y=72.69%, w=5.56%, h=2.31% |
+| Bounding box (px) | x=499, y=790, w=55, h=20 |
+| Normalised | x=46.2%, y=73.15%, w=5.09%, h=1.85% |
 | Alignment | left |
 | z-order | 111 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 20 px |
-| Letter-spacing | -0.74 px (-0.037 em) |
+| Font size | 17 px |
+| Letter-spacing | 0.71 px (0.0418 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#a7a281` |
+| Colour | `#aaa586` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.22:1 |
+| Contrast vs local bg | 1.2:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.2382 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2597 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
 | Gap to previous | -23 px |
-| Gap to next | -21 px |
+| Gap to next | -5 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 22px track -0.57px — IoU 0.2324
-- `Raleway[wght].ttf` 22px track -0.48px — IoU 0.2289
-- `ArchivoBlack-Regular.ttf` 19px track 0.3px — IoU 0.2266
+- `ArchivoBlack-Regular.ttf` 18px track -0.33px — IoU 0.2529
+- `ArchivoBlack-Regular.ttf` 19px track -1.37px — IoU 0.2519
+- `Raleway[wght].ttf` 19px track 0.57px — IoU 0.243
 
-### `text-10` — detail
-
-**Text:** "WHITENING"  (OCR confidence 0.9877)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=647, y=789, w=23, h=21 |
-| Normalised | x=59.91%, y=73.06%, w=2.13%, h=1.94% |
-| Alignment | right |
-| z-order | 109 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `—` |
-| Variation axes | None |
-| Font size | — px |
-| Letter-spacing | — px (— em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | uppercase |
-| Colour | `#6a5c3b` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.88:1 |
-| Stroke (median/mean) | 1.0 / 1.55 px |
-| Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | — |
-| **Geometry fit confidence** | **unresolved** |
-| OCR text reliable | True  |
-| Fit interpretation | no viable candidate could be rendered |
-| Gap to previous | -21 px |
-| Gap to next | -10 px |
-
-### `text-13` — detail
+### `text-13` — fine-print
 
 **Text:** "GOLD"  (OCR confidence 0.9918)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=627, y=800, w=59, h=29 |
-| Normalised | x=58.06%, y=74.07%, w=5.46%, h=2.69% |
+| Bounding box (px) | x=635, y=805, w=45, h=24 |
+| Normalised | x=58.8%, y=74.54%, w=4.17%, h=2.22% |
 | Alignment | right |
 | z-order | 112 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 20 px |
-| Letter-spacing | -1.07 px (-0.0535 em) |
+| Font size | 14 px |
+| Letter-spacing | 0.48 px (0.0343 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#998d5e` |
+| Colour | `#9a8f60` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.37:1 |
+| Contrast vs local bg | 1.36:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Raleway |
-| Match IoU | 0.2356 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5164 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -10 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -5 px |
 | Gap to next | 149 px |
 
 Alternate font fits considered:
-- `Raleway[wght].ttf` 22px track -0.91px — IoU 0.2276
-- `ArchivoBlack-Regular.ttf` 18px track 1.0px — IoU 0.2211
-- `ArchivoBlack-Regular.ttf` 19px track -0.04px — IoU 0.2158
+- `Raleway[wght].ttf` 15px track 0.98px — IoU 0.4916
+- `ArchivoBlack-Regular.ttf` 13px track 1.52px — IoU 0.4594
+- `ArchivoBlack-Regular.ttf` 15px track -0.56px — IoU 0.4515
 
-### `text-14` — subheadline
+### `text-14` — supporting
 
 **Text:** "www.facial.com"  (OCR confidence 0.9931)
 
@@ -518,6 +548,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.49:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Raleway |
 | Match IoU | 0.5843 |
 | **Geometry fit confidence** | **medium** |
@@ -537,11 +568,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#cccdfa` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#ffffff` | glyph ink of 'THAT YOU NEED' | glyph ink median |
-| textSecondary | `#cdcefb` | glyph ink of 'THE SKINCARE' | glyph ink median |
+| textPrimary | `#8379b0` | glyph ink of 'ROUTINE' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'THAT YOU NEED' | glyph ink median |
 | accent | `#98703d` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#cccdfa` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -565,7 +596,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1102 |
+| Text coverage | 0.1033 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -595,23 +626,23 @@ _Recommendations only — no manifest is generated._
 | `headline_line1` | text | THE SKINCARE |
 | `headline_line2` | text | ROUTINE |
 | `headline_line3` | text | THAT YOU NEED |
-| `supporting` | text | XiXiU |
-| `detail` | text | X iXiU |
-| `detail` | text | Xi Xiu |
-| `supporting` | text | FACESERUM |
-| `detail` | text | NHITENING |
-| `detail` | text | WHITENING |
+| `body` | text | X iX iU |
+| `body` | text | X i XiU |
+| `body` | text | Xi Xiu |
+| `fine-print` | text | WHITENING |
+| `fine-print` | text | FACE SERUM |
+| `fine-print` | text | NHITENING |
+| `fine-print` | text | WHITENING |
+| `body` | text | GOLD |
+| `body` | text | GOLD |
 | `fine-print` | text | GOLD |
-| `detail` | text | GOLD |
-| `detail` | text | WHITENING |
-| `detail` | text | GOLD |
-| `subheadline` | text | www.facial.com |
+| `supporting` | text | www.facial.com |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #cccdfa |
-| `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #cdcefb |
+| `textPrimary` | colour | #8379b0 |
+| `textSecondary` | colour | #ffffff |
 | `accent` | colour | #98703d |
 | `accentSecondary` | colour | #cccdfa |
 | `onAccent` | colour | #000000 |
@@ -619,17 +650,17 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 51.1 |
 | `imageFocalY` | number | 62.0 |
 

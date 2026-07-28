@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.65:1 |
 | Stroke (median/mean) | 20.0 / 20.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Berkshire Swash, Delius Swash Caps |
 | Match IoU | 0.8707 |
 | **Geometry fit confidence** | **high** |
@@ -73,7 +74,7 @@ Alternate font fits considered:
 - `BerkshireSwash-Regular.ttf` 127px track 0.31px — IoU 0.8483
 - `DeliusSwashCaps-Regular.ttf` 122px track -0.74px — IoU 0.2108
 
-### `text-2` — subheadline
+### `text-2` — body
 
 **Text:** "Cursus risus at ultrices mi tempus imperdiet. Molestie a"  (OCR confidence 0.9911)
 
@@ -96,6 +97,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.62:1 |
 | Stroke (median/mean) | 3.0 / 3.65 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Berkshire Swash, Delius Swash Caps |
 | Match IoU | 0.529 |
 | **Geometry fit confidence** | **low** |
@@ -109,7 +111,7 @@ Alternate font fits considered:
 - `DeliusSwashCaps-Regular.ttf` 30px track 0.67px — IoU 0.4949
 - `BerkshireSwash-Regular.ttf` 34px track -0.24px — IoU 0.2727
 
-### `text-3` — subheadline
+### `text-3` — body
 
 **Text:** "iaculis at erat pellentesque adipiscing commodo elit at."  (OCR confidence 0.9802)
 
@@ -132,6 +134,7 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.62:1 |
 | Stroke (median/mean) | 3.0 / 3.64 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Berkshire Swash, Delius Swash Caps |
 | Match IoU | 0.5259 |
 | **Geometry fit confidence** | **low** |
@@ -155,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#fafafb` | glyph ink of 'Cursus risus at ultrices mi ' | glyph ink median |
 | accent | `#fbe71c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#563246` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -207,8 +210,8 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Back To School |
-| `subheadline_line1` | text | Cursus risus at ultrices mi tempus imperdiet. Molestie a |
-| `subheadline_line2` | text | iaculis at erat pellentesque adipiscing commodo elit at. |
+| `body_line1` | text | Cursus risus at ultrices mi tempus imperdiet. Molestie a |
+| `body_line2` | text | iaculis at erat pellentesque adipiscing commodo elit at. |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefcfd |
@@ -220,8 +223,8 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Berkshire Swash |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 49.5 |
 | `imageFocalY` | number | 43.8 |
 

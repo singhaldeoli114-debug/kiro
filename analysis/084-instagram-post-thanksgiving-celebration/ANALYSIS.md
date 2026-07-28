@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.6:1 |
 | Stroke (median/mean) | 6.0 / 6.68 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Dancing Script, Abhaya Libre |
 | Match IoU | 0.5432 |
 | **Geometry fit confidence** | **low** |
@@ -96,90 +98,94 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.6:1 |
 | Stroke (median/mean) | 6.0 / 6.74 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Dancing Script, Abhaya Libre |
 | Match IoU | 0.7307 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | -89 px |
-| Gap to next | 779 px |
+| Gap to next | 778 px |
 
 Alternate font fits considered:
 - `DancingScript[wght].ttf` 86px track -0.31px — IoU 0.6955
 - `DancingScript[wght].ttf` 87px track 0.42px — IoU 0.6867
 - `DancingScript[wght].ttf` 85px track 0.13px — IoU 0.6836
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "OCTOBER2 6,2 026"  (OCR confidence 0.9904)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=286, y=906, w=335, h=30 |
-| Normalised | x=26.48%, y=83.89%, w=31.02%, h=2.78% |
+| Bounding box (px) | x=286, y=905, w=335, h=32 |
+| Normalised | x=26.48%, y=83.8%, w=31.02%, h=2.96% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-Regular.ttf` |
+| Font file matched | `AbhayaLibre-SemiBold.ttf` |
 | Variation axes | None |
 | Font size | 44 px |
-| Letter-spacing | -0.26 px (-0.0059 em) |
+| Letter-spacing | -0.5 px (-0.0114 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fdf7f4` |
+| Colour | `#fdf4f0` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.53:1 |
+| Contrast vs local bg | 2.5:1 |
 | Stroke (median/mean) | 4.0 / 4.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Dancing Script, Abhaya Libre |
-| Match IoU | 0.5799 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.5293 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 779 px |
-| Gap to next | -30 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 778 px |
+| Gap to next | -32 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 44px track -0.5px — IoU 0.5561
-- `AbhayaLibre-Bold.ttf` 44px track -0.66px — IoU 0.5018
-- `AbhayaLibre-Regular.ttf` 43px track 0.25px — IoU 0.499
+- `AbhayaLibre-Regular.ttf` 44px track -0.26px — IoU 0.515
+- `AbhayaLibre-Regular.ttf` 43px track 0.25px — IoU 0.4735
+- `AbhayaLibre-Bold.ttf` 44px track -0.66px — IoU 0.4674
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "5:30 PM"  (OCR confidence 0.9801)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=675, y=906, w=137, h=29 |
-| Normalised | x=62.5%, y=83.89%, w=12.69%, h=2.69% |
+| Bounding box (px) | x=675, y=905, w=138, h=30 |
+| Normalised | x=62.5%, y=83.8%, w=12.78%, h=2.78% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `AbhayaLibre-Bold.ttf` |
 | Variation axes | None |
-| Font size | 42 px |
-| Letter-spacing | -0.1 px (-0.0024 em) |
+| Font size | 43 px |
+| Letter-spacing | -0.47 px (-0.0109 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#fbefea` |
+| Colour | `#fbede8` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.46:1 |
+| Contrast vs local bg | 2.45:1 |
 | Stroke (median/mean) | 4.0 / 3.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Dancing Script, Abhaya Libre |
-| Match IoU | 0.7086 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6836 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -30 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -32 px |
 | Gap to next | 20 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-SemiBold.ttf` 42px track 0.13px — IoU 0.6896
-- `AbhayaLibre-Medium.ttf` 44px track -0.77px — IoU 0.6874
-- `AbhayaLibre-Bold.ttf` 43px track -0.64px — IoU 0.6842
+- `AbhayaLibre-Medium.ttf` 43px track -0.07px — IoU 0.6709
+- `AbhayaLibre-SemiBold.ttf` 43px track -0.24px — IoU 0.6649
+- `AbhayaLibre-ExtraBold.ttf` 43px track -0.73px — IoU 0.6623
 
 ### `text-5` — supporting
 
@@ -187,8 +193,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=369, y=955, w=361, h=19 |
-| Normalised | x=34.17%, y=88.43%, w=33.43%, h=1.76% |
+| Bounding box (px) | x=369, y=955, w=361, h=20 |
+| Normalised | x=34.17%, y=88.43%, w=33.43%, h=1.85% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -200,12 +206,13 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f8e2d9` |
+| Colour | `#f6d9cd` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.35:1 |
+| Contrast vs local bg | 2.28:1 |
 | Stroke (median/mean) | 3.0 / 2.86 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Dancing Script, Abhaya Libre |
-| Match IoU | 0.6621 |
+| Match IoU | 0.6619 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -213,9 +220,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbhayaLibre-Medium.ttf` 32px track 0.44px — IoU 0.6234
-- `AbhayaLibre-SemiBold.ttf` 32px track 0.4px — IoU 0.6231
-- `AbhayaLibre-ExtraBold.ttf` 32px track 0.3px — IoU 0.6226
+- `AbhayaLibre-ExtraBold.ttf` 32px track 0.3px — IoU 0.6216
+- `AbhayaLibre-Regular.ttf` 34px track -0.63px — IoU 0.6094
+- `AbhayaLibre-Bold.ttf` 32px track 0.35px — IoU 0.6079
 
 ## 4. Colours (semantic)
 
@@ -224,10 +231,10 @@ Alternate font fits considered:
 | background | `#d7cdc8` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#d23f04` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'Thanksgiving' | glyph ink median |
-| textSecondary | `#fbefea` | glyph ink of '5:30 PM' | glyph ink median |
+| textSecondary | `#fbede8` | glyph ink of '5:30 PM' | glyph ink median |
 | accent | `#d23f04` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#5c3219` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +258,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0712 |
+| Text coverage | 0.0722 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -280,23 +287,23 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline` | text | Thanksgiving |
 | `headline` | text | Fundraiser |
-| `subheadline` | text | OCTOBER2 6,2 026 |
-| `subheadline` | text | 5:30 PM |
+| `supporting` | text | OCTOBER2 6,2 026 |
+| `supporting` | text | 5:30 PM |
 | `supporting` | text | CANYON HOTEL XYZ CITY |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #d7cdc8 |
 | `surface` | colour | #d23f04 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #fbefea |
+| `textSecondary` | colour | #fbede8 |
 | `accent` | colour | #d23f04 |
 | `accentSecondary` | colour | #5c3219 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Dancing Script |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 48.0 |
 | `imageFocalY` | number | 47.4 |

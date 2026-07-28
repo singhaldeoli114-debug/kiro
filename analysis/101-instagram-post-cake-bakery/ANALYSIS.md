@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "Cake"  (OCR confidence 0.9718)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=422, y=375, w=208, h=123 |
-| Normalised | x=39.07%, y=34.72%, w=19.26%, h=11.39% |
+| Bounding box (px) | x=422, y=375, w=208, h=118 |
+| Normalised | x=39.07%, y=34.72%, w=19.26%, h=10.93% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -59,55 +59,59 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.48:1 |
-| Stroke (median/mean) | 16.0 / 16.2 px |
+| Stroke (median/mean) | 16.0 / 16.19 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Yesteryear, Alata |
-| Match IoU | 0.3984 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4601 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
-| Gap to next | -10 px |
+| Gap to next | -5 px |
 
 Alternate font fits considered:
-- `Yesteryear-Regular.ttf` 123px track 0.33px — IoU 0.3953
-- `Yesteryear-Regular.ttf` 124px track -0.23px — IoU 0.3874
-- `Alata-Regular.ttf` 92px track -1.1px — IoU 0.2071
+- `Yesteryear-Regular.ttf` 123px track 0.33px — IoU 0.4546
+- `Yesteryear-Regular.ttf` 124px track -0.23px — IoU 0.4452
+- `Alata-Regular.ttf` 92px track -1.1px — IoU 0.2069
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "&"  (OCR confidence 0.9608)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=501, y=488, w=72, h=97 |
-| Normalised | x=46.39%, y=45.19%, w=6.67%, h=8.98% |
+| Bounding box (px) | x=502, y=488, w=71, h=97 |
+| Normalised | x=46.48%, y=45.19%, w=6.57%, h=8.98% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Yesteryear-Regular.ttf` |
 | Variation axes | None |
-| Font size | 122 px |
-| Letter-spacing | -0.08 px (-0.0007 em) |
+| Font size | 119 px |
+| Letter-spacing | 0.69 px (0.0058 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.5:1 |
-| Stroke (median/mean) | 16.0 / 17.46 px |
+| Stroke (median/mean) | 16.0 / 17.45 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Yesteryear, Alata |
-| Match IoU | 0.8892 |
+| Match IoU | 0.908 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -10 px |
-| Gap to next | -16 px |
+| Gap to previous | -5 px |
+| Gap to next | -11 px |
 
 Alternate font fits considered:
-- `Yesteryear-Regular.ttf` 123px track -0.67px — IoU 0.8889
-- `Yesteryear-Regular.ttf` 121px track 0.52px — IoU 0.8883
-- `Alata-Regular.ttf` 96px track 0.09px — IoU 0.3581
+- `Yesteryear-Regular.ttf` 120px track 0.09px — IoU 0.8994
+- `Yesteryear-Regular.ttf` 121px track -0.48px — IoU 0.8953
+- `Alata-Regular.ttf` 96px track -0.91px — IoU 0.3606
 
 ### `text-3` — headline
 
@@ -115,71 +119,75 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=363, y=569, w=347, h=183 |
-| Normalised | x=33.61%, y=52.69%, w=32.13%, h=16.94% |
+| Bounding box (px) | x=369, y=574, w=340, h=172 |
+| Normalised | x=34.17%, y=53.15%, w=31.48%, h=15.93% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Yesteryear-Regular.ttf` |
 | Variation axes | None |
-| Font size | 142 px |
-| Letter-spacing | -0.62 px (-0.0044 em) |
+| Font size | 139 px |
+| Letter-spacing | -0.54 px (-0.0039 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.47:1 |
-| Stroke (median/mean) | 15.0 / 16.04 px |
+| Stroke (median/mean) | 15.0 / 16.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Yesteryear, Alata |
-| Match IoU | 0.2897 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.3414 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -16 px |
-| Gap to next | 237 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -11 px |
+| Gap to next | 227 px |
 
 Alternate font fits considered:
-- `Yesteryear-Regular.ttf` 141px track -0.12px — IoU 0.2876
-- `Yesteryear-Regular.ttf` 140px track 0.37px — IoU 0.2863
-- `Alata-Regular.ttf` 111px track -0.08px — IoU 0.1848
+- `Yesteryear-Regular.ttf` 138px track -0.04px — IoU 0.3374
+- `Yesteryear-Regular.ttf` 137px track 0.45px — IoU 0.3308
+- `Alata-Regular.ttf` 110px track -0.86px — IoU 0.1918
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "WWW.BAKERY.COM"  (OCR confidence 0.9699)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=503, y=989, w=93, h=28 |
-| Normalised | x=46.57%, y=91.57%, w=8.61%, h=2.59% |
-| Alignment | center |
+| Bounding box (px) | x=376, y=973, w=379, h=41 |
+| Normalised | x=34.81%, y=90.09%, w=35.09%, h=3.8% |
+| Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Yesteryear-Regular.ttf` |
+| Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
-| Font size | 12 px |
-| Letter-spacing | -0.9 px (-0.075 em) |
+| Font size | 42 px |
+| Letter-spacing | -0.78 px (-0.0186 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#ffffff` |
+| Colour | `#ecdfd7` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.9:1 |
-| Stroke (median/mean) | 1.0 / 1.14 px |
+| Contrast vs local bg | 1.3:1 |
+| Stroke (median/mean) | 5.0 / 7.42 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Yesteryear, Alata |
-| Match IoU | 0.2204 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2669 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 237 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 227 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Yesteryear-Regular.ttf` 11px track -0.23px — IoU 0.1947
-- `Alata-Regular.ttf` 11px track -0.69px — IoU 0.1804
-- `Alata-Regular.ttf` 10px track 0.03px — IoU 0.1533
+- `Alata-Regular.ttf` 41px track -0.06px — IoU 0.2492
+- `Alata-Regular.ttf` 40px track 0.65px — IoU 0.2297
+- `Yesteryear-Regular.ttf` 43px track 0.3px — IoU 0.222
 
 ## 4. Colours (semantic)
 
@@ -188,10 +196,10 @@ Alternate font fits considered:
 | background | `#efeeed` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#d2cac0` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of 'Bakery' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'Cake' | glyph ink median |
+| textSecondary | `#ecdfd7` | glyph ink of 'WWW.BAKERY.COM' | glyph ink median |
 | accent | `#996c3c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7baee9` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +223,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0846 |
+| Text coverage | 0.0904 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -242,24 +250,24 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | Cake |
-| `subheadline` | text | & |
+| `headline` | text | Cake |
+| `headline` | text | & |
 | `headline` | text | Bakery |
-| `supporting` | text | WWW.BAKERY.COM |
+| `body` | text | WWW.BAKERY.COM |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #efeeed |
 | `surface` | colour | #d2cac0 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #ffffff |
+| `textSecondary` | colour | #ecdfd7 |
 | `accent` | colour | #996c3c |
 | `accentSecondary` | colour | #7baee9 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Yesteryear |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 47.4 |
 | `imageFocalY` | number | 73.5 |
 

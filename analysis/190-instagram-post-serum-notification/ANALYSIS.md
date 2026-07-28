@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — headline
+### `text-1` — subheadline
 
 **Text:** "the benefits of facial oil"  (OCR confidence 0.9978)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=211, y=377, w=673, h=47 |
-| Normalised | x=19.54%, y=34.91%, w=62.31%, h=4.35% |
+| Bounding box (px) | x=211, y=376, w=673, h=49 |
+| Normalised | x=19.54%, y=34.81%, w=62.31%, h=4.54% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,18 +60,19 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 11.66:1 |
 | Stroke (median/mean) | 6.0 / 6.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.6868 |
+| Match IoU | 0.654 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | 38 px |
+| Gap to next | 37 px |
 
 Alternate font fits considered:
-- `LibreBaskerville[wght].ttf` 57px track -0.73px — IoU 0.6701
-- `LibreBaskerville[wght].ttf` 56px track -0.67px — IoU 0.6644
-- `LibreBaskerville[wght].ttf` 55px track 0.06px — IoU 0.6549
+- `LibreBaskerville[wght].ttf` 56px track -0.67px — IoU 0.6349
+- `LibreBaskerville[wght].ttf` 57px track -0.73px — IoU 0.6305
+- `LibreBaskerville[wght].ttf` 55px track 0.06px — IoU 0.63
 
 ### `text-2` — headline
 
@@ -79,35 +80,37 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=449, y=462, w=133, h=39 |
-| Normalised | x=41.57%, y=42.78%, w=12.31%, h=3.61% |
-| Alignment | left |
+| Bounding box (px) | x=449, y=462, w=178, h=34 |
+| Normalised | x=41.57%, y=42.78%, w=16.48%, h=3.15% |
+| Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto-Italic[wdth,wght].ttf` |
+| Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
-| Font size | 60 px |
-| Letter-spacing | -0.65 px (-0.0108 em) |
-| Line-height | 40.0 px (ratio 0.667) |
+| Font size | 76 px |
+| Letter-spacing | 0.24 px (0.0032 em) |
+| Line-height | 39.0 px (ratio 0.513) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#10100f` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.57:1 |
+| Colour | `#393937` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.66:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.2883 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.4211 |
+| **Geometry fit confidence** | **low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5425) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 38 px |
-| Gap to next | 1 px |
+| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
+| Gap to previous | 37 px |
+| Gap to next | 5 px |
 
 Alternate font fits considered:
-- `Roboto-Italic[wdth,wght].ttf` 59px track -0.09px — IoU 0.284
-- `Roboto-Italic[wdth,wght].ttf` 57px track -0.88px — IoU 0.28
-- `Roboto-Italic[wdth,wght].ttf` 56px track -0.29px — IoU 0.2754
+- `Roboto[wdth,wght].ttf` 77px track -0.34px — IoU 0.4185
+- `Roboto[wdth,wght].ttf` 75px track 0.82px — IoU 0.4127
+- `Roboto[wdth,wght].ttf` 73px track -0.57px — IoU 0.4043
 
 ### `text-3` — headline
 
@@ -115,8 +118,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=225, y=502, w=460, h=33 |
-| Normalised | x=20.83%, y=46.48%, w=42.59%, h=3.06% |
+| Bounding box (px) | x=225, y=501, w=460, h=35 |
+| Normalised | x=20.83%, y=46.39%, w=42.59%, h=3.24% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
@@ -125,25 +128,26 @@ Alternate font fits considered:
 | Variation axes | [500, 87.5] |
 | Font size | 38 px |
 | Letter-spacing | -0.6 px (-0.0158 em) |
-| Line-height | 40.0 px (ratio 1.053) |
+| Line-height | 39.0 px (ratio 1.026) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.68:1 |
 | Stroke (median/mean) | 3.0 / 3.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.6776 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7154 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 1 px |
-| Gap to next | -33 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 5 px |
+| Gap to next | -32 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 35px track -0.26px — IoU 0.6776
-- `Roboto[wdth,wght].ttf` 36px track -0.68px — IoU 0.651
-- `Roboto[wdth,wght].ttf` 36px track -0.56px — IoU 0.6467
+- `Roboto[wdth,wght].ttf` 35px track -0.26px — IoU 0.7152
+- `Roboto[wdth,wght].ttf` 36px track -0.68px — IoU 0.6901
+- `Roboto[wdth,wght].ttf` 36px track -0.56px — IoU 0.684
 
 ### `text-4` — supporting
 
@@ -151,188 +155,194 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=768, y=502, w=117, h=47 |
-| Normalised | x=71.11%, y=46.48%, w=10.83%, h=4.35% |
+| Bounding box (px) | x=779, y=504, w=95, h=33 |
+| Normalised | x=72.13%, y=46.67%, w=8.8%, h=3.06% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 30 px |
-| Letter-spacing | -0.3 px (-0.01 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [500, 87.5] |
+| Font size | 38 px |
+| Letter-spacing | -0.65 px (-0.0171 em) |
+| Line-height | 45.5 px (ratio 1.197) |
+| Line | 1 of 3 |
 | Transform | none |
-| Colour | `#1b1b1a` |
+| Colour | `#191918` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.96:1 |
-| Stroke (median/mean) | 3.0 / 4.47 px |
+| Contrast vs local bg | 2.09:1 |
+| Stroke (median/mean) | 3.0 / 3.97 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.1817 |
+| Match IoU | 0.2791 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -33 px |
-| Gap to next | 1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -32 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 32px track -0.48px — IoU 0.1762
-- `Roboto[wdth,wght].ttf` 31px track -0.0px — IoU 0.1731
-- `Roboto[wdth,wght].ttf` 32px track -0.35px — IoU 0.17
+- `Roboto[wdth,wght].ttf` 34px track 0.15px — IoU 0.5852
+- `Roboto[wdth,wght].ttf` 35px track -0.27px — IoU 0.5841
+- `Roboto[wdth,wght].ttf` 34px track 0.2px — IoU 0.5761
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "Evens skin complexion"  (OCR confidence 0.9779)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=227, y=550, w=348, h=33 |
-| Normalised | x=21.02%, y=50.93%, w=32.22%, h=3.06% |
+| Bounding box (px) | x=226, y=549, w=350, h=34 |
+| Normalised | x=20.93%, y=50.83%, w=32.41%, h=3.15% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 87.5] |
-| Font size | 37 px |
-| Letter-spacing | -0.24 px (-0.0065 em) |
-| Line-height | 46.0 px (ratio 1.243) |
-| Line | 1 of 2 |
+| Font size | 38 px |
+| Letter-spacing | -0.65 px (-0.0171 em) |
+| Line-height | 45.5 px (ratio 1.197) |
+| Line | 2 of 3 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.63:1 |
 | Stroke (median/mean) | 3.0 / 3.84 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.7115 |
+| Match IoU | 0.7275 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 1 px |
-| Gap to next | 13 px |
+| Gap to previous | 12 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 39px track -0.15px — IoU 0.7139
-- `Roboto[wdth,wght].ttf` 34px track 0.17px — IoU 0.7128
-- `Roboto[wdth,wght].ttf` 37px track -0.3px — IoU 0.7104
+- `Roboto[wdth,wght].ttf` 34px track 0.15px — IoU 0.5852
+- `Roboto[wdth,wght].ttf` 35px track -0.27px — IoU 0.5841
+- `Roboto[wdth,wght].ttf` 34px track 0.2px — IoU 0.5761
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "Regulates natural sebum (oil) production"  (OCR confidence 0.9875)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=227, y=596, w=627, h=35 |
-| Normalised | x=21.02%, y=55.19%, w=58.06%, h=3.24% |
+| Bounding box (px) | x=226, y=595, w=628, h=36 |
+| Normalised | x=20.93%, y=55.09%, w=58.15%, h=3.33% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 87.5] |
-| Font size | 37 px |
-| Letter-spacing | -0.24 px (-0.0065 em) |
-| Line-height | 46.0 px (ratio 1.243) |
-| Line | 2 of 2 |
+| Font size | 38 px |
+| Letter-spacing | -0.65 px (-0.0171 em) |
+| Line-height | 45.5 px (ratio 1.197) |
+| Line | 3 of 3 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.64:1 |
 | Stroke (median/mean) | 3.0 / 3.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.7731 |
+| Match IoU | 0.7543 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 13 px |
-| Gap to next | 93 px |
+| Gap to previous | 12 px |
+| Gap to next | 83 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 39px track -0.15px — IoU 0.7139
-- `Roboto[wdth,wght].ttf` 34px track 0.17px — IoU 0.7128
-- `Roboto[wdth,wght].ttf` 37px track -0.3px — IoU 0.7104
+- `Roboto[wdth,wght].ttf` 34px track 0.15px — IoU 0.5852
+- `Roboto[wdth,wght].ttf` 35px track -0.27px — IoU 0.5841
+- `Roboto[wdth,wght].ttf` 34px track 0.2px — IoU 0.5761
 
-### `text-7` — detail
+### `text-7` — supporting
 
 **Text:** "Ordinary."  (OCR confidence 0.9755)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=341, y=724, w=99, h=63 |
-| Normalised | x=31.57%, y=67.04%, w=9.17%, h=5.83% |
+| Bounding box (px) | x=323, y=714, w=119, h=68 |
+| Normalised | x=29.91%, y=66.11%, w=11.02%, h=6.3% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto-Italic[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 24 px |
-| Letter-spacing | 0.14 px (0.0058 em) |
+| Variation axes | [600, 87.5] |
+| Font size | 33 px |
+| Letter-spacing | -0.68 px (-0.0206 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#5b5c58` |
+| Colour | `#62625f` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.26:1 |
-| Stroke (median/mean) | 1.0 / 1.43 px |
+| Contrast vs local bg | 2.15:1 |
+| Stroke (median/mean) | 1.0 / 1.44 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.1157 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.1167 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 93 px |
-| Gap to next | 145 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 83 px |
+| Gap to next | 142 px |
 
 Alternate font fits considered:
-- `Roboto-Italic[wdth,wght].ttf` 28px track -0.44px — IoU 0.1105
-- `Roboto-Italic[wdth,wght].ttf` 28px track -0.23px — IoU 0.1103
-- `Roboto-Italic[wdth,wght].ttf` 28px track -0.33px — IoU 0.1094
+- `Roboto-Italic[wdth,wght].ttf` 30px track -0.29px — IoU 0.1164
+- `Roboto-Italic[wdth,wght].ttf` 28px track 0.72px — IoU 0.1153
+- `Roboto-Italic[wdth,wght].ttf` 32px track -0.32px — IoU 0.1146
 
-### `text-8` — detail
+### `text-8` — body
 
 **Text:** "Ordinary."  (OCR confidence 0.9791)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=589, y=932, w=91, h=32 |
-| Normalised | x=54.54%, y=86.3%, w=8.43%, h=2.96% |
+| Bounding box (px) | x=585, y=924, w=96, h=35 |
+| Normalised | x=54.17%, y=85.56%, w=8.89%, h=3.24% |
 | Alignment | right |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto-Italic[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 24 px |
-| Letter-spacing | 0.39 px (0.0163 em) |
+| Variation axes | [900.0, 87.5] |
+| Font size | 25 px |
+| Letter-spacing | -0.07 px (-0.0028 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#494846` |
+| Colour | `#4b4a48` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.65:1 |
-| Stroke (median/mean) | 1.0 / 1.63 px |
+| Contrast vs local bg | 2.64:1 |
+| Stroke (median/mean) | 1.0 / 1.56 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.2267 |
+| Match IoU | 0.2994 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 145 px |
-| Gap to next | -14 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 142 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
-- `Roboto-Italic[wdth,wght].ttf` 24px track 0.48px — IoU 0.2161
-- `Roboto-Italic[wdth,wght].ttf` 24px track 0.57px — IoU 0.2101
-- `Roboto-Italic[wdth,wght].ttf` 25px track -0.07px — IoU 0.2047
+- `Roboto-Italic[wdth,wght].ttf` 24px track -0.23px — IoU 0.2971
+- `Roboto-Italic[wdth,wght].ttf` 26px track -0.35px — IoU 0.2969
+- `Roboto-Italic[wdth,wght].ttf` 26px track -0.55px — IoU 0.2966
 
-### `text-9` — headline
+### `text-9` — subheadline
 
 **Text:** "wwwwebsite.com"  (OCR confidence 0.9531)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=401, y=950, w=347, h=47 |
-| Normalised | x=37.13%, y=87.96%, w=32.13%, h=4.35% |
+| Bounding box (px) | x=401, y=955, w=347, h=37 |
+| Normalised | x=37.13%, y=88.43%, w=32.13%, h=3.43% |
 | Alignment | right |
 | z-order | 108 |
 | Rotation | 0° |
@@ -344,22 +354,24 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#1f1f1b` |
+| Colour | `#181815` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.35:1 |
-| Stroke (median/mean) | 4.0 / 5.04 px |
+| Contrast vs local bg | 5.1:1 |
+| Stroke (median/mean) | 4.0 / 4.98 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.2805 |
+| Match IoU | 0.299 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -14 px |
-| Gap to next | -17 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -4 px |
+| Gap to next | -7 px |
 
 Alternate font fits considered:
-- `Roboto-Italic[wdth,wght].ttf` 51px track 0.14px — IoU 0.2759
-- `Roboto-Italic[wdth,wght].ttf` 51px track 0.12px — IoU 0.272
-- `Roboto-Italic[wdth,wght].ttf` 49px track -0.5px — IoU 0.2715
+- `Roboto-Italic[wdth,wght].ttf` 51px track 0.14px — IoU 0.2971
+- `Roboto-Italic[wdth,wght].ttf` 48px track 0.05px — IoU 0.2929
+- `Roboto-Italic[wdth,wght].ttf` 51px track 0.12px — IoU 0.2897
 
 ### `text-10` — fine-print
 
@@ -367,35 +379,37 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=588, y=980, w=91, h=19 |
-| Normalised | x=54.44%, y=90.74%, w=8.43%, h=1.76% |
+| Bounding box (px) | x=593, y=985, w=86, h=25 |
+| Normalised | x=54.91%, y=91.2%, w=7.96%, h=2.31% |
 | Alignment | right |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 14 px |
-| Letter-spacing | -0.46 px (-0.0329 em) |
+| Variation axes | [900.0, 75.0] |
+| Font size | 15 px |
+| Letter-spacing | -0.5 px (-0.0333 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#31302f` |
+| Colour | `#888782` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.52:1 |
-| Stroke (median/mean) | 3.0 / 3.83 px |
+| Contrast vs local bg | 1.52:1 |
+| Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Roboto, Libre Baskerville |
-| Match IoU | 0.121 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.168 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — possible run-together token 'HyaluronicAcid' |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -17 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -7 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 16px track -0.6px — IoU 0.1201
-- `Roboto[wdth,wght].ttf` 14px track -0.4px — IoU 0.1185
-- `Roboto[wdth,wght].ttf` 16px track -0.56px — IoU 0.1185
+- `Roboto[wdth,wght].ttf` 14px track 0.0px — IoU 0.1677
+- `Roboto[wdth,wght].ttf` 12px track 0.22px — IoU 0.1667
+- `Roboto[wdth,wght].ttf` 14px track -0.03px — IoU 0.1643
 
 ## 4. Colours (semantic)
 
@@ -403,11 +417,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#ecece9` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#d8d2c9` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#5b5c58` | glyph ink of 'Ordinary.' | glyph ink median |
+| textPrimary | `#62625f` | glyph ink of 'Ordinary.' | glyph ink median |
 | textSecondary | `#ffffff` | glyph ink of 'the benefits of facial oil' | glyph ink median |
 | accent | — | not identified | — |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | — | not identified | — |
 
 Full palette (k-means):
@@ -431,7 +445,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1013 |
+| Text coverage | 0.1022 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -458,32 +472,32 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `headline` | text | the benefits of facial oil |
+| `subheadline` | text | the benefits of facial oil |
 | `headline_line1` | text | PHVII |
 | `headline_line2` | text | Supports soft and supple skin |
+| `supporting_line1` | text | Ordinary. |
+| `supporting_line2` | text | Evens skin complexion |
+| `supporting_line3` | text | Regulates natural sebum (oil) production |
 | `supporting` | text | Ordinary. |
-| `subheadline_line1` | text | Evens skin complexion |
-| `subheadline_line2` | text | Regulates natural sebum (oil) production |
-| `detail` | text | Ordinary. |
-| `detail` | text | Ordinary. |
-| `headline` | text | wwwwebsite.com |
+| `body` | text | Ordinary. |
+| `subheadline` | text | wwwwebsite.com |
 | `fine-print` | text | HyaluronicAcid |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #ecece9 |
 | `surface` | colour | #d8d2c9 |
-| `textPrimary` | colour | #5b5c58 |
+| `textPrimary` | colour | #62625f |
 | `textSecondary` | colour | #ffffff |
 | `brandFont` | font | Roboto |
-| `show_headline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_headline` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 52.5 |
 | `imageFocalY` | number | 59.4 |

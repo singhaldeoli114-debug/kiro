@@ -34,35 +34,36 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — fine-print
 
 **Text:** "JOIN US FOR"  (OCR confidence 0.9606)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=56, y=73, w=200, h=25 |
-| Normalised | x=5.19%, y=6.76%, w=18.52%, h=2.31% |
+| Bounding box (px) | x=56, y=74, w=199, h=24 |
+| Normalised | x=5.19%, y=6.85%, w=18.43%, h=2.22% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [900, 100.0, 12.0, 500.0] |
-| Font size | 32 px |
-| Letter-spacing | -0.26 px (-0.0081 em) |
+| Variation axes | [800, 112.5, 12.0, 500.0] |
+| Font size | 29 px |
+| Letter-spacing | -0.08 px (-0.0028 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.22:1 |
-| Stroke (median/mean) | 6.0 / 7.36 px |
+| Stroke (median/mean) | 6.0 / 7.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.816 |
+| Match IoU | 0.8752 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -70,9 +71,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 14 px |
 
 Alternate font fits considered:
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 33px track -0.53px — IoU 0.8108
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 29px track -0.34px — IoU 0.8067
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 30px track -0.67px — IoU 0.798
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 36px track -0.58px — IoU 0.8698
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 29px track -0.44px — IoU 0.8539
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 34px track 0.55px — IoU 0.8364
 
 ### `text-2` — subheadline
 
@@ -80,35 +81,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=61, y=112, w=472, h=66 |
-| Normalised | x=5.65%, y=10.37%, w=43.7%, h=6.11% |
+| Bounding box (px) | x=62, y=112, w=470, h=65 |
+| Normalised | x=5.74%, y=10.37%, w=43.52%, h=6.02% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
-| Font size | 80 px |
-| Letter-spacing | -0.79 px (-0.0099 em) |
-| Line-height | 110.0 px (ratio 1.375) |
+| Font size | 79 px |
+| Letter-spacing | -0.29 px (-0.0037 em) |
+| Line-height | 111.0 px (ratio 1.405) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.22:1 |
-| Stroke (median/mean) | 13.0 / 16.14 px |
+| Stroke (median/mean) | 12.0 / 16.02 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.709 |
+| Match IoU | 0.7662 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 14 px |
-| Gap to next | 44 px |
+| Gap to next | 46 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 79px track -0.04px — IoU 0.6835
-- `Alata-Regular.ttf` 78px track 0.7px — IoU 0.6546
-- `Roboto[wdth,wght].ttf` 90px track -0.66px — IoU 0.6397
+- `Alata-Regular.ttf` 80px track -1.04px — IoU 0.7498
+- `Alata-Regular.ttf` 78px track 0.45px — IoU 0.7196
+- `Roboto[wdth,wght].ttf` 78px track -0.47px — IoU 0.6573
 
 ### `text-3` — subheadline
 
@@ -116,35 +118,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=60, y=222, w=195, h=67 |
-| Normalised | x=5.56%, y=20.56%, w=18.06%, h=6.2% |
+| Bounding box (px) | x=61, y=223, w=194, h=65 |
+| Normalised | x=5.65%, y=20.65%, w=17.96%, h=6.02% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
-| Font size | 80 px |
-| Letter-spacing | -0.79 px (-0.0099 em) |
-| Line-height | 110.0 px (ratio 1.375) |
+| Font size | 79 px |
+| Letter-spacing | -0.29 px (-0.0037 em) |
+| Line-height | 111.0 px (ratio 1.405) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.22:1 |
-| Stroke (median/mean) | 14.0 / 18.18 px |
+| Stroke (median/mean) | 14.0 / 18.28 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.6892 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7346 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 44 px |
-| Gap to next | 25 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 46 px |
+| Gap to next | 26 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 79px track -0.04px — IoU 0.6835
-- `Alata-Regular.ttf` 78px track 0.7px — IoU 0.6546
-- `Roboto[wdth,wght].ttf` 90px track -0.66px — IoU 0.6397
+- `Alata-Regular.ttf` 80px track -1.04px — IoU 0.7498
+- `Alata-Regular.ttf` 78px track 0.45px — IoU 0.7196
+- `Roboto[wdth,wght].ttf` 78px track -0.47px — IoU 0.6573
 
 ### `text-4` — fine-print
 
@@ -152,73 +155,75 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=58, y=314, w=514, h=20 |
-| Normalised | x=5.37%, y=29.07%, w=47.59%, h=1.85% |
+| Bounding box (px) | x=58, y=314, w=514, h=19 |
+| Normalised | x=5.37%, y=29.07%, w=47.59%, h=1.76% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [400, 75.0] |
-| Font size | 24 px |
-| Letter-spacing | -0.49 px (-0.0204 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [800, 100.0] |
+| Font size | 20 px |
+| Letter-spacing | -0.03 px (-0.0015 em) |
+| Line-height | 28.0 px (ratio 1.4) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#eefcfc` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.19:1 |
 | Stroke (median/mean) | 3.0 / 4.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.479 |
+| Match IoU | 0.4093 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 25 px |
-| Gap to next | -1 px |
+| Gap to previous | 26 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 20px track 0.12px — IoU 0.4407
-- `Roboto[wdth,wght].ttf` 19px track 0.58px — IoU 0.4322
-- `Roboto[wdth,wght].ttf` 23px track -0.64px — IoU 0.4266
+- `Roboto[wdth,wght].ttf` 20px track -0.06px — IoU 0.5539
+- `Roboto[wdth,wght].ttf` 21px track -0.53px — IoU 0.5501
+- `Roboto[wdth,wght].ttf` 20px track 0.0px — IoU 0.5476
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "2026. This years event will be BIGGER, BETTER and"  (OCR confidence 0.9837)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=57, y=333, w=461, h=28 |
-| Normalised | x=5.28%, y=30.83%, w=42.69%, h=2.59% |
+| Bounding box (px) | x=57, y=342, w=461, h=19 |
+| Normalised | x=5.28%, y=31.67%, w=42.69%, h=1.76% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 100.0] |
-| Font size | 21 px |
-| Letter-spacing | -0.63 px (-0.03 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Variation axes | [800, 100.0] |
+| Font size | 20 px |
+| Letter-spacing | -0.03 px (-0.0015 em) |
+| Line-height | 28.0 px (ratio 1.4) |
+| Line | 2 of 3 |
 | Transform | none |
 | Colour | `#eefcfc` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.19:1 |
-| Stroke (median/mean) | 3.0 / 4.23 px |
+| Stroke (median/mean) | 3.0 / 4.25 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.2472 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.629 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 9 px |
 | Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 20px track -0.09px — IoU 0.2348
-- `Roboto[wdth,wght].ttf` 22px track -0.39px — IoU 0.2323
-- `Roboto[wdth,wght].ttf` 21px track -0.53px — IoU 0.231
+- `Roboto[wdth,wght].ttf` 20px track -0.06px — IoU 0.5539
+- `Roboto[wdth,wght].ttf` 21px track -0.53px — IoU 0.5501
+- `Roboto[wdth,wght].ttf` 20px track 0.0px — IoU 0.5476
 
-### `text-6` — detail
+### `text-6` — fine-print
 
 **Text:** "CHALLANGING."  (OCR confidence 0.9918)
 
@@ -230,101 +235,104 @@ Alternate font fits considered:
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
-| Variation axes | [900, 100.0, 12.0, 500.0] |
-| Font size | 18 px |
-| Letter-spacing | 0.3 px (0.0167 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 20 px |
+| Letter-spacing | -0.03 px (-0.0015 em) |
+| Line-height | 28.0 px (ratio 1.4) |
+| Line | 3 of 3 |
 | Transform | uppercase |
 | Colour | `#f0fcfc` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.19:1 |
 | Stroke (median/mean) | 3.0 / 3.98 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.7452 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.6922 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 9 px |
-| Gap to next | 172 px |
+| Gap to next | 180 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 23px track -0.12px — IoU 0.7286
-- `Roboto[wdth,wght].ttf` 23px track -0.15px — IoU 0.7243
-- `Roboto[wdth,wght].ttf` 21px track 0.21px — IoU 0.7197
+- `Roboto[wdth,wght].ttf` 20px track -0.06px — IoU 0.5539
+- `Roboto[wdth,wght].ttf` 21px track -0.53px — IoU 0.5501
+- `Roboto[wdth,wght].ttf` 20px track 0.0px — IoU 0.5476
 
-### `text-7` — supporting
+### `text-7` — body
 
 **Text:** "REGISTER"  (OCR confidence 0.9953)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=779, y=557, w=191, h=45 |
-| Normalised | x=72.13%, y=51.57%, w=17.69%, h=4.17% |
+| Bounding box (px) | x=787, y=565, w=175, h=27 |
+| Normalised | x=72.87%, y=52.31%, w=16.2%, h=2.5% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 48 px |
-| Letter-spacing | -0.75 px (-0.0156 em) |
-| Line-height | 50.0 px (ratio 1.042) |
+| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
+| Variation axes | [800, 100.0, 12.0, 500.0] |
+| Font size | 37 px |
+| Letter-spacing | -0.97 px (-0.0262 em) |
+| Line-height | 50.0 px (ratio 1.351) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.24:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.1663 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8359 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 172 px |
-| Gap to next | 5 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 180 px |
+| Gap to next | 23 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 47px track -0.16px — IoU 0.1864
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 39px track -0.54px — IoU 0.1859
-- `Roboto[wdth,wght].ttf` 43px track 0.47px — IoU 0.1859
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 39px track -0.44px — IoU 0.8037
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track 0.12px — IoU 0.8012
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.3px — IoU 0.7972
 
-### `text-8` — supporting
+### `text-8` — body
 
 **Text:** "BEFORE"  (OCR confidence 0.9942)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=796, y=607, w=157, h=43 |
-| Normalised | x=73.7%, y=56.2%, w=14.54%, h=3.98% |
+| Bounding box (px) | x=804, y=615, w=140, h=28 |
+| Normalised | x=74.44%, y=56.94%, w=12.96%, h=2.59% |
 | Alignment | right |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 48 px |
-| Letter-spacing | -0.75 px (-0.0156 em) |
-| Line-height | 50.0 px (ratio 1.042) |
+| Font file matched | `NunitoSans[YTLC,opsz,wdth,wght].ttf` |
+| Variation axes | [800, 100.0, 12.0, 500.0] |
+| Font size | 37 px |
+| Letter-spacing | -0.97 px (-0.0262 em) |
+| Line-height | 50.0 px (ratio 1.351) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.24:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.2153 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7912 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 5 px |
-| Gap to next | 9 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 23 px |
+| Gap to next | 33 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 47px track -0.16px — IoU 0.1864
-- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 39px track -0.54px — IoU 0.1859
-- `Roboto[wdth,wght].ttf` 43px track 0.47px — IoU 0.1859
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 39px track -0.44px — IoU 0.8037
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track 0.12px — IoU 0.8012
+- `NunitoSans[YTLC,opsz,wdth,wght].ttf` 32px track -0.3px — IoU 0.7972
 
 ### `text-9` — headline
 
@@ -332,35 +340,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=736, y=659, w=282, h=155 |
-| Normalised | x=68.15%, y=61.02%, w=26.11%, h=14.35% |
+| Bounding box (px) | x=752, y=676, w=253, h=119 |
+| Normalised | x=69.63%, y=62.59%, w=23.43%, h=11.02% |
 | Alignment | right |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 146 px |
-| Letter-spacing | -0.17 px (-0.0012 em) |
-| Line-height | 211.0 px (ratio 1.445) |
+| Font file matched | `Alata-Regular.ttf` |
+| Variation axes | None |
+| Font size | 147 px |
+| Letter-spacing | -1.05 px (-0.0071 em) |
+| Line-height | 209.0 px (ratio 1.422) |
 | Line | 1 of 2 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.24:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.2715 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.7049 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.8718) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 9 px |
-| Gap to next | 56 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 33 px |
+| Gap to next | 90 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 157px track -1.03px — IoU 0.3568
-- `Roboto[wdth,wght].ttf` 137px track -0.44px — IoU 0.3541
-- `Roboto[wdth,wght].ttf` 156px track -0.33px — IoU 0.3537
+- `Alata-Regular.ttf` 145px track 0.38px — IoU 0.6751
+- `Alata-Regular.ttf` 146px track -0.35px — IoU 0.6734
+- `Roboto[wdth,wght].ttf` 147px track 0.98px — IoU 0.4337
 
 ### `text-10` — headline
 
@@ -368,35 +377,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=712, y=870, w=327, h=146 |
-| Normalised | x=65.93%, y=80.56%, w=30.28%, h=13.52% |
+| Bounding box (px) | x=722, y=885, w=312, h=115 |
+| Normalised | x=66.85%, y=81.94%, w=28.89%, h=10.65% |
 | Alignment | right |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 87.5] |
-| Font size | 146 px |
-| Letter-spacing | -0.17 px (-0.0012 em) |
-| Line-height | 211.0 px (ratio 1.445) |
+| Font file matched | `Alata-Regular.ttf` |
+| Variation axes | None |
+| Font size | 147 px |
+| Letter-spacing | -1.05 px (-0.0071 em) |
+| Line-height | 209.0 px (ratio 1.422) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.24:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alata, Nunito Sans, Roboto |
-| Match IoU | 0.4465 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.7145 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 56 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 90 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 157px track -1.03px — IoU 0.3568
-- `Roboto[wdth,wght].ttf` 137px track -0.44px — IoU 0.3541
-- `Roboto[wdth,wght].ttf` 156px track -0.33px — IoU 0.3537
+- `Alata-Regular.ttf` 145px track 0.38px — IoU 0.6751
+- `Alata-Regular.ttf` 146px track -0.35px — IoU 0.6734
+- `Roboto[wdth,wght].ttf` 147px track 0.98px — IoU 0.4337
 
 ## 4. Colours (semantic)
 
@@ -408,7 +418,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'JULY' | glyph ink median |
 | accent | `#e8cc5c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7de3e7` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -432,7 +442,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1555 |
+| Text coverage | 0.1228 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -459,14 +469,14 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | JOIN US FOR |
+| `fine-print` | text | JOIN US FOR |
 | `subheadline_line1` | text | HACKATHON |
 | `subheadline_line2` | text | 2026 |
-| `fine-print` | text | Be a part of the most amazing event this year, Hackathon |
-| `detail` | text | 2026. This years event will be BIGGER, BETTER and |
-| `detail` | text | CHALLANGING. |
-| `supporting_line1` | text | REGISTER |
-| `supporting_line2` | text | BEFORE |
+| `fine-print_line1` | text | Be a part of the most amazing event this year, Hackathon |
+| `fine-print_line2` | text | 2026. This years event will be BIGGER, BETTER and |
+| `fine-print_line3` | text | CHALLANGING. |
+| `body_line1` | text | REGISTER |
+| `body_line2` | text | BEFORE |
 | `headline_line1` | text | 15th |
 | `headline_line2` | text | JULY |
 | `heroImage` | image | full-bleed artwork |
@@ -479,14 +489,14 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #7de3e7 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Alata |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 43.1 |

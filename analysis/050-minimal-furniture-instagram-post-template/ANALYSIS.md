@@ -34,11 +34,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "Home"  (OCR confidence 0.9972)
 
@@ -61,56 +61,58 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.67:1 |
 | Stroke (median/mean) | 7.0 / 9.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
 | Match IoU | 0.6992 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | None px |
-| Gap to next | -20 px |
+| Gap to next | -15 px |
 
 Alternate font fits considered:
 - `Actor-Regular.ttf` 63px track -0.51px — IoU 0.6774
 - `Actor-Regular.ttf` 62px track 0.34px — IoU 0.6711
 - `ABeeZee-Regular.ttf` 57px track 1.33px — IoU 0.6695
 
-### `text-2` — supporting
+### `text-2` — headline
 
-**Text:** "C om f o rt"  (OCR confidence 0.9945)
+**Text:** "Comfort"  (OCR confidence 0.9945)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=162, y=156, w=162, h=20 |
-| Normalised | x=15.0%, y=14.44%, w=15.0%, h=1.85% |
+| Bounding box (px) | x=73, y=161, w=462, h=111 |
+| Normalised | x=6.76%, y=14.91%, w=42.78%, h=10.28% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | -0.59 px (-0.0159 em) |
+| Font size | 129 px |
+| Letter-spacing | -0.89 px (-0.0069 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#ffffff` |
+| Colour | `#edb172` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.67:1 |
-| Stroke (median/mean) | 7.0 / 8.47 px |
+| Contrast vs local bg | 1.24:1 |
+| Stroke (median/mean) | 7.0 / 8.22 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
-| Match IoU | 0.1363 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5867 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -20 px |
-| Gap to next | 119 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -15 px |
+| Gap to next | 23 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 36px track -0.14px — IoU 0.1342
-- `ABeeZee-Regular.ttf` 33px track -0.46px — IoU 0.134
-- `ABeeZee-Regular.ttf` 32px track 0.04px — IoU 0.1295
+- `Actor-Regular.ttf` 128px track -0.29px — IoU 0.5763
+- `Actor-Regular.ttf` 127px track 0.31px — IoU 0.5639
+- `ABeeZee-Regular.ttf` 121px track -0.62px — IoU 0.4489
 
-### `text-3` — detail
+### `text-3` — body
 
 **Text:** "We Design Your Home More Beautiful"  (OCR confidence 0.9937)
 
@@ -133,114 +135,129 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.63:1 |
 | Stroke (median/mean) | 2.0 / 2.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
 | Match IoU | 0.4674 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 119 px |
-| Gap to next | -18 px |
+| Gap to previous | 23 px |
+| Gap to next | -13 px |
 
 Alternate font fits considered:
 - `Abel-Regular.ttf` 32px track -0.18px — IoU 0.4628
 - `Abel-Regular.ttf` 33px track -0.6px — IoU 0.3277
 - `ABeeZee-Regular.ttf` 26px track -0.6px — IoU 0.2748
 
-### `text-4` — headline
+### `text-4` — subheadline
 
 **Text:** "503"  (OCR confidence 0.8185)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=871, y=306, w=8, h=99 |
-| Normalised | x=80.65%, y=28.33%, w=0.74%, h=9.17% |
+| Bounding box (px) | x=871, y=311, w=125, h=89 |
+| Normalised | x=80.65%, y=28.8%, w=11.57%, h=8.24% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `—` |
+| Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | — px |
-| Letter-spacing | — px (— em) |
+| Font size | 82 px |
+| Letter-spacing | -1.13 px (-0.0138 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#c9d0da` |
+| Colour | `#8faac7` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.74:1 |
-| Stroke (median/mean) | 3.0 / 3.7 px |
+| Contrast vs local bg | 3.05:1 |
+| Stroke (median/mean) | 2.0 / 2.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
-| Match IoU | — |
-| **Geometry fit confidence** | **unresolved** |
+| Match IoU | 0.123 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8185) |
-| Fit interpretation | no viable candidate could be rendered |
-| Gap to previous | -18 px |
-| Gap to next | -98 px |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | -13 px |
+| Gap to next | -88 px |
 
-### `text-5` — detail
+Alternate font fits considered:
+- `Abel-Regular.ttf` 82px track -0.73px — IoU 0.1229
+- `ABeeZee-Regular.ttf` 68px track 1.3px — IoU 0.1194
+- `ABeeZee-Regular.ttf` 70px track -0.5px — IoU 0.117
+
+### `text-5` — subheadline
 
 **Text:** "%"  (OCR confidence 0.9965)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=1035, y=307, w=7, h=14 |
-| Normalised | x=95.83%, y=28.43%, w=0.65%, h=1.3% |
+| Bounding box (px) | x=959, y=312, w=83, h=58 |
+| Normalised | x=88.8%, y=28.89%, w=7.69%, h=5.37% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
+| Font file matched | `ABeeZee-Italic.ttf` |
 | Variation axes | None |
-| Font size | 10 px |
-| Letter-spacing | -0.66 px (-0.066 em) |
+| Font size | 93 px |
+| Letter-spacing | -0.7 px (-0.0075 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#2e2e2e` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 3.0:1 |
-| Stroke (median/mean) | 4.5 / 4.12 px |
+| Colour | `#8faac7` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.05:1 |
+| Stroke (median/mean) | 1.0 / 2.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
-| Match IoU | 0.0877 |
+| Match IoU | 0.2306 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -98 px |
-| Gap to next | 69 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -88 px |
+| Gap to next | -8 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 9px track 0.11px — IoU 0.0625
+- `ABeeZee-Italic.ttf` 91px track 1.09px — IoU 0.227
+- `ABeeZee-Italic.ttf` 92px track 0.2px — IoU 0.2233
 
-### `text-6` — detail
+### `text-6` — body
 
 **Text:** "OFF"  (OCR confidence 0.9989)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=1036, y=390, w=4, h=8 |
-| Normalised | x=95.93%, y=36.11%, w=0.37%, h=0.74% |
+| Bounding box (px) | x=975, y=362, w=65, h=31 |
+| Normalised | x=90.28%, y=33.52%, w=6.02%, h=2.87% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `—` |
+| Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | — px |
-| Letter-spacing | — px (— em) |
+| Font size | 36 px |
+| Letter-spacing | -0.65 px (-0.0181 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#2e2e2e` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 3.71:1 |
-| Stroke (median/mean) | 2.5 / 2.5 px |
+| Colour | `#8ca6c2` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.98:1 |
+| Stroke (median/mean) | 1.0 / 1.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
-| Match IoU | — |
-| **Geometry fit confidence** | **unresolved** |
+| Match IoU | 0.1505 |
+| **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | no viable candidate could be rendered |
-| Gap to previous | 69 px |
-| Gap to next | -2 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -8 px |
+| Gap to next | 3 px |
+
+Alternate font fits considered:
+- `ABeeZee-Regular.ttf` 37px track -1.38px — IoU 0.1452
+- `Actor-Regular.ttf` 34px track 1.19px — IoU 0.1439
+- `ABeeZee-Regular.ttf` 35px track 0.46px — IoU 0.1439
 
 ### `text-7` — fine-print
 
@@ -248,73 +265,75 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=98, y=396, w=138, h=19 |
-| Normalised | x=9.07%, y=36.67%, w=12.78%, h=1.76% |
+| Bounding box (px) | x=98, y=396, w=137, h=18 |
+| Normalised | x=9.07%, y=36.67%, w=12.69%, h=1.67% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 25 px |
-| Letter-spacing | -0.94 px (-0.0376 em) |
+| Font size | 23 px |
+| Letter-spacing | 0.39 px (0.017 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#fef8f3` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.32:1 |
-| Stroke (median/mean) | 4.0 / 4.82 px |
+| Stroke (median/mean) | 4.0 / 4.85 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
-| Match IoU | 0.4731 |
+| Match IoU | 0.5191 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -2 px |
-| Gap to next | 539 px |
+| Gap to previous | 3 px |
+| Gap to next | 540 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 24px track -0.21px — IoU 0.4609
-- `Actor-Regular.ttf` 23px track 0.51px — IoU 0.4083
-- `ABeeZee-Regular.ttf` 23px track 0.17px — IoU 0.3983
+- `ABeeZee-Regular.ttf` 23px track 0.04px — IoU 0.476
+- `Actor-Regular.ttf` 24px track -0.34px — IoU 0.4368
+- `ABeeZee-Regular.ttf` 24px track -0.7px — IoU 0.4145
 
-### `text-8` — supporting
+### `text-8` — body
 
 **Text:** "123-456-789"  (OCR confidence 0.9987)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=85, y=954, w=191, h=29 |
-| Normalised | x=7.87%, y=88.33%, w=17.69%, h=2.69% |
+| Bounding box (px) | x=85, y=954, w=191, h=28 |
+| Normalised | x=7.87%, y=88.33%, w=17.69%, h=2.59% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | -0.05 px (-0.0014 em) |
-| Line-height | 39.0 px (ratio 1.054) |
+| Font size | 38 px |
+| Letter-spacing | -0.56 px (-0.0147 em) |
+| Line-height | 39.0 px (ratio 1.026) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#fcfcfd` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.48:1 |
-| Stroke (median/mean) | 4.0 / 5.46 px |
+| Stroke (median/mean) | 4.0 / 5.52 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
-| Match IoU | 0.4907 |
+| Match IoU | 0.5342 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 539 px |
-| Gap to next | 10 px |
+| Gap to previous | 540 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 38px track -0.56px — IoU 0.4523
-- `Abel-Regular.ttf` 36px track 0.47px — IoU 0.3882
-- `ABeeZee-Regular.ttf` 30px track -0.7px — IoU 0.3635
+- `Abel-Regular.ttf` 37px track -0.05px — IoU 0.474
+- `Abel-Regular.ttf` 36px track 0.47px — IoU 0.4098
+- `ABeeZee-Regular.ttf` 30px track -0.7px — IoU 0.3715
 
-### `text-9` — supporting
+### `text-9` — body
 
 **Text:** "www.ocoya.com"  (OCR confidence 0.9888)
 
@@ -328,27 +347,28 @@ Alternate font fits considered:
 | Opacity | 1.0 |
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | -0.05 px (-0.0014 em) |
-| Line-height | 39.0 px (ratio 1.054) |
+| Font size | 38 px |
+| Letter-spacing | -0.56 px (-0.0147 em) |
+| Line-height | 39.0 px (ratio 1.026) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#fafbfd` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.47:1 |
 | Stroke (median/mean) | 3.0 / 3.92 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Abel, ABeeZee |
-| Match IoU | 0.4153 |
+| Match IoU | 0.4426 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 10 px |
+| Gap to previous | 11 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 38px track -0.56px — IoU 0.4523
-- `Abel-Regular.ttf` 36px track 0.47px — IoU 0.3882
-- `ABeeZee-Regular.ttf` 30px track -0.7px — IoU 0.3635
+- `Abel-Regular.ttf` 37px track -0.05px — IoU 0.474
+- `Abel-Regular.ttf` 36px track 0.47px — IoU 0.4098
+- `ABeeZee-Regular.ttf` 30px track -0.7px — IoU 0.3715
 
 ## 4. Colours (semantic)
 
@@ -356,11 +376,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#c4ccd6` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#7596b9` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#c9d0da` | glyph ink of '503' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'Home' | glyph ink median |
+| textPrimary | `#edb172` | glyph ink of 'Comfort' | glyph ink median |
+| textSecondary | `#8faac7` | glyph ink of '503' | glyph ink median |
 | accent | `#7596b9` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#dba872` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -384,7 +404,7 @@ Full palette (k-means):
 | Subject position | lower-right |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0321 |
+| Text coverage | 0.0876 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -411,34 +431,34 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | Home |
-| `supporting` | text | C om f o rt |
-| `detail` | text | We Design Your Home More Beautiful |
-| `headline` | text | 503 |
-| `detail` | text | % |
-| `detail` | text | OFF |
+| `supporting` | text | Home |
+| `headline` | text | Comfort |
+| `body` | text | We Design Your Home More Beautiful |
+| `subheadline` | text | 503 |
+| `subheadline` | text | % |
+| `body` | text | OFF |
 | `fine-print` | text | ORDER NOW |
-| `supporting_line1` | text | 123-456-789 |
-| `supporting_line2` | text | www.ocoya.com |
+| `body_line1` | text | 123-456-789 |
+| `body_line2` | text | www.ocoya.com |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #c4ccd6 |
 | `surface` | colour | #7596b9 |
-| `textPrimary` | colour | #c9d0da |
-| `textSecondary` | colour | #ffffff |
+| `textPrimary` | colour | #edb172 |
+| `textSecondary` | colour | #8faac7 |
 | `accent` | colour | #7596b9 |
 | `accentSecondary` | colour | #dba872 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Actor |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 60.4 |
 | `imageFocalY` | number | 63.2 |
 

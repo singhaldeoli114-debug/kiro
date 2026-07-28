@@ -33,11 +33,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — fine-print
 
 **Text:** "I NTERNATIONAL"  (OCR confidence 0.9919)
 
@@ -60,11 +60,12 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.69:1 |
 | Stroke (median/mean) | 4.0 / 4.69 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Open Sans, Allura |
 | Match IoU | 0.3204 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
 | Gap to next | 51 px |
 
@@ -96,6 +97,8 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.69:1 |
 | Stroke (median/mean) | 12.0 / 13.54 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Open Sans, Allura |
 | Match IoU | 0.7602 |
 | **Geometry fit confidence** | **high** |
@@ -132,6 +135,8 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.69:1 |
 | Stroke (median/mean) | 12.0 / 12.57 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Open Sans, Allura |
 | Match IoU | 0.1303 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
@@ -155,7 +160,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'yoga' | glyph ink median |
 | accent | `#a786c2` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1b2989` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -206,7 +211,7 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | I NTERNATIONAL |
+| `fine-print` | text | I NTERNATIONAL |
 | `subheadline` | text | Day |
 | `headline` | text | yoga |
 | `heroImage` | image | framed/panelled artwork |
@@ -219,7 +224,7 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #1b2989 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Open Sans |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 50.0 |

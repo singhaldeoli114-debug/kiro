@@ -34,26 +34,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — subheadline
 
 **Text:** "FA"  (OCR confidence 0.9966)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=471, y=69, w=82, h=21 |
-| Normalised | x=43.61%, y=6.39%, w=7.59%, h=1.94% |
-| Alignment | left |
+| Bounding box (px) | x=470, y=74, w=236, h=161 |
+| Normalised | x=43.52%, y=6.85%, w=21.85%, h=14.91% |
+| Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `ArchivoBlack-Regular.ttf` |
-| Variation axes | None |
-| Font size | 56 px |
-| Letter-spacing | 1.08 px (0.0193 em) |
+| Font file matched | `Cinzel[wght].ttf` |
+| Variation axes | [900.0] |
+| Font size | 176 px |
+| Letter-spacing | -1.78 px (-0.0101 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -61,27 +61,29 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.21:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Archivo Black, Cinzel, Babylonica |
-| Match IoU | 0.3514 |
+| Match IoU | 0.3088 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 64 px |
+| Gap to next | -76 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 58px track -1.81px — IoU 0.3504
-- `ArchivoBlack-Regular.ttf` 57px track -0.36px — IoU 0.3328
-- `Cinzel[wght].ttf` 60px track 0.94px — IoU 0.3213
+- `Cinzel[wght].ttf` 175px track -0.42px — IoU 0.304
+- `ArchivoBlack-Regular.ttf` 164px track -0.98px — IoU 0.3016
+- `Cinzel[wght].ttf` 174px track 0.92px — IoU 0.3005
 
-### `text-2` — supporting
+### `text-2` — body
 
 **Text:** "spesial"  (OCR confidence 0.9211)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=148, y=154, w=282, h=110 |
-| Normalised | x=13.7%, y=14.26%, w=26.11%, h=10.19% |
+| Bounding box (px) | x=148, y=159, w=282, h=100 |
+| Normalised | x=13.7%, y=14.72%, w=26.11%, h=9.26% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -93,22 +95,23 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#fffcf3` |
+| Colour | `#fffbf1` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.36:1 |
-| Stroke (median/mean) | 4.0 / 5.64 px |
+| Contrast vs local bg | 2.35:1 |
+| Stroke (median/mean) | 4.0 / 5.26 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Cinzel, Babylonica |
-| Match IoU | 0.1402 |
+| Match IoU | 0.1525 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9211) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 64 px |
-| Gap to next | -30 px |
+| Gap to previous | -76 px |
+| Gap to next | -20 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 73px track -0.32px — IoU 0.14
-- `ArchivoBlack-Regular.ttf` 72px track 0.33px — IoU 0.1385
-- `Babylonica-Regular.ttf` 162px track -0.3px — IoU 0.1276
+- `ArchivoBlack-Regular.ttf` 73px track -0.32px — IoU 0.1518
+- `ArchivoBlack-Regular.ttf` 72px track 0.33px — IoU 0.151
+- `Cinzel[wght].ttf` 74px track -0.26px — IoU 0.1199
 
 ### `text-4` — subheadline
 
@@ -116,8 +119,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=101, y=234, w=383, h=125 |
-| Normalised | x=9.35%, y=21.67%, w=35.46%, h=11.57% |
+| Bounding box (px) | x=101, y=239, w=383, h=120 |
+| Normalised | x=9.35%, y=22.13%, w=35.46%, h=11.11% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -132,21 +135,22 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.39:1 |
-| Stroke (median/mean) | 22.0 / 17.42 px |
+| Stroke (median/mean) | 22.0 / 17.52 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Cinzel, Babylonica |
-| Match IoU | 0.6219 |
+| Match IoU | 0.6814 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -30 px |
+| Gap to previous | -20 px |
 | Gap to next | -109 px |
 
 Alternate font fits considered:
-- `Cinzel[wght].ttf` 146px track 0.5px — IoU 0.6169
-- `Cinzel[wght].ttf` 147px track -0.38px — IoU 0.6121
-- `Cinzel[wght].ttf` 148px track -1.24px — IoU 0.6107
+- `Cinzel[wght].ttf` 146px track 0.5px — IoU 0.674
+- `Cinzel[wght].ttf` 147px track -0.38px — IoU 0.673
+- `Cinzel[wght].ttf` 148px track -1.24px — IoU 0.6635
 
-### `text-3` — detail
+### `text-3` — fine-print
 
 **Text:** "FA"  (OCR confidence 0.9924)
 
@@ -169,11 +173,12 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.38:1 |
 | Stroke (median/mean) | 4.5 / 11.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Cinzel, Babylonica |
 | Match IoU | 0.2161 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | -109 px |
 | Gap to next | 74 px |
 
@@ -188,8 +193,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=123, y=431, w=340, h=181 |
-| Normalised | x=11.39%, y=39.91%, w=31.48%, h=16.76% |
+| Bounding box (px) | x=123, y=431, w=340, h=182 |
+| Normalised | x=11.39%, y=39.91%, w=31.48%, h=16.85% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
@@ -205,18 +210,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.39:1 |
 | Stroke (median/mean) | 12.0 / 13.18 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Cinzel, Babylonica |
-| Match IoU | 0.9184 |
+| Match IoU | 0.9106 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 74 px |
-| Gap to next | -166 px |
+| Gap to next | -168 px |
 
 Alternate font fits considered:
-- `Cinzel[wght].ttf` 222px track 0.61px — IoU 0.9103
-- `Cinzel[wght].ttf` 223px track -0.15px — IoU 0.9028
-- `Cinzel[wght].ttf` 215px track 0.15px — IoU 0.7459
+- `Cinzel[wght].ttf` 223px track -0.15px — IoU 0.8991
+- `Cinzel[wght].ttf` 222px track 0.61px — IoU 0.8883
+- `Cinzel[wght].ttf` 215px track 0.15px — IoU 0.7496
 
 ### `text-5` — fine-print
 
@@ -224,52 +230,54 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=691, y=446, w=55, h=66 |
-| Normalised | x=63.98%, y=41.3%, w=5.09%, h=6.11% |
+| Bounding box (px) | x=688, y=445, w=59, h=63 |
+| Normalised | x=63.7%, y=41.2%, w=5.46%, h=5.83% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 39 px |
-| Letter-spacing | -1.36 px (-0.0349 em) |
+| Font size | 40 px |
+| Letter-spacing | 1.19 px (0.0297 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#d2b7a5` |
+| Colour | `#d3b8a6` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 1.47:1 |
-| Stroke (median/mean) | 2.0 / 1.97 px |
+| Contrast vs local bg | 1.48:1 |
+| Stroke (median/mean) | 2.0 / 1.99 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Archivo Black, Cinzel, Babylonica |
-| Match IoU | 0.3007 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.2847 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -166 px |
-| Gap to next | 297 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -168 px |
+| Gap to next | 301 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 38px track 0.09px — IoU 0.2967
-- `ArchivoBlack-Regular.ttf` 37px track 1.55px — IoU 0.294
-- `Cinzel[wght].ttf` 42px track -1.73px — IoU 0.2547
+- `ArchivoBlack-Regular.ttf` 41px track -0.23px — IoU 0.2829
+- `ArchivoBlack-Regular.ttf` 42px track -1.69px — IoU 0.2824
+- `Cinzel[wght].ttf` 45px track -1.8px — IoU 0.2324
 
-### `text-7` — detail
+### `text-7` — body
 
 **Text:** "SHOP NOW"  (OCR confidence 0.9412)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=139, y=809, w=306, h=38 |
-| Normalised | x=12.87%, y=74.91%, w=28.33%, h=3.52% |
+| Bounding box (px) | x=139, y=809, w=308, h=38 |
+| Normalised | x=12.87%, y=74.91%, w=28.52%, h=3.52% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Cinzel[wght].ttf` |
 | Variation axes | [700] |
-| Font size | 52 px |
-| Letter-spacing | -0.41 px (-0.0079 em) |
+| Font size | 53 px |
+| Letter-spacing | -0.98 px (-0.0185 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -277,18 +285,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.37:1 |
 | Stroke (median/mean) | 8.0 / 7.6 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Cinzel, Babylonica |
-| Match IoU | 0.8162 |
+| Match IoU | 0.803 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 297 px |
+| Gap to previous | 301 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Cinzel[wght].ttf` 50px track 0.54px — IoU 0.7856
-- `Cinzel[wght].ttf` 51px track -0.33px — IoU 0.7854
-- `Cinzel[wght].ttf` 52px track -1.19px — IoU 0.7802
+- `Cinzel[wght].ttf` 52px track -0.12px — IoU 0.712
+- `Cinzel[wght].ttf` 54px track -0.98px — IoU 0.6836
+- `Cinzel[wght].ttf` 50px track 0.82px — IoU 0.673
 
 ## 4. Colours (semantic)
 
@@ -297,10 +306,10 @@ Alternate font fits considered:
 | background | `#eddfd4` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#a55625` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#ffffff` | glyph ink of '15%' | glyph ink median |
-| textSecondary | `#d2b7a5` | glyph ink of 'FA' | glyph ink median |
+| textSecondary | `#b37046` | glyph ink of 'FA' | glyph ink median |
 | accent | `#a55625` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#b27c5b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -324,7 +333,7 @@ Full palette (k-means):
 | Subject position | lower-right |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1394 |
+| Text coverage | 0.1668 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -351,30 +360,30 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | FA |
-| `supporting` | text | spesial |
+| `subheadline` | text | FA |
+| `body` | text | spesial |
 | `subheadline` | text | SALE |
-| `detail` | text | FA |
+| `fine-print` | text | FA |
 | `headline` | text | 15% |
 | `fine-print` | text | FA |
-| `detail` | text | SHOP NOW |
+| `body` | text | SHOP NOW |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #eddfd4 |
 | `surface` | colour | #a55625 |
 | `textPrimary` | colour | #ffffff |
-| `textSecondary` | colour | #d2b7a5 |
+| `textSecondary` | colour | #b37046 |
 | `accent` | colour | #a55625 |
 | `accentSecondary` | colour | #b27c5b |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Archivo Black |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 67.2 |
 | `imageFocalY` | number | 63.4 |
 

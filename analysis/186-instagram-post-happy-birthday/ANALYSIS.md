@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -53,26 +53,27 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `AbhayaLibre-Medium.ttf` |
 | Variation axes | None |
 | Font size | 90 px |
-| Letter-spacing | -0.35 px (-0.0039 em) |
-| Line-height | 103.0 px (ratio 1.144) |
+| Letter-spacing | -0.2 px (-0.0022 em) |
+| Line-height | 102.0 px (ratio 1.133) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.78:1 |
 | Stroke (median/mean) | 8.0 / 9.73 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Source Serif Pro, Abhaya Libre |
-| Match IoU | 0.85 |
+| Match IoU | 0.8583 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 49 px |
+| Gap to next | 48 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-Medium.ttf` 89px track 0.31px — IoU 0.8341
-- `AbhayaLibre-Medium.ttf` 88px track 0.96px — IoU 0.826
-- `AbhayaLibre-SemiBold.ttf` 89px track 0.04px — IoU 0.8237
+- `AbhayaLibre-SemiBold.ttf` 89px track 0.19px — IoU 0.82
+- `AbhayaLibre-SemiBold.ttf` 90px track -0.47px — IoU 0.8032
+- `AbhayaLibre-SemiBold.ttf` 88px track 0.84px — IoU 0.7911
 
 ### `text-2` — headline
 
@@ -80,8 +81,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=610, y=248, w=409, h=53 |
-| Normalised | x=56.48%, y=22.96%, w=37.87%, h=4.91% |
+| Bounding box (px) | x=610, y=247, w=410, h=54 |
+| Normalised | x=56.48%, y=22.87%, w=37.96%, h=5.0% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,26 +90,27 @@ Alternate font fits considered:
 | Font file matched | `AbhayaLibre-Medium.ttf` |
 | Variation axes | None |
 | Font size | 90 px |
-| Letter-spacing | -0.35 px (-0.0039 em) |
-| Line-height | 103.0 px (ratio 1.144) |
+| Letter-spacing | -0.2 px (-0.0022 em) |
+| Line-height | 102.0 px (ratio 1.133) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.78:1 |
 | Stroke (median/mean) | 8.0 / 9.38 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Source Serif Pro, Abhaya Libre |
-| Match IoU | 0.8584 |
+| Match IoU | 0.8096 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 49 px |
+| Gap to previous | 48 px |
 | Gap to next | 596 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-Medium.ttf` 89px track 0.31px — IoU 0.8341
-- `AbhayaLibre-Medium.ttf` 88px track 0.96px — IoU 0.826
-- `AbhayaLibre-SemiBold.ttf` 89px track 0.04px — IoU 0.8237
+- `AbhayaLibre-SemiBold.ttf` 89px track 0.19px — IoU 0.82
+- `AbhayaLibre-SemiBold.ttf` 90px track -0.47px — IoU 0.8032
+- `AbhayaLibre-SemiBold.ttf` 88px track 0.84px — IoU 0.7911
 
 ### `text-3` — supporting
 
@@ -116,8 +118,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=613, y=897, w=387, h=29 |
-| Normalised | x=56.76%, y=83.06%, w=35.83%, h=2.69% |
+| Bounding box (px) | x=613, y=897, w=387, h=30 |
+| Normalised | x=56.76%, y=83.06%, w=35.83%, h=2.78% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -126,25 +128,26 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 36 px |
 | Letter-spacing | -0.6 px (-0.0167 em) |
-| Line-height | 43.0 px (ratio 1.194) |
+| Line-height | 42.0 px (ratio 1.167) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#fdf9f9` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.71:1 |
 | Stroke (median/mean) | 3.0 / 3.83 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Source Serif Pro, Abhaya Libre |
-| Match IoU | 0.3473 |
+| Match IoU | 0.3627 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 596 px |
-| Gap to next | 14 px |
+| Gap to next | 12 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 35px track -0.3px — IoU 0.2595
-- `AbhayaLibre-ExtraBold.ttf` 33px track 0.53px — IoU 0.253
-- `AbhayaLibre-Bold.ttf` 35px track -0.19px — IoU 0.2517
+- `AbhayaLibre-ExtraBold.ttf` 35px track -0.3px — IoU 0.2677
+- `AbhayaLibre-Bold.ttf` 35px track -0.19px — IoU 0.2624
+- `AbhayaLibre-ExtraBold.ttf` 33px track 0.53px — IoU 0.2614
 
 ### `text-4` — supporting
 
@@ -152,8 +155,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=618, y=940, w=384, h=29 |
-| Normalised | x=57.22%, y=87.04%, w=35.56%, h=2.69% |
+| Bounding box (px) | x=618, y=939, w=384, h=30 |
+| Normalised | x=57.22%, y=86.94%, w=35.56%, h=2.78% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -162,25 +165,26 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 36 px |
 | Letter-spacing | -0.6 px (-0.0167 em) |
-| Line-height | 43.0 px (ratio 1.194) |
+| Line-height | 42.0 px (ratio 1.167) |
 | Line | 2 of 2 |
 | Transform | none |
 | Colour | `#fffefe` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.77:1 |
 | Stroke (median/mean) | 3.0 / 3.62 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Source Serif Pro, Abhaya Libre |
-| Match IoU | 0.1894 |
+| Match IoU | 0.1915 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 14 px |
-| Gap to next | -21 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 12 px |
+| Gap to next | -19 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 35px track -0.3px — IoU 0.2595
-- `AbhayaLibre-ExtraBold.ttf` 33px track 0.53px — IoU 0.253
-- `AbhayaLibre-Bold.ttf` 35px track -0.19px — IoU 0.2517
+- `AbhayaLibre-ExtraBold.ttf` 35px track -0.3px — IoU 0.2677
+- `AbhayaLibre-Bold.ttf` 35px track -0.19px — IoU 0.2624
+- `AbhayaLibre-ExtraBold.ttf` 33px track 0.53px — IoU 0.2614
 
 ### `text-5` — subheadline
 
@@ -188,8 +192,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=252, y=948, w=39, h=38 |
-| Normalised | x=23.33%, y=87.78%, w=3.61%, h=3.52% |
+| Bounding box (px) | x=252, y=950, w=39, h=36 |
+| Normalised | x=23.33%, y=87.96%, w=3.61%, h=3.33% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
@@ -205,18 +209,20 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.78:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Source Serif Pro, Abhaya Libre |
-| Match IoU | 0.1938 |
+| Match IoU | 0.1943 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.5383) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -21 px |
+| Gap to previous | -19 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 62px track 0.8px — IoU 0.1809
-- `AbhayaLibre-ExtraBold.ttf` 63px track 0.17px — IoU 0.18
-- `AbhayaLibre-Bold.ttf` 62px track 0.8px — IoU 0.1722
+- `AbhayaLibre-ExtraBold.ttf` 63px track 0.17px — IoU 0.189
+- `AbhayaLibre-ExtraBold.ttf` 62px track 0.8px — IoU 0.1888
+- `AbhayaLibre-Bold.ttf` 62px track 0.8px — IoU 0.1823
 
 ## 4. Colours (semantic)
 
@@ -228,7 +234,7 @@ Alternate font fits considered:
 | textSecondary | `#c5141a` | glyph ink of '口' | glyph ink median |
 | accent | `#c3141a` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1c0a08` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -252,7 +258,7 @@ Full palette (k-means):
 | Subject position | middle-left |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | False |
-| Text coverage | 0.0512 |
+| Text coverage | 0.0522 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

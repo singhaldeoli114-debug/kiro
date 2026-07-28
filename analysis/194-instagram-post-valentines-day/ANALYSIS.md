@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,8 +42,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=91, y=104, w=634, h=207 |
-| Normalised | x=8.43%, y=9.63%, w=58.7%, h=19.17% |
+| Bounding box (px) | x=91, y=104, w=634, h=202 |
+| Normalised | x=8.43%, y=9.63%, w=58.7%, h=18.7% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -59,8 +59,10 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.78:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Great Vibes |
-| Match IoU | 0.0869 |
+| Match IoU | 0.0967 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9187) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
@@ -68,8 +70,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `GreatVibes-Regular.ttf` 183px track -0.45px — IoU 0.0865
-- `GreatVibes-Regular.ttf` 182px track -0.1px — IoU 0.0851
+- `GreatVibes-Regular.ttf` 183px track -0.45px — IoU 0.0959
+- `GreatVibes-Regular.ttf` 182px track -0.1px — IoU 0.0953
 
 ## 4. Colours (semantic)
 
@@ -81,7 +83,7 @@ Alternate font fits considered:
 | textSecondary | — | not identified | — |
 | accent | `#822117` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#aa6749` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -105,7 +107,7 @@ Full palette (k-means):
 | Subject position | lower-right |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.1125 |
+| Text coverage | 0.1098 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

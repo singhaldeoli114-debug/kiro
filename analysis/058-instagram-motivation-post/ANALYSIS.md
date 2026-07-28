@@ -33,117 +33,120 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
 ### `text-1` — headline
 
-**Text:** "EveryMonday"  (OCR confidence 0.9963)
+**Text:** "Every Monday"  (OCR confidence 0.9963)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=347, y=358, w=396, h=72 |
-| Normalised | x=32.13%, y=33.15%, w=36.67%, h=6.67% |
+| Bounding box (px) | x=346, y=358, w=397, h=61 |
+| Normalised | x=32.04%, y=33.15%, w=36.76%, h=5.65% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 73 px |
-| Letter-spacing | 0.11 px (0.0015 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Manrope[wght].ttf` |
+| Variation axes | [500] |
+| Font size | 62 px |
+| Letter-spacing | -0.84 px (-0.0135 em) |
+| Line-height | 71.0 px (ratio 1.145) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#1d1d1c` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.18:1 |
 | Stroke (median/mean) | 5.0 / 5.84 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Manrope, Roboto |
-| Match IoU | 0.2595 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.7203 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -1 px |
+| Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Manrope[wght].ttf` 59px track 0.37px — IoU 0.2492
-- `Roboto[wdth,wght].ttf` 68px track 0.45px — IoU 0.2471
-- `Roboto[wdth,wght].ttf` 75px track -0.76px — IoU 0.2464
+- `Manrope[wght].ttf` 61px track -0.79px — IoU 0.7478
+- `Manrope[wght].ttf` 61px track -0.24px — IoU 0.7434
+- `Manrope[wght].ttf` 62px track -0.27px — IoU 0.7338
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "is a new"  (OCR confidence 0.9202)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=434, y=429, w=222, h=46 |
-| Normalised | x=40.19%, y=39.72%, w=20.56%, h=4.26% |
+| Bounding box (px) | x=434, y=428, w=223, h=48 |
+| Normalised | x=40.19%, y=39.63%, w=20.65%, h=4.44% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Manrope[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 60 px |
-| Letter-spacing | -0.54 px (-0.009 em) |
-| Line-height | 71.0 px (ratio 1.183) |
-| Line | 1 of 2 |
+| Font size | 62 px |
+| Letter-spacing | -0.84 px (-0.0135 em) |
+| Line-height | 71.0 px (ratio 1.145) |
+| Line | 2 of 3 |
 | Transform | lowercase |
 | Colour | `#1e1d1c` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.17:1 |
 | Stroke (median/mean) | 5.0 / 6.25 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Manrope, Roboto |
-| Match IoU | 0.8211 |
+| Match IoU | 0.8088 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.9202) |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -1 px |
-| Gap to next | 25 px |
+| Gap to previous | 9 px |
+| Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Manrope[wght].ttf` 58px track 0.08px — IoU 0.7153
-- `Manrope[wght].ttf` 59px track -0.56px — IoU 0.7115
-- `Manrope[wght].ttf` 58px track -0.54px — IoU 0.6692
+- `Manrope[wght].ttf` 61px track -0.79px — IoU 0.7478
+- `Manrope[wght].ttf` 61px track -0.24px — IoU 0.7434
+- `Manrope[wght].ttf` 62px track -0.27px — IoU 0.7338
 
-### `text-3` — subheadline
+### `text-3` — headline
 
 **Text:** "chance."  (OCR confidence 0.9575)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=437, y=500, w=222, h=46 |
-| Normalised | x=40.46%, y=46.3%, w=20.56%, h=4.26% |
+| Bounding box (px) | x=437, y=500, w=222, h=47 |
+| Normalised | x=40.46%, y=46.3%, w=20.56%, h=4.35% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Manrope[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 60 px |
-| Letter-spacing | -0.54 px (-0.009 em) |
-| Line-height | 71.0 px (ratio 1.183) |
-| Line | 2 of 2 |
+| Font size | 62 px |
+| Letter-spacing | -0.84 px (-0.0135 em) |
+| Line-height | 71.0 px (ratio 1.145) |
+| Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#1e1d1c` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 6.15:1 |
 | Stroke (median/mean) | 5.0 / 6.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Manrope, Roboto |
-| Match IoU | 0.6328 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7569 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 25 px |
-| Gap to next | 76 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 24 px |
+| Gap to next | 75 px |
 
 Alternate font fits considered:
-- `Manrope[wght].ttf` 58px track 0.08px — IoU 0.7153
-- `Manrope[wght].ttf` 59px track -0.56px — IoU 0.7115
-- `Manrope[wght].ttf` 58px track -0.54px — IoU 0.6692
+- `Manrope[wght].ttf` 61px track -0.79px — IoU 0.7478
+- `Manrope[wght].ttf` 61px track -0.24px — IoU 0.7434
+- `Manrope[wght].ttf` 62px track -0.27px — IoU 0.7338
 
 ### `text-4` — supporting
 
@@ -168,12 +171,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.52:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Manrope, Roboto |
 | Match IoU | 0.8352 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 76 px |
+| Gap to previous | 75 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -187,11 +191,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f5f0ed` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#394b3e` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#1d1d1c` | glyph ink of 'EveryMonday' | glyph ink median |
+| textPrimary | `#1d1d1c` | glyph ink of 'Every Monday' | glyph ink median |
 | textSecondary | `#9b9b9b` | glyph ink of 'GOT IT!' | glyph ink median |
 | accent | `#d9b293` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#bd927d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0443 |
+| Text coverage | 0.0412 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -242,9 +246,9 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `headline` | text | EveryMonday |
-| `subheadline_line1` | text | is a new |
-| `subheadline_line2` | text | chance. |
+| `headline_line1` | text | Every Monday |
+| `headline_line2` | text | is a new |
+| `headline_line3` | text | chance. |
 | `supporting` | text | GOT IT! |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -257,8 +261,8 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Manrope |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 55.4 |
 | `imageFocalY` | number | 69.9 |

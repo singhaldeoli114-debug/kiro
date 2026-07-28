@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,16 +44,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=64, y=161, w=400, h=117 |
-| Normalised | x=5.93%, y=14.91%, w=37.04%, h=10.83% |
+| Bounding box (px) | x=65, y=161, w=399, h=110 |
+| Normalised | x=6.02%, y=14.91%, w=36.94%, h=10.19% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `GreatVibes-Regular.ttf` |
 | Variation axes | None |
-| Font size | 102 px |
-| Letter-spacing | -0.39 px (-0.0038 em) |
+| Font size | 101 px |
+| Letter-spacing | -0.02 px (-0.0002 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -61,18 +61,20 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.85:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alegreya, Great Vibes, ADLaM Display |
-| Match IoU | 0.4103 |
-| **Geometry fit confidence** | **low-textUnreliable** |
+| Match IoU | 0.7007 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.8593) |
-| Fit interpretation | plausible but unverified; OCR text is suspect, so the score understates the fit |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -95 px |
+| Gap to next | -75 px |
 
 Alternate font fits considered:
-- `GreatVibes-Regular.ttf` 101px track 0.11px — IoU 0.3677
-- `GreatVibes-Regular.ttf` 100px track 0.61px — IoU 0.3658
-- `ADLaMDisplay-Regular.ttf` 84px track 0.08px — IoU 0.164
+- `GreatVibes-Regular.ttf` 100px track 0.48px — IoU 0.6935
+- `GreatVibes-Regular.ttf` 102px track -0.51px — IoU 0.6809
+- `ADLaMDisplay-Regular.ttf` 84px track -0.05px — IoU 0.1633
 
 ### `text-2` — subheadline
 
@@ -80,8 +82,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=419, y=183, w=158, h=58 |
-| Normalised | x=38.8%, y=16.94%, w=14.63%, h=5.37% |
+| Bounding box (px) | x=419, y=196, w=158, h=45 |
+| Normalised | x=38.8%, y=18.15%, w=14.63%, h=4.17% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -95,20 +97,22 @@ Alternate font fits considered:
 | Transform | lowercase |
 | Colour | `#733c07` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.57:1 |
+| Contrast vs local bg | 2.6:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Alegreya, Great Vibes, ADLaM Display |
-| Match IoU | 0.1954 |
+| Match IoU | 0.2538 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8965) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -95 px |
-| Gap to next | 316 px |
+| Gap to previous | -75 px |
+| Gap to next | 324 px |
 
 Alternate font fits considered:
-- `Alegreya[wght].ttf` 67px track 0.79px — IoU 0.1907
-- `Alegreya[wght].ttf` 69px track -0.76px — IoU 0.1891
-- `Alegreya[wght].ttf` 70px track -0.7px — IoU 0.1719
+- `Alegreya[wght].ttf` 69px track -0.76px — IoU 0.2452
+- `Alegreya[wght].ttf` 67px track 0.79px — IoU 0.2396
+- `Alegreya[wght].ttf` 70px track -0.7px — IoU 0.2221
 
 ### `text-3` — subheadline
 
@@ -116,107 +120,111 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=238, y=557, w=121, h=58 |
-| Normalised | x=22.04%, y=51.57%, w=11.2%, h=5.37% |
+| Bounding box (px) | x=238, y=565, w=121, h=45 |
+| Normalised | x=22.04%, y=52.31%, w=11.2%, h=4.17% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alegreya[wght].ttf` |
 | Variation axes | [900.0] |
-| Font size | 72 px |
-| Letter-spacing | 1.17 px (0.0163 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 74 px |
+| Letter-spacing | -0.48 px (-0.0065 em) |
+| Line-height | 46.0 px (ratio 0.622) |
+| Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.25:1 |
-| Stroke (median/mean) | 7.0 / 7.92 px |
+| Stroke (median/mean) | 7.0 / 7.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alegreya, Great Vibes, ADLaM Display |
-| Match IoU | 0.2647 |
+| Match IoU | 0.2951 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 316 px |
-| Gap to next | -14 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 324 px |
+| Gap to next | 1 px |
 
 Alternate font fits considered:
-- `Alegreya[wght].ttf` 74px track -0.48px — IoU 0.2636
-- `Alegreya[wght].ttf` 75px track -1.16px — IoU 0.2622
-- `Alegreya[wght].ttf` 73px track 0.35px — IoU 0.262
+- `Alegreya[wght].ttf` 72px track 1.17px — IoU 0.2786
+- `Alegreya[wght].ttf` 75px track -1.16px — IoU 0.2757
+- `Alegreya[wght].ttf` 73px track 0.35px — IoU 0.2744
 
-### `text-4` — supporting
+### `text-4` — subheadline
 
 **Text:** "OFF"  (OCR confidence 0.9873)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=247, y=601, w=99, h=58 |
-| Normalised | x=22.87%, y=55.65%, w=9.17%, h=5.37% |
+| Bounding box (px) | x=247, y=611, w=109, h=43 |
+| Normalised | x=22.87%, y=56.57%, w=10.09%, h=3.98% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `ADLaMDisplay-Regular.ttf` |
-| Variation axes | None |
-| Font size | 54 px |
-| Letter-spacing | 0.3 px (0.0056 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Alegreya[wght].ttf` |
+| Variation axes | [900.0] |
+| Font size | 74 px |
+| Letter-spacing | -0.48 px (-0.0065 em) |
+| Line-height | 46.0 px (ratio 0.622) |
+| Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.25:1 |
-| Stroke (median/mean) | 8.0 / 9.84 px |
+| Stroke (median/mean) | 8.0 / 9.95 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alegreya, Great Vibes, ADLaM Display |
-| Match IoU | 0.2422 |
+| Match IoU | 0.2848 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -14 px |
-| Gap to next | 131 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 1 px |
+| Gap to next | 130 px |
 
 Alternate font fits considered:
-- `ADLaMDisplay-Regular.ttf` 55px track -0.59px — IoU 0.2397
-- `ADLaMDisplay-Regular.ttf` 53px track 1.22px — IoU 0.2351
-- `Alegreya[wght].ttf` 57px track -0.74px — IoU 0.2215
+- `Alegreya[wght].ttf` 72px track 1.17px — IoU 0.2786
+- `Alegreya[wght].ttf` 75px track -1.16px — IoU 0.2757
+- `Alegreya[wght].ttf` 73px track 0.35px — IoU 0.2744
 
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "The"  (OCR confidence 0.9953)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=516, y=790, w=21, h=12 |
-| Normalised | x=47.78%, y=73.15%, w=1.94%, h=1.11% |
+| Bounding box (px) | x=515, y=784, w=17, h=13 |
+| Normalised | x=47.69%, y=72.59%, w=1.57%, h=1.2% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Alegreya[wght].ttf` |
-| Variation axes | [800] |
+| Font file matched | `Alegreya-Italic[wght].ttf` |
+| Variation axes | [700] |
 | Font size | 13 px |
-| Letter-spacing | 0.12 px (0.0092 em) |
+| Letter-spacing | -0.88 px (-0.0677 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#562c12` |
+| Colour | `#7d4b28` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.35:1 |
-| Stroke (median/mean) | 2.0 / 2.06 px |
+| Contrast vs local bg | 1.59:1 |
+| Stroke (median/mean) | 3.0 / 3.33 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Alegreya, Great Vibes, ADLaM Display |
-| Match IoU | 0.229 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.271 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 131 px |
-| Gap to next | -12 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 130 px |
+| Gap to next | -7 px |
 
 Alternate font fits considered:
-- `Alegreya[wght].ttf` 14px track -0.88px — IoU 0.2025
-- `Alegreya[wght].ttf` 14px track -0.68px — IoU 0.1986
-- `Alegreya[wght].ttf` 12px track 0.75px — IoU 0.194
+- `Alegreya-Italic[wght].ttf` 12px track -0.68px — IoU 0.2656
+- `Alegreya-Italic[wght].ttf` 12px track -0.41px — IoU 0.2613
+- `Alegreya-Italic[wght].ttf` 11px track 0.08px — IoU 0.252
 
 ### `text-6` — fine-print
 
@@ -224,71 +232,74 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=516, y=790, w=71, h=22 |
-| Normalised | x=47.78%, y=73.15%, w=6.57%, h=2.04% |
+| Bounding box (px) | x=515, y=790, w=75, h=23 |
+| Normalised | x=47.69%, y=73.15%, w=6.94%, h=2.13% |
 | Alignment | center |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alegreya[wght].ttf` |
-| Variation axes | [800] |
-| Font size | 18 px |
-| Letter-spacing | -0.45 px (-0.025 em) |
+| Variation axes | [900.0] |
+| Font size | 19 px |
+| Letter-spacing | -0.58 px (-0.0305 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#4a220d` |
+| Colour | `#4c230e` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.72:1 |
+| Contrast vs local bg | 2.68:1 |
 | Stroke (median/mean) | 2.0 / 2.19 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Alegreya, Great Vibes, ADLaM Display |
-| Match IoU | 0.1896 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.3039 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -12 px |
-| Gap to next | 203 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -7 px |
+| Gap to next | 207 px |
 
 Alternate font fits considered:
-- `Alegreya[wght].ttf` 18px track -0.56px — IoU 0.177
-- `Alegreya[wght].ttf` 17px track -0.03px — IoU 0.1725
-- `ADLaMDisplay-Regular.ttf` 16px track -0.09px — IoU 0.1638
+- `ADLaMDisplay-Regular.ttf` 18px track -0.71px — IoU 0.3009
+- `Alegreya[wght].ttf` 19px track -0.47px — IoU 0.2855
+- `Alegreya[wght].ttf` 18px track 0.13px — IoU 0.2523
 
-### `text-7` — detail
+### `text-7` — supporting
 
 **Text:** "www.serum.com"  (OCR confidence 0.9941)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=411, y=1015, w=196, h=36 |
-| Normalised | x=38.06%, y=93.98%, w=18.15%, h=3.33% |
-| Alignment | left |
+| Bounding box (px) | x=411, y=1020, w=259, h=28 |
+| Normalised | x=38.06%, y=94.44%, w=23.98%, h=2.59% |
+| Alignment | center |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alegreya[wght].ttf` |
 | Variation axes | [900.0] |
-| Font size | 28 px |
-| Letter-spacing | -0.86 px (-0.0307 em) |
+| Font size | 36 px |
+| Letter-spacing | -0.52 px (-0.0144 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
-| Colour | `#cd9669` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.46:1 |
+| Colour | `#a57654` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.09:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alegreya, Great Vibes, ADLaM Display |
-| Match IoU | 0.3238 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5557 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 203 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | 207 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alegreya[wght].ttf` 27px track -0.25px — IoU 0.3157
-- `Alegreya[wght].ttf` 26px track 0.37px — IoU 0.299
-- `Alegreya[wght].ttf` 27px track -0.06px — IoU 0.2903
+- `Alegreya[wght].ttf` 34px track 0.7px — IoU 0.5093
+- `Alegreya[wght].ttf` 35px track 0.09px — IoU 0.4931
+- `Alegreya[wght].ttf` 37px track -0.88px — IoU 0.4913
 
 ## 4. Colours (semantic)
 
@@ -300,7 +311,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of '50%' | glyph ink median |
 | accent | `#6a3119` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#bb8e70` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -324,7 +335,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.0665 |
+| Text coverage | 0.0603 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -353,11 +364,11 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline` | text | Beauty Se |
 | `subheadline` | text | erum |
-| `subheadline` | text | 50% |
-| `supporting` | text | OFF |
-| `detail` | text | The |
+| `subheadline_line1` | text | 50% |
+| `subheadline_line2` | text | OFF |
+| `fine-print` | text | The |
 | `fine-print` | text | Ordinary. |
-| `detail` | text | www.serum.com |
+| `supporting` | text | www.serum.com |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #edcbb5 |
@@ -371,10 +382,10 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 48.7 |
 | `imageFocalY` | number | 63.7 |
 

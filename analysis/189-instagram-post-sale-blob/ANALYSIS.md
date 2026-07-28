@@ -33,26 +33,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — fine-print
 
 **Text:** "FLAIR COLLECTIVE"  (OCR confidence 0.9759)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=404, y=356, w=297, h=27 |
-| Normalised | x=37.41%, y=32.96%, w=27.5%, h=2.5% |
+| Bounding box (px) | x=404, y=357, w=297, h=26 |
+| Normalised | x=37.41%, y=33.06%, w=27.5%, h=2.41% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [700, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 35 px |
-| Letter-spacing | -0.53 px (-0.0151 em) |
+| Letter-spacing | -0.4 px (-0.0114 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.26:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Roboto |
-| Match IoU | 0.7635 |
+| Match IoU | 0.7815 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 78 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 35px track -0.4px — IoU 0.7521
-- `Roboto[wdth,wght].ttf` 40px track -0.53px — IoU 0.7341
-- `Roboto[wdth,wght].ttf` 37px track -0.3px — IoU 0.733
+- `Roboto[wdth,wght].ttf` 35px track -0.53px — IoU 0.7585
+- `Roboto[wdth,wght].ttf` 38px track -0.77px — IoU 0.7497
+- `Roboto[wdth,wght].ttf` 35px track -0.47px — IoU 0.7456
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=304, y=461, w=482, h=282 |
-| Normalised | x=28.15%, y=42.69%, w=44.63%, h=26.11% |
+| Bounding box (px) | x=304, y=461, w=482, h=277 |
+| Normalised | x=28.15%, y=42.69%, w=44.63%, h=25.65% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -96,20 +97,21 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.76:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Roboto |
-| Match IoU | 0.4811 |
+| Match IoU | 0.4966 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 78 px |
-| Gap to next | -16 px |
+| Gap to next | -11 px |
 
 Alternate font fits considered:
-- `OleoScript-Bold.ttf` 273px track -0.59px — IoU 0.4805
-- `OleoScript-Bold.ttf` 271px track 0.59px — IoU 0.4778
-- `OleoScript-Regular.ttf` 299px track 0.41px — IoU 0.4654
+- `OleoScript-Bold.ttf` 273px track -0.59px — IoU 0.4959
+- `OleoScript-Bold.ttf` 271px track 0.59px — IoU 0.4931
+- `OleoScript-Regular.ttf` 299px track 0.41px — IoU 0.4802
 
-### `text-3` — subheadline
+### `text-3` — fine-print
 
 **Text:** "UP TO 70% DISCOUNT"  (OCR confidence 0.9783)
 
@@ -132,12 +134,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.26:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Oleo Script, Roboto |
 | Match IoU | 0.8128 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -16 px |
+| Gap to previous | -11 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -155,7 +158,7 @@ Alternate font fits considered:
 | textSecondary | `#8b572a` | glyph ink of 'UP TO 70% DISCOUNT' | glyph ink median |
 | accent | `#fee1cb` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#c59b6b` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +182,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.1335 |
+| Text coverage | 0.1312 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -206,9 +209,9 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | FLAIR COLLECTIVE |
+| `fine-print` | text | FLAIR COLLECTIVE |
 | `headline` | text | Sale |
-| `subheadline` | text | UP TO 70% DISCOUNT |
+| `fine-print` | text | UP TO 70% DISCOUNT |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -219,9 +222,9 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #c59b6b |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Oleo Script |
-| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

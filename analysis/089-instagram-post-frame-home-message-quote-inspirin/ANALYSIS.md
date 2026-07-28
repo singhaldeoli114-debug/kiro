@@ -33,45 +33,47 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "JuotKeep"  (OCR confidence 0.8671)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=374, y=372, w=257, h=73 |
-| Normalised | x=34.63%, y=34.44%, w=23.8%, h=6.76% |
+| Bounding box (px) | x=374, y=371, w=245, h=69 |
+| Normalised | x=34.63%, y=34.35%, w=22.69%, h=6.39% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `HomemadeApple-Regular.ttf` |
 | Variation axes | None |
-| Font size | 55 px |
-| Letter-spacing | -0.16 px (-0.0029 em) |
+| Font size | 52 px |
+| Letter-spacing | 0.14 px (0.0027 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 8.02:1 |
-| Stroke (median/mean) | 4.0 / 5.15 px |
+| Stroke (median/mean) | 4.0 / 5.16 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Oswald |
-| Match IoU | 0.247 |
+| Match IoU | 0.257 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8671) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | None px |
-| Gap to next | -12 px |
+| Gap to next | -2 px |
 
 Alternate font fits considered:
-- `HomemadeApple-Regular.ttf` 56px track -0.83px — IoU 0.2395
-- `HomemadeApple-Regular.ttf` 54px track 0.52px — IoU 0.2349
-- `Oswald[wght].ttf` 71px track 0.14px — IoU 0.2111
+- `HomemadeApple-Regular.ttf` 51px track 0.81px — IoU 0.2379
+- `HomemadeApple-Regular.ttf` 53px track -0.53px — IoU 0.2229
+- `Oswald[wght].ttf` 67px track -0.4px — IoU 0.2131
 
 ### `text-2` — headline
 
@@ -79,8 +81,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=324, y=433, w=330, h=115 |
-| Normalised | x=30.0%, y=40.09%, w=30.56%, h=10.65% |
+| Bounding box (px) | x=323, y=438, w=332, h=110 |
+| Normalised | x=29.91%, y=40.56%, w=30.74%, h=10.19% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,26 +90,27 @@ Alternate font fits considered:
 | Font file matched | `Oswald[wght].ttf` |
 | Variation axes | [500] |
 | Font size | 117 px |
-| Letter-spacing | -0.86 px (-0.0074 em) |
+| Letter-spacing | -0.46 px (-0.0039 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 7.8:1 |
-| Stroke (median/mean) | 14.0 / 15.82 px |
+| Stroke (median/mean) | 14.0 / 15.94 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Homemade Apple, Oswald |
-| Match IoU | 0.7 |
+| Match IoU | 0.7719 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -12 px |
+| Gap to previous | -2 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 115px track 0.29px — IoU 0.6851
-- `Oswald[wght].ttf` 122px track -0.47px — IoU 0.6812
-- `Oswald[wght].ttf` 116px track -0.28px — IoU 0.6798
+- `Oswald[wght].ttf` 122px track -0.07px — IoU 0.7492
+- `Oswald[wght].ttf` 115px track 0.69px — IoU 0.7491
+- `Oswald[wght].ttf` 123px track -0.61px — IoU 0.7449
 
 ## 4. Colours (semantic)
 
@@ -119,7 +122,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'JuotKeep' | glyph ink median |
 | accent | — | not identified | — |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | — | not identified | — |
 
 Full palette (k-means):
@@ -143,7 +146,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0486 |
+| Text coverage | 0.0458 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -170,7 +173,7 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | JuotKeep |
+| `supporting` | text | JuotKeep |
 | `headline` | text | TRYING |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -179,7 +182,7 @@ _Recommendations only — no manifest is generated._
 | `textPrimary` | colour | #ffffff |
 | `textSecondary` | colour | #ffffff |
 | `brandFont` | font | Homemade Apple |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 49.2 |
 | `imageFocalY` | number | 68.6 |

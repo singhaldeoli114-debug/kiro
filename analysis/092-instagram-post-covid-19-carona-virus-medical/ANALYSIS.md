@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -50,31 +50,32 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [700.0] |
-| Font size | 65 px |
-| Letter-spacing | 0.33 px (0.0051 em) |
+| Font file matched | `Anton-Regular.ttf` |
+| Variation axes | None |
+| Font size | 92 px |
+| Letter-spacing | 0.43 px (0.0047 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#e3edf1` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#7364d1` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 2.0:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2323 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.758 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
 | Gap to next | 24 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 67px track -0.91px — IoU 0.2312
-- `Arimo[wght].ttf` 66px track -0.29px — IoU 0.2307
-- `Arimo[wght].ttf` 65px track 0.33px — IoU 0.2176
+- `Anton-Regular.ttf` 93px track -0.0px — IoU 0.7339
+- `Anton-Regular.ttf` 94px track -0.44px — IoU 0.722
+- `Oswald[wght].ttf` 83px track 0.57px — IoU 0.6296
 
-### `text-2` — supporting
+### `text-2` — fine-print
 
 **Text:** "FOLLOW THESE PROCEDURE TO KEEP YOU AND YOURL OVEDO NESS AFEF ROMC OVID-19"  (OCR confidence 0.9965)
 
@@ -97,6 +98,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.14:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
 | Match IoU | 0.4673 |
 | **Geometry fit confidence** | **low** |
@@ -110,175 +112,181 @@ Alternate font fits considered:
 - `Arimo[wght].ttf` 17px track 0.64px — IoU 0.3788
 - `Arimo[wght].ttf` 18px track 0.01px — IoU 0.3538
 
-### `text-3` — headline
+### `text-3` — subheadline
 
-**Text:** "WASHYOUR"  (OCR confidence 0.9854)
+**Text:** "WASH YOUR"  (OCR confidence 0.9854)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=387, y=303, w=275, h=48 |
-| Normalised | x=35.83%, y=28.06%, w=25.46%, h=4.44% |
+| Bounding box (px) | x=387, y=303, w=275, h=49 |
+| Normalised | x=35.83%, y=28.06%, w=25.46%, h=4.54% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 67 px |
-| Letter-spacing | 0.61 px (0.0091 em) |
-| Line-height | 78.0 px (ratio 1.164) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 57 px |
+| Letter-spacing | -0.5 px (-0.0088 em) |
+| Line-height | 78.0 px (ratio 1.368) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#e3edf1` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2496db` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.73:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2739 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8567 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 119 px |
-| Gap to next | 30 px |
+| Gap to next | 29 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 69px track -0.55px — IoU 0.2905
-- `Anton-Regular.ttf` 68px track 0.04px — IoU 0.2779
-- `Oswald[wght].ttf` 59px track 0.18px — IoU 0.2299
+- `Oswald[wght].ttf` 56px track 0.11px — IoU 0.6633
+- `Oswald[wght].ttf` 55px track 0.72px — IoU 0.648
+- `Oswald[wght].ttf` 57px track 0.0px — IoU 0.6242
 
-### `text-4` — headline
+### `text-4` — subheadline
 
 **Text:** "HANDS"  (OCR confidence 0.9922)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=386, y=381, w=171, h=59 |
-| Normalised | x=35.74%, y=35.28%, w=15.83%, h=5.46% |
+| Bounding box (px) | x=386, y=381, w=171, h=54 |
+| Normalised | x=35.74%, y=35.28%, w=15.83%, h=5.0% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 67 px |
-| Letter-spacing | 0.61 px (0.0091 em) |
-| Line-height | 78.0 px (ratio 1.164) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 57 px |
+| Letter-spacing | -0.5 px (-0.0088 em) |
+| Line-height | 78.0 px (ratio 1.368) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#e3edf1` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2496db` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.73:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.319 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.491 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 30 px |
-| Gap to next | -24 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 29 px |
+| Gap to next | -14 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 69px track -0.55px — IoU 0.2905
-- `Anton-Regular.ttf` 68px track 0.04px — IoU 0.2779
-- `Oswald[wght].ttf` 59px track 0.18px — IoU 0.2299
+- `Oswald[wght].ttf` 56px track 0.11px — IoU 0.6633
+- `Oswald[wght].ttf` 55px track 0.72px — IoU 0.648
+- `Oswald[wght].ttf` 57px track 0.0px — IoU 0.6242
 
-### `text-5` — subheadline
+### `text-5` — fine-print
 
-**Text:** "Washyou handsregularlywithsoaporsanitizer.This iswill eliminate"  (OCR confidence 0.9811)
+**Text:** "Wash you hands regularly with soap or sanitizer. Thisi sw ille liminate"  (OCR confidence 0.9811)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=385, y=416, w=592, h=37 |
-| Normalised | x=35.65%, y=38.52%, w=54.81%, h=3.43% |
+| Bounding box (px) | x=386, y=421, w=591, h=23 |
+| Normalised | x=35.74%, y=38.98%, w=54.72%, h=2.13% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Oswald[wght].ttf` |
-| Variation axes | [700.0] |
-| Font size | 24 px |
-| Letter-spacing | -0.58 px (-0.0242 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Arimo[wght].ttf` |
+| Variation axes | [500] |
+| Font size | 20 px |
+| Letter-spacing | -0.55 px (-0.0275 em) |
+| Line-height | 28.5 px (ratio 1.425) |
+| Line | 1 of 3 |
 | Transform | none |
-| Colour | `#3192c6` |
+| Colour | `#3b89c2` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.75:1 |
+| Contrast vs local bg | 1.81:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'youhandsregularly' -> 'you hands regularly' |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2096 |
+| Match IoU | 0.2388 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -24 px |
-| Gap to next | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -14 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 23px track -0.16px — IoU 0.2006
-- `Oswald[wght].ttf` 24px track -0.33px — IoU 0.1986
-- `Anton-Regular.ttf` 22px track 0.25px — IoU 0.1984
+- `Arimo[wght].ttf` 19px track -0.1px — IoU 0.31
+- `Anton-Regular.ttf` 22px track -0.38px — IoU 0.2895
+- `Arimo[wght].ttf` 19px track 0.13px — IoU 0.2854
 
-### `text-6` — subheadline
+### `text-6` — fine-print
 
 **Text:** "mos tf the CovoD-19g ermso ny ourh andsa nda voidt ouching your"  (OCR confidence 0.9878)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=386, y=452, w=588, h=18 |
-| Normalised | x=35.74%, y=41.85%, w=54.44%, h=1.67% |
+| Bounding box (px) | x=387, y=452, w=587, h=18 |
+| Normalised | x=35.83%, y=41.85%, w=54.35%, h=1.67% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [400.0] |
-| Font size | 21 px |
-| Letter-spacing | -0.58 px (-0.0276 em) |
-| Line-height | 26.0 px (ratio 1.238) |
-| Line | 1 of 2 |
+| Variation axes | [500] |
+| Font size | 20 px |
+| Letter-spacing | -0.55 px (-0.0275 em) |
+| Line-height | 28.5 px (ratio 1.425) |
+| Line | 2 of 3 |
 | Transform | none |
 | Colour | `#346eb6` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.14:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2293 |
+| Match IoU | 0.2349 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 8 px |
 | Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 20px track -0.36px — IoU 0.3081
-- `Arimo[wght].ttf` 19px track 0.37px — IoU 0.3003
-- `Arimo[wght].ttf` 20px track -0.11px — IoU 0.2984
+- `Arimo[wght].ttf` 19px track -0.1px — IoU 0.31
+- `Anton-Regular.ttf` 22px track -0.38px — IoU 0.2895
+- `Arimo[wght].ttf` 19px track 0.13px — IoU 0.2854
 
-### `text-7` — subheadline
+### `text-7` — fine-print
 
 **Text:** "face, eye and nose in public."  (OCR confidence 0.9533)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=385, y=478, w=245, h=19 |
-| Normalised | x=35.65%, y=44.26%, w=22.69%, h=1.76% |
+| Bounding box (px) | x=386, y=478, w=244, h=19 |
+| Normalised | x=35.74%, y=44.26%, w=22.59%, h=1.76% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [400.0] |
-| Font size | 21 px |
-| Letter-spacing | -0.58 px (-0.0276 em) |
-| Line-height | 26.0 px (ratio 1.238) |
-| Line | 2 of 2 |
+| Variation axes | [500] |
+| Font size | 20 px |
+| Letter-spacing | -0.55 px (-0.0275 em) |
+| Line-height | 28.5 px (ratio 1.425) |
+| Line | 3 of 3 |
 | Transform | lowercase |
 | Colour | `#3e76b9` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.0:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.4484 |
+| Match IoU | 0.5391 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -286,13 +294,13 @@ Alternate font fits considered:
 | Gap to next | 82 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 20px track -0.36px — IoU 0.3081
-- `Arimo[wght].ttf` 19px track 0.37px — IoU 0.3003
-- `Arimo[wght].ttf` 20px track -0.11px — IoU 0.2984
+- `Arimo[wght].ttf` 19px track -0.1px — IoU 0.31
+- `Anton-Regular.ttf` 22px track -0.38px — IoU 0.2895
+- `Arimo[wght].ttf` 19px track 0.13px — IoU 0.2854
 
-### `text-8` — headline
+### `text-8` — subheadline
 
-**Text:** "WEARAMASK"  (OCR confidence 0.9769)
+**Text:** "WEAR A MASK"  (OCR confidence 0.9769)
 
 | Property | Value |
 |---|---|
@@ -302,141 +310,145 @@ Alternate font fits considered:
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 69 px |
-| Letter-spacing | -0.35 px (-0.0051 em) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 58 px |
+| Letter-spacing | -0.62 px (-0.0107 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#e3edf1` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2496db` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.73:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2983 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8846 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 82 px |
 | Gap to next | 35 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 68px track 0.25px — IoU 0.2939
-- `Anton-Regular.ttf` 67px track 0.84px — IoU 0.2891
-- `Oswald[wght].ttf` 64px track -0.96px — IoU 0.2732
+- `Oswald[wght].ttf` 57px track -0.06px — IoU 0.865
+- `Oswald[wght].ttf` 59px track -0.58px — IoU 0.8315
+- `Oswald[wght].ttf` 56px track 0.51px — IoU 0.823
 
-### `text-9` — subheadline
+### `text-9` — fine-print
 
 **Text:** "Cover your face with a mask when going outside of meeting people"  (OCR confidence 0.9925)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=115, y=662, w=576, h=27 |
-| Normalised | x=10.65%, y=61.3%, w=53.33%, h=2.5% |
+| Bounding box (px) | x=115, y=662, w=576, h=19 |
+| Normalised | x=10.65%, y=61.3%, w=53.33%, h=1.76% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
 | Variation axes | [500] |
-| Font size | 19 px |
-| Letter-spacing | -0.05 px (-0.0026 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 20 px |
+| Letter-spacing | -0.54 px (-0.027 em) |
+| Line-height | 26.5 px (ratio 1.325) |
+| Line | 1 of 3 |
 | Transform | none |
 | Colour | `#3c74b8` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.04:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2707 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.6152 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 35 px |
-| Gap to next | -10 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `Arimo[wght].ttf` 20px track -0.54px — IoU 0.2598
-- `Arimo[wght].ttf` 19px track -0.51px — IoU 0.2529
-- `Arimo[wght].ttf` 19px track 0.18px — IoU 0.2516
+- `Arimo[wght].ttf` 20px track -0.3px — IoU 0.4401
+- `Arimo[wght].ttf` 19px track -0.05px — IoU 0.3909
+- `Arimo[wght].ttf` 19px track -0.28px — IoU 0.3764
 
-### `text-10` — subheadline
+### `text-10` — fine-print
 
-**Text:** "from outside your safety bubble.This is will prevent the spread of"  (OCR confidence 0.9677)
+**Text:** "from outside your safety bubble .This is will prevent the spread of"  (OCR confidence 0.9677)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=133, y=679, w=559, h=36 |
-| Normalised | x=12.31%, y=62.87%, w=51.76%, h=3.33% |
+| Bounding box (px) | x=133, y=688, w=559, h=19 |
+| Normalised | x=12.31%, y=63.7%, w=51.76%, h=1.76% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Oswald[wght].ttf` |
-| Variation axes | [700.0] |
+| Font file matched | `Arimo[wght].ttf` |
+| Variation axes | [500] |
 | Font size | 20 px |
-| Letter-spacing | 0.44 px (0.022 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.54 px (-0.027 em) |
+| Line-height | 26.5 px (ratio 1.325) |
+| Line | 2 of 3 |
 | Transform | none |
 | Colour | `#467bbb` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.92:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2109 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5373 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -10 px |
-| Gap to next | -1 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 7 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Oswald[wght].ttf` 21px track 0.25px — IoU 0.205
-- `Arimo[wght].ttf` 20px track -0.69px — IoU 0.2039
-- `Oswald[wght].ttf` 21px track 0.52px — IoU 0.2004
+- `Arimo[wght].ttf` 20px track -0.3px — IoU 0.4401
+- `Arimo[wght].ttf` 19px track -0.05px — IoU 0.3909
+- `Arimo[wght].ttf` 19px track -0.28px — IoU 0.3764
 
-### `text-11` — subheadline
+### `text-11` — fine-print
 
 **Text:** "COViD-19a ndw illh elpk eepo thersa ndy ourself safe."  (OCR confidence 0.9759)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=225, y=714, w=465, h=19 |
-| Normalised | x=20.83%, y=66.11%, w=43.06%, h=1.76% |
+| Bounding box (px) | x=225, y=715, w=465, h=18 |
+| Normalised | x=20.83%, y=66.2%, w=43.06%, h=1.67% |
 | Alignment | left |
 | z-order | 110 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Arimo[wght].ttf` |
-| Variation axes | [400.0] |
+| Variation axes | [500] |
 | Font size | 20 px |
-| Letter-spacing | -0.29 px (-0.0145 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Letter-spacing | -0.54 px (-0.027 em) |
+| Line-height | 26.5 px (ratio 1.325) |
+| Line | 3 of 3 |
 | Transform | none |
 | Colour | `#3670b7` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.11:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.3789 |
+| Match IoU | 0.3949 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -1 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 8 px |
 | Gap to next | 65 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 23px track -0.41px — IoU 0.2972
-- `Anton-Regular.ttf` 22px track -0.01px — IoU 0.2948
-- `Arimo[wght].ttf` 19px track 0.17px — IoU 0.2904
+- `Arimo[wght].ttf` 20px track -0.3px — IoU 0.4401
+- `Arimo[wght].ttf` 19px track -0.05px — IoU 0.3909
+- `Arimo[wght].ttf` 19px track -0.28px — IoU 0.3764
 
-### `text-12` — headline
+### `text-12` — subheadline
 
-**Text:** "PRACTIVESOCILA"  (OCR confidence 0.9859)
+**Text:** "PRACTIVE SOCILA"  (OCR confidence 0.9859)
 
 | Property | Value |
 |---|---|
@@ -446,103 +458,107 @@ Alternate font fits considered:
 | z-order | 111 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 70 px |
-| Letter-spacing | -0.45 px (-0.0064 em) |
-| Line-height | 70.0 px (ratio 1.0) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 58 px |
+| Letter-spacing | -0.69 px (-0.0119 em) |
+| Line-height | 77.0 px (ratio 1.328) |
 | Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#e3edf1` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#2496db` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.73:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.2109 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8529 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 65 px |
-| Gap to next | 22 px |
+| Gap to next | 29 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 69px track 0.02px — IoU 0.3029
-- `Anton-Regular.ttf` 68px track 0.49px — IoU 0.298
-- `Oswald[wght].ttf` 60px track -0.55px — IoU 0.2696
+- `Oswald[wght].ttf` 57px track -0.17px — IoU 0.8042
+- `Oswald[wght].ttf` 59px track -0.53px — IoU 0.7886
+- `Oswald[wght].ttf` 56px track 0.34px — IoU 0.7721
 
-### `text-13` — headline
+### `text-13` — subheadline
 
 **Text:** "DISTANCING"  (OCR confidence 0.9439)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=357, y=868, w=293, h=61 |
-| Normalised | x=33.06%, y=80.37%, w=27.13%, h=5.65% |
+| Bounding box (px) | x=362, y=875, w=278, h=49 |
+| Normalised | x=33.52%, y=81.02%, w=25.74%, h=4.54% |
 | Alignment | left |
 | z-order | 112 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 70 px |
-| Letter-spacing | -0.45 px (-0.0064 em) |
-| Line-height | 70.0 px (ratio 1.0) |
+| Font file matched | `Oswald[wght].ttf` |
+| Variation axes | [700.0] |
+| Font size | 58 px |
+| Letter-spacing | -0.69 px (-0.0119 em) |
+| Line-height | 77.0 px (ratio 1.328) |
 | Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#e3edf1` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 6.0 / 6.43 px |
+| Colour | `#2496db` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.66:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.4202 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.7813 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 22 px |
-| Gap to next | -17 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 29 px |
+| Gap to next | -7 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 69px track 0.02px — IoU 0.3029
-- `Anton-Regular.ttf` 68px track 0.49px — IoU 0.298
-- `Oswald[wght].ttf` 60px track -0.55px — IoU 0.2696
+- `Oswald[wght].ttf` 57px track -0.17px — IoU 0.8042
+- `Oswald[wght].ttf` 59px track -0.53px — IoU 0.7886
+- `Oswald[wght].ttf` 56px track 0.34px — IoU 0.7721
 
-### `text-14` — subheadline
+### `text-14` — body
 
-**Text:** "Social distancingisveryimportant.Donot gatherinlargegroup or attend"  (OCR confidence 0.9703)
+**Text:** "Socialdistancin gis very import an t.Do not gather in large group or attend"  (OCR confidence 0.9703)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=361, y=912, w=626, h=35 |
-| Normalised | x=33.43%, y=84.44%, w=57.96%, h=3.24% |
+| Bounding box (px) | x=361, y=917, w=626, h=21 |
+| Normalised | x=33.43%, y=84.91%, w=57.96%, h=1.94% |
 | Alignment | right |
 | z-order | 113 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 23 px |
-| Letter-spacing | -0.19 px (-0.0083 em) |
+| Font size | 21 px |
+| Letter-spacing | 0.05 px (0.0024 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#2496cb` |
+| Colour | `#2686c1` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.74:1 |
+| Contrast vs local bg | 1.9:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'veryimportan' -> 'very import an' |
 | Font family (authoritative) | Anton, Arimo, Oswald |
-| Match IoU | 0.1984 |
+| Match IoU | 0.28 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -17 px |
-| Gap to next | 25 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -7 px |
+| Gap to next | 34 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 24px track -0.61px — IoU 0.1973
-- `Anton-Regular.ttf` 22px track 0.23px — IoU 0.1949
-- `Oswald[wght].ttf` 24px track -0.53px — IoU 0.1843
+- `Arimo[wght].ttf` 17px track 0.6px — IoU 0.2745
+- `Oswald[wght].ttf` 23px track -0.41px — IoU 0.2585
+- `Anton-Regular.ttf` 20px track 0.45px — IoU 0.2525
 
-### `text-15` — subheadline
+### `text-15` — body
 
 **Text:** "CoviD-19.S tayat ho mean don lyle aveyo urh ousefo rn ecessities only"  (OCR confidence 0.971)
 
@@ -565,12 +581,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.02:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Anton, Arimo, Oswald |
 | Match IoU | 0.2755 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 25 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 34 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -584,11 +601,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f1f6f9` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#3e7dcc` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#e3edf1` | glyph ink of 'PREVENTING C0VID-19' | glyph ink median |
-| textSecondary | `#3192c6` | glyph ink of 'Washyou handsregularlywithso' | glyph ink median |
+| textPrimary | `#7364d1` | glyph ink of 'PREVENTING C0VID-19' | glyph ink median |
+| textSecondary | `#2496db` | glyph ink of 'HANDS' | glyph ink median |
 | accent | `#3e7dcc` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7ab2d1` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -612,7 +629,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.2162 |
+| Text coverage | 0.1849 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -640,45 +657,45 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | PREVENTING C0VID-19 |
-| `supporting` | text | FOLLOW THESE PROCEDURE TO KEEP YOU AND YOURL OVEDO NESS A... |
-| `headline_line1` | text | WASHYOUR |
-| `headline_line2` | text | HANDS |
-| `subheadline` | text | Washyou handsregularlywithsoaporsanitizer.This iswill eli... |
-| `subheadline_line1` | text | mos tf the CovoD-19g ermso ny ourh andsa nda voidt ouchin... |
-| `subheadline_line2` | text | face, eye and nose in public. |
-| `headline` | text | WEARAMASK |
-| `subheadline` | text | Cover your face with a mask when going outside of meeting... |
-| `subheadline` | text | from outside your safety bubble.This is will prevent the ... |
-| `subheadline` | text | COViD-19a ndw illh elpk eepo thersa ndy ourself safe. |
-| `headline_line1` | text | PRACTIVESOCILA |
-| `headline_line2` | text | DISTANCING |
-| `subheadline` | text | Social distancingisveryimportant.Donot gatherinlargegroup... |
-| `subheadline` | text | CoviD-19.S tayat ho mean don lyle aveyo urh ousefo rn ece... |
+| `fine-print` | text | FOLLOW THESE PROCEDURE TO KEEP YOU AND YOURL OVEDO NESS A... |
+| `subheadline_line1` | text | WASH YOUR |
+| `subheadline_line2` | text | HANDS |
+| `fine-print_line1` | text | Wash you hands regularly with soap or sanitizer. Thisi sw... |
+| `fine-print_line2` | text | mos tf the CovoD-19g ermso ny ourh andsa nda voidt ouchin... |
+| `fine-print_line3` | text | face, eye and nose in public. |
+| `subheadline` | text | WEAR A MASK |
+| `fine-print_line1` | text | Cover your face with a mask when going outside of meeting... |
+| `fine-print_line2` | text | from outside your safety bubble .This is will prevent the... |
+| `fine-print_line3` | text | COViD-19a ndw illh elpk eepo thersa ndy ourself safe. |
+| `subheadline_line1` | text | PRACTIVE SOCILA |
+| `subheadline_line2` | text | DISTANCING |
+| `body` | text | Socialdistancin gis very import an t.Do not gather in lar... |
+| `body` | text | CoviD-19.S tayat ho mean don lyle aveyo urh ousefo rn ece... |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f1f6f9 |
 | `surface` | colour | #3e7dcc |
-| `textPrimary` | colour | #e3edf1 |
-| `textSecondary` | colour | #3192c6 |
+| `textPrimary` | colour | #7364d1 |
+| `textSecondary` | colour | #2496db |
 | `accent` | colour | #3e7dcc |
 | `accentSecondary` | colour | #7ab2d1 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Anton |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

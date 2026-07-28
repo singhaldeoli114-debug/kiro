@@ -34,11 +34,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "DON'T"  (OCR confidence 0.9835)
 
@@ -50,118 +50,121 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Parisienne-Regular.ttf` |
+| Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 125 px |
-| Letter-spacing | -0.63 px (-0.005 em) |
+| Font size | 226 px |
+| Letter-spacing | -0.66 px (-0.0029 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#260531` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 7.12:1 |
+| Colour | `#f3a3f8` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 1.0:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Anton, Parisienne |
-| Match IoU | 0.0623 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9491 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 27 px |
+| Gap to next | 26 px |
 
 Alternate font fits considered:
-- `Parisienne-Regular.ttf` 124px track 0.32px — IoU 0.0616
-- `Parisienne-Regular.ttf` 123px track 1.26px — IoU 0.0605
-- `Roboto[wdth,wght].ttf` 167px track -0.68px — IoU 0.032
+- `Anton-Regular.ttf` 225px track -0.14px — IoU 0.9432
+- `Anton-Regular.ttf` 224px track 0.38px — IoU 0.9395
+- `Roboto[wdth,wght].ttf` 188px track 0.57px — IoU 0.7347
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "RESPOND"  (OCR confidence 0.9728)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=314, y=474, w=463, h=77 |
-| Normalised | x=29.07%, y=43.89%, w=42.87%, h=7.13% |
+| Bounding box (px) | x=314, y=473, w=464, h=78 |
+| Normalised | x=29.07%, y=43.8%, w=42.96%, h=7.22% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Anton-Regular.ttf` |
-| Variation axes | None |
-| Font size | 141 px |
-| Letter-spacing | -0.37 px (-0.0026 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [800, 100.0] |
+| Font size | 104 px |
+| Letter-spacing | -0.99 px (-0.0095 em) |
+| Line-height | 93.0 px (ratio 0.894) |
+| Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#260531` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#9013fe` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.69:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Anton, Parisienne |
-| Match IoU | 0.1769 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.941 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 27 px |
-| Gap to next | 10 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 26 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 140px track 0.18px — IoU 0.1722
-- `Anton-Regular.ttf` 139px track 0.73px — IoU 0.1689
-- `Parisienne-Regular.ttf` 76px track -1.47px — IoU 0.1056
+- `Roboto[wdth,wght].ttf` 103px track -0.23px — IoU 0.9373
+- `Roboto[wdth,wght].ttf` 102px track 0.52px — IoU 0.9144
+- `Roboto[wdth,wght].ttf` 111px track -0.73px — IoU 0.9133
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "TO"  (OCR confidence 0.9516)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=479, y=561, w=115, h=107 |
-| Normalised | x=44.35%, y=51.94%, w=10.65%, h=9.91% |
+| Bounding box (px) | x=493, y=566, w=95, h=97 |
+| Normalised | x=45.65%, y=52.41%, w=8.8%, h=8.98% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 131 px |
-| Letter-spacing | -0.52 px (-0.004 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 108 px |
+| Letter-spacing | -0.25 px (-0.0023 em) |
+| Line-height | 93.0 px (ratio 0.861) |
+| Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#260531` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
-| Stroke (median/mean) | 14.0 / 14.1 px |
+| Colour | `#9013fe` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.69:1 |
+| Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Anton, Parisienne |
-| Match IoU | 0.237 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.9235 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 10 px |
-| Gap to next | -71 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 15 px |
+| Gap to next | -39 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 129px track 1.25px — IoU 0.2353
-- `Anton-Regular.ttf` 130px track 0.36px — IoU 0.2293
-- `Roboto[wdth,wght].ttf` 88px track -1.28px — IoU 0.1676
+- `Anton-Regular.ttf` 109px track -1.12px — IoU 0.9125
+- `Anton-Regular.ttf` 107px track 0.66px — IoU 0.888
+- `Roboto[wdth,wght].ttf` 83px track -1.14px — IoU 0.7546
 
-### `text-4` — headline
+### `text-4` — subheadline
 
 **Text:** "Negativity"  (OCR confidence 0.9703)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=189, y=597, w=710, h=250 |
-| Normalised | x=17.5%, y=55.28%, w=65.74%, h=23.15% |
+| Bounding box (px) | x=189, y=624, w=710, h=222 |
+| Normalised | x=17.5%, y=57.78%, w=65.74%, h=20.56% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Parisienne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 181 px |
-| Letter-spacing | -0.53 px (-0.0029 em) |
+| Font size | 180 px |
+| Letter-spacing | -0.1 px (-0.0006 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -169,18 +172,20 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 6.99:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Roboto, Anton, Parisienne |
-| Match IoU | 0.2597 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5618 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -71 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -39 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Parisienne-Regular.ttf` 179px track 0.34px — IoU 0.2499
-- `Parisienne-Regular.ttf` 180px track -0.1px — IoU 0.2448
-- `Roboto[wdth,wght].ttf` 171px track 0.34px — IoU 0.1967
+- `Parisienne-Regular.ttf` 181px track -0.53px — IoU 0.5594
+- `Parisienne-Regular.ttf` 179px track 0.34px — IoU 0.5389
+- `Roboto[wdth,wght].ttf` 171px track 0.34px — IoU 0.2181
 
 ## 4. Colours (semantic)
 
@@ -189,10 +194,10 @@ Alternate font fits considered:
 | background | `#f5a1f7` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#260531` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#fd9bf8` | glyph ink of 'Negativity' | glyph ink median |
-| textSecondary | `#260531` | glyph ink of 'DON'T' | glyph ink median |
+| textSecondary | `#9013fe` | glyph ink of 'TO' | glyph ink median |
 | accent | `#260531` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#8f12fc` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -216,7 +221,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.2745 |
+| Text coverage | 0.2553 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -243,24 +248,24 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | DON'T |
-| `subheadline` | text | RESPOND |
-| `subheadline` | text | TO |
-| `headline` | text | Negativity |
+| `headline` | text | DON'T |
+| `supporting_line1` | text | RESPOND |
+| `supporting_line2` | text | TO |
+| `subheadline` | text | Negativity |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f5a1f7 |
 | `surface` | colour | #260531 |
 | `textPrimary` | colour | #fd9bf8 |
-| `textSecondary` | colour | #260531 |
+| `textSecondary` | colour | #9013fe |
 | `accent` | colour | #260531 |
 | `accentSecondary` | colour | #8f12fc |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Roboto |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

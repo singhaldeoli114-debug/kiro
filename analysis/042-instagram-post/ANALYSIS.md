@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -44,35 +44,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=81, y=101, w=356, h=53 |
-| Normalised | x=7.5%, y=9.35%, w=32.96%, h=4.91% |
+| Bounding box (px) | x=81, y=101, w=357, h=54 |
+| Normalised | x=7.5%, y=9.35%, w=33.06%, h=5.0% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 86 px |
-| Letter-spacing | 0.54 px (0.0063 em) |
+| Font size | 68 px |
+| Letter-spacing | -0.2 px (-0.0029 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 15.0 / 21.07 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.1087 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.853 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | -52 px |
+| Gap to next | -53 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 88px track -0.37px — IoU 0.1008
-- `Actor-Regular.ttf` 87px track 0.09px — IoU 0.0967
-- `Montserrat[wght].ttf` 69px track -0.53px — IoU 0.0803
+- `ArchivoBlack-Regular.ttf` 67px track 0.38px — IoU 0.8523
+- `ArchivoBlack-Regular.ttf` 69px track -0.79px — IoU 0.835
+- `Montserrat[wght].ttf` 68px track 0.16px — IoU 0.7313
 
 ### `text-1` — headline
 
@@ -80,16 +81,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=410, y=102, w=237, h=64 |
-| Normalised | x=37.96%, y=9.44%, w=21.94%, h=5.93% |
+| Bounding box (px) | x=410, y=102, w=238, h=64 |
+| Normalised | x=37.96%, y=9.44%, w=22.04%, h=5.93% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Montserrat[wght].ttf` |
-| Variation axes | [900.0] |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
 | Font size | 68 px |
-| Letter-spacing | -1.0 px (-0.0147 em) |
+| Letter-spacing | -0.64 px (-0.0094 em) |
 | Line-height | 73.5 px (ratio 1.081) |
 | Line | 1 of 3 |
 | Transform | none |
@@ -97,18 +98,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 15.0 / 18.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.3731 |
+| Match IoU | 0.3519 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -52 px |
-| Gap to next | 9 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -53 px |
+| Gap to next | 8 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 67px track -0.27px — IoU 0.4224
-- `Montserrat[wght].ttf` 66px track 0.46px — IoU 0.408
-- `Montserrat[wght].ttf` 69px track -0.58px — IoU 0.3965
+- `ArchivoBlack-Regular.ttf` 66px track 0.8px — IoU 0.6676
+- `ArchivoBlack-Regular.ttf` 67px track 0.08px — IoU 0.667
+- `Montserrat[wght].ttf` 67px track 0.06px — IoU 0.6447
 
 ### `text-3` — headline
 
@@ -116,16 +118,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=81, y=175, w=337, h=65 |
-| Normalised | x=7.5%, y=16.2%, w=31.2%, h=6.02% |
+| Bounding box (px) | x=81, y=174, w=337, h=66 |
+| Normalised | x=7.5%, y=16.11%, w=31.2%, h=6.11% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Montserrat[wght].ttf` |
-| Variation axes | [900.0] |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
 | Font size | 68 px |
-| Letter-spacing | -1.0 px (-0.0147 em) |
+| Letter-spacing | -0.64 px (-0.0094 em) |
 | Line-height | 73.5 px (ratio 1.081) |
 | Line | 2 of 3 |
 | Transform | none |
@@ -133,18 +135,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 15.0 / 20.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.8274 |
+| Match IoU | 0.8646 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 9 px |
+| Gap to previous | 8 px |
 | Gap to next | 9 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 67px track -0.27px — IoU 0.4224
-- `Montserrat[wght].ttf` 66px track 0.46px — IoU 0.408
-- `Montserrat[wght].ttf` 69px track -0.58px — IoU 0.3965
+- `ArchivoBlack-Regular.ttf` 66px track 0.8px — IoU 0.6676
+- `ArchivoBlack-Regular.ttf` 67px track 0.08px — IoU 0.667
+- `Montserrat[wght].ttf` 67px track 0.06px — IoU 0.6447
 
 ### `text-4` — headline
 
@@ -158,101 +161,104 @@ Alternate font fits considered:
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Montserrat[wght].ttf` |
-| Variation axes | [900.0] |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
+| Variation axes | None |
 | Font size | 68 px |
-| Letter-spacing | -1.0 px (-0.0147 em) |
+| Letter-spacing | -0.64 px (-0.0094 em) |
 | Line-height | 73.5 px (ratio 1.081) |
 | Line | 3 of 3 |
 | Transform | none |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 15.0 / 20.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.0834 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.866 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 9 px |
 | Gap to next | 54 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 67px track -0.27px — IoU 0.4224
-- `Montserrat[wght].ttf` 66px track 0.46px — IoU 0.408
-- `Montserrat[wght].ttf` 69px track -0.58px — IoU 0.3965
+- `ArchivoBlack-Regular.ttf` 66px track 0.8px — IoU 0.6676
+- `ArchivoBlack-Regular.ttf` 67px track 0.08px — IoU 0.667
+- `Montserrat[wght].ttf` 67px track 0.06px — IoU 0.6447
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "Bold style, soft"  (OCR confidence 0.9987)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=80, y=353, w=266, h=33 |
-| Normalised | x=7.41%, y=32.69%, w=24.63%, h=3.06% |
+| Bounding box (px) | x=79, y=353, w=267, h=33 |
+| Normalised | x=7.31%, y=32.69%, w=24.72%, h=3.06% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [800] |
-| Font size | 33 px |
-| Letter-spacing | 0.25 px (0.0076 em) |
-| Line-height | 45.0 px (ratio 1.364) |
+| Font size | 35 px |
+| Letter-spacing | -0.74 px (-0.0211 em) |
+| Line-height | 44.0 px (ratio 1.257) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 5.0 / 6.87 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.8606 |
+| Match IoU | 0.8692 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 54 px |
-| Gap to next | 12 px |
+| Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 34px track -0.28px — IoU 0.8509
-- `Montserrat[wght].ttf` 35px track -0.34px — IoU 0.839
-- `Montserrat[wght].ttf` 34px track 0.18px — IoU 0.829
+- `Montserrat[wght].ttf` 35px track -0.27px — IoU 0.8365
+- `Montserrat[wght].ttf` 34px track -0.21px — IoU 0.8356
+- `Montserrat[wght].ttf` 33px track 0.32px — IoU 0.8183
 
-### `text-6` — subheadline
+### `text-6` — supporting
 
 **Text:** "confidence."  (OCR confidence 0.9998)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=78, y=398, w=211, h=27 |
-| Normalised | x=7.22%, y=36.85%, w=19.54%, h=2.5% |
+| Bounding box (px) | x=78, y=397, w=211, h=28 |
+| Normalised | x=7.22%, y=36.76%, w=19.54%, h=2.59% |
 | Alignment | left |
 | z-order | 105 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [800] |
-| Font size | 33 px |
-| Letter-spacing | 0.25 px (0.0076 em) |
-| Line-height | 45.0 px (ratio 1.364) |
+| Font size | 35 px |
+| Letter-spacing | -0.74 px (-0.0211 em) |
+| Line-height | 44.0 px (ratio 1.257) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 5.0 / 6.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.8448 |
+| Match IoU | 0.8512 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 12 px |
+| Gap to previous | 11 px |
 | Gap to next | 117 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 34px track -0.28px — IoU 0.8509
-- `Montserrat[wght].ttf` 35px track -0.34px — IoU 0.839
-- `Montserrat[wght].ttf` 34px track 0.18px — IoU 0.829
+- `Montserrat[wght].ttf` 35px track -0.27px — IoU 0.8365
+- `Montserrat[wght].ttf` 34px track -0.21px — IoU 0.8356
+- `Montserrat[wght].ttf` 33px track 0.32px — IoU 0.8183
 
 ### `text-7` — supporting
 
@@ -260,8 +266,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=78, y=542, w=418, h=31 |
-| Normalised | x=7.22%, y=50.19%, w=38.7%, h=2.87% |
+| Bounding box (px) | x=77, y=542, w=419, h=31 |
+| Normalised | x=7.13%, y=50.19%, w=38.8%, h=2.87% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -269,7 +275,7 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 32 px |
-| Letter-spacing | -0.08 px (-0.0025 em) |
+| Letter-spacing | -0.05 px (-0.0016 em) |
 | Line-height | 42.0 px (ratio 1.312) |
 | Line | 1 of 4 |
 | Transform | none |
@@ -277,8 +283,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 2.0 / 2.65 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.6411 |
+| Match IoU | 0.5899 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -286,9 +293,9 @@ Alternate font fits considered:
 | Gap to next | 12 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 31px track 0.36px — IoU 0.4919
-- `Actor-Regular.ttf` 33px track -0.52px — IoU 0.49
-- `Montserrat[wght].ttf` 26px track -0.2px — IoU 0.4743
+- `Actor-Regular.ttf` 31px track 0.39px — IoU 0.4793
+- `Actor-Regular.ttf` 33px track -0.49px — IoU 0.4652
+- `Montserrat[wght].ttf` 26px track -0.17px — IoU 0.4649
 
 ### `text-8` — supporting
 
@@ -305,7 +312,7 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 32 px |
-| Letter-spacing | -0.08 px (-0.0025 em) |
+| Letter-spacing | -0.05 px (-0.0016 em) |
 | Line-height | 42.0 px (ratio 1.312) |
 | Line | 2 of 4 |
 | Transform | lowercase |
@@ -313,8 +320,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.47:1 |
 | Stroke (median/mean) | 2.0 / 2.72 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.7444 |
+| Match IoU | 0.7241 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -322,18 +330,18 @@ Alternate font fits considered:
 | Gap to next | 18 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 31px track 0.36px — IoU 0.4919
-- `Actor-Regular.ttf` 33px track -0.52px — IoU 0.49
-- `Montserrat[wght].ttf` 26px track -0.2px — IoU 0.4743
+- `Actor-Regular.ttf` 31px track 0.39px — IoU 0.4793
+- `Actor-Regular.ttf` 33px track -0.49px — IoU 0.4652
+- `Montserrat[wght].ttf` 26px track -0.17px — IoU 0.4649
 
 ### `text-9` — supporting
 
-**Text:** "accessories-perfect for standing"  (OCR confidence 0.9842)
+**Text:** "accessories perfect for standing"  (OCR confidence 0.9842)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=78, y=626, w=442, h=31 |
-| Normalised | x=7.22%, y=57.96%, w=40.93%, h=2.87% |
+| Bounding box (px) | x=77, y=626, w=443, h=31 |
+| Normalised | x=7.13%, y=57.96%, w=41.02%, h=2.87% |
 | Alignment | left |
 | z-order | 108 |
 | Rotation | 0° |
@@ -341,7 +349,7 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 32 px |
-| Letter-spacing | -0.08 px (-0.0025 em) |
+| Letter-spacing | -0.05 px (-0.0016 em) |
 | Line-height | 42.0 px (ratio 1.312) |
 | Line | 3 of 4 |
 | Transform | lowercase |
@@ -349,18 +357,20 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 2.0 / 3.09 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'accessoriesperfect' -> 'accessories perfect' |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.2126 |
+| Match IoU | 0.1957 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 18 px |
 | Gap to next | 11 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 31px track 0.36px — IoU 0.4919
-- `Actor-Regular.ttf` 33px track -0.52px — IoU 0.49
-- `Montserrat[wght].ttf` 26px track -0.2px — IoU 0.4743
+- `Actor-Regular.ttf` 31px track 0.39px — IoU 0.4793
+- `Actor-Regular.ttf` 33px track -0.49px — IoU 0.4652
+- `Montserrat[wght].ttf` 26px track -0.17px — IoU 0.4649
 
 ### `text-10` — supporting
 
@@ -377,7 +387,7 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 32 px |
-| Letter-spacing | -0.08 px (-0.0025 em) |
+| Letter-spacing | -0.05 px (-0.0016 em) |
 | Line-height | 42.0 px (ratio 1.312) |
 | Line | 4 of 4 |
 | Transform | lowercase |
@@ -385,27 +395,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 2.0 / 2.91 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.6925 |
+| Match IoU | 0.6837 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 11 px |
-| Gap to next | -14 px |
+| Gap to next | -17 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 31px track 0.36px — IoU 0.4919
-- `Actor-Regular.ttf` 33px track -0.52px — IoU 0.49
-- `Montserrat[wght].ttf` 26px track -0.2px — IoU 0.4743
+- `Actor-Regular.ttf` 31px track 0.39px — IoU 0.4793
+- `Actor-Regular.ttf` 33px track -0.49px — IoU 0.4652
+- `Montserrat[wght].ttf` 26px track -0.17px — IoU 0.4649
 
-### `text-11` — detail
+### `text-11` — supporting
 
 **Text:** "FENDI"  (OCR confidence 0.9738)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=863, y=685, w=92, h=48 |
-| Normalised | x=79.91%, y=63.43%, w=8.52%, h=4.44% |
+| Bounding box (px) | x=863, y=682, w=92, h=47 |
+| Normalised | x=79.91%, y=63.15%, w=8.52%, h=4.35% |
 | Alignment | right |
 | z-order | 110 |
 | Rotation | 0° |
@@ -417,130 +428,136 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#423c35` |
+| Colour | `#403b33` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.18:1 |
-| Stroke (median/mean) | 2.0 / 1.99 px |
+| Contrast vs local bg | 3.24:1 |
+| Stroke (median/mean) | 2.0 / 2.01 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.3091 |
+| Match IoU | 0.303 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -14 px |
-| Gap to next | -15 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -17 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 28px track -0.72px — IoU 0.3057
-- `ArchivoBlack-Regular.ttf` 27px track 0.12px — IoU 0.3055
-- `Montserrat[wght].ttf` 29px track -0.9px — IoU 0.2953
+- `Montserrat[wght].ttf` 29px track -0.9px — IoU 0.3009
+- `ArchivoBlack-Regular.ttf` 28px track -0.72px — IoU 0.3005
+- `Montserrat[wght].ttf` 27px track 0.75px — IoU 0.2978
 
-### `text-12` — detail
+### `text-13` — supporting
+
+**Text:** "TL"  (OCR confidence 0.8025)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=862, y=725, w=35, h=24 |
+| Normalised | x=79.81%, y=67.13%, w=3.24%, h=2.22% |
+| Alignment | right |
+| z-order | 112 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Montserrat-Italic[wght].ttf` |
+| Variation axes | [900.0] |
+| Font size | 29 px |
+| Letter-spacing | -1.86 px (-0.0641 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | uppercase |
+| Colour | `#564f46` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 2.16:1 |
+| Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
+| Font family (authoritative) | Actor, Montserrat, Archivo Black |
+| Match IoU | 0.3707 |
+| **Geometry fit confidence** | **very-low-textUnreliable** |
+| OCR text reliable | False — low OCR confidence (0.8025) |
+| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
+| Gap to previous | -4 px |
+| Gap to next | -24 px |
+
+Alternate font fits considered:
+- `Montserrat-Italic[wght].ttf` 28px track -0.59px — IoU 0.3489
+- `Montserrat-Italic[wght].ttf` 27px track 0.69px — IoU 0.3406
+- `Montserrat-Italic[wght].ttf` 29px track -1.11px — IoU 0.3287
+
+### `text-12` — fine-print
 
 **Text:** "ROMA"  (OCR confidence 0.9934)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=897, y=718, w=43, h=15 |
-| Normalised | x=83.06%, y=66.48%, w=3.98%, h=1.39% |
+| Bounding box (px) | x=904, y=725, w=26, h=9 |
+| Normalised | x=83.7%, y=67.13%, w=2.41%, h=0.83% |
 | Alignment | right |
 | z-order | 111 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Montserrat[wght].ttf` |
 | Variation axes | [900.0] |
-| Font size | 13 px |
-| Letter-spacing | -0.2 px (-0.0154 em) |
+| Font size | 8 px |
+| Letter-spacing | -0.27 px (-0.0338 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#635549` |
+| Colour | `#7a6c57` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 2.39:1 |
-| Stroke (median/mean) | 1.0 / 1.94 px |
-| Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.1771 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -15 px |
-| Gap to next | -13 px |
-
-Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 14px track -1.22px — IoU 0.1705
-- `Montserrat[wght].ttf` 14px track -1.32px — IoU 0.159
-- `ArchivoBlack-Regular.ttf` 12px track 0.99px — IoU 0.1589
-
-### `text-13` — fine-print
-
-**Text:** "TL"  (OCR confidence 0.8025)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=862, y=720, w=26, h=15 |
-| Normalised | x=79.81%, y=66.67%, w=2.41%, h=1.39% |
-| Alignment | right |
-| z-order | 112 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Montserrat[wght].ttf` |
-| Variation axes | [900.0] |
-| Font size | 21 px |
-| Letter-spacing | -0.69 px (-0.0329 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | uppercase |
-| Colour | `#cfb898` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.05:1 |
+| Contrast vs local bg | 1.97:1 |
 | Stroke (median/mean) | 1.0 / 1.0 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.2456 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
-| OCR text reliable | False — low OCR confidence (0.8025) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -13 px |
-| Gap to next | 106 px |
+| Match IoU | 0.4932 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | True  |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -24 px |
+| Gap to next | 107 px |
 
 Alternate font fits considered:
-- `Montserrat[wght].ttf` 20px track 0.58px — IoU 0.2431
-- `Montserrat[wght].ttf` 22px track -1.39px — IoU 0.2166
-- `ArchivoBlack-Regular.ttf` 19px track -0.39px — IoU 0.2094
+- `ArchivoBlack-Regular.ttf` 8px track -0.21px — IoU 0.4138
+- `Montserrat[wght].ttf` 8px track -0.2px — IoU 0.4056
+- `Montserrat[wght].ttf` 7px track 0.91px — IoU 0.3828
 
 ### `text-14` — supporting
 
-**Text:** "S H O PN OW"  (OCR confidence 0.963)
+**Text:** "SHOP NOW"  (OCR confidence 0.963)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=94, y=841, w=237, h=27 |
-| Normalised | x=8.7%, y=77.87%, w=21.94%, h=2.5% |
+| Bounding box (px) | x=94, y=841, w=237, h=28 |
+| Normalised | x=8.7%, y=77.87%, w=21.94%, h=2.59% |
 | Alignment | left |
 | z-order | 113 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 32 px |
-| Letter-spacing | 0.95 px (0.0297 em) |
+| Font size | 40 px |
+| Letter-spacing | -1.04 px (-0.026 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f9e8ba` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 19.22:1 |
 | Stroke (median/mean) | 10.0 / 12.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Actor, Montserrat, Archivo Black |
-| Match IoU | 0.2577 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8459 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 106 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 107 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `ArchivoBlack-Regular.ttf` 33px track 0.25px — IoU 0.2445
-- `ArchivoBlack-Regular.ttf` 34px track -0.47px — IoU 0.2423
-- `Montserrat[wght].ttf` 34px track -0.48px — IoU 0.1449
+- `ArchivoBlack-Regular.ttf` 39px track -0.18px — IoU 0.8362
+- `ArchivoBlack-Regular.ttf` 38px track 0.69px — IoU 0.8082
+- `Montserrat[wght].ttf` 39px track -0.75px — IoU 0.5117
 
 ## 4. Colours (semantic)
 
@@ -549,10 +566,10 @@ Alternate font fits considered:
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f8e7ba` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#000000` | glyph ink of 'Everyday' | glyph ink median |
-| textSecondary | `#ffffff` | glyph ink of 'Effortless' | glyph ink median |
+| textSecondary | `#403b33` | glyph ink of 'FENDI' | glyph ink median |
 | accent | `#f8e7ba` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#8b6348` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -576,7 +593,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | False |
-| Text coverage | 0.1262 |
+| Text coverage | 0.1273 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -607,22 +624,22 @@ _Recommendations only — no manifest is generated._
 | `headline_line1` | text | C hic, |
 | `headline_line2` | text | Everyday |
 | `headline_line3` | text | Statement |
-| `subheadline_line1` | text | Bold style, soft |
-| `subheadline_line2` | text | confidence. |
+| `supporting_line1` | text | Bold style, soft |
+| `supporting_line2` | text | confidence. |
 | `supporting_line1` | text | A refined look that blends cozy |
 | `supporting_line2` | text | textures with statement |
-| `supporting_line3` | text | accessories-perfect for standing |
+| `supporting_line3` | text | accessories perfect for standing |
 | `supporting_line4` | text | out with ease and elegance. |
-| `detail` | text | FENDI |
-| `detail` | text | ROMA |
-| `fine-print` | text | TL |
-| `supporting` | text | S H O PN OW |
+| `supporting` | text | FENDI |
+| `supporting` | text | TL |
+| `fine-print` | text | ROMA |
+| `supporting` | text | SHOP NOW |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
 | `surface` | colour | #f8e7ba |
 | `textPrimary` | colour | #000000 |
-| `textSecondary` | colour | #ffffff |
+| `textSecondary` | colour | #403b33 |
 | `accent` | colour | #f8e7ba |
 | `accentSecondary` | colour | #8b6348 |
 | `onAccent` | colour | #000000 |
@@ -631,14 +648,14 @@ _Recommendations only — no manifest is generated._
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 58.2 |

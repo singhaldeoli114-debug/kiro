@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -61,27 +61,28 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.07:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Libre Baskerville, Dancing Script, Roboto |
 | Match IoU | 0.878 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 113 px |
+| Gap to next | -31 px |
 
 Alternate font fits considered:
 - `LibreBaskerville[wght].ttf` 87px track 0.17px — IoU 0.8753
 - `LibreBaskerville[wght].ttf` 87px track -0.18px — IoU 0.863
 - `LibreBaskerville[wght].ttf` 86px track 0.79px — IoU 0.8585
 
-### `text-2` — supporting
+### `text-2` — fine-print
 
-**Text:** "PerfectGilt"  (OCR confidence 0.9216)
+**Text:** "Perfect Gilt"  (OCR confidence 0.9216)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=457, y=297, w=81, h=35 |
-| Normalised | x=42.31%, y=27.5%, w=7.5%, h=3.24% |
+| Bounding box (px) | x=457, y=153, w=82, h=174 |
+| Normalised | x=42.31%, y=14.17%, w=7.59%, h=16.11% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,43 +90,45 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 75.0] |
 | Font size | 19 px |
-| Letter-spacing | -0.29 px (-0.0153 em) |
+| Letter-spacing | -0.57 px (-0.03 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#2b2722` |
+| Colour | `#3b352c` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 1.24:1 |
+| Contrast vs local bg | 3.06:1 |
 | Stroke (median/mean) | 10.0 / 18.86 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split camelCase: 'PerfectGilt' -> 'Perfect Gilt' |
 | Font family (authoritative) | Libre Baskerville, Dancing Script, Roboto |
-| Match IoU | 0.2859 |
+| Match IoU | 0.1814 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.9216) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 113 px |
-| Gap to next | 634 px |
+| Gap to previous | -31 px |
+| Gap to next | 639 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 19px track -0.69px — IoU 0.282
-- `Roboto[wdth,wght].ttf` 19px track -0.62px — IoU 0.2782
-- `Roboto[wdth,wght].ttf` 19px track -0.16px — IoU 0.2743
+- `Roboto[wdth,wght].ttf` 19px track -0.35px — IoU 0.1811
+- `Roboto[wdth,wght].ttf` 16px track -0.03px — IoU 0.1811
+- `Roboto[wdth,wght].ttf` 16px track 0.02px — IoU 0.1793
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "www.collection.com"  (OCR confidence 0.9984)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=145, y=966, w=328, h=28 |
-| Normalised | x=13.43%, y=89.44%, w=30.37%, h=2.59% |
+| Bounding box (px) | x=144, y=966, w=329, h=28 |
+| Normalised | x=13.33%, y=89.44%, w=30.46%, h=2.59% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [600, 100.0] |
+| Variation axes | [500, 100.0] |
 | Font size | 37 px |
-| Letter-spacing | -0.57 px (-0.0154 em) |
+| Letter-spacing | -0.48 px (-0.013 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -133,18 +136,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 5.03:1 |
 | Stroke (median/mean) | 3.0 / 3.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Libre Baskerville, Dancing Script, Roboto |
-| Match IoU | 0.7636 |
+| Match IoU | 0.7454 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | False — single long token with no spaces |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 634 px |
+| Gap to previous | 639 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 37px track -0.6px — IoU 0.737
-- `Roboto[wdth,wght].ttf` 37px track -0.54px — IoU 0.7332
-- `Roboto[wdth,wght].ttf` 36px track 0.0px — IoU 0.6958
+- `Roboto[wdth,wght].ttf` 37px track -0.51px — IoU 0.734
+- `Roboto[wdth,wght].ttf` 36px track 0.06px — IoU 0.6814
+- `Roboto[wdth,wght].ttf` 37px track -0.54px — IoU 0.6611
 
 ## 4. Colours (semantic)
 
@@ -152,11 +156,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f9f8f7` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#e1b794` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#8b4c16` | glyph ink of 'Find the' | glyph ink median |
-| textSecondary | `#2b2722` | glyph ink of 'PerfectGilt' | glyph ink median |
+| textPrimary | `#3b352c` | glyph ink of 'Perfect Gilt' | glyph ink median |
+| textSecondary | `#8b4c16` | glyph ink of 'Find the' | glyph ink median |
 | accent | `#e1b794` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#382514` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -180,7 +184,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0351 |
+| Text coverage | 0.0449 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -208,21 +212,21 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Find the |
-| `supporting` | text | PerfectGilt |
-| `subheadline` | text | www.collection.com |
+| `fine-print` | text | Perfect Gilt |
+| `supporting` | text | www.collection.com |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f9f8f7 |
 | `surface` | colour | #e1b794 |
-| `textPrimary` | colour | #8b4c16 |
-| `textSecondary` | colour | #2b2722 |
+| `textPrimary` | colour | #3b352c |
+| `textSecondary` | colour | #8b4c16 |
 | `accent` | colour | #e1b794 |
 | `accentSecondary` | colour | #382514 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Libre Baskerville |
 | `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `imageFocalX` | number | 42.4 |
 | `imageFocalY` | number | 56.7 |
 

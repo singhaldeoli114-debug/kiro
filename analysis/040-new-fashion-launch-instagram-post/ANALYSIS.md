@@ -33,45 +33,46 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — body
 
 **Text:** "YOUR STORE"  (OCR confidence 0.9983)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=826, y=69, w=157, h=18 |
-| Normalised | x=76.48%, y=6.39%, w=14.54%, h=1.67% |
+| Bounding box (px) | x=825, y=68, w=158, h=19 |
+| Normalised | x=76.39%, y=6.3%, w=14.63%, h=1.76% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 26 px |
-| Letter-spacing | 0.24 px (0.0092 em) |
+| Font size | 27 px |
+| Letter-spacing | -0.31 px (-0.0115 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#2f2f2f` |
+| Colour | `#323232` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 4.31:1 |
+| Contrast vs local bg | 4.11:1 |
 | Stroke (median/mean) | 2.0 / 2.02 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aboreto, Poppins |
-| Match IoU | 0.6957 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.7297 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 56 px |
+| Gap to next | 55 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 27px track -0.42px — IoU 0.652
-- `Poppins-Regular.ttf` 25px track 0.9px — IoU 0.6136
-- `Aboreto-Regular.ttf` 24px track 0.23px — IoU 0.2061
+- `Poppins-Regular.ttf` 28px track -0.97px — IoU 0.7225
+- `Poppins-Regular.ttf` 26px track 0.35px — IoU 0.5589
+- `Aboreto-Regular.ttf` 25px track -0.37px — IoU 0.2216
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=146, y=143, w=854, h=92 |
-| Normalised | x=13.52%, y=13.24%, w=79.07%, h=8.52% |
+| Bounding box (px) | x=146, y=142, w=854, h=93 |
+| Normalised | x=13.52%, y=13.15%, w=79.07%, h=8.61% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,25 +90,26 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 111 px |
 | Letter-spacing | -0.49 px (-0.0044 em) |
-| Line-height | 138.0 px (ratio 1.243) |
+| Line-height | 139.0 px (ratio 1.252) |
 | Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.29:1 |
 | Stroke (median/mean) | 11.0 / 11.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aboreto, Poppins |
-| Match IoU | 0.2113 |
+| Match IoU | 0.211 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 56 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 55 px |
 | Gap to next | 46 px |
 
 Alternate font fits considered:
-- `Aboreto-Regular.ttf` 109px track 0.8px — IoU 0.3966
-- `Aboreto-Regular.ttf` 110px track 0.15px — IoU 0.3879
-- `Poppins-Regular.ttf` 118px track 0.52px — IoU 0.2577
+- `Aboreto-Regular.ttf` 109px track 0.8px — IoU 0.398
+- `Aboreto-Regular.ttf` 110px track 0.15px — IoU 0.3878
+- `Poppins-Regular.ttf` 118px track 0.52px — IoU 0.2562
 
 ### `text-3` — headline
 
@@ -125,13 +127,14 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 111 px |
 | Letter-spacing | -0.49 px (-0.0044 em) |
-| Line-height | 138.0 px (ratio 1.243) |
+| Line-height | 139.0 px (ratio 1.252) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 15.9:1 |
 | Stroke (median/mean) | 11.0 / 12.8 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aboreto, Poppins |
 | Match IoU | 0.6028 |
 | **Geometry fit confidence** | **medium** |
@@ -141,45 +144,46 @@ Alternate font fits considered:
 | Gap to next | 580 px |
 
 Alternate font fits considered:
-- `Aboreto-Regular.ttf` 109px track 0.8px — IoU 0.3966
-- `Aboreto-Regular.ttf` 110px track 0.15px — IoU 0.3879
-- `Poppins-Regular.ttf` 118px track 0.52px — IoU 0.2577
+- `Aboreto-Regular.ttf` 109px track 0.8px — IoU 0.398
+- `Aboreto-Regular.ttf` 110px track 0.15px — IoU 0.3878
+- `Poppins-Regular.ttf` 118px track 0.52px — IoU 0.2562
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
-**Text:** "ORDERNOW"  (OCR confidence 0.9901)
+**Text:** "ORDER NOW"  (OCR confidence 0.9901)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=380, y=954, w=323, h=37 |
-| Normalised | x=35.19%, y=88.33%, w=29.91%, h=3.43% |
+| Bounding box (px) | x=380, y=954, w=323, h=38 |
+| Normalised | x=35.19%, y=88.33%, w=29.91%, h=3.52% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
-| Font size | 58 px |
-| Letter-spacing | -0.98 px (-0.0169 em) |
+| Font size | 55 px |
+| Letter-spacing | -0.56 px (-0.0102 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#000000` |
-| Polarity | dark-on-light |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 9.0 / 11.66 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Aboreto, Poppins |
-| Match IoU | 0.1366 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5353 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | 580 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 57px track -0.16px — IoU 0.1148
-- `Poppins-Regular.ttf` 56px track 0.65px — IoU 0.11
-- `Aboreto-Regular.ttf` 52px track -0.41px — IoU 0.0868
+- `Poppins-Regular.ttf` 53px track 0.93px — IoU 0.516
+- `Poppins-Regular.ttf` 54px track 0.19px — IoU 0.5145
+- `Aboreto-Regular.ttf` 50px track -0.48px — IoU 0.2695
 
 ## 4. Colours (semantic)
 
@@ -187,11 +191,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#f2f2f2` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#bcbcbc` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#000000` | glyph ink of 'COLLECTION' | glyph ink median |
-| textSecondary | `#2f2f2f` | glyph ink of 'YOUR STORE' | glyph ink median |
+| textPrimary | `#000000` | glyph ink of 'N EW FASH ION' | glyph ink median |
+| textSecondary | `#ffffff` | glyph ink of 'ORDER NOW' | glyph ink median |
 | accent | — | not identified | — |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | — | not identified | — |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.1422 |
+| Text coverage | 0.1434 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -242,21 +246,21 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | YOUR STORE |
+| `body` | text | YOUR STORE |
 | `headline_line1` | text | N EW FASH ION |
 | `headline_line2` | text | COLLECTION |
-| `subheadline` | text | ORDERNOW |
+| `supporting` | text | ORDER NOW |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f2f2f2 |
 | `surface` | colour | #bcbcbc |
 | `textPrimary` | colour | #000000 |
-| `textSecondary` | colour | #2f2f2f |
+| `textSecondary` | colour | #ffffff |
 | `brandFont` | font | Aboreto |
+| `show_body` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `imageFocalX` | number | 46.9 |
 | `imageFocalY` | number | 49.6 |
 

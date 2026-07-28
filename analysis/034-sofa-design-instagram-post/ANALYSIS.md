@@ -34,18 +34,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — detail
+### `text-1` — body
 
 **Text:** "LOGO"  (OCR confidence 0.9951)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=52, y=55, w=74, h=29 |
-| Normalised | x=4.81%, y=5.09%, w=6.85%, h=2.69% |
+| Bounding box (px) | x=51, y=55, w=75, h=29 |
+| Normalised | x=4.72%, y=5.09%, w=6.94%, h=2.69% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -53,16 +53,17 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
 | Font size | 37 px |
-| Letter-spacing | -0.29 px (-0.0078 em) |
+| Letter-spacing | 0.04 px (0.0011 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#070706` |
+| Colour | `#080808` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 11.82:1 |
+| Contrast vs local bg | 11.23:1 |
 | Stroke (median/mean) | 3.0 / 4.02 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Great Vibes, Abhaya Libre |
-| Match IoU | 0.6378 |
+| Match IoU | 0.6279 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -70,11 +71,11 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 21 px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 38px track -0.96px — IoU 0.5702
-- `AbhayaLibre-ExtraBold.ttf` 28px track 0.81px — IoU 0.5225
-- `AbhayaLibre-ExtraBold.ttf` 30px track -0.89px — IoU 0.4906
+- `AbhayaLibre-ExtraBold.ttf` 30px track -0.56px — IoU 0.5158
+- `Abel-Regular.ttf` 38px track -0.63px — IoU 0.5057
+- `AbhayaLibre-ExtraBold.ttf` 28px track 1.15px — IoU 0.4907
 
-### `text-2` — supporting
+### `text-2` — subheadline
 
 **Text:** "FURNISHED"  (OCR confidence 0.9866)
 
@@ -97,6 +98,7 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.01:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Great Vibes, Abhaya Libre |
 | Match IoU | 0.7704 |
 | **Geometry fit confidence** | **high** |
@@ -116,16 +118,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=308, y=169, w=465, h=79 |
-| Normalised | x=28.52%, y=15.65%, w=43.06%, h=7.31% |
+| Bounding box (px) | x=308, y=169, w=465, h=71 |
+| Normalised | x=28.52%, y=15.65%, w=43.06%, h=6.57% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-ExtraBold.ttf` |
+| Font file matched | `AbhayaLibre-Bold.ttf` |
 | Variation axes | None |
 | Font size | 118 px |
-| Letter-spacing | 0.26 px (0.0022 em) |
+| Letter-spacing | 0.19 px (0.0016 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -133,18 +135,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.43:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Great Vibes, Abhaya Libre |
-| Match IoU | 0.7126 |
+| Match IoU | 0.9244 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 14 px |
-| Gap to next | -14 px |
+| Gap to next | 7 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 117px track 1.04px — IoU 0.7052
-- `AbhayaLibre-Bold.ttf` 118px track 0.19px — IoU 0.7049
-- `AbhayaLibre-Bold.ttf` 117px track 0.97px — IoU 0.7041
+- `AbhayaLibre-Bold.ttf` 119px track -0.59px — IoU 0.9167
+- `AbhayaLibre-ExtraBold.ttf` 118px track 0.26px — IoU 0.9101
+- `AbhayaLibre-Bold.ttf` 117px track 0.97px — IoU 0.8978
 
 ### `text-4` — subheadline
 
@@ -152,16 +155,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=322, y=234, w=441, h=121 |
-| Normalised | x=29.81%, y=21.67%, w=40.83%, h=11.2% |
+| Bounding box (px) | x=338, y=247, w=409, h=108 |
+| Normalised | x=31.3%, y=22.87%, w=37.87%, h=10.0% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbhayaLibre-ExtraBold.ttf` |
+| Font file matched | `GreatVibes-Regular.ttf` |
 | Variation axes | None |
-| Font size | 89 px |
-| Letter-spacing | 0.32 px (0.0036 em) |
+| Font size | 92 px |
+| Letter-spacing | -0.22 px (-0.0024 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -169,27 +172,29 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.07:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abel, Great Vibes, Abhaya Libre |
-| Match IoU | 0.1307 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.804 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -14 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 7 px |
 | Gap to next | 659 px |
 
 Alternate font fits considered:
-- `AbhayaLibre-ExtraBold.ttf` 90px track -0.17px — IoU 0.1294
-- `AbhayaLibre-ExtraBold.ttf` 91px track -0.66px — IoU 0.1261
-- `GreatVibes-Regular.ttf` 100px track -0.6px — IoU 0.1227
+- `GreatVibes-Regular.ttf` 91px track 0.22px — IoU 0.7731
+- `GreatVibes-Regular.ttf` 93px track -0.68px — IoU 0.6974
+- `AbhayaLibre-ExtraBold.ttf` 82px track 0.57px — IoU 0.135
 
-### `text-5` — detail
+### `text-5` — body
 
 **Text:** "www.sofa.com"  (OCR confidence 0.9972)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=431, y=1014, w=217, h=28 |
-| Normalised | x=39.91%, y=93.89%, w=20.09%, h=2.59% |
+| Bounding box (px) | x=430, y=1014, w=218, h=28 |
+| Normalised | x=39.81%, y=93.89%, w=20.19%, h=2.59% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -197,7 +202,7 @@ Alternate font fits considered:
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
 | Font size | 39 px |
-| Letter-spacing | -0.39 px (-0.01 em) |
+| Letter-spacing | -0.3 px (-0.0077 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -205,8 +210,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 11.24:1 |
 | Stroke (median/mean) | 3.0 / 3.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abel, Great Vibes, Abhaya Libre |
-| Match IoU | 0.4275 |
+| Match IoU | 0.4239 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
@@ -214,9 +220,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbhayaLibre-Bold.ttf` 36px track 0.46px — IoU 0.4234
-- `AbhayaLibre-ExtraBold.ttf` 36px track 0.31px — IoU 0.4038
-- `AbhayaLibre-SemiBold.ttf` 36px track 0.61px — IoU 0.377
+- `AbhayaLibre-Bold.ttf` 38px track -0.51px — IoU 0.3465
+- `AbhayaLibre-ExtraBold.ttf` 38px track -0.67px — IoU 0.3415
+- `AbhayaLibre-ExtraBold.ttf` 37px track -0.14px — IoU 0.3262
 
 ## 4. Colours (semantic)
 
@@ -228,7 +234,7 @@ Alternate font fits considered:
 | textSecondary | `#ff831c` | glyph ink of 'MODERN' | glyph ink median |
 | accent | `#be6922` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#b4a38f` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -252,7 +258,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0971 |
+| Text coverage | 0.0861 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -279,11 +285,11 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `detail` | text | LOGO |
-| `supporting` | text | FURNISHED |
+| `body` | text | LOGO |
+| `subheadline` | text | FURNISHED |
 | `headline` | text | MODERN |
 | `subheadline` | text | Sofa Design |
-| `detail` | text | www.sofa.com |
+| `body` | text | www.sofa.com |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #e5e2db |
@@ -294,11 +300,11 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #b4a38f |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abel |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 50.3 |
 | `imageFocalY` | number | 60.3 |
 

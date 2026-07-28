@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -42,16 +42,16 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=160, y=516, w=351, h=34 |
-| Normalised | x=14.81%, y=47.78%, w=32.5%, h=3.15% |
+| Bounding box (px) | x=159, y=515, w=352, h=36 |
+| Normalised | x=14.72%, y=47.69%, w=32.59%, h=3.33% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
+| Variation axes | [600, 100.0] |
 | Font size | 48 px |
-| Letter-spacing | -0.89 px (-0.0185 em) |
+| Letter-spacing | -0.88 px (-0.0183 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -59,8 +59,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 7.96:1 |
 | Stroke (median/mean) | 4.0 / 6.0 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto |
-| Match IoU | 0.7376 |
+| Match IoU | 0.8069 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -68,9 +69,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 46px track 0.38px — IoU 0.7218
-- `Roboto[wdth,wght].ttf` 46px track 0.3px — IoU 0.6783
-- `Roboto[wdth,wght].ttf` 49px track 0.47px — IoU 0.6759
+- `Roboto[wdth,wght].ttf` 48px track -0.8px — IoU 0.7645
+- `Roboto[wdth,wght].ttf` 51px track -0.7px — IoU 0.7512
+- `Roboto[wdth,wght].ttf` 46px track 0.46px — IoU 0.7375
 
 ## 4. Colours (semantic)
 
@@ -82,7 +83,7 @@ Alternate font fits considered:
 | textSecondary | — | not identified | — |
 | accent | `#27190b` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#806548` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -106,7 +107,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0102 |
+| Text coverage | 0.0109 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

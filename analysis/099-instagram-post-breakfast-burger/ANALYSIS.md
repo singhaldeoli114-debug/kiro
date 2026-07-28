@@ -34,45 +34,46 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — headline
 
 **Text:** "BREAKFAST"  (OCR confidence 0.9912)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=93, y=81, w=594, h=64 |
-| Normalised | x=8.61%, y=7.5%, w=55.0%, h=5.93% |
+| Bounding box (px) | x=92, y=80, w=595, h=65 |
+| Normalised | x=8.52%, y=7.41%, w=55.09%, h=6.02% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `GreatVibes-Regular.ttf` |
+| Font file matched | `ArchivoBlack-Regular.ttf` |
 | Variation axes | None |
-| Font size | 71 px |
-| Letter-spacing | -0.67 px (-0.0094 em) |
+| Font size | 89 px |
+| Letter-spacing | -1.03 px (-0.0116 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f6efd0` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.0:1 |
+| Colour | `#f5a623` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.35:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Great Vibes, Alata |
-| Match IoU | 0.0924 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.8366 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
 | Gap to next | 10 px |
 
 Alternate font fits considered:
-- `GreatVibes-Regular.ttf` 70px track 0.39px — IoU 0.0922
-- `GreatVibes-Regular.ttf` 69px track 1.45px — IoU 0.0873
-- `ArchivoBlack-Regular.ttf` 89px track -1.15px — IoU 0.0384
+- `ArchivoBlack-Regular.ttf` 88px track -0.18px — IoU 0.8252
+- `ArchivoBlack-Regular.ttf` 87px track 0.66px — IoU 0.8186
+- `Alata-Regular.ttf` 115px track -0.51px — IoU 0.555
 
 ### `text-2` — headline
 
@@ -97,6 +98,8 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.69:1 |
 | Stroke (median/mean) | 7.0 / 6.9 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Archivo Black, Great Vibes, Alata |
 | Match IoU | 0.1823 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
@@ -116,8 +119,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=634, y=941, w=351, h=30 |
-| Normalised | x=58.7%, y=87.13%, w=32.5%, h=2.78% |
+| Bounding box (px) | x=634, y=941, w=351, h=31 |
+| Normalised | x=58.7%, y=87.13%, w=32.5%, h=2.87% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -133,8 +136,9 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.69:1 |
 | Stroke (median/mean) | 4.0 / 5.57 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Archivo Black, Great Vibes, Alata |
-| Match IoU | 0.696 |
+| Match IoU | 0.6762 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
@@ -142,9 +146,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 39px track 0.03px — IoU 0.6467
-- `Alata-Regular.ttf` 38px track 0.67px — IoU 0.6166
-- `ArchivoBlack-Regular.ttf` 32px track -0.58px — IoU 0.4391
+- `Alata-Regular.ttf` 39px track 0.03px — IoU 0.6313
+- `Alata-Regular.ttf` 38px track 0.67px — IoU 0.603
+- `ArchivoBlack-Regular.ttf` 32px track -0.58px — IoU 0.4311
 
 ## 4. Colours (semantic)
 
@@ -153,10 +157,10 @@ Alternate font fits considered:
 | background | `#f6f4f0` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f5eecf` | second distinct cluster | k-means secondary cluster |
 | textPrimary | `#000000` | glyph ink of 'ellogupad' | glyph ink median |
-| textSecondary | `#f6efd0` | glyph ink of 'BREAKFAST' | glyph ink median |
+| textSecondary | `#f5a623` | glyph ink of 'BREAKFAST' | glyph ink median |
 | accent | `#efa229` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#231710` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -180,7 +184,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.0908 |
+| Text coverage | 0.0916 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,7 +211,7 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | BREAKFAST |
+| `headline` | text | BREAKFAST |
 | `headline` | text | ellogupad |
 | `supporting` | text | YOUR RESTAURANT |
 | `heroImage` | image | framed/panelled artwork |
@@ -215,12 +219,12 @@ _Recommendations only — no manifest is generated._
 | `background` | colour | #f6f4f0 |
 | `surface` | colour | #f5eecf |
 | `textPrimary` | colour | #000000 |
-| `textSecondary` | colour | #f6efd0 |
+| `textSecondary` | colour | #f5a623 |
 | `accent` | colour | #efa229 |
 | `accentSecondary` | colour | #231710 |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Archivo Black |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_supporting` | boolean | — |
 | `imageFocalX` | number | 51.3 |

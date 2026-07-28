@@ -44,6 +44,7 @@
       "textRawOcr": "Hfow are you feeling?",
       "textSpacesRestored": false,
       "wordGapCount": 0,
+      "textRepairs": [],
       "slant": {
         "angleDeg": -26.0,
         "style": "normal",
@@ -51,12 +52,39 @@
         "shearGainOverUpright": 1.4491,
         "method": "shear-variance maximisation of column ink projection"
       },
+      "renderModel": {
+        "model": "solid-vector-text",
+        "fittableBySolidRender": true,
+        "notes": [
+          "strongly slanted or rotated; may sit on a curved path"
+        ],
+        "unvalidatedSignals": {
+          "enclosedAreaRatio": 0.191,
+          "offsetDuplicate": {
+            "detected": false,
+            "selfOverlapAtOffset": 0.643,
+            "offsetX": 2,
+            "offsetY": -4
+          },
+          "rasterSignals": {
+            "edgeSharpness": 0.4942,
+            "backgroundTexture": 23.04
+          },
+          "note": "diagnostic only; not used for classification"
+        }
+      },
       "maskDiagnostics": {
-        "method": "otsu-minority",
+        "method": "otsu with supplied polarity",
         "threshold": 130,
         "inkCoverage": 0.1309,
         "highClassPixels": 69985,
-        "lowClassPixels": 10543
+        "lowClassPixels": 10543,
+        "polarity": {
+          "method": "border-ring polarity",
+          "threshold": 128,
+          "borderMedian": 255.0,
+          "backgroundIsLight": true
+        }
       },
       "ocrConfidence": 0.8901,
       "zOrder": 100,
@@ -78,8 +106,8 @@
         "y": 90,
         "width": 719,
         "height": 112,
-        "inkPixels": 9114,
-        "fillRatio": 0.077
+        "inkPixels": 10521,
+        "fillRatio": 0.0949
       },
       "ocrBox": {
         "x": 163.0,
@@ -146,6 +174,7 @@
         "textTransform": "none",
         "textAlign": "center",
         "colour": "#000000",
+        "renderModel": "solid-vector-text",
         "fontFamilyIdentification": {
           "value": [
             "Homemade Apple"
@@ -184,7 +213,8 @@
         "lineHeightPx": null,
         "lineHeightRatio": null,
         "blockRole": "headline",
-        "blockTypeSizePx": 60.0
+        "blockTypeSizePx": 60.0,
+        "blockSizeRatioToLargest": 1.0
       }
     }
   ],
@@ -262,6 +292,42 @@
         "sampledAt": "derived",
         "method": "max WCAG contrast against accent",
         "contrastRatio": 17.68
+      },
+      "overlay": {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "rgba": "rgba(0, 0, 0, 0.112)",
+        "opacity": 0.112,
+        "direction": "to bottom",
+        "stops": [
+          {
+            "position": "0%",
+            "estimatedBlackAlpha": 0.112
+          },
+          {
+            "position": "25%",
+            "estimatedBlackAlpha": 0.0
+          },
+          {
+            "position": "50%",
+            "estimatedBlackAlpha": 0.036
+          },
+          {
+            "position": "75%",
+            "estimatedBlackAlpha": 0.112
+          },
+          {
+            "position": "100%",
+            "estimatedBlackAlpha": 0.006
+          }
+        ],
+        "sampledAt": "derived from the reference brightness gradient",
+        "method": "brightness-gradient estimate from flattened pixels",
+        "note": "Estimated black scrim; photo shading and a separate overlay layer cannot be distinguished."
       }
     },
     "palette": [
@@ -638,6 +704,7 @@
         "low": 0,
         "very-low": 1,
         "unresolved": 0,
+        "not-applicable-rasterText": 0,
         "textUnreliable": 1
       },
       "caveat": "IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md."

@@ -34,7 +34,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -61,6 +61,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.43:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
 | Match IoU | 0.65 |
 | **Geometry fit confidence** | **medium** |
@@ -80,8 +81,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=219, y=141, w=638, h=93 |
-| Normalised | x=20.28%, y=13.06%, w=59.07%, h=8.61% |
+| Bounding box (px) | x=218, y=141, w=639, h=94 |
+| Normalised | x=20.19%, y=13.06%, w=59.17%, h=8.7% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,7 +90,7 @@ Alternate font fits considered:
 | Font file matched | `Alkalami-Regular.ttf` |
 | Variation axes | None |
 | Font size | 132 px |
-| Letter-spacing | -0.72 px (-0.0055 em) |
+| Letter-spacing | -0.55 px (-0.0042 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -97,20 +98,21 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 4.34:1 |
 | Stroke (median/mean) | 22.0 / 23.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
-| Match IoU | 0.8043 |
+| Match IoU | 0.7977 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 14 px |
-| Gap to next | 29 px |
+| Gap to next | 28 px |
 
 Alternate font fits considered:
-- `Alkalami-Regular.ttf` 131px track 0.09px — IoU 0.783
-- `Alkalami-Regular.ttf` 130px track 0.91px — IoU 0.7689
-- `Abel-Regular.ttf` 178px track -0.74px — IoU 0.4196
+- `Alkalami-Regular.ttf` 131px track 0.26px — IoU 0.782
+- `Alkalami-Regular.ttf` 130px track 1.07px — IoU 0.7744
+- `Abel-Regular.ttf` 177px track 0.03px — IoU 0.4176
 
-### `text-3` — detail
+### `text-3` — body
 
 **Text:** "B E S Ｔ Ｐ R O D U Ｃ Ｔ Ｆ OR Y O U"  (OCR confidence 0.751)
 
@@ -133,13 +135,14 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.96:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
 | Match IoU | 0.1944 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.751) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 29 px |
-| Gap to next | 234 px |
+| Gap to previous | 28 px |
+| Gap to next | 233 px |
 
 Alternate font fits considered:
 - `Actor-Regular.ttf` 42px track -0.01px — IoU 0.1908
@@ -152,8 +155,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=893, y=522, w=58, h=21 |
-| Normalised | x=82.69%, y=48.33%, w=5.37%, h=1.94% |
+| Bounding box (px) | x=892, y=521, w=59, h=22 |
+| Normalised | x=82.59%, y=48.24%, w=5.46%, h=2.04% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
@@ -161,26 +164,27 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 25 px |
-| Letter-spacing | 0.6 px (0.024 em) |
+| Letter-spacing | 0.94 px (0.0376 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#343434` |
+| Colour | `#363636` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.92:1 |
+| Contrast vs local bg | 3.8:1 |
 | Stroke (median/mean) | 2.0 / 2.78 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
-| Match IoU | 0.6742 |
+| Match IoU | 0.6651 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 234 px |
+| Gap to previous | 233 px |
 | Gap to next | -17 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 27px track -0.91px — IoU 0.6395
-- `Actor-Regular.ttf` 26px track -0.14px — IoU 0.6286
-- `Abel-Regular.ttf` 27px track 0.94px — IoU 0.5
+- `Actor-Regular.ttf` 27px track -0.57px — IoU 0.5355
+- `Actor-Regular.ttf` 26px track 0.19px — IoU 0.5127
+- `Abel-Regular.ttf` 30px track -0.78px — IoU 0.5124
 
 ### `text-5` — fine-print
 
@@ -188,35 +192,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=93, y=526, w=65, h=22 |
-| Normalised | x=8.61%, y=48.7%, w=6.02%, h=2.04% |
+| Bounding box (px) | x=92, y=526, w=67, h=23 |
+| Normalised | x=8.52%, y=48.7%, w=6.2%, h=2.13% |
 | Alignment | left |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
-| Font size | 24 px |
-| Letter-spacing | 0.96 px (0.04 em) |
+| Font size | 25 px |
+| Letter-spacing | 0.82 px (0.0328 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#353535` |
+| Colour | `#363636` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 3.86:1 |
+| Contrast vs local bg | 3.79:1 |
 | Stroke (median/mean) | 2.0 / 2.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
-| Match IoU | 0.6415 |
-| **Geometry fit confidence** | **medium** |
+| Match IoU | 0.4314 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | -17 px |
-| Gap to next | 4 px |
+| Gap to next | 3 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 25px track 0.32px — IoU 0.6117
-- `Abel-Regular.ttf` 27px track 0.75px — IoU 0.4992
-- `Abel-Regular.ttf` 29px track -0.4px — IoU 0.4871
+- `Actor-Regular.ttf` 26px track 0.18px — IoU 0.4142
+- `Alkalami-Regular.ttf` 23px track -0.27px — IoU 0.4123
+- `Alkalami-Regular.ttf` 24px track -1.02px — IoU 0.4069
 
 ### `text-6` — supporting
 
@@ -241,12 +246,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.42:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
 | Match IoU | 0.622 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 4 px |
+| Gap to previous | 3 px |
 | Gap to next | -36 px |
 
 Alternate font fits considered:
@@ -277,13 +283,14 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 1.41:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
 | Match IoU | 0.5252 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | -36 px |
-| Gap to next | 399 px |
+| Gap to next | 398 px |
 
 Alternate font fits considered:
 - `Alkalami-Regular.ttf` 49px track -0.06px — IoU 0.5164
@@ -296,16 +303,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=52, y=1003, w=147, h=19 |
-| Normalised | x=4.81%, y=92.87%, w=13.61%, h=1.76% |
+| Bounding box (px) | x=51, y=1002, w=149, h=20 |
+| Normalised | x=4.72%, y=92.78%, w=13.8%, h=1.85% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Abel-Regular.ttf` |
+| Font file matched | `Alkalami-Regular.ttf` |
 | Variation axes | None |
-| Font size | 26 px |
-| Letter-spacing | -0.09 px (-0.0035 em) |
+| Font size | 24 px |
+| Letter-spacing | -0.3 px (-0.0125 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -313,20 +320,21 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.13:1 |
 | Stroke (median/mean) | 1.0 / 1.81 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
-| Match IoU | 0.486 |
+| Match IoU | 0.4896 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 399 px |
+| Gap to previous | 398 px |
 | Gap to next | -7 px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 27px track -0.6px — IoU 0.4837
-- `Abel-Regular.ttf` 25px track 0.43px — IoU 0.4455
-- `Alkalami-Regular.ttf` 24px track -0.49px — IoU 0.4084
+- `Abel-Regular.ttf` 27px track -0.41px — IoU 0.479
+- `Abel-Regular.ttf` 26px track 0.1px — IoU 0.4365
+- `Abel-Regular.ttf` 25px track 0.62px — IoU 0.4038
 
-### `text-9` — detail
+### `text-9` — fine-print
 
 **Text:** "ORDER NOW"  (OCR confidence 0.9944)
 
@@ -349,13 +357,14 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.89:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
 | Match IoU | 0.4811 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | -7 px |
-| Gap to next | -15 px |
+| Gap to next | -4 px |
 
 Alternate font fits considered:
 - `Alkalami-Regular.ttf` 21px track -0.32px — IoU 0.4555
@@ -368,8 +377,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=49, y=1021, w=154, h=27 |
-| Normalised | x=4.54%, y=94.54%, w=14.26%, h=2.5% |
+| Bounding box (px) | x=49, y=1032, w=154, h=17 |
+| Normalised | x=4.54%, y=95.56%, w=14.26%, h=1.57% |
 | Alignment | left |
 | z-order | 109 |
 | Rotation | 0° |
@@ -384,19 +393,20 @@ Alternate font fits considered:
 | Colour | `#353535` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 3.22:1 |
-| Stroke (median/mean) | 2.0 / 2.19 px |
+| Stroke (median/mean) | 2.0 / 2.22 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Alkalami, Abel, Actor |
-| Match IoU | 0.1398 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5029 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -15 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | -4 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 21px track 0.39px — IoU 0.1294
-- `Actor-Regular.ttf` 22px track -0.21px — IoU 0.1207
-- `Abel-Regular.ttf` 24px track 0.37px — IoU 0.1153
+- `Alkalami-Regular.ttf` 21px track 0.1px — IoU 0.389
+- `Actor-Regular.ttf` 22px track -0.21px — IoU 0.3876
+- `Alkalami-Regular.ttf` 20px track 0.71px — IoU 0.3817
 
 ## 4. Colours (semantic)
 
@@ -408,7 +418,7 @@ Alternate font fits considered:
 | textSecondary | `#e6a102` | glyph ink of 'BEST SELLING' | glyph ink median |
 | accent | `#6a4326` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -432,7 +442,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1051 |
+| Text coverage | 0.1047 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -461,13 +471,13 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `subheadline` | text | BEST SELLING |
 | `headline` | text | PRODUCT |
-| `detail` | text | B E S Ｔ Ｐ R O D U Ｃ Ｔ Ｆ OR Y O U |
+| `body` | text | B E S Ｔ Ｐ R O D U Ｃ Ｔ Ｆ OR Y O U |
 | `fine-print` | text | FREE |
 | `fine-print` | text | PRICE |
 | `supporting` | text | DELIVERY |
 | `supporting` | text | 50.40 |
 | `fine-print` | text | 123-456-7890 |
-| `detail` | text | ORDER NOW |
+| `fine-print` | text | ORDER NOW |
 | `fine-print` | text | www.ocoya.com |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -480,13 +490,13 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Alkalami |
 | `show_subheadline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_supporting` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 50.1 |
 | `imageFocalY` | number | 58.2 |

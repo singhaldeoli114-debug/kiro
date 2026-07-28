@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=211, y=242, w=607, h=212 |
-| Normalised | x=19.54%, y=22.41%, w=56.2%, h=19.63% |
+| Bounding box (px) | x=211, y=242, w=607, h=207 |
+| Normalised | x=19.54%, y=22.41%, w=56.2%, h=19.17% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -60,54 +60,57 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.81:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Rammetto One |
-| Match IoU | 0.3781 |
+| Match IoU | 0.3877 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.79) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | None px |
-| Gap to next | 82 px |
+| Gap to next | -46 px |
 
 Alternate font fits considered:
-- `RammettoOne-Regular.ttf` 138px track -0.08px — IoU 0.3766
-- `RammettoOne-Regular.ttf` 137px track 1.02px — IoU 0.3759
-- `AbrilFatface-Regular.ttf` 178px track 0.18px — IoU 0.3108
+- `RammettoOne-Regular.ttf` 138px track -0.08px — IoU 0.3862
+- `RammettoOne-Regular.ttf` 137px track 1.02px — IoU 0.3856
+- `AbrilFatface-Regular.ttf` 178px track 0.18px — IoU 0.3165
 
-### `text-2` — subheadline
+### `text-2` — headline
 
 **Text:** "FRIDAY"  (OCR confidence 0.9233)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=312, y=536, w=540, h=80 |
-| Normalised | x=28.89%, y=49.63%, w=50.0%, h=7.41% |
-| Alignment | right |
+| Bounding box (px) | x=230, y=403, w=622, h=211 |
+| Normalised | x=21.3%, y=37.31%, w=57.59%, h=19.54% |
+| Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbrilFatface-Regular.ttf` |
+| Font file matched | `RammettoOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 144 px |
-| Letter-spacing | -0.09 px (-0.0006 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 129 px |
+| Letter-spacing | 1.42 px (0.011 em) |
+| Line-height | 282.0 px (ratio 2.186) |
+| Line | 1 of 2 |
 | Transform | uppercase |
 | Colour | `#fa9d04` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.81:1 |
-| Stroke (median/mean) | 32.0 / 30.22 px |
+| Stroke (median/mean) | 32.0 / 30.53 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Abril Fatface, Rammetto One |
-| Match IoU | 0.2613 |
-| **Geometry fit confidence** | **very-low-textUnreliable** |
+| Match IoU | 0.4396 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | False — low OCR confidence (0.9233) |
-| Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 82 px |
-| Gap to next | 69 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -46 px |
+| Gap to next | 71 px |
 
 Alternate font fits considered:
-- `RammettoOne-Regular.ttf` 113px track 0.27px — IoU 0.2601
-- `AbrilFatface-Regular.ttf` 145px track -0.83px — IoU 0.2588
-- `RammettoOne-Regular.ttf` 114px track -0.68px — IoU 0.2585
+- `RammettoOne-Regular.ttf` 130px track 0.47px — IoU 0.4077
+- `RammettoOne-Regular.ttf` 131px track -0.49px — IoU 0.4068
+- `AbrilFatface-Regular.ttf` 167px track -0.95px — IoU 0.3952
 
 ### `text-3` — headline
 
@@ -115,35 +118,36 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=362, y=685, w=387, h=182 |
-| Normalised | x=33.52%, y=63.43%, w=35.83%, h=16.85% |
+| Bounding box (px) | x=362, y=685, w=387, h=183 |
+| Normalised | x=33.52%, y=63.43%, w=35.83%, h=16.94% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `AbrilFatface-Regular.ttf` |
+| Font file matched | `RammettoOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 197 px |
-| Letter-spacing | -0.74 px (-0.0038 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 129 px |
+| Letter-spacing | 1.42 px (0.011 em) |
+| Line-height | 282.0 px (ratio 2.186) |
+| Line | 2 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.72:1 |
 | Stroke (median/mean) | 25.0 / 25.29 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Rammetto One |
-| Match IoU | 0.4184 |
-| **Geometry fit confidence** | **low** |
+| Match IoU | 0.377 |
+| **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 69 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 71 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 195px track 1.23px — IoU 0.4149
-- `AbrilFatface-Regular.ttf` 196px track 0.24px — IoU 0.4149
-- `RammettoOne-Regular.ttf` 115px track -0.56px — IoU 0.3811
+- `RammettoOne-Regular.ttf` 130px track 0.47px — IoU 0.4077
+- `RammettoOne-Regular.ttf` 131px track -0.49px — IoU 0.4068
+- `AbrilFatface-Regular.ttf` 167px track -0.95px — IoU 0.3952
 
 ## 4. Colours (semantic)
 
@@ -151,11 +155,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefdfd` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#f72d0c` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#fa9d04` | glyph ink of 'BLAGK' | glyph ink median |
+| textPrimary | `#fa9d04` | glyph ink of 'FRIDAY' | glyph ink median |
 | textSecondary | `#ffffff` | glyph ink of '50%' | glyph ink median |
 | accent | `#f72d0c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f99c04` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +183,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.2077 |
+| Text coverage | 0.281 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -207,8 +211,8 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `subheadline` | text | BLAGK |
-| `subheadline` | text | FRIDAY |
-| `headline` | text | 50% |
+| `headline_line1` | text | FRIDAY |
+| `headline_line2` | text | 50% |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefdfd |
@@ -220,7 +224,7 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Abril Fatface |
 | `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |

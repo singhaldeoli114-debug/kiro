@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,35 +43,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=240, y=304, w=608, h=147 |
-| Normalised | x=22.22%, y=28.15%, w=56.3%, h=13.61% |
+| Bounding box (px) | x=240, y=304, w=609, h=142 |
+| Normalised | x=22.22%, y=28.15%, w=56.39%, h=13.15% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BadScript-Regular.ttf` |
 | Variation axes | None |
-| Font size | 82 px |
-| Letter-spacing | 0.16 px (0.002 em) |
-| Line-height | 219.0 px (ratio 2.671) |
+| Font size | 83 px |
+| Letter-spacing | -0.14 px (-0.0017 em) |
+| Line-height | 224.0 px (ratio 2.699) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.46:1 |
-| Stroke (median/mean) | 5.0 / 5.52 px |
+| Stroke (median/mean) | 5.0 / 5.53 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bad Script, Josefin Sans |
-| Match IoU | 0.1936 |
+| Match IoU | 0.2046 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | 72 px |
+| Gap to next | 82 px |
 
 Alternate font fits considered:
-- `BadScript-Regular.ttf` 83px track -0.19px — IoU 0.1718
-- `BadScript-Regular.ttf` 81px track 0.51px — IoU 0.1664
-- `JosefinSans[wght].ttf` 64px track 0.14px — IoU 0.1564
+- `BadScript-Regular.ttf` 82px track 0.21px — IoU 0.1733
+- `BadScript-Regular.ttf` 84px track -0.5px — IoU 0.1714
+- `JosefinSans[wght].ttf` 64px track 0.18px — IoU 0.1666
 
 ### `text-2` — headline
 
@@ -79,44 +80,45 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=192, y=523, w=433, h=145 |
-| Normalised | x=17.78%, y=48.43%, w=40.09%, h=13.43% |
+| Bounding box (px) | x=192, y=528, w=433, h=135 |
+| Normalised | x=17.78%, y=48.89%, w=40.09%, h=12.5% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BadScript-Regular.ttf` |
 | Variation axes | None |
-| Font size | 82 px |
-| Letter-spacing | 0.16 px (0.002 em) |
-| Line-height | 219.0 px (ratio 2.671) |
+| Font size | 83 px |
+| Letter-spacing | -0.14 px (-0.0017 em) |
+| Line-height | 224.0 px (ratio 2.699) |
 | Line | 2 of 2 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.84:1 |
-| Stroke (median/mean) | 5.0 / 5.34 px |
+| Contrast vs local bg | 3.79:1 |
+| Stroke (median/mean) | 5.0 / 5.36 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bad Script, Josefin Sans |
-| Match IoU | 0.1601 |
+| Match IoU | 0.1524 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 72 px |
-| Gap to next | -114 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 82 px |
+| Gap to next | -104 px |
 
 Alternate font fits considered:
-- `BadScript-Regular.ttf` 83px track -0.19px — IoU 0.1718
-- `BadScript-Regular.ttf` 81px track 0.51px — IoU 0.1664
-- `JosefinSans[wght].ttf` 64px track 0.14px — IoU 0.1564
+- `BadScript-Regular.ttf` 82px track 0.21px — IoU 0.1733
+- `BadScript-Regular.ttf` 84px track -0.5px — IoU 0.1714
+- `JosefinSans[wght].ttf` 64px track 0.18px — IoU 0.1666
 
-### `text-3` — supporting
+### `text-3` — subheadline
 
 **Text:** "and then"  (OCR confidence 0.9614)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=630, y=554, w=256, h=70 |
-| Normalised | x=58.33%, y=51.3%, w=23.7%, h=6.48% |
+| Bounding box (px) | x=629, y=559, w=257, h=65 |
+| Normalised | x=58.24%, y=51.76%, w=23.8%, h=6.02% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,26 +126,27 @@ Alternate font fits considered:
 | Font file matched | `JosefinSans[wght].ttf` |
 | Variation axes | [700.0] |
 | Font size | 60 px |
-| Letter-spacing | -0.22 px (-0.0037 em) |
+| Letter-spacing | -0.08 px (-0.0013 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 4.49:1 |
-| Stroke (median/mean) | 5.0 / 5.39 px |
+| Stroke (median/mean) | 5.0 / 5.41 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bad Script, Josefin Sans |
-| Match IoU | 0.3711 |
+| Match IoU | 0.3573 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -114 px |
-| Gap to next | 17 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | -104 px |
+| Gap to next | 22 px |
 
 Alternate font fits considered:
-- `BadScript-Regular.ttf` 81px track 0.14px — IoU 0.369
-- `JosefinSans[wght].ttf` 59px track 0.4px — IoU 0.3677
-- `BadScript-Regular.ttf` 82px track -0.3px — IoU 0.3623
+- `JosefinSans[wght].ttf` 61px track -0.69px — IoU 0.3481
+- `BadScript-Regular.ttf` 83px track -0.61px — IoU 0.3479
+- `JosefinSans[wght].ttf` 59px track 0.54px — IoU 0.347
 
 ### `text-4` — subheadline
 
@@ -151,8 +154,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=364, y=641, w=337, h=96 |
-| Normalised | x=33.7%, y=59.35%, w=31.2%, h=8.89% |
+| Bounding box (px) | x=364, y=646, w=337, h=91 |
+| Normalised | x=33.7%, y=59.81%, w=31.2%, h=8.43% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
@@ -167,21 +170,22 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.94:1 |
-| Stroke (median/mean) | 5.0 / 5.45 px |
+| Stroke (median/mean) | 5.0 / 5.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bad Script, Josefin Sans |
-| Match IoU | 0.2493 |
+| Match IoU | 0.2686 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 17 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 22 px |
 | Gap to next | 66 px |
 
 Alternate font fits considered:
-- `JosefinSans[wght].ttf` 64px track 0.33px — IoU 0.2469
-- `JosefinSans[wght].ttf` 65px track -0.14px — IoU 0.2464
-- `JosefinSans[wght].ttf` 68px track -0.48px — IoU 0.2343
+- `JosefinSans[wght].ttf` 65px track -0.14px — IoU 0.2665
+- `JosefinSans[wght].ttf` 64px track 0.33px — IoU 0.2655
+- `JosefinSans[wght].ttf` 68px track -0.48px — IoU 0.2543
 
-### `text-5` — detail
+### `text-5` — subheadline
 
 **Text:** "- John Green"  (OCR confidence 0.9995)
 
@@ -204,11 +208,12 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 3.6:1 |
 | Stroke (median/mean) | 6.0 / 7.99 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bad Script, Josefin Sans |
 | Match IoU | 0.3402 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 66 px |
 | Gap to next | None px |
 
@@ -227,7 +232,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'asleep: slowly,' | glyph ink median |
 | accent | `#203f73` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#1b3664` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -251,7 +256,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.1895 |
+| Text coverage | 0.1808 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -280,9 +285,9 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `headline_line1` | text | "As he read, I fell in |
 | `headline_line2` | text | asleep: slowly, |
-| `supporting` | text | and then |
+| `subheadline` | text | and then |
 | `subheadline` | text | all at once. |
-| `detail` | text | - John Green |
+| `subheadline` | text | - John Green |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f0f2f5 |
@@ -295,9 +300,9 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Bad Script |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_supporting` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_subheadline` | boolean | — |
+| `show_subheadline` | boolean | — |
 | `imageFocalX` | number | 51.8 |
 | `imageFocalY` | number | 48.8 |
 

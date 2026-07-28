@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -60,6 +60,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.51:1 |
 | Stroke (median/mean) | 13.0 / 15.74 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Lato |
 | Match IoU | 0.8801 |
 | **Geometry fit confidence** | **high** |
@@ -73,7 +74,7 @@ Alternate font fits considered:
 - `Roboto[wdth,wght].ttf` 120px track 0.05px — IoU 0.8578
 - `Roboto[wdth,wght].ttf` 118px track -0.09px — IoU 0.8569
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "Mon, May 31"  (OCR confidence 0.9904)
 
@@ -96,35 +97,36 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.53:1 |
 | Stroke (median/mean) | 6.0 / 6.54 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Lato |
 | Match IoU | 0.8251 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 37 px |
-| Gap to next | 77 px |
+| Gap to next | 76 px |
 
 Alternate font fits considered:
 - `Roboto[wdth,wght].ttf` 48px track -0.55px — IoU 0.8205
 - `Roboto[wdth,wght].ttf` 48px track -0.66px — IoU 0.8029
 - `Roboto[wdth,wght].ttf` 51px track -0.63px — IoU 0.7911
 
-### `text-3` — supporting
+### `text-3` — body
 
 **Text:** "MESSAGE"  (OCR confidence 0.9955)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=366, y=510, w=171, h=28 |
-| Normalised | x=33.89%, y=47.22%, w=15.83%, h=2.59% |
+| Bounding box (px) | x=365, y=509, w=172, h=29 |
+| Normalised | x=33.8%, y=47.13%, w=15.93%, h=2.69% |
 | Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Lato-SemiBold.ttf` |
+| Font file matched | `Lato-Bold.ttf` |
 | Variation axes | None |
-| Font size | 37 px |
-| Letter-spacing | 0.16 px (0.0043 em) |
+| Font size | 38 px |
+| Letter-spacing | -0.54 px (-0.0142 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -132,35 +134,36 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 4.82 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Lato |
-| Match IoU | 0.77 |
+| Match IoU | 0.832 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 77 px |
-| Gap to next | -21 px |
+| Gap to previous | 76 px |
+| Gap to next | -22 px |
 
 Alternate font fits considered:
-- `Lato-Medium.ttf` 38px track -0.54px — IoU 0.7606
-- `Lato-Bold.ttf` 37px track 0.05px — IoU 0.7592
-- `Lato-SemiBold.ttf` 38px track -0.6px — IoU 0.7422
+- `Lato-Bold.ttf` 37px track 0.22px — IoU 0.8295
+- `Lato-Black.ttf` 37px track 0.13px — IoU 0.805
+- `Lato-SemiBold.ttf` 37px track 0.33px — IoU 0.7948
 
-### `text-4` — supporting
+### `text-4` — body
 
 **Text:** "now"  (OCR confidence 0.9976)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=722, y=517, w=69, h=21 |
-| Normalised | x=66.85%, y=47.87%, w=6.39%, h=1.94% |
+| Bounding box (px) | x=722, y=516, w=70, h=22 |
+| Normalised | x=66.85%, y=47.78%, w=6.48%, h=2.04% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 87.5] |
-| Font size | 40 px |
-| Letter-spacing | -0.37 px (-0.0092 em) |
+| Variation axes | [500, 100.0] |
+| Font size | 39 px |
+| Letter-spacing | -1.39 px (-0.0356 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -168,27 +171,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 3.0 / 3.62 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Lato |
-| Match IoU | 0.8171 |
+| Match IoU | 0.8364 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -21 px |
-| Gap to next | 60 px |
+| Gap to previous | -22 px |
+| Gap to next | 59 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 37px track -0.03px — IoU 0.8086
-- `Roboto[wdth,wght].ttf` 36px track 0.91px — IoU 0.7975
-- `Roboto[wdth,wght].ttf` 36px track 0.97px — IoU 0.7895
+- `Roboto[wdth,wght].ttf` 44px track -0.84px — IoU 0.8214
+- `Roboto[wdth,wght].ttf` 41px track -0.73px — IoU 0.8198
+- `Lato-Bold.ttf` 36px track 0.06px — IoU 0.8184
 
-### `text-5` — supporting
+### `text-5` — body
 
 **Text:** "Be confident! I believe you"  (OCR confidence 0.9831)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=345, y=598, w=476, h=40 |
-| Normalised | x=31.94%, y=55.37%, w=44.07%, h=3.7% |
+| Bounding box (px) | x=344, y=597, w=478, h=42 |
+| Normalised | x=31.85%, y=55.28%, w=44.26%, h=3.89% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
@@ -196,7 +200,7 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
 | Font size | 41 px |
-| Letter-spacing | -0.21 px (-0.0051 em) |
+| Letter-spacing | -0.13 px (-0.0032 em) |
 | Line-height | 57.0 px (ratio 1.39) |
 | Line | 1 of 2 |
 | Transform | none |
@@ -204,27 +208,28 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 4.0 / 4.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Lato |
-| Match IoU | 0.7984 |
+| Match IoU | 0.8169 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 60 px |
-| Gap to next | 17 px |
+| Gap to previous | 59 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 41px track -0.3px — IoU 0.7642
-- `Roboto[wdth,wght].ttf` 41px track 0.01px — IoU 0.7424
-- `Roboto[wdth,wght].ttf` 44px track -0.47px — IoU 0.7321
+- `Roboto[wdth,wght].ttf` 42px track -0.58px — IoU 0.7747
+- `Roboto[wdth,wght].ttf` 44px track -0.39px — IoU 0.7695
+- `Roboto[wdth,wght].ttf` 41px track -0.22px — IoU 0.768
 
-### `text-6` — supporting
+### `text-6` — body
 
 **Text:** "will be successful !"  (OCR confidence 0.9991)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=408, y=655, w=347, h=31 |
-| Normalised | x=37.78%, y=60.65%, w=32.13%, h=2.87% |
+| Bounding box (px) | x=408, y=654, w=347, h=33 |
+| Normalised | x=37.78%, y=60.56%, w=32.13%, h=3.06% |
 | Alignment | right |
 | z-order | 105 |
 | Rotation | 0° |
@@ -232,7 +237,7 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
 | Font size | 41 px |
-| Letter-spacing | -0.21 px (-0.0051 em) |
+| Letter-spacing | -0.13 px (-0.0032 em) |
 | Line-height | 57.0 px (ratio 1.39) |
 | Line | 2 of 2 |
 | Transform | lowercase |
@@ -240,18 +245,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 4.0 / 4.52 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Lato |
-| Match IoU | 0.7847 |
+| Match IoU | 0.807 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 17 px |
+| Gap to previous | 15 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 41px track -0.3px — IoU 0.7642
-- `Roboto[wdth,wght].ttf` 41px track 0.01px — IoU 0.7424
-- `Roboto[wdth,wght].ttf` 44px track -0.47px — IoU 0.7321
+- `Roboto[wdth,wght].ttf` 42px track -0.58px — IoU 0.7747
+- `Roboto[wdth,wght].ttf` 44px track -0.39px — IoU 0.7695
+- `Roboto[wdth,wght].ttf` 41px track -0.22px — IoU 0.768
 
 ## 4. Colours (semantic)
 
@@ -263,7 +269,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'Be confident! I believe you' | glyph ink median |
 | accent | `#c39101` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#daa501` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -287,7 +293,7 @@ Full palette (k-means):
 | Subject position | upper-right |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.0654 |
+| Text coverage | 0.0671 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -315,11 +321,11 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | 09:00 |
-| `subheadline` | text | Mon, May 31 |
-| `supporting` | text | MESSAGE |
-| `supporting` | text | now |
-| `supporting_line1` | text | Be confident! I believe you |
-| `supporting_line2` | text | will be successful ! |
+| `supporting` | text | Mon, May 31 |
+| `body` | text | MESSAGE |
+| `body` | text | now |
+| `body_line1` | text | Be confident! I believe you |
+| `body_line2` | text | will be successful ! |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -331,11 +337,11 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Roboto |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 62.9 |
 | `imageFocalY` | number | 31.6 |
 

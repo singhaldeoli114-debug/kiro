@@ -33,11 +33,11 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — supporting
+### `text-1` — fine-print
 
 **Text:** "LOGO"  (OCR confidence 0.9989)
 
@@ -60,13 +60,14 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.25:1 |
 | Stroke (median/mean) | 4.0 / 6.18 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bakbak One, Actor |
 | Match IoU | 0.7196 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 84 px |
+| Gap to next | 97 px |
 
 Alternate font fits considered:
 - `Actor-Regular.ttf` 40px track -0.15px — IoU 0.6748
@@ -79,71 +80,74 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=55, y=166, w=376, h=160 |
-| Normalised | x=5.09%, y=15.37%, w=34.81%, h=14.81% |
+| Bounding box (px) | x=67, y=179, w=347, h=129 |
+| Normalised | x=6.2%, y=16.57%, w=32.13%, h=11.94% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `Actor-Regular.ttf` |
+| Font file matched | `BakbakOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 209 px |
-| Letter-spacing | 0.53 px (0.0025 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 200 px |
+| Letter-spacing | 0.3 px (0.0015 em) |
+| Line-height | 164.0 px (ratio 0.82) |
+| Line | 1 of 2 |
 | Transform | uppercase |
-| Colour | `#e5672d` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 1.06:1 |
-| Stroke (median/mean) | None / None px |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.0:1 |
+| Stroke (median/mean) | 36.0 / 38.44 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bakbak One, Actor |
-| Match IoU | 0.2938 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.893 |
+| **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 84 px |
-| Gap to next | 126 px |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 97 px |
+| Gap to next | 35 px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 210px track -0.38px — IoU 0.2907
-- `Actor-Regular.ttf` 211px track -1.27px — IoU 0.2884
-- `BakbakOne-Regular.ttf` 201px track 0.47px — IoU 0.254
+- `BakbakOne-Regular.ttf` 199px track 1.0px — IoU 0.7318
+- `BakbakOne-Regular.ttf` 201px track -0.4px — IoU 0.7317
+- `Actor-Regular.ttf` 207px track 0.55px — IoU 0.3966
 
-### `text-3` — detail
+### `text-3` — headline
 
 **Text:** "DRIVE"  (OCR confidence 0.9778)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=600, y=452, w=31, h=33 |
-| Normalised | x=55.56%, y=41.85%, w=2.87%, h=3.06% |
-| Alignment | right |
+| Bounding box (px) | x=67, y=343, w=564, h=143 |
+| Normalised | x=6.2%, y=31.76%, w=52.22%, h=13.24% |
+| Alignment | left |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BakbakOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 10 px |
-| Letter-spacing | 0.71 px (0.071 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
+| Font size | 200 px |
+| Letter-spacing | 0.3 px (0.0015 em) |
+| Line-height | 164.0 px (ratio 0.82) |
+| Line | 2 of 2 |
 | Transform | uppercase |
-| Colour | `#bebcc0` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 4.01:1 |
-| Stroke (median/mean) | 2.0 / 2.22 px |
+| Colour | `#2e2e2e` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.11:1 |
+| Stroke (median/mean) | 36.0 / 36.47 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Bakbak One, Actor |
-| Match IoU | 0.2408 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.5826 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 126 px |
-| Gap to next | -19 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | 35 px |
+| Gap to next | -15 px |
 
 Alternate font fits considered:
-- `BakbakOne-Regular.ttf` 12px track -0.69px — IoU 0.2201
-- `BakbakOne-Regular.ttf` 11px track 0.01px — IoU 0.2099
-- `Actor-Regular.ttf` 12px track -0.39px — IoU 0.1718
+- `BakbakOne-Regular.ttf` 199px track 1.0px — IoU 0.7318
+- `BakbakOne-Regular.ttf` 201px track -0.4px — IoU 0.7317
+- `Actor-Regular.ttf` 207px track 0.55px — IoU 0.3966
 
 ### `text-4` — fine-print
 
@@ -151,116 +155,121 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=614, y=466, w=46, h=60 |
-| Normalised | x=56.85%, y=43.15%, w=4.26%, h=5.56% |
+| Bounding box (px) | x=584, y=471, w=76, h=64 |
+| Normalised | x=54.07%, y=43.61%, w=7.04%, h=5.93% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BakbakOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 23 px |
-| Letter-spacing | -0.81 px (-0.0352 em) |
+| Font size | 37 px |
+| Letter-spacing | -0.62 px (-0.0168 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#adabaf` |
+| Colour | `#a19fa2` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.23:1 |
-| Stroke (median/mean) | 2.0 / 2.26 px |
+| Contrast vs local bg | 3.06:1 |
+| Stroke (median/mean) | 2.0 / 2.33 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
 | Font family (authoritative) | Bakbak One, Actor |
-| Match IoU | 0.234 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.168 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -19 px |
-| Gap to next | 113 px |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -15 px |
+| Gap to next | 101 px |
 
 Alternate font fits considered:
-- `BakbakOne-Regular.ttf` 22px track -0.1px — IoU 0.2095
-- `BakbakOne-Regular.ttf` 21px track 0.6px — IoU 0.1832
-- `Actor-Regular.ttf` 23px track -0.45px — IoU 0.1533
+- `BakbakOne-Regular.ttf` 35px track 0.78px — IoU 0.1646
+- `BakbakOne-Regular.ttf` 36px track 0.07px — IoU 0.1619
+- `Actor-Regular.ttf` 37px track -0.05px — IoU 0.1342
 
-### `text-6` — subheadline
-
-**Text:** "Lexar"  (OCR confidence 0.9813)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=620, y=639, w=121, h=107 |
-| Normalised | x=57.41%, y=59.17%, w=11.2%, h=9.91% |
-| Alignment | right |
-| z-order | 105 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `BakbakOne-Regular.ttf` |
-| Variation axes | None |
-| Font size | 46 px |
-| Letter-spacing | 0.12 px (0.0026 em) |
-| Line-height | None px (ratio None) |
-| Line | 1 of 1 |
-| Transform | none |
-| Colour | `#c8c2c3` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 3.84:1 |
-| Stroke (median/mean) | 5.0 / 5.69 px |
-| Font family (authoritative) | Bakbak One, Actor |
-| Match IoU | 0.2368 |
-| **Geometry fit confidence** | **very-low** |
-| OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 113 px |
-| Gap to next | -107 px |
-
-Alternate font fits considered:
-- `BakbakOne-Regular.ttf` 45px track 0.78px — IoU 0.2331
-- `BakbakOne-Regular.ttf` 47px track -0.53px — IoU 0.2325
-- `Actor-Regular.ttf` 52px track -0.39px — IoU 0.1802
-
-### `text-5` — detail
+### `text-5` — fine-print
 
 **Text:** "128G"  (OCR confidence 0.9967)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=664, y=639, w=77, h=67 |
-| Normalised | x=61.48%, y=59.17%, w=7.13%, h=6.2% |
+| Bounding box (px) | x=664, y=636, w=79, h=65 |
+| Normalised | x=61.48%, y=58.89%, w=7.31%, h=6.02% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `BakbakOne-Regular.ttf` |
 | Variation axes | None |
-| Font size | 36 px |
-| Letter-spacing | 0.41 px (0.0114 em) |
+| Font size | 39 px |
+| Letter-spacing | -1.03 px (-0.0264 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#c0bbbc` |
+| Colour | `#beb9b9` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 3.7:1 |
-| Stroke (median/mean) | 3.0 / 3.48 px |
+| Contrast vs local bg | 3.66:1 |
+| Stroke (median/mean) | 2.0 / 3.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bakbak One, Actor |
-| Match IoU | 0.2452 |
+| Match IoU | 0.2472 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | -107 px |
-| Gap to next | 289 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 101 px |
+| Gap to next | -64 px |
 
 Alternate font fits considered:
-- `BakbakOne-Regular.ttf` 38px track -0.99px — IoU 0.2448
-- `BakbakOne-Regular.ttf` 37px track -0.29px — IoU 0.2433
-- `Actor-Regular.ttf` 36px track 0.97px — IoU 0.1697
+- `BakbakOne-Regular.ttf` 38px track -0.33px — IoU 0.2448
+- `BakbakOne-Regular.ttf` 37px track 0.38px — IoU 0.2356
+- `Actor-Regular.ttf` 39px track -0.42px — IoU 0.1773
 
-### `text-7` — supporting
+### `text-6` — body
+
+**Text:** "Lexar"  (OCR confidence 0.9813)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=620, y=637, w=123, h=104 |
+| Normalised | x=57.41%, y=58.98%, w=11.39%, h=9.63% |
+| Alignment | right |
+| z-order | 105 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `BakbakOne-Regular.ttf` |
+| Variation axes | None |
+| Font size | 47 px |
+| Letter-spacing | -0.03 px (-0.0006 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
+| Transform | none |
+| Colour | `#cac4c4` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 3.87:1 |
+| Stroke (median/mean) | 5.0 / 5.55 px |
+| Render model | text-in-photograph |
+| Render-model note | soft glyph edges over textured surroundings: the text appears to be printed on a photographed object rather than set as a text layer, so it is not editable type and should not be treated as a font match |
+| Font family (authoritative) | Bakbak One, Actor |
+| Match IoU | 0.2268 |
+| **Geometry fit confidence** | **not-applicable-rasterText** |
+| OCR text reliable | True  |
+| Fit interpretation | this is text printed on a photographed object, not editable type, so a font fit is not meaningful and no font claim is made |
+| Gap to previous | -64 px |
+| Gap to next | 256 px |
+
+Alternate font fits considered:
+- `BakbakOne-Regular.ttf` 48px track -0.69px — IoU 0.2255
+- `BakbakOne-Regular.ttf` 46px track 0.62px — IoU 0.2215
+- `Actor-Regular.ttf` 52px track 0.11px — IoU 0.1841
+
+### `text-7` — fine-print
 
 **Text:** "www.pendrive.com"  (OCR confidence 0.9981)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=59, y=995, w=340, h=41 |
-| Normalised | x=5.46%, y=92.13%, w=31.48%, h=3.8% |
+| Bounding box (px) | x=59, y=997, w=341, h=37 |
+| Normalised | x=5.46%, y=92.31%, w=31.57%, h=3.43% |
 | Alignment | left |
 | z-order | 106 |
 | Rotation | 0° |
@@ -268,26 +277,27 @@ Alternate font fits considered:
 | Font file matched | `Actor-Regular.ttf` |
 | Variation axes | None |
 | Font size | 42 px |
-| Letter-spacing | -0.35 px (-0.0083 em) |
+| Letter-spacing | -0.28 px (-0.0067 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#2f2e2e` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 2.73:1 |
-| Stroke (median/mean) | 4.0 / 4.91 px |
+| Stroke (median/mean) | 4.0 / 4.92 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bakbak One, Actor |
-| Match IoU | 0.6607 |
+| Match IoU | 0.6012 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — single long token with no spaces |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 289 px |
+| Gap to previous | 256 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Actor-Regular.ttf` 41px track 0.2px — IoU 0.5936
-- `Actor-Regular.ttf` 40px track 0.75px — IoU 0.5693
-- `BakbakOne-Regular.ttf` 40px track -0.51px — IoU 0.4136
+- `Actor-Regular.ttf` 41px track 0.26px — IoU 0.5544
+- `Actor-Regular.ttf` 40px track 0.82px — IoU 0.5282
+- `BakbakOne-Regular.ttf` 40px track -0.44px — IoU 0.4383
 
 ## 4. Colours (semantic)
 
@@ -295,11 +305,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#2c2a2b` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#e0582d` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#e5672d` | glyph ink of 'PEN' | glyph ink median |
-| textSecondary | `#c8c2c3` | glyph ink of 'Lexar' | glyph ink median |
+| textPrimary | `#2e2e2e` | glyph ink of 'DRIVE' | glyph ink median |
+| textSecondary | `#cac4c4` | glyph ink of 'Lexar' | glyph ink median |
 | accent | `#e0582d` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#ed812c` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -323,7 +333,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to bottom darkening |
 | Full bleed | True |
-| Text coverage | 0.0851 |
+| Text coverage | 0.1407 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -350,30 +360,30 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | LOGO |
-| `headline` | text | PEN |
-| `detail` | text | DRIVE |
+| `fine-print` | text | LOGO |
+| `headline_line1` | text | PEN |
+| `headline_line2` | text | DRIVE |
 | `fine-print` | text | 128G |
-| `subheadline` | text | Lexar |
-| `detail` | text | 128G |
-| `supporting` | text | www.pendrive.com |
+| `fine-print` | text | 128G |
+| `body` | text | Lexar |
+| `fine-print` | text | www.pendrive.com |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #2c2a2b |
 | `surface` | colour | #e0582d |
-| `textPrimary` | colour | #e5672d |
-| `textSecondary` | colour | #c8c2c3 |
+| `textPrimary` | colour | #2e2e2e |
+| `textSecondary` | colour | #cac4c4 |
 | `accent` | colour | #e0582d |
 | `accentSecondary` | colour | #ed812c |
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Bakbak One |
-| `show_supporting` | boolean | — |
-| `show_headline` | boolean | — |
-| `show_detail` | boolean | — |
 | `show_fine-print` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_detail` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_headline` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_body` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 54.1 |
 | `imageFocalY` | number | 57.1 |
 

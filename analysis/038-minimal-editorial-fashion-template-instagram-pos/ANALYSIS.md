@@ -33,26 +33,26 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
 ### `text-1` — headline
 
-**Text:** "STYLEYOUR OWN PATH"  (OCR confidence 0.979)
+**Text:** "STYLE YOUR OWN PATH"  (OCR confidence 0.979)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=65, y=82, w=946, h=107 |
-| Normalised | x=6.02%, y=7.59%, w=87.59%, h=9.91% |
+| Bounding box (px) | x=65, y=82, w=946, h=108 |
+| Normalised | x=6.02%, y=7.59%, w=87.59%, h=10.0% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [900.0, 75.0] |
-| Font size | 97 px |
-| Letter-spacing | 0.38 px (0.0039 em) |
+| Variation axes | [800, 75.0] |
+| Font size | 95 px |
+| Letter-spacing | 0.41 px (0.0043 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,20 +60,22 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 16.0 / 17.33 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'STYLEYOUR' -> 'STYLE YOUR' |
 | Font family (authoritative) | Roboto, Allura |
-| Match IoU | 0.384 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4111 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
 | Gap to previous | None px |
-| Gap to next | 65 px |
+| Gap to next | 64 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 99px track -0.76px — IoU 0.3818
-- `Roboto[wdth,wght].ttf` 98px track -0.19px — IoU 0.3798
-- `Roboto[wdth,wght].ttf` 92px track -0.3px — IoU 0.3707
+- `Roboto[wdth,wght].ttf` 96px track -0.14px — IoU 0.409
+- `Roboto[wdth,wght].ttf` 97px track -0.69px — IoU 0.4078
+- `Roboto[wdth,wght].ttf` 96px track 0.06px — IoU 0.405
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "Fashion that moves with your confidence."  (OCR confidence 0.9933)
 
@@ -96,12 +98,13 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 4.0 / 4.61 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Allura |
 | Match IoU | 0.4859 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 65 px |
+| Gap to previous | 64 px |
 | Gap to next | 662 px |
 
 Alternate font fits considered:
@@ -109,14 +112,14 @@ Alternate font fits considered:
 - `Roboto[wdth,wght].ttf` 48px track 0.26px — IoU 0.4828
 - `Roboto[wdth,wght].ttf` 56px track -0.33px — IoU 0.4666
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Define Your Style"  (OCR confidence 0.9889)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=357, y=962, w=368, h=44 |
-| Normalised | x=33.06%, y=89.07%, w=34.07%, h=4.07% |
+| Bounding box (px) | x=356, y=962, w=370, h=45 |
+| Normalised | x=32.96%, y=89.07%, w=34.26%, h=4.17% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,7 +127,7 @@ Alternate font fits considered:
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [900.0, 100.0] |
 | Font size | 48 px |
-| Letter-spacing | -0.64 px (-0.0133 em) |
+| Letter-spacing | -0.51 px (-0.0106 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -132,8 +135,9 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 7.0 / 9.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Allura |
-| Match IoU | 0.7307 |
+| Match IoU | 0.7284 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -141,9 +145,9 @@ Alternate font fits considered:
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 49px track 0.22px — IoU 0.727
-- `Roboto[wdth,wght].ttf` 47px track -0.14px — IoU 0.7203
-- `Roboto[wdth,wght].ttf` 48px track -0.5px — IoU 0.7046
+- `Roboto[wdth,wght].ttf` 48px track -0.37px — IoU 0.692
+- `Roboto[wdth,wght].ttf` 54px track -0.62px — IoU 0.6909
+- `Roboto[wdth,wght].ttf` 51px track -0.58px — IoU 0.6886
 
 ## 4. Colours (semantic)
 
@@ -151,11 +155,11 @@ Alternate font fits considered:
 |---|---|---|---|
 | background | `#fefefe` | dominant low-saturation cluster | k-means dominant cluster |
 | surface | `#959595` | second distinct cluster | k-means secondary cluster |
-| textPrimary | `#000000` | glyph ink of 'STYLEYOUR OWN PATH' | glyph ink median |
+| textPrimary | `#000000` | glyph ink of 'STYLE YOUR OWN PATH' | glyph ink median |
 | textSecondary | `#ffffff` | glyph ink of 'Define Your Style' | glyph ink median |
 | accent | — | not identified | — |
 | accentSecondary | — | not identified | — |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | — | not identified | — |
 
 Full palette (k-means):
@@ -179,7 +183,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | flat colour or framed panel |
 | Full bleed | False |
-| Text coverage | 0.1364 |
+| Text coverage | 0.1376 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -206,9 +210,9 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `headline` | text | STYLEYOUR OWN PATH |
-| `subheadline` | text | Fashion that moves with your confidence. |
-| `subheadline` | text | Define Your Style |
+| `headline` | text | STYLE YOUR OWN PATH |
+| `supporting` | text | Fashion that moves with your confidence. |
+| `supporting` | text | Define Your Style |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fefefe |
@@ -217,8 +221,8 @@ _Recommendations only — no manifest is generated._
 | `textSecondary` | colour | #ffffff |
 | `brandFont` | font | Roboto |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 49.2 |
 | `imageFocalY` | number | 59.9 |
 

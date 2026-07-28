@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=498, y=51, w=84, h=23 |
-| Normalised | x=46.11%, y=4.72%, w=7.78%, h=2.13% |
+| Bounding box (px) | x=497, y=51, w=85, h=23 |
+| Normalised | x=46.02%, y=4.72%, w=7.87%, h=2.13% |
 | Alignment | center |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 30 px |
-| Letter-spacing | 0.18 px (0.006 em) |
+| Letter-spacing | 0.52 px (0.0173 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.42:1 |
 | Stroke (median/mean) | 3.0 / 3.41 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, David Libre |
-| Match IoU | 0.7184 |
+| Match IoU | 0.7377 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,9 +70,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 75 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 31px track -0.74px — IoU 0.6284
-- `Poppins-Regular.ttf` 29px track 1.1px — IoU 0.603
-- `DavidLibre-Bold.ttf` 37px track -1.05px — IoU 0.247
+- `Poppins-Regular.ttf` 31px track -0.41px — IoU 0.6381
+- `Poppins-Regular.ttf` 32px track -1.34px — IoU 0.6186
+- `DavidLibre-Bold.ttf` 37px track -0.71px — IoU 0.2822
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=102, y=149, w=872, h=83 |
-| Normalised | x=9.44%, y=13.8%, w=80.74%, h=7.69% |
+| Bounding box (px) | x=101, y=149, w=873, h=82 |
+| Normalised | x=9.35%, y=13.8%, w=80.83%, h=7.59% |
 | Alignment | center |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,35 +89,36 @@ Alternate font fits considered:
 | Font file matched | `DavidLibre-Bold.ttf` |
 | Variation axes | None |
 | Font size | 82 px |
-| Letter-spacing | -0.22 px (-0.0027 em) |
+| Letter-spacing | -0.18 px (-0.0022 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.71:1 |
-| Stroke (median/mean) | 10.0 / 11.08 px |
+| Stroke (median/mean) | 10.0 / 11.09 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, David Libre |
-| Match IoU | 0.8975 |
+| Match IoU | 0.9119 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | 75 px |
-| Gap to next | 63 px |
+| Gap to next | 64 px |
 
 Alternate font fits considered:
-- `DavidLibre-Bold.ttf` 81px track 0.24px — IoU 0.8874
-- `DavidLibre-Bold.ttf` 83px track -0.68px — IoU 0.8485
-- `DavidLibre-Medium.ttf` 84px track -0.34px — IoU 0.8177
+- `DavidLibre-Bold.ttf` 83px track -0.64px — IoU 0.9038
+- `DavidLibre-Bold.ttf` 81px track 0.29px — IoU 0.8299
+- `DavidLibre-Medium.ttf` 83px track 0.16px — IoU 0.8298
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "Gentle care designed for your daily routine"  (OCR confidence 0.9851)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=105, y=295, w=871, h=42 |
-| Normalised | x=9.72%, y=27.31%, w=80.65%, h=3.89% |
+| Bounding box (px) | x=104, y=295, w=872, h=42 |
+| Normalised | x=9.63%, y=27.31%, w=80.74%, h=3.89% |
 | Alignment | center |
 | z-order | 102 |
 | Rotation | 0° |
@@ -124,7 +126,7 @@ Alternate font fits considered:
 | Font file matched | `Poppins-Regular.ttf` |
 | Variation axes | None |
 | Font size | 41 px |
-| Letter-spacing | -0.07 px (-0.0017 em) |
+| Letter-spacing | -0.04 px (-0.001 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -132,35 +134,36 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.39:1 |
 | Stroke (median/mean) | 4.0 / 4.56 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, David Libre |
-| Match IoU | 0.8306 |
+| Match IoU | 0.765 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 63 px |
-| Gap to next | 369 px |
+| Gap to previous | 64 px |
+| Gap to next | 368 px |
 
 Alternate font fits considered:
-- `Poppins-Regular.ttf` 40px track 0.44px — IoU 0.7473
-- `Poppins-Regular.ttf` 42px track -0.57px — IoU 0.6505
-- `DavidLibre-Bold.ttf` 47px track -0.1px — IoU 0.2103
+- `Poppins-Regular.ttf` 42px track -0.55px — IoU 0.7313
+- `Poppins-Regular.ttf` 40px track 0.47px — IoU 0.7069
+- `DavidLibre-Bold.ttf` 47px track -0.08px — IoU 0.2024
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "KANTE"  (OCR confidence 0.8547)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=472, y=706, w=120, h=34 |
-| Normalised | x=43.7%, y=65.37%, w=11.11%, h=3.15% |
+| Bounding box (px) | x=472, y=705, w=121, h=35 |
+| Normalised | x=43.7%, y=65.28%, w=11.2%, h=3.24% |
 | Alignment | center |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `DavidLibre-Bold.ttf` |
 | Variation axes | None |
-| Font size | 39 px |
-| Letter-spacing | 0.59 px (0.0151 em) |
+| Font size | 40 px |
+| Letter-spacing | 0.09 px (0.0022 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
@@ -168,18 +171,19 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 5.79:1 |
 | Stroke (median/mean) | 5.0 / 4.52 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Poppins, David Libre |
-| Match IoU | 0.2489 |
+| Match IoU | 0.2176 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8547) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 369 px |
+| Gap to previous | 368 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `DavidLibre-Bold.ttf` 40px track -0.16px — IoU 0.2414
-- `DavidLibre-Medium.ttf` 41px track -0.41px — IoU 0.2406
-- `DavidLibre-Medium.ttf` 40px track 0.33px — IoU 0.2349
+- `DavidLibre-Bold.ttf` 41px track -0.66px — IoU 0.2142
+- `DavidLibre-Medium.ttf` 41px track -0.16px — IoU 0.2083
+- `DavidLibre-Regular.ttf` 41px track 0.84px — IoU 0.205
 
 ## 4. Colours (semantic)
 
@@ -191,7 +195,7 @@ Alternate font fits considered:
 | textSecondary | `#1f140c` | glyph ink of 'KANTE' | glyph ink median |
 | accent | `#a07851` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#c6ac88` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -215,7 +219,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0986 |
+| Text coverage | 0.0981 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -244,8 +248,8 @@ _Recommendations only — no manifest is generated._
 |---|---|---|
 | `supporting` | text | LOGO |
 | `headline` | text | Healthy Skin Starts Here |
-| `subheadline` | text | Gentle care designed for your daily routine |
-| `subheadline` | text | KANTE |
+| `supporting` | text | Gentle care designed for your daily routine |
+| `supporting` | text | KANTE |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #dfdedd |
@@ -258,8 +262,8 @@ _Recommendations only — no manifest is generated._
 | `brandFont` | font | Poppins |
 | `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 53.7 |
 | `imageFocalY` | number | 67.5 |
 

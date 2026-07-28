@@ -34,54 +34,55 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-2` — supporting
+### `text-2` — body
 
 **Text:** "LO"  (OCR confidence 0.695)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=627, y=237, w=70, h=23 |
-| Normalised | x=58.06%, y=21.94%, w=6.48%, h=2.13% |
+| Bounding box (px) | x=627, y=237, w=69, h=22 |
+| Normalised | x=58.06%, y=21.94%, w=6.39%, h=2.04% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Alata-Regular.ttf` |
 | Variation axes | None |
-| Font size | 55 px |
-| Letter-spacing | 0.47 px (0.0085 em) |
+| Font size | 54 px |
+| Letter-spacing | 0.75 px (0.0139 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#f1d22a` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 4.99:1 |
+| Contrast vs local bg | 4.91:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bungee Shade, Anton, Alata |
-| Match IoU | 0.33 |
+| Match IoU | 0.3237 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.695) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | None px |
-| Gap to next | -23 px |
+| Gap to next | -21 px |
 
 Alternate font fits considered:
-- `Alata-Regular.ttf` 54px track 1.75px — IoU 0.3296
-- `Alata-Regular.ttf` 56px track -0.78px — IoU 0.3254
-- `Anton-Regular.ttf` 80px track -0.7px — IoU 0.2162
+- `Alata-Regular.ttf` 55px track -0.53px — IoU 0.3168
+- `Alata-Regular.ttf` 56px track -1.78px — IoU 0.3022
+- `Anton-Regular.ttf` 78px track 0.06px — IoU 0.2143
 
-### `text-1` — detail
+### `text-1` — body
 
 **Text:** "T H E"  (OCR confidence 0.9545)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=747, y=237, w=77, h=22 |
-| Normalised | x=69.17%, y=21.94%, w=7.13%, h=2.04% |
+| Bounding box (px) | x=747, y=238, w=77, h=21 |
+| Normalised | x=69.17%, y=22.04%, w=7.13%, h=1.94% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -97,18 +98,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 17.04:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bungee Shade, Anton, Alata |
-| Match IoU | 0.4586 |
+| Match IoU | 0.4943 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | -23 px |
-| Gap to next | 402 px |
+| Gap to previous | -21 px |
+| Gap to next | 407 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 44px track -0.27px — IoU 0.4222
-- `Anton-Regular.ttf` 43px track 0.17px — IoU 0.4164
-- `BungeeShade-Regular.ttf` 25px track 0.38px — IoU 0.2563
+- `Anton-Regular.ttf` 44px track -0.27px — IoU 0.4566
+- `Anton-Regular.ttf` 43px track 0.17px — IoU 0.454
+- `Alata-Regular.ttf` 36px track -0.04px — IoU 0.2446
 
 ### `text-3` — headline
 
@@ -116,8 +118,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=396, y=661, w=361, h=106 |
-| Normalised | x=36.67%, y=61.2%, w=33.43%, h=9.81% |
+| Bounding box (px) | x=396, y=666, w=361, h=96 |
+| Normalised | x=36.67%, y=61.67%, w=33.43%, h=8.89% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -131,22 +133,23 @@ Alternate font fits considered:
 | Transform | uppercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 16.58:1 |
-| Stroke (median/mean) | 10.0 / 12.94 px |
+| Contrast vs local bg | 16.65:1 |
+| Stroke (median/mean) | 10.0 / 12.42 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bungee Shade, Anton, Alata |
-| Match IoU | 0.1752 |
+| Match IoU | 0.1695 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 402 px |
-| Gap to next | -96 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 407 px |
+| Gap to next | -91 px |
 
 Alternate font fits considered:
-- `Anton-Regular.ttf` 191px track -0.5px — IoU 0.1751
-- `Anton-Regular.ttf` 190px track -0.02px — IoU 0.1745
-- `Alata-Regular.ttf` 163px track -0.14px — IoU 0.1586
+- `Anton-Regular.ttf` 191px track -0.5px — IoU 0.1693
+- `Anton-Regular.ttf` 190px track -0.02px — IoU 0.1682
+- `Alata-Regular.ttf` 163px track -0.14px — IoU 0.1493
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "GET"  (OCR confidence 0.9743)
 
@@ -162,61 +165,63 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 103 px |
 | Letter-spacing | -1.38 px (-0.0134 em) |
-| Line-height | 98.0 px (ratio 0.951) |
-| Line | 1 of 2 |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 21.0:1 |
 | Stroke (median/mean) | 2.0 / 9.13 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bungee Shade, Anton, Alata |
 | Match IoU | 0.7798 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -96 px |
-| Gap to next | 10 px |
+| Gap to previous | -91 px |
+| Gap to next | 15 px |
 
 Alternate font fits considered:
-- `BungeeShade-Regular.ttf` 102px track -0.22px — IoU 0.4603
-- `BungeeShade-Regular.ttf` 101px track 0.94px — IoU 0.4361
-- `Anton-Regular.ttf` 184px track -0.87px — IoU 0.3231
+- `BungeeShade-Regular.ttf` 102px track -0.22px — IoU 0.7396
+- `BungeeShade-Regular.ttf` 101px track 0.94px — IoU 0.7137
+- `Anton-Regular.ttf` 184px track -0.87px — IoU 0.3299
 
-### `text-5` — subheadline
+### `text-5` — fine-print
 
 **Text:** "STRONGER"  (OCR confidence 0.9995)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=713, y=769, w=35, h=66 |
-| Normalised | x=66.02%, y=71.2%, w=3.24%, h=6.11% |
+| Bounding box (px) | x=713, y=774, w=35, h=56 |
+| Normalised | x=66.02%, y=71.67%, w=3.24%, h=5.19% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
-| Font file matched | `BungeeShade-Regular.ttf` |
+| Font file matched | `Anton-Regular.ttf` |
 | Variation axes | None |
-| Font size | 103 px |
-| Letter-spacing | -1.38 px (-0.0134 em) |
-| Line-height | 98.0 px (ratio 0.951) |
-| Line | 2 of 2 |
+| Font size | 10 px |
+| Letter-spacing | -0.27 px (-0.027 em) |
+| Line-height | None px (ratio None) |
+| Line | 1 of 1 |
 | Transform | uppercase |
-| Colour | `#f8c006` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 15.94:1 |
-| Stroke (median/mean) | 13.0 / 14.83 px |
+| Colour | `#000000` |
+| Polarity | dark-on-light |
+| Contrast vs local bg | 1.0:1 |
+| Stroke (median/mean) | 12.0 / 12.68 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Bungee Shade, Anton, Alata |
-| Match IoU | 0.2029 |
+| Match IoU | 0.3843 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 10 px |
-| Gap to next | 167 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 15 px |
+| Gap to next | 172 px |
 
 Alternate font fits considered:
-- `BungeeShade-Regular.ttf` 102px track -0.22px — IoU 0.4603
-- `BungeeShade-Regular.ttf` 101px track 0.94px — IoU 0.4361
-- `Anton-Regular.ttf` 184px track -0.87px — IoU 0.3231
+- `Anton-Regular.ttf` 9px track 0.25px — IoU 0.3184
+- `Anton-Regular.ttf` 8px track 0.78px — IoU 0.1569
+- `Alata-Regular.ttf` 8px track -0.77px — IoU 0.119
 
 ### `text-6` — fine-print
 
@@ -241,12 +246,14 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 15.94:1 |
 | Stroke (median/mean) | None / None px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Bungee Shade, Anton, Alata |
 | Match IoU | 0.5312 |
 | **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
 | Fit interpretation | plausible but unverified; letterform drift across the line |
-| Gap to previous | 167 px |
+| Gap to previous | 172 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
@@ -264,7 +271,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'GET' | glyph ink median |
 | accent | `#000000` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#062c24` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -288,7 +295,7 @@ Full palette (k-means):
 | Subject position | lower-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.0599 |
+| Text coverage | 0.0563 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -315,11 +322,11 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `supporting` | text | LO |
-| `detail` | text | T H E |
+| `body` | text | LO |
+| `body` | text | T H E |
 | `headline` | text | LE TS |
-| `subheadline_line1` | text | GET |
-| `subheadline_line2` | text | STRONGER |
+| `supporting` | text | GET |
+| `fine-print` | text | STRONGER |
 | `fine-print` | text | WWW.SPORTS.COM |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
@@ -331,11 +338,11 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #062c24 |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Bungee Shade |
-| `show_supporting` | boolean | — |
-| `show_detail` | boolean | — |
+| `show_body` | boolean | — |
+| `show_body` | boolean | — |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
 | `show_fine-print` | boolean | — |
 | `imageFocalX` | number | 42.7 |
 | `imageFocalY` | number | 60.4 |

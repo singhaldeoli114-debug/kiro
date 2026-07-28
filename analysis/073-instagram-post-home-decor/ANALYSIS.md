@@ -32,7 +32,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -59,13 +59,15 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.43:1 |
 | Stroke (median/mean) | 12.0 / 12.22 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Meie Script |
 | Match IoU | 0.753 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.9224) |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
 | Gap to previous | None px |
-| Gap to next | 77 px |
+| Gap to next | 82 px |
 
 Alternate font fits considered:
 - `MeieScript-Regular.ttf` 131px track 0.51px — IoU 0.7319
@@ -77,8 +79,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=234, y=829, w=356, h=120 |
-| Normalised | x=21.67%, y=76.76%, w=32.96%, h=11.11% |
+| Bounding box (px) | x=234, y=834, w=356, h=115 |
+| Normalised | x=21.67%, y=77.22%, w=32.96%, h=10.65% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -93,18 +95,20 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.43:1 |
-| Stroke (median/mean) | 12.0 / 11.33 px |
+| Stroke (median/mean) | 12.0 / 11.4 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Meie Script |
-| Match IoU | 0.1456 |
+| Match IoU | 0.1466 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8452) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | 77 px |
+| Gap to previous | 82 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `MeieScript-Regular.ttf` 108px track 0.77px — IoU 0.1439
-- `MeieScript-Regular.ttf` 110px track -0.86px — IoU 0.1395
+- `MeieScript-Regular.ttf` 108px track 0.77px — IoU 0.1444
+- `MeieScript-Regular.ttf` 110px track -0.86px — IoU 0.1424
 
 ## 4. Colours (semantic)
 
@@ -116,7 +120,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'Home' | glyph ink median |
 | accent | `#a4560c` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#07674d` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -140,7 +144,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to right darkening |
 | Full bleed | True |
-| Text coverage | 0.0673 |
+| Text coverage | 0.0657 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |

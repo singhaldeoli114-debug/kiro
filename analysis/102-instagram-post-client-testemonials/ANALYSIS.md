@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=389, y=244, w=593, h=77 |
-| Normalised | x=36.02%, y=22.59%, w=54.91%, h=7.13% |
+| Bounding box (px) | x=388, y=244, w=595, h=77 |
+| Normalised | x=35.93%, y=22.59%, w=55.09%, h=7.13% |
 | Alignment | right |
 | z-order | 100 |
 | Rotation | 0° |
@@ -52,7 +52,7 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [400, 87.5] |
 | Font size | 104 px |
-| Letter-spacing | 0.21 px (0.002 em) |
+| Letter-spacing | 0.39 px (0.0038 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
@@ -60,8 +60,9 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
 | Stroke (median/mean) | 10.0 / 13.35 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.7736 |
+| Match IoU | 0.7683 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -69,35 +70,36 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Gap to next | 32 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 111px track -0.01px — IoU 0.7578
-- `Roboto[wdth,wght].ttf` 112px track -0.5px — IoU 0.757
-- `Roboto[wdth,wght].ttf` 103px track 0.72px — IoU 0.7447
+- `Roboto[wdth,wght].ttf` 106px track -0.65px — IoU 0.7575
+- `Roboto[wdth,wght].ttf` 111px track 0.17px — IoU 0.75
+- `Roboto[wdth,wght].ttf` 112px track -0.31px — IoU 0.7488
 
-### `text-2` — subheadline
+### `text-2` — supporting
 
 **Text:** "Lorem ipsum dolor sit amet,"  (OCR confidence 0.9992)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=532, y=353, w=455, h=35 |
-| Normalised | x=49.26%, y=32.69%, w=42.13%, h=3.24% |
+| Bounding box (px) | x=531, y=353, w=456, h=35 |
+| Normalised | x=49.17%, y=32.69%, w=42.22%, h=3.24% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.23 px (0.0064 em) |
-| Line-height | 50.2 px (ratio 1.394) |
+| Font size | 37 px |
+| Letter-spacing | -0.22 px (-0.0059 em) |
+| Line-height | 50.0 px (ratio 1.351) |
 | Line | 1 of 6 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
 | Stroke (median/mean) | 3.0 / 4.25 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.7448 |
+| Match IoU | 0.7463 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -105,179 +107,110 @@ Alternate font fits considered:
 | Gap to next | 15 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 40px track -0.43px — IoU 0.7024
-- `Roboto[wdth,wght].ttf` 37px track -0.25px — IoU 0.7023
-- `Roboto[wdth,wght].ttf` 39px track -0.12px — IoU 0.689
+- `Roboto[wdth,wght].ttf` 38px track -0.69px — IoU 0.6491
+- `Roboto[wdth,wght].ttf` 37px track -0.32px — IoU 0.6373
+- `Roboto[wdth,wght].ttf` 40px track -0.54px — IoU 0.6361
 
-### `text-3` — subheadline
+### `text-3` — supporting
 
 **Text:** "consectetur adipiscing elit, sed do"  (OCR confidence 0.9905)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=431, y=403, w=556, h=35 |
-| Normalised | x=39.91%, y=37.31%, w=51.48%, h=3.24% |
+| Bounding box (px) | x=430, y=403, w=557, h=36 |
+| Normalised | x=39.81%, y=37.31%, w=51.57%, h=3.33% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.23 px (0.0064 em) |
-| Line-height | 50.2 px (ratio 1.394) |
+| Font size | 37 px |
+| Letter-spacing | -0.22 px (-0.0059 em) |
+| Line-height | 50.0 px (ratio 1.351) |
 | Line | 2 of 6 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
 | Stroke (median/mean) | 3.0 / 4.49 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.634 |
+| Match IoU | 0.6929 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
 | Gap to previous | 15 px |
-| Gap to next | 15 px |
+| Gap to next | 14 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 40px track -0.43px — IoU 0.7024
-- `Roboto[wdth,wght].ttf` 37px track -0.25px — IoU 0.7023
-- `Roboto[wdth,wght].ttf` 39px track -0.12px — IoU 0.689
+- `Roboto[wdth,wght].ttf` 38px track -0.69px — IoU 0.6491
+- `Roboto[wdth,wght].ttf` 37px track -0.32px — IoU 0.6373
+- `Roboto[wdth,wght].ttf` 40px track -0.54px — IoU 0.6361
 
-### `text-4` — subheadline
+### `text-4` — supporting
 
 **Text:** "eiusmod tempor incididunt ut labore"  (OCR confidence 0.9916)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=396, y=453, w=591, h=35 |
-| Normalised | x=36.67%, y=41.94%, w=54.72%, h=3.24% |
+| Bounding box (px) | x=395, y=453, w=592, h=35 |
+| Normalised | x=36.57%, y=41.94%, w=54.81%, h=3.24% |
 | Alignment | right |
 | z-order | 103 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.23 px (0.0064 em) |
-| Line-height | 50.2 px (ratio 1.394) |
+| Font size | 37 px |
+| Letter-spacing | -0.22 px (-0.0059 em) |
+| Line-height | 50.0 px (ratio 1.351) |
 | Line | 3 of 6 |
 | Transform | lowercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
 | Stroke (median/mean) | 3.0 / 4.24 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.6552 |
+| Match IoU | 0.6677 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | 15 px |
+| Gap to previous | 14 px |
 | Gap to next | 15 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 40px track -0.43px — IoU 0.7024
-- `Roboto[wdth,wght].ttf` 37px track -0.25px — IoU 0.7023
-- `Roboto[wdth,wght].ttf` 39px track -0.12px — IoU 0.689
+- `Roboto[wdth,wght].ttf` 38px track -0.69px — IoU 0.6491
+- `Roboto[wdth,wght].ttf` 37px track -0.32px — IoU 0.6373
+- `Roboto[wdth,wght].ttf` 40px track -0.54px — IoU 0.6361
 
-### `text-5` — subheadline
+### `text-5` — supporting
 
 **Text:** "et dolore magna aliqua. Ut enim ad"  (OCR confidence 0.9949)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=418, y=503, w=568, h=36 |
-| Normalised | x=38.7%, y=46.57%, w=52.59%, h=3.33% |
+| Bounding box (px) | x=417, y=503, w=569, h=36 |
+| Normalised | x=38.61%, y=46.57%, w=52.69%, h=3.33% |
 | Alignment | right |
 | z-order | 104 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
 | Variation axes | [500, 100.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.23 px (0.0064 em) |
-| Line-height | 50.2 px (ratio 1.394) |
+| Font size | 37 px |
+| Letter-spacing | -0.22 px (-0.0059 em) |
+| Line-height | 50.0 px (ratio 1.351) |
 | Line | 4 of 6 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
 | Stroke (median/mean) | 4.0 / 4.33 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.7448 |
-| **Geometry fit confidence** | **high** |
-| OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 15 px |
-| Gap to next | 15 px |
-
-Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 40px track -0.43px — IoU 0.7024
-- `Roboto[wdth,wght].ttf` 37px track -0.25px — IoU 0.7023
-- `Roboto[wdth,wght].ttf` 39px track -0.12px — IoU 0.689
-
-### `text-6` — subheadline
-
-**Text:** "minim veniam, quis nostrud"  (OCR confidence 0.9995)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=538, y=554, w=448, h=35 |
-| Normalised | x=49.81%, y=51.3%, w=41.48%, h=3.24% |
-| Alignment | right |
-| z-order | 105 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.23 px (0.0064 em) |
-| Line-height | 50.2 px (ratio 1.394) |
-| Line | 5 of 6 |
-| Transform | lowercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 2.82:1 |
-| Stroke (median/mean) | 3.0 / 4.03 px |
-| Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.7116 |
-| **Geometry fit confidence** | **high** |
-| OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 15 px |
-| Gap to next | 15 px |
-
-Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 40px track -0.43px — IoU 0.7024
-- `Roboto[wdth,wght].ttf` 37px track -0.25px — IoU 0.7023
-- `Roboto[wdth,wght].ttf` 39px track -0.12px — IoU 0.689
-
-### `text-7` — subheadline
-
-**Text:** "exercitation ullamco laboris nisi ut"  (OCR confidence 0.9949)
-
-| Property | Value |
-|---|---|
-| Bounding box (px) | x=428, y=604, w=559, h=28 |
-| Normalised | x=39.63%, y=55.93%, w=51.76%, h=2.59% |
-| Alignment | right |
-| z-order | 106 |
-| Rotation | 0° |
-| Opacity | 1.0 |
-| Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
-| Font size | 36 px |
-| Letter-spacing | 0.23 px (0.0064 em) |
-| Line-height | 50.2 px (ratio 1.394) |
-| Line | 6 of 6 |
-| Transform | lowercase |
-| Colour | `#ffffff` |
-| Polarity | light-on-dark |
-| Contrast vs local bg | 2.82:1 |
-| Stroke (median/mean) | 3.0 / 4.12 px |
-| Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.7357 |
+| Match IoU | 0.7883 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
@@ -285,18 +218,93 @@ Alternate font fits considered:
 | Gap to next | 14 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 40px track -0.43px — IoU 0.7024
-- `Roboto[wdth,wght].ttf` 37px track -0.25px — IoU 0.7023
-- `Roboto[wdth,wght].ttf` 39px track -0.12px — IoU 0.689
+- `Roboto[wdth,wght].ttf` 38px track -0.69px — IoU 0.6491
+- `Roboto[wdth,wght].ttf` 37px track -0.32px — IoU 0.6373
+- `Roboto[wdth,wght].ttf` 40px track -0.54px — IoU 0.6361
 
-### `text-8` — supporting
+### `text-6` — supporting
+
+**Text:** "minim veniam, quis nostrud"  (OCR confidence 0.9995)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=537, y=553, w=449, h=36 |
+| Normalised | x=49.72%, y=51.2%, w=41.57%, h=3.33% |
+| Alignment | right |
+| z-order | 105 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [500, 100.0] |
+| Font size | 37 px |
+| Letter-spacing | -0.22 px (-0.0059 em) |
+| Line-height | 50.0 px (ratio 1.351) |
+| Line | 5 of 6 |
+| Transform | lowercase |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.82:1 |
+| Stroke (median/mean) | 3.0 / 4.03 px |
+| Render model | solid-vector-text |
+| Font family (authoritative) | Roboto, Yellowtail |
+| Match IoU | 0.7466 |
+| **Geometry fit confidence** | **high** |
+| OCR text reliable | True  |
+| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
+| Gap to previous | 14 px |
+| Gap to next | 14 px |
+
+Alternate font fits considered:
+- `Roboto[wdth,wght].ttf` 38px track -0.69px — IoU 0.6491
+- `Roboto[wdth,wght].ttf` 37px track -0.32px — IoU 0.6373
+- `Roboto[wdth,wght].ttf` 40px track -0.54px — IoU 0.6361
+
+### `text-7` — supporting
+
+**Text:** "exercitation ullamco labor is nisi ut"  (OCR confidence 0.9949)
+
+| Property | Value |
+|---|---|
+| Bounding box (px) | x=427, y=603, w=561, h=29 |
+| Normalised | x=39.54%, y=55.83%, w=51.94%, h=2.69% |
+| Alignment | right |
+| z-order | 106 |
+| Rotation | 0° |
+| Opacity | 1.0 |
+| Font file matched | `Roboto[wdth,wght].ttf` |
+| Variation axes | [500, 100.0] |
+| Font size | 37 px |
+| Letter-spacing | -0.22 px (-0.0059 em) |
+| Line-height | 50.0 px (ratio 1.351) |
+| Line | 6 of 6 |
+| Transform | lowercase |
+| Colour | `#ffffff` |
+| Polarity | light-on-dark |
+| Contrast vs local bg | 2.82:1 |
+| Stroke (median/mean) | 3.0 / 4.12 px |
+| Render model | solid-vector-text |
+| OCR repairs (audited) | split run-together: 'laboris' -> 'labor is' |
+| Font family (authoritative) | Roboto, Yellowtail |
+| Match IoU | 0.3693 |
+| **Geometry fit confidence** | **very-low** |
+| OCR text reliable | True  |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 14 px |
+| Gap to next | 14 px |
+
+Alternate font fits considered:
+- `Roboto[wdth,wght].ttf` 38px track -0.69px — IoU 0.6491
+- `Roboto[wdth,wght].ttf` 37px track -0.32px — IoU 0.6373
+- `Roboto[wdth,wght].ttf` 40px track -0.54px — IoU 0.6361
+
+### `text-8` — fine-print
 
 **Text:** "BumNmoh"  (OCR confidence 0.6514)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=37, y=646, w=85, h=321 |
-| Normalised | x=3.43%, y=59.81%, w=7.87%, h=29.72% |
+| Bounding box (px) | x=37, y=646, w=85, h=316 |
+| Normalised | x=3.43%, y=59.81%, w=7.87%, h=29.26% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
@@ -311,36 +319,37 @@ Alternate font fits considered:
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
-| Stroke (median/mean) | 11.0 / 12.25 px |
+| Stroke (median/mean) | 11.0 / 12.2 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.218 |
+| Match IoU | 0.2178 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6514) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | 14 px |
-| Gap to next | -313 px |
+| Gap to next | -309 px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 20px track 0.37px — IoU 0.2133
-- `Roboto[wdth,wght].ttf` 20px track 0.37px — IoU 0.2124
-- `Roboto[wdth,wght].ttf` 22px track -1.01px — IoU 0.2119
+- `Roboto[wdth,wght].ttf` 20px track 0.37px — IoU 0.2125
+- `Roboto[wdth,wght].ttf` 19px track 0.11px — IoU 0.2118
+- `Roboto[wdth,wght].ttf` 22px track -1.01px — IoU 0.2117
 
-### `text-9` — subheadline
+### `text-9` — supporting
 
 **Text:** "aliquip ex ea commodo consequat."  (OCR confidence 0.9804)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=415, y=654, w=570, h=35 |
-| Normalised | x=38.43%, y=60.56%, w=52.78%, h=3.24% |
+| Bounding box (px) | x=415, y=653, w=571, h=36 |
+| Normalised | x=38.43%, y=60.46%, w=52.87%, h=3.33% |
 | Alignment | right |
 | z-order | 108 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `Roboto[wdth,wght].ttf` |
-| Variation axes | [500, 100.0] |
+| Variation axes | [600, 100.0] |
 | Font size | 38 px |
-| Letter-spacing | -0.73 px (-0.0192 em) |
+| Letter-spacing | -0.72 px (-0.0189 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -348,18 +357,19 @@ Alternate font fits considered:
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.82:1 |
 | Stroke (median/mean) | 4.0 / 4.39 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Roboto, Yellowtail |
-| Match IoU | 0.7318 |
-| **Geometry fit confidence** | **high** |
+| Match IoU | 0.699 |
+| **Geometry fit confidence** | **medium** |
 | OCR text reliable | True  |
-| Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -313 px |
+| Fit interpretation | fitted metrics reproduce the reference well; minor drift |
+| Gap to previous | -309 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Roboto[wdth,wght].ttf` 36px track 0.28px — IoU 0.7063
-- `Roboto[wdth,wght].ttf` 36px track 0.33px — IoU 0.6751
-- `Roboto[wdth,wght].ttf` 40px track -0.49px — IoU 0.6659
+- `Roboto[wdth,wght].ttf` 36px track 0.31px — IoU 0.6939
+- `Roboto[wdth,wght].ttf` 40px track -0.53px — IoU 0.6882
+- `Roboto[wdth,wght].ttf` 38px track -0.7px — IoU 0.6811
 
 ## 4. Colours (semantic)
 
@@ -371,7 +381,7 @@ Alternate font fits considered:
 | textSecondary | `#ffffff` | glyph ink of 'Testemonials' | glyph ink median |
 | accent | `#036d34` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#efdd07` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -395,7 +405,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to left darkening |
 | Full bleed | True |
-| Text coverage | 0.1721 |
+| Text coverage | 0.1739 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -423,14 +433,14 @@ _Recommendations only — no manifest is generated._
 | Suggested name | Kind | Current value |
 |---|---|---|
 | `headline` | text | Testemonials |
-| `subheadline_line1` | text | Lorem ipsum dolor sit amet, |
-| `subheadline_line2` | text | consectetur adipiscing elit, sed do |
-| `subheadline_line3` | text | eiusmod tempor incididunt ut labore |
-| `subheadline_line4` | text | et dolore magna aliqua. Ut enim ad |
-| `subheadline_line5` | text | minim veniam, quis nostrud |
-| `subheadline_line6` | text | exercitation ullamco laboris nisi ut |
-| `supporting` | text | BumNmoh |
-| `subheadline` | text | aliquip ex ea commodo consequat. |
+| `supporting_line1` | text | Lorem ipsum dolor sit amet, |
+| `supporting_line2` | text | consectetur adipiscing elit, sed do |
+| `supporting_line3` | text | eiusmod tempor incididunt ut labore |
+| `supporting_line4` | text | et dolore magna aliqua. Ut enim ad |
+| `supporting_line5` | text | minim veniam, quis nostrud |
+| `supporting_line6` | text | exercitation ullamco labor is nisi ut |
+| `fine-print` | text | BumNmoh |
+| `supporting` | text | aliquip ex ea commodo consequat. |
 | `heroImage` | image | full-bleed artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #fafcfb |
@@ -442,14 +452,14 @@ _Recommendations only — no manifest is generated._
 | `onAccent` | colour | #000000 |
 | `brandFont` | font | Roboto |
 | `show_headline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
-| `show_subheadline` | boolean | — |
 | `show_supporting` | boolean | — |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_supporting` | boolean | — |
+| `show_fine-print` | boolean | — |
+| `show_supporting` | boolean | — |
 | `imageFocalX` | number | 50.0 |
 | `imageFocalY` | number | 50.0 |
 

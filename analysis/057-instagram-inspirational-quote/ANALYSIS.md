@@ -33,7 +33,7 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
@@ -43,8 +43,8 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=112, y=163, w=673, h=129 |
-| Normalised | x=10.37%, y=15.09%, w=62.31%, h=11.94% |
+| Bounding box (px) | x=112, y=163, w=673, h=124 |
+| Normalised | x=10.37%, y=15.09%, w=62.31%, h=11.48% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -58,20 +58,22 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Transform | none |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 18.24:1 |
-| Stroke (median/mean) | 7.0 / 8.91 px |
+| Contrast vs local bg | 18.23:1 |
+| Stroke (median/mean) | 7.0 / 8.94 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.1015 |
+| Match IoU | 0.1029 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.7748) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | None px |
-| Gap to next | -91 px |
+| Gap to next | -86 px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 124px track 0.17px — IoU 0.1007
-- `Abel-Regular.ttf` 123px track 0.66px — IoU 0.0995
-- `HomemadeApple-Regular.ttf` 91px track -1.02px — IoU 0.0226
+- `Abel-Regular.ttf` 124px track 0.17px — IoU 0.1018
+- `Abel-Regular.ttf` 123px track 0.66px — IoU 0.1003
+- `HomemadeApple-Regular.ttf` 90px track -0.33px — IoU 0.0322
 
 ### `text-2` — headline
 
@@ -79,8 +81,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=767, y=201, w=212, h=65 |
-| Normalised | x=71.02%, y=18.61%, w=19.63%, h=6.02% |
+| Bounding box (px) | x=768, y=201, w=211, h=60 |
+| Normalised | x=71.11%, y=18.61%, w=19.54%, h=5.56% |
 | Alignment | right |
 | z-order | 101 |
 | Rotation | 0° |
@@ -88,26 +90,28 @@ Alternate font fits considered:
 | Font file matched | `Abel-Regular.ttf` |
 | Variation axes | None |
 | Font size | 132 px |
-| Letter-spacing | 0.73 px (0.0055 em) |
+| Letter-spacing | 0.4 px (0.003 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 18.13:1 |
-| Stroke (median/mean) | 7.0 / 9.03 px |
+| Contrast vs local bg | 18.14:1 |
+| Stroke (median/mean) | 7.0 / 9.08 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.2093 |
+| Match IoU | 0.2205 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.6118) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -91 px |
-| Gap to next | 55 px |
+| Gap to previous | -86 px |
+| Gap to next | 60 px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 133px track 0.21px — IoU 0.2092
-- `Abel-Regular.ttf` 134px track -0.32px — IoU 0.208
-- `HomemadeApple-Regular.ttf` 84px track -0.62px — IoU 0.1942
+- `Abel-Regular.ttf` 133px track -0.12px — IoU 0.2175
+- `Abel-Regular.ttf` 134px track -0.65px — IoU 0.2131
+- `HomemadeApple-Regular.ttf` 84px track -0.95px — IoU 0.1852
 
 ### `text-3` — subheadline
 
@@ -115,8 +119,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=399, y=321, w=564, h=140 |
-| Normalised | x=36.94%, y=29.72%, w=52.22%, h=12.96% |
+| Bounding box (px) | x=399, y=321, w=564, h=135 |
+| Normalised | x=36.94%, y=29.72%, w=52.22%, h=12.5% |
 | Alignment | right |
 | z-order | 102 |
 | Rotation | 0° |
@@ -131,19 +135,21 @@ Alternate font fits considered:
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 19.14:1 |
-| Stroke (median/mean) | 7.0 / 8.7 px |
+| Stroke (median/mean) | 7.0 / 8.68 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.2006 |
+| Match IoU | 0.1655 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 55 px |
-| Gap to next | -133 px |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
+| Gap to previous | 60 px |
+| Gap to next | -128 px |
 
 Alternate font fits considered:
-- `HomemadeApple-Regular.ttf` 85px track -0.1px — IoU 0.191
-- `HomemadeApple-Regular.ttf` 84px track 0.51px — IoU 0.1887
-- `Abel-Regular.ttf` 120px track 0.36px — IoU 0.1074
+- `HomemadeApple-Regular.ttf` 85px track -0.1px — IoU 0.1583
+- `HomemadeApple-Regular.ttf` 84px track 0.51px — IoU 0.1548
+- `Abel-Regular.ttf` 120px track 0.36px — IoU 0.1088
 
 ### `text-4` — subheadline
 
@@ -151,8 +157,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=120, y=328, w=321, h=80 |
-| Normalised | x=11.11%, y=30.37%, w=29.72%, h=7.41% |
+| Bounding box (px) | x=119, y=328, w=322, h=80 |
+| Normalised | x=11.02%, y=30.37%, w=29.81%, h=7.41% |
 | Alignment | left |
 | z-order | 103 |
 | Rotation | 0° |
@@ -160,7 +166,7 @@ Alternate font fits considered:
 | Font file matched | `HomemadeApple-Regular.ttf` |
 | Variation axes | None |
 | Font size | 93 px |
-| Letter-spacing | 0.53 px (0.0057 em) |
+| Letter-spacing | 0.73 px (0.0078 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -168,18 +174,20 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 18.83:1 |
 | Stroke (median/mean) | 8.0 / 9.91 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.2342 |
+| Match IoU | 0.253 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.8501) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
-| Gap to previous | -133 px |
+| Gap to previous | -128 px |
 | Gap to next | 76 px |
 
 Alternate font fits considered:
-- `HomemadeApple-Regular.ttf` 94px track -0.15px — IoU 0.2272
-- `HomemadeApple-Regular.ttf` 95px track -0.84px — IoU 0.2193
-- `Abel-Regular.ttf` 138px track 0.06px — IoU 0.1801
+- `HomemadeApple-Regular.ttf` 94px track 0.05px — IoU 0.2426
+- `HomemadeApple-Regular.ttf` 95px track -0.64px — IoU 0.2371
+- `Abel-Regular.ttf` 140px track -0.67px — IoU 0.1829
 
 ### `text-5` — subheadline
 
@@ -187,8 +195,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=236, y=484, w=617, h=103 |
-| Normalised | x=21.85%, y=44.81%, w=57.13%, h=9.54% |
+| Bounding box (px) | x=235, y=484, w=618, h=103 |
+| Normalised | x=21.76%, y=44.81%, w=57.22%, h=9.54% |
 | Alignment | center |
 | z-order | 104 |
 | Rotation | 0° |
@@ -204,18 +212,20 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 18.27:1 |
 | Stroke (median/mean) | 8.0 / 9.23 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.2865 |
+| Match IoU | 0.3008 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | 76 px |
 | Gap to next | 60 px |
 
 Alternate font fits considered:
-- `HomemadeApple-Regular.ttf` 83px track -0.97px — IoU 0.5301
-- `HomemadeApple-Regular.ttf` 82px track -0.32px — IoU 0.5282
-- `Abel-Regular.ttf` 127px track -0.1px — IoU 0.15
+- `HomemadeApple-Regular.ttf` 83px track -0.97px — IoU 0.537
+- `HomemadeApple-Regular.ttf` 82px track -0.32px — IoU 0.5354
+- `Abel-Regular.ttf` 127px track -0.1px — IoU 0.1497
 
 ### `text-6` — subheadline
 
@@ -240,6 +250,8 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.86:1 |
 | Stroke (median/mean) | 8.0 / 9.21 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
 | Match IoU | 0.7805 |
 | **Geometry fit confidence** | **high** |
@@ -249,9 +261,9 @@ Alternate font fits considered:
 | Gap to next | 76 px |
 
 Alternate font fits considered:
-- `HomemadeApple-Regular.ttf` 83px track -0.97px — IoU 0.5301
-- `HomemadeApple-Regular.ttf` 82px track -0.32px — IoU 0.5282
-- `Abel-Regular.ttf` 127px track -0.1px — IoU 0.15
+- `HomemadeApple-Regular.ttf` 83px track -0.97px — IoU 0.537
+- `HomemadeApple-Regular.ttf` 82px track -0.32px — IoU 0.5354
+- `Abel-Regular.ttf` 127px track -0.1px — IoU 0.1497
 
 ### `text-7` — subheadline
 
@@ -259,35 +271,37 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=542, y=809, w=332, h=168 |
-| Normalised | x=50.19%, y=74.91%, w=30.74%, h=15.56% |
+| Bounding box (px) | x=542, y=809, w=332, h=163 |
+| Normalised | x=50.19%, y=74.91%, w=30.74%, h=15.09% |
 | Alignment | right |
 | z-order | 106 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `HomemadeApple-Regular.ttf` |
 | Variation axes | None |
-| Font size | 100 px |
-| Letter-spacing | -0.66 px (-0.0066 em) |
+| Font size | 99 px |
+| Letter-spacing | -0.1 px (-0.001 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
 | Colour | `#000000` |
 | Polarity | dark-on-light |
 | Contrast vs local bg | 16.64:1 |
-| Stroke (median/mean) | 7.0 / 8.73 px |
+| Stroke (median/mean) | 7.0 / 9.04 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.1518 |
+| Match IoU | 0.1589 |
 | **Geometry fit confidence** | **very-low-textUnreliable** |
 | OCR text reliable | False — low OCR confidence (0.823) |
 | Fit interpretation | not verified; driven by corrupted OCR text rather than a wrong family |
 | Gap to previous | 76 px |
-| Gap to next | -134 px |
+| Gap to next | -130 px |
 
 Alternate font fits considered:
-- `HomemadeApple-Regular.ttf` 99px track -0.1px — IoU 0.1512
-- `HomemadeApple-Regular.ttf` 98px track 0.46px — IoU 0.1483
-- `Abel-Regular.ttf` 150px track 0.39px — IoU 0.1092
+- `HomemadeApple-Regular.ttf` 100px track -0.66px — IoU 0.1583
+- `HomemadeApple-Regular.ttf` 98px track 0.46px — IoU 0.1564
+- `Abel-Regular.ttf` 150px track 0.39px — IoU 0.1102
 
 ### `text-8` — subheadline
 
@@ -295,16 +309,16 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=234, y=843, w=211, h=52 |
-| Normalised | x=21.67%, y=78.06%, w=19.54%, h=4.81% |
+| Bounding box (px) | x=233, y=842, w=212, h=53 |
+| Normalised | x=21.57%, y=77.96%, w=19.63%, h=4.91% |
 | Alignment | left |
 | z-order | 107 |
 | Rotation | 0° |
 | Opacity | 1.0 |
 | Font file matched | `HomemadeApple-Regular.ttf` |
 | Variation axes | None |
-| Font size | 84 px |
-| Letter-spacing | 0.39 px (0.0046 em) |
+| Font size | 86 px |
+| Letter-spacing | -0.94 px (-0.0109 em) |
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | lowercase |
@@ -312,27 +326,29 @@ Alternate font fits considered:
 | Polarity | dark-on-light |
 | Contrast vs local bg | 17.45:1 |
 | Stroke (median/mean) | 8.0 / 9.47 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.7589 |
+| Match IoU | 0.7961 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | False — low OCR confidence (0.8757) |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | -134 px |
-| Gap to next | 56 px |
+| Gap to previous | -130 px |
+| Gap to next | 61 px |
 
 Alternate font fits considered:
-- `HomemadeApple-Regular.ttf` 85px track -0.45px — IoU 0.7573
-- `HomemadeApple-Regular.ttf` 83px track 1.22px — IoU 0.7512
-- `Abel-Regular.ttf` 129px track -0.59px — IoU 0.2011
+- `HomemadeApple-Regular.ttf` 85px track -0.11px — IoU 0.7927
+- `HomemadeApple-Regular.ttf` 84px track 0.72px — IoU 0.746
+- `Abel-Regular.ttf` 130px track -0.81px — IoU 0.2009
 
-### `text-9` — supporting
+### `text-9` — body
 
 **Text:** "- Mark Twain"  (OCR confidence 0.9894)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=437, y=951, w=206, h=42 |
-| Normalised | x=40.46%, y=88.06%, w=19.07%, h=3.89% |
+| Bounding box (px) | x=437, y=956, w=206, h=37 |
+| Normalised | x=40.46%, y=88.52%, w=19.07%, h=3.43% |
 | Alignment | center |
 | z-order | 108 |
 | Rotation | 0° |
@@ -344,22 +360,23 @@ Alternate font fits considered:
 | Line-height | None px (ratio None) |
 | Line | 1 of 1 |
 | Transform | none |
-| Colour | `#030202` |
+| Colour | `#060504` |
 | Polarity | dark-on-light |
-| Contrast vs local bg | 14.82:1 |
-| Stroke (median/mean) | 3.0 / 3.36 px |
+| Contrast vs local bg | 12.4:1 |
+| Stroke (median/mean) | 3.0 / 3.19 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Homemade Apple, Abel |
-| Match IoU | 0.347 |
-| **Geometry fit confidence** | **very-low** |
+| Match IoU | 0.4377 |
+| **Geometry fit confidence** | **low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
-| Gap to previous | 56 px |
+| Fit interpretation | plausible but unverified; letterform drift across the line |
+| Gap to previous | 61 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `Abel-Regular.ttf` 43px track -0.12px — IoU 0.3381
-- `Abel-Regular.ttf` 42px track 0.32px — IoU 0.3117
-- `HomemadeApple-Regular.ttf` 27px track -0.49px — IoU 0.1481
+- `Abel-Regular.ttf` 43px track -0.12px — IoU 0.4363
+- `Abel-Regular.ttf` 42px track 0.32px — IoU 0.3812
+- `HomemadeApple-Regular.ttf` 27px track -0.49px — IoU 0.1479
 
 ## 4. Colours (semantic)
 
@@ -371,7 +388,7 @@ Alternate font fits considered:
 | textSecondary | `#000000` | glyph ink of 'than on your' | glyph ink median |
 | accent | `#efbb7d` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#f1cbb7` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#000000` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -395,7 +412,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | False |
-| Text coverage | 0.3497 |
+| Text coverage | 0.3415 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -430,7 +447,7 @@ _Recommendations only — no manifest is generated._
 | `subheadline_line2` | text | dream will take |
 | `subheadline` | text | itoelf. |
 | `subheadline` | text | care |
-| `supporting` | text | - Mark Twain |
+| `body` | text | - Mark Twain |
 | `heroImage` | image | framed/panelled artwork |
 | `brandLogo` | image | no logo element was isolated; a flattened render does not... |
 | `background` | colour | #f4dfe0 |
@@ -449,7 +466,7 @@ _Recommendations only — no manifest is generated._
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
 | `show_subheadline` | boolean | — |
-| `show_supporting` | boolean | — |
+| `show_body` | boolean | — |
 | `imageFocalX` | number | 48.7 |
 | `imageFocalY` | number | 41.7 |
 

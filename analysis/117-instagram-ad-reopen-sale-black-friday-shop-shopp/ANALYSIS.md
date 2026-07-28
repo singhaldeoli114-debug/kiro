@@ -33,18 +33,18 @@ Two separate things are reported, and only the second is uncertain:
 - **Fitted metrics — estimated.** fontSizePx, letterSpacingPx, variationAxes (weight/width), recovered by candidate renders scored by scale-normalised IoU against the reference glyph ink.
   - IoU is a conservative lower bound on fit quality. Alternative metrics were trialled and performed worse; see BATCH-REPORT.md.
 
-A `very-low` fit score does **not** mean the font family is wrong. It most often means the OCR text used for the comparison was corrupted, or the source design positions characters individually.
+A `very-low` fit score does **not** mean the declared font family is wrong. It marks geometry that the solid-font fitter could not verify. Common causes are outlined or curved text, duplicate shadow layers, overlapping word copies, and incomplete OCR capture. Text printed on a photographed object is labelled `not-applicable-rasterText` instead.
 
 ## 3. Text elements
 
-### `text-1` — subheadline
+### `text-1` — supporting
 
 **Text:** "We're"  (OCR confidence 0.951)
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=69, y=72, w=192, h=99 |
-| Normalised | x=6.39%, y=6.67%, w=17.78%, h=9.17% |
+| Bounding box (px) | x=69, y=72, w=192, h=94 |
+| Normalised | x=6.39%, y=6.67%, w=17.78%, h=8.7% |
 | Alignment | left |
 | z-order | 100 |
 | Rotation | 0° |
@@ -59,19 +59,20 @@ A `very-low` fit score does **not** mean the font family is wrong. It most often
 | Colour | `#fddd72` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 1.98:1 |
-| Stroke (median/mean) | 10.0 / 12.49 px |
+| Stroke (median/mean) | 10.0 / 12.22 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Condiment |
-| Match IoU | 0.2783 |
+| Match IoU | 0.277 |
 | **Geometry fit confidence** | **very-low** |
 | OCR text reliable | True  |
-| Fit interpretation | not verified; decorative/letter-spaced type, or per-character positioning in the source |
+| Fit interpretation | not verified; commonly outlined/hollow type, an offset duplicate layer, overlapping copies of a word, or incomplete OCR capture |
 | Gap to previous | None px |
-| Gap to next | -38 px |
+| Gap to next | -28 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 69px track 0.94px — IoU 0.2486
-- `AbrilFatface-Regular.ttf` 70px track 0.26px — IoU 0.2436
-- `Condiment-Regular.ttf` 96px track 0.04px — IoU 0.1905
+- `AbrilFatface-Regular.ttf` 69px track 0.94px — IoU 0.2447
+- `AbrilFatface-Regular.ttf` 70px track 0.26px — IoU 0.2402
+- `Condiment-Regular.ttf` 96px track 0.04px — IoU 0.1975
 
 ### `text-2` — headline
 
@@ -79,8 +80,8 @@ Alternate font fits considered:
 
 | Property | Value |
 |---|---|
-| Bounding box (px) | x=69, y=133, w=368, h=127 |
-| Normalised | x=6.39%, y=12.31%, w=34.07%, h=11.76% |
+| Bounding box (px) | x=69, y=138, w=368, h=123 |
+| Normalised | x=6.39%, y=12.78%, w=34.07%, h=11.39% |
 | Alignment | left |
 | z-order | 101 |
 | Rotation | 0° |
@@ -89,25 +90,27 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 164 px |
 | Letter-spacing | 1.31 px (0.008 em) |
-| Line-height | 150.0 px (ratio 0.915) |
+| Line-height | 145.0 px (ratio 0.884) |
 | Line | 1 of 2 |
 | Transform | none |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
-| Contrast vs local bg | 2.06:1 |
-| Stroke (median/mean) | 26.0 / 22.06 px |
+| Contrast vs local bg | 2.05:1 |
+| Stroke (median/mean) | 27.0 / 22.42 px |
+| Render model | solid-vector-text |
+| Render-model note | strongly slanted or rotated; may sit on a curved path |
 | Font family (authoritative) | Abril Fatface, Condiment |
-| Match IoU | 0.5611 |
+| Match IoU | 0.5745 |
 | **Geometry fit confidence** | **medium** |
 | OCR text reliable | False — low OCR confidence (0.8863) |
 | Fit interpretation | fitted metrics reproduce the reference well; minor drift |
-| Gap to previous | -38 px |
-| Gap to next | 23 px |
+| Gap to previous | -28 px |
+| Gap to next | 22 px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 165px track 0.2px — IoU 0.7238
-- `AbrilFatface-Regular.ttf` 166px track -0.92px — IoU 0.7083
-- `Condiment-Regular.ttf` 215px track -0.91px — IoU 0.2863
+- `AbrilFatface-Regular.ttf` 165px track 0.2px — IoU 0.7297
+- `AbrilFatface-Regular.ttf` 166px track -0.92px — IoU 0.7128
+- `Condiment-Regular.ttf` 214px track -0.04px — IoU 0.2877
 
 ### `text-3` — headline
 
@@ -125,25 +128,26 @@ Alternate font fits considered:
 | Variation axes | None |
 | Font size | 164 px |
 | Letter-spacing | 1.31 px (0.008 em) |
-| Line-height | 150.0 px (ratio 0.915) |
+| Line-height | 145.0 px (ratio 0.884) |
 | Line | 2 of 2 |
 | Transform | uppercase |
 | Colour | `#ffffff` |
 | Polarity | light-on-dark |
 | Contrast vs local bg | 2.0:1 |
 | Stroke (median/mean) | 29.0 / 22.46 px |
+| Render model | solid-vector-text |
 | Font family (authoritative) | Abril Fatface, Condiment |
 | Match IoU | 0.8875 |
 | **Geometry fit confidence** | **high** |
 | OCR text reliable | True  |
 | Fit interpretation | fitted metrics closely reproduce the reference glyph ink |
-| Gap to previous | 23 px |
+| Gap to previous | 22 px |
 | Gap to next | None px |
 
 Alternate font fits considered:
-- `AbrilFatface-Regular.ttf` 165px track 0.2px — IoU 0.7238
-- `AbrilFatface-Regular.ttf` 166px track -0.92px — IoU 0.7083
-- `Condiment-Regular.ttf` 215px track -0.91px — IoU 0.2863
+- `AbrilFatface-Regular.ttf` 165px track 0.2px — IoU 0.7297
+- `AbrilFatface-Regular.ttf` 166px track -0.92px — IoU 0.7128
+- `Condiment-Regular.ttf` 214px track -0.04px — IoU 0.2877
 
 ## 4. Colours (semantic)
 
@@ -155,7 +159,7 @@ Alternate font fits considered:
 | textSecondary | `#fddd72` | glyph ink of 'We're' | glyph ink median |
 | accent | `#3a1226` | highest saturation-weighted cluster | k-means + saturation ranking |
 | accentSecondary | `#7a70b7` | second saturation-weighted cluster | k-means + saturation ranking |
-| overlay | — | not identified | — |
+| overlay | `#000000` | derived from the reference brightness gradient | brightness-gradient estimate from flattened pixels |
 | onAccent | `#ffffff` | derived | max WCAG contrast against accent |
 
 Full palette (k-means):
@@ -179,7 +183,7 @@ Full palette (k-means):
 | Subject position | middle-centre |
 | Background treatment | photographic or gradient background with to top darkening |
 | Full bleed | True |
-| Text coverage | 0.0909 |
+| Text coverage | 0.0888 |
 | Min resolution | 1080x1080 |
 | Masks / cutouts | cannot be determined from a flattened render |
 | Shadows | photographic shading and layer shadows are indistinguishable in a flattened render |
@@ -206,7 +210,7 @@ _Recommendations only — no manifest is generated._
 
 | Suggested name | Kind | Current value |
 |---|---|---|
-| `subheadline` | text | We're |
+| `supporting` | text | We're |
 | `headline_line1` | text | NoW |
 | `headline_line2` | text | OPEN |
 | `heroImage` | image | full-bleed artwork |
@@ -219,7 +223,7 @@ _Recommendations only — no manifest is generated._
 | `accentSecondary` | colour | #7a70b7 |
 | `onAccent` | colour | #ffffff |
 | `brandFont` | font | Abril Fatface |
-| `show_subheadline` | boolean | — |
+| `show_supporting` | boolean | — |
 | `show_headline` | boolean | — |
 | `show_headline` | boolean | — |
 | `imageFocalX` | number | 55.1 |
