@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bathroom Essentials</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #f7f5f2);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .marble-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 25%, var(--surfaceAlt, rgba(220, 215, 210, 0.3)) 25%, var(--surfaceAlt, rgba(220, 215, 210, 0.3)) 26%, transparent 26%),
+                  linear-gradient(225deg, transparent 40%, var(--surfaceAlt, rgba(220, 215, 210, 0.2)) 40%, var(--surfaceAlt, rgba(220, 215, 210, 0.2)) 41%, transparent 41%),
+                  linear-gradient(315deg, transparent 60%, var(--surfaceAlt, rgba(220, 215, 210, 0.15)) 60%, var(--surfaceAlt, rgba(220, 215, 210, 0.15)) 61%, transparent 61%);
+      opacity: 0.7;
+    }
+
+    .header {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      right: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .brand-name {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--textSecondary, #8a7f76);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    .logo-area img {
+      max-height: 44px;
+      width: auto;
+    }
+
+    .headline-area {
+      position: absolute;
+      top: 110px;
+      left: 50px;
+      right: 50px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--textPrimary, #2c2520);
+      line-height: 1.15;
+    }
+
+    .subheadline {
+      margin-top: 12px;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--textSecondary, #8a7f76);
+    }
+
+    .product-grid {
+      position: absolute;
+      top: 270px;
+      left: 80px;
+      right: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 28px;
+      height: 600px;
+      z-index: 5;
+    }
+
+    .product-cell {
+      background-color: var(--surfaceAlt, #ece8e3);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .product-cell img {
+      width: 100%;
+      height: 80%;
+      object-fit: contain;
+    }
+
+    .product-label {
+      margin-top: 12px;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--textSecondary, #8a7f76);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cta-row {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      right: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .cta-button {
+      background-color: var(--accent, #2c2520);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 18px 48px;
+      border-radius: 8px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="marble-pattern"></div>
+
+    <div class="header">
+      <span class="brand-name" data-role="brand" data-importance="secondary">MARBLE AND CO</span>
+      <div class="logo-area" data-visibility="logo">
+        <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+      </div>
+    </div>
+
+    <div class="headline-area">
+      <h1 class="headline" data-role="headline" data-importance="primary">Bathroom Essentials</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Elevate your daily self-care ritual</p>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-cell">
+        <img src="assets/placeholder.png" alt="Product 1" data-slot="product-1" />
+        <span class="product-label" data-role="product-name" data-importance="tertiary">Soap Bar</span>
+      </div>
+      <div class="product-cell">
+        <img src="assets/placeholder.png" alt="Product 2" data-slot="product-2" />
+        <span class="product-label" data-role="product-name" data-importance="tertiary">Body Wash</span>
+      </div>
+      <div class="product-cell">
+        <img src="assets/placeholder.png" alt="Product 3" data-slot="product-3" />
+        <span class="product-label" data-role="product-name" data-importance="tertiary">Shampoo</span>
+      </div>
+      <div class="product-cell">
+        <img src="assets/placeholder.png" alt="Product 4" data-slot="product-4" />
+        <span class="product-label" data-role="product-name" data-importance="tertiary">Conditioner</span>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-button" data-role="cta" data-importance="primary">SHOP THE SET</span>
+    </div>
+  </div>
+</body>
+</html>

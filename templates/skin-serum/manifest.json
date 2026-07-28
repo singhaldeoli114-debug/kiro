@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "skin-serum",
+  "templateVersion": "1.0.0",
+  "category": "beauty",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing serum benefits with ingredient visual on one side and results/benefits on the other",
+  "mood": ["informative", "results-driven", "clean", "split-panel"],
+  "best_for": ["ingredient-focused products", "before/after comparison", "benefit-driven ads", "serum launches"],
+  "not_for": ["multi-product grids", "event announcements", "single product hero", "fitness"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "Proven Results, Pure Formula", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Description", "defaultValue": "Our concentrated serum delivers active botanicals deep into the skin for visible transformation.", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "ingredient-label", "label": "Ingredient Label", "defaultValue": "KEY INGREDIENT", "data-role": "ingredient-label", "data-importance": "tertiary"},
+    {"id": "category", "label": "Category Tag", "defaultValue": "SKIN BENEFITS", "data-role": "category", "data-importance": "tertiary"},
+    {"id": "benefit-1", "label": "Benefit 1", "defaultValue": "Reduces fine lines by 47%", "data-role": "benefit", "data-importance": "primary"},
+    {"id": "benefit-2", "label": "Benefit 2", "defaultValue": "Boosts hydration for 72 hours", "data-role": "benefit", "data-importance": "primary"},
+    {"id": "benefit-3", "label": "Benefit 3", "defaultValue": "Evens skin tone naturally", "data-role": "benefit", "data-importance": "primary"},
+    {"id": "benefit-4", "label": "Benefit 4", "defaultValue": "Strengthens moisture barrier", "data-role": "benefit", "data-importance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP NOW", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "ingredient-image", "label": "Ingredient/Before Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-right",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "40px", "right": "50px"},
+    "constraints": ["Strict 50/50 vertical split", "Left panel is full-bleed image", "Right panel has text benefits list"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 40, "right": 50},
+  "anchors": {
+    "ingredient-image": "left-center",
+    "headline": "right-top",
+    "benefits": "right-center",
+    "cta": "right-bottom",
+    "logo": "top-right"
+  },
+  "defaults": {
+    "headline": "Proven Results, Pure Formula",
+    "subheadline": "Our concentrated serum delivers active botanicals deep into the skin for visible transformation.",
+    "ingredient-label": "KEY INGREDIENT",
+    "category": "SKIN BENEFITS",
+    "benefit-1": "Reduces fine lines by 47%",
+    "benefit-2": "Boosts hydration for 72 hours",
+    "benefit-3": "Evens skin tone naturally",
+    "benefit-4": "Strengthens moisture barrier",
+    "cta": "SHOP NOW"
+  },
+  "editable": ["headline", "subheadline", "ingredient-label", "category", "benefit-1", "benefit-2", "benefit-3", "benefit-4", "cta", "ingredient-image", "logo"],
+  "fixtures": {
+    "headline": "Proven Results, Pure Formula",
+    "ingredient-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "An ingredient/benefit ad template with strict 50/50 vertical split. Left panel shows ingredient imagery and right panel displays results/benefits text list with check marks."
+}

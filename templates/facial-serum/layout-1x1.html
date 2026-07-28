@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facial Serum</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #0d0a06);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .golden-ring-outer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 720px;
+      height: 720px;
+      border-radius: 50%;
+      border: 1px solid var(--accent, rgba(212, 175, 55, 0.12));
+    }
+
+    .golden-ring-mid {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      border: 1px solid var(--accent, rgba(212, 175, 55, 0.2));
+    }
+
+    .golden-ring-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 2px solid var(--accent, rgba(212, 175, 55, 0.3));
+    }
+
+    .golden-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent, rgba(212, 175, 55, 0.08)) 0%, transparent 60%);
+    }
+
+    .brand-name {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent, #d4af37);
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 48px;
+      width: auto;
+    }
+
+    .product-area {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .product-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .headline {
+      position: absolute;
+      bottom: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--textPrimary, #f5efe6);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .subheadline {
+      position: absolute;
+      bottom: 170px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--textSecondary, #c4a97d);
+      letter-spacing: 2px;
+      z-index: 10;
+    }
+
+    .cta-button {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      border: 1px solid var(--accent, #d4af37);
+      color: var(--accent, #d4af37);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 16px 48px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .accent-line {
+      position: absolute;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background-color: var(--accent, #d4af37);
+      opacity: 0.6;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="golden-ring-outer"></div>
+    <div class="golden-ring-mid"></div>
+    <div class="golden-ring-inner"></div>
+    <div class="golden-glow"></div>
+
+    <span class="brand-name" data-role="brand" data-importance="secondary">MAISON DORE</span>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="product-area">
+      <img src="assets/placeholder.png" alt="Facial Serum Bottle" data-slot="hero-product" />
+    </div>
+
+    <h1 class="headline" data-role="headline" data-importance="primary">GOLD ELIXIR</h1>
+    <div class="accent-line"></div>
+    <p class="subheadline" data-role="subheadline" data-importance="secondary">24K Gold Infused Rejuvenation</p>
+
+    <div class="cta-button" data-role="cta" data-importance="primary">EXPERIENCE LUXURY</div>
+  </div>
+</body>
+</html>

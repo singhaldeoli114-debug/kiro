@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "beauty-serum",
+  "templateVersion": "1.0.0",
+  "category": "beauty",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing a single serum or beauty product with elegant gradient glow and ingredient highlights",
+  "mood": ["elegant", "luxurious", "glowing", "feminine"],
+  "best_for": ["serums", "skincare products", "beauty launches", "premium cosmetics"],
+  "not_for": ["tech products", "food", "fitness", "automotive"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "brand-name", "label": "Brand Name", "defaultValue": "LUMINARA BEAUTY", "data-role": "brand", "data-importance": "secondary"},
+    {"id": "headline", "label": "Product Name", "defaultValue": "Radiance Serum", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Tagline", "defaultValue": "Reveal your natural glow in 14 days", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "ingredient-1", "label": "Ingredient 1", "defaultValue": "Hyaluronic Acid", "data-role": "ingredient", "data-importance": "tertiary"},
+    {"id": "ingredient-2", "label": "Ingredient 2", "defaultValue": "Vitamin C", "data-role": "ingredient", "data-importance": "tertiary"},
+    {"id": "ingredient-3", "label": "Ingredient 3", "defaultValue": "Niacinamide", "data-role": "ingredient", "data-importance": "tertiary"},
+    {"id": "ingredient-4", "label": "Ingredient 4", "defaultValue": "Retinol", "data-role": "ingredient", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "hero-product", "label": "Serum Bottle Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "bottom-center",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "30px", "left": "40px", "right": "40px"},
+    "constraints": ["Product centered with radial glow", "Ingredient chips in row below product", "Brand name at top center"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 30, "left": 40, "right": 40},
+  "anchors": {
+    "brand": "top-center",
+    "product": "center",
+    "headline": "center-bottom",
+    "ingredients": "bottom-center",
+    "logo": "bottom-center"
+  },
+  "defaults": {
+    "brand-name": "LUMINARA BEAUTY",
+    "headline": "Radiance Serum",
+    "subheadline": "Reveal your natural glow in 14 days",
+    "ingredient-1": "Hyaluronic Acid",
+    "ingredient-2": "Vitamin C",
+    "ingredient-3": "Niacinamide",
+    "ingredient-4": "Retinol"
+  },
+  "editable": ["brand-name", "headline", "subheadline", "ingredient-1", "ingredient-2", "ingredient-3", "ingredient-4", "hero-product", "logo"],
+  "fixtures": {
+    "headline": "Radiance Serum",
+    "hero-product": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "An elegant serum product hero template with radial gradient glow background, centered bottle, and ingredient highlights displayed in pill-shaped chips below."
+}

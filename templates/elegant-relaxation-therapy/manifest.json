@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "elegant-relaxation-therapy",
+  "templateVersion": "1.0.0",
+  "category": "wellness",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting spa or wellness services with calming lavender aesthetic and horizontal service list",
+  "mood": ["calm", "relaxing", "lavender", "spa", "serene"],
+  "best_for": ["spa services", "wellness centers", "massage therapy", "relaxation retreats", "beauty salons"],
+  "not_for": ["tech products", "bold promotions", "fitness", "food"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "category", "label": "Category", "defaultValue": "WELLNESS & SPA", "data-role": "category", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "Find Your Inner Peace", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Indulge in restorative treatments designed to refresh your body and calm your mind", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "service-1", "label": "Service 1", "defaultValue": "Deep Tissue Massage", "data-role": "service", "data-importance": "primary"},
+    {"id": "service-2", "label": "Service 2", "defaultValue": "Aromatherapy", "data-role": "service", "data-importance": "primary"},
+    {"id": "service-3", "label": "Service 3", "defaultValue": "Hot Stone Therapy", "data-role": "service", "data-importance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "BOOK YOUR SESSION", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "hero-image", "label": "Spa/Wellness Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "44px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "60px", "left": "50px", "right": "50px"},
+    "constraints": ["Horizontal thirds layout", "Spa image top section with lavender scrim", "Services listed horizontally"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 60, "left": 50, "right": 50},
+  "anchors": {
+    "logo": "top-left",
+    "category": "top-center",
+    "image": "top",
+    "headline": "center",
+    "services": "center-bottom",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "category": "WELLNESS & SPA",
+    "headline": "Find Your Inner Peace",
+    "subheadline": "Indulge in restorative treatments designed to refresh your body and calm your mind",
+    "service-1": "Deep Tissue Massage",
+    "service-2": "Aromatherapy",
+    "service-3": "Hot Stone Therapy",
+    "cta": "BOOK YOUR SESSION"
+  },
+  "editable": ["category", "headline", "subheadline", "service-1", "service-2", "service-3", "cta", "hero-image", "logo"],
+  "fixtures": {
+    "headline": "Find Your Inner Peace",
+    "hero-image": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A wellness/spa service template with calming lavender tones, spa imagery slot, horizontal service list, and soft typography. Perfect for promoting relaxation services and wellness retreats."
+}

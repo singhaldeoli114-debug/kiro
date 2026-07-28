@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skincare 101</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #f8f6f3);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .header {
+      position: absolute;
+      top: 40px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .category-badge {
+      background-color: var(--accent, #4a9e8e);
+      color: var(--onAccent, #ffffff);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 30px;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .headline {
+      position: absolute;
+      top: 120px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--textPrimary, #1a2332);
+      line-height: 1.1;
+      z-index: 10;
+    }
+
+    .subheadline {
+      position: absolute;
+      top: 200px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--textSecondary, #6b7a8d);
+      z-index: 10;
+    }
+
+    .steps-container {
+      position: absolute;
+      top: 280px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      z-index: 5;
+    }
+
+    .step-card {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      background-color: var(--surfaceAlt, #ffffff);
+      border-radius: 20px;
+      padding: 36px 40px;
+      border-left: 5px solid var(--accent, #4a9e8e);
+    }
+
+    .step-number {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      border-radius: 50%;
+      background-color: var(--accent, #4a9e8e);
+      color: var(--onAccent, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .step-icon-area {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: var(--surface, #f8f6f3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-icon-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-title {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--textPrimary, #1a2332);
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--textSecondary, #6b7a8d);
+      line-height: 1.4;
+    }
+
+    .cta-button {
+      position: absolute;
+      bottom: 55px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent, #4a9e8e);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 56px;
+      border-radius: 50px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="header">
+      <span class="category-badge" data-role="category" data-importance="tertiary">SKINCARE 101</span>
+      <div class="logo-area" data-visibility="logo">
+        <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+      </div>
+    </div>
+
+    <h1 class="headline" data-role="headline" data-importance="primary">Your Daily Routine</h1>
+    <p class="subheadline" data-role="subheadline" data-importance="secondary">Build flawless skin in just 3 simple steps</p>
+
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-icon-area">
+          <img src="assets/placeholder.png" alt="Step 1 Icon" data-slot="step1-icon" />
+        </div>
+        <div class="step-content">
+          <h3 class="step-title" data-role="step-title" data-importance="primary">Cleanse</h3>
+          <p class="step-desc" data-role="step-description" data-importance="tertiary">Remove impurities with a gentle, pH-balanced cleanser suited to your skin type</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-icon-area">
+          <img src="assets/placeholder.png" alt="Step 2 Icon" data-slot="step2-icon" />
+        </div>
+        <div class="step-content">
+          <h3 class="step-title" data-role="step-title" data-importance="primary">Treat</h3>
+          <p class="step-desc" data-role="step-description" data-importance="tertiary">Apply targeted serums with active ingredients like Vitamin C or Retinol</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-icon-area">
+          <img src="assets/placeholder.png" alt="Step 3 Icon" data-slot="step3-icon" />
+        </div>
+        <div class="step-content">
+          <h3 class="step-title" data-role="step-title" data-importance="primary">Moisturize</h3>
+          <p class="step-desc" data-role="step-description" data-importance="tertiary">Lock in hydration and create a protective barrier with a nourishing moisturizer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-button" data-role="cta" data-importance="primary">START YOUR ROUTINE</div>
+  </div>
+</body>
+</html>

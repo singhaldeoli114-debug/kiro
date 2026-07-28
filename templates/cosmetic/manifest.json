@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "cosmetic",
+  "templateVersion": "1.0.0",
+  "category": "beauty",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing multiple cosmetic products in an editorial grid with color swatches for a campaign feel",
+  "mood": ["editorial", "sophisticated", "warm", "curated"],
+  "best_for": ["cosmetics campaigns", "lipstick collections", "makeup launches", "beauty brands"],
+  "not_for": ["single product", "tech products", "food", "fitness"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "brand-name", "label": "Collection Name", "defaultValue": "ROSE COLLECTION", "data-role": "brand", "data-importance": "secondary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "New Season Essentials", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Tagline", "defaultValue": "Curated shades for every skin tone", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP NOW", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-1", "label": "Featured Product Image", "required": true},
+    {"id": "product-2", "label": "Product 2 Image", "required": true},
+    {"id": "product-3", "label": "Product 3 Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "bottom-right",
+    "maxHeight": "36px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "35px", "bottom": "35px", "left": "60px", "right": "60px"},
+    "constraints": ["Products in editorial 3-column grid", "Featured product spans 2 rows", "Color swatches strip at bottom-left"]
+  },
+  "layoutSafeZone": {"top": 35, "bottom": 35, "left": 60, "right": 60},
+  "anchors": {
+    "brand": "top-center",
+    "headline": "top-center",
+    "products": "center",
+    "swatches": "bottom-left",
+    "cta": "bottom-left",
+    "logo": "bottom-right"
+  },
+  "defaults": {
+    "brand-name": "ROSE COLLECTION",
+    "headline": "New Season Essentials",
+    "subheadline": "Curated shades for every skin tone",
+    "cta": "SHOP NOW"
+  },
+  "editable": ["brand-name", "headline", "subheadline", "cta", "product-1", "product-2", "product-3", "logo"],
+  "fixtures": {
+    "headline": "New Season Essentials",
+    "product-1": "assets/placeholder.png",
+    "product-2": "assets/placeholder.png",
+    "product-3": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A sophisticated cosmetics campaign template featuring a multi-product editorial grid with color swatches strip. Perfect for makeup collections and seasonal launches."
+}

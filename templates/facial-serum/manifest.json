@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "facial-serum",
+  "templateVersion": "1.0.0",
+  "category": "beauty",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing a premium serum product with ultra-luxurious golden glow radiating from center",
+  "mood": ["luxury", "premium", "golden", "exclusive", "minimal"],
+  "best_for": ["premium serums", "luxury skincare", "gold-infused products", "anti-aging treatments"],
+  "not_for": ["budget products", "clinical brands", "organic/natural", "bold graphic styles"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "brand-name", "label": "Brand Name", "defaultValue": "MAISON DORE", "data-role": "brand", "data-importance": "secondary"},
+    {"id": "headline", "label": "Product Name", "defaultValue": "GOLD ELIXIR", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Product Description", "defaultValue": "24K Gold Infused Rejuvenation", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "EXPERIENCE LUXURY", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "hero-product", "label": "Serum Bottle Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "48px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "60px", "bottom": "60px", "left": "50px", "right": "50px"},
+    "constraints": ["Centered bottle with concentric golden circles", "Ultra-minimal typography", "Dark background for luxury contrast"]
+  },
+  "layoutSafeZone": {"top": 60, "bottom": 60, "left": 50, "right": 50},
+  "anchors": {
+    "brand": "top-center",
+    "logo": "top-center",
+    "product": "center",
+    "headline": "bottom-center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "brand-name": "MAISON DORE",
+    "headline": "GOLD ELIXIR",
+    "subheadline": "24K Gold Infused Rejuvenation",
+    "cta": "EXPERIENCE LUXURY"
+  },
+  "editable": ["brand-name", "headline", "subheadline", "cta", "hero-product", "logo"],
+  "fixtures": {
+    "headline": "GOLD ELIXIR",
+    "hero-product": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A premium facial serum campaign template with centered dropper bottle area, concentric golden circles radiating outward, and luxury minimal typography. Ultra-premium feel for high-end skincare."
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "blue-skincare",
+  "templateVersion": "1.0.0",
+  "category": "beauty",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing clinical or science-backed skincare products with a cool blue monochrome palette",
+  "mood": ["clinical", "scientific", "cool", "precise", "blue"],
+  "best_for": ["clinical skincare", "dermatological products", "lab-tested formulas", "science-backed serums"],
+  "not_for": ["organic brands", "warm palettes", "playful aesthetics", "food"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "badge-text", "label": "Clinical Badge", "defaultValue": "CLINICALLY PROVEN", "data-role": "badge", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "Advanced Hydration", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Precision-formulated with marine collagen peptides", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "benefit", "label": "Benefit Statement", "defaultValue": "Dermatologically tested. 96% saw visible results in 28 days.", "data-role": "benefit", "data-importance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "DISCOVER MORE", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "hero-product", "label": "Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-right",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "60px", "left": "50px", "right": "50px"},
+    "constraints": ["Monochrome blue palette", "Molecular dot pattern via CSS", "Centered product with radial glow"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 60, "left": 50, "right": 50},
+  "anchors": {
+    "badge": "top-left",
+    "logo": "top-right",
+    "headline": "top-center",
+    "product": "center",
+    "benefit": "bottom-center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "badge-text": "CLINICALLY PROVEN",
+    "headline": "Advanced Hydration",
+    "subheadline": "Precision-formulated with marine collagen peptides",
+    "benefit": "Dermatologically tested. 96% saw visible results in 28 days.",
+    "cta": "DISCOVER MORE"
+  },
+  "editable": ["badge-text", "headline", "subheadline", "benefit", "cta", "hero-product", "logo"],
+  "fixtures": {
+    "headline": "Advanced Hydration",
+    "hero-product": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A clinical skincare template with cool blue monochrome palette, molecular dot pattern via CSS circles, and centered product. Designed for science-backed, dermatologically tested products."
+}

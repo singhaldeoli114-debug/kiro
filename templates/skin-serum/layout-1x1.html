@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Serum</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #f9f6f2);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      display: flex;
+    }
+
+    .left-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: var(--surfaceAlt, #e8ddd0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ingredient-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ingredient-label {
+      position: absolute;
+      bottom: 60px;
+      left: 40px;
+      background-color: var(--scrim-strong, rgba(0, 0, 0, 0.6));
+      color: var(--textOverImage, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border-radius: 4px;
+    }
+
+    .right-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 50px;
+    }
+
+    .category-tag {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent, #c57b5a);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--textPrimary, #2a1f14);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--textSecondary, #7a6b5a);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .benefits-list {
+      list-style: none;
+      margin-bottom: 50px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .benefit-check {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background-color: var(--accent, #c57b5a);
+      position: relative;
+    }
+
+    .benefit-check::after {
+      content: '';
+      position: absolute;
+      top: 7px;
+      left: 10px;
+      width: 8px;
+      height: 12px;
+      border: solid var(--onAccent, #ffffff);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .benefit-text {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--textPrimary, #2a1f14);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent, #c57b5a);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 6px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      right: 50px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .divider-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background-color: var(--accent, rgba(197, 123, 90, 0.15));
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="left-panel">
+      <img class="ingredient-image" src="assets/placeholder.png" alt="Ingredient Visual" data-slot="ingredient-image" />
+      <span class="ingredient-label" data-role="ingredient-label" data-importance="tertiary">KEY INGREDIENT</span>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="right-panel">
+      <span class="category-tag" data-role="category" data-importance="tertiary">SKIN BENEFITS</span>
+      <h1 class="headline" data-role="headline" data-importance="primary">Proven Results, Pure Formula</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Our concentrated serum delivers active botanicals deep into the skin for visible transformation.</p>
+
+      <ul class="benefits-list">
+        <li class="benefit-item">
+          <div class="benefit-check"></div>
+          <span class="benefit-text" data-role="benefit" data-importance="primary">Reduces fine lines by 47%</span>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-check"></div>
+          <span class="benefit-text" data-role="benefit" data-importance="primary">Boosts hydration for 72 hours</span>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-check"></div>
+          <span class="benefit-text" data-role="benefit" data-importance="primary">Evens skin tone naturally</span>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-check"></div>
+          <span class="benefit-text" data-role="benefit" data-importance="primary">Strengthens moisture barrier</span>
+        </li>
+      </ul>
+
+      <span class="cta-button" data-role="cta" data-importance="primary">SHOP NOW</span>
+    </div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+  </div>
+</body>
+</html>

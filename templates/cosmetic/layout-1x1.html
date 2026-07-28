@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmetic Campaign</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #faf5f0);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .brand-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .brand-name {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--textSecondary, #7a6b5e);
+      letter-spacing: 8px;
+      text-transform: uppercase;
+    }
+
+    .editorial-headline {
+      position: absolute;
+      top: 100px;
+      left: 60px;
+      right: 60px;
+      text-align: center;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--textPrimary, #2c1810);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      z-index: 10;
+    }
+
+    .product-grid {
+      position: absolute;
+      top: 240px;
+      left: 60px;
+      right: 60px;
+      height: 540px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      z-index: 5;
+    }
+
+    .product-cell {
+      background-color: var(--surfaceAlt, #f0e8de);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .product-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-cell.featured {
+      grid-row: span 2;
+    }
+
+    .collection-label {
+      position: absolute;
+      top: 200px;
+      left: 60px;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent, #c2705b);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .swatch-strip {
+      position: absolute;
+      bottom: 100px;
+      left: 60px;
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid var(--surfaceAlt, #f0e8de);
+    }
+
+    .swatch-1 { background-color: var(--accent, #c2705b); }
+    .swatch-2 { background-color: var(--accentAlt, #d4956d); }
+    .swatch-3 { background-color: #a0505a; }
+    .swatch-4 { background-color: #8b3a4a; }
+    .swatch-5 { background-color: #e8c4b0; }
+
+    .tagline {
+      position: absolute;
+      bottom: 100px;
+      right: 60px;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--textSecondary, #7a6b5e);
+      text-align: right;
+      z-index: 10;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 35px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .cta-text {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent, #c2705b);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .logo-area img {
+      max-height: 36px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="brand-bar">
+      <span class="brand-name" data-role="brand" data-importance="secondary">ROSE COLLECTION</span>
+    </div>
+
+    <h1 class="editorial-headline" data-role="headline" data-importance="primary">New Season Essentials</h1>
+
+    <div class="product-grid">
+      <div class="product-cell featured">
+        <img src="assets/placeholder.png" alt="Featured Product" data-slot="product-1" />
+      </div>
+      <div class="product-cell">
+        <img src="assets/placeholder.png" alt="Product 2" data-slot="product-2" />
+      </div>
+      <div class="product-cell">
+        <img src="assets/placeholder.png" alt="Product 3" data-slot="product-3" />
+      </div>
+    </div>
+
+    <div class="swatch-strip">
+      <div class="swatch swatch-1"></div>
+      <div class="swatch swatch-2"></div>
+      <div class="swatch swatch-3"></div>
+      <div class="swatch swatch-4"></div>
+      <div class="swatch swatch-5"></div>
+    </div>
+
+    <p class="tagline" data-role="subheadline" data-importance="secondary">Curated shades for every skin tone</p>
+
+    <div class="cta-area">
+      <span class="cta-text" data-role="cta" data-importance="primary">SHOP NOW</span>
+      <div class="logo-area" data-visibility="logo">
+        <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

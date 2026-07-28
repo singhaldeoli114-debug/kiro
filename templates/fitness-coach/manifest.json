@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "fitness-coach",
+  "templateVersion": "1.0.0",
+  "category": "fitness",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting a fitness coach or personal training service with bold motivational style",
+  "mood": ["bold", "motivational", "energetic", "strong", "dynamic"],
+  "best_for": ["personal trainers", "fitness coaches", "gym services", "workout programs", "athletic brands"],
+  "not_for": ["beauty products", "calm wellness", "luxury brands", "food"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Motivational Headline", "defaultValue": "TRANSFORM YOUR BODY", "data-role": "headline", "data-importance": "primary"},
+    {"id": "coach-name", "label": "Coach Name", "defaultValue": "COACH MARCUS TAYLOR", "data-role": "name", "data-importance": "primary"},
+    {"id": "coach-title", "label": "Coach Title", "defaultValue": "Certified Strength & Conditioning Specialist", "data-role": "title", "data-importance": "secondary"},
+    {"id": "service-1", "label": "Service 1", "defaultValue": "Strength Training", "data-role": "service", "data-importance": "tertiary"},
+    {"id": "service-2", "label": "Service 2", "defaultValue": "HIIT Workouts", "data-role": "service", "data-importance": "tertiary"},
+    {"id": "service-3", "label": "Service 3", "defaultValue": "Nutrition Planning", "data-role": "service", "data-importance": "tertiary"},
+    {"id": "service-4", "label": "Service 4", "defaultValue": "Body Transformation", "data-role": "service", "data-importance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "START FREE TRIAL", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "trainer-photo", "label": "Trainer Photo", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "44px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "50px", "right": "50px"},
+    "constraints": ["Photo takes top 60% of canvas", "Bold headline overlays photo at top", "Service list and CTA in bottom 40%"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 50, "right": 50},
+  "anchors": {
+    "headline": "top-left",
+    "photo": "top",
+    "logo": "top-left",
+    "coach-info": "bottom-left",
+    "services": "bottom-center",
+    "cta": "bottom-right"
+  },
+  "defaults": {
+    "headline": "TRANSFORM YOUR BODY",
+    "coach-name": "COACH MARCUS TAYLOR",
+    "coach-title": "Certified Strength & Conditioning Specialist",
+    "service-1": "Strength Training",
+    "service-2": "HIIT Workouts",
+    "service-3": "Nutrition Planning",
+    "service-4": "Body Transformation",
+    "cta": "START FREE TRIAL"
+  },
+  "editable": ["headline", "coach-name", "coach-title", "service-1", "service-2", "service-3", "service-4", "cta", "trainer-photo", "logo"],
+  "fixtures": {
+    "headline": "TRANSFORM YOUR BODY",
+    "trainer-photo": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A fitness coach/service lead template with large trainer photo area taking the top 60%, bold motivational headline overlaying the image, and service/speciality list below. High-energy feel for personal training and fitness brands."
+}

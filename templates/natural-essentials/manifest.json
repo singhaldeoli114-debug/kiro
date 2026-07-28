@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "natural-essentials",
+  "templateVersion": "1.0.0",
+  "category": "beauty",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing natural or organic product collections with botanical aesthetic and earthy warm palette",
+  "mood": ["organic", "natural", "warm", "botanical", "earthy"],
+  "best_for": ["organic products", "natural skincare", "botanical brands", "eco-friendly collections"],
+  "not_for": ["tech products", "clinical brands", "neon aesthetics", "bold graphic styles"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "Nature's Finest", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Tagline", "defaultValue": "Pure botanical ingredients for radiant skin", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "product1-name", "label": "Product 1 Name", "defaultValue": "Face Oil", "data-role": "product-name", "data-importance": "tertiary"},
+    {"id": "product2-name", "label": "Product 2 Name", "defaultValue": "Body Butter", "data-role": "product-name", "data-importance": "tertiary"},
+    {"id": "product3-name", "label": "Product 3 Name", "defaultValue": "Toner Mist", "data-role": "product-name", "data-importance": "tertiary"},
+    {"id": "badge", "label": "Badge Text", "defaultValue": "100% ORGANIC", "data-role": "badge", "data-importance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "EXPLORE COLLECTION", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-1", "label": "Product 1 Image", "required": true},
+    {"id": "product-2", "label": "Product 2 Image", "required": true},
+    {"id": "product-3", "label": "Product 3 Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "48px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "50px", "left": "50px", "right": "50px"},
+    "constraints": ["Leaf CSS shapes as decorative elements", "Asymmetric product placement", "Warm earthy color palette"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 50, "left": 50, "right": 50},
+  "anchors": {
+    "logo": "top-left",
+    "badge": "top-right",
+    "headline": "top-center",
+    "products": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "Nature's Finest",
+    "subheadline": "Pure botanical ingredients for radiant skin",
+    "product1-name": "Face Oil",
+    "product2-name": "Body Butter",
+    "product3-name": "Toner Mist",
+    "badge": "100% ORGANIC",
+    "cta": "EXPLORE COLLECTION"
+  },
+  "editable": ["headline", "subheadline", "product1-name", "product2-name", "product3-name", "badge", "cta", "product-1", "product-2", "product-3", "logo"],
+  "fixtures": {
+    "headline": "Nature's Finest",
+    "product-1": "assets/placeholder.png",
+    "product-2": "assets/placeholder.png",
+    "product-3": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A natural product collection template with botanical/organic aesthetic, leaf-like CSS shapes, earthy warm palette, and multiple product slots in an asymmetric arrangement."
+}

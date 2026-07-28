@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natural Essentials</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #f5ede3);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .leaf-shape-1 {
+      position: absolute;
+      top: -60px;
+      right: -40px;
+      width: 320px;
+      height: 420px;
+      background-color: var(--accent, #7a9e6b);
+      opacity: 0.12;
+      clip-path: ellipse(50% 45% at 50% 50%);
+      transform: rotate(-25deg);
+    }
+
+    .leaf-shape-2 {
+      position: absolute;
+      bottom: -80px;
+      left: -60px;
+      width: 280px;
+      height: 380px;
+      background-color: var(--accentAlt, #a8c590);
+      opacity: 0.15;
+      clip-path: ellipse(45% 50% at 50% 50%);
+      transform: rotate(20deg);
+    }
+
+    .leaf-shape-3 {
+      position: absolute;
+      top: 400px;
+      right: -30px;
+      width: 180px;
+      height: 240px;
+      background-color: var(--accent, #7a9e6b);
+      opacity: 0.1;
+      clip-path: ellipse(50% 45% at 50% 50%);
+      transform: rotate(40deg);
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 48px;
+      width: auto;
+    }
+
+    .badge {
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      background-color: var(--accent, #7a9e6b);
+      color: var(--onAccent, #ffffff);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+
+    .headline {
+      position: absolute;
+      top: 130px;
+      left: 50px;
+      right: 50px;
+      text-align: center;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--textPrimary, #3d2e1c);
+      line-height: 1.1;
+      z-index: 10;
+    }
+
+    .subheadline {
+      position: absolute;
+      top: 210px;
+      left: 50px;
+      right: 50px;
+      text-align: center;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--textSecondary, #7a6b55);
+      z-index: 10;
+    }
+
+    .product-layout {
+      position: absolute;
+      top: 290px;
+      left: 50px;
+      right: 50px;
+      height: 560px;
+      z-index: 5;
+    }
+
+    .product-slot {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-slot-1 {
+      left: 0;
+      top: 60px;
+      width: 280px;
+    }
+
+    .product-slot-2 {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      width: 320px;
+    }
+
+    .product-slot-3 {
+      right: 0;
+      top: 80px;
+      width: 260px;
+    }
+
+    .product-img-wrap {
+      width: 100%;
+      height: 320px;
+      background-color: var(--surfaceAlt, #ebe3d6);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-slot-2 .product-img-wrap {
+      height: 360px;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .product-name {
+      margin-top: 16px;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--textSecondary, #7a6b55);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cta-button {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent, #7a9e6b);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 48px;
+      border-radius: 50px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="leaf-shape-1"></div>
+    <div class="leaf-shape-2"></div>
+    <div class="leaf-shape-3"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <span class="badge" data-role="badge" data-importance="secondary">100% ORGANIC</span>
+
+    <h1 class="headline" data-role="headline" data-importance="primary">Nature's Finest</h1>
+    <p class="subheadline" data-role="subheadline" data-importance="secondary">Pure botanical ingredients for radiant skin</p>
+
+    <div class="product-layout">
+      <div class="product-slot product-slot-1">
+        <div class="product-img-wrap">
+          <img src="assets/placeholder.png" alt="Product 1" data-slot="product-1" />
+        </div>
+        <span class="product-name" data-role="product-name" data-importance="tertiary">Face Oil</span>
+      </div>
+
+      <div class="product-slot product-slot-2">
+        <div class="product-img-wrap">
+          <img src="assets/placeholder.png" alt="Product 2" data-slot="product-2" />
+        </div>
+        <span class="product-name" data-role="product-name" data-importance="tertiary">Body Butter</span>
+      </div>
+
+      <div class="product-slot product-slot-3">
+        <div class="product-img-wrap">
+          <img src="assets/placeholder.png" alt="Product 3" data-slot="product-3" />
+        </div>
+        <span class="product-name" data-role="product-name" data-importance="tertiary">Toner Mist</span>
+      </div>
+    </div>
+
+    <div class="cta-button" data-role="cta" data-importance="primary">EXPLORE COLLECTION</div>
+  </div>
+</body>
+</html>

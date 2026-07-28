@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "skincare-101",
+  "templateVersion": "1.0.0",
+  "category": "beauty",
+  "formats": ["1x1"],
+  "when_to_use": "When creating educational skincare content showing step-by-step routines in an infographic style",
+  "mood": ["educational", "clean", "friendly", "informative"],
+  "best_for": ["skincare routines", "beauty tutorials", "product usage guides", "educational content"],
+  "not_for": ["single product showcase", "sale promotions", "event announcements"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "Your Daily Routine", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Build flawless skin in just 3 simple steps", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "step1-title", "label": "Step 1 Title", "defaultValue": "Cleanse", "data-role": "step-title", "data-importance": "primary"},
+    {"id": "step1-desc", "label": "Step 1 Description", "defaultValue": "Remove impurities with a gentle, pH-balanced cleanser suited to your skin type", "data-role": "step-description", "data-importance": "tertiary"},
+    {"id": "step2-title", "label": "Step 2 Title", "defaultValue": "Treat", "data-role": "step-title", "data-importance": "primary"},
+    {"id": "step2-desc", "label": "Step 2 Description", "defaultValue": "Apply targeted serums with active ingredients like Vitamin C or Retinol", "data-role": "step-description", "data-importance": "tertiary"},
+    {"id": "step3-title", "label": "Step 3 Title", "defaultValue": "Moisturize", "data-role": "step-title", "data-importance": "primary"},
+    {"id": "step3-desc", "label": "Step 3 Description", "defaultValue": "Lock in hydration and create a protective barrier with a nourishing moisturizer", "data-role": "step-description", "data-importance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "START YOUR ROUTINE", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "step1-icon", "label": "Step 1 Icon", "required": false},
+    {"id": "step2-icon", "label": "Step 2 Icon", "required": false},
+    {"id": "step3-icon", "label": "Step 3 Icon", "required": false},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-right",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "55px", "left": "60px", "right": "60px"},
+    "constraints": ["Steps in 3 horizontal cards", "Each step has number, icon, title, and description", "Cards have accent left border"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 55, "left": 60, "right": 60},
+  "anchors": {
+    "category": "top-left",
+    "logo": "top-right",
+    "headline": "top-center",
+    "steps": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "headline": "Your Daily Routine",
+    "subheadline": "Build flawless skin in just 3 simple steps",
+    "step1-title": "Cleanse",
+    "step1-desc": "Remove impurities with a gentle, pH-balanced cleanser suited to your skin type",
+    "step2-title": "Treat",
+    "step2-desc": "Apply targeted serums with active ingredients like Vitamin C or Retinol",
+    "step3-title": "Moisturize",
+    "step3-desc": "Lock in hydration and create a protective barrier with a nourishing moisturizer",
+    "cta": "START YOUR ROUTINE"
+  },
+  "editable": ["headline", "subheadline", "step1-title", "step1-desc", "step2-title", "step2-desc", "step3-title", "step3-desc", "cta", "step1-icon", "step2-icon", "step3-icon", "logo"],
+  "fixtures": {
+    "headline": "Your Daily Routine",
+    "step1-icon": "assets/placeholder.png",
+    "step2-icon": "assets/placeholder.png",
+    "step3-icon": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "An educational skincare template with numbered steps layout. Each step features a number, icon area, title, and description. Clean infographic style ideal for skincare routines and tutorials."
+}

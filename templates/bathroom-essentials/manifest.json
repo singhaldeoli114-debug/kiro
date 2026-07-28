@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "bathroom-essentials",
+  "templateVersion": "1.0.0",
+  "category": "lifestyle",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing a set of bathroom or self-care products in a clean 2x2 grid layout",
+  "mood": ["clean", "minimal", "premium", "neutral", "marble"],
+  "best_for": ["bathroom products", "soap collections", "toiletries", "self-care sets", "lifestyle brands"],
+  "not_for": ["electronics", "fashion editorial", "food", "fitness"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "brand-name", "label": "Brand Name", "defaultValue": "MARBLE AND CO", "data-role": "brand", "data-importance": "secondary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "Bathroom Essentials", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Tagline", "defaultValue": "Elevate your daily self-care ritual", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "product1-name", "label": "Product 1 Name", "defaultValue": "Soap Bar", "data-role": "product-name", "data-importance": "tertiary"},
+    {"id": "product2-name", "label": "Product 2 Name", "defaultValue": "Body Wash", "data-role": "product-name", "data-importance": "tertiary"},
+    {"id": "product3-name", "label": "Product 3 Name", "defaultValue": "Shampoo", "data-role": "product-name", "data-importance": "tertiary"},
+    {"id": "product4-name", "label": "Product 4 Name", "defaultValue": "Conditioner", "data-role": "product-name", "data-importance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP THE SET", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product-1", "label": "Product 1 Image", "required": true},
+    {"id": "product-2", "label": "Product 2 Image", "required": true},
+    {"id": "product-3", "label": "Product 3 Image", "required": true},
+    {"id": "product-4", "label": "Product 4 Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-right",
+    "maxHeight": "44px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "50px", "left": "50px", "right": "50px"},
+    "constraints": ["2x2 grid for products", "Marble-like background texture via CSS", "Clean white/neutral aesthetic"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 50, "left": 50, "right": 50},
+  "anchors": {
+    "brand": "top-left",
+    "logo": "top-right",
+    "headline": "top-center",
+    "products": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "brand-name": "MARBLE AND CO",
+    "headline": "Bathroom Essentials",
+    "subheadline": "Elevate your daily self-care ritual",
+    "product1-name": "Soap Bar",
+    "product2-name": "Body Wash",
+    "product3-name": "Shampoo",
+    "product4-name": "Conditioner",
+    "cta": "SHOP THE SET"
+  },
+  "editable": ["brand-name", "headline", "subheadline", "product1-name", "product2-name", "product3-name", "product4-name", "cta", "product-1", "product-2", "product-3", "product-4", "logo"],
+  "fixtures": {
+    "headline": "Bathroom Essentials",
+    "product-1": "assets/placeholder.png",
+    "product-2": "assets/placeholder.png",
+    "product-3": "assets/placeholder.png",
+    "product-4": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A lifestyle product set template with 2x2 grid layout, clean white/marble aesthetic. Perfect for showcasing bathroom essentials and self-care collections."
+}

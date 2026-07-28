@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Skincare</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #0a1628);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .molecular-dots {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      background-color: var(--accent, #4da8da);
+    }
+
+    .dot-1 { width: 6px; height: 6px; top: 80px; left: 120px; opacity: 0.3; }
+    .dot-2 { width: 4px; height: 4px; top: 150px; left: 280px; opacity: 0.4; }
+    .dot-3 { width: 8px; height: 8px; top: 200px; right: 180px; opacity: 0.2; }
+    .dot-4 { width: 5px; height: 5px; top: 320px; left: 90px; opacity: 0.5; }
+    .dot-5 { width: 3px; height: 3px; top: 400px; right: 250px; opacity: 0.3; }
+    .dot-6 { width: 7px; height: 7px; top: 500px; left: 200px; opacity: 0.25; }
+    .dot-7 { width: 4px; height: 4px; top: 600px; right: 120px; opacity: 0.4; }
+    .dot-8 { width: 6px; height: 6px; top: 700px; left: 150px; opacity: 0.35; }
+    .dot-9 { width: 5px; height: 5px; top: 800px; right: 200px; opacity: 0.3; }
+    .dot-10 { width: 8px; height: 8px; top: 900px; left: 300px; opacity: 0.2; }
+    .dot-11 { width: 4px; height: 4px; top: 250px; left: 450px; opacity: 0.45; }
+    .dot-12 { width: 6px; height: 6px; top: 650px; left: 400px; opacity: 0.3; }
+    .dot-13 { width: 3px; height: 3px; top: 550px; right: 350px; opacity: 0.5; }
+    .dot-14 { width: 5px; height: 5px; top: 150px; right: 400px; opacity: 0.35; }
+    .dot-15 { width: 7px; height: 7px; top: 850px; left: 550px; opacity: 0.2; }
+
+    .connector-line {
+      position: absolute;
+      background-color: var(--accent, #4da8da);
+      opacity: 0.08;
+    }
+
+    .line-1 { width: 200px; height: 1px; top: 300px; left: 100px; transform: rotate(-20deg); }
+    .line-2 { width: 150px; height: 1px; top: 500px; right: 150px; transform: rotate(35deg); }
+    .line-3 { width: 180px; height: 1px; top: 700px; left: 250px; transform: rotate(-10deg); }
+
+    .clinical-badge {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent, #4da8da);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-icon-plus {
+      width: 16px;
+      height: 16px;
+      position: relative;
+    }
+
+    .badge-icon-plus::before,
+    .badge-icon-plus::after {
+      content: '';
+      position: absolute;
+      background-color: var(--accent, #4da8da);
+    }
+
+    .badge-icon-plus::before {
+      width: 2px;
+      height: 16px;
+      left: 7px;
+      top: 0;
+    }
+
+    .badge-icon-plus::after {
+      width: 16px;
+      height: 2px;
+      left: 0;
+      top: 7px;
+    }
+
+    .badge-text {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent, #4da8da);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .product-area {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 380px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .product-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent, rgba(77, 168, 218, 0.2)) 0%, transparent 70%);
+    }
+
+    .product-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+    }
+
+    .headline {
+      position: absolute;
+      top: 130px;
+      left: 50px;
+      right: 50px;
+      text-align: center;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 46px;
+      font-weight: 300;
+      color: var(--textPrimary, #e0f0ff);
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+
+    .subheadline {
+      position: absolute;
+      top: 200px;
+      left: 50px;
+      right: 50px;
+      text-align: center;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--textSecondary, #7aafc9);
+      z-index: 10;
+    }
+
+    .benefit-label {
+      position: absolute;
+      bottom: 160px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--textSecondary, #7aafc9);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .cta-button {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent, #4da8da);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 18px 50px;
+      border-radius: 4px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="molecular-dots">
+      <div class="dot dot-1"></div>
+      <div class="dot dot-2"></div>
+      <div class="dot dot-3"></div>
+      <div class="dot dot-4"></div>
+      <div class="dot dot-5"></div>
+      <div class="dot dot-6"></div>
+      <div class="dot dot-7"></div>
+      <div class="dot dot-8"></div>
+      <div class="dot dot-9"></div>
+      <div class="dot dot-10"></div>
+      <div class="dot dot-11"></div>
+      <div class="dot dot-12"></div>
+      <div class="dot dot-13"></div>
+      <div class="dot dot-14"></div>
+      <div class="dot dot-15"></div>
+      <div class="connector-line line-1"></div>
+      <div class="connector-line line-2"></div>
+      <div class="connector-line line-3"></div>
+    </div>
+
+    <div class="clinical-badge">
+      <div class="badge-icon"><div class="badge-icon-plus"></div></div>
+      <span class="badge-text" data-role="badge" data-importance="tertiary">CLINICALLY PROVEN</span>
+    </div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <h1 class="headline" data-role="headline" data-importance="primary">Advanced Hydration</h1>
+    <p class="subheadline" data-role="subheadline" data-importance="secondary">Precision-formulated with marine collagen peptides</p>
+
+    <div class="product-area">
+      <div class="product-glow"></div>
+      <img src="assets/placeholder.png" alt="Product" data-slot="hero-product" />
+    </div>
+
+    <p class="benefit-label" data-role="benefit" data-importance="tertiary">Dermatologically tested. 96% saw visible results in 28 days.</p>
+
+    <div class="cta-button" data-role="cta" data-importance="primary">DISCOVER MORE</div>
+  </div>
+</body>
+</html>
