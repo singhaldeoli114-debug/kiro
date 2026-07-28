@@ -38,6 +38,7 @@ SLUG_OVERRIDES = {
     "PT Sans Narrow": "ptsansnarrow",
     "PT Sans Caption": "ptsanscaption",
     "PT Serif Caption": "ptserifcaption",
+    "Fredoka One": "fredoka",
 }
 
 

@@ -26,7 +26,7 @@ from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "analysis"
-EXPECTED = 200
+EXPECTED = 345
 SEMANTIC = {
     "background", "surface", "textPrimary", "textSecondary",
     "accent", "accentSecondary", "overlay", "onAccent",

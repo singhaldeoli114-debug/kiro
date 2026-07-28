@@ -393,7 +393,7 @@ def write_report(pool: list[dict], st: dict) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--limit", type=int, default=200)
+    ap.add_argument("--limit", type=int, default=345)
     ap.add_argument("--restart", action="store_true")
     args = ap.parse_args()
 
