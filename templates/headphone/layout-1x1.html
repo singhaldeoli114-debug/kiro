@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headphone</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #0d0d14);
+      background-image: radial-gradient(ellipse at center, var(--surfaceAlt, #1a1a2e) 0%, var(--surface, #0d0d14) 70%);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid var(--accent, #6c5ce7);
+      opacity: 0.15;
+    }
+
+    .ring-1 { width: 500px; height: 500px; }
+    .ring-2 { width: 700px; height: 700px; opacity: 0.1; }
+    .ring-3 { width: 900px; height: 900px; opacity: 0.06; }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .top-content {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 5;
+    }
+
+    .brand-tag {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent, #6c5ce7);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 72px;
+      font-weight: 800;
+      color: var(--textPrimary, #ffffff);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .product-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 480px;
+      height: 480px;
+      z-index: 5;
+    }
+
+    .product-center img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .specs-left {
+      position: absolute;
+      top: 50%;
+      left: 50px;
+      transform: translateY(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .specs-right {
+      position: absolute;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      text-align: right;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .spec-label {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent, #6c5ce7);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .spec-value {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--textPrimary, #ffffff);
+    }
+
+    .bottom-content {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--textPrimary, #ffffff);
+    }
+
+    .cta-button {
+      background-color: var(--accent, #6c5ce7);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 16px 40px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="top-content">
+      <p class="brand-tag" data-role="tagline" data-importance="tertiary">PREMIUM AUDIO</p>
+      <h1 class="headline" data-role="headline" data-importance="primary">STUDIO PRO</h1>
+    </div>
+
+    <div class="product-center">
+      <img src="assets/placeholder.png" alt="Headphone Product" data-slot="product" />
+    </div>
+
+    <div class="specs-left">
+      <div class="spec-item">
+        <span class="spec-label" data-role="spec-label" data-importance="tertiary">BATTERY</span>
+        <span class="spec-value" data-role="spec-value" data-importance="secondary">40 Hours</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label" data-role="spec-label" data-importance="tertiary">DRIVER</span>
+        <span class="spec-value" data-role="spec-value" data-importance="secondary">50mm HD</span>
+      </div>
+    </div>
+
+    <div class="specs-right">
+      <div class="spec-item">
+        <span class="spec-label" data-role="spec-label" data-importance="tertiary">ANC</span>
+        <span class="spec-value" data-role="spec-value" data-importance="secondary">Adaptive</span>
+      </div>
+    </div>
+
+    <div class="bottom-content">
+      <span class="price" data-role="price" data-importance="primary">$349</span>
+      <div class="cta-button" data-role="cta" data-importance="primary">ORDER NOW</div>
+    </div>
+  </div>
+</body>
+</html>

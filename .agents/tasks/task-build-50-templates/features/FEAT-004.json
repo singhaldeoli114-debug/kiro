@@ -1,0 +1,37 @@
+{
+  "id": "FEAT-004",
+  "type": "feat",
+  "description": "Build templates 31-40: Food/beverage and restaurant categories. Each must have distinct appetizing layouts.",
+  "status": "pending",
+  "steps": [
+    "Create templates/fast-food-promotion/ - Fast-food product offer with bold red/yellow energy and combo layout",
+    "Create templates/lemon-soda-promotion/ - Beverage splash ad with dynamic liquid splash effect via CSS shapes",
+    "Create templates/healthy-food-promotion/ - Healthy meal campaign with fresh green palette and ingredient grid",
+    "Create templates/fresh-juice/ - Juice/product splash with fruit arrangement and glass centerpiece",
+    "Create templates/pizza-notification/ - Pizza offer with circular pizza image area and hot deal badge",
+    "Create templates/breakfast-burger/ - Breakfast combo with layered ingredients visual and meal deal",
+    "Create templates/cake-bakery/ - Bakery product hero with elegant script typography and cake showcase",
+    "Create templates/pancake-pastries/ - Dessert promotion with stack visual and toppings grid",
+    "Create templates/sushi-restaurant/ - Restaurant menu hero with Japanese-inspired grid and plate arrangement",
+    "Create templates/steak-delivery/ - Delivery conversion ad with grill marks visual and order CTA",
+    "Each template MUST include: manifest.json, layout-1x1.html, assets/, thumb.png, BUILD-NOTES.md",
+    "Update STATUS.json after each template",
+    "Food templates should feel appetizing with warm tones; each must have unique composition"
+  ],
+  "acceptance_criteria": [
+    "40 total template directories exist under templates/",
+    "No JavaScript in any HTML file",
+    "All CSS uses only semantic variables",
+    "All text nodes have data-role and data-importance",
+    "All media slots have data-slot",
+    "Complete manifest.json in each",
+    "STATUS.json shows 40 completed"
+  ],
+  "verification": [
+    "ls templates/ | wc -l should show at least 40",
+    "grep -rl '<script' templates/ should return nothing",
+    "cat STATUS.json shows completed: 40"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

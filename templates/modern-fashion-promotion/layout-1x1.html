@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Fashion Promotion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #f5f0eb);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .background-shape {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 750px;
+      height: 750px;
+      border-radius: 50%;
+      background-color: var(--surfaceAlt, #e8ddd3);
+    }
+
+    .model-image {
+      position: absolute;
+      bottom: 0;
+      right: 60px;
+      width: 580px;
+      height: 900px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .model-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .content-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .tagline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--accent, #c4956a);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--textPrimary, #1a1a1a);
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--textSecondary, #5a5a5a);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 380px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent, #c4956a);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 18px 36px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .promo-tag {
+      position: absolute;
+      bottom: 60px;
+      left: 50px;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 80px;
+      font-weight: 900;
+      color: var(--accentAlt, #e8c5a8);
+      opacity: 0.3;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="background-shape"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="model-image">
+      <img src="assets/placeholder.png" alt="Fashion Model" data-slot="model" />
+    </div>
+
+    <div class="content-left">
+      <p class="tagline" data-role="tagline" data-importance="tertiary">NEW COLLECTION</p>
+      <h1 class="headline" data-role="headline" data-importance="primary">Modern<br>Elegance</h1>
+      <p class="description" data-role="description" data-importance="secondary">Discover the new season essentials crafted for the modern woman who demands both style and comfort.</p>
+      <div class="cta-button" data-role="cta" data-importance="primary">SHOP NOW</div>
+    </div>
+
+    <div class="promo-tag" data-role="promo" data-importance="tertiary">SALE</div>
+  </div>
+</body>
+</html>

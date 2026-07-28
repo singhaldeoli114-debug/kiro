@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "premium-performance-showcase",
+  "templateVersion": "1.0.0",
+  "category": "product",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing a premium product with performance metrics and proof points as an overlay",
+  "mood": ["bold", "premium", "performance", "confident"],
+  "best_for": ["tech products", "automotive", "sports equipment", "luxury electronics"],
+  "not_for": ["fashion editorial", "minimalist brands", "organic products"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "headline", "label": "Headline", "defaultValue": "PERFORMANCE REDEFINED", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Next-Gen Technology", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "stat1-value", "label": "Stat 1 Value", "defaultValue": "99.8%", "data-role": "stat", "data-importance": "primary"},
+    {"id": "stat1-label", "label": "Stat 1 Label", "defaultValue": "Efficiency Rating", "data-role": "supporting", "data-importance": "tertiary"},
+    {"id": "stat2-value", "label": "Stat 2 Value", "defaultValue": "4.2x", "data-role": "stat", "data-importance": "primary"},
+    {"id": "stat2-label", "label": "Stat 2 Label", "defaultValue": "Faster Processing", "data-role": "supporting", "data-importance": "tertiary"},
+    {"id": "stat3-value", "label": "Stat 3 Value", "defaultValue": "50%", "data-role": "stat", "data-importance": "primary"},
+    {"id": "stat3-label", "label": "Stat 3 Label", "defaultValue": "Less Energy", "data-role": "supporting", "data-importance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "LEARN MORE", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "hero-product", "label": "Hero Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "60px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "40px", "left": "40px", "right": "40px"},
+    "constraints": ["Product image fills right 60% of canvas", "Stats overlay on bottom-left quadrant", "Headline anchored top-left"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 40, "left": 40, "right": 40},
+  "anchors": {
+    "logo": "top-left",
+    "headline": "top-left",
+    "product": "center-right",
+    "stats": "bottom-left",
+    "cta": "bottom-right"
+  },
+  "defaults": {
+    "headline": "PERFORMANCE REDEFINED",
+    "subheadline": "Next-Gen Technology",
+    "stat1-value": "99.8%",
+    "stat1-label": "Efficiency Rating",
+    "stat2-value": "4.2x",
+    "stat2-label": "Faster Processing",
+    "stat3-value": "50%",
+    "stat3-label": "Less Energy",
+    "cta": "LEARN MORE"
+  },
+  "editable": ["headline", "subheadline", "stat1-value", "stat1-label", "stat2-value", "stat2-label", "stat3-value", "stat3-label", "cta", "hero-product", "logo"],
+  "fixtures": {
+    "headline": "PERFORMANCE REDEFINED",
+    "subheadline": "Next-Gen Technology",
+    "hero-product": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A bold product showcase template featuring a hero product image with performance statistics overlay. Ideal for tech and premium products that need to communicate measurable advantages."
+}

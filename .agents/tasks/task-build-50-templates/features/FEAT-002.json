@@ -1,0 +1,37 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Build templates 11-20: Sales/promotions and engagement campaigns. Each must have distinct layout compositions.",
+  "status": "pending",
+  "steps": [
+    "Create templates/fashion-sale-promotion/ - Fashion discount campaign with diagonal price banner",
+    "Create templates/super-sale/ - Bold universal sale with large typography and starburst elements",
+    "Create templates/sales-product-price/ - Product + price + CTA in structured card layout",
+    "Create templates/shoes-sale-social/ - Footwear sale with dynamic angle and price tag overlay",
+    "Create templates/fashion-sale-social/ - Model + discount layering with gradient overlay",
+    "Create templates/black-friday/ - Black Friday campaign with dark theme and gold accents",
+    "Create templates/free-shipping/ - Shipping incentive with truck/delivery icon area and badge",
+    "Create templates/sale-discount/ - General discount ad with percentage circle and product grid",
+    "Create templates/new-arrival/ - New-arrival campaign with 'NEW' badge and product spotlight",
+    "Create templates/giveaway/ - Giveaway/engagement ad with prize showcase and entry steps",
+    "Each template MUST include: manifest.json, layout-1x1.html, assets/, thumb.png, BUILD-NOTES.md",
+    "Update STATUS.json after each template",
+    "Layouts must emphasize urgency, pricing, and CTA differently per template"
+  ],
+  "acceptance_criteria": [
+    "20 total template directories exist under templates/",
+    "No JavaScript in any HTML file",
+    "All CSS uses only semantic variables",
+    "All text nodes have data-role and data-importance",
+    "All media slots have data-slot",
+    "Complete manifest.json in each",
+    "STATUS.json shows 20 completed"
+  ],
+  "verification": [
+    "ls templates/ | wc -l should show at least 20",
+    "grep -rl '<script' templates/ should return nothing",
+    "cat STATUS.json shows completed: 20"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

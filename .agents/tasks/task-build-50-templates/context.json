@@ -1,0 +1,16 @@
+{
+  "project_type": "Static HTML template collection (HyperFrame engine contract)",
+  "language": "HTML/CSS",
+  "build_system": "None - static files only",
+  "test_framework": "Manual validation - check HTML structure, CSS variables, manifest schema",
+  "build_command": "N/A - static templates",
+  "test_command": "find templates/ -name 'manifest.json' | wc -l && find templates/ -name 'layout-1x1.html' | wc -l",
+  "verification_instructions": "1. Count template directories (should be 50). 2. Verify each has manifest.json, layout-1x1.html, assets/, thumb.png, BUILD-NOTES.md. 3. Check no JavaScript in any HTML file. 4. Verify CSS variables use only semantic tokens. 5. Verify registry.json lists all 50.",
+  "snapshot_or_generated_files": "templates/registry.json - generated after all 50 templates are built",
+  "setup_instructions": "No setup needed - pure static HTML/CSS files",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no CDN access, no remote fonts, no external images. All assets must be local. Cannot fetch reference images from pixy.art. All templates are 'inferred' from descriptions.",
+  "contribution_requirements": "Follow HyperFrame static image engine contract: no JS, no CDN, fixed 1080x1080, data-slot for editable values, data-role and data-importance on text nodes, data-visibility for toggles, only semantic CSS variables",
+  "key_patterns": "Each template is a self-contained package in templates/<slug>/ with manifest.json, layout-1x1.html, assets/, thumb.png, BUILD-NOTES.md. CSS uses only: --surface, --surfaceAlt, --textPrimary, --textSecondary, --accent, --onAccent, --accentAlt, --textOverImage, --scrim-strong, --scrim-weak, --font-display, --font-body",
+  "relevant_files": ["STATUS.json", "templates/"],
+  "directory_structure": "templates/<slug>/ - each template package. STATUS.json at root tracks progress."
+}

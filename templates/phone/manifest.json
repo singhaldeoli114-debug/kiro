@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "phone",
+  "templateVersion": "1.0.0",
+  "category": "tech",
+  "formats": ["1x1"],
+  "when_to_use": "When launching a smartphone or mobile device with a gradient backdrop and feature highlights displayed as icon-free feature chips",
+  "mood": ["sleek", "modern", "premium", "gradient", "tech-forward"],
+  "best_for": ["smartphone launches", "mobile devices", "phone accessories", "mobile brand campaigns"],
+  "not_for": ["fashion items", "food products", "vintage aesthetics"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "launch-tag", "label": "Launch Tag", "defaultValue": "JUST LAUNCHED", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Product Name", "defaultValue": "PIXEL PRO 9", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subtitle", "label": "Subtitle", "defaultValue": "The future in your hands", "data-role": "subtitle", "data-importance": "secondary"},
+    {"id": "feature1", "label": "Feature 1", "defaultValue": "AI Camera System", "data-role": "feature", "data-importance": "secondary"},
+    {"id": "feature2", "label": "Feature 2", "defaultValue": "All-Day Battery", "data-role": "feature", "data-importance": "secondary"},
+    {"id": "feature3", "label": "Feature 3", "defaultValue": "Titan M3 Security", "data-role": "feature", "data-importance": "secondary"},
+    {"id": "price", "label": "Starting Price", "defaultValue": "From $899", "data-role": "price", "data-importance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "PRE-ORDER", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "phone", "label": "Phone Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "50px", "right": "50px"},
+    "constraints": ["Phone centered-right with slight perspective", "Gradient background from top-left to bottom-right", "Feature chips arranged horizontally below headline"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 50, "right": 50},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-left",
+    "phone": "center-right",
+    "features": "center-left",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "launch-tag": "JUST LAUNCHED",
+    "headline": "PIXEL PRO 9",
+    "subtitle": "The future in your hands",
+    "feature1": "AI Camera System",
+    "feature2": "All-Day Battery",
+    "feature3": "Titan M3 Security",
+    "price": "From $899",
+    "cta": "PRE-ORDER"
+  },
+  "editable": ["launch-tag", "headline", "subtitle", "feature1", "feature2", "feature3", "price", "cta", "phone", "logo"],
+  "fixtures": {
+    "headline": "PIXEL PRO 9",
+    "phone": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A smartphone launch template with gradient backdrop, centered device image, and feature highlight chips. Premium and sleek tech aesthetic for mobile device launches."
+}

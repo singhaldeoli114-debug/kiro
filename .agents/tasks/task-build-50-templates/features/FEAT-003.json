@@ -1,0 +1,37 @@
+{
+  "id": "FEAT-003",
+  "type": "feat",
+  "description": "Build templates 21-30: Beauty/skincare and wellness categories. Each must have distinct visual identity.",
+  "status": "pending",
+  "steps": [
+    "Create templates/beauty-serum/ - Serum product hero with elegant gradient and ingredient highlights",
+    "Create templates/cosmetic/ - Cosmetics campaign with multi-product arrangement and swatches",
+    "Create templates/skincare-101/ - Educational skincare post with numbered steps layout",
+    "Create templates/natural-essentials/ - Natural-product collection with botanical/organic feel",
+    "Create templates/bathroom-essentials/ - Lifestyle product set with bathroom scene grid",
+    "Create templates/blue-skincare/ - Clinical skincare ad with cool blue tones and lab-style layout",
+    "Create templates/facial-serum/ - Premium serum campaign with centered bottle and radial glow",
+    "Create templates/skin-serum/ - Ingredient/benefit ad with split panel showing ingredients and results",
+    "Create templates/elegant-relaxation-therapy/ - Wellness service with spa imagery and calm typography",
+    "Create templates/fitness-coach/ - Coach/service lead ad with trainer photo area and service list",
+    "Each template MUST include: manifest.json, layout-1x1.html, assets/, thumb.png, BUILD-NOTES.md",
+    "Update STATUS.json after each template",
+    "Beauty templates should feel premium/luxurious; wellness templates should feel calm/inviting"
+  ],
+  "acceptance_criteria": [
+    "30 total template directories exist under templates/",
+    "No JavaScript in any HTML file",
+    "All CSS uses only semantic variables",
+    "All text nodes have data-role and data-importance",
+    "All media slots have data-slot",
+    "Complete manifest.json in each",
+    "STATUS.json shows 30 completed"
+  ],
+  "verification": [
+    "ls templates/ | wc -l should show at least 30",
+    "grep -rl '<script' templates/ should return nothing",
+    "cat STATUS.json shows completed: 30"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

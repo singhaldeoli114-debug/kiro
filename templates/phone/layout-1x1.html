@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--surface, #0f0c29) 0%, var(--surfaceAlt, #302b63) 50%, var(--accent, #24243e) 100%);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .glow-orb {
+      position: absolute;
+      top: 20%;
+      right: 25%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent, #6c5ce7) 0%, transparent 70%);
+      opacity: 0.25;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .left-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 45%;
+      height: 100%;
+      padding: 120px 50px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .launch-tag {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent, #6c5ce7);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      background-color: var(--scrim-weak, rgba(108, 92, 231, 0.15));
+      padding: 8px 14px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--textPrimary, #ffffff);
+      line-height: 1.0;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--textSecondary, #a0a0c0);
+      margin-bottom: 36px;
+    }
+
+    .features-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .chip {
+      display: inline-block;
+      background-color: var(--scrim-weak, rgba(255, 255, 255, 0.08));
+      color: var(--textPrimary, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--scrim-weak, rgba(255, 255, 255, 0.12));
+      width: fit-content;
+    }
+
+    .price {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--textPrimary, #ffffff);
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent, #6c5ce7);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 16px 36px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 8px;
+    }
+
+    .phone-container {
+      position: absolute;
+      top: 10%;
+      right: 60px;
+      bottom: 5%;
+      width: 420px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="glow-orb"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="left-content">
+      <span class="launch-tag" data-role="tagline" data-importance="tertiary">JUST LAUNCHED</span>
+      <h1 class="headline" data-role="headline" data-importance="primary">PIXEL<br>PRO 9</h1>
+      <p class="subtitle" data-role="subtitle" data-importance="secondary">The future in your hands</p>
+
+      <div class="features-chips">
+        <span class="chip" data-role="feature" data-importance="secondary">AI Camera System</span>
+        <span class="chip" data-role="feature" data-importance="secondary">All-Day Battery</span>
+        <span class="chip" data-role="feature" data-importance="secondary">Titan M3 Security</span>
+      </div>
+
+      <span class="price" data-role="price" data-importance="primary">From $899</span>
+      <div class="cta-button" data-role="cta" data-importance="primary">PRE-ORDER</div>
+    </div>
+
+    <div class="phone-container">
+      <img src="assets/placeholder.png" alt="Phone Product" data-slot="phone" />
+    </div>
+  </div>
+</body>
+</html>

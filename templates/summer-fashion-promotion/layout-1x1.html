@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Fashion Promotion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #fef3e8);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .diagonal-split {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
+      background-color: var(--surfaceAlt, #ff8c42);
+      z-index: 1;
+    }
+
+    .left-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 45%;
+      height: 100%;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .season-tag {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--onAccent, #ffffff);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 68px;
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--onAccent, #ffffff);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .subheadline {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--onAccent, #ffffff);
+      opacity: 0.85;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .discount-badge {
+      display: inline-block;
+      background-color: var(--accent, #1a1a1a);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 22px;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+
+    .model-area {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      bottom: 40px;
+      width: 50%;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .model-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 50px;
+      left: 40px;
+      z-index: 10;
+    }
+
+    .cta-button {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--textPrimary, #1a1a1a);
+      background-color: var(--surface, #fef3e8);
+      padding: 16px 32px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="diagonal-split"></div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="left-content">
+      <p class="season-tag" data-role="tagline" data-importance="tertiary">SUMMER 2024</p>
+      <h1 class="headline" data-role="headline" data-importance="primary">HOT<br>SUMMER<br>DEALS</h1>
+      <p class="subheadline" data-role="subheadline" data-importance="secondary">Refresh your wardrobe with the season's most vibrant styles</p>
+      <div class="discount-badge" data-role="discount" data-importance="primary">UP TO 60% OFF</div>
+    </div>
+
+    <div class="model-area">
+      <img src="assets/placeholder.png" alt="Summer Fashion" data-slot="model" />
+    </div>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">SHOP COLLECTION</div>
+    </div>
+  </div>
+</body>
+</html>

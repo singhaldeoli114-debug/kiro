@@ -1,0 +1,39 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Build templates 1-10: Product showcase, fashion, tech categories. Each template must have a DISTINCT layout appropriate to its archetype.",
+  "status": "in_progress",
+  "steps": [
+    "Create templates/premium-performance-showcase/ - Hero product with performance stats/proof overlay layout",
+    "Create templates/modern-fashion-promotion/ - Editorial cutout fashion ad with asymmetric model placement",
+    "Create templates/summer-fashion-promotion/ - Seasonal campaign with warm tones and diagonal split layout",
+    "Create templates/minimal-editorial-fashion/ - Magazine-style clean whitespace with centered cutout",
+    "Create templates/new-fashion-launch/ - Collection launch with multi-image grid layout",
+    "Create templates/shoes-collection/ - Footwear hero with angled product and bold typography",
+    "Create templates/headphone/ - Floating tech product with radial background and specs",
+    "Create templates/speaker/ - Gadget feature ad with side-by-side product and features list",
+    "Create templates/phone/ - Smartphone launch with gradient backdrop and feature highlights",
+    "Create templates/glasses-protection/ - Product benefit ad with split layout showing protection features",
+    "Each template MUST include: manifest.json (full HyperFrame schema), layout-1x1.html (1080x1080, no JS, semantic CSS vars only), assets/ directory, thumb.png (1x1 pixel PNG placeholder), BUILD-NOTES.md",
+    "Update STATUS.json after each template is created",
+    "All layouts must be visually distinct - different grid structures, typography hierarchies, and compositional approaches"
+  ],
+  "acceptance_criteria": [
+    "10 template directories exist under templates/ with all required files",
+    "No JavaScript or script tags in any HTML file",
+    "All colors use only semantic CSS variables (--surface, --surfaceAlt, --textPrimary, --textSecondary, --accent, --onAccent, --accentAlt, --textOverImage, --scrim-strong, --scrim-weak)",
+    "All fonts use only --font-display and --font-body variables",
+    "Every text element has data-role and data-importance attributes",
+    "Every image/media element has data-slot attribute",
+    "Each manifest.json has all required fields: schemaVersion, templateId, templateVersion, category, formats, when_to_use, mood, best_for, not_for, tokens, textSlots, mediaSlots, logoPolicy, layoutRules, layoutSafeZone, anchors, defaults, editable, fixtures, description",
+    "STATUS.json shows 10 completed"
+  ],
+  "verification": [
+    "ls templates/ | wc -l should show at least 10 directories",
+    "grep -rl '<script' templates/ should return nothing",
+    "grep -rL 'data-slot' templates/*/layout-1x1.html should return nothing (all have data-slot)",
+    "cat STATUS.json shows completed: 10"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "modern-fashion-promotion",
+  "templateVersion": "1.0.0",
+  "category": "fashion",
+  "formats": ["1x1"],
+  "when_to_use": "When creating an editorial-style fashion ad with an asymmetric cutout model placement and warm tones",
+  "mood": ["editorial", "elegant", "warm", "aspirational"],
+  "best_for": ["fashion brands", "clothing lines", "seasonal promotions", "boutique advertising"],
+  "not_for": ["tech products", "automotive", "B2B services"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "tagline", "label": "Tagline", "defaultValue": "NEW COLLECTION", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "Modern Elegance", "data-role": "headline", "data-importance": "primary"},
+    {"id": "description", "label": "Description", "defaultValue": "Discover the new season essentials crafted for the modern woman who demands both style and comfort.", "data-role": "description", "data-importance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP NOW", "data-role": "cta", "data-importance": "primary"},
+    {"id": "promo", "label": "Promo Tag", "defaultValue": "SALE", "data-role": "promo", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "model", "label": "Fashion Model Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "60px", "left": "50px", "right": "60px"},
+    "constraints": ["Model cutout positioned right with asymmetric overlap", "Text content anchored left of center", "Large decorative shape in background"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 60, "left": 50, "right": 60},
+  "anchors": {
+    "logo": "top-left",
+    "headline": "center-left",
+    "model": "right",
+    "cta": "center-left",
+    "promo": "bottom-left"
+  },
+  "defaults": {
+    "tagline": "NEW COLLECTION",
+    "headline": "Modern Elegance",
+    "description": "Discover the new season essentials crafted for the modern woman who demands both style and comfort.",
+    "cta": "SHOP NOW",
+    "promo": "SALE"
+  },
+  "editable": ["tagline", "headline", "description", "cta", "promo", "model", "logo"],
+  "fixtures": {
+    "headline": "Modern Elegance",
+    "model": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "An editorial cutout fashion ad with asymmetric model placement on a warm, neutral background. Features large decorative shape element and refined typography."
+}

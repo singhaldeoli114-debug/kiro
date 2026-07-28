@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Fashion Launch</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #fafafa);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .bg-year {
+      position: absolute;
+      bottom: -30px;
+      right: 40px;
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 320px;
+      font-weight: 900;
+      color: var(--surfaceAlt, #f0f0f0);
+      line-height: 1;
+      z-index: 1;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 45px;
+      width: auto;
+    }
+
+    .left-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40%;
+      height: 100%;
+      padding: 120px 50px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .collection-tag {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent, #e05a2b);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 60px;
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--textPrimary, #1a1a1a);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--textSecondary, #666666);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent, #e05a2b);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 16px 30px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+
+    .image-grid {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      bottom: 40px;
+      width: 55%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      z-index: 3;
+    }
+
+    .grid-item {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-year" data-role="decorative" data-importance="tertiary">24</div>
+
+    <div class="logo-area" data-visibility="logo">
+      <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+    </div>
+
+    <div class="left-content">
+      <p class="collection-tag" data-role="tagline" data-importance="tertiary">SS24 COLLECTION</p>
+      <h1 class="headline" data-role="headline" data-importance="primary">NEW<br>ARRIVALS</h1>
+      <p class="description" data-role="description" data-importance="secondary">Curated pieces that define the new season. Bold silhouettes meet refined details.</p>
+      <div class="cta-button" data-role="cta" data-importance="primary">EXPLORE NOW</div>
+    </div>
+
+    <div class="image-grid">
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Collection 1" data-slot="grid-image-1" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Collection 2" data-slot="grid-image-2" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Collection 3" data-slot="grid-image-3" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/placeholder.png" alt="Collection 4" data-slot="grid-image-4" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "speaker",
+  "templateVersion": "1.0.0",
+  "category": "tech",
+  "formats": ["1x1"],
+  "when_to_use": "When presenting a gadget or tech product with a side-by-side layout showing the product and its feature list",
+  "mood": ["clean", "modern", "informative", "tech", "professional"],
+  "best_for": ["speakers", "smart home devices", "gadgets", "portable electronics"],
+  "not_for": ["fashion editorial", "luxury brands", "organic products"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "category-tag", "label": "Category Tag", "defaultValue": "SMART SPEAKER", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Product Name", "defaultValue": "ECHO STUDIO", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subtitle", "label": "Subtitle", "defaultValue": "Immersive sound meets intelligent design", "data-role": "subtitle", "data-importance": "secondary"},
+    {"id": "feature1", "label": "Feature 1", "defaultValue": "360° Spatial Audio", "data-role": "feature", "data-importance": "secondary"},
+    {"id": "feature2", "label": "Feature 2", "defaultValue": "Hi-Res Lossless", "data-role": "feature", "data-importance": "secondary"},
+    {"id": "feature3", "label": "Feature 3", "defaultValue": "Smart Home Hub", "data-role": "feature", "data-importance": "secondary"},
+    {"id": "feature4", "label": "Feature 4", "defaultValue": "Voice Control AI", "data-role": "feature", "data-importance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$199", "data-role": "price", "data-importance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ADD TO CART", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product", "label": "Speaker Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "40px", "left": "50px", "right": "50px"},
+    "constraints": ["Product occupies left half", "Feature list with bullet markers on right", "Horizontal divider between header and content"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 40, "left": 50, "right": 50},
+  "anchors": {
+    "logo": "top-left",
+    "headline": "top-right",
+    "product": "center-left",
+    "features": "center-right",
+    "cta": "bottom-right"
+  },
+  "defaults": {
+    "category-tag": "SMART SPEAKER",
+    "headline": "ECHO STUDIO",
+    "subtitle": "Immersive sound meets intelligent design",
+    "feature1": "360° Spatial Audio",
+    "feature2": "Hi-Res Lossless",
+    "feature3": "Smart Home Hub",
+    "feature4": "Voice Control AI",
+    "price": "$199",
+    "cta": "ADD TO CART"
+  },
+  "editable": ["category-tag", "headline", "subtitle", "feature1", "feature2", "feature3", "feature4", "price", "cta", "product", "logo"],
+  "fixtures": {
+    "headline": "ECHO STUDIO",
+    "product": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A gadget feature ad with side-by-side product and features list. Clean tech aesthetic with product on the left and organized feature highlights on the right."
+}

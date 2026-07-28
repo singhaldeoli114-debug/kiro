@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "glasses-protection",
+  "templateVersion": "1.0.0",
+  "category": "product",
+  "formats": ["1x1"],
+  "when_to_use": "When promoting a product with specific protection or benefit features shown in a split layout comparing product and feature points",
+  "mood": ["informative", "trustworthy", "protective", "clean", "professional"],
+  "best_for": ["eyewear", "sunglasses", "protective gear", "health products", "skincare"],
+  "not_for": ["party/entertainment", "luxury fashion editorial", "food"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "badge", "label": "Category Badge", "defaultValue": "UV PROTECTION", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "SHIELD YOUR EYES", "data-role": "headline", "data-importance": "primary"},
+    {"id": "benefit1-title", "label": "Benefit 1 Title", "defaultValue": "100% UV Block", "data-role": "benefit", "data-importance": "secondary"},
+    {"id": "benefit1-desc", "label": "Benefit 1 Description", "defaultValue": "Complete UVA and UVB ray protection for all-day outdoor wear", "data-role": "supporting", "data-importance": "tertiary"},
+    {"id": "benefit2-title", "label": "Benefit 2 Title", "defaultValue": "Anti-Glare Coating", "data-role": "benefit", "data-importance": "secondary"},
+    {"id": "benefit2-desc", "label": "Benefit 2 Description", "defaultValue": "Polarized lenses reduce harsh glare from water and snow", "data-role": "supporting", "data-importance": "tertiary"},
+    {"id": "benefit3-title", "label": "Benefit 3 Title", "defaultValue": "Impact Resistant", "data-role": "benefit", "data-importance": "secondary"},
+    {"id": "benefit3-desc", "label": "Benefit 3 Description", "defaultValue": "Military-grade polycarbonate withstands extreme impact", "data-role": "supporting", "data-importance": "tertiary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "PROTECT NOW", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product", "label": "Glasses Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "50px", "right": "50px"},
+    "constraints": ["50/50 vertical split - dark product panel left, light benefits panel right", "Numbered benefit markers for scannability", "CTA centered at bottom spanning both panels"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 50, "right": 50},
+  "anchors": {
+    "logo": "top-left",
+    "headline": "top-left",
+    "product": "center-left",
+    "benefits": "center-right",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "badge": "UV PROTECTION",
+    "headline": "SHIELD YOUR EYES",
+    "benefit1-title": "100% UV Block",
+    "benefit1-desc": "Complete UVA and UVB ray protection for all-day outdoor wear",
+    "benefit2-title": "Anti-Glare Coating",
+    "benefit2-desc": "Polarized lenses reduce harsh glare from water and snow",
+    "benefit3-title": "Impact Resistant",
+    "benefit3-desc": "Military-grade polycarbonate withstands extreme impact",
+    "cta": "PROTECT NOW"
+  },
+  "editable": ["badge", "headline", "benefit1-title", "benefit1-desc", "benefit2-title", "benefit2-desc", "benefit3-title", "benefit3-desc", "cta", "product", "logo"],
+  "fixtures": {
+    "headline": "SHIELD YOUR EYES",
+    "product": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A product benefit ad with split layout showing protection features. Dark product panel on left juxtaposed with a light panel listing numbered benefits on the right."
+}

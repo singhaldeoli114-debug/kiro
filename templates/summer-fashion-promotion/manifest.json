@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "summer-fashion-promotion",
+  "templateVersion": "1.0.0",
+  "category": "fashion",
+  "formats": ["1x1"],
+  "when_to_use": "When creating seasonal campaign ads with warm tones and energetic diagonal split layouts for summer promotions",
+  "mood": ["energetic", "warm", "seasonal", "vibrant", "youthful"],
+  "best_for": ["summer sales", "seasonal campaigns", "fashion retailers", "discount promotions"],
+  "not_for": ["luxury minimalist brands", "tech products", "winter campaigns"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "season-tag", "label": "Season Tag", "defaultValue": "SUMMER 2024", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "HOT SUMMER DEALS", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subheadline", "label": "Subheadline", "defaultValue": "Refresh your wardrobe with the season's most vibrant styles", "data-role": "subheadline", "data-importance": "secondary"},
+    {"id": "discount", "label": "Discount Badge", "defaultValue": "UP TO 60% OFF", "data-role": "discount", "data-importance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "SHOP COLLECTION", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "model", "label": "Summer Fashion Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "40px", "right": "40px"},
+    "constraints": ["Diagonal split divides canvas roughly 45/55", "Model image on right with border radius", "Text content on warm-colored left panel"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 40, "right": 40},
+  "anchors": {
+    "logo": "top-left",
+    "headline": "center-left",
+    "model": "right",
+    "cta": "bottom-left",
+    "discount": "center-left"
+  },
+  "defaults": {
+    "season-tag": "SUMMER 2024",
+    "headline": "HOT SUMMER DEALS",
+    "subheadline": "Refresh your wardrobe with the season's most vibrant styles",
+    "discount": "UP TO 60% OFF",
+    "cta": "SHOP COLLECTION"
+  },
+  "editable": ["season-tag", "headline", "subheadline", "discount", "cta", "model", "logo"],
+  "fixtures": {
+    "headline": "HOT SUMMER DEALS",
+    "model": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A seasonal campaign template with warm orange tones and diagonal split layout. The bold clip-path diagonal creates an energetic composition ideal for summer promotions."
+}

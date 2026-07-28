@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glasses Protection</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--surface, #ffffff);
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+    }
+
+    .left-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: var(--surfaceAlt, #0f1923);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+    }
+
+    .product-image {
+      width: 400px;
+      height: 350px;
+      margin-bottom: 24px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .right-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      max-height: 45px;
+      width: auto;
+    }
+
+    .badge {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent, #00b894);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background-color: var(--scrim-weak, rgba(0, 184, 148, 0.12));
+      padding: 8px 14px;
+      border-radius: 4px;
+    }
+
+    .left-headline {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--textOverImage, #ffffff);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .benefits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .benefit-number {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--accent, #00b894);
+      line-height: 1;
+      min-width: 36px;
+    }
+
+    .benefit-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .benefit-title {
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--textPrimary, #1a1a1a);
+    }
+
+    .benefit-desc {
+      font-family: var(--font-body, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--textSecondary, #666666);
+      line-height: 1.5;
+    }
+
+    .cta-area {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .cta-button {
+      background-color: var(--accent, #00b894);
+      color: var(--onAccent, #ffffff);
+      font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 18px 40px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="left-panel">
+      <div class="badge" data-role="tagline" data-importance="tertiary">UV PROTECTION</div>
+      <div class="product-image">
+        <img src="assets/placeholder.png" alt="Glasses Product" data-slot="product" />
+      </div>
+      <h1 class="left-headline" data-role="headline" data-importance="primary">SHIELD<br>YOUR EYES</h1>
+    </div>
+
+    <div class="right-panel">
+      <div class="logo-area" data-visibility="logo">
+        <img src="assets/placeholder.png" alt="Brand Logo" data-slot="logo" />
+      </div>
+
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <span class="benefit-number">01</span>
+          <div class="benefit-content">
+            <span class="benefit-title" data-role="benefit" data-importance="secondary">100% UV Block</span>
+            <span class="benefit-desc" data-role="supporting" data-importance="tertiary">Complete UVA and UVB ray protection for all-day outdoor wear</span>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-number">02</span>
+          <div class="benefit-content">
+            <span class="benefit-title" data-role="benefit" data-importance="secondary">Anti-Glare Coating</span>
+            <span class="benefit-desc" data-role="supporting" data-importance="tertiary">Polarized lenses reduce harsh glare from water and snow</span>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-number">03</span>
+          <div class="benefit-content">
+            <span class="benefit-title" data-role="benefit" data-importance="secondary">Impact Resistant</span>
+            <span class="benefit-desc" data-role="supporting" data-importance="tertiary">Military-grade polycarbonate withstands extreme impact</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-area">
+      <div class="cta-button" data-role="cta" data-importance="primary">PROTECT NOW</div>
+    </div>
+  </div>
+</body>
+</html>

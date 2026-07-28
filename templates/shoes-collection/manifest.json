@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "shoes-collection",
+  "templateVersion": "1.0.0",
+  "category": "product",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing footwear with a bold, dynamic angled product placement and strong typography on a vibrant background",
+  "mood": ["dynamic", "bold", "athletic", "energetic", "premium"],
+  "best_for": ["sneaker launches", "athletic footwear", "limited editions", "shoe brands"],
+  "not_for": ["formal fashion", "minimalist aesthetics", "tech gadgets"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "brand-tag", "label": "Brand Tag", "defaultValue": "LIMITED EDITION", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "AIR MAX", "data-role": "headline", "data-importance": "primary"},
+    {"id": "price", "label": "Price", "defaultValue": "$189", "data-role": "price", "data-importance": "primary"},
+    {"id": "tagline", "label": "Tagline", "defaultValue": "Built for speed. Designed for style.", "data-role": "subtitle", "data-importance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "BUY NOW", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "shoe", "label": "Shoe Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "50px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "40px", "left": "50px", "right": "50px"},
+    "constraints": ["Shoe rotated -15deg for dynamic energy", "Large background headline at low opacity", "Price badge top-right for visibility", "Full-bleed accent gradient background"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 40, "left": 50, "right": 50},
+  "anchors": {
+    "logo": "top-left",
+    "brand-tag": "top-right",
+    "shoe": "center",
+    "price": "top-right",
+    "cta": "bottom-right"
+  },
+  "defaults": {
+    "brand-tag": "LIMITED EDITION",
+    "headline": "AIR MAX",
+    "price": "$189",
+    "tagline": "Built for speed. Designed for style.",
+    "cta": "BUY NOW"
+  },
+  "editable": ["brand-tag", "headline", "price", "tagline", "cta", "shoe", "logo"],
+  "fixtures": {
+    "headline": "AIR MAX",
+    "shoe": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A footwear hero template with angled product placement on a bold gradient background. Features dynamic diagonal composition, large background type, and high-contrast price badge."
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "headphone",
+  "templateVersion": "1.0.0",
+  "category": "tech",
+  "formats": ["1x1"],
+  "when_to_use": "When showcasing a premium audio product with a dark tech-forward aesthetic, radial background energy, and technical specifications",
+  "mood": ["tech", "premium", "dark", "futuristic", "immersive"],
+  "best_for": ["headphones", "earbuds", "audio products", "premium tech accessories"],
+  "not_for": ["fashion items", "food products", "natural/organic brands"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "brand-tag", "label": "Brand Tag", "defaultValue": "PREMIUM AUDIO", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Product Name", "defaultValue": "STUDIO PRO", "data-role": "headline", "data-importance": "primary"},
+    {"id": "spec1-label", "label": "Spec 1 Label", "defaultValue": "BATTERY", "data-role": "spec-label", "data-importance": "tertiary"},
+    {"id": "spec1-value", "label": "Spec 1 Value", "defaultValue": "40 Hours", "data-role": "spec-value", "data-importance": "secondary"},
+    {"id": "spec2-label", "label": "Spec 2 Label", "defaultValue": "DRIVER", "data-role": "spec-label", "data-importance": "tertiary"},
+    {"id": "spec2-value", "label": "Spec 2 Value", "defaultValue": "50mm HD", "data-role": "spec-value", "data-importance": "secondary"},
+    {"id": "spec3-label", "label": "Spec 3 Label", "defaultValue": "ANC", "data-role": "spec-label", "data-importance": "tertiary"},
+    {"id": "spec3-value", "label": "Spec 3 Value", "defaultValue": "Adaptive", "data-role": "spec-value", "data-importance": "secondary"},
+    {"id": "price", "label": "Price", "defaultValue": "$349", "data-role": "price", "data-importance": "primary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "ORDER NOW", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "product", "label": "Headphone Product Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "50px", "right": "50px"},
+    "constraints": ["Product centered with radial gradient behind", "Specs in flanking columns", "Concentric circles for depth"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 50, "right": 50},
+  "anchors": {
+    "logo": "top-center",
+    "headline": "top-center",
+    "product": "center",
+    "specs": "center-sides",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "brand-tag": "PREMIUM AUDIO",
+    "headline": "STUDIO PRO",
+    "spec1-label": "BATTERY",
+    "spec1-value": "40 Hours",
+    "spec2-label": "DRIVER",
+    "spec2-value": "50mm HD",
+    "spec3-label": "ANC",
+    "spec3-value": "Adaptive",
+    "price": "$349",
+    "cta": "ORDER NOW"
+  },
+  "editable": ["brand-tag", "headline", "spec1-label", "spec1-value", "spec2-label", "spec2-value", "spec3-label", "spec3-value", "price", "cta", "product", "logo"],
+  "fixtures": {
+    "headline": "STUDIO PRO",
+    "product": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A floating tech product template with radial background gradient and spec callouts. Premium dark aesthetic ideal for headphones and audio products."
+}

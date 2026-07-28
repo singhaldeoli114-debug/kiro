@@ -1,0 +1,37 @@
+{
+  "id": "FEAT-005",
+  "type": "feat",
+  "description": "Build templates 41-50: Testimonials, business services, real estate, education, travel. Each must have distinct professional layouts.",
+  "status": "pending",
+  "steps": [
+    "Create templates/client-testimonials/ - Testimonial/social proof with quote marks, avatar area, star rating",
+    "Create templates/customer-feedback/ - Review card with customer photo, rating bar, and quote block",
+    "Create templates/pricing-table-packages/ - Service pricing tiers with 3-column comparison layout",
+    "Create templates/real-estate-house/ - Property listing with large photo area, specs grid, and agent info",
+    "Create templates/house-sale/ - Property sale with SOLD/FOR SALE badge, price, and feature list",
+    "Create templates/business-webinar/ - Webinar registration with speaker photo, topic, date/time, and CTA",
+    "Create templates/now-hiring/ - Recruitment ad with job title, requirements list, and apply CTA",
+    "Create templates/back-to-school/ - Education campaign with playful elements and school supplies theme",
+    "Create templates/tropical-beach-tourism/ - Travel destination with full-bleed beach imagery and overlay text",
+    "Create templates/travel-tourism/ - Travel package campaign with destination grid and price/dates",
+    "Each template MUST include: manifest.json, layout-1x1.html, assets/, thumb.png, BUILD-NOTES.md",
+    "Update STATUS.json to show 50 completed",
+    "Professional/service templates should feel trustworthy; travel templates should feel aspirational"
+  ],
+  "acceptance_criteria": [
+    "50 total template directories exist under templates/",
+    "No JavaScript in any HTML file",
+    "All CSS uses only semantic variables",
+    "All text nodes have data-role and data-importance",
+    "All media slots have data-slot",
+    "Complete manifest.json in each",
+    "STATUS.json shows 50 completed"
+  ],
+  "verification": [
+    "ls templates/ | wc -l should show 50",
+    "grep -rl '<script' templates/ should return nothing",
+    "cat STATUS.json shows completed: 50"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

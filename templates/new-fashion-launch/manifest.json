@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "new-fashion-launch",
+  "templateVersion": "1.0.0",
+  "category": "fashion",
+  "formats": ["1x1"],
+  "when_to_use": "When launching a new collection and wanting to showcase multiple product images in a grid format with bold typography",
+  "mood": ["dynamic", "modern", "multi-product", "curated"],
+  "best_for": ["collection launches", "lookbook ads", "multi-product showcases", "seasonal drops"],
+  "not_for": ["single product focus", "minimalist brands", "text-heavy promotions"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "collection-tag", "label": "Collection Tag", "defaultValue": "SS24 COLLECTION", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "NEW ARRIVALS", "data-role": "headline", "data-importance": "primary"},
+    {"id": "description", "label": "Description", "defaultValue": "Curated pieces that define the new season. Bold silhouettes meet refined details.", "data-role": "description", "data-importance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "EXPLORE NOW", "data-role": "cta", "data-importance": "primary"},
+    {"id": "year", "label": "Background Year", "defaultValue": "24", "data-role": "decorative", "data-importance": "tertiary"}
+  ],
+  "mediaSlots": [
+    {"id": "grid-image-1", "label": "Grid Image 1 (Top Left)", "required": true},
+    {"id": "grid-image-2", "label": "Grid Image 2 (Top Right)", "required": true},
+    {"id": "grid-image-3", "label": "Grid Image 3 (Bottom Left)", "required": true},
+    {"id": "grid-image-4", "label": "Grid Image 4 (Bottom Right)", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-left",
+    "maxHeight": "45px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "40px", "bottom": "50px", "left": "50px", "right": "40px"},
+    "constraints": ["2x2 image grid on right 60%", "Text content on left 40%", "Grid images have rounded corners"]
+  },
+  "layoutSafeZone": {"top": 40, "bottom": 50, "left": 50, "right": 40},
+  "anchors": {
+    "logo": "top-left",
+    "headline": "center-left",
+    "grid": "right",
+    "cta": "bottom-left"
+  },
+  "defaults": {
+    "collection-tag": "SS24 COLLECTION",
+    "headline": "NEW ARRIVALS",
+    "description": "Curated pieces that define the new season. Bold silhouettes meet refined details.",
+    "cta": "EXPLORE NOW",
+    "year": "24"
+  },
+  "editable": ["collection-tag", "headline", "description", "cta", "year", "grid-image-1", "grid-image-2", "grid-image-3", "grid-image-4", "logo"],
+  "fixtures": {
+    "headline": "NEW ARRIVALS",
+    "grid-image-1": "assets/placeholder.png",
+    "grid-image-2": "assets/placeholder.png",
+    "grid-image-3": "assets/placeholder.png",
+    "grid-image-4": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A collection launch template with multi-image grid layout for showcasing multiple products. Ideal for new collection drops with bold typography and a curated editorial feel."
+}

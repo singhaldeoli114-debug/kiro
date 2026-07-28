@@ -1,0 +1,25 @@
+{
+  "id": "FEAT-006",
+  "type": "chore",
+  "description": "Generate registry.json, BATCH-REPORT.md, and ZIP the templates folder.",
+  "status": "pending",
+  "steps": [
+    "Generate templates/registry.json listing all 50 templates with their slugs, categories, and metadata",
+    "Generate BATCH-REPORT.md at repo root with: template number, name, slug, files created, editable text slots, media slots, style controls, reference fidelity (all 'inferred'), remaining issues",
+    "ZIP the entire templates/ folder into templates.zip at repo root",
+    "Final STATUS.json update confirming all 50 complete"
+  ],
+  "acceptance_criteria": [
+    "templates/registry.json exists and lists all 50 templates",
+    "BATCH-REPORT.md exists at repo root with all required columns",
+    "templates.zip exists at repo root",
+    "STATUS.json shows total: 50, completed: 50"
+  ],
+  "verification": [
+    "cat templates/registry.json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(len(d[\"templates\"]))' should output 50",
+    "test -f BATCH-REPORT.md && echo exists",
+    "test -f templates.zip && echo exists"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

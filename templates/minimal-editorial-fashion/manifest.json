@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "templateId": "minimal-editorial-fashion",
+  "templateVersion": "1.0.0",
+  "category": "fashion",
+  "formats": ["1x1"],
+  "when_to_use": "When creating a magazine-style fashion ad with clean whitespace, centered model cutout, and minimal editorial typography",
+  "mood": ["minimal", "editorial", "clean", "sophisticated", "timeless"],
+  "best_for": ["luxury fashion", "editorial campaigns", "high-end boutiques", "magazine advertising"],
+  "not_for": ["discount promotions", "tech products", "loud seasonal sales"],
+  "tokens": ["--surface", "--surfaceAlt", "--textPrimary", "--textSecondary", "--accent", "--onAccent", "--accentAlt", "--textOverImage", "--scrim-strong", "--scrim-weak", "--font-display", "--font-body"],
+  "textSlots": [
+    {"id": "category-label", "label": "Category Label", "defaultValue": "RESORT COLLECTION", "data-role": "tagline", "data-importance": "tertiary"},
+    {"id": "headline", "label": "Headline", "defaultValue": "VOGUE", "data-role": "headline", "data-importance": "primary"},
+    {"id": "subtitle", "label": "Subtitle", "defaultValue": "Timeless silhouettes for the contemporary soul", "data-role": "subtitle", "data-importance": "secondary"},
+    {"id": "cta", "label": "Call to Action", "defaultValue": "DISCOVER MORE", "data-role": "cta", "data-importance": "primary"}
+  ],
+  "mediaSlots": [
+    {"id": "model", "label": "Fashion Model Image", "required": true},
+    {"id": "logo", "label": "Brand Logo", "required": false}
+  ],
+  "logoPolicy": {
+    "position": "top-center",
+    "maxHeight": "40px",
+    "safeZone": true
+  },
+  "layoutRules": {
+    "safeZones": {"top": "50px", "bottom": "80px", "left": "80px", "right": "80px"},
+    "constraints": ["Model image centered in canvas", "Headline overlays model with mix-blend-mode difference", "Maximum whitespace surrounding elements"]
+  },
+  "layoutSafeZone": {"top": 50, "bottom": 80, "left": 80, "right": 80},
+  "anchors": {
+    "logo": "top-center",
+    "category": "top-center",
+    "model": "center",
+    "headline": "center",
+    "cta": "bottom-center"
+  },
+  "defaults": {
+    "category-label": "RESORT COLLECTION",
+    "headline": "VOGUE",
+    "subtitle": "Timeless silhouettes for the contemporary soul",
+    "cta": "DISCOVER MORE"
+  },
+  "editable": ["category-label", "headline", "subtitle", "cta", "model", "logo"],
+  "fixtures": {
+    "headline": "VOGUE",
+    "model": "assets/placeholder.png",
+    "logo": "assets/placeholder.png"
+  },
+  "description": "A magazine-style minimal editorial fashion template with generous whitespace, a centered model image, and ultra-thin headline overlay. Evokes high-fashion editorial aesthetics."
+}
