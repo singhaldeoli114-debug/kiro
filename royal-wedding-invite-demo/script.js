@@ -53,6 +53,7 @@ let fireMeshes = [];
 let animatedLanterns = [];
 let sangeetLights = [];
 let coupleGroup;
+let mandapGroup;
 let started = false;
 let introActive = false;
 let introStartedAt = 0;
@@ -532,6 +533,8 @@ function createStylizedPerson(parent, materials, type, x) {
 
 function createMandapAndCouple(parent, materials) {
   const group = new THREE.Group();
+  mandapGroup = group;
+  group.visible = false;
   group.position.set(0, 0, 0);
   parent.add(group);
   box(group, materials.sandstoneLight, [11, .58, 8], [0, .3, -14]);
@@ -876,6 +879,7 @@ function navigateTo(routeName, immediate=false){
 
 function setSceneContent(routeName,immediate=false){
   const route=routes[routeName];
+  if(mandapGroup) mandapGroup.visible=routeName==='story'||routeName==='wedding';
   const update=()=>{
     dom.sceneOverline.textContent=route.overline;
     dom.sceneTitle.textContent=route.title;
