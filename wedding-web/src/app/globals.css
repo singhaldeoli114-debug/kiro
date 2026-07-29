@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design tokens — shared visual continuity layer (spec §55)
+   Main page and (future) event pages share typography, buttons, card
+   geometry, icon family, header/footer and the core neutral background.
+   Events personalise only accent palette, flowers, motifs and media.
+   ========================================================================== */
+
+@theme {
+  /* Core neutrals */
+  --color-ivory: #fbf7f1;
+  --color-parchment: #f4ebdf;
+  --color-sand: #e8dbc9;
+  --color-ink: #2a1e1a;
+  --color-ink-soft: #5c4a42;
+  --color-ink-muted: #8a7368;
+
+  /* Brand */
+  --color-crimson: #8c1d2f;
+  --color-crimson-deep: #6b1424;
+  --color-plum: #4a1733;
+  --color-gold: #b3873c;
+  --color-gold-light: #e0c187;
+  --color-gold-pale: #f0e0c0;
+
+  /* Event accents (spec §29–34) */
+  --color-event-engagement: #b9767f;
+  --color-event-haldi: #d9911d;
+  --color-event-mehndi: #16624a;
+  --color-event-sangeet: #42327a;
+  --color-event-wedding: #8c1d2f;
+  --color-event-reception: #1d2b48;
+
+  /* Typography */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+
+  /* Motion durations (spec §54) */
+  --duration-tap: 150ms;
+  --duration-button: 220ms;
+  --duration-card: 420ms;
+  --duration-text: 560ms;
+  --duration-scene: 900ms;
+
+  --ease-editorial: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Card geometry */
+  --radius-card: 2px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --accent: var(--color-crimson);
+  --accent-soft: color-mix(in oklab, var(--color-crimson) 12%, white);
+}
+
+* {
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Anchor links must not hide section headings behind the sticky header */
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Visible, high-contrast focus for keyboard users (spec §61) */
+:focus-visible {
+  outline: 2px solid var(--color-crimson);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Every interactive target is at least 44x44 CSS px (spec §61) */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ==========================================================================
+   Reusable primitives
+   ========================================================================== */
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.rule-gold {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold) 20%,
+    var(--color-gold) 80%,
+    transparent
+  );
+  block-size: 1px;
+}
+
+.card {
+  background-color: color-mix(in oklab, white 70%, var(--color-ivory));
+  border: 1px solid color-mix(in oklab, var(--color-sand) 80%, white);
+  border-radius: var(--radius-card);
+  box-shadow: 0 1px 2px rgb(42 30 26 / 0.04), 0 12px 28px -20px rgb(42 30 26 / 0.22);
+}
+
+/* Layered 2.5D scene stage. Layers are positioned by the scene component and
+   only ever animated with transform/opacity (spec §7 motion rules). */
+.scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-parchment);
+}
+
+.scene-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Initial state for scroll reveals. Applied only when JS + motion are
+   available so that no-JS and reduced-motion guests always see content. */
+[data-reveal] {
+  opacity: 1;
+}
+
+html.motion-ready [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   Reduced motion (spec §54): parallax and masks become plain fades.
+   ========================================================================== */
+
+/* Explicit in-page choice from the footer control. */
+html.reduced-motion {
+  scroll-behavior: auto;
+}
+
+html.reduced-motion [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html.reduced-motion .scene-layer {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.motion-ready [data-reveal]:not(.is-revealed) {
+    opacity: 1;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Opening scene text reveal.
+
+   The hero copy is revealed with CSS rather than GSAP: it is the first thing a
+   guest reads, so it must not wait for a JavaScript frame (spec §54). The
+   staggered delays are short and the whole sequence is under a second.
+   ========================================================================== */
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-hero-text] > * {
+  animation: hero-rise 620ms var(--ease-editorial) both;
+}
+
+[data-hero-text] > *:nth-child(1) { animation-delay: 80ms; }
+[data-hero-text] > *:nth-child(2) { animation-delay: 180ms; }
+[data-hero-text] > *:nth-child(3) { animation-delay: 260ms; }
+[data-hero-text] > *:nth-child(4) { animation-delay: 340ms; }
+[data-hero-text] > *:nth-child(5) { animation-delay: 420ms; }
+[data-hero-text] > *:nth-child(6) { animation-delay: 480ms; }
+[data-hero-text] > *:nth-child(7) { animation-delay: 540ms; }
+[data-hero-text] > *:nth-child(n + 8) { animation-delay: 600ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-hero-text] > * {
+    animation: none;
+  }
+}
+
+html.reduced-motion [data-hero-text] > * {
+  animation: none;
+}
