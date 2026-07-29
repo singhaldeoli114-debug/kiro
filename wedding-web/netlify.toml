@@ -1,0 +1,21 @@
+# Netlify is the deployment target chosen in the platform spec.
+# The Next.js runtime plugin handles the server-rendered wedding route.
+
+[build]
+  base = "wedding-web"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Personal invitation links must never be indexed (spec §43, §60).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Content-Type-Options = "nosniff"
