@@ -37,6 +37,18 @@ function calendarTimestamp(date: Date) {
   return date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 }
 
+function EntryArtwork() {
+  return (
+    <div className="entry-art" aria-hidden="true">
+      <img className="entry-art__sky" src="scenes/palace-sky.webp" alt="" />
+      <img className="entry-art__palace" src="scenes/palace-mid.webp" alt="" />
+      <img className="entry-art__frame" src="scenes/palace-front.webp" alt="" />
+      <div className="entry-art__light" />
+      <div className="entry-art__veil" />
+    </div>
+  );
+}
+
 function SceneChapter({
   scene,
   index,
@@ -50,6 +62,8 @@ function SceneChapter({
   active: boolean;
   onAction: () => void;
 }) {
+  const chapterNumber = String(index + 1).padStart(2, "0");
+
   return (
     <section
       id={scene.id}
@@ -71,6 +85,9 @@ function SceneChapter({
               data-motion={layer.motion}
             />
           ))}
+          <div className="scene-color-grade" />
+          <div className="scene-light-sweep" />
+          <div className="scene-beams"><i /><i /><i /></div>
           <div className="scene-atmosphere" />
           <div className="scene-vignette" />
           <div className="petal-field">
@@ -83,22 +100,30 @@ function SceneChapter({
           </div>
         </div>
 
+        <div className="scene-curtain" aria-hidden="true"><i /><i /></div>
+        <div className="scene-frame" aria-hidden="true"><i /><i /><i /><i /></div>
+
         <div className="chapter-marker" aria-hidden="true">
-          <span>{String(index + 1).padStart(2, "0")}</span>
+          <span>Chapter</span>
+          <strong>{chapterNumber}</strong>
           <i />
           <span>{String(total).padStart(2, "0")}</span>
         </div>
 
         <div className="scene-copy">
-          <p className="eyebrow">{scene.eyebrow}</p>
-          <h2 id={`${scene.id}-title`}>{scene.title}</h2>
+          <p className="eyebrow scene-kicker"><span>{scene.eyebrow}</span></p>
+          <h2 id={`${scene.id}-title`}>
+            {scene.title.split(" ").map((word, wordIndex) => (
+              <span className="title-word" key={`${word}-${wordIndex}`}><b>{word}</b></span>
+            ))}
+          </h2>
           <p className="scene-description">{scene.copy}</p>
 
           {scene.date && (
             <dl className="event-ribbon" aria-label={`${scene.title} details`}>
               <div>
                 <dt>When</dt>
-                <dd>{scene.date} · {scene.time}</dd>
+                <dd>{scene.date}<br />{scene.time}</dd>
               </div>
               <div>
                 <dt>Where</dt>
@@ -116,6 +141,8 @@ function SceneChapter({
             <span className="down-arrow" aria-hidden="true" />
           </button>
         </div>
+
+        <div className="scene-scroll-cue" aria-hidden="true"><span>Scroll to journey</span><i /></div>
       </div>
     </section>
   );
@@ -245,44 +272,92 @@ export function WeddingExperience({ manifest }: { manifest: WeddingManifest }) {
 
     const context = gsap.context(() => {
       const scenes = gsap.utils.toArray<HTMLElement>(".scene");
+
       scenes.forEach((scene, index) => {
         activeTriggers.push(ScrollTrigger.create({
           trigger: scene,
-          start: "top 55%",
-          end: "bottom 45%",
+          start: "top 52%",
+          end: "bottom 48%",
           onEnter: () => setActiveScene(index),
           onEnterBack: () => setActiveScene(index),
         }));
 
         if (reducedMotion) return;
 
-        const copy = scene.querySelector<HTMLElement>(".scene-copy");
-        if (copy) {
-          gsap.fromTo(copy,
-            { autoAlpha: 0, y: quality === "enhanced" ? 42 : 22 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.9,
-              ease: "power3.out",
-              scrollTrigger: { trigger: scene, start: "top 68%", toggleActions: "play none none reverse" },
-            },
-          );
-        }
+        const layers = gsap.utils.toArray<HTMLElement>(scene.querySelectorAll(".scene-layer"));
+        const titleWords = gsap.utils.toArray<HTMLElement>(scene.querySelectorAll(".title-word b"));
+        const copyDetails = gsap.utils.toArray<HTMLElement>(scene.querySelectorAll(".scene-description, .event-ribbon, .chapter-action"));
+        const curtains = gsap.utils.toArray<HTMLElement>(scene.querySelectorAll(".scene-curtain i"));
+        const frameLines = gsap.utils.toArray<HTMLElement>(scene.querySelectorAll(".scene-frame i"));
+        const lightSweep = scene.querySelector<HTMLElement>(".scene-light-sweep");
+        const atmosphere = scene.querySelector<HTMLElement>(".scene-atmosphere");
+        const marker = scene.querySelector<HTMLElement>(".chapter-marker");
+        const kicker = scene.querySelector<HTMLElement>(".scene-kicker");
 
-        scene.querySelectorAll<HTMLElement>(".scene-layer").forEach((layer) => {
-          const depth = Number(layer.dataset.depth ?? 0.3);
-          const distance = quality === "enhanced" ? 10 + depth * 14 : 5 + depth * 7;
-          gsap.fromTo(layer,
-            { yPercent: distance * 0.5, scale: 1 + depth * 0.018 },
-            {
-              yPercent: -distance * 0.5,
-              ease: "none",
-              scrollTrigger: { trigger: scene, start: "top bottom", end: "bottom top", scrub: 1.1 },
-            },
-          );
+        const reveal = gsap.timeline({
+          scrollTrigger: {
+            trigger: scene,
+            start: "top 72%",
+            toggleActions: "play none none reverse",
+          },
+          defaults: { ease: "power4.out" },
         });
+
+        if (curtains.length === 2) {
+          reveal
+            .fromTo(curtains[0], { xPercent: 0 }, { xPercent: -104, duration: 1.35 }, 0)
+            .fromTo(curtains[1], { xPercent: 0 }, { xPercent: 104, duration: 1.35 }, 0);
+        }
+        reveal
+          .fromTo(frameLines, { scaleX: 0, scaleY: 0 }, { scaleX: 1, scaleY: 1, duration: 1.1, stagger: 0.06 }, 0.12)
+          .fromTo(kicker, { autoAlpha: 0, x: index % 2 ? 24 : -24 }, { autoAlpha: 1, x: 0, duration: 0.75 }, 0.28)
+          .fromTo(titleWords, { yPercent: 120, rotate: 3 }, { yPercent: 0, rotate: 0, duration: 0.95, stagger: 0.075 }, 0.34)
+          .fromTo(copyDetails, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.11 }, 0.58)
+          .fromTo(marker, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 0.72);
+
+        const travel = gsap.timeline({
+          scrollTrigger: {
+            trigger: scene,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: quality === "enhanced" ? 1.3 : 0.7,
+          },
+        });
+
+        layers.forEach((layer, layerIndex) => {
+          const depth = Number(layer.dataset.depth ?? 0.3);
+          const foreground = layerIndex === layers.length - 1;
+          const horizontal = (index % 2 === 0 ? 1 : -1) * depth * (quality === "enhanced" ? 3.8 : 1.8);
+          const vertical = depth * (quality === "enhanced" ? 17 : 8);
+          travel.fromTo(layer, {
+            xPercent: -horizontal,
+            yPercent: vertical * 0.55,
+            scale: 1.055 + depth * (foreground ? 0.085 : 0.04),
+          }, {
+            xPercent: horizontal,
+            yPercent: -vertical * 0.55,
+            scale: 1 + depth * 0.018,
+            ease: "none",
+          }, 0);
+        });
+
+        if (lightSweep) {
+          travel.fromTo(lightSweep, { xPercent: -42, opacity: 0.08 }, { xPercent: 42, opacity: 0.58, ease: "none" }, 0);
+        }
+        if (atmosphere) {
+          travel.fromTo(atmosphere, { scale: 0.82, opacity: 0.12 }, { scale: 1.2, opacity: 0.42, ease: "none" }, 0);
+        }
       });
+
+      const firstScene = scenes[0];
+      if (firstScene && !reducedMotion) {
+        gsap.fromTo(firstScene.querySelector(".scene-art"), { scale: 1.08, filter: "brightness(.55) saturate(.7)" }, {
+          scale: 1,
+          filter: "brightness(1) saturate(1)",
+          duration: 1.8,
+          ease: "power3.out",
+        });
+      }
     }, rootRef);
 
     const refreshFrame = window.requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -380,6 +455,7 @@ export function WeddingExperience({ manifest }: { manifest: WeddingManifest }) {
 
       {phase === "loading" && (
         <div className="entry-portal" role="status" aria-live="polite">
+          <EntryArtwork />
           <div className="entry-pattern" />
           <div className="loader-mark" aria-hidden="true">{manifest.couple.monogram}</div>
           <p className="entry-kicker">A royal invitation is being prepared</p>
@@ -390,6 +466,7 @@ export function WeddingExperience({ manifest }: { manifest: WeddingManifest }) {
 
       {phase === "choice" && (
         <div className="entry-portal entry-portal--choice">
+          <EntryArtwork />
           <div className="entry-pattern" />
           <div className="choice-card">
             <p className="eyebrow">You are warmly invited</p>
@@ -413,6 +490,7 @@ export function WeddingExperience({ manifest }: { manifest: WeddingManifest }) {
 
       {phase === "seal" && (
         <div className={`seal-gate${sealOpening ? " is-opening" : ""}`}>
+          <EntryArtwork />
           <div className="entry-pattern" />
           <div className="envelope" aria-hidden="true">
             <div className="envelope-letter"><span>{manifest.couple.monogram}</span></div>
@@ -481,8 +559,13 @@ export function WeddingExperience({ manifest }: { manifest: WeddingManifest }) {
             <button type="button" onClick={downloadCalendar}>Add to calendar</button>
             <button type="button" onClick={() => void shareInvitation()}>{shareStatus}</button>
           </div>
-          <button className="replay-button" type="button" onClick={() => window.scrollTo({ top: 0, behavior: quality === "lite" ? "auto" : "smooth" })}>Replay the journey ↑</button>
-          <p className="prototype-note">A 2.5D invitation preview · No WebGL or runtime 3D</p>
+          <button className="replay-button" type="button" onClick={() => window.scrollTo({ top: 0, behavior: quality === "lite" ? "auto" : "smooth" })}>
+            <span>Replay the journey</span>
+          </button>
+          <p className="prototype-note">
+            2.5D layered invitation · no WebGL or runtime 3D · demo photography from{" "}
+            <a href="https://www.pexels.com/" target="_blank" rel="noreferrer">Pexels</a>
+          </p>
         </section>
       </main>
 
