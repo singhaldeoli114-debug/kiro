@@ -3,6 +3,7 @@ import { FloralDivider } from "@/components/art/Monogram";
 import { Section } from "@/components/ui/primitives";
 import { SceneImage } from "@/components/ui/SceneImage";
 import { publishable } from "@/lib/manifest";
+import type { WeddingEvent } from "@/lib/manifest/types";
 import { SECTION_IDS } from "@/lib/nav";
 
 /**
@@ -12,9 +13,28 @@ import { SECTION_IDS } from "@/lib/nav";
  * host names and approved welcome messages appear: no phone numbers, no private
  * relationships, nothing the families have not signed off.
  */
+/** "the Mehndi, Sangeet and Reception" */
+function listNames(names: string[]): string {
+  if (names.length <= 1) return names[0] ?? "";
+  return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+}
+
 export function FamilyIntroductions({ journey }: { journey: JourneyContext }) {
   const families = publishable(journey.manifest.families);
   if (!families.length) return null;
+
+  // Only events this guest may see can be named.
+  const visible = new Map<string, WeddingEvent>(
+    journey.events.map((event) => [event.slug, event]),
+  );
+
+  const designation = (slugs?: string[]) => {
+    if (!slugs?.length) return null;
+    const names = slugs
+      .map((slug) => visible.get(slug)?.name)
+      .filter((name): name is string => Boolean(name));
+    return names.length ? `Hosting the ${listNames(names)}` : null;
+  };
 
   return (
     <Section
@@ -38,8 +58,10 @@ export function FamilyIntroductions({ journey }: { journey: JourneyContext }) {
                   {family.name}
                 </h3>
                 <p className="mt-1 text-[0.9375rem] text-ink-soft">{family.hosts.join(" · ")}</p>
-                {family.hostDesignation && (
-                  <p className="mt-0.5 text-[0.8125rem] text-ink-muted">{family.hostDesignation}</p>
+                {designation(family.hostsEvents) && (
+                  <p className="mt-0.5 text-[0.8125rem] text-ink-muted">
+                    {designation(family.hostsEvents)}
+                  </p>
                 )}
 
                 <p className="mt-4 text-[1rem] leading-relaxed text-ink-soft">

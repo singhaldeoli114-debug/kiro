@@ -384,7 +384,7 @@ export const aaravMeera: WeddingManifest = {
       side: "Aarav's Family",
       name: "The Malhotras",
       hosts: ["Rajeev Malhotra", "Sunita Malhotra"],
-      hostDesignation: "Hosts of the Haldi and Wedding Ceremony",
+      hostsEvents: ["haldi", "wedding"],
       welcomeMessage:
         "We have waited a long time to fill a house with this much noise. Thank you for making the journey to Udaipur — please treat every one of these four days as your own.",
       remembrance:
@@ -402,7 +402,7 @@ export const aaravMeera: WeddingManifest = {
       side: "Meera's Family",
       name: "The Sharmas",
       hosts: ["Vinod Sharma", "Kavita Sharma"],
-      hostDesignation: "Hosts of the Mehndi, Sangeet and Reception",
+      hostsEvents: ["mehndi", "sangeet", "reception"],
       welcomeMessage:
         "Meera has danced in every corner of our home for twenty-eight years. It is a strange, wonderful thing to hand that music to a new family. Come hungry, and stay late.",
       image: {
@@ -435,7 +435,7 @@ export const aaravMeera: WeddingManifest = {
         id: "hotel_amrit",
         name: "Amrit Haveli",
         area: "Gangaur Ghat",
-        note: "Heritage rooms, walking distance from the Haldi courtyard.",
+        note: "Heritage rooms in the old city, a short walk from Gangaur Ghat.",
       },
       {
         id: "hotel_city_square",

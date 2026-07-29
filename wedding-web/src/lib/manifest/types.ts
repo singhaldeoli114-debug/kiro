@@ -152,7 +152,13 @@ export interface Family {
   /** e.g. "The Malhotras" */
   name: string;
   hosts: string[];
-  hostDesignation?: string;
+  /**
+   * Events this family hosts, by slug. Rendered as a sentence built only from
+   * the events the current guest is eligible for — a hardcoded string like
+   * "Hosts of the Haldi" would leak the existence of a private ceremony
+   * (spec §7, §11).
+   */
+  hostsEvents?: EventSlug[];
   welcomeMessage: string;
   remembrance?: string;
   image: ImageAsset;
