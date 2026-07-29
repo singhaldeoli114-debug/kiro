@@ -1,5 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600" preserveAspectRatio="xMidYMid slice">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#381126"/><stop offset=".58" stop-color="#a54352"/><stop offset="1" stop-color="#efaa79"/></linearGradient><radialGradient id="h"><stop stop-color="#ffe9b6" stop-opacity=".75"/><stop offset="1" stop-color="#e5aa65" stop-opacity="0"/></radialGradient></defs>
-  <rect width="900" height="1600" fill="url(#g)"/><ellipse cx="450" cy="730" rx="430" ry="500" fill="url(#h)"/>
-  <g opacity=".16" fill="#f9dca8"><circle cx="100" cy="200" r="3"/><circle cx="220" cy="340" r="2"/><circle cx="720" cy="250" r="4"/><circle cx="810" cy="480" r="2"/><circle cx="520" cy="180" r="2"/><circle cx="350" cy="460" r="3"/></g>
+  <defs>
+    <linearGradient id="cs-sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#180924"/><stop offset=".38" stop-color="#5d1d3d"/><stop offset=".72" stop-color="#be5c55"/><stop offset="1" stop-color="#e9a16a"/></linearGradient>
+    <radialGradient id="cs-light" cx="50%" cy="46%"><stop stop-color="#fff1bd" stop-opacity=".9"/><stop offset=".22" stop-color="#f3bd79" stop-opacity=".5"/><stop offset=".72" stop-color="#b94d4f" stop-opacity=".08"/><stop offset="1" stop-color="#642044" stop-opacity="0"/></radialGradient>
+    <filter id="cs-soft"><feGaussianBlur stdDeviation="25"/></filter>
+    <filter id="cs-grain"><feTurbulence baseFrequency=".8" numOctaves="2" seed="14"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 .045 0"/></filter>
+  </defs>
+  <rect width="900" height="1600" fill="url(#cs-sky)"/><ellipse cx="450" cy="720" rx="485" ry="620" fill="url(#cs-light)"/>
+  <g fill="#ffe5b1" opacity=".14" filter="url(#cs-soft)"><ellipse cx="140" cy="490" rx="190" ry="46"/><ellipse cx="722" cy="590" rx="250" ry="58"/><ellipse cx="425" cy="325" rx="170" ry="40"/></g>
+  <g fill="#f6d29a" opacity=".48"><circle cx="116" cy="247" r="2.4"/><circle cx="226" cy="365" r="1.7"/><circle cx="354" cy="190" r="2.1"/><circle cx="572" cy="278" r="1.8"/><circle cx="752" cy="220" r="2.5"/><circle cx="816" cy="468" r="1.8"/></g>
+  <path d="M0 1230q160-102 320-19 131-79 274-3 151-96 306-18v410H0Z" fill="#40122d" opacity=".32"/>
+  <rect width="900" height="1600" filter="url(#cs-grain)" opacity=".4"/>
 </svg>

@@ -1,13 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600" preserveAspectRatio="xMidYMid slice">
-  <defs><linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe18a"/><stop offset=".5" stop-color="#ef9c22"/><stop offset="1" stop-color="#ad4f16"/></linearGradient><linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff4c7"/><stop offset="1" stop-color="#e5a52b"/></linearGradient></defs>
-  <g transform="translate(0 420)">
-    <path d="M100 1030V420h45v610zm655 0V420h45v610z" fill="#a65a26"/>
-    <path d="M100 420Q450 120 800 420l-55 125Q450 310 155 545Z" fill="url(#cloth)" stroke="#d3871d" stroke-width="10"/>
-    <path d="M100 420Q450 570 800 420" fill="none" stroke="#f2a819" stroke-width="28" stroke-dasharray="2 22" stroke-linecap="round"/>
-    <path d="M150 620Q450 450 750 620" fill="none" stroke="#f5c32f" stroke-width="22" stroke-dasharray="2 19" stroke-linecap="round"/>
-    <g fill="#d97218" stroke="#f8c63c" stroke-width="9"><circle cx="155" cy="545" r="32"/><circle cx="745" cy="545" r="32"/><circle cx="450" cy="535" r="42"/></g>
-    <ellipse cx="450" cy="970" rx="300" ry="110" fill="#bf6b24"/><ellipse cx="450" cy="930" rx="250" ry="72" fill="#f0b629"/><ellipse cx="450" cy="920" rx="160" ry="44" fill="#ffd953"/>
-    <g fill="#8e2932"><rect x="180" y="830" width="150" height="80" rx="20"/><rect x="570" y="830" width="150" height="80" rx="20"/></g>
-    <path d="M0 1030h900v300H0z" fill="#c77b39"/><path d="M0 1030h900v300H0z" fill="#ffd77e" opacity=".3"/>
+  <defs>
+    <linearGradient id="hm-stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#efc17f"/><stop offset=".5" stop-color="#c77442"/><stop offset="1" stop-color="#71303a"/></linearGradient>
+    <linearGradient id="hm-canopy" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff1b8"/><stop offset=".5" stop-color="#efb83c"/><stop offset="1" stop-color="#c76b1d"/></linearGradient>
+    <linearGradient id="hm-seat" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a82c36"/><stop offset="1" stop-color="#5b152c"/></linearGradient>
+    <pattern id="hm-jali" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M11 1 21 11 11 21 1 11Z" fill="none" stroke="#efc477" stroke-width="2"/></pattern>
+    <pattern id="hm-tile" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M0 0h64v64H0Z" fill="none" stroke="#8d493b" stroke-opacity=".25" stroke-width="3"/><path d="M0 64 64 0" stroke="#f1c77e" stroke-opacity=".14"/></pattern>
+    <filter id="hm-shadow"><feDropShadow dx="0" dy="15" stdDeviation="14" flood-color="#552019" flood-opacity=".38"/></filter>
+  </defs>
+  <g transform="translate(0 330)" filter="url(#hm-shadow)">
+    <path d="M0 1020V400h125V250h160v770Zm900 0V400H775V250H615v770Z" fill="url(#hm-stone)"/>
+    <g fill="url(#hm-jali)" stroke="#f0c078" stroke-width="5"><path d="M24 650V474q0-62 43-62t43 62v176Z"/><path d="M790 650V474q0-62 43-62t43 62v176Z"/></g>
+    <path d="M100 1050V385h42v665zm658 0V385h42v665Z" fill="#8c4c2b" stroke="#d9a14b" stroke-width="6"/>
+    <path d="M104 390Q450 93 796 390l-50 142Q450 337 154 532Z" fill="url(#hm-canopy)" stroke="#a95925" stroke-width="9"/>
+    <path d="M120 404q165 91 330 5 165 86 330-5" fill="none" stroke="#f6cf59" stroke-width="24" stroke-dasharray="3 20" stroke-linecap="round"/>
+    <path d="M149 544Q450 378 751 544" fill="none" stroke="#e58b1e" stroke-width="29" stroke-dasharray="3 22" stroke-linecap="round"/>
+    <g fill="#d76e18" stroke="#ffd665" stroke-width="6"><circle cx="151" cy="532" r="31"/><circle cx="749" cy="532" r="31"/><circle cx="450" cy="407" r="40"/></g>
+    <g stroke="#bd6b26" stroke-width="4"><path d="M212 503v102M304 455v112M596 455v112M688 503v102"/></g><g fill="#f0a91f"><path d="m196 600 16 36 16-36-16-19Z"/><path d="m288 562 16 36 16-36-16-19Z"/><path d="m580 562 16 36 16-36-16-19Z"/><path d="m672 600 16 36 16-36-16-19Z"/></g>
+    <ellipse cx="450" cy="949" rx="300" ry="88" fill="#7b3a32" opacity=".42"/>
+    <path d="M232 916v-147q0-76 75-76h286q75 0 75 76v147Z" fill="url(#hm-seat)" stroke="#d9a34d" stroke-width="8"/>
+    <path d="M260 916V785q0-53 52-53h276q52 0 52 53v131Z" fill="#c0453e"/>
+    <g fill="#f3bf55" stroke="#8d3c37" stroke-width="4"><rect x="273" y="748" width="118" height="96" rx="20"/><rect x="509" y="748" width="118" height="96" rx="20"/><rect x="402" y="762" width="96" height="82" rx="18"/></g>
+    <path d="M206 929h488v46H206Z" fill="#d39a45"/><path d="M238 975h424v55H238Z" fill="#802d35"/>
+    <path d="M0 1020h900v340H0Z" fill="#bd7143"/><path d="M0 1020h900v340H0Z" fill="url(#hm-tile)"/>
+    <path d="M277 1020 158 1360h584l-119-340Z" fill="#f4c76e" opacity=".2"/>
+    <g fill="#b82d2e"><circle cx="198" cy="996" r="11"/><circle cx="702" cy="996" r="11"/></g>
   </g>
 </svg>
