@@ -96,7 +96,9 @@ export function Countdown({ start, end, label }: CountdownProps) {
         { value: minutes, unit: minutes === 1 ? "minute" : "minutes" },
       ].map((item) => (
         <div key={item.unit} className="flex flex-col">
-          <dd className="font-display text-[1.75rem] leading-none text-ink tabular-nums">
+          {/* Sans + tabular figures: the display serif mixes oldstyle numerals,
+              which turns "197 days" into something closer to "I97". */}
+          <dd className="text-[1.5rem] font-light leading-none text-ink tabular-nums">
             {item.value}
           </dd>
           <dt className="eyebrow mt-1">{item.unit}</dt>
